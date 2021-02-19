@@ -1,0 +1,94 @@
+# Site Configurations
+site_name: "自动驾驶指南"
+site_description: 自动驾驶历史与技术
+site_author: "YFRL"
+site_url: https://wiki.yfworld.com
+strict: false
+
+# Repository
+repo_name: 'yfrobotics/self-driving-handbook-cn'
+repo_url: 'https://github.com/yfrobotics/self-driving-handbook-cn'
+edit_uri: ''
+
+docs_dir: docs
+site_dir: site
+
+# Google Analytics
+google_analytics:
+  - UA-60989638-5
+  - auto
+
+# Navigation
+nav:
+  - 自动驾驶技术指南: index.md
+  - '1. 概述':
+    - intro/main.md
+    - intro/define.md
+    - intro/category.md
+  - '2. 系统':
+    - system/main.md
+    - system/vehicle.md
+    - system/v2x.md
+    - system/platform.md
+    - system/safety.md
+    - system/regulation.md
+  - '3. 硬件':
+    - hardware/main.md
+    - hardware/hw_overview.md
+    - hardware/ccu.md
+    - hardware/drive_by_wire.md
+    - hardware/communication.md
+    - hardware/sensors.md
+    - hardware/camera.md
+  - '4. 算法':
+    - algorithm/main.md
+    - algorithm/sw_overview.md
+    - algorithm/image_processing.md
+    - algorithm/laser_processing.md
+    - algorithm/localisation.md
+    - algorithm/path_planning.md
+    - algorithm/decision_making.md
+    - algorithm/nlp.md
+  - '5. 实例':
+    - casestudy/main.md
+    - casestudy/apollo.md
+
+
+# Theme
+theme:
+  name: 'material'
+  language: 'zh'
+  logo: "logo-site.png"
+  palette:
+    primary: 'white'
+    accent: 'red'
+  include_search_page: false
+  search_index_only: true
+  features:
+    - navigation.tabs
+    - navigation.instant
+    - navigation.sections
+  font:
+    text: 'Fira Sans'
+    code: 'Fira Mono'
+
+# Extra
+extra_javascript:
+  - 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  - _static/js/mathjaxhelper.js
+
+extra_css:
+    - _static/css/extra.css
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - extra
+  - tables
+  - fenced_code
+  - pymdownx.arithmatex
+  - pymdownx.superfences:
+      custom_fences:
+        - name: math
+          class: arithmatex
+          format: !!python/name:pymdownx.arithmatex.fence_mathjax_format
