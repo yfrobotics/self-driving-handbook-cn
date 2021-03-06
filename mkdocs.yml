@@ -13,11 +13,6 @@ edit_uri: ''
 docs_dir: docs
 site_dir: site
 
-# Google Analytics
-google_analytics:
-  - UA-60989638-5
-  - auto
-
 # Navigation
 nav:
   - 自动驾驶技术指南: index.md
@@ -64,10 +59,6 @@ theme:
     accent: 'red'
   include_search_page: false
   search_index_only: true
-  features:
-    - navigation.tabs
-    - navigation.instant
-    - navigation.sections
   font:
     text: 'Fira Sans'
     code: 'Fira Mono'
