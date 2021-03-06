@@ -1,4 +1,10 @@
-# 自动驾驶技术手册
+# 自动驾驶技术指南
+
+--- A Guide to Autonomous Driving
+
+本手册提供最全的自动驾驶技术历史、现状与发展趋势。
+
+![Image result for google autonomous car](google_av.png)
 
 ## 版权声明
 

@@ -2,7 +2,7 @@
 site_name: "自动驾驶指南"
 site_description: 自动驾驶历史与技术
 site_author: "YFRL"
-site_url: https://wiki.yfworld.com
+site_url: https://yfrobotics.github.io/self-driving-handbook-cn
 strict: false
 
 # Repository
@@ -58,7 +58,7 @@ nav:
 theme:
   name: 'material'
   language: 'zh'
-  logo: "logo-site.png"
+  logo: ""
   palette:
     primary: 'white'
     accent: 'red'
