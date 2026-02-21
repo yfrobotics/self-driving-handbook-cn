@@ -1,0 +1,3409 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="自动驾驶历史与技术">
+      
+      
+        <meta name="author" content="YFRL">
+      
+      
+        <link rel="canonical" href="https://yfrobotics.github.io/self-driving-handbook-cn/system/hmi/">
+      
+      
+        <link rel="prev" href="../hdmap/">
+      
+      
+        <link rel="next" href="../safety/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>人机交互系统（HMI） - 自动驾驶指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,700,700i%7CFira+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Fira Sans";--md-code-font:"Fira Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../_static/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hmi" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="自动驾驶指南" class="md-header__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            自动驾驶指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              人机交互系统（HMI）
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yfrobotics/self-driving-handbook-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yfrobotics/self-driving-handbook-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="自动驾驶指南" class="md-nav__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    自动驾驶指南
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yfrobotics/self-driving-handbook-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yfrobotics/self-driving-handbook-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶技术指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 概述
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1. 概述
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一章：概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/define/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶系统定义
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/category/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶等级分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶发展历史
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 系统
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. 系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二章：系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vehicle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶车辆系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v2x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车联网（V2X）技术详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真平台与数据集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hdmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高精地图（HD Map）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人机交互系统（HMI）
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人机交互系统（HMI）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 开篇介绍
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-hmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. HMI在自动驾驶各级别中的角色
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. HMI在自动驾驶各级别中的角色">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-hmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 各级别HMI核心职能
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-hmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 各级别HMI责任对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-driver-monitoring-systemdms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 驾驶员状态监测（Driver Monitoring System，DMS）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 驾驶员状态监测（Driver Monitoring System，DMS）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 硬件方案
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 核心检测指标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-perclos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 PERCLOS指标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 疲劳驾驶预警等级
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-dms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 主要商用DMS系统
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 法规要求
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-takeover-requesttor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 接管请求机制（Takeover Request，TOR）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 接管请求机制（Takeover Request，TOR）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-tor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 TOR触发条件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-tor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 多模态TOR提示设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 接管时间分布
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-minimal-risk-conditionmrc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 最小风险条件（Minimal Risk Condition，MRC）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 相关标准
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-hud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 仪表盘与抬头显示（HUD）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 仪表盘与抬头显示（HUD）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 数字仪表盘
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-ar-hud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 增强现实抬头显示（AR-HUD）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 三屏协同架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 主流方案对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 座舱内交互设计
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 座舱内交互设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 自然语言交互
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 手势识别
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 触觉反馈设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-eye-tracking-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 眼神触控（Eye-tracking UI）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 多模态融合交互设计原则
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 透明度与可解释性
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 透明度与可解释性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 感知可视化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 决策原因显示
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 置信度指示
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 用户信任校准
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-hmil4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 乘客HMI（L4无人驾驶场景）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 乘客HMI（L4无人驾驶场景）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-robotaxi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Robotaxi车内屏设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 紧急求助机制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 安全员远程监控界面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 无障碍设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-hmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. HMI设计标准与法规
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. HMI设计标准与法规">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-iso-15008" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 ISO 15008 — 车辆视觉信息要求
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-sae-j30162021-l3l4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 SAE J3016（2021版）— L3/L4接管设计指导
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-nhtsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 NHTSA视觉显示指南
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-un-ece-r46" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 UN ECE R46 — 驾驶员分心规定
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统安全保障
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶测试体系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cybersecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶网络安全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../regulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    政策与法律法规
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 硬件
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. 硬件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三章：硬件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/hw_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    硬件总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/ccu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中央计算单元 (CCU / 车载AI芯片)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/drive_by_wire/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线控系统（Drive-by-Wire）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/communication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车载通信系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知传感器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/camera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    视觉传感器（摄像头）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. 算法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4. 算法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第四章：核心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sw_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统软件框架总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/image_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图像感知与处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/laser_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    激光点云数据处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sensor_fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器融合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/occupancy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    占用网络（Occupancy Network）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/localisation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    地图与定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/path_planning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    路径规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/prediction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行为预测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/decision_making/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    决策 (Decision Making)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    控制算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/end_to_end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端自动驾驶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/data_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶ML数据管道
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/nlp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自然语言处理与大语言模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 实例
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    5. 实例
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第五章：实例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/apollo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    百度 Apollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/waymo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waymo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/tesla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla FSD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/chinese_players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国自动驾驶企业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/robotaxi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robotaxi：自动驾驶商业化的主战场
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 开篇介绍
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-hmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. HMI在自动驾驶各级别中的角色
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. HMI在自动驾驶各级别中的角色">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-hmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 各级别HMI核心职能
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-hmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 各级别HMI责任对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-driver-monitoring-systemdms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 驾驶员状态监测（Driver Monitoring System，DMS）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 驾驶员状态监测（Driver Monitoring System，DMS）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 硬件方案
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 核心检测指标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-perclos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 PERCLOS指标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 疲劳驾驶预警等级
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-dms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 主要商用DMS系统
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 法规要求
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-takeover-requesttor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 接管请求机制（Takeover Request，TOR）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 接管请求机制（Takeover Request，TOR）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-tor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 TOR触发条件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-tor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 多模态TOR提示设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 接管时间分布
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-minimal-risk-conditionmrc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 最小风险条件（Minimal Risk Condition，MRC）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 相关标准
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-hud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 仪表盘与抬头显示（HUD）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 仪表盘与抬头显示（HUD）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 数字仪表盘
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-ar-hud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 增强现实抬头显示（AR-HUD）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 三屏协同架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 主流方案对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 座舱内交互设计
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 座舱内交互设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 自然语言交互
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 手势识别
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 触觉反馈设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-eye-tracking-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 眼神触控（Eye-tracking UI）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 多模态融合交互设计原则
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 透明度与可解释性
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 透明度与可解释性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 感知可视化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 决策原因显示
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 置信度指示
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 用户信任校准
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-hmil4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 乘客HMI（L4无人驾驶场景）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 乘客HMI（L4无人驾驶场景）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-robotaxi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Robotaxi车内屏设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 紧急求助机制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 安全员远程监控界面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 无障碍设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-hmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. HMI设计标准与法规
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. HMI设计标准与法规">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-iso-15008" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 ISO 15008 — 车辆视觉信息要求
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-sae-j30162021-l3l4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 SAE J3016（2021版）— L3/L4接管设计指导
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-nhtsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 NHTSA视觉显示指南
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-un-ece-r46" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 UN ECE R46 — 驾驶员分心规定
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="hmi">人机交互系统（HMI）</h1>
+<h2 id="1">1. 开篇介绍</h2>
+<p>人机交互（Human-Machine Interface，HMI）是自动驾驶系统与驾驶员或乘客之间的核心桥梁。随着自动驾驶技术从辅助驾驶向高度自动化演进，HMI的角色已从传统仪表盘信息展示，扩展为涵盖状态感知、接管请求、情境透明、紧急处置的综合性安全系统。</p>
+<p>在低级别自动驾驶（L1/L2）中，驾驶员始终是主控角色，HMI承担辅助提示功能；在L3条件自动驾驶阶段，系统可在特定场景下接管纵横向控制，但必须在必要时向驾驶员发出接管请求（Takeover Request，TOR），HMI在此阶段的设计质量直接关系行车安全；在L4/L5全自动驾驶场景下，乘客HMI取代驾驶员HMI成为主要交互界面，设计重心转向乘坐体验与紧急响应。</p>
+<p>HMI设计的核心挑战在于：如何在不分散驾驶员注意力的前提下，高效、准确地传递系统状态信息，并在人机控制权切换时确保安全、平稳的过渡。</p>
+<hr />
+<h2 id="2-hmi">2. HMI在自动驾驶各级别中的角色</h2>
+<h3 id="21-hmi">2.1 各级别HMI核心职能</h3>
+<p><strong>L2（部分自动化）</strong></p>
+<p>驾驶员始终对车辆保持完全监控责任，双手必须保持对方向盘的接触能力。HMI的主要功能为：显示当前激活的辅助功能（如自适应巡航、车道保持），通过指示灯和提示音告知系统边界即将到达，并在检测到驾驶员注意力分散时发出警告。代表系统包括特斯拉 Autopilot（配合 Nag 提示）、通用 Super Cruise（配合 DMS 摄像头）。</p>
+<p><strong>L3（条件自动化）</strong></p>
+<p>系统在特定操作设计域（ODD）内完全接管驾驶任务，驾驶员可将注意力转移至非驾驶活动，但必须能够在系统发出 TOR 后的规定时间内接管控制权。HMI在此阶段的接管请求机制（多模态提示、接管时间窗口管理）是设计核心难点，同时需防止驾驶员对系统能力的过度信任。代表案例：本田 Traffic Jam Pilot（已量产于日本市场）。</p>
+<p><strong>L4（高度自动化）</strong></p>
+<p>在设计区域内无需驾驶员干预，乘客HMI成为主要交互界面。系统需具备最小风险状态（Minimal Risk Condition，MRC）能力，即当系统自身无法继续运行时，能安全停靠至路边。Robotaxi场景（如百度Apollo RT6、Waymo One）是典型应用。</p>
+<p><strong>L5（完全自动化）</strong></p>
+<p>理论上无需任何驾驶员，车内HMI完全面向乘客舒适性与娱乐服务设计。目前仍处于研究阶段。</p>
+<h3 id="22-hmi">2.2 各级别HMI责任对比</h3>
+<table>
+<thead>
+<tr>
+<th>自动化级别</th>
+<th>主控方</th>
+<th>驾驶员监控要求</th>
+<th>接管请求</th>
+<th>乘客HMI</th>
+<th>紧急处置主体</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>驾驶员</td>
+<td>全程</td>
+<td>无</td>
+<td>无</td>
+<td>驾驶员</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>驾驶员</td>
+<td>全程（强制）</td>
+<td>无（仅警告）</td>
+<td>无</td>
+<td>驾驶员</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>系统/驾驶员切换</td>
+<td>ODD内可短暂放松</td>
+<td>必须</td>
+<td>可选</td>
+<td>驾驶员接管</td>
+</tr>
+<tr>
+<td>L4</td>
+<td>系统</td>
+<td>不强制</td>
+<td>可选</td>
+<td>主要界面</td>
+<td>系统MRC/远程操控</td>
+</tr>
+<tr>
+<td>L5</td>
+<td>系统</td>
+<td>无</td>
+<td>无</td>
+<td>全部</td>
+<td>系统自主处置</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-driver-monitoring-systemdms">3. 驾驶员状态监测（Driver Monitoring System，DMS）</h2>
+<p>驾驶员状态监测系统是L2/L3 HMI的基础传感组件，负责实时评估驾驶员的注意力水平、疲劳程度及准备接管的能力。</p>
+<h3 id="31">3.1 硬件方案</h3>
+<p>主流DMS采用<strong>近红外（NIR）摄像头</strong>配合专用图像处理芯片，工作在850nm或940nm波段，不受环境光照影响，可在夜间和强逆光条件下正常工作。摄像头通常安装于方向盘柱或仪表盘上方，保证对驾驶员面部的正面或斜面拍摄。部分高端方案配合<strong>ToF（Time-of-Flight）深度传感器</strong>获取三维头部姿态信息，减少遮挡引起的误检。</p>
+<h3 id="32">3.2 核心检测指标</h3>
+<p><strong>眼部状态检测：</strong></p>
+<ul>
+<li><strong>注视方向（Gaze Direction）：</strong> 推断驾驶员视线是否聚焦于道路正前方，偏离超过设定阈值（通常为±20°）触发警告。</li>
+<li><strong>眼睛开合度（Eye Openness）：</strong> 通过眼睑检测计算眼睛开合比例，识别瞌睡或眯眼状态。</li>
+<li><strong>眨眼频率（Blink Rate）：</strong> 正常人每分钟眨眼15-20次，疲劳时频率异常升高或降低。</li>
+</ul>
+<p><strong>头部姿态检测：</strong></p>
+<p>通过三维人脸关键点检测获取<strong>俯仰角（Pitch）、偏航角（Yaw）、翻滚角（Roll）</strong>。头部下垂（Pitch角异常）是瞌睡的强特征。</p>
+<p><strong>行为检测：</strong></p>
+<ul>
+<li><strong>打哈欠频率：</strong> 通过嘴部开合检测识别打哈欠动作，高频率打哈欠是疲劳强指标。</li>
+<li><strong>手部检测：</strong> 检测驾驶员双手是否放置于方向盘上，L2系统要求驾驶员保持手握方向盘。</li>
+</ul>
+<h3 id="33-perclos">3.3 PERCLOS指标</h3>
+<p><strong>PERCLOS（Percentage of Eye Closure，眼睑闭合百分比）</strong> 是国际公认的疲劳驾驶评估指标，定义为在固定时间窗口（通常为60秒或180秒）内，眼睑遮盖80%以上瞳孔面积的时间占比。</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\text{PERCLOS} = \frac{T_{\text{眼睑闭合超过80\%}}}{T_{\text{总时间}}} \times 100\%</div>
+<script type="math/tex; mode=display">\text{PERCLOS} = \frac{T_{\text{眼睑闭合超过80\%}}}{T_{\text{总时间}}} \times 100\%</script>
+</div>
+<p>研究表明，PERCLOS超过15%时驾驶员进入中度疲劳状态，超过25%则属于重度疲劳，需立即触发预警。</p>
+<h3 id="34">3.4 疲劳驾驶预警等级</h3>
+<table>
+<thead>
+<tr>
+<th>预警等级</th>
+<th>颜色代码</th>
+<th>触发条件</th>
+<th>HMI响应动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正常</td>
+<td>绿色</td>
+<td>PERCLOS &lt; 15%，注视正常</td>
+<td>无动作，状态栏绿色图标</td>
+</tr>
+<tr>
+<td>轻度警告</td>
+<td>黄色</td>
+<td>PERCLOS 15%-25%，或连续2次注视偏离</td>
+<td>仪表盘黄色闪烁，轻度提示音</td>
+</tr>
+<tr>
+<td>中度警告</td>
+<td>橙色</td>
+<td>PERCLOS &gt; 25%，或连续打哈欠3次</td>
+<td>强烈声光警报，建议靠边休息</td>
+</tr>
+<tr>
+<td>严重警告</td>
+<td>红色</td>
+<td>检测到驾驶员失去意识</td>
+<td>触发TOR流程，同时启动MRC</td>
+</tr>
+</tbody>
+</table>
+<h3 id="35-dms">3.5 主要商用DMS系统</h3>
+<ul>
+<li><strong>Smart Eye（瑞典）：</strong> 高精度多摄像头眼动追踪方案，广泛用于高端乘用车，精度达0.5°注视误差。</li>
+<li><strong>Seeing Machines（澳大利亚）：</strong> 商用车DMS领导者，已集成于Caterpillar矿山车辆，面部特征追踪算法成熟。</li>
+<li><strong>商汤科技 SenseAuto（中国）：</strong> 基于深度学习的驾驶员状态监测方案，支持多模态（DMS+OMS车内监测），已量产于多家国内主机厂。</li>
+<li><strong>伟世通（Visteon）：</strong> 集成DMS功能于数字座舱域控制器，与仪表盘显示深度融合。</li>
+</ul>
+<h3 id="36">3.6 法规要求</h3>
+<ul>
+<li><strong>UN ECE R79（2022年修订）：</strong> 要求L2及以上自动驾驶车辆配备车道保持辅助系统，并规定驾驶员接管提示机制。</li>
+<li><strong>UN ECE R158：</strong> 专门针对倒车影像系统的规定，间接促进座舱摄像头基础设施建设。</li>
+<li><strong>欧盟GSR2（General Safety Regulation 2）：</strong> 自2022年7月起，要求所有新型乘用车强制配备驾驶员困倦与注意力警告系统（DDAW）和高级驾驶员分心警告系统（ADEW）。</li>
+</ul>
+<hr />
+<h2 id="4-takeover-requesttor">4. 接管请求机制（Takeover Request，TOR）</h2>
+<p>接管请求是L3自动驾驶系统在需要驾驶员重新获取控制权时发出的信号，是人机协同安全体系的核心机制。</p>
+<h3 id="41-tor">4.1 TOR触发条件</h3>
+<p><strong>操作设计域（ODD）边界：</strong></p>
+<ul>
+<li>驶出高速公路进入城市道路（超出系统ODD）</li>
+<li>道路施工区域、临时交通管制</li>
+<li>恶劣天气（暴雨、浓雾、积雪）导致传感器性能下降</li>
+<li>道路标线模糊或缺失</li>
+</ul>
+<p><strong>系统内部条件：</strong></p>
+<ul>
+<li>感知置信度低于安全阈值（如目标检测置信度 &lt; 0.7）</li>
+<li>规划模块无法找到可行路径</li>
+<li>多个传感器数据不一致（传感器融合异常）</li>
+<li>高精地图数据与实时感知结果严重偏差</li>
+</ul>
+<p><strong>紧急情况：</strong></p>
+<ul>
+<li>车辆机械故障（制动/转向系统异常）</li>
+<li>系统软件异常或硬件失效</li>
+</ul>
+<h3 id="42-tor">4.2 多模态TOR提示设计</h3>
+<p>有效的TOR必须快速引起驾驶员注意，同时不引发恐慌。研究表明，多模态组合提示显著优于单一模态：</p>
+<p><strong>视觉提示：</strong></p>
+<ul>
+<li>仪表盘红色/橙色边框高频闪烁</li>
+<li>HUD上叠加"请接管驾驶"大字提示</li>
+<li>中控屏显示接管倒计时和原因说明</li>
+</ul>
+<p><strong>听觉提示：</strong></p>
+<ul>
+<li>递进式警报音（从柔和提示音逐步升级至强烈警报）</li>
+<li>语音播报："系统即将退出自动驾驶模式，请立即接管"</li>
+</ul>
+<p><strong>触觉提示：</strong></p>
+<ul>
+<li>方向盘振动（特定频率和强度的振动模式）</li>
+<li>座椅振动（左右交替或持续振动）</li>
+<li>部分系统采用安全带轻微收紧</li>
+</ul>
+<h3 id="43">4.3 接管时间分布</h3>
+<p>接管时间（Time-To-Takeover，TTC）是驾驶员从收到TOR到完全接管车辆控制的时间。大量实车测试数据表明：</p>
+<ul>
+<li><strong>平均接管时间：</strong> 3-7秒（非预期TOR）</li>
+<li><strong>最佳准备状态下：</strong> 约1.5-2秒</li>
+<li><strong>从事非驾驶任务时：</strong> 可能延长至10秒以上</li>
+<li><strong>影响因素：</strong> 驾驶员当前任务（阅读/视频/对话）、TOR提示强度、驾驶员年龄、任务紧迫程度</li>
+</ul>
+<p>系统设计需为驾驶员预留足够的接管时间，SAE J3016建议在驾驶员接管能力受限时提前发出TOR（预测性TOR），而非仅在系统即将失效时触发（被动TOR）。</p>
+<h3 id="44-minimal-risk-conditionmrc">4.4 最小风险条件（Minimal Risk Condition，MRC）</h3>
+<p>当驾驶员无法在规定时间内完成接管（如驾驶员失去意识、TOR超时无响应），系统必须自主执行最小风险操作：</p>
+<ol>
+<li><strong>减速至安全速度：</strong> 平稳减速，避免急刹引发追尾</li>
+<li><strong>靠边停车：</strong> 寻找安全停靠位置（路肩、紧急停车带）</li>
+<li><strong>开启危险警示灯：</strong> 提醒后方车辆</li>
+<li><strong>解锁车门，发出求救信号：</strong> 通知紧急救援或远程监控中心</li>
+<li><strong>保持记录：</strong> 记录完整的事件数据用于事后分析</li>
+</ol>
+<p>MRC的设计需兼顾安全性（尽快停止）和行车安全（停靠过程不引发二次事故）。</p>
+<h3 id="45">4.5 相关标准</h3>
+<ul>
+<li><strong>ISO 22736（DMS标准，2021）：</strong> 定义DMS性能要求，包括检测率、误报率、响应延迟，适用于L1-L3车辆。</li>
+<li><strong>SAE J3016（2021版）：</strong> 明确各自动化级别的接管责任划分，规定L3系统必须在退出前向驾驶员发出充分提示。</li>
+<li><strong>ISO/TR 4804：</strong> 针对自动驾驶系统安全的技术报告，涵盖TOR和MRC的功能安全要求。</li>
+</ul>
+<hr />
+<h2 id="5-hud">5. 仪表盘与抬头显示（HUD）</h2>
+<h3 id="51">5.1 数字仪表盘</h3>
+<p>现代数字仪表盘（Digital Instrument Cluster，IC）已不再局限于速度和油量显示，在自动驾驶模式下承担以下关键信息展示职能：</p>
+<p><strong>当前自动驾驶状态显示：</strong></p>
+<ul>
+<li>激活状态指示（图标 + 颜色编码：蓝色=激活，灰色=待机，橙色=警告）</li>
+<li>当前自动化级别标识（如"L2 辅助驾驶"或"L3 自动驾驶"）</li>
+<li>剩余可用ODD区域提示（如"高速公路模式，预计30公里后退出"）</li>
+</ul>
+<p><strong>感知结果可视化：</strong></p>
+<ul>
+<li>鸟瞰图显示周围车辆和障碍物的检测结果</li>
+<li>车道线识别状态（实线/虚线，识别置信度）</li>
+<li>前方车辆跟车距离和相对速度</li>
+<li>侧方盲区目标提示</li>
+</ul>
+<h3 id="52-ar-hud">5.2 增强现实抬头显示（AR-HUD）</h3>
+<p>AR-HUD通过将数字信息叠加到前风挡玻璃，实现驾驶员视线不离路面的信息获取，是L2/L3 HMI的前沿方案。</p>
+<p><strong>主要功能：</strong></p>
+<ul>
+<li><strong>导航箭头叠加：</strong> 将转向箭头投影到对应的真实道路位置（如"前方500米路口左转"的箭头直接显示在路面上）</li>
+<li><strong>障碍物标注：</strong> 在检测到的行人、车辆周围显示高亮框，提醒驾驶员注意</li>
+<li><strong>车道保持辅助线：</strong> 在前方路面投影建议行驶路径</li>
+<li><strong>速度限制提示：</strong> 通过摄像头识别路牌后在HUD中显示当前限速</li>
+</ul>
+<p><strong>技术参数要求：</strong></p>
+<p>AR-HUD的成像距离（Virtual Image Distance，VID）通常设定在7-15米，确保驾驶员视线从路面转向HUD的调焦距离最小化。显示区域宽度一般超过10°视场角（FOV），以覆盖车道宽度范围。</p>
+<h3 id="53">5.3 三屏协同架构</h3>
+<p>现代智能座舱通常采用仪表盘（IC）、中控屏（Central Information Display，CID）、HUD三屏协同的信息分发架构：</p>
+<table>
+<thead>
+<tr>
+<th>屏幕</th>
+<th>主要职能</th>
+<th>自动驾驶相关内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仪表盘（IC）</td>
+<td>驾驶核心信息</td>
+<td>自驾状态、DMS警告、接管倒计时</td>
+</tr>
+<tr>
+<td>中控屏（CID）</td>
+<td>功能交互</td>
+<td>自驾设置、路线规划、感知可视化详情</td>
+</tr>
+<tr>
+<td>HUD</td>
+<td>前方道路信息</td>
+<td>导航叠加、障碍物标注、速度提示</td>
+</tr>
+</tbody>
+</table>
+<h3 id="54">5.4 主流方案对比</h3>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>显示面积</th>
+<th>特点</th>
+<th>自动驾驶集成</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>华为 HarmonyOS 座舱</td>
+<td>15.6英寸CID + 10英寸IC</td>
+<td>多屏联动，鸿蒙生态</td>
+<td>与华为ADS深度融合，感知可视化丰富</td>
+</tr>
+<tr>
+<td>特斯拉 17英寸中控</td>
+<td>17英寸中央触屏，无传统IC</td>
+<td>极简设计，所有信息集中</td>
+<td>FSD状态显示、感知目标可视化</td>
+</tr>
+<tr>
+<td>宝马 iDrive 8</td>
+<td>12.3英寸IC + 14.9英寸CID曲面屏</td>
+<td>BMW Curved Display，驾驶者导向</td>
+<td>自驾状态清晰，接管提示集成</td>
+</tr>
+<tr>
+<td>小鹏 XMART OS</td>
+<td>15.6英寸中控 + 10.25英寸IC</td>
+<td>高度智能化，语音交互强</td>
+<td>XNGP感知路况实时可视化</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6">6. 座舱内交互设计</h2>
+<h3 id="61">6.1 自然语言交互</h3>
+<p>语音交互是自动驾驶座舱最重要的非接触式交互方式，有助于减少驾驶员视线从道路移开的时间。</p>
+<p><strong>交互流程：</strong></p>
+<div class="highlight"><pre><span></span><code>唤醒词触发 → 语音识别（ASR）→ 自然语言理解（NLU）→ 业务逻辑处理 → 语音合成（TTS）→ 多模态反馈
+</code></pre></div>
+<p><strong>核心能力要求：</strong></p>
+<ul>
+<li><strong>唤醒词识别：</strong> 免打扰唤醒（"小艺"/"你好，小鹏"/"嗨，Siri"），唤醒率 &gt; 98%，误唤醒率 &lt; 1次/天</li>
+<li><strong>连续对话：</strong> 支持上下文关联，无需每次重复唤醒词</li>
+<li><strong>方言/口音适配：</strong> 针对中国市场需支持普通话及主要方言</li>
+<li><strong>噪音鲁棒性：</strong> 在80分贝车内噪声环境下正常工作</li>
+</ul>
+<p><strong>自动驾驶相关语音指令示例：</strong></p>
+<ul>
+<li>"开启自动驾驶"/"切换到辅助驾驶模式"</li>
+<li>"当前道路支持自动驾驶吗？"</li>
+<li>"前方有什么障碍？"</li>
+<li>"靠边停车"</li>
+</ul>
+<h3 id="62">6.2 手势识别</h3>
+<p>手势识别允许驾驶员或乘客通过空中手势控制娱乐和部分驾驶功能，减少触屏操作带来的注意力分散。</p>
+<p><strong>技术方案：</strong></p>
+<ul>
+<li><strong>ToF深度摄像头：</strong> 在中控台或车顶安装ToF传感器，检测三维手部姿态，识别精度高，对光照不敏感。</li>
+<li><strong>RGB摄像头+AI算法：</strong> 通过深度学习识别2D手势，成本更低但在复杂背景下识别率受影响。</li>
+</ul>
+<p><strong>常用手势：</strong></p>
+<ul>
+<li>滑动手势：音量调节、曲目切换</li>
+<li>点击手势：确认选择</li>
+<li>手掌推出：接听/拒绝电话</li>
+<li>旋转手势：地图缩放</li>
+</ul>
+<h3 id="63">6.3 触觉反馈设计</h3>
+<p>触觉反馈通过物理振动向驾驶员传递不引发视线转移的信息：</p>
+<ul>
+<li><strong>方向盘振动：</strong> 不同频率和强度的振动模式对应不同警告级别（如车道偏离=低频振动，TOR=高频强振动）</li>
+<li><strong>座椅振动：</strong> 左侧/右侧座椅振动模块分别对应左右方向的盲区警告</li>
+<li><strong>振动方向编码：</strong> 左侧振动=左侧危险，右侧振动=右侧危险，有助于快速定向响应</li>
+</ul>
+<h3 id="64-eye-tracking-ui">6.4 眼神触控（Eye-tracking UI）</h3>
+<p>在L4无人驾驶场景中，乘客可通过眼神注视与车载屏幕交互，无需手部操作：</p>
+<ul>
+<li><strong>注视选择：</strong> 注视目标区域1-2秒触发点击</li>
+<li><strong>滚动控制：</strong> 注视屏幕边缘触发页面滚动</li>
+<li><strong>防误触设计：</strong> 结合意图推断算法，避免阅读内容时误触发操作</li>
+</ul>
+<h3 id="65">6.5 多模态融合交互设计原则</h3>
+<ol>
+<li><strong>主次分明：</strong> 驾驶相关信息优先级高于娱乐信息，自动驾驶状态警告可中断任何娱乐交互</li>
+<li><strong>冗余互补：</strong> 重要信息通过至少两种模态同时传递（如声音+视觉）</li>
+<li><strong>认知负荷最小化：</strong> 在关键驾驶场景下减少信息密度，避免信息过载</li>
+<li><strong>一致性：</strong> 同类信息始终使用相同的颜色、图标、音效，降低学习成本</li>
+<li><strong>可定制性：</strong> 允许驾驶员根据偏好调整信息呈现方式，但不能降低安全级别警告的优先级</li>
+</ol>
+<hr />
+<h2 id="7">7. 透明度与可解释性</h2>
+<h3 id="71">7.1 感知可视化</h3>
+<p>为建立驾驶员对系统的合理信任，自动驾驶HMI需向驾驶员展示系统的感知结果——即"系统看到了什么"：</p>
+<ul>
+<li><strong>鸟瞰图（BEV）可视化：</strong> 在仪表盘或中控屏显示鸟瞰视角下的周围环境，包括检测到的车辆（标注类别和距离）、行人、非机动车、道路边界、车道线</li>
+<li><strong>摄像头实时画面：</strong> 显示前视/后视摄像头画面，并叠加感知结果标注框</li>
+<li><strong>感知范围指示：</strong> 显示当前传感器有效感知的范围边界，帮助驾驶员了解"盲区"所在</li>
+</ul>
+<h3 id="72">7.2 决策原因显示</h3>
+<p>当系统执行特定驾驶行为时，向驾驶员简要说明原因，增强可预期性：</p>
+<table>
+<thead>
+<tr>
+<th>系统行为</th>
+<th>HMI显示示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主动减速</td>
+<td>"前方100m施工区，减速中"</td>
+</tr>
+<tr>
+<td>自动换道取消</td>
+<td>"右侧车道有车辆，取消换道"</td>
+</tr>
+<tr>
+<td>退出自动驾驶</td>
+<td>"即将进入隧道，请接管驾驶"</td>
+</tr>
+<tr>
+<td>保持跟车距离</td>
+<td>"前车急刹，保持安全距离"</td>
+</tr>
+</tbody>
+</table>
+<h3 id="73">7.3 置信度指示</h3>
+<p>系统对当前场景的处理置信度可通过可视化方式传递给驾驶员：</p>
+<ul>
+<li><strong>系统状态指示器：</strong> 使用颜色编码（绿色=高置信度，黄色=中等，橙色=低置信度）</li>
+<li><strong>感知质量指示：</strong> 显示"感知良好/受限/受损"，受限时说明原因（如"雨天摄像头受影响"）</li>
+<li><strong>ODD状态指示：</strong> 明确显示当前是否处于系统ODD范围内</li>
+</ul>
+<h3 id="74">7.4 用户信任校准</h3>
+<p>HMI设计需防止两种信任失调：</p>
+<p><strong>过度信任（Over-reliance）：</strong> 驾驶员完全依赖系统，不保持对道路的监控。应对措施：
+- DMS持续监控驾驶员注意力
+- 定期（如每10分钟）发出"请保持监控"的提醒
+- 在系统边界场景下提前警示ODD限制</p>
+<p><strong>欠信任（Under-trust）：</strong> 驾驶员不敢使用系统或频繁手动干预。应对措施：
+- 提供清晰的系统能力说明
+- 可解释性信息展示，帮助驾驶员理解系统决策逻辑
+- 渐进式功能引导（新用户保姆式引导）</p>
+<hr />
+<h2 id="8-hmil4">8. 乘客HMI（L4无人驾驶场景）</h2>
+<h3 id="81-robotaxi">8.1 Robotaxi车内屏设计</h3>
+<p>在L4无人驾驶出租车（Robotaxi）场景中，车内屏幕完全面向乘客服务，核心信息包括：</p>
+<ul>
+<li><strong>行程信息：</strong> 当前位置、目的地、预计到达时间（ETA）、行驶路线地图</li>
+<li><strong>车辆状态：</strong> 当前车速、行驶状态（"正在行驶/等待红灯/停靠中"）</li>
+<li><strong>服务信息：</strong> 车费计费、在线客服、乘车评价入口</li>
+<li><strong>安全信息：</strong> 紧急停车按钮位置说明、安全带提示</li>
+</ul>
+<p><strong>UI设计原则：</strong></p>
+<ul>
+<li>大字体、高对比度，适应不同年龄用户</li>
+<li>单手可操作（触控区域大于44mm×44mm）</li>
+<li>最少点击次数完成核心操作</li>
+</ul>
+<h3 id="82">8.2 紧急求助机制</h3>
+<p>Robotaxi必须提供多层次的乘客紧急求助能力：</p>
+<ol>
+<li><strong>车内紧急按钮：</strong> 物理按键（防止触屏失效情况），按下后触发多种响应：</li>
+<li>车辆安全减速并靠边停车</li>
+<li>与远程客服建立语音连接</li>
+<li>
+<p>自动向急救部门发送位置信息（可选）</p>
+</li>
+<li>
+<p><strong>语音求助：</strong> 呼喊特定关键词（如"紧急情况"）触发求助流程</p>
+</li>
+<li>
+<p><strong>远程人工接管：</strong> 运营商监控中心的安全员可通过5G网络远程接管车辆驾驶控制</p>
+</li>
+</ol>
+<h3 id="83">8.3 安全员远程监控界面</h3>
+<p>Robotaxi运营商监控中心的安全员需要同时监控多辆车辆：</p>
+<ul>
+<li><strong>车队总览仪表盘：</strong> 实时显示所有运营车辆的位置、状态、健康度</li>
+<li><strong>单车详情面板：</strong> 点击选中后显示该车传感器画面、行程信息、系统告警</li>
+<li><strong>远程干预工具：</strong> 语音通话（与乘客/外部）、远程驾驶控制、紧急停车指令</li>
+<li><strong>告警管理：</strong> 按优先级排列的实时告警列表，支持一键响应</li>
+</ul>
+<h3 id="84">8.4 无障碍设计</h3>
+<p>面向老年和残障用户的Robotaxi HMI需满足无障碍设计要求：</p>
+<ul>
+<li><strong>视觉无障碍：</strong> 支持大字体模式（字号 &gt; 20pt），高对比度模式（对比度 &gt; 7:1）</li>
+<li><strong>听觉无障碍：</strong> 关键信息提供视觉和触觉替代，支持助听设备蓝牙连接</li>
+<li><strong>操作无障碍：</strong> 触控目标面积充足，支持语音代替触控操作所有功能</li>
+<li><strong>认知无障碍：</strong> 简化界面，减少操作步骤，提供清晰的操作引导</li>
+</ul>
+<hr />
+<h2 id="9-hmi">9. HMI设计标准与法规</h2>
+<h3 id="91-iso-15008">9.1 ISO 15008 — 车辆视觉信息要求</h3>
+<p>ISO 15008规定了车内视觉信息呈现的人机工程学要求，核心条款包括：</p>
+<ul>
+<li>驾驶员信息显示设备的字符最小尺寸（视角 ≥ 14'）</li>
+<li>显示屏亮度范围（日间 &gt; 400cd/m²，夜间可调至 &lt; 1cd/m²）</li>
+<li>禁止在驾驶员视野内使用动态广告或无关动画</li>
+<li>信息密度限制，确保驾驶员在2秒内完成信息读取</li>
+</ul>
+<h3 id="92-sae-j30162021-l3l4">9.2 SAE J3016（2021版）— L3/L4接管设计指导</h3>
+<p>SAE J3016作为自动化级别定义的权威标准，对HMI设计有以下关键指导：</p>
+<ul>
+<li>L3系统必须在请求最小风险状态前，向驾驶员发出足够的提前警告</li>
+<li>系统必须清晰传达"当前哪个实体（系统或人）负责纵横向控制"</li>
+<li>在人机控制权切换时，必须有明确的状态指示避免歧义</li>
+</ul>
+<h3 id="93-nhtsa">9.3 NHTSA视觉显示指南</h3>
+<p>美国国家公路交通安全管理局（NHTSA）发布的《Driver Distraction Guidelines》对驾驶员注意力管理提出要求：</p>
+<ul>
+<li>驾驶员完成任何车内显示任务的平均单次眼神离路时间不超过2秒</li>
+<li>完成任务的总眼神离路时间不超过12秒</li>
+<li>禁止在行驶中显示与驾驶无关的视频内容（乘客屏幕不在此限）</li>
+</ul>
+<h3 id="94-un-ece-r46">9.4 UN ECE R46 — 驾驶员分心规定</h3>
+<p>联合国法规ECE R46（间接视野设备规定）在2022年修订版中扩展了对车内显示设备的要求：</p>
+<ul>
+<li>限制在驾驶员前方视野内放置显示屏（防止遮挡前方道路视线）</li>
+<li>规定后视镜替代系统（CMS，Camera Monitor System）的显示屏位置和最小尺寸</li>
+<li>要求CMS显示屏在各种光照条件下保证可见性</li>
+</ul>
+<hr />
+<h2 id="10">10. 参考资料</h2>
+<ol>
+<li>
+<p><strong>Gold, C., et al. (2016). "Taking Over Control From Highly Automated Vehicles in Complex Traffic Situations."</strong> <em>Human Factors</em>, 58(4), 642-652. DOI: 10.1177/0018720816634226 — 系统性研究接管时间和接管质量的经典文献。</p>
+</li>
+<li>
+<p><strong>SAE International. (2021). "Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles" (SAE J3016_202104).</strong> Warrendale, PA: SAE International. — 自动驾驶级别与HMI责任划分的权威标准。</p>
+</li>
+<li>
+<p><strong>ISO 22736:2021. "Intelligent Transport Systems — Partially Automated Lane Keeping Systems (PALKS) — Performance Requirements and Test Procedures."</strong> International Organization for Standardization. — 驾驶员监测系统性能要求标准。</p>
+</li>
+<li>
+<p><strong>Naujoks, F., Wiedemann, K., Schömig, N., Jarosch, O., &amp; Gold, C. (2018). "Expert-based controllability assessment of control transitions from automated to manual driving."</strong> <em>MethodsX</em>, 5, 579-592. — 接管请求多模态设计与可控性评估方法。</p>
+</li>
+<li>
+<p><strong>欧盟委员会. (2019). "Regulation (EU) 2019/2144 on type-approval requirements for motor vehicles and their trailers."</strong> Official Journal of the European Union, L 325/1. — 欧盟强制要求驾驶员困倦警告和分心警告系统的法规依据（GSR2）。</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../_static/js/mathjaxhelper.js"></script>
+      
+    
+  </body>
+</html>

@@ -25,11 +25,11 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
-        <title>中控单元 (AI芯片, GPGPU) - 自动驾驶指南</title>
+        <title>中央计算单元 (CCU / 车载AI芯片) - 自动驾驶指南</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ai-gpgpu" class="md-skip">
+        <a href="#ccu-ai" class="md-skip">
           跳转至
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              中控单元 (AI芯片, GPGPU)
+              中央计算单元 (CCU / 车载AI芯片)
             
           </span>
         </div>
@@ -317,7 +317,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶介绍
+    第一章：概述
   
 
     
@@ -373,7 +373,35 @@
   <span class="md-ellipsis">
     
   
-    自主性等级分类
+    自动驾驶等级分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶发展历史
   
 
     
@@ -455,7 +483,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶系统
+    第二章：系统
   
 
     
@@ -483,7 +511,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶车辆
+    自动驾驶车辆系统
   
 
     
@@ -511,7 +539,7 @@
   <span class="md-ellipsis">
     
   
-    智能交通
+    车联网（V2X）技术详解
   
 
     
@@ -539,7 +567,63 @@
   <span class="md-ellipsis">
     
   
-    设计与仿真平台
+    仿真平台与数据集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hdmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高精地图（HD Map）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人机交互系统（HMI）
   
 
     
@@ -568,6 +652,62 @@
     
   
     系统安全保障
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶测试体系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/cybersecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶网络安全
   
 
     
@@ -679,7 +819,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶硬件
+    第三章：硬件
   
 
     
@@ -744,7 +884,7 @@
   <span class="md-ellipsis">
     
   
-    中控单元 (AI芯片, GPGPU)
+    中央计算单元 (CCU / 车载AI芯片)
   
 
     
@@ -762,7 +902,7 @@
   <span class="md-ellipsis">
     
   
-    中控单元 (AI芯片, GPGPU)
+    中央计算单元 (CCU / 车载AI芯片)
   
 
     
@@ -788,51 +928,411 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 处理器类型对比
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 处理器类型对比">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 CPU（通用处理器）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 GPU（图形处理单元）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-npu-dla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 NPU / DLA（神经网络处理单元 / 深度学习加速器）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-fpga" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 FPGA（现场可编程门阵列）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-asic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 ASIC（专用集成电路）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 处理器类型综合对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-soc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 主流自动驾驶 SoC 详解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 主流自动驾驶 SoC 详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-nvidia-orinagx-orin-drive-orin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 NVIDIA Orin（AGX Orin / Drive Orin）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-nvidia-thor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 NVIDIA Thor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-tesla-fsd-chiphw3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Tesla FSD Chip（HW3，硬件三代）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-tesla-ai5hw4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Tesla AI5（HW4）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-mobileye-eyeq6high-low" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Mobileye EyeQ6（High / Low）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-mobileye-chauffeurl4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 Mobileye Chauffeur（L4 平台）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.7 地平线征程 5
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.8 地平线征程 6 系列
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29-snapdragon-ride-elitesa8775p" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.9 高通 Snapdragon Ride Elite（SA8775P 等）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#210-mdc-810" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.10 华为昇腾（MDC 810 计算平台）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#211-soc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.11 主流 SoC 全面对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 异构计算架构详解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 异构计算架构详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-soc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 SoC 内部架构层次
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 任务分配策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 内存层次架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 带宽需求分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 车规级要求
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 车规级要求">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-aec-q100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 AEC-Q100 可靠性认证
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-iso-26262-asil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 ISO 26262 功能安全（ASIL 等级）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-sotifiso-21448" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 SOTIF（ISO 21448）对算法平台的要求
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-hsmtee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 硬件安全模块（HSM）与可信执行环境（TEE）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 算力趋势与展望
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 算力趋势与展望">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-l2-l4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 L2+ → L4 算力需求增长规律
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 端到端大模型对车端算力的新需求
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 车端推理 vs 云端训练的分工
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 国产芯片追赶进度
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        计算架构
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        主流平台对比
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        关键性能指标
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        软件生态
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         参考资料
@@ -865,7 +1365,7 @@
   <span class="md-ellipsis">
     
   
-    线控系统
+    线控系统（Drive-by-Wire）
   
 
     
@@ -893,7 +1393,7 @@
   <span class="md-ellipsis">
     
   
-    车内总线
+    车载通信系统
   
 
     
@@ -949,7 +1449,7 @@
   <span class="md-ellipsis">
     
   
-    视觉传感器
+    视觉传感器（摄像头）
   
 
     
@@ -1031,7 +1531,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶核心算法
+    第四章：核心算法
   
 
     
@@ -1087,7 +1587,7 @@
   <span class="md-ellipsis">
     
   
-    图像识别与分割
+    图像感知与处理
   
 
     
@@ -1116,6 +1616,62 @@
     
   
     激光点云数据处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sensor_fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器融合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/occupancy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    占用网络（Occupancy Network）
   
 
     
@@ -1192,6 +1748,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/prediction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行为预测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/decision_making/" class="md-nav__link">
         
   
@@ -1199,7 +1783,91 @@
   <span class="md-ellipsis">
     
   
-    决策 (Decision Making Process)
+    决策 (Decision Making)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    控制算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/end_to_end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端自动驾驶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/data_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶ML数据管道
   
 
     
@@ -1227,7 +1895,7 @@
   <span class="md-ellipsis">
     
   
-    自然语言识别与交互
+    自然语言处理与大语言模型
   
 
     
@@ -1309,7 +1977,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶案例
+    第五章：实例
   
 
     
@@ -1337,7 +2005,119 @@
   <span class="md-ellipsis">
     
   
-    百度无人驾驶
+    百度 Apollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/waymo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waymo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/tesla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla FSD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/chinese_players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国自动驾驶企业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/robotaxi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robotaxi：自动驾驶商业化的主战场
   
 
     
@@ -1385,51 +2165,411 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 处理器类型对比
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 处理器类型对比">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 CPU（通用处理器）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 GPU（图形处理单元）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-npu-dla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 NPU / DLA（神经网络处理单元 / 深度学习加速器）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-fpga" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 FPGA（现场可编程门阵列）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-asic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 ASIC（专用集成电路）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 处理器类型综合对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-soc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 主流自动驾驶 SoC 详解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 主流自动驾驶 SoC 详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-nvidia-orinagx-orin-drive-orin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 NVIDIA Orin（AGX Orin / Drive Orin）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-nvidia-thor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 NVIDIA Thor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-tesla-fsd-chiphw3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Tesla FSD Chip（HW3，硬件三代）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-tesla-ai5hw4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Tesla AI5（HW4）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-mobileye-eyeq6high-low" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Mobileye EyeQ6（High / Low）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-mobileye-chauffeurl4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 Mobileye Chauffeur（L4 平台）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.7 地平线征程 5
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.8 地平线征程 6 系列
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29-snapdragon-ride-elitesa8775p" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.9 高通 Snapdragon Ride Elite（SA8775P 等）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#210-mdc-810" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.10 华为昇腾（MDC 810 计算平台）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#211-soc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.11 主流 SoC 全面对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 异构计算架构详解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 异构计算架构详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-soc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 SoC 内部架构层次
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 任务分配策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 内存层次架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 带宽需求分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 车规级要求
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 车规级要求">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-aec-q100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 AEC-Q100 可靠性认证
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-iso-26262-asil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 ISO 26262 功能安全（ASIL 等级）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-sotifiso-21448" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 SOTIF（ISO 21448）对算法平台的要求
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-hsmtee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 硬件安全模块（HSM）与可信执行环境（TEE）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 算力趋势与展望
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 算力趋势与展望">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-l2-l4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 L2+ → L4 算力需求增长规律
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 端到端大模型对车端算力的新需求
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 车端推理 vs 云端训练的分工
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 国产芯片追赶进度
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        计算架构
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        主流平台对比
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        关键性能指标
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        软件生态
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         参考资料
@@ -1456,101 +2596,651 @@
 
 
 
-<h1 id="ai-gpgpu">中控单元 (AI芯片, GPGPU)</h1>
-<p>自动驾驶系统需要强大的计算平台来实时处理传感器数据并运行感知、规划和控制算法。中控单元 (Central Computing Unit, CCU) 是车载计算的核心，其算力、功耗和可靠性直接决定了自动驾驶的能力上限。</p>
-<h2 id="_1">计算架构</h2>
-<p>自动驾驶计算平台采用异构计算架构，常见处理单元类型包括：</p>
+<h1 id="ccu-ai">中央计算单元 (CCU / 车载AI芯片)</h1>
+<p>自动驾驶系统需要在毫秒级时间窗口内完成"感知—理解—决策—控制"的完整闭环，这一切依赖中央计算单元（Central Computing Unit，CCU）提供的强大算力支撑。CCU 是自动驾驶汽车的"大脑"，其算力规模、实时响应能力与功能安全等级共同决定了智能驾驶的能力上限。从 L2 辅助驾驶的数十 TOPS，到 L4 无人驾驶所需的数百乃至数千 TOPS，算力需求正以指数级增长，推动着车载计算芯片持续演进。</p>
+<h2 id="1">1. 处理器类型对比</h2>
+<p>现代自动驾驶计算平台并非依赖单一处理器，而是将多种异构计算单元集成于同一 SoC 或计算板卡，各司其职、协同运作。</p>
+<h3 id="11-cpu">1.1 CPU（通用处理器）</h3>
+<p>CPU 擅长顺序执行、分支判断与操作系统调度，是整个计算平台的"总指挥"。车规级 CPU 通常采用 ARM Cortex-R 系列（实时处理）或 ARM Cortex-A 系列（高性能应用）。</p>
 <ul>
-<li><strong>CPU</strong>：通用处理器，负责系统调度、逻辑控制和非实时任务</li>
-<li><strong>GPU/GPGPU</strong>：图形处理器，大规模并行计算能力适合深度学习推理和点云处理</li>
-<li><strong>FPGA</strong>：现场可编程门阵列，低延迟、可定制，适合传感器数据预处理</li>
-<li><strong>ASIC/NPU</strong>：定制 AI 加速芯片，能效比最高，如 Tesla FSD 芯片中的 NPU</li>
-<li><strong>SoC</strong>：系统级芯片，将 CPU、GPU、NPU 集成于单芯片，如 NVIDIA Orin</li>
+<li><strong>Cortex-R 系列</strong>：具有硬实时特性，中断响应时间可低至微秒级，适用于制动、转向等安全关键控制任务。</li>
+<li><strong>Cortex-A 系列</strong>（如 A78AE）：支持运行 Linux / Hypervisor，负责系统管理、路径规划算法（如 A*、RRT）、V2X 通信协议栈处理等非实时或软实时任务。</li>
+<li>"AE"（Automotive Enhanced）版本支持硬件拆分模式（Split Lock），一颗物理核心可在两个隔离分区中独立运行，满足 ASIL-B/D 安全需求。</li>
 </ul>
-<h2 id="_2">主流平台对比</h2>
+<h3 id="12-gpu">1.2 GPU（图形处理单元）</h3>
+<p>GPU 含有数千至数万个轻量级着色器核心，擅长对大规模数据进行相同操作的并行计算（SIMD/SIMT 模式），天然匹配深度学习推理中的矩阵乘法与卷积运算。</p>
+<ul>
+<li>车载 GPU 通常采用 CUDA 架构（NVIDIA）或 GPU 计算单元（高通 Adreno 等）。</li>
+<li>主要承担：多路摄像头实时感知模型推理、BEV（鸟瞰图）特征提取、3D 目标检测。</li>
+<li>相比 CPU，GPU 在同等功耗下处理深度学习任务的吞吐量高出 10～100 倍。</li>
+</ul>
+<h3 id="13-npu-dla">1.3 NPU / DLA（神经网络处理单元 / 深度学习加速器）</h3>
+<p>NPU/DLA 是专为神经网络推理设计的固定功能加速器，硬件电路固化了矩阵乘法、激活函数、批归一化等常见算子。</p>
+<ul>
+<li>能效比（TOPS/W）通常是 GPU 的 3～10 倍，非常适合车载功耗受限场景。</li>
+<li>局限性：灵活性低，对非标准算子（如自定义注意力机制）支持较差，需提前编译模型至专用格式（如 ONNX → TensorRT Engine 或厂商私有格式）。</li>
+<li>典型实现：NVIDIA DLA v2.0（Orin 内置 × 2）、地平线 BPU、Tesla NPU。</li>
+</ul>
+<h3 id="14-fpga">1.4 FPGA（现场可编程门阵列）</h3>
+<p>FPGA 通过可重配置逻辑门阵列实现硬件级并行，延迟极低（纳秒级），支持运行时重新编程。</p>
+<ul>
+<li>主要应用于传感器数据预处理：LiDAR 点云解码与过滤、雷达原始信号 FFT、摄像头 ISP 流水线加速。</li>
+<li>量产车中较少独立部署 FPGA 计算板，但部分 SoC 内置专用硬件加速器，其设计理念与 FPGA 相近。</li>
+<li>代表方案：赛灵思 (AMD Xilinx) Versal 系列，集成 ARM CPU + FPGA LUT + AI Engine。</li>
+</ul>
+<h3 id="15-asic">1.5 ASIC（专用集成电路）</h3>
+<p>ASIC 是为特定算法量身定制的芯片，在功耗、面积和性能上全面优化，代价是完全丧失灵活性。</p>
+<ul>
+<li><strong>Tesla D1 训练芯片</strong>：专为神经网络训练设计，单芯片 362 TFLOPS（BF16），64 颗 D1 组成 Dojo Training Tile，算力达 1.1 PFLOPS，用于离线训练 FSD 视频推理模型。</li>
+<li><strong>Mobileye EyeQ</strong> 系列：高度定制的图像处理 ASIC，集成专用视觉加速核心，超低功耗（&lt; 15W）实现 L2+ 功能。</li>
+</ul>
+<h3 id="16">1.6 处理器类型综合对比</h3>
 <table>
 <thead>
 <tr>
-<th>平台</th>
-<th>厂商</th>
+<th>处理器类型</th>
+<th>灵活性</th>
 <th>AI 算力</th>
-<th>功耗</th>
-<th>特点</th>
+<th>功耗效率</th>
+<th>单位成本</th>
+<th>开发难度</th>
+<th>典型应用场景</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>DRIVE Orin</td>
+<td>CPU</td>
+<td>★★★★★</td>
+<td>★★</td>
+<td>★★</td>
+<td>★★★</td>
+<td>★</td>
+<td>系统调度、路径规划</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>★★★★</td>
+<td>★★★★</td>
+<td>★★★</td>
+<td>★★</td>
+<td>★★</td>
+<td>感知推理、BEV 特征提取</td>
+</tr>
+<tr>
+<td>NPU/DLA</td>
+<td>★★</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+<td>★★★★</td>
+<td>★★★★</td>
+<td>固定神经网络推理</td>
+</tr>
+<tr>
+<td>FPGA</td>
+<td>★★★★</td>
+<td>★★★</td>
+<td>★★★★</td>
+<td>★</td>
+<td>★★★★★</td>
+<td>传感器预处理、低延迟逻辑</td>
+</tr>
+<tr>
+<td>ASIC</td>
+<td>★</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+<td>★★★★★</td>
+<td>量产专用加速（训练/推理）</td>
+</tr>
+</tbody>
+</table>
+<p>（★越多代表该维度越强；成本★越多代表成本越低）</p>
+<h2 id="2-soc">2. 主流自动驾驶 SoC 详解</h2>
+<h3 id="21-nvidia-orinagx-orin-drive-orin">2.1 NVIDIA Orin（AGX Orin / Drive Orin）</h3>
+<ul>
+<li><strong>制程</strong>：12nm（三星）</li>
+<li><strong>AI 算力</strong>：254 TOPS（INT8）</li>
+<li><strong>CPU</strong>：12 核 ARM Cortex-A78AE</li>
+<li><strong>GPU</strong>：2048 核 Ampere 架构 GPU</li>
+<li><strong>DLA</strong>：2 × NVDLA v2.0（专用深度学习加速器）</li>
+<li><strong>ISP/PVA</strong>：支持最多 16 路摄像头输入，内置可编程视觉加速器（PVA）</li>
+<li><strong>内存</strong>：最大 64 GB LPDDR5，内存带宽 204 GB/s</li>
+<li><strong>功耗</strong>：45 W（典型），最大 60 W</li>
+<li><strong>量产客户</strong>：理想汽车（AD Max 平台，双 Orin）、蔚来 ET7/ES7、小鹏 G9/P7i、比亚迪海豹 DM-i 等</li>
+<li><strong>特点</strong>：CUDA/TensorRT 生态完整，支持多芯片 NVLink 级联；具备硬件虚拟化，可同时运行 QNX 安全域与 Linux 功能域。</li>
+</ul>
+<h3 id="22-nvidia-thor">2.2 NVIDIA Thor</h3>
+<ul>
+<li><strong>制程</strong>：4nm（台积电 N4）</li>
+<li><strong>AI 算力</strong>：2000 TOPS（单芯片）</li>
+<li><strong>GPU</strong>：Blackwell 架构，支持 FP8 推理</li>
+<li><strong>目标场景</strong>：L4/L5 完全自动驾驶，中央计算架构（将座舱与驾驶计算合并）</li>
+<li><strong>接口</strong>：支持以太网 TSN、PCIe Gen5、DisplayPort 2.1</li>
+<li><strong>发布时间</strong>：2025 年量产车型预计首发搭载</li>
+<li><strong>特点</strong>：相比 Orin 算力提升近 8 倍，支持端到端大模型在车端实时推理。</li>
+</ul>
+<h3 id="23-tesla-fsd-chiphw3">2.3 Tesla FSD Chip（HW3，硬件三代）</h3>
+<ul>
+<li><strong>制程</strong>：14nm（三星）</li>
+<li><strong>AI 算力</strong>：144 TOPS（双芯片合计 288 TOPS）</li>
+<li><strong>CPU</strong>：12 核 ARM A72</li>
+<li><strong>GPU</strong>：Mali G71 MP12（主要用于显示）</li>
+<li><strong>NPU</strong>：2 × 自研 NNA（Neural Network Accelerator），每颗支持 72 TOPS</li>
+<li><strong>功耗</strong>：72 W（整个计算硬件）</li>
+<li><strong>存储</strong>：LPDDR4，内存带宽 68 GB/s</li>
+<li><strong>设计亮点</strong>：双 SoC 热备冗余（两颗独立运行，互相监控输出），自研 NPU 对 Tesla 特有卷积网络高度优化</li>
+<li><strong>应用范围</strong>：Autopilot / FSD Beta，仅支持摄像头视觉方案（无雷达、无激光雷达）</li>
+</ul>
+<h3 id="24-tesla-ai5hw4">2.4 Tesla AI5（HW4）</h3>
+<ul>
+<li><strong>AI 算力</strong>：300+ TOPS（具体数据未完全公开）</li>
+<li><strong>摄像头支持</strong>：支持 5MP 高分辨率摄像头（HW3 为 1.2MP）</li>
+<li><strong>制程</strong>：据报道采用台积电 7nm 以下制程</li>
+<li><strong>量产时间</strong>：2023 年下半年开始搭载于 Model S/X/3/Y 改款</li>
+<li><strong>特点</strong>：算力大幅提升，为 FSD V12 端到端神经网络架构（视频级输入直接输出控制量）提供支撑。</li>
+</ul>
+<h3 id="25-mobileye-eyeq6high-low">2.5 Mobileye EyeQ6（High / Low）</h3>
+<ul>
+<li><strong>制程</strong>：7nm（台积电）</li>
+<li><strong>AI 算力</strong>：EyeQ6H：34 TOPS；EyeQ6L：10 TOPS</li>
+<li><strong>功耗</strong>：EyeQ6H &lt; 15 W；EyeQ6L &lt; 5 W</li>
+<li><strong>架构</strong>：多核 MIPI VMP（Vector Microcode Processor）+ 标量处理器 + 深度学习加速核心</li>
+<li><strong>软件闭环</strong>：Mobileye 采用完整软硬件垂直整合模式，仅开放有限 API 给主机厂</li>
+<li><strong>量产客户</strong>：宝马、通用、Stellantis 等，搭载于 SuperVision 辅助驾驶系统</li>
+<li><strong>特点</strong>：极低功耗、符合严苛车规要求，适合无独立散热设计的车型</li>
+</ul>
+<h3 id="26-mobileye-chauffeurl4">2.6 Mobileye Chauffeur（L4 平台）</h3>
+<ul>
+<li><strong>架构组成</strong>：EyeQ6H × 2 + EyeQ6L × 1 + 激光雷达处理单元</li>
+<li><strong>目标算力</strong>：约 100 TOPS 组合算力</li>
+<li><strong>冗余设计</strong>：三模冗余（TMR），具备 ASIL-D 安全完整性</li>
+<li><strong>目标场景</strong>：Robotaxi、无人配送车等 L4 级商业化运营</li>
+<li><strong>合作方</strong>：与 Volkswagen ID.Buzz 自动驾驶出租车项目合作</li>
+</ul>
+<h3 id="27-5">2.7 地平线征程 5</h3>
+<ul>
+<li><strong>制程</strong>：16nm（台积电）</li>
+<li><strong>AI 算力</strong>：128 TOPS（INT8）</li>
+<li><strong>CPU</strong>：8 核 ARM Cortex-A55</li>
+<li><strong>BPU</strong>：地平线自研 BPU（Brain Processing Unit）第三代架构，专为视觉感知网络优化</li>
+<li><strong>功耗</strong>：30 W（典型）</li>
+<li><strong>内存</strong>：支持 LPDDR4X，带宽 51.2 GB/s</li>
+<li><strong>量产客户</strong>：理想 L 系列（入门版）、长城、奇瑞、大众（合资智驾项目）等</li>
+<li><strong>特点</strong>：提供较开放的 SDK（OpenExplorer），支持第三方算法部署，国内适配生态较完善</li>
+</ul>
+<h3 id="28-6">2.8 地平线征程 6 系列</h3>
+<ul>
+<li><strong>制程</strong>：8nm（三星）</li>
+<li><strong>型号矩阵</strong>：J6E（128 TOPS）、J6M（256 TOPS）、J6H（560 TOPS）</li>
+<li><strong>发布时间</strong>：2024 年开始陆续量产</li>
+<li><strong>架构升级</strong>：BPU 第四代，支持 Transformer 类模型加速，显著提升端到端模型推理效率</li>
+<li><strong>内存带宽</strong>：J6H 达 153.6 GB/s（LPDDR5）</li>
+<li><strong>目标场景</strong>：覆盖 L2+ 至 L3 全场景，J6H 面向旗舰高阶智驾</li>
+</ul>
+<h3 id="29-snapdragon-ride-elitesa8775p">2.9 高通 Snapdragon Ride Elite（SA8775P 等）</h3>
+<ul>
+<li><strong>制程</strong>：4nm（台积电）</li>
+<li><strong>AI 算力</strong>：60+ TOPS（ADAS 专用引擎）</li>
+<li><strong>架构</strong>：Kryo CPU（ARM V9）+ Adreno GPU + Hexagon DSP + Sensing Hub</li>
+<li><strong>集成度</strong>：座舱域与驾驶域芯片融合（Cockpit + ADAS 合一 SoC）</li>
+<li><strong>量产客户</strong>：吉利、上汽、宝马（座舱域）</li>
+<li><strong>特点</strong>：高通 5G 通信基带集成，支持 V2X C-V2X 标准；AI 算力相对偏低，主要定位 L2+</li>
+</ul>
+<h3 id="210-mdc-810">2.10 华为昇腾（MDC 810 计算平台）</h3>
+<ul>
+<li><strong>核心芯片</strong>：昇腾 610 + 昇腾 310（异构组合）</li>
+<li><strong>AI 算力</strong>：整板算力 400 TOPS</li>
+<li><strong>CPU</strong>：鲲鹏 ARM 核心</li>
+<li><strong>功耗</strong>：约 100 W</li>
+<li><strong>接口</strong>：支持 8 路摄像头、3 路激光雷达、6 路毫米波雷达</li>
+<li><strong>量产客户</strong>：北汽极狐 αS HI 版、阿维塔 11、问界 M9（HarmonyOS 智驾）</li>
+<li><strong>特点</strong>：MindSpore 框架 + Atlas 平台完整闭环；华为提供"硬件+软件+算法"整体解决方案</li>
+</ul>
+<h3 id="211-soc">2.11 主流 SoC 全面对比</h3>
+<table>
+<thead>
+<tr>
+<th>芯片型号</th>
+<th>厂商</th>
+<th>制程</th>
+<th>AI 算力</th>
+<th>功耗</th>
+<th>内存带宽</th>
+<th>量产客户（代表）</th>
+<th>市场定价区间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Orin X</td>
 <td>NVIDIA</td>
+<td>12nm</td>
 <td>254 TOPS</td>
 <td>45 W</td>
-<td>CUDA 生态，支持多芯片级联</td>
+<td>204 GB/s</td>
+<td>理想、蔚来、小鹏</td>
+<td>~$200（芯片裸价）</td>
 </tr>
 <tr>
-<td>DRIVE Thor</td>
+<td>Thor</td>
 <td>NVIDIA</td>
+<td>4nm</td>
 <td>2000 TOPS</td>
-<td>未公布</td>
-<td>下一代集中式平台</td>
+<td>~100 W</td>
+<td>1 TB/s（预估）</td>
+<td>2025+ 旗舰车型</td>
+<td>未公开</td>
 </tr>
 <tr>
-<td>EyeQ6</td>
-<td>Mobileye</td>
-<td>34 TOPS</td>
-<td>12 W</td>
-<td>低功耗，适合 L2+/L3</td>
-</tr>
-<tr>
-<td>FSD Chip (HW3)</td>
+<td>FSD（HW3）</td>
 <td>Tesla</td>
+<td>14nm</td>
 <td>144 TOPS</td>
 <td>72 W</td>
-<td>自研 NPU，双芯冗余设计</td>
+<td>68 GB/s</td>
+<td>Tesla 自用</td>
+<td>内部成本</td>
 </tr>
 <tr>
-<td>HW4 (AI5)</td>
+<td>AI5（HW4）</td>
 <td>Tesla</td>
-<td>~300 TOPS</td>
-<td>~100 W</td>
-<td>更强算力，支持更高分辨率</td>
+<td>7nm 以下</td>
+<td>300+ TOPS</td>
+<td>~80 W</td>
+<td>未公开</td>
+<td>Tesla 自用</td>
+<td>内部成本</td>
 </tr>
 <tr>
-<td>MDC 810</td>
-<td>华为</td>
-<td>400+ TOPS</td>
-<td>100 W</td>
-<td>昇腾 AI 核心，支持 L4</td>
+<td>EyeQ6H</td>
+<td>Mobileye</td>
+<td>7nm</td>
+<td>34 TOPS</td>
+<td>&lt; 15 W</td>
+<td>未公开</td>
+<td>宝马、通用</td>
+<td>&lt; $100</td>
 </tr>
 <tr>
 <td>征程 5</td>
 <td>地平线</td>
+<td>16nm</td>
 <td>128 TOPS</td>
 <td>30 W</td>
-<td>BPU 架构，面向国内主机厂</td>
+<td>51.2 GB/s</td>
+<td>理想（低配）、长城</td>
+<td>~￥300</td>
+</tr>
+<tr>
+<td>征程 6H</td>
+<td>地平线</td>
+<td>8nm</td>
+<td>560 TOPS</td>
+<td>50 W</td>
+<td>153.6 GB/s</td>
+<td>2024+ 量产车</td>
+<td>未公开</td>
+</tr>
+<tr>
+<td>Ride Elite</td>
+<td>高通</td>
+<td>4nm</td>
+<td>60+ TOPS</td>
+<td>35 W</td>
+<td>未公开</td>
+<td>吉利、上汽</td>
+<td>中等</td>
+</tr>
+<tr>
+<td>MDC 810</td>
+<td>华为</td>
+<td>N/A</td>
+<td>400 TOPS</td>
+<td>100 W</td>
+<td>未公开</td>
+<td>极狐、阿维塔、问界</td>
+<td>较高</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_3">关键性能指标</h2>
+<h2 id="3">3. 异构计算架构详解</h2>
+<h3 id="31-soc">3.1 SoC 内部架构层次</h3>
+<p>以 NVIDIA Orin 为例，一颗 SoC 内部集成的功能单元包括：</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────┐
+│                   NVIDIA AGX Orin SoC                   │
+│  ┌────────────┐  ┌────────────┐  ┌────────────────────┐ │
+│  │ CPU Cluster│  │ GPU        │  │ DLA × 2            │ │
+│  │ (12× A78AE)│  │ (2048 CUDA)│  │ (NVDLA v2.0)       │ │
+│  └────────────┘  └────────────┘  └────────────────────┘ │
+│  ┌────────────┐  ┌────────────┐  ┌────────────────────┐ │
+│  │ ISP        │  │ PVA        │  │ Video Codec        │ │
+│  │ (16ch 摄像)│  │ (可编程视觉)│  │ (H.265/VP9 编解码) │ │
+│  └────────────┘  └────────────┘  └────────────────────┘ │
+│  ┌────────────┐  ┌────────────────────────────────────┐ │
+│  │ MCU        │  │ 安全岛（Lockstep Cortex-R52）       │ │
+│  │ (实时控制) │  │ (ISO 26262 ASIL-D 隔离域)          │ │
+│  └────────────┘  └────────────────────────────────────┘ │
+│        片上互联：NVSwitch / AMBA CHI 网格总线              │
+└─────────────────────────────────────────────────────────┘
+</code></pre></div>
+<h3 id="32">3.2 任务分配策略</h3>
+<p>异构计算的核心优势在于让"合适的任务跑在合适的硬件上"，从而同时优化延迟与能效：</p>
+<table>
+<thead>
+<tr>
+<th>任务类型</th>
+<th>推荐处理单元</th>
+<th>典型时延要求</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>摄像头感知（目标检测/分割）</td>
+<td>NPU / DLA</td>
+<td>&lt; 30 ms</td>
+<td>固定 CNN 结构，NPU 能效最优</td>
+</tr>
+<tr>
+<td>LiDAR 点云预处理（解码、过滤）</td>
+<td>FPGA / DSP</td>
+<td>&lt; 5 ms</td>
+<td>数据量大，需确定性低延迟</td>
+</tr>
+<tr>
+<td>BEV 特征融合</td>
+<td>GPU</td>
+<td>&lt; 20 ms</td>
+<td>Transformer 算子多样，GPU 灵活性强</td>
+</tr>
+<tr>
+<td>路径规划（A* / Lattice Planner）</td>
+<td>CPU</td>
+<td>&lt; 50 ms</td>
+<td>分支逻辑复杂，CPU 单线程性能更优</td>
+</tr>
+<tr>
+<td>传感器数据同步与时间戳对齐</td>
+<td>MCU / 实时 CPU</td>
+<td>&lt; 1 ms</td>
+<td>硬实时需求</td>
+</tr>
+<tr>
+<td>摄像头降噪 / HDR 处理</td>
+<td>ISP</td>
+<td>&lt; 3 ms</td>
+<td>专用硬件管线效率最高</td>
+</tr>
+<tr>
+<td>OTA 升级包校验</td>
+<td>HSM</td>
+<td>离线批处理</td>
+<td>安全隔离环境，防篡改</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33">3.3 内存层次架构</h3>
+<p>高吞吐量计算需要匹配的内存带宽，车载 SoC 通常采用多级存储层次：</p>
 <ul>
-<li><strong>TOPS (Tera Operations Per Second)</strong>：衡量 AI 算力的核心指标，数值越高处理能力越强</li>
-<li><strong>TDP (热设计功耗)</strong>：芯片最大散热需求，直接影响车辆热管理设计</li>
-<li><strong>推理延迟</strong>：从传感器输入到决策输出的端到端延迟，通常要求 &lt; 100 ms</li>
-<li><strong>车规认证</strong>：芯片需通过 AEC-Q100 可靠性认证和 ISO 26262 功能安全认证（ASIL-B/D）</li>
+<li><strong>片上 SRAM（L1/L2 Cache）</strong>：容量 4～32 MB，带宽 &gt; 1 TB/s，延迟 &lt; 5 ns，CPU/GPU 核心私有缓存</li>
+<li><strong>片上 SRAM（NPU 专用）</strong>：NPU 激活缓存，直接影响网络推理的批处理效率</li>
+<li><strong>LPDDR5 / LPDDR5X</strong>：主内存，带宽 68～256 GB/s，延迟约 40～80 ns，CPU+GPU+NPU 共享</li>
+<li><strong>HBM2E（高带宽内存）</strong>：部分高端平台（如 Tesla D1）采用，单通道带宽 &gt; 460 GB/s，但成本更高</li>
+<li><strong>NAND Flash / UFS 3.1</strong>：持久存储，用于操作系统镜像、模型文件、行车记录</li>
 </ul>
-<h2 id="_4">软件生态</h2>
-<p>硬件算力需要配合成熟的软件工具链才能发挥作用：</p>
+<h3 id="34">3.4 带宽需求分析</h3>
+<p>一个典型 L3 自动驾驶感知系统的原始数据带宽估算：</p>
+<table>
+<thead>
+<tr>
+<th>传感器</th>
+<th>数量</th>
+<th>分辨率/帧率</th>
+<th>单路带宽</th>
+<th>合计带宽</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前向高分辨率摄像头</td>
+<td>1</td>
+<td>8MP @ 30fps</td>
+<td>~720 Mbps</td>
+<td>~720 Mbps</td>
+</tr>
+<tr>
+<td>环视摄像头</td>
+<td>7</td>
+<td>2MP @ 30fps</td>
+<td>~180 Mbps</td>
+<td>~1.26 Gbps</td>
+</tr>
+<tr>
+<td>固态激光雷达</td>
+<td>1</td>
+<td>100 线 @ 10Hz</td>
+<td>~200 Mbps</td>
+<td>~200 Mbps</td>
+</tr>
+<tr>
+<td>毫米波雷达</td>
+<td>5</td>
+<td>原始 ADC 数据</td>
+<td>~20 Mbps</td>
+<td>~100 Mbps</td>
+</tr>
+<tr>
+<td><strong>合计（传感器原始）</strong></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><strong>~2.3 Gbps</strong></td>
+</tr>
+</tbody>
+</table>
+<p>在 ISP 解码、点云过滤后进入 SoC 主内存的有效带宽约为 5～15 GB/s（考虑中间特征图的内存读写），这也是为何车载 SoC 必须配备超过 100 GB/s 的内存带宽。</p>
+<h2 id="4">4. 车规级要求</h2>
+<h3 id="41-aec-q100">4.1 AEC-Q100 可靠性认证</h3>
+<p>AEC-Q100（汽车电子委员会 Q100 标准）是集成电路进入汽车供应链的基础门槛：</p>
+<table>
+<thead>
+<tr>
+<th>测试项目</th>
+<th>要求</th>
+<th>目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>工作温度范围</td>
+<td>Grade 1：-40°C ～ +125°C</td>
+<td>覆盖高温暴晒与极寒启动</td>
+</tr>
+<tr>
+<td>高温运行寿命（HTOL）</td>
+<td>1000 小时 @ 最高结温</td>
+<td>验证长期热应力下芯片可靠性</td>
+</tr>
+<tr>
+<td>湿热偏压测试（H3TRB）</td>
+<td>85°C / 85% RH，1000 小时</td>
+<td>防止潮湿导致金属腐蚀与漏电</td>
+</tr>
+<tr>
+<td>振动与冲击</td>
+<td>符合 AEC-Q100-002/012</td>
+<td>模拟路面颠簸对焊点的疲劳</td>
+</tr>
+<tr>
+<td>静电放电（ESD）</td>
+<td>HBM ≥ 2 kV</td>
+<td>防止装配过程中的静电损伤</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-iso-26262-asil">4.2 ISO 26262 功能安全（ASIL 等级）</h3>
+<p>ISO 26262 是汽车功能安全国际标准，定义了汽车安全完整性等级（ASIL）从 A 到 D，D 级要求最严苛。</p>
 <ul>
-<li><strong>CUDA / cuDNN</strong>：NVIDIA GPU 并行计算框架和深度学习库</li>
-<li><strong>TensorRT</strong>：NVIDIA 推理优化引擎，支持模型量化和层融合</li>
-<li><strong>AUTOSAR (Adaptive)</strong>：汽车开放系统架构，提供标准化中间件</li>
-<li><strong>ROS 2</strong>：机器人操作系统，广泛用于自动驾驶原型开发</li>
-<li><strong>OpenVINO / MindSpore</strong>：分别对应 Intel 和华为生态的推理框架</li>
+<li><strong>ASIL-B</strong>：适用于辅助驾驶（L2）中的感知计算部分，允许单点故障检测概率 ≥ 99%</li>
+<li><strong>ASIL-D</strong>：适用于制动、转向等执行机构的实时控制 MCU，要求硬件故障度量指标（SPFM）≥ 99%，LFM ≥ 90%</li>
 </ul>
-<h2 id="_5">参考资料</h2>
+<p>CCU 满足 ISO 26262 的常见硬件手段：
+- <strong>ECC 内存（Error Correcting Code）</strong>：检测并纠正单比特错误，防止宇宙射线引起的软错误（SEU）
+- <strong>锁步（Lockstep）双核</strong>：两颗相同核心同步执行，输出结果实时比较，任何差异触发安全告警
+- <strong>看门狗定时器（Watchdog）</strong>：若软件死锁未及时喂狗，硬件强制复位系统
+- <strong>BIST（内建自测试）</strong>：上电时对 CPU 缓存、NPU SRAM 执行自检，保证硬件初始状态正确</p>
+<h3 id="43-sotifiso-21448">4.3 SOTIF（ISO 21448）对算法平台的要求</h3>
+<p>SOTIF（Safety Of The Intended Functionality，预期功能安全）关注系统在"没有故障"情况下，因功能局限或感知不足导致的危险。</p>
+<p>对 CCU 硬件平台的影响：
+- 需要足够算力以支持冗余感知模型（主模型 + 安全监督模型同时运行，互相校验输出）
+- 需要提供高精度时间戳（&lt; 1μs 精度），支持传感器数据融合的时间对齐
+- 需要支持数据记录（黑匣子功能），用于事故后的 SOTIF 验证分析</p>
+<h3 id="44-hsmtee">4.4 硬件安全模块（HSM）与可信执行环境（TEE）</h3>
+<p>网联自动驾驶面临网络攻击风险，CCU 必须内置安全机制：</p>
+<ul>
+<li><strong>HSM（Hardware Security Module）</strong>：芯片内独立安全核心（如 ARM TrustZone-M），管理密钥存储、安全启动（Secure Boot）、数字签名验证，与主计算区域物理隔离</li>
+<li><strong>TEE（Trusted Execution Environment）</strong>：基于 ARM TrustZone-A 的隔离执行环境（如 OP-TEE），保护 OTA 升级包校验、车辆身份认证、敏感用户数据处理</li>
+<li><strong>安全启动链</strong>：BootROM → BL1（HSM 签名验证）→ BL2（U-Boot）→ OS 内核，每一层验证下一层的数字签名，防止固件篡改</li>
+<li><strong>运行时完整性检测</strong>：通过内核完整性度量（IMA）持续监控关键软件模块的哈希值，发现篡改立即告警</li>
+</ul>
+<h2 id="5">5. 算力趋势与展望</h2>
+<h3 id="51-l2-l4">5.1 L2+ → L4 算力需求增长规律</h3>
+<p>自动驾驶等级提升对算力的需求近似遵循"算力摩尔定律"——每提升一个主要自动驾驶等级，所需算力增长约 5～10 倍：</p>
+<table>
+<thead>
+<tr>
+<th>自动驾驶等级</th>
+<th>代表功能</th>
+<th>典型算力需求</th>
+<th>代表平台</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>AEB 紧急制动、LKA 车道保持</td>
+<td>&lt; 1 TOPS</td>
+<td>Mobileye EyeQ2</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>高速领航辅助（NOA）</td>
+<td>5～30 TOPS</td>
+<td>EyeQ4、Orin 小算力配置</td>
+</tr>
+<tr>
+<td>L2+</td>
+<td>城市 NOA、记忆泊车</td>
+<td>30～100 TOPS</td>
+<td>征程 5、Orin 单芯</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>特定场景有条件自动驾驶</td>
+<td>100～500 TOPS</td>
+<td>双 Orin、MDC 810</td>
+</tr>
+<tr>
+<td>L4</td>
+<td>特定区域完全自动驾驶</td>
+<td>500～2000 TOPS</td>
+<td>Thor、多芯级联</td>
+</tr>
+<tr>
+<td>L5</td>
+<td>全场景无人驾驶</td>
+<td>&gt; 2000 TOPS</td>
+<td>未来架构</td>
+</tr>
+</tbody>
+</table>
+<p>从 L2 到 L4，算力需求约增长 100 倍，而这一跨越通常在 6～10 年内完成，对应芯片算力年均增长约 60%，远超传统消费芯片的摩尔定律速率（~40%/年）。</p>
+<h3 id="52">5.2 端到端大模型对车端算力的新需求</h3>
+<p>2023 年以来，Tesla FSD V12、华为 GOD 网络（通用障碍物检测）、UniAD 等端到端自动驾驶架构开始从学术走向量产，对车端 CCU 提出全新挑战：</p>
+<ul>
+<li><strong>模型参数量</strong>：端到端模型参数量通常为 100M～10B，而传统模块化感知模型约 10M～100M，推理计算量增加 10～100 倍</li>
+<li><strong>输入模态</strong>：直接以视频帧（而非单帧图像）作为输入，时序上下文窗口 4～16 帧，进一步放大计算需求</li>
+<li><strong>Transformer 算子</strong>：多头自注意力机制的计算复杂度为 O(n²)，对 NPU 的 Transformer 加速能力要求更高</li>
+<li><strong>对策</strong>：模型量化（INT8 → INT4）、剪枝、知识蒸馏、以及芯片侧专用 Transformer 加速单元（如征程 6 的 BPU v4）</li>
+</ul>
+<h3 id="53-vs">5.3 车端推理 vs 云端训练的分工</h3>
+<div class="highlight"><pre><span></span><code>┌──────────────────────────────────────────────────────────┐
+│                    云端（数据中心）                         │
+│  ┌─────────────────────────────────────────────────────┐ │
+│  │ 海量行车数据（PB 级）→ 数据清洗 → 自动标注             │ │
+│  │ GPU 集群训练（A100/H100/D1）→ 模型优化 → OTA 推送     │ │
+│  └─────────────────────────────────────────────────────┘ │
+└────────────────────────┬─────────────────────────────────┘
+                         │ OTA（Over-The-Air 更新）
+┌────────────────────────▼─────────────────────────────────┐
+│                    车端（CCU）                              │
+│  ┌─────────────────────────────────────────────────────┐ │
+│  │ 实时推理（&lt; 100ms 端到端延迟）                         │ │
+│  │ 数据采集（Corner Case 上传）                           │ │
+│  │ 本地增量学习（未来趋势）                                │ │
+│  └─────────────────────────────────────────────────────┘ │
+└──────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p>当前阶段，车端 CCU 专注于推理，训练完全在云端完成。未来随着片上学习（On-Device Learning）技术成熟，车端可能支持小规模个性化增量训练，进一步降低对云端依赖、保护用户隐私。</p>
+<h3 id="54">5.4 国产芯片追赶进度</h3>
+<table>
+<thead>
+<tr>
+<th>厂商</th>
+<th>旗舰产品</th>
+<th>当前量产算力</th>
+<th>主要差距</th>
+<th>追赶路径</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>地平线</td>
+<td>征程 6H</td>
+<td>560 TOPS</td>
+<td>软件生态成熟度</td>
+<td>深化 BPU SDK、扩展国际客户</td>
+</tr>
+<tr>
+<td>华为</td>
+<td>昇腾 MDC 810</td>
+<td>400 TOPS</td>
+<td>供应链受限（先进制程）</td>
+<td>国内自主制程突破</td>
+</tr>
+<tr>
+<td>黑芝麻智能</td>
+<td>华山 A2000</td>
+<td>256 TOPS</td>
+<td>量产客户规模偏小</td>
+<td>与主机厂深度绑定</td>
+</tr>
+<tr>
+<td>芯驰科技</td>
+<td>X9SP</td>
+<td>8 TOPS</td>
+<td>定位 L2，算力较低</td>
+<td>向 L2+ 升级</td>
+</tr>
+<tr>
+<td>寒武纪行歌</td>
+<td>思元 590（车规版）</td>
+<td>256 TOPS（非车规）</td>
+<td>车规认证进行中</td>
+<td>AEC-Q100 认证突破</td>
+</tr>
+</tbody>
+</table>
+<p>国产车规芯片在 2024～2025 年已在中低端智驾市场形成一定竞争力，但在最先进制程（4nm 以下）、软件生态完整度和全球量产经验方面仍与 NVIDIA 存在明显差距。随着国内主机厂对供应链安全的重视，"国产替代"战略将持续加速国产 CCU 芯片的商业化进程。</p>
+<h2 id="_1">参考资料</h2>
 <ol>
-<li>NVIDIA. DRIVE AGX Platform Documentation.</li>
-<li>Tesla. Autonomy Day / AI Day Technical Presentations, 2019–2023.</li>
-<li>地平线. 征程系列芯片白皮书.</li>
+<li>NVIDIA. "DRIVE AGX Orin Technical Brief." NVIDIA Developer Documentation, 2023. https://developer.nvidia.com/drive/agx</li>
+<li>Tesla. "Tesla AI Day 2021: FSD Computer Architecture." Tesla Technical Presentations, 2021. https://youtu.be/j0z4FweCy4M</li>
+<li>Mobileye. "EyeQ6 Product Brief." Mobileye Technology White Papers, 2023. https://www.mobileye.com/technology/eyeq-chip/</li>
+<li>地平线. 《征程 6 系列芯片技术白皮书》. 地平线官方技术文档, 2024. https://www.horizon.ai</li>
+<li>ISO. "ISO 26262:2018 — Road vehicles — Functional safety." International Organization for Standardization, 2018.</li>
+<li>工业和信息化部. 《智能网联汽车车载计算平台参考架构》. 中国智能网联汽车产业创新联盟（CAICV）标准白皮书, 2023.</li>
 </ol>
 
 

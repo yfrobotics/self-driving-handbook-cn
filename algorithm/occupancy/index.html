@@ -1,0 +1,3553 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="自动驾驶历史与技术">
+      
+      
+        <meta name="author" content="YFRL">
+      
+      
+        <link rel="canonical" href="https://yfrobotics.github.io/self-driving-handbook-cn/algorithm/occupancy/">
+      
+      
+        <link rel="prev" href="../sensor_fusion/">
+      
+      
+        <link rel="next" href="../localisation/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>占用网络（Occupancy Network） - 自动驾驶指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,700,700i%7CFira+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Fira Sans";--md-code-font:"Fira Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../_static/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#occupancy-network" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="自动驾驶指南" class="md-header__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            自动驾驶指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              占用网络（Occupancy Network）
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yfrobotics/self-driving-handbook-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yfrobotics/self-driving-handbook-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="自动驾驶指南" class="md-nav__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    自动驾驶指南
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yfrobotics/self-driving-handbook-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yfrobotics/self-driving-handbook-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶技术指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 概述
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1. 概述
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一章：概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/define/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶系统定义
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/category/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶等级分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶发展历史
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 系统
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. 系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二章：系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/vehicle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶车辆系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/v2x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车联网（V2X）技术详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真平台与数据集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hdmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高精地图（HD Map）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人机交互系统（HMI）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统安全保障
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶测试体系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/cybersecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶网络安全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/regulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    政策与法律法规
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 硬件
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. 硬件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三章：硬件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/hw_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    硬件总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/ccu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中央计算单元 (CCU / 车载AI芯片)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/drive_by_wire/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线控系统（Drive-by-Wire）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/communication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车载通信系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知传感器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/camera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    视觉传感器（摄像头）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. 算法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4. 算法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第四章：核心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sw_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统软件框架总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图像感知与处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../laser_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    激光点云数据处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensor_fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器融合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    占用网络（Occupancy Network）
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    占用网络（Occupancy Network）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 开篇介绍
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 传统3D感知的局限
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 传统3D感知的局限">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 边界框检测的缺陷
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 点云语义分割的局限
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 占用网络的解决思路
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 占用网络基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 占用网络基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-voxel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 体素（Voxel）定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 占用状态建模
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 语义占用输出格式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 训练损失函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tesla-occupancy-network2022-ai-day" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Tesla Occupancy Network（2022 AI Day）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Tesla Occupancy Network（2022 AI Day）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 背景与动机
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 系统输入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 网络架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 关键创新点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 应用场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 基于摄像头的占用网络
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 基于摄像头的占用网络">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-monoscene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 MonoScene：单目摄像头语义场景补全
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-tpvformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 TPVFormer：三视角特征融合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-occnet-openoccupancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 OccNet 与 OpenOccupancy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-surroundocc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 SurroundOcc：多摄像头环视占用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 相机-LiDAR融合占用网络
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 相机-LiDAR融合占用网络">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 融合策略概述
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-bev-fusionmit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 BEV-Fusion（MIT）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-uniocc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 UniOcc：统一模态占用预测
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 融合方法性能对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-3d3d-semantic-scene-completion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 3D语义场景补全（3D Semantic Scene Completion）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 3D语义场景补全（3D Semantic Scene Completion）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 任务定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 技术发展历程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-semantickitti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 SemanticKITTI 基准
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-occupancy-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 占用流动（Occupancy Flow）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 占用流动（Occupancy Flow）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 静态占用的局限
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 占用流动定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 未来占用预测
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 应用：隐式轨迹预测与规划
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-world-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 世界模型（World Model）与占用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 世界模型（World Model）与占用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 世界模型的概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-gaia-1wayve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 GAIA-1（Wayve）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-drivedreamer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 DriveDreamer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-unisimnvidia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 UniSim（NVIDIA）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#95" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5 占用表示的核心地位
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 评估基准
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 评估基准">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-nuscenes-occocc3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 nuScenes-Occ（Occ3D）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-semantickitti-semantic-scene-completion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 SemanticKITTI Semantic Scene Completion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-openoccupancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 OpenOccupancy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#104" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 评估指标
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localisation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    地图与定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../path_planning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    路径规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prediction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行为预测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../decision_making/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    决策 (Decision Making)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    控制算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../end_to_end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端自动驾驶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶ML数据管道
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nlp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自然语言处理与大语言模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 实例
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    5. 实例
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第五章：实例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/apollo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    百度 Apollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/waymo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waymo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/tesla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla FSD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/chinese_players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国自动驾驶企业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/robotaxi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robotaxi：自动驾驶商业化的主战场
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 开篇介绍
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 传统3D感知的局限
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 传统3D感知的局限">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 边界框检测的缺陷
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 点云语义分割的局限
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 占用网络的解决思路
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 占用网络基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 占用网络基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-voxel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 体素（Voxel）定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 占用状态建模
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 语义占用输出格式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 训练损失函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tesla-occupancy-network2022-ai-day" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Tesla Occupancy Network（2022 AI Day）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Tesla Occupancy Network（2022 AI Day）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 背景与动机
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 系统输入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 网络架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 关键创新点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 应用场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 基于摄像头的占用网络
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 基于摄像头的占用网络">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-monoscene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 MonoScene：单目摄像头语义场景补全
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-tpvformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 TPVFormer：三视角特征融合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-occnet-openoccupancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 OccNet 与 OpenOccupancy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-surroundocc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 SurroundOcc：多摄像头环视占用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 相机-LiDAR融合占用网络
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 相机-LiDAR融合占用网络">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 融合策略概述
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-bev-fusionmit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 BEV-Fusion（MIT）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-uniocc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 UniOcc：统一模态占用预测
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 融合方法性能对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-3d3d-semantic-scene-completion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 3D语义场景补全（3D Semantic Scene Completion）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 3D语义场景补全（3D Semantic Scene Completion）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 任务定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 技术发展历程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-semantickitti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 SemanticKITTI 基准
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-occupancy-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 占用流动（Occupancy Flow）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 占用流动（Occupancy Flow）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 静态占用的局限
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 占用流动定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 未来占用预测
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 应用：隐式轨迹预测与规划
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-world-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 世界模型（World Model）与占用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 世界模型（World Model）与占用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 世界模型的概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-gaia-1wayve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 GAIA-1（Wayve）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-drivedreamer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 DriveDreamer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-unisimnvidia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 UniSim（NVIDIA）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#95" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5 占用表示的核心地位
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 评估基准
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 评估基准">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-nuscenes-occocc3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 nuScenes-Occ（Occ3D）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-semantickitti-semantic-scene-completion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 SemanticKITTI Semantic Scene Completion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-openoccupancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 OpenOccupancy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#104" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 评估指标
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="occupancy-network">占用网络（Occupancy Network）</h1>
+<h2 id="1">1. 开篇介绍</h2>
+<p>占用网络（Occupancy Network）是当前自动驾驶感知领域最前沿的技术范式之一。2022年，特斯拉在 AI Day 上正式发布了基于纯摄像头的三维占用预测系统，引发了业界的广泛关注，并推动了自动驾驶感知从"目标检测"走向"场景理解"的革命性转变。</p>
+<p>传统自动驾驶感知系统依赖于对已知类别目标的检测与追踪——用边界框（Bounding Box）来表示行人、车辆、骑行者等障碍物。这种范式存在根本性局限：真实世界的道路上充满了各种非结构化、无法预定义类别的危险障碍物，例如散落在路面的货物、倒下的树木或电线杆、施工隔离墩的异形堆叠等。</p>
+<p>占用网络的核心思想是：<strong>将三维空间划分为均匀的体素栅格（Voxel Grid），对每个体素预测其占据状态与语义类别</strong>，从而实现对任意形状障碍物的精确表达。这种方式从根本上摆脱了对类别先验的依赖，是迈向通用场景理解的关键一步。</p>
+<div class="highlight"><pre><span></span><code>传统感知范式：                         占用网络范式：
+┌─────────────────────────┐           ┌─────────────────────────┐
+│  摄像头 / LiDAR 输入     │           │  摄像头 / LiDAR 输入     │
+│          ↓               │           │          ↓               │
+│   目标检测 (已知类别)    │           │   三维体素化场景表达     │
+│  [car][ped][cyclist]     │           │  ■■■■□□■□□■■□□          │
+│  → 边界框 + 类别 + 置信度│           │  → 每体素: 占用+语义     │
+│  × 无法表达异形障碍物    │           │  ✓ 任意形状均可表达      │
+└─────────────────────────┘           └─────────────────────────┘
+</code></pre></div>
+<hr />
+<h2 id="2-3d">2. 传统3D感知的局限</h2>
+<h3 id="21">2.1 边界框检测的缺陷</h3>
+<p>基于边界框（Bounding Box）的三维目标检测方法（如 PointPillars、CenterPoint、FCOS3D 等）是当前自动驾驶感知的主流技术路线。其输出通常为：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">B = \{(x_i, y_i, z_i, l_i, w_i, h_i, \theta_i, c_i, s_i)\}_{i=1}^{N}</div>
+<script type="math/tex; mode=display">B = \{(x_i, y_i, z_i, l_i, w_i, h_i, \theta_i, c_i, s_i)\}_{i=1}^{N}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">(x, y, z)</span><script type="math/tex">(x, y, z)</script></span> 为中心坐标，<span class="arithmatex"><span class="MathJax_Preview">(l, w, h)</span><script type="math/tex">(l, w, h)</script></span> 为长宽高，<span class="arithmatex"><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span> 为偏航角，<span class="arithmatex"><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 为类别标签，<span class="arithmatex"><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> 为置信度分数。</p>
+<p>该范式存在以下根本性缺陷：</p>
+<ol>
+<li>
+<p><strong>类别封闭性</strong>：只能检测训练集中预定义的类别（如 car、truck、pedestrian 等），对于未见过的障碍物（如散落的建筑材料、倒下的电线杆、异形施工装置）完全无能为力。</p>
+</li>
+<li>
+<p><strong>形状近似失真</strong>：用长方体近似真实物体形状，对于非规则形状目标（如摩托车、拖挂车转弯时的形态）误差极大。</p>
+</li>
+<li>
+<p><strong>遮挡处理困难</strong>：当物体被部分遮挡时，边界框的预测精度大幅下降，且无法表达被遮挡区域的不确定性。</p>
+</li>
+<li>
+<p><strong>固定类别列表限制扩展性</strong>：每增加新类别均需重新标注和训练，维护成本高昂。</p>
+</li>
+</ol>
+<h3 id="22">2.2 点云语义分割的局限</h3>
+<p>基于 LiDAR 点云的语义分割（如 RandLA-Net、Cylinder3D）虽然可以做到逐点分类，但也存在明显问题：</p>
+<ul>
+<li>
+<p><strong>稀疏性问题</strong>：LiDAR 点云天然稀疏，近处点密集、远处点稀疏。在 50 米外，点云密度可能仅有近处的 <span class="arithmatex"><span class="MathJax_Preview">\frac{1}{r^2}</span><script type="math/tex">\frac{1}{r^2}</script></span> 倍（<span class="arithmatex"><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> 为距离），导致远处障碍物难以准确分割。</p>
+</li>
+<li>
+<p><strong>无法感知空区域</strong>：点云仅表示激光打到的表面，无法区分"空旷可行驶区域"和"未被扫描到的未知区域"。</p>
+</li>
+<li>
+<p><strong>单帧信息有限</strong>：单帧点云无时序信息，难以推断动态物体的运动趋势。</p>
+</li>
+</ul>
+<h3 id="23">2.3 占用网络的解决思路</h3>
+<p>占用网络将三维空间离散化为均匀体素栅格，并对每个体素预测：</p>
+<ol>
+<li><strong>占据概率</strong> <span class="arithmatex"><span class="MathJax_Preview">P(\text{occ} | \text{obs})</span><script type="math/tex">P(\text{occ} | \text{obs})</script></span>：该体素是否被实体占据</li>
+<li><strong>语义类别</strong> <span class="arithmatex"><span class="MathJax_Preview">c \in \mathcal{C}</span><script type="math/tex">c \in \mathcal{C}</script></span>：该体素属于哪个语义类别（车辆、行人、道路、建筑等）</li>
+<li><strong>（可选）运动流向</strong> <span class="arithmatex"><span class="MathJax_Preview">\mathbf{v} \in \mathbb{R}^3</span><script type="math/tex">\mathbf{v} \in \mathbb{R}^3</script></span>：该体素对应实体的运动速度向量</li>
+</ol>
+<p>这样，场景中的任意实体——无论其类别是否在训练集中——都可以被体素精确捕捉，从而实现了<strong>对场景几何和语义的全面理解</strong>。</p>
+<hr />
+<h2 id="3">3. 占用网络基础</h2>
+<h3 id="31-voxel">3.1 体素（Voxel）定义</h3>
+<p>体素是三维空间中的最小离散单元，类比于二维图像中的像素（Pixel）。给定感知范围和分辨率，体素栅格可以如下定义：</p>
+<p>设自动驾驶车辆的感知范围为：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">x \in [x_{\min}, x_{\max}], \quad y \in [y_{\min}, y_{\max}], \quad z \in [z_{\min}, z_{\max}]</div>
+<script type="math/tex; mode=display">x \in [x_{\min}, x_{\max}], \quad y \in [y_{\min}, y_{\max}], \quad z \in [z_{\min}, z_{\max}]</script>
+</div>
+<p>体素分辨率为 <span class="arithmatex"><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>（单位：米），则体素栅格尺寸为：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">H = \frac{x_{\max} - x_{\min}}{r}, \quad W = \frac{y_{\max} - y_{\min}}{r}, \quad D = \frac{z_{\max} - z_{\min}}{r}</div>
+<script type="math/tex; mode=display">H = \frac{x_{\max} - x_{\min}}{r}, \quad W = \frac{y_{\max} - y_{\min}}{r}, \quad D = \frac{z_{\max} - z_{\min}}{r}</script>
+</div>
+<p>常用的体素分辨率配置：</p>
+<table>
+<thead>
+<tr>
+<th>分辨率</th>
+<th>精细程度</th>
+<th>计算开销</th>
+<th>典型应用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.4 m</td>
+<td>粗粒度</td>
+<td>低</td>
+<td>实时规划层</td>
+</tr>
+<tr>
+<td>0.2 m</td>
+<td>中粒度</td>
+<td>中</td>
+<td>特斯拉 Occupancy Network</td>
+</tr>
+<tr>
+<td>0.1 m</td>
+<td>细粒度</td>
+<td>高</td>
+<td>高精度建图</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32">3.2 占用状态建模</h3>
+<p>每个体素具有三种可能状态：</p>
+<ul>
+<li><strong>Occupied（占据）</strong>：存在实体（车辆、行人、建筑等）</li>
+<li><strong>Free（空闲）</strong>：可行驶/可通行的空旷空间</li>
+<li><strong>Unknown（未知）</strong>：传感器无法观测到的区域（遮挡、超出范围等）</li>
+</ul>
+<p>占据概率使用贝叶斯滤波进行递归更新：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">P(\text{occ}_t | \mathbf{z}_{1:t}) \propto P(\mathbf{z}_t | \text{occ}) \cdot P(\text{occ}_{t-1} | \mathbf{z}_{1:t-1})</div>
+<script type="math/tex; mode=display">P(\text{occ}_t | \mathbf{z}_{1:t}) \propto P(\mathbf{z}_t | \text{occ}) \cdot P(\text{occ}_{t-1} | \mathbf{z}_{1:t-1})</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\mathbf{z}_t</span><script type="math/tex">\mathbf{z}_t</script></span> 为 <span class="arithmatex"><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> 时刻的传感器观测。对于静态地图，占用概率随时间积累趋于稳定；对于动态场景，需要引入运动模型以处理障碍物的移动。</p>
+<h3 id="33">3.3 语义占用输出格式</h3>
+<p>完整的语义占用网络输出为稠密三维张量：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathbf{V} \in \mathbb{R}^{H \times W \times D \times C}</div>
+<script type="math/tex; mode=display">\mathbf{V} \in \mathbb{R}^{H \times W \times D \times C}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> 为语义类别数（包含"空闲"类），<span class="arithmatex"><span class="MathJax_Preview">H, W, D</span><script type="math/tex">H, W, D</script></span> 分别为体素栅格在三个维度上的数量。</p>
+<p>对每个体素 <span class="arithmatex"><span class="MathJax_Preview">v_{h,w,d}</span><script type="math/tex">v_{h,w,d}</script></span>，通过 Softmax 得到各类别概率分布：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">P(c | v_{h,w,d}) = \frac{e^{f_{h,w,d,c}}}{\sum_{c'=1}^{C} e^{f_{h,w,d,c'}}}</div>
+<script type="math/tex; mode=display">P(c | v_{h,w,d}) = \frac{e^{f_{h,w,d,c}}}{\sum_{c'=1}^{C} e^{f_{h,w,d,c'}}}</script>
+</div>
+<p>最终预测类别为：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\hat{c}_{h,w,d} = \arg\max_{c} P(c | v_{h,w,d})</div>
+<script type="math/tex; mode=display">\hat{c}_{h,w,d} = \arg\max_{c} P(c | v_{h,w,d})</script>
+</div>
+<h3 id="34">3.4 训练损失函数</h3>
+<p>语义占用网络的训练通常采用加权交叉熵损失，以处理类别不平衡问题（空闲体素远多于占据体素）：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathcal{L} = -\sum_{h,w,d} \omega_c \cdot \log P(\hat{c}_{h,w,d} = c^*_{h,w,d})</div>
+<script type="math/tex; mode=display">\mathcal{L} = -\sum_{h,w,d} \omega_c \cdot \log P(\hat{c}_{h,w,d} = c^*_{h,w,d})</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\omega_c</span><script type="math/tex">\omega_c</script></span> 为类别权重，<span class="arithmatex"><span class="MathJax_Preview">c^*</span><script type="math/tex">c^*</script></span> 为真实标签。此外，场景几何补全任务中还常引入 Lovász-Softmax 损失以直接优化 IoU 指标。</p>
+<hr />
+<h2 id="4-tesla-occupancy-network2022-ai-day">4. Tesla Occupancy Network（2022 AI Day）</h2>
+<h3 id="41">4.1 背景与动机</h3>
+<p>特斯拉在 2022 年 AI Day 上发布了其占用网络系统，这是自动驾驶感知史上的一个重要里程碑。其核心主张是：<strong>边界框描述已死，体素占用才是未来</strong>。</p>
+<p>特斯拉选择纯视觉方案（无 LiDAR）的核心挑战在于：单目/多目摄像头无法直接获得精确深度信息，如何从二维图像中重建三维占用体积是关键技术难题。</p>
+<h3 id="42">4.2 系统输入</h3>
+<ul>
+<li><strong>传感器</strong>：车身 8 路摄像头（前向窄角、前向广角、前向主摄、左前、右前、左后、右后、后向）</li>
+<li><strong>时序信息</strong>：当前帧 + 历史帧（利用视频 BEV 感知提取时序特征，实现类似"运动视差"的深度估计）</li>
+<li><strong>无高精地图</strong>：完全依赖实时感知</li>
+</ul>
+<h3 id="43">4.3 网络架构</h3>
+<div class="highlight"><pre><span></span><code>┌──────────────────────────────────────────────────────────────────┐
+│                   Tesla Occupancy Network 架构                    │
+│                                                                    │
+│  8路摄像头图像 (当前帧 + 历史帧)                                  │
+│       │                                                            │
+│       ▼                                                            │
+│  ┌─────────────┐                                                   │
+│  │ 图像编码器   │  ← RegNet / EfficientNet 骨干网络               │
+│  │ (per-camera) │    提取每路摄像头的图像特征 F_i ∈ R^{H×W×C}    │
+│  └──────┬──────┘                                                   │
+│         │                                                          │
+│         ▼                                                          │
+│  ┌──────────────────────┐                                          │
+│  │  视频 BEV 特征融合   │  ← 多摄像头视角投影到统一 BEV 空间      │
+│  │  (Video BEV Encoder) │    利用时序信息推断深度                  │
+│  └──────────┬───────────┘                                          │
+│             │                                                      │
+│             ▼                                                      │
+│  ┌──────────────────────┐                                          │
+│  │  三维体素解码器       │  ← 将 BEV 特征扩展为三维体素表示        │
+│  │  (3D Voxel Decoder)  │    分辨率: 0.2m × 0.2m × 0.2m          │
+│  └──────────┬───────────┘                                          │
+│             │                                                      │
+│             ▼                                                      │
+│  占用体素输出 V ∈ {occupied, free} × 语义类别                     │
+│  应用：碰撞规避 / 可行驶空间提取 / 轨迹规划                       │
+└──────────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<h3 id="44">4.4 关键创新点</h3>
+<ol>
+<li>
+<p><strong>视频时序 BEV 感知</strong>：通过多帧时序信息，网络可以利用运动视差推断深度，弥补纯视觉方案缺乏深度传感器的不足。</p>
+</li>
+<li>
+<p><strong>特征空间的隐式深度估计</strong>：不显式预测每像素深度图，而是在特征空间中完成图像到体素的映射，避免了显式深度估计的误差传播。</p>
+</li>
+<li>
+<p><strong>端到端可微分训练</strong>：整个系统从图像到体素预测全程可微分，支持端到端优化。</p>
+</li>
+<li>
+<p><strong>实时推理能力</strong>：借助 Tesla FSD 芯片的专用硬件加速，系统可实现车载实时推理。</p>
+</li>
+</ol>
+<h3 id="45">4.5 应用场景</h3>
+<ul>
+<li><strong>碰撞规避</strong>：无需依赖目标检测，直接基于占用体素进行碰撞检测，可处理任意形状障碍物。</li>
+<li><strong>可行驶空间提取</strong>：从占用体积中提取空闲空间，为路径规划提供输入。</li>
+<li><strong>低速泊车场景</strong>：在停车场等结构复杂场景中，占用表示比边界框更精确。</li>
+</ul>
+<hr />
+<h2 id="5">5. 基于摄像头的占用网络</h2>
+<h3 id="51-monoscene">5.1 MonoScene：单目摄像头语义场景补全</h3>
+<p>MonoScene（2022）是首个基于单目摄像头实现三维语义场景补全的方法，在 SemanticKITTI 和 NYUv2 数据集上达到了接近 LiDAR 方法的性能。</p>
+<p><strong>核心思路</strong>：将二维图像特征通过 2D-3D 特征线投影（Feature Line of Sight Projection）映射到三维体素空间，再通过三维 UNet 解码器完成场景补全。</p>
+<p><strong>2D 到 3D 的特征映射</strong>：对于图像中的每个像素 <span class="arithmatex"><span class="MathJax_Preview">(u, v)</span><script type="math/tex">(u, v)</script></span>，其对应的射线方向为：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathbf{d}_{u,v} = K^{-1} [u, v, 1]^T</div>
+<script type="math/tex; mode=display">\mathbf{d}_{u,v} = K^{-1} [u, v, 1]^T</script>
+</div>
+<p>沿射线方向的所有体素均分配该像素的图像特征，从而实现二维到三维的特征传播。</p>
+<h3 id="52-tpvformer">5.2 TPVFormer：三视角特征融合</h3>
+<p>TPVFormer（清华大学，2023）提出了三视角（Tri-Perspective View）特征融合框架，是 BEV 感知的重要扩展。</p>
+<p><strong>三个正交视图</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>视图</th>
+<th>平面</th>
+<th>表达能力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>俯视图（BEV）</td>
+<td><span class="arithmatex"><span class="MathJax_Preview">H \times W</span><script type="math/tex">H \times W</script></span></td>
+<td>平面位置、车道线</td>
+</tr>
+<tr>
+<td>侧视图（Side）</td>
+<td><span class="arithmatex"><span class="MathJax_Preview">H \times D</span><script type="math/tex">H \times D</script></span></td>
+<td>高度分布、立交结构</td>
+</tr>
+<tr>
+<td>前视图（Front）</td>
+<td><span class="arithmatex"><span class="MathJax_Preview">W \times D</span><script type="math/tex">W \times D</script></span></td>
+<td>纵深结构</td>
+</tr>
+</tbody>
+</table>
+<p>三个视图特征通过交叉注意力机制相互融合：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathbf{F}_{\text{BEV}} \leftarrow \text{CrossAttn}(\mathbf{F}_{\text{BEV}}, \mathbf{F}_{\text{Side}}, \mathbf{F}_{\text{Front}})</div>
+<script type="math/tex; mode=display">\mathbf{F}_{\text{BEV}} \leftarrow \text{CrossAttn}(\mathbf{F}_{\text{BEV}}, \mathbf{F}_{\text{Side}}, \mathbf{F}_{\text{Front}})</script>
+</div>
+<p>相比纯 BEV 方法，TPVFormer 在高空间复杂场景（如立交桥、隧道）中具有明显优势，因为俯视图无法区分多层高度信息。</p>
+<h3 id="53-occnet-openoccupancy">5.3 OccNet 与 OpenOccupancy</h3>
+<p><strong>OccNet</strong>（2023）提出了多摄像头环视占用预测的统一框架，并在 nuScenes 数据集上建立了评测基准（nuScenes-Occ）。其核心贡献包括：</p>
+<ul>
+<li>定义了占用预测任务的标准输入/输出格式</li>
+<li>建立了公开可复现的基准测试套件</li>
+<li>提出了基于时序 BEV 编码器的多帧融合方案</li>
+</ul>
+<p><strong>OpenOccupancy</strong> 则在更精细的体素分辨率（0.1m）下进行评测，关注密集占用预测的细节精度。</p>
+<h3 id="54-surroundocc">5.4 SurroundOcc：多摄像头环视占用</h3>
+<p>SurroundOcc（2023）专注于 360° 环视摄像头的占用预测，通过以下设计提升感知精度：</p>
+<ol>
+<li><strong>级联体素特征提取</strong>：从粗到细的多分辨率体素特征学习</li>
+<li><strong>空间交叉注意力</strong>：每个体素查询通过可变形注意力机制聚合多视角图像特征</li>
+<li><strong>密集监督</strong>：利用激光雷达点云对体素进行稠密标注，监督纯视觉网络的训练</li>
+</ol>
+<hr />
+<h2 id="6-lidar">6. 相机-LiDAR融合占用网络</h2>
+<h3 id="61">6.1 融合策略概述</h3>
+<p>相机和 LiDAR 传感器具有高度互补性：</p>
+<ul>
+<li><strong>摄像头</strong>：提供丰富的语义纹理信息（颜色、材质、文字），但无法直接获得精确深度</li>
+<li><strong>LiDAR</strong>：提供精确的三维几何结构，但语义信息有限</li>
+</ul>
+<p>融合策略主要分为两类：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\text{融合层次} = \begin{cases} \text{特征空间融合（Feature-level）} &amp; \text{两路特征在中间层concat/相加} \\ \text{预测结果融合（Output-level）} &amp; \text{两路分别预测后融合结果} \end{cases}</div>
+<script type="math/tex; mode=display">\text{融合层次} = \begin{cases} \text{特征空间融合（Feature-level）} & \text{两路特征在中间层concat/相加} \\ \text{预测结果融合（Output-level）} & \text{两路分别预测后融合结果} \end{cases}</script>
+</div>
+<p>特征空间融合（前融合）通常优于输出结果融合（后融合），因为网络可以学习到两种模态之间的深层关联。</p>
+<h3 id="62-bev-fusionmit">6.2 BEV-Fusion（MIT）</h3>
+<p>BEV-Fusion（MIT，2022）提出了一种统一的 BEV 特征融合框架，将摄像头 BEV 特征与 LiDAR BEV 特征在鸟瞰图空间进行拼接融合：</p>
+<div class="highlight"><pre><span></span><code>摄像头图像 → [LSS 深度估计] → 摄像头 BEV 特征 F_cam ∈ R^{H×W×C1}
+                                                          ↓
+LiDAR 点云 → [体素化+稀疏CNN] → LiDAR BEV 特征 F_lidar ∈ R^{H×W×C2}
+                                                          ↓
+                              → Concat → F_fused ∈ R^{H×W×(C1+C2)}
+                                                          ↓
+                              → 下游任务头（检测/分割/占用）
+</code></pre></div>
+<p>在 nuScenes 数据集上，BEV-Fusion 相比纯 LiDAR 方法在语义分割任务上提升了约 3% mIoU，在恶劣天气（如雨天 LiDAR 噪声增大）场景下优势更为显著。</p>
+<h3 id="63-uniocc">6.3 UniOcc：统一模态占用预测</h3>
+<p>UniOcc 旨在建立一个统一的占用预测框架，可同时支持：</p>
+<ul>
+<li>纯摄像头输入（部署成本低）</li>
+<li>纯 LiDAR 输入（精度最高）</li>
+<li>摄像头 + LiDAR 融合输入（性能最优）</li>
+</ul>
+<p>通过模态自适应的特征编码器和共享的体素解码器，UniOcc 实现了一个模型适配多种传感器配置的目标，大幅降低了部署维护成本。</p>
+<h3 id="64">6.4 融合方法性能对比</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>输入模态</th>
+<th>mIoU (%)</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MonoScene</td>
+<td>单目摄像头</td>
+<td>11.1</td>
+<td>SemanticKITTI</td>
+</tr>
+<tr>
+<td>TPVFormer</td>
+<td>多目摄像头</td>
+<td>17.1</td>
+<td>nuScenes-Occ</td>
+</tr>
+<tr>
+<td>SurroundOcc</td>
+<td>多目摄像头</td>
+<td>20.3</td>
+<td>nuScenes-Occ</td>
+</tr>
+<tr>
+<td>BEV-Fusion</td>
+<td>相机+LiDAR</td>
+<td>26.8</td>
+<td>nuScenes-Occ</td>
+</tr>
+<tr>
+<td>LiDAR-Only</td>
+<td>LiDAR</td>
+<td>24.1</td>
+<td>nuScenes-Occ</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-3d3d-semantic-scene-completion">7. 3D语义场景补全（3D Semantic Scene Completion）</h2>
+<h3 id="71">7.1 任务定义</h3>
+<p>3D 语义场景补全（3D SSC）是占用网络的重要子任务：给定部分观测的稀疏点云（或单目深度图），预测完整的三维语义体素场景，包括被遮挡和未被扫描区域的语义标签。</p>
+<p><strong>输入</strong>：稀疏 LiDAR 点云（或深度图）<span class="arithmatex"><span class="MathJax_Preview">\mathbf{X} \in \mathbb{R}^{N \times 3}</span><script type="math/tex">\mathbf{X} \in \mathbb{R}^{N \times 3}</script></span></p>
+<p><strong>输出</strong>：稠密语义体素 <span class="arithmatex"><span class="MathJax_Preview">\hat{\mathbf{V}} \in \{0, 1, ..., C-1\}^{H \times W \times D}</span><script type="math/tex">\hat{\mathbf{V}} \in \{0, 1, ..., C-1\}^{H \times W \times D}</script></span>（其中 <span class="arithmatex"><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span> 为空闲类）</p>
+<h3 id="72">7.2 技术发展历程</h3>
+<p><strong>SSCNet（2017）</strong>：首个端到端 3D SSC 方法，基于三维稀疏卷积网络，奠定了该任务的基础框架。</p>
+<p><strong>Sketch-and-Refine（2018）</strong>：分两阶段处理：先预测几何占用草图（Sketch），再精细化语义标签（Refine），提升了计算效率。</p>
+<p><strong>LMSCNet（2020）</strong>：轻量化多尺度卷积网络，在保持精度的同时大幅降低计算量，适合车载实时部署。</p>
+<p><strong>MonoScene（2022）</strong>：突破性地将输入从 LiDAR 点云扩展到单目 RGB 图像，同时引入了 2D-3D 特征映射和上下文关系增强模块（Context Relation Prior）。</p>
+<p><strong>TPVFormer（2023）</strong>：基于 Transformer 的三视角融合方案，在 SemanticKITTI 上取得了当时最优的性能。</p>
+<h3 id="73-semantickitti">7.3 SemanticKITTI 基准</h3>
+<p>SemanticKITTI 是 3D SSC 任务最重要的基准数据集，包含：</p>
+<ul>
+<li><strong>场景范围</strong>：<span class="arithmatex"><span class="MathJax_Preview">[-51.2, 51.2]</span><script type="math/tex">[-51.2, 51.2]</script></span> m（前后），<span class="arithmatex"><span class="MathJax_Preview">[-25.6, 25.6]</span><script type="math/tex">[-25.6, 25.6]</script></span> m（左右），<span class="arithmatex"><span class="MathJax_Preview">[-3.0, 4.8]</span><script type="math/tex">[-3.0, 4.8]</script></span> m（高度）</li>
+<li><strong>体素分辨率</strong>：<span class="arithmatex"><span class="MathJax_Preview">0.2</span><script type="math/tex">0.2</script></span> m，共 <span class="arithmatex"><span class="MathJax_Preview">256 \times 256 \times 32 = 2,097,152</span><script type="math/tex">256 \times 256 \times 32 = 2,097,152</script></span> 个体素</li>
+<li><strong>语义类别</strong>：20 类（包括道路、植被、建筑、行人、车辆等）</li>
+</ul>
+<p>SemanticKITTI 各方法性能（mIoU，仅统计占据体素）：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>输入</th>
+<th>mIoU (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SSCNet</td>
+<td>LiDAR</td>
+<td>16.1</td>
+</tr>
+<tr>
+<td>LMSCNet</td>
+<td>LiDAR</td>
+<td>17.6</td>
+</tr>
+<tr>
+<td>MonoScene</td>
+<td>单目摄像头</td>
+<td>11.1</td>
+</tr>
+<tr>
+<td>TPVFormer</td>
+<td>多目摄像头</td>
+<td>17.1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-occupancy-flow">8. 占用流动（Occupancy Flow）</h2>
+<h3 id="81">8.1 静态占用的局限</h3>
+<p>静态占用网络仅描述当前时刻的场景几何，无法回答"这个障碍物正在向哪里移动？""未来 2 秒这个区域会被占用吗？"等对规划至关重要的问题。</p>
+<p><strong>占用流动（Occupancy Flow）</strong> 通过为每个体素预测运动向量（Flow Field），将场景的几何表达从静态扩展到动态，实现了一种<strong>隐式的场景动力学建模</strong>。</p>
+<h3 id="82">8.2 占用流动定义</h3>
+<p>占用流动场定义为：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathbf{F} \in \mathbb{R}^{H \times W \times D \times 3}</div>
+<script type="math/tex; mode=display">\mathbf{F} \in \mathbb{R}^{H \times W \times D \times 3}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\mathbf{F}_{h,w,d} = (v_x, v_y, v_z)</span><script type="math/tex">\mathbf{F}_{h,w,d} = (v_x, v_y, v_z)</script></span> 表示体素 <span class="arithmatex"><span class="MathJax_Preview">(h, w, d)</span><script type="math/tex">(h, w, d)</script></span> 对应实体在三维空间中的瞬时速度向量（单位：m/s）。</p>
+<p>对于静止体素（道路、建筑等），<span class="arithmatex"><span class="MathJax_Preview">\mathbf{F}_{h,w,d} = \mathbf{0}</span><script type="math/tex">\mathbf{F}_{h,w,d} = \mathbf{0}</script></span>；对于运动体素（行驶车辆、行走行人等），<span class="arithmatex"><span class="MathJax_Preview">\mathbf{F}_{h,w,d} \neq \mathbf{0}</span><script type="math/tex">\mathbf{F}_{h,w,d} \neq \mathbf{0}</script></span>。</p>
+<h3 id="83">8.3 未来占用预测</h3>
+<p>利用占用流动，可以预测未来 <span class="arithmatex"><span class="MathJax_Preview">\Delta t</span><script type="math/tex">\Delta t</script></span> 时刻的占用状态：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathbf{V}(t + \Delta t) \approx \text{Warp}(\mathbf{V}(t), \mathbf{F} \cdot \Delta t)</div>
+<script type="math/tex; mode=display">\mathbf{V}(t + \Delta t) \approx \text{Warp}(\mathbf{V}(t), \mathbf{F} \cdot \Delta t)</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\text{Warp}</span><script type="math/tex">\text{Warp}</script></span> 为三维空间的体素变形操作。更精确的预测可采用递归神经网络（如 ConvLSTM3D）对时序占用序列进行建模：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathbf{V}_{t+1} = f_\theta(\mathbf{V}_t, \mathbf{F}_t, \mathbf{h}_t)</div>
+<script type="math/tex; mode=display">\mathbf{V}_{t+1} = f_\theta(\mathbf{V}_t, \mathbf{F}_t, \mathbf{h}_t)</script>
+</div>
+<h3 id="84">8.4 应用：隐式轨迹预测与规划</h3>
+<p>占用流动的最大优势在于<strong>不依赖目标检测和轨迹预测的显式两阶段流程</strong>，而是直接在体素空间中完成动态场景建模：</p>
+<ol>
+<li><strong>隐式轨迹预测</strong>：不需要显式追踪每个物体，直接从流动场中读取未来位置</li>
+<li><strong>规划避障</strong>：规划模块直接查询未来占用体积，规避所有预测被占用的体素</li>
+<li><strong>安全边界估计</strong>：通过积分流动场，计算任意物体的可能轨迹分布，用于安全裕度计算</li>
+</ol>
+<p>Waymo 的研究表明，基于占用流动的规划相比基于目标追踪的传统方法，在复杂交叉路口场景中碰撞率降低约 15%。</p>
+<hr />
+<h2 id="9-world-model">9. 世界模型（World Model）与占用</h2>
+<h3 id="91">9.1 世界模型的概念</h3>
+<p>世界模型（World Model）是对环境动力学的神经网络表示，能够模拟"如果采取动作 <span class="arithmatex"><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>，世界将如何演化"。在自动驾驶领域，世界模型可以：</p>
+<ul>
+<li>生成驾驶场景视频用于仿真测试</li>
+<li>在虚拟环境中训练强化学习策略</li>
+<li>通过"想象"未来场景辅助规划决策</li>
+</ul>
+<p>占用表示在世界模型中具有核心地位：体素占用提供了对场景状态的结构化、几何精确的表达，优于原始像素级别的表达（像素缺乏三维结构信息）。</p>
+<h3 id="92-gaia-1wayve">9.2 GAIA-1（Wayve）</h3>
+<p>GAIA-1 是 Wayve 于 2023 年发布的自动驾驶视频生成世界模型，核心特性：</p>
+<ul>
+<li><strong>输入</strong>：驾驶历史视频、自车动作序列（油门、方向盘）、文本条件（如"下雨天""城市道路"）</li>
+<li><strong>输出</strong>：未来驾驶场景视频（前向摄像头图像序列）</li>
+<li><strong>模型规模</strong>：93 亿参数，基于 GPT 风格的自回归生成</li>
+<li><strong>意义</strong>：首个可生成真实感、时序一致驾驶视频的大规模世界模型</li>
+</ul>
+<h3 id="93-drivedreamer">9.3 DriveDreamer</h3>
+<p>DriveDreamer（2023）基于扩散模型（Diffusion Model）生成驾驶场景视频，相比 GAIA-1 的自回归生成，扩散模型方案在多摄像头一致性上具有优势：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathbf{V}_{\text{future}} = \text{DiffusionModel}(\mathbf{V}_{\text{hist}}, \mathbf{a}_{\text{ego}}, \mathbf{m}_{\text{occ}})</div>
+<script type="math/tex; mode=display">\mathbf{V}_{\text{future}} = \text{DiffusionModel}(\mathbf{V}_{\text{hist}}, \mathbf{a}_{\text{ego}}, \mathbf{m}_{\text{occ}})</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\mathbf{m}_{\text{occ}}</span><script type="math/tex">\mathbf{m}_{\text{occ}}</script></span> 为当前时刻的占用地图，作为几何条件约束生成结果的空间一致性。</p>
+<h3 id="94-unisimnvidia">9.4 UniSim（NVIDIA）</h3>
+<p>UniSim 是 NVIDIA 提出的神经网络场景模拟器，可从传感器日志重建可交互三维场景：</p>
+<ul>
+<li><strong>三维场景重建</strong>：从多摄像头+LiDAR 日志重建神经辐射场（NeRF）风格的三维场景</li>
+<li><strong>动态物体插入</strong>：可将新的动态物体（行人、车辆）插入重建场景</li>
+<li><strong>传感器渲染</strong>：从任意视角渲染逼真的摄像头图像和 LiDAR 点云</li>
+<li><strong>占用的作用</strong>：占用体积作为场景几何的代理表示，指导动态物体的物理合理插入</li>
+</ul>
+<h3 id="95">9.5 占用表示的核心地位</h3>
+<table>
+<thead>
+<tr>
+<th>世界模型组件</th>
+<th>占用表示的作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>场景状态表达</td>
+<td>体素占用提供精确几何，优于像素表达</td>
+</tr>
+<tr>
+<td>动力学模型</td>
+<td>占用流动实现前向时序预测</td>
+</tr>
+<tr>
+<td>规划接口</td>
+<td>直接查询占用体积进行碰撞检测</td>
+</tr>
+<tr>
+<td>仿真条件</td>
+<td>占用地图作为生成模型的几何条件</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10">10. 评估基准</h2>
+<h3 id="101-nuscenes-occocc3d">10.1 nuScenes-Occ（Occ3D）</h3>
+<p>Occ3D-nuScenes 是目前最主流的摄像头占用预测基准，基于 nuScenes 数据集扩展语义占用标注：</p>
+<ul>
+<li><strong>感知范围</strong>：<span class="arithmatex"><span class="MathJax_Preview">[-40, 40]</span><script type="math/tex">[-40, 40]</script></span> m（前后），<span class="arithmatex"><span class="MathJax_Preview">[-40, 40]</span><script type="math/tex">[-40, 40]</script></span> m（左右），<span class="arithmatex"><span class="MathJax_Preview">[-1, 5.4]</span><script type="math/tex">[-1, 5.4]</script></span> m（高度）</li>
+<li><strong>体素分辨率</strong>：<span class="arithmatex"><span class="MathJax_Preview">0.4</span><script type="math/tex">0.4</script></span> m，共 <span class="arithmatex"><span class="MathJax_Preview">200 \times 200 \times 16 = 640,000</span><script type="math/tex">200 \times 200 \times 16 = 640,000</script></span> 个体素</li>
+<li><strong>语义类别</strong>：18 类（含空闲类）</li>
+<li><strong>传感器配置</strong>：6 路环视摄像头（无 LiDAR 参考输入）</li>
+</ul>
+<h3 id="102-semantickitti-semantic-scene-completion">10.2 SemanticKITTI Semantic Scene Completion</h3>
+<p>SemanticKITTI SSC 是 LiDAR 场景补全的标准基准：</p>
+<ul>
+<li><strong>感知范围</strong>：<span class="arithmatex"><span class="MathJax_Preview">[-25.6, 25.6]</span><script type="math/tex">[-25.6, 25.6]</script></span> m（左右），<span class="arithmatex"><span class="MathJax_Preview">[0, 51.2]</span><script type="math/tex">[0, 51.2]</script></span> m（前向），<span class="arithmatex"><span class="MathJax_Preview">[-2, 4.4]</span><script type="math/tex">[-2, 4.4]</script></span> m（高度）</li>
+<li><strong>体素分辨率</strong>：<span class="arithmatex"><span class="MathJax_Preview">0.2</span><script type="math/tex">0.2</script></span> m，共 <span class="arithmatex"><span class="MathJax_Preview">256 \times 256 \times 32</span><script type="math/tex">256 \times 256 \times 32</script></span> 个体素</li>
+<li><strong>语义类别</strong>：20 类（含空闲类）</li>
+<li><strong>输入格式</strong>：单帧 LiDAR 点云（或单目 RGB）</li>
+</ul>
+<h3 id="103-openoccupancy">10.3 OpenOccupancy</h3>
+<p>OpenOccupancy 是更精细分辨率的占用预测基准：</p>
+<ul>
+<li><strong>体素分辨率</strong>：<span class="arithmatex"><span class="MathJax_Preview">0.1</span><script type="math/tex">0.1</script></span> m（比 nuScenes-Occ 精细 4 倍）</li>
+<li><strong>关注点</strong>：密集占用预测细节，强调物体边界的精确刻画</li>
+<li><strong>挑战</strong>：计算量是 <span class="arithmatex"><span class="MathJax_Preview">0.4</span><script type="math/tex">0.4</script></span> m 分辨率的 64 倍，对模型效率要求极高</li>
+</ul>
+<h3 id="104">10.4 评估指标</h3>
+<p>占用预测的评估指标体系：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\text{IoU}_c = \frac{TP_c}{TP_c + FP_c + FN_c}</div>
+<script type="math/tex; mode=display">\text{IoU}_c = \frac{TP_c}{TP_c + FP_c + FN_c}</script>
+</div>
+<div class="arithmatex">
+<div class="MathJax_Preview">\text{mIoU} = \frac{1}{C} \sum_{c=1}^{C} \text{IoU}_c \quad \text{（所有语义类别的均值）}</div>
+<script type="math/tex; mode=display">\text{mIoU} = \frac{1}{C} \sum_{c=1}^{C} \text{IoU}_c \quad \text{（所有语义类别的均值）}</script>
+</div>
+<div class="arithmatex">
+<div class="MathJax_Preview">\text{mIoU}_{\text{geo}} = \frac{1}{2}(\text{IoU}_{\text{free}} + \text{IoU}_{\text{occupied}}) \quad \text{（几何占用均值，不区分语义）}</div>
+<script type="math/tex; mode=display">\text{mIoU}_{\text{geo}} = \frac{1}{2}(\text{IoU}_{\text{free}} + \text{IoU}_{\text{occupied}}) \quad \text{（几何占用均值，不区分语义）}</script>
+</div>
+<div class="arithmatex">
+<div class="MathJax_Preview">\text{mIoU}_{\text{freq}} = \sum_{c=1}^{C} \frac{n_c}{N} \cdot \text{IoU}_c \quad \text{（频率加权 mIoU，按类别样本数加权）}</div>
+<script type="math/tex; mode=display">\text{mIoU}_{\text{freq}} = \sum_{c=1}^{C} \frac{n_c}{N} \cdot \text{IoU}_c \quad \text{（频率加权 mIoU，按类别样本数加权）}</script>
+</div>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>含义</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IoU（几何）</td>
+<td>是否正确预测占据/空闲</td>
+<td>碰撞安全评估</td>
+</tr>
+<tr>
+<td>mIoU（语义）</td>
+<td>是否正确预测语义类别</td>
+<td>场景理解能力</td>
+</tr>
+<tr>
+<td>频率权重 mIoU</td>
+<td>常见类别贡献更大</td>
+<td>实用性评估</td>
+</tr>
+<tr>
+<td>SC-mIoU</td>
+<td>场景补全专用，仅统计被遮挡区域</td>
+<td>补全能力评估</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11">11. 参考资料</h2>
+<ol>
+<li>
+<p><strong>Tesla AI Day 2022</strong> - Andrej Karpathy 等. "Tesla Occupancy Networks". Tesla Technical Report, 2022. [发布于 Tesla AI Day 2022 直播]</p>
+</li>
+<li>
+<p><strong>MonoScene</strong> - Cao, A., &amp; de Charette, R. (2022). "MonoScene: Monocular 3D Semantic Scene Completion". <em>CVPR 2022</em>. [arXiv:2112.00726]</p>
+</li>
+<li>
+<p><strong>TPVFormer</strong> - Huang, Z., et al. (2023). "Tri-Perspective View for Vision-Based 3D Semantic Occupancy Prediction". <em>CVPR 2023</em>. [arXiv:2302.07817]</p>
+</li>
+<li>
+<p><strong>BEV-Fusion</strong> - Liu, Z., et al. (2022). "BEVFusion: Multi-Task Multi-Sensor Fusion with Unified Bird's-Eye View Representation". <em>ICRA 2023</em>. [arXiv:2205.13542]</p>
+</li>
+<li>
+<p><strong>SurroundOcc</strong> - Wei, Y., et al. (2023). "SurroundOcc: Multi-Camera 3D Occupancy Prediction for Autonomous Driving". <em>ICCV 2023</em>. [arXiv:2303.09551]</p>
+</li>
+<li>
+<p><strong>GAIA-1</strong> - Hu, A., et al. (2023). "GAIA-1: A Generative World Model for Autonomous Driving". <em>Wayve Technical Report</em>. [arXiv:2309.17080]</p>
+</li>
+<li>
+<p><strong>Occ3D</strong> - Tian, X., et al. (2023). "Occ3D: A Large-Scale 3D Occupancy Prediction Benchmark for Autonomous Driving". <em>NeurIPS 2023</em>. [arXiv:2304.14365]</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../_static/js/mathjaxhelper.js"></script>
+      
+    
+  </body>
+</html>

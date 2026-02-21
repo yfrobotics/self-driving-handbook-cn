@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
@@ -317,7 +317,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶介绍
+    第一章：概述
   
 
     
@@ -373,7 +373,35 @@
   <span class="md-ellipsis">
     
   
-    自主性等级分类
+    自动驾驶等级分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶发展历史
   
 
     
@@ -455,7 +483,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶系统
+    第二章：系统
   
 
     
@@ -483,7 +511,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶车辆
+    自动驾驶车辆系统
   
 
     
@@ -511,7 +539,7 @@
   <span class="md-ellipsis">
     
   
-    智能交通
+    车联网（V2X）技术详解
   
 
     
@@ -539,7 +567,63 @@
   <span class="md-ellipsis">
     
   
-    设计与仿真平台
+    仿真平台与数据集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hdmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高精地图（HD Map）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人机交互系统（HMI）
   
 
     
@@ -568,6 +652,62 @@
     
   
     系统安全保障
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶测试体系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/cybersecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶网络安全
   
 
     
@@ -679,7 +819,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶硬件
+    第三章：硬件
   
 
     
@@ -735,7 +875,7 @@
   <span class="md-ellipsis">
     
   
-    中控单元 (AI芯片, GPGPU)
+    中央计算单元 (CCU / 车载AI芯片)
   
 
     
@@ -763,7 +903,7 @@
   <span class="md-ellipsis">
     
   
-    线控系统
+    线控系统（Drive-by-Wire）
   
 
     
@@ -791,7 +931,7 @@
   <span class="md-ellipsis">
     
   
-    车内总线
+    车载通信系统
   
 
     
@@ -875,7 +1015,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        主要传感器类型
+        主要传感器类型概览
       
     </span>
   </a>
@@ -886,10 +1026,464 @@
   <a href="#lidar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        激光雷达 (LiDAR)
+        一、激光雷达（LiDAR）
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="一、激光雷达（LiDAR）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 工作原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 机械旋转式 LiDAR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 混合固态 LiDAR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-mems-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 MEMS 固态 LiDAR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-fmcw-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 FMCW 调频连续波 LiDAR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 主流 LiDAR 产品对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.7 LiDAR 关键性能指标解读
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mmwave-radar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、毫米波雷达（mmWave Radar）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、毫米波雷达（mmWave Radar）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-fmcw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 FMCW 工作原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-77-ghz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 77 GHz 频段的优势
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 关键参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 短程/中程/长程雷达分类
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-4d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 4D 成像雷达
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 主流毫米波雷达产品
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#camera" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、摄像头（Camera）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、摄像头（Camera）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 前视单目摄像头
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 环视鱼眼摄像头
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-stereo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 立体双目摄像头（Stereo）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-thermal-ir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 红外/热成像摄像头（Thermal IR）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-event-camera" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 事件相机（Event Camera）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 摄像头分辨率演进
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 摄像头关键参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ultrasonic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、超声波传感器（Ultrasonic）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、超声波传感器（Ultrasonic）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 测量原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 探测特性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 泊车场景应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 主要厂商
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、IMU（惯性测量单元）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、IMU（惯性测量单元）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 基本组成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 误差模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-imu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 IMU 等级对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-mems-imu-vs-fog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 MEMS IMU vs 光纤陀螺（FOG）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 预积分理论基础
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnssgps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、GNSS/GPS 定位
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、GNSS/GPS 定位">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 主要卫星导航系统
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 定位精度等级
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-gnssimu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 GNSS+IMU 紧耦合融合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-gnssins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 典型车载 GNSS/INS 产品
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -897,37 +1491,54 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        毫米波雷达
+        七、传感器选型指导
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="七、传感器选型指导">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 不同自动驾驶等级典型传感器配置
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#imugnss" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
     <span class="md-ellipsis">
       
-        超声波与 IMU/GNSS
+        7.2 成本与能力权衡
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 恶劣天气下各传感器表现对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        传感器融合
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         参考资料
@@ -960,7 +1571,7 @@
   <span class="md-ellipsis">
     
   
-    视觉传感器
+    视觉传感器（摄像头）
   
 
     
@@ -1042,7 +1653,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶核心算法
+    第四章：核心算法
   
 
     
@@ -1098,7 +1709,7 @@
   <span class="md-ellipsis">
     
   
-    图像识别与分割
+    图像感知与处理
   
 
     
@@ -1127,6 +1738,62 @@
     
   
     激光点云数据处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sensor_fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器融合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/occupancy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    占用网络（Occupancy Network）
   
 
     
@@ -1203,6 +1870,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/prediction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行为预测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/decision_making/" class="md-nav__link">
         
   
@@ -1210,7 +1905,91 @@
   <span class="md-ellipsis">
     
   
-    决策 (Decision Making Process)
+    决策 (Decision Making)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    控制算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/end_to_end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端自动驾驶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/data_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶ML数据管道
   
 
     
@@ -1238,7 +2017,7 @@
   <span class="md-ellipsis">
     
   
-    自然语言识别与交互
+    自然语言处理与大语言模型
   
 
     
@@ -1320,7 +2099,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶案例
+    第五章：实例
   
 
     
@@ -1348,7 +2127,119 @@
   <span class="md-ellipsis">
     
   
-    百度无人驾驶
+    百度 Apollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/waymo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waymo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/tesla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla FSD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/chinese_players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国自动驾驶企业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/robotaxi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robotaxi：自动驾驶商业化的主战场
   
 
     
@@ -1399,7 +2290,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        主要传感器类型
+        主要传感器类型概览
       
     </span>
   </a>
@@ -1410,10 +2301,464 @@
   <a href="#lidar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        激光雷达 (LiDAR)
+        一、激光雷达（LiDAR）
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="一、激光雷达（LiDAR）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 工作原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 机械旋转式 LiDAR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 混合固态 LiDAR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-mems-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 MEMS 固态 LiDAR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-fmcw-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 FMCW 调频连续波 LiDAR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 主流 LiDAR 产品对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.7 LiDAR 关键性能指标解读
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mmwave-radar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、毫米波雷达（mmWave Radar）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、毫米波雷达（mmWave Radar）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-fmcw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 FMCW 工作原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-77-ghz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 77 GHz 频段的优势
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 关键参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 短程/中程/长程雷达分类
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-4d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 4D 成像雷达
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 主流毫米波雷达产品
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#camera" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、摄像头（Camera）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、摄像头（Camera）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 前视单目摄像头
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 环视鱼眼摄像头
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-stereo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 立体双目摄像头（Stereo）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-thermal-ir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 红外/热成像摄像头（Thermal IR）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-event-camera" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 事件相机（Event Camera）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 摄像头分辨率演进
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 摄像头关键参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ultrasonic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、超声波传感器（Ultrasonic）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、超声波传感器（Ultrasonic）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 测量原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 探测特性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 泊车场景应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 主要厂商
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、IMU（惯性测量单元）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、IMU（惯性测量单元）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 基本组成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 误差模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-imu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 IMU 等级对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-mems-imu-vs-fog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 MEMS IMU vs 光纤陀螺（FOG）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 预积分理论基础
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnssgps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、GNSS/GPS 定位
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、GNSS/GPS 定位">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 主要卫星导航系统
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 定位精度等级
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-gnssimu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 GNSS+IMU 紧耦合融合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-gnssins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 典型车载 GNSS/INS 产品
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1421,37 +2766,54 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        毫米波雷达
+        七、传感器选型指导
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="七、传感器选型指导">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 不同自动驾驶等级典型传感器配置
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#imugnss" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
     <span class="md-ellipsis">
       
-        超声波与 IMU/GNSS
+        7.2 成本与能力权衡
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 恶劣天气下各传感器表现对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        传感器融合
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         参考资料
@@ -1479,8 +2841,10 @@
 
 
 <h1 id="_1">感知传感器</h1>
-<p>自动驾驶汽车依赖多种传感器来感知周围环境。不同传感器各有优劣，通常需要多传感器融合 (Sensor Fusion) 才能实现可靠的环境感知。</p>
-<h2 id="_2">主要传感器类型</h2>
+<p>传感器是自动驾驶系统的"感官"，负责将物理世界的信息转化为可计算的数字信号。与人类依赖视觉、听觉、触觉等多种感知通道类似，自动驾驶汽车也需要多种传感器相互配合，才能在复杂多变的道路环境中实现可靠感知。</p>
+<p><strong>多传感器互补原则</strong>：任何单一传感器都存在局限性——摄像头在夜间或雨雾中性能下降，激光雷达无法读取交通标志文字，毫米波雷达横向分辨率不足，超声波只在近距离有效。通过将不同传感器的优势叠加，可以覆盖各自的盲区，实现全天候、全场景的鲁棒感知。</p>
+<hr />
+<h2 id="_2">主要传感器类型概览</h2>
 <table>
 <thead>
 <tr>
@@ -1494,77 +2858,1063 @@
 </thead>
 <tbody>
 <tr>
-<td>摄像头 (Camera)</td>
+<td>摄像头（Camera）</td>
 <td>50–200 m</td>
 <td>像素级</td>
 <td>中</td>
 <td>低</td>
-<td>车道线检测、交通标志识别</td>
+<td>车道线检测、交通标志识别、语义理解</td>
 </tr>
 <tr>
-<td>激光雷达 (LiDAR)</td>
+<td>激光雷达（LiDAR）</td>
 <td>30–300 m</td>
 <td>±2 cm</td>
 <td>中–高</td>
 <td>高</td>
-<td>3D 建图、障碍物检测</td>
+<td>三维建图、障碍物检测与分类</td>
 </tr>
 <tr>
-<td>毫米波雷达 (mmWave Radar)</td>
-<td>30–250 m</td>
+<td>毫米波雷达（mmWave Radar）</td>
+<td>30–300 m</td>
 <td>±0.1 m</td>
 <td>低</td>
 <td>中</td>
-<td>自适应巡航、碰撞预警</td>
+<td>自适应巡航、碰撞预警、速度测量</td>
 </tr>
 <tr>
-<td>超声波 (Ultrasonic)</td>
-<td>0.2–5 m</td>
+<td>超声波（Ultrasonic）</td>
+<td>0.2–6 m</td>
 <td>±1 cm</td>
 <td>低</td>
-<td>低</td>
-<td>泊车辅助</td>
+<td>极低</td>
+<td>泊车辅助、近距离障碍物检测</td>
 </tr>
 <tr>
-<td>GPS/IMU</td>
+<td>IMU（惯性测量单元）</td>
+<td>—</td>
+<td>μg 级加速度</td>
+<td>无</td>
+<td>中</td>
+<td>姿态估计、高频运动补偿</td>
+</tr>
+<tr>
+<td>GNSS/RTK</td>
 <td>全局</td>
 <td>米级–厘米级</td>
 <td>低</td>
 <td>中</td>
-<td>定位与姿态估计</td>
+<td>绝对定位</td>
 </tr>
 </tbody>
 </table>
-<h2 id="lidar">激光雷达 (LiDAR)</h2>
-<p>激光雷达通过发射激光脉冲并测量返回时间 (Time of Flight, ToF) 来获取三维点云。主要技术路线包括：</p>
+<hr />
+<h2 id="lidar">一、激光雷达（LiDAR）</h2>
+<h3 id="11">1.1 工作原理</h3>
+<p>激光雷达（Light Detection And Ranging）通过发射激光脉冲并测量光子返回时间（Time of Flight，ToF）来获取目标的三维坐标。测距公式为：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">d = \frac{c \cdot \Delta t}{2}</div>
+<script type="math/tex; mode=display">d = \frac{c \cdot \Delta t}{2}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 为光速（<span class="arithmatex"><span class="MathJax_Preview">3 \times 10^8</span><script type="math/tex">3 \times 10^8</script></span> m/s），<span class="arithmatex"><span class="MathJax_Preview">\Delta t</span><script type="math/tex">\Delta t</script></span> 为从发射到接收的时间间隔。通过旋转或扫描机构改变激光方向，可以在三维空间中构建稠密的点云（Point Cloud）。</p>
+<h3 id="12-lidar">1.2 机械旋转式 LiDAR</h3>
+<p>机械旋转式 LiDAR 通过整机或顶部旋转实现 360° 水平扫描。核心指标包括线束数（垂直方向激光发射器数量）、转速和单圈点云密度。</p>
+<p><strong>代表产品：</strong></p>
 <ul>
-<li><strong>机械旋转式</strong>：经典方案，如 Velodyne VLP-16/VLS-128，旋转棱镜实现 360° 扫描</li>
-<li><strong>半固态式</strong>：MEMS 振镜或转镜方案，如 Livox、速腾聚创 M 系列</li>
-<li><strong>纯固态式 (OPA/Flash)</strong>：无运动部件，体积小、可靠性高，适合前装量产</li>
-<li><strong>FMCW LiDAR</strong>：调频连续波方案，可同时测距和测速，代表厂商有 Aeva、Mobileye</li>
+<li><strong>Velodyne HDL-64E</strong>：64 线束，转速 10–20 rpm，水平角分辨率 0.08°–0.35°，探测距离 120 m（反射率 80% 目标），点频约 130 万点/秒。曾是 DARPA 挑战赛的标配，但价格高达数万美元，难以前装量产。</li>
+<li><strong>Velodyne VLP-16（Puck）</strong>：16 线束，垂直 FOV ±15°，探测距离 100 m，点频约 30 万点/秒，体积小、成本约数千美元，广泛用于研究样车。</li>
+<li><strong>Velodyne VLS-128</strong>：128 线束，垂直 FOV 40°，点频 960 万点/秒，探测距离 300 m，是机械式旋转 LiDAR 的巅峰产品之一。</li>
 </ul>
-<p>关键参数包括线束数、点频、探测距离、视场角 (FOV) 和角分辨率。</p>
-<h2 id="_3">毫米波雷达</h2>
-<p>毫米波雷达工作在 24 GHz 或 77 GHz 频段，具有全天候工作能力。传统雷达提供距离、速度和方位角信息，新一代 <strong>4D 成像雷达</strong> 额外提供俯仰角，可输出类似点云的稀疏 3D 数据，显著提升分辨率。</p>
-<p>典型供应商包括大陆 (Continental)、Bosch、华为等。</p>
-<h2 id="imugnss">超声波与 IMU/GNSS</h2>
+<p><strong>优点</strong>：360° 全向扫描，点云均匀，视场角大。
+<strong>缺点</strong>：机械旋转结构可靠性存疑，体积大，量产成本高。</p>
+<h3 id="13-lidar">1.3 混合固态 LiDAR</h3>
+<p>混合固态 LiDAR 使用棱镜转镜或 MEMS 微振镜实现局部扫描，减少了机械旋转部件，兼顾可靠性与扫描能力。</p>
+<p><strong>代表产品：</strong></p>
 <ul>
-<li><strong>超声波传感器</strong>：利用声波反射测距，多用于低速泊车场景，成本极低</li>
-<li><strong>IMU (惯性测量单元)</strong>：包含加速度计和陀螺仪，提供短时高频姿态数据</li>
-<li><strong>GNSS/RTK</strong>：全球导航卫星系统结合实时动态差分 (RTK) 可实现厘米级定位，需要基站支持</li>
+<li><strong>速腾聚创 RS-M1 / RS-MX</strong>：非重复扫描模式，随时间积累点云密度，水平 FOV 120°，垂直 FOV 25°，探测距离 150 m（反射率 10% 目标），点频 1440 万点/秒（MX），已量产前装。</li>
+<li><strong>禾赛科技 AT128</strong>：128 线等效，水平 FOV 120°，垂直 FOV 25.6°，探测距离 200 m（反射率 10%），帧率 10 Hz，是首款量产的混合固态高线束 LiDAR，搭载于理想 L9 等车型。</li>
+<li><strong>华为 96 线 LiDAR</strong>：搭载于极狐阿尔法 S HI 版，水平 FOV 120°，垂直 FOV 40°，探测距离 200 m，是华为智能汽车解决方案的核心传感器之一。</li>
 </ul>
-<h2 id="_4">传感器融合</h2>
-<p>单一传感器无法满足自动驾驶全场景需求，因此需要融合多源信息。融合层次分为：</p>
+<h3 id="14-mems-lidar">1.4 MEMS 固态 LiDAR</h3>
+<p>MEMS（微机电系统）LiDAR 使用微振镜偏转激光束，无宏观旋转部件，理论上可靠性更高、成本更低。</p>
 <ul>
-<li><strong>数据级融合 (Early Fusion)</strong>：在原始数据层面融合，信息最完整但计算量大</li>
-<li><strong>特征级融合 (Feature Fusion)</strong>：提取各传感器特征后融合，平衡精度与效率</li>
-<li><strong>决策级融合 (Late Fusion)</strong>：各传感器独立产出结果后综合决策，实现简单但信息损失较多</li>
+<li><strong>Innoviz One / InnovizTwo</strong>：以色列 Innoviz 公司产品，InnovizTwo 探测距离 300 m，FOV 100°×25°，点频 300 万点/秒，BMW 等车企采用。</li>
+<li><strong>Luminar Iris</strong>：美国 Luminar 公司，使用 1550 nm 波长激光（人眼安全且可大功率发射），探测距离 250 m，点频 250 万点/秒，沃尔沃 EX90 前装量产。</li>
 </ul>
-<p>常见架构如 Tesla 采用纯视觉方案（多摄像头 + 神经网络），Waymo 和百度 Apollo 则采用 LiDAR + 摄像头 + 雷达的多传感器融合方案。</p>
-<h2 id="_5">参考资料</h2>
+<h3 id="15-fmcw-lidar">1.5 FMCW 调频连续波 LiDAR</h3>
+<p>FMCW（Frequency Modulated Continuous Wave）LiDAR 通过发射线性调频连续激光并分析回波的频率偏移来同时获取距离和速度信息：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">v_r = \frac{f_d \cdot \lambda}{2}</div>
+<script type="math/tex; mode=display">v_r = \frac{f_d \cdot \lambda}{2}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">f_d</span><script type="math/tex">f_d</script></span> 为多普勒频移，<span class="arithmatex"><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span> 为激光波长。</p>
+<p><strong>主要优势：</strong></p>
 <ol>
-<li>J. Levinson et al. Towards Fully Autonomous Driving: Systems and Algorithms. IEEE Intelligent Vehicles Symposium, 2011.</li>
-<li>Yole Développement. LiDAR for Automotive and Industrial Applications Report, 2023.</li>
+<li><strong>直接测速</strong>：无需帧间差分，可获取每个点的瞬时径向速度，利于动态目标追踪。</li>
+<li><strong>抗干扰性强</strong>：对脉冲式干扰（如太阳光、其他 LiDAR）天然免疫。</li>
+<li><strong>灵敏度高</strong>：相干探测方式信噪比更高，探测距离更远。</li>
+</ol>
+<p>代表厂商包括 Aeva（已在纽交所上市）、Mobileye（Delphi/Intel 旗下，自研 FMCW LiDAR）、Aurora（Blackmore 团队技术）等。</p>
+<h3 id="16-lidar">1.6 主流 LiDAR 产品对比</h3>
+<table>
+<thead>
+<tr>
+<th>厂商</th>
+<th>型号</th>
+<th>技术路线</th>
+<th>等效线数</th>
+<th>探测距离（10%反射率）</th>
+<th>水平 FOV</th>
+<th>点频（万点/s）</th>
+<th>参考价格</th>
+<th>量产状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Velodyne</td>
+<td>VLP-16</td>
+<td>机械旋转</td>
+<td>16</td>
+<td>100 m</td>
+<td>360°</td>
+<td>30</td>
+<td>~$4,000</td>
+<td>已量产（研究/测试）</td>
+</tr>
+<tr>
+<td>Velodyne</td>
+<td>HDL-64E</td>
+<td>机械旋转</td>
+<td>64</td>
+<td>120 m</td>
+<td>360°</td>
+<td>130</td>
+<td>~$75,000</td>
+<td>已量产（研究/测试）</td>
+</tr>
+<tr>
+<td>禾赛科技</td>
+<td>AT128</td>
+<td>混合固态</td>
+<td>128</td>
+<td>200 m</td>
+<td>120°</td>
+<td>153</td>
+<td>~$500（目标）</td>
+<td>前装量产</td>
+</tr>
+<tr>
+<td>速腾聚创</td>
+<td>RS-MX</td>
+<td>混合固态</td>
+<td>—</td>
+<td>150 m</td>
+<td>120°</td>
+<td>1440</td>
+<td>待定</td>
+<td>前装量产</td>
+</tr>
+<tr>
+<td>Luminar</td>
+<td>Iris</td>
+<td>MEMS固态</td>
+<td>—</td>
+<td>250 m</td>
+<td>120°×30°</td>
+<td>250</td>
+<td>~$500（目标）</td>
+<td>前装量产</td>
+</tr>
+<tr>
+<td>Innoviz</td>
+<td>InnovizTwo</td>
+<td>MEMS固态</td>
+<td>—</td>
+<td>300 m</td>
+<td>100°×25°</td>
+<td>300</td>
+<td>待定</td>
+<td>前装量产</td>
+</tr>
+<tr>
+<td>Aeva</td>
+<td>Aeries II</td>
+<td>FMCW</td>
+<td>—</td>
+<td>300 m</td>
+<td>120°×30°</td>
+<td>—</td>
+<td>待定</td>
+<td>研发/测试</td>
+</tr>
+</tbody>
+</table>
+<h3 id="17-lidar">1.7 LiDAR 关键性能指标解读</h3>
+<ul>
+<li><strong>角分辨率（Angular Resolution）</strong>：水平和垂直方向上相邻激光束之间的夹角，越小则点云越密集。对于机械旋转式，水平分辨率可通过提高转速或增加线束来改善。</li>
+<li><strong>最远探测距离（Max Detection Range）</strong>：通常以特定反射率（如 10% 或 80%）的漫反射目标为基准。反射率越低（如黑色轮胎），探测距离越短。</li>
+<li><strong>最近盲区（Minimum Range / Blind Zone）</strong>：传感器前方存在无法探测的近距离盲区，机械旋转式 LiDAR 盲区约 0.5–1 m，固态 LiDAR 通常更大，需配合超声波弥补。</li>
+<li><strong>点频（Point Rate）</strong>：每秒产生的点云数量，影响目标检测的密集程度与算法实时性。</li>
+</ul>
+<hr />
+<h2 id="mmwave-radar">二、毫米波雷达（mmWave Radar）</h2>
+<h3 id="21-fmcw">2.1 FMCW 工作原理</h3>
+<p>车载毫米波雷达普遍采用调频连续波（FMCW）体制。雷达发射线性调频信号，与目标反射回波混频后产生差频信号（拍频），通过 FFT 分析可同时获得：</p>
+<ul>
+<li><strong>距离</strong>：<span class="arithmatex"><span class="MathJax_Preview">d = \frac{f_{beat} \cdot c}{2S}</span><script type="math/tex">d = \frac{f_{beat} \cdot c}{2S}</script></span>，其中 <span class="arithmatex"><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span> 为调频斜率，<span class="arithmatex"><span class="MathJax_Preview">f_{beat}</span><script type="math/tex">f_{beat}</script></span> 为拍频频率</li>
+<li><strong>速度</strong>：<span class="arithmatex"><span class="MathJax_Preview">v = \frac{f_d \cdot \lambda}{2}</span><script type="math/tex">v = \frac{f_d \cdot \lambda}{2}</script></span>，多普勒效应</li>
+<li><strong>角度</strong>：通过多天线（MIMO）技术及数字波束成形（DBF）获取目标方位角，4D 成像雷达还可获取俯仰角</li>
+</ul>
+<h3 id="22-77-ghz">2.2 77 GHz 频段的优势</h3>
+<p>目前主流车载雷达采用 77 GHz 频段（76–81 GHz），相比早期 24 GHz 频段的优势：</p>
+<ol>
+<li>波长更短（约 4 mm），天线尺寸更小，便于集成</li>
+<li>带宽更宽（最大 4 GHz），距离分辨率可达约 4 cm</li>
+<li>速度测量分辨率更高</li>
+<li>受欧美监管机构批准，频谱资源充足</li>
+</ol>
+<h3 id="23">2.3 关键参数</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>典型范围</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>探测距离</td>
+<td>0.2–300 m</td>
+<td>因型号分为短/中/长程</td>
+</tr>
+<tr>
+<td>距离分辨率</td>
+<td>0.04–0.5 m</td>
+<td>取决于带宽</td>
+</tr>
+<tr>
+<td>速度范围</td>
+<td>±70 m/s</td>
+<td>覆盖高速场景</td>
+</tr>
+<tr>
+<td>速度分辨率</td>
+<td>0.1–0.5 m/s</td>
+<td>—</td>
+</tr>
+<tr>
+<td>水平 FOV</td>
+<td>10°–170°</td>
+<td>长程窄角，短程宽角</td>
+</tr>
+<tr>
+<td>目标数量</td>
+<td>32–256 个</td>
+<td>同时追踪</td>
+</tr>
+<tr>
+<td>刷新率</td>
+<td>10–50 Hz</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24">2.4 短程/中程/长程雷达分类</h3>
+<ul>
+<li><strong>短程雷达（SRR，Short Range Radar）</strong>：探测距离 0.2–30 m，水平 FOV 可达 170°，用于盲点监测（BSD）、开门预警（DOW）、后方穿越预警（RCTA）等。</li>
+<li><strong>中程雷达（MRR，Medium Range Radar）</strong>：探测距离 30–80 m，水平 FOV 约 60°–90°，用于城区低速跟车、变道辅助。</li>
+<li><strong>长程雷达（LRR，Long Range Radar）</strong>：探测距离 80–300 m，水平 FOV 约 10°–20°，用于高速公路自适应巡航（ACC）和前方碰撞预警（FCW）。一台典型乘用车前方配置 1 个 LRR，四角配置 4 个 SRR/MRR。</li>
+</ul>
+<h3 id="25-4d">2.5 4D 成像雷达</h3>
+<p>传统 3D 雷达（距离 + 速度 + 水平角）缺少高度信息，无法区分地面杂波、桥梁、天桥等。<strong>4D 成像雷达</strong>在垂直方向增加了天线阵列，实现俯仰角测量，输出包含高度维度的稀疏点云，大幅提升分辨率与感知能力。</p>
+<p>代表产品：
+- <strong>Arbe Robotics Phoenix</strong>（以色列）：虚拟 48TX × 48RX MIMO 天线，水平角分辨率 1°，垂直角分辨率 2°，同时追踪 1000+ 目标，支持超分辨率 CFAR 处理。
+- <strong>Oculii Eagle</strong>（美国，已被安波福收购）：AI 驱动自适应波形，分辨率随速度自适应提升，水平 FOV 130°，探测距离 450 m。
+- <strong>大陆 ARS548</strong>：前向 4D 成像雷达，水平 FOV ±60°，垂直 FOV ±14°，同时追踪 200+ 动态目标，OEM 量产配套。
+- <strong>华为 C300 4D 毫米波雷达</strong>：96 虚拟天线，水平角分辨率约 1.5°，已随华为 ADS 系统量产。</p>
+<h3 id="26">2.6 主流毫米波雷达产品</h3>
+<table>
+<thead>
+<tr>
+<th>厂商</th>
+<th>型号</th>
+<th>类型</th>
+<th>探测距离</th>
+<th>水平 FOV</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>博世（Bosch）</td>
+<td>LRR5</td>
+<td>长程</td>
+<td>250 m</td>
+<td>±9°</td>
+<td>高可靠性，OEM 广泛配套</td>
+</tr>
+<tr>
+<td>博世</td>
+<td>MRR1Plus</td>
+<td>中程</td>
+<td>160 m</td>
+<td>±45°</td>
+<td>城区 AEB</td>
+</tr>
+<tr>
+<td>大陆（Continental）</td>
+<td>ARS410</td>
+<td>长程</td>
+<td>250 m</td>
+<td>±9°</td>
+<td>乘用车标配</td>
+</tr>
+<tr>
+<td>大陆</td>
+<td>ARS548</td>
+<td>4D成像</td>
+<td>300 m</td>
+<td>±60°</td>
+<td>俯仰角测量</td>
+</tr>
+<tr>
+<td>安波福（Aptiv）</td>
+<td>RACam</td>
+<td>融合</td>
+<td>180 m</td>
+<td>±45°</td>
+<td>雷达+摄像头集成</td>
+</tr>
+<tr>
+<td>安波福</td>
+<td>Eagle（Oculii）</td>
+<td>4D成像</td>
+<td>450 m</td>
+<td>±65°</td>
+<td>AI自适应波形</td>
+</tr>
+<tr>
+<td>德尔福（Delphi/Aptiv）</td>
+<td>ESR 2.5</td>
+<td>长程+中程</td>
+<td>174 m / 60 m</td>
+<td>±10° / ±45°</td>
+<td>双模切换</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="camera">三、摄像头（Camera）</h2>
+<h3 id="31">3.1 前视单目摄像头</h3>
+<p>前视摄像头是 ADAS 和自动驾驶的核心传感器，承担车道线检测、交通灯识别、行人/车辆检测等语义理解任务。</p>
+<p>特斯拉 HW3/HW4 采用<strong>三目前视方案</strong>（长焦 + 标准 + 广角），分工明确：</p>
+<table>
+<thead>
+<tr>
+<th>摄像头</th>
+<th>焦距（等效）</th>
+<th>水平 FOV</th>
+<th>探测距离</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主摄（Standard）</td>
+<td>约 50 mm</td>
+<td>35°</td>
+<td>160 m</td>
+<td>综合感知，车道线、行人</td>
+</tr>
+<tr>
+<td>长焦（Narrow/Telephoto）</td>
+<td>约 150 mm</td>
+<td>约 25°</td>
+<td>250 m</td>
+<td>远距离目标识别</td>
+</tr>
+<tr>
+<td>广角（Wide）</td>
+<td>约 25 mm</td>
+<td>120°</td>
+<td>60 m</td>
+<td>近距离交叉路口、行人</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32">3.2 环视鱼眼摄像头</h3>
+<p>环视摄像头通常安装于车辆前后左右，水平 FOV 达 180°–200°，实现全周拼接俯视图（AVM，Around View Monitor），主要用于：</p>
+<ul>
+<li><strong>泊车辅助</strong>：低速近距离障碍物可视化</li>
+<li><strong>盲区监测</strong>：侧方摄像头覆盖侧向盲区</li>
+<li><strong>APA 自动泊车</strong>：结合超声波实现无人自主泊车</li>
+</ul>
+<p>由于极大畸变（桶形畸变），鱼眼摄像头需进行标定和畸变校正后才能用于精确测距，通常使用 Scaramuzza 全向相机模型或多项式径向畸变模型。</p>
+<h3 id="33-stereo">3.3 立体双目摄像头（Stereo）</h3>
+<p>双目摄像头通过计算左右图像的视差（Disparity）来恢复深度信息：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">Z = \frac{f \cdot B}{d}</div>
+<script type="math/tex; mode=display">Z = \frac{f \cdot B}{d}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> 为焦距，<span class="arithmatex"><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> 为基线距离（左右相机间距），<span class="arithmatex"><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> 为视差像素数。深度精度随距离平方衰减，典型有效测距范围为 0.5–80 m（基线 12 cm）。</p>
+<p>代表产品：
+- <strong>Mobileye EyeQ 双目方案</strong>：集成于 EyeQ SoC，用于前装 AEB/LKA
+- <strong>ZED 系列</strong>（Stereolabs）：科研场景常用，基线 12–12 cm，最远 20 m 有效深度</p>
+<h3 id="34-thermal-ir">3.4 红外/热成像摄像头（Thermal IR）</h3>
+<p>热成像摄像头工作在 8–14 μm 长波红外波段，探测目标自身热辐射，不依赖可见光，在夜间行人检测方面具有显著优势：</p>
+<ul>
+<li><strong>夜间行人检测距离</strong>：可达 150 m+，远超可见光摄像头在无灯光环境下的能力</li>
+<li><strong>人体/动物高亮</strong>：温血动物体温（37°C）与背景形成鲜明对比</li>
+<li><strong>典型应用</strong>：奔驰/宝马 Night Vision 系统，Waymo/自动驾驶研究车辆</li>
+</ul>
+<p>主要供应商：FLIR Systems（泰科）、DRS Technologies（莱昂纳多公司旗下）、高德红外。</p>
+<h3 id="35-event-camera">3.5 事件相机（Event Camera）</h3>
+<p>事件相机（Dynamic Vision Sensor，DVS）是一种仿生传感器，每个像素独立监测亮度变化，仅在亮度变化超过阈值时异步触发输出事件（event），而非传统帧同步方式。</p>
+<p><strong>主要特性：</strong></p>
+<ul>
+<li><strong>微秒级响应时间</strong>（约 1 μs），远超传统摄像头的帧周期（约 30 ms）</li>
+<li><strong>高动态范围（HDR）达 140 dB</strong>，传统摄像头约 60 dB</li>
+<li><strong>极低功耗和数据量</strong>：静止场景几乎不输出数据</li>
+<li><strong>无运动模糊</strong>：高速运动场景优势明显</li>
+</ul>
+<p>代表产品：Prophesee（法国）Metavision EVK 系列、Sony IMX636、iniVation DAVIS 346。目前事件相机仍处于研究阶段，量产前装应用较少。</p>
+<h3 id="36">3.6 摄像头分辨率演进</h3>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>代表时期</th>
+<th>典型分辨率</th>
+<th>代表产品/方案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VGA 时代</td>
+<td>2010 年前</td>
+<td>640×480</td>
+<td>早期 ADAS</td>
+</tr>
+<tr>
+<td>1MP 时代</td>
+<td>2015–2018</td>
+<td>1280×960</td>
+<td>Mobileye EyeQ3</td>
+</tr>
+<tr>
+<td>1.2MP 时代</td>
+<td>2018–2022</td>
+<td>1920×1280</td>
+<td>特斯拉 HW3，大众 MQB</td>
+</tr>
+<tr>
+<td>5MP 时代</td>
+<td>2022 年起</td>
+<td>2880×1860</td>
+<td>特斯拉 HW4（OX08BC）</td>
+</tr>
+<tr>
+<td>8MP 趋势</td>
+<td>2024 年起</td>
+<td>3840×2160</td>
+<td>高阶智驾旗舰车型</td>
+</tr>
+</tbody>
+</table>
+<h3 id="37">3.7 摄像头关键参数</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分辨率</td>
+<td>影响远距离小目标识别精度，趋势向 5MP 及以上发展</td>
+</tr>
+<tr>
+<td>帧率（FPS）</td>
+<td>通常 30–60 Hz，高速场景需 60+ Hz 避免运动模糊</td>
+</tr>
+<tr>
+<td>动态范围（HDR）</td>
+<td>普通摄像头约 60 dB，HDR 摄像头可达 120 dB，应对逆光场景</td>
+</tr>
+<tr>
+<td>快门类型</td>
+<td>全局快门（Global Shutter）无果冻效应，优于卷帘快门（Rolling Shutter）</td>
+</tr>
+<tr>
+<td>像素尺寸</td>
+<td>越大感光能力越强，低照度性能越好（如 3 μm vs 1.4 μm）</td>
+</tr>
+<tr>
+<td>接口类型</td>
+<td>MIPI CSI-2、GMSL2（长距离，100 m 级），影响布线方案</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ultrasonic">四、超声波传感器（Ultrasonic）</h2>
+<h3 id="41">4.1 测量原理</h3>
+<p>超声波传感器通过压电晶体发射 40–70 kHz 的声波脉冲，并测量声波从发射到遇到障碍物返回的时间，计算距离：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">d = \frac{v_s \cdot \Delta t}{2}</div>
+<script type="math/tex; mode=display">d = \frac{v_s \cdot \Delta t}{2}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">v_s</span><script type="math/tex">v_s</script></span> 为声速（约 343 m/s，受温度影响，<span class="arithmatex"><span class="MathJax_Preview">v_s \approx 331 + 0.6T</span><script type="math/tex">v_s \approx 331 + 0.6T</script></span> m/s，<span class="arithmatex"><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> 为温度 °C）。超声波受气温影响，通常需温度补偿以保持精度。</p>
+<h3 id="42">4.2 探测特性</h3>
+<ul>
+<li><strong>有效探测范围</strong>：0.2–6 m（近距离性能优于 LiDAR）</li>
+<li><strong>盲区（Blind Zone）</strong>：0–0.2 m 为换能器收发切换盲区，目标过近无法检测</li>
+<li><strong>视场角</strong>：水平约 60°–120°，取决于换能器设计</li>
+<li><strong>精度</strong>：±1 cm（近距离），远距离误差随距离增大</li>
+<li><strong>受影响因素</strong>：强风、吸声材料（如雪）、倾斜表面（声波反射方向偏离）会降低探测可靠性</li>
+</ul>
+<h3 id="43">4.3 泊车场景应用</h3>
+<p>自动泊车（APA，Automatic Parking Assist）需要在车身周围布置 12 个以上超声波传感器，实现车位检测与近距离障碍物感知：</p>
+<ul>
+<li><strong>前保险杠</strong>：2–4 个，近距离前方障碍物检测</li>
+<li><strong>后保险杠</strong>：2–4 个，倒车辅助</li>
+<li><strong>侧面（前后翼子板）</strong>：4–8 个，车位扫描与侧方间距测量</li>
+</ul>
+<p>超声波传感器成本极低（单颗 5–20 元人民币），是迄今最具性价比的近距离传感器，即便 L4 无人驾驶系统也会保留超声波用于近场感知。</p>
+<h3 id="44">4.4 主要厂商</h3>
+<table>
+<thead>
+<tr>
+<th>厂商</th>
+<th>代表产品</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>博世（Bosch）</td>
+<td>USS5、USS5.1</td>
+<td>全球最大供应商之一，OEM 广泛配套</td>
+</tr>
+<tr>
+<td>法雷奥（Valeo）</td>
+<td>Fisheye + USS 集成</td>
+<td>环视+超声波一体化方案</td>
+</tr>
+<tr>
+<td>京西重工（BWAS）</td>
+<td>自研超声波传感器</td>
+<td>中国市场主要供应商</td>
+</tr>
+<tr>
+<td>斯坦雷电气</td>
+<td>—</td>
+<td>日系 OEM 配套</td>
+</tr>
+<tr>
+<td>明峰科技</td>
+<td>—</td>
+<td>国产替代，性价比高</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="imu">五、IMU（惯性测量单元）</h2>
+<h3 id="51">5.1 基本组成</h3>
+<p>IMU 通常由三轴<strong>加速度计（Accelerometer）</strong>和三轴<strong>陀螺仪（Gyroscope）</strong>组成，部分型号还集成<strong>磁力计（Magnetometer）</strong>（构成 9 轴 IMU）。</p>
+<ul>
+<li><strong>加速度计</strong>：测量沿三轴方向的比力（specific force），扣除重力后得到线加速度</li>
+<li><strong>陀螺仪</strong>：测量角速率（rad/s），积分后得到姿态角变化</li>
+<li><strong>磁力计</strong>：测量地磁场方向，辅助偏航角（Yaw）修正，但易受车体铁磁干扰</li>
+</ul>
+<h3 id="52">5.2 误差模型</h3>
+<p>IMU 主要误差来源包括：</p>
+<table>
+<thead>
+<tr>
+<th>误差类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>零偏（Bias）</td>
+<td>静止时输出的非零偏置，分固定偏置和随机游走</td>
+</tr>
+<tr>
+<td>随机游走噪声（Random Walk）</td>
+<td>角度/速度随机游走，符合白噪声积分特性，表征为 <span class="arithmatex"><span class="MathJax_Preview">°/\sqrt{h}</span><script type="math/tex">°/\sqrt{h}</script></span></td>
+</tr>
+<tr>
+<td>标度因数误差（Scale Factor）</td>
+<td>输出值与真实值之间的比例误差</td>
+</tr>
+<tr>
+<td>轴间耦合（Cross-Axis Coupling）</td>
+<td>一轴运动在其他轴产生的虚假输出</td>
+</tr>
+<tr>
+<td>温度效应</td>
+<td>偏置和标度因数随温度变化</td>
+</tr>
+</tbody>
+</table>
+<p>长时间纯 IMU 积分会产生误差漂移，必须与 GNSS、LiDAR 等绝对定位传感器融合以修正累积误差。</p>
+<h3 id="53-imu">5.3 IMU 等级对比</h3>
+<table>
+<thead>
+<tr>
+<th>等级</th>
+<th>典型用途</th>
+<th>陀螺仪零偏稳定性</th>
+<th>加速度计零偏稳定性</th>
+<th>参考价格</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>消费级（Consumer）</td>
+<td>手机、玩具</td>
+<td>10–1000 °/h</td>
+<td>1–10 mg</td>
+<td>&lt; ¥100</td>
+</tr>
+<tr>
+<td>工业级（Industrial）</td>
+<td>ADAS、无人机</td>
+<td>1–10 °/h</td>
+<td>0.1–1 mg</td>
+<td>¥1,000–10,000</td>
+</tr>
+<tr>
+<td>战术级（Tactical）</td>
+<td>无人驾驶、测量</td>
+<td>0.1–1 °/h</td>
+<td>0.01–0.1 mg</td>
+<td>¥10,000–100,000</td>
+</tr>
+<tr>
+<td>导航级（Navigation）</td>
+<td>高端自动驾驶</td>
+<td>0.001–0.1 °/h</td>
+<td>&lt; 0.01 mg</td>
+<td>¥100,000–500,000</td>
+</tr>
+<tr>
+<td>惯导级（Inertial Navigation）</td>
+<td>航空/航天</td>
+<td>&lt; 0.001 °/h</td>
+<td>&lt; 0.001 mg</td>
+<td>&gt; ¥500,000</td>
+</tr>
+</tbody>
+</table>
+<h3 id="54-mems-imu-vs-fog">5.4 MEMS IMU vs 光纤陀螺（FOG）</h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>MEMS IMU</th>
+<th>光纤陀螺（FOG）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原理</td>
+<td>微机电振动质量块</td>
+<td>Sagnac 光干涉效应</td>
+</tr>
+<tr>
+<td>精度</td>
+<td>工业/战术级</td>
+<td>导航/惯导级</td>
+</tr>
+<tr>
+<td>体积与重量</td>
+<td>极小（cm³ 量级）</td>
+<td>较大（dm³ 量级）</td>
+</tr>
+<tr>
+<td>成本</td>
+<td>低（¥百–万）</td>
+<td>高（¥十万–百万）</td>
+</tr>
+<tr>
+<td>量产适用性</td>
+<td>高，已大量前装</td>
+<td>低，限高端测量车</td>
+</tr>
+<tr>
+<td>代表产品</td>
+<td>Bosch BMI088，Analog Devices ADIS16470</td>
+<td>iXblue ATLANS，诺瓦泰 SPAN</td>
+</tr>
+</tbody>
+</table>
+<h3 id="55">5.5 预积分理论基础</h3>
+<p>在视觉惯性里程计（VIO）和激光惯性里程计（LIO）中，<strong>IMU 预积分（Pre-integration）</strong>技术将两帧关键帧之间的 IMU 测量量积分为相对运动约束，避免每次迭代重复积分，显著提高优化效率。Forster 等人于 2015 年提出的 Manifold 预积分理论已成为现代 SLAM 系统的标准组件（如 VINS-Mono、LIO-SAM）。</p>
+<hr />
+<h2 id="gnssgps">六、GNSS/GPS 定位</h2>
+<h3 id="61">6.1 主要卫星导航系统</h3>
+<table>
+<thead>
+<tr>
+<th>系统</th>
+<th>国家/地区</th>
+<th>卫星数</th>
+<th>频段</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPS（全球定位系统）</td>
+<td>美国</td>
+<td>31 颗</td>
+<td>L1/L2/L5</td>
+<td>最成熟，全球覆盖</td>
+</tr>
+<tr>
+<td>GLONASS</td>
+<td>俄罗斯</td>
+<td>24 颗</td>
+<td>L1/L2</td>
+<td>高纬度地区优势</td>
+</tr>
+<tr>
+<td>BeiDou（北斗）</td>
+<td>中国</td>
+<td>45 颗（三代）</td>
+<td>B1/B2/B3</td>
+<td>亚太精度高，B1C/B2a 现代化</td>
+</tr>
+<tr>
+<td>Galileo</td>
+<td>欧盟</td>
+<td>30 颗（目标）</td>
+<td>E1/E5</td>
+<td>民用精度最高，开放服务</td>
+</tr>
+</tbody>
+</table>
+<p>多系统融合（GPS+GLONASS+BeiDou+Galileo）可增加可见卫星数量，改善遮挡场景下的可用性。</p>
+<h3 id="62">6.2 定位精度等级</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>原理</th>
+<th>典型精度</th>
+<th>实时性</th>
+<th>应用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单点定位（SPP）</td>
+<td>伪距测量</td>
+<td>5–10 m（水平）</td>
+<td>实时</td>
+<td>导航地图</td>
+</tr>
+<tr>
+<td>SBAS（差分）</td>
+<td>广域差分（如 WAAS）</td>
+<td>1–3 m</td>
+<td>实时</td>
+<td>航空、精密农业</td>
+</tr>
+<tr>
+<td>RTK（实时动态差分）</td>
+<td>载波相位差分，需基站</td>
+<td>1–3 cm</td>
+<td>实时（&lt; 1 s）</td>
+<td>高精定位，L3+ 自动驾驶</td>
+</tr>
+<tr>
+<td>PPP（精密单点定位）</td>
+<td>精密星历+钟差</td>
+<td>5–10 cm</td>
+<td>收敛需 10–30 min</td>
+<td>低依赖基站场景</td>
+</tr>
+<tr>
+<td>PPP-RTK</td>
+<td>PPP + 区域增强</td>
+<td>1–5 cm</td>
+<td>快速收敛（&lt; 1 min）</td>
+<td>新一代高精定位</td>
+</tr>
+</tbody>
+</table>
+<h3 id="63-gnssimu">6.3 GNSS+IMU 紧耦合融合</h3>
+<p>单独 GNSS 在城市峡谷、隧道、立交桥等场景频繁失锁，单独 IMU 长时间漂移。<strong>紧耦合（Tight Coupling）融合</strong>将 GNSS 原始伪距/载波相位测量值直接输入卡尔曼滤波器，与 IMU 预积分量共同优化，具有以下优势：</p>
+<ul>
+<li><strong>少于 4 颗可见卫星时仍可工作</strong>（松耦合需 ≥ 4 颗）</li>
+<li><strong>GNSS 失锁时 IMU 短时间惯导推算维持连续性</strong></li>
+<li><strong>高频姿态输出（100–500 Hz）</strong>，满足控制系统需求</li>
+</ul>
+<h3 id="64-gnssins">6.4 典型车载 GNSS/INS 产品</h3>
+<table>
+<thead>
+<tr>
+<th>厂商</th>
+<th>型号</th>
+<th>精度（RTK）</th>
+<th>IMU 等级</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>u-blox</td>
+<td>ZED-F9P</td>
+<td>1 cm（水平）</td>
+<td>外接</td>
+<td>低成本 RTK，广泛用于测试车</td>
+</tr>
+<tr>
+<td>天宝（Trimble）</td>
+<td>BX992</td>
+<td>1 cm</td>
+<td>外接</td>
+<td>专业测量级</td>
+</tr>
+<tr>
+<td>华测导航</td>
+<td>CGI-610</td>
+<td>2 cm</td>
+<td>战术级 MEMS</td>
+<td>国产高性价比方案</td>
+</tr>
+<tr>
+<td>诺瓦泰（NovAtel/Hexagon）</td>
+<td>SPAN CPT7</td>
+<td>2 cm</td>
+<td>战术级</td>
+<td>工业标准，精度可靠</td>
+</tr>
+<tr>
+<td>博世</td>
+<td>SMI130 + GNSS</td>
+<td>1–5 m</td>
+<td>消费级</td>
+<td>前装量产 ADAS</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_3">七、传感器选型指导</h2>
+<h3 id="71">7.1 不同自动驾驶等级典型传感器配置</h3>
+<p><strong>L2+ 典型配置（摄像头主导）</strong>：以成本优先、辅助驾驶为目标。</p>
+<table>
+<thead>
+<tr>
+<th>传感器</th>
+<th>数量</th>
+<th>配置说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前视摄像头</td>
+<td>1–3</td>
+<td>单目或三目前视，1.2–5 MP</td>
+</tr>
+<tr>
+<td>前向长程毫米波雷达</td>
+<td>1</td>
+<td>LRR，用于 ACC/AEB</td>
+</tr>
+<tr>
+<td>角雷达（SRR）</td>
+<td>4</td>
+<td>四角，BSD/DOW/RCTA</td>
+</tr>
+<tr>
+<td>超声波</td>
+<td>8–12</td>
+<td>前后保险杠，泊车辅助</td>
+</tr>
+<tr>
+<td>GNSS+IMU</td>
+<td>1</td>
+<td>消费级，车道级定位</td>
+</tr>
+</tbody>
+</table>
+<p>代表车型：特斯拉 Model 3/Y（FSD HW3，全纯视觉方案去除雷达），大众 IQ.Drive，比亚迪 DiPilot 100。</p>
+<p><strong>L4 Robotaxi 典型配置（全传感器融合）</strong>：以安全冗余、全天候能力为目标，成本通常 10–50 万元。</p>
+<table>
+<thead>
+<tr>
+<th>传感器</th>
+<th>数量</th>
+<th>配置说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>顶置旋转/混合固态 LiDAR</td>
+<td>1–2</td>
+<td>360° 主激光雷达，128 线等效</td>
+</tr>
+<tr>
+<td>前/侧补盲 LiDAR</td>
+<td>2–4</td>
+<td>短距固态 LiDAR，覆盖盲区</td>
+</tr>
+<tr>
+<td>前视摄像头（三目）</td>
+<td>3</td>
+<td>长/标准/广角分工</td>
+</tr>
+<tr>
+<td>环视鱼眼摄像头</td>
+<td>4–6</td>
+<td>环视 AVM + 侧方感知</td>
+</tr>
+<tr>
+<td>前向长程毫米波雷达</td>
+<td>1</td>
+<td>LRR，冗余感知</td>
+</tr>
+<tr>
+<td>角雷达</td>
+<td>4–6</td>
+<td>SRR/MRR，全向感知</td>
+</tr>
+<tr>
+<td>超声波</td>
+<td>12+</td>
+<td>近场补盲</td>
+</tr>
+<tr>
+<td>高精 GNSS+INS</td>
+<td>1</td>
+<td>RTK 厘米级，战术级 IMU</td>
+</tr>
+</tbody>
+</table>
+<p>代表车型：Waymo One（基于 Jaguar I-PACE），百度 Apollo RT6，小马智行 L4 测试车。</p>
+<h3 id="72">7.2 成本与能力权衡</h3>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>传感器套件参考成本</th>
+<th>感知能力</th>
+<th>适用等级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>超声波 + 单摄像头</td>
+<td>¥500–2,000</td>
+<td>泊车辅助、LDW</td>
+<td>L1</td>
+</tr>
+<tr>
+<td>摄像头主导（多摄 + 前向雷达）</td>
+<td>¥3,000–10,000</td>
+<td>ACC/AEB/LKA</td>
+<td>L2–L2+</td>
+</tr>
+<tr>
+<td>摄像头 + 多雷达 + 超声波</td>
+<td>¥10,000–30,000</td>
+<td>高速 NOA/城区辅助</td>
+<td>L2+–L3</td>
+</tr>
+<tr>
+<td>LiDAR + Camera + Radar 全配</td>
+<td>¥100,000–500,000</td>
+<td>全天候自动驾驶</td>
+<td>L4</td>
+</tr>
+</tbody>
+</table>
+<h3 id="73">7.3 恶劣天气下各传感器表现对比</h3>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>摄像头</th>
+<th>LiDAR</th>
+<th>毫米波雷达</th>
+<th>超声波</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>夜间无路灯</td>
+<td>差（需 HDR/红外）</td>
+<td>良好</td>
+<td>良好</td>
+<td>良好</td>
+</tr>
+<tr>
+<td>小雨（&lt; 10 mm/h）</td>
+<td>中等（水雾影响）</td>
+<td>中等（点云稀疏）</td>
+<td>良好</td>
+<td>良好</td>
+</tr>
+<tr>
+<td>大雨（&gt; 25 mm/h）</td>
+<td>差（严重遮挡）</td>
+<td>差（散射衰减大）</td>
+<td>良好</td>
+<td>中等</td>
+</tr>
+<tr>
+<td>大雾（能见度 &lt; 50 m）</td>
+<td>差</td>
+<td>差</td>
+<td>良好</td>
+<td>良好</td>
+</tr>
+<tr>
+<td>降雪</td>
+<td>差（雪花遮挡）</td>
+<td>差（雪花散射）</td>
+<td>良好</td>
+<td>差（积雪吸声）</td>
+</tr>
+<tr>
+<td>强烈逆光</td>
+<td>差（过曝）</td>
+<td>良好</td>
+<td>良好</td>
+<td>良好</td>
+</tr>
+<tr>
+<td>隧道出入口</td>
+<td>差（明暗切换）</td>
+<td>良好</td>
+<td>良好</td>
+<td>良好</td>
+</tr>
+<tr>
+<td>玻璃/镜面</td>
+<td>差（误检）</td>
+<td>差（镜面反射）</td>
+<td>中等</td>
+<td>差（镜面反射）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>结论</strong>：毫米波雷达在各类恶劣天气中表现最稳定，是全天候感知的"最后底线"；LiDAR 和摄像头在晴天/轻天气下感知能力最强但受恶劣天气影响较大；超声波在低速近距离场景可靠性高。多传感器冗余融合是实现全天候 L4 自动驾驶的必要条件。</p>
+<hr />
+<h2 id="_4">参考资料</h2>
+<ol>
+<li>Velodyne Lidar. <em>HDL-64E LiDAR Sensor Product Description</em>, 2019.</li>
+<li>Mahon, I., Sirault, X., Saleem, W. et al. "A Comparison of 3D Lidar Technologies for Near-Range Obstacle Detection". <em>Sensors</em>, 2021.</li>
+<li>Bilik, I., Longman, O., Villeval, S. et al. "The Rise of Radar for Autonomous Vehicles". <em>IEEE Signal Processing Magazine</em>, 2019.</li>
+<li>Geiger, A., Lenz, P., Urtasun, R. "Are we ready for Autonomous Driving? The KITTI Vision Benchmark Suite". <em>CVPR</em>, 2012.</li>
+<li>Forster, C., Carlone, L., Dellaert, F., Scaramuzza, D. "IMU Preintegration on Manifold for Efficient Visual-Inertial Maximum-a-Posteriori Estimation". <em>RSS</em>, 2015.</li>
+<li>徐贵力, 毛志华. 《卫星导航原理与应用》. 国防工业出版社, 2020.</li>
 </ol>
 
 

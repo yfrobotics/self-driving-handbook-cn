@@ -1,0 +1,3403 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="自动驾驶历史与技术">
+      
+      
+        <meta name="author" content="YFRL">
+      
+      
+        <link rel="canonical" href="https://yfrobotics.github.io/self-driving-handbook-cn/algorithm/sensor_fusion/">
+      
+      
+        <link rel="prev" href="../laser_processing/">
+      
+      
+        <link rel="next" href="../occupancy/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>传感器融合 - 自动驾驶指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,700,700i%7CFira+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Fira Sans";--md-code-font:"Fira Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../_static/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="自动驾驶指南" class="md-header__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            自动驾驶指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              传感器融合
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yfrobotics/self-driving-handbook-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yfrobotics/self-driving-handbook-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="自动驾驶指南" class="md-nav__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    自动驾驶指南
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yfrobotics/self-driving-handbook-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yfrobotics/self-driving-handbook-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶技术指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 概述
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1. 概述
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一章：概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/define/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶系统定义
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/category/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶等级分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶发展历史
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 系统
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. 系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二章：系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/vehicle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶车辆系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/v2x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车联网（V2X）技术详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真平台与数据集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hdmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高精地图（HD Map）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人机交互系统（HMI）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统安全保障
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶测试体系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/cybersecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶网络安全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/regulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    政策与法律法规
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 硬件
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. 硬件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三章：硬件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/hw_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    硬件总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/ccu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中央计算单元 (CCU / 车载AI芯片)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/drive_by_wire/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线控系统（Drive-by-Wire）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/communication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车载通信系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知传感器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/camera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    视觉传感器（摄像头）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. 算法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4. 算法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第四章：核心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sw_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统软件框架总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图像感知与处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../laser_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    激光点云数据处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器融合
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器融合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 开篇介绍
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 为什么需要传感器融合
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 为什么需要传感器融合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 各传感器的优缺点分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 互补性原则
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 冗余性原则
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-fusion-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 融合层次（Fusion Levels）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 融合层次（Fusion Levels）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-early-fusion-raw-data-fusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 早期融合（Early Fusion / Raw Data Fusion）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-middle-fusion-feature-fusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 中期融合（Middle Fusion / Feature Fusion）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-late-fusion-object-level-fusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 晚期融合（Late Fusion / Object-Level Fusion）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 三级融合对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 经典卡尔曼滤波融合
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 经典卡尔曼滤波融合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 状态向量定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 预测步骤（Prediction）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 更新步骤（Update）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-ekf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 扩展卡尔曼滤波（EKF）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-ukf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 无迹卡尔曼滤波（UKF）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-occupancy-grid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 占用栅格地图融合（Occupancy Grid）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 占用栅格地图融合（Occupancy Grid）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-dempster-shafer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Dempster-Shafer 证据理论
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 贝叶斯更新
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-dogma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 动态占用栅格（DOGMa）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 多传感器联合概率地图更新
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 基于深度学习的融合
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 基于深度学习的融合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-bevfusionmit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 BEVFusion（MIT / 北京大学）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-transfusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 TransFusion（香港大学）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-futr3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 FUTR3D
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-centerfusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 CenterFusion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 跨模态特征投影
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-temporal-fusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 时序融合（Temporal Fusion）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 时序融合（Temporal Fusion）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 多帧点云累积
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-bev" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 BEV 特征时序融合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 障碍物历史轨迹融合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 时序融合解决的核心问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-mot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 目标级融合与多目标追踪（MOT）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 目标级融合与多目标追踪（MOT）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 检测-追踪关联（匈牙利算法）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 代价度量方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 跨传感器检测结果关联
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 追踪器状态管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5 主流开源追踪器
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 融合系统标定
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 融合系统标定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 相机-LiDAR 外参标定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-radar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 相机-Radar 标定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 时间同步
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-online-calibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 在线标定（Online Calibration）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../occupancy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    占用网络（Occupancy Network）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localisation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    地图与定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../path_planning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    路径规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prediction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行为预测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../decision_making/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    决策 (Decision Making)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    控制算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../end_to_end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端自动驾驶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶ML数据管道
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nlp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自然语言处理与大语言模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 实例
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    5. 实例
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第五章：实例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/apollo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    百度 Apollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/waymo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waymo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/tesla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla FSD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/chinese_players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国自动驾驶企业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/robotaxi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robotaxi：自动驾驶商业化的主战场
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 开篇介绍
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 为什么需要传感器融合
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 为什么需要传感器融合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 各传感器的优缺点分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 互补性原则
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 冗余性原则
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-fusion-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 融合层次（Fusion Levels）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 融合层次（Fusion Levels）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-early-fusion-raw-data-fusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 早期融合（Early Fusion / Raw Data Fusion）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-middle-fusion-feature-fusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 中期融合（Middle Fusion / Feature Fusion）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-late-fusion-object-level-fusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 晚期融合（Late Fusion / Object-Level Fusion）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 三级融合对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 经典卡尔曼滤波融合
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 经典卡尔曼滤波融合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 状态向量定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 预测步骤（Prediction）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 更新步骤（Update）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-ekf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 扩展卡尔曼滤波（EKF）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-ukf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 无迹卡尔曼滤波（UKF）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-occupancy-grid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 占用栅格地图融合（Occupancy Grid）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 占用栅格地图融合（Occupancy Grid）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-dempster-shafer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Dempster-Shafer 证据理论
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 贝叶斯更新
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-dogma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 动态占用栅格（DOGMa）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 多传感器联合概率地图更新
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 基于深度学习的融合
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 基于深度学习的融合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-bevfusionmit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 BEVFusion（MIT / 北京大学）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-transfusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 TransFusion（香港大学）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-futr3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 FUTR3D
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-centerfusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 CenterFusion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 跨模态特征投影
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-temporal-fusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 时序融合（Temporal Fusion）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 时序融合（Temporal Fusion）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 多帧点云累积
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-bev" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 BEV 特征时序融合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 障碍物历史轨迹融合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 时序融合解决的核心问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-mot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 目标级融合与多目标追踪（MOT）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 目标级融合与多目标追踪（MOT）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 检测-追踪关联（匈牙利算法）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 代价度量方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 跨传感器检测结果关联
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 追踪器状态管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5 主流开源追踪器
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 融合系统标定
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 融合系统标定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 相机-LiDAR 外参标定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-radar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 相机-Radar 标定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 时间同步
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-online-calibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 在线标定（Online Calibration）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">传感器融合</h1>
+<h2 id="1">1. 开篇介绍</h2>
+<p>自动驾驶系统依赖多种传感器来感知周围环境，包括激光雷达（LiDAR）、摄像头（Camera）、毫米波雷达（Radar）以及超声波传感器（Ultrasonic）。然而，<strong>单一传感器在面对真实世界复杂场景时往往存在明显的局限性</strong>：LiDAR 在雨雾天气下点云质量急剧下降；摄像头在夜间或强逆光条件下几乎失效；毫米波雷达虽然在极端天气下表现稳健，但分辨率低、无法提供语义信息；超声波传感器探测距离极短，仅适用于低速泊车场景。</p>
+<p><strong>传感器融合（Sensor Fusion）</strong> 的核心思想是将来自多个传感器的信息有机结合，使得系统能够获得比任何单一传感器更加完整、可靠的环境感知能力。通过融合，可以有效解决"<strong>感知盲区</strong>"问题——即单个传感器因物理原理、天气条件、遮挡关系等因素导致的感知失效区域。</p>
+<p>多传感器融合是自动驾驶系统实现高可靠性的基础技术之一，也是 L3 级及以上自动驾驶系统的功能安全（Functional Safety）要求中明确规定的技术手段。</p>
+<hr />
+<h2 id="2">2. 为什么需要传感器融合</h2>
+<h3 id="21">2.1 各传感器的优缺点分析</h3>
+<p>下表总结了主流传感器在不同场景下的表现：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">场景 / 传感器</th>
+<th style="text-align: center;">LiDAR</th>
+<th style="text-align: center;">摄像头 (Camera)</th>
+<th style="text-align: center;">毫米波雷达 (Radar)</th>
+<th style="text-align: center;">超声波 (Ultrasonic)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">正常天气白天</td>
+<td style="text-align: center;">优秀</td>
+<td style="text-align: center;">优秀</td>
+<td style="text-align: center;">良好</td>
+<td style="text-align: center;">仅近距离</td>
+</tr>
+<tr>
+<td style="text-align: center;">雨天</td>
+<td style="text-align: center;">较差（水滴散射）</td>
+<td style="text-align: center;">较差（雨滴遮挡）</td>
+<td style="text-align: center;">优秀</td>
+<td style="text-align: center;">受影响较小</td>
+</tr>
+<tr>
+<td style="text-align: center;">浓雾天气</td>
+<td style="text-align: center;">差（激光散射严重）</td>
+<td style="text-align: center;">差</td>
+<td style="text-align: center;">优秀</td>
+<td style="text-align: center;">较差</td>
+</tr>
+<tr>
+<td style="text-align: center;">夜间弱光</td>
+<td style="text-align: center;">优秀（主动发射）</td>
+<td style="text-align: center;">差（依赖外部光源）</td>
+<td style="text-align: center;">优秀</td>
+<td style="text-align: center;">不受影响</td>
+</tr>
+<tr>
+<td style="text-align: center;">遮挡场景</td>
+<td style="text-align: center;">较差（无法穿透）</td>
+<td style="text-align: center;">差</td>
+<td style="text-align: center;">一定穿透能力</td>
+<td style="text-align: center;">差</td>
+</tr>
+<tr>
+<td style="text-align: center;">测距精度</td>
+<td style="text-align: center;">极高（厘米级）</td>
+<td style="text-align: center;">差（需额外算法）</td>
+<td style="text-align: center;">良好（分米级）</td>
+<td style="text-align: center;">较高（近距离）</td>
+</tr>
+<tr>
+<td style="text-align: center;">语义理解</td>
+<td style="text-align: center;">无</td>
+<td style="text-align: center;">极强</td>
+<td style="text-align: center;">无</td>
+<td style="text-align: center;">无</td>
+</tr>
+<tr>
+<td style="text-align: center;">速度测量</td>
+<td style="text-align: center;">需多帧估计</td>
+<td style="text-align: center;">需光流算法</td>
+<td style="text-align: center;">直接测量（多普勒）</td>
+<td style="text-align: center;">无</td>
+</tr>
+<tr>
+<td style="text-align: center;">成本</td>
+<td style="text-align: center;">高</td>
+<td style="text-align: center;">低</td>
+<td style="text-align: center;">中</td>
+<td style="text-align: center;">低</td>
+</tr>
+<tr>
+<td style="text-align: center;">分辨率</td>
+<td style="text-align: center;">中（线束数决定）</td>
+<td style="text-align: center;">高</td>
+<td style="text-align: center;">低（角分辨率差）</td>
+<td style="text-align: center;">低</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22">2.2 互补性原则</h3>
+<p>不同传感器在物理原理上天然互补，融合后可以形成"1+1&gt;2"的效果：</p>
+<ul>
+<li><strong>LiDAR + Camera</strong>：LiDAR 提供精确的三维空间坐标和距离信息，但没有颜色和纹理语义；Camera 提供丰富的颜色、纹理、语义信息，但无法直接获得精确深度。两者融合可以实现<strong>带语义的精确三维感知</strong>。</li>
+<li><strong>LiDAR + Radar</strong>：LiDAR 提供精确点云形状，Radar 提供直接速度测量（多普勒效应）和极端天气下的稳定性，融合后在恶劣天气下仍能保持较好的目标检测与速度估计能力。</li>
+<li><strong>Camera + Radar</strong>：成本最低的融合方案，Radar 补充深度和速度信息，Camera 提供语义，常见于 ADAS 系统（如特斯拉早期方案）。</li>
+</ul>
+<h3 id="23">2.3 冗余性原则</h3>
+<p>除互补性外，多传感器还提供了<strong>系统级冗余</strong>：</p>
+<p>当任意一个传感器发生故障、遮挡或信号质量下降时，系统可以<strong>降级运行（Graceful Degradation）</strong>，依靠其他传感器维持基本感知能力，而不是完全失效。这对于满足 ISO 26262 功能安全标准至关重要。</p>
+<p>例如，当 LiDAR 因强日光干扰或雨水积尘导致点云质量下降时，Radar 和 Camera 的融合结果可以保证系统继续以较低速度安全行驶，直到 LiDAR 恢复正常工作。</p>
+<hr />
+<h2 id="3-fusion-levels">3. 融合层次（Fusion Levels）</h2>
+<p>根据融合发生的信息层次，传感器融合可以分为三个主要层次：</p>
+<h3 id="31-early-fusion-raw-data-fusion">3.1 早期融合（Early Fusion / Raw Data Fusion）</h3>
+<p><strong>定义</strong>：将各传感器的<strong>原始数据</strong>在处理管线最前端直接融合，之后送入统一的感知算法进行处理。</p>
+<p><strong>典型实现</strong>：将激光雷达点云与摄像头图像进行<strong>像素级对齐</strong>——将点云投影到图像平面，为每个像素赋予深度值；或反向将图像特征提升到三维点云空间。</p>
+<p><strong>优点</strong>：
+- 信息损失最小，保留了所有原始传感器信息
+- 模型可以从融合后的原始数据中学习更丰富的跨模态特征</p>
+<p><strong>缺点</strong>：
+- 对传感器标定精度要求极高（亚毫米级外参误差会导致对齐偏差）
+- 计算量巨大，对实时处理系统压力较大
+- 一个传感器故障可能影响整个感知流程</p>
+<h3 id="32-middle-fusion-feature-fusion">3.2 中期融合（Middle Fusion / Feature Fusion）</h3>
+<p><strong>定义</strong>：各传感器<strong>独立提取特征</strong>后，在特征空间进行融合，再送入下游检测/分割头。</p>
+<p><strong>典型实现</strong>：各传感器分别提取 BEV（Bird's Eye View，鸟瞰视角）特征图，然后在 BEV 空间进行通道维度拼接（Concatenation）或注意力融合。</p>
+<p><strong>优点</strong>：
+- 在精度与计算效率之间取得较好平衡
+- 各传感器特征提取可以并行进行，适合多核/多加速器架构
+- 目前学术界和工业界主流的融合方案</p>
+<p><strong>缺点</strong>：
+- 特征对齐需要良好的 BEV 投影方法（LSS、BEVFormer、GKT 等）
+- 异构特征（点云稀疏特征 vs. 图像稠密特征）融合存在模态间鸿沟</p>
+<h3 id="33-late-fusion-object-level-fusion">3.3 晚期融合（Late Fusion / Object-Level Fusion）</h3>
+<p><strong>定义</strong>：各传感器<strong>独立完成检测</strong>，输出目标列表（Bounding Box + 属性），再在目标级别进行关联与融合。</p>
+<p><strong>典型实现</strong>：LiDAR 检测器输出 3D 检测框，Camera 检测器输出 2D 检测框，通过投影关系或特征距离进行匹配，合并得到最终目标列表。</p>
+<p><strong>优点</strong>：
+- 实现简单，各传感器感知模块相互独立，易于维护和升级
+- 单个传感器故障不影响其他传感器的检测结果
+- 工程落地成熟度高</p>
+<p><strong>缺点</strong>：
+- 在目标级融合前已损失大量原始特征信息
+- 对困难目标（遮挡、小目标）的融合效果有限
+- 多次独立检测存在重复计算</p>
+<h3 id="34">3.4 三级融合对比</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">融合层次</th>
+<th style="text-align: center;">信息损失</th>
+<th style="text-align: center;">计算量</th>
+<th style="text-align: center;">容错性</th>
+<th style="text-align: center;">实现难度</th>
+<th style="text-align: center;">代表方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">早期融合</td>
+<td style="text-align: center;">最小</td>
+<td style="text-align: center;">最大</td>
+<td style="text-align: center;">较低</td>
+<td style="text-align: center;">高</td>
+<td style="text-align: center;">PointPainting, MVX-Net</td>
+</tr>
+<tr>
+<td style="text-align: center;">中期融合</td>
+<td style="text-align: center;">中等</td>
+<td style="text-align: center;">中等</td>
+<td style="text-align: center;">中等</td>
+<td style="text-align: center;">中高</td>
+<td style="text-align: center;">BEVFusion, TransFusion</td>
+</tr>
+<tr>
+<td style="text-align: center;">晚期融合</td>
+<td style="text-align: center;">最大</td>
+<td style="text-align: center;">最小</td>
+<td style="text-align: center;">最高</td>
+<td style="text-align: center;">低</td>
+<td style="text-align: center;">CenterFusion（部分）, 传统 ADAS</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4">4. 经典卡尔曼滤波融合</h2>
+<p>卡尔曼滤波（Kalman Filter，KF）是传感器融合领域最经典的数学工具，广泛用于目标状态估计与多传感器数据融合。</p>
+<h3 id="41">4.1 状态向量定义</h3>
+<p>对于一个在二维平面运动的目标，定义状态向量为：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathbf{x} = [x, y, v_x, v_y]^T</div>
+<script type="math/tex; mode=display">\mathbf{x} = [x, y, v_x, v_y]^T</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">x, y</span><script type="math/tex">x, y</script></span> 为目标位置，<span class="arithmatex"><span class="MathJax_Preview">v_x, v_y</span><script type="math/tex">v_x, v_y</script></span> 为目标速度。若需要更精确的建模，可以扩展为：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathbf{x} = [x, y, z, v_x, v_y, v_z, a_x, a_y]^T</div>
+<script type="math/tex; mode=display">\mathbf{x} = [x, y, z, v_x, v_y, v_z, a_x, a_y]^T</script>
+</div>
+<h3 id="42-prediction">4.2 预测步骤（Prediction）</h3>
+<p>给定状态转移矩阵 <span class="arithmatex"><span class="MathJax_Preview">\mathbf{F}</span><script type="math/tex">\mathbf{F}</script></span>（基于匀速运动模型）和过程噪声协方差矩阵 <span class="arithmatex"><span class="MathJax_Preview">\mathbf{Q}</span><script type="math/tex">\mathbf{Q}</script></span>，预测下一时刻的状态均值与协方差：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\hat{\mathbf{x}}_{k|k-1} = \mathbf{F}\hat{\mathbf{x}}_{k-1|k-1}</div>
+<script type="math/tex; mode=display">\hat{\mathbf{x}}_{k|k-1} = \mathbf{F}\hat{\mathbf{x}}_{k-1|k-1}</script>
+</div>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathbf{P}_{k|k-1} = \mathbf{F}\mathbf{P}_{k-1|k-1}\mathbf{F}^T + \mathbf{Q}</div>
+<script type="math/tex; mode=display">\mathbf{P}_{k|k-1} = \mathbf{F}\mathbf{P}_{k-1|k-1}\mathbf{F}^T + \mathbf{Q}</script>
+</div>
+<p>对于匀速运动模型，状态转移矩阵为：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathbf{F} = \begin{bmatrix} 1 &amp; 0 &amp; \Delta t &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; \Delta t \\ 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}</div>
+<script type="math/tex; mode=display">\mathbf{F} = \begin{bmatrix} 1 & 0 & \Delta t & 0 \\ 0 & 1 & 0 & \Delta t \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}</script>
+</div>
+<h3 id="43-update">4.3 更新步骤（Update）</h3>
+<p>收到传感器观测值 <span class="arithmatex"><span class="MathJax_Preview">\mathbf{z}_k</span><script type="math/tex">\mathbf{z}_k</script></span> 后，计算卡尔曼增益（Kalman Gain）：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathbf{K}_k = \mathbf{P}_{k|k-1}\mathbf{H}^T\left(\mathbf{H}\mathbf{P}_{k|k-1}\mathbf{H}^T + \mathbf{R}\right)^{-1}</div>
+<script type="math/tex; mode=display">\mathbf{K}_k = \mathbf{P}_{k|k-1}\mathbf{H}^T\left(\mathbf{H}\mathbf{P}_{k|k-1}\mathbf{H}^T + \mathbf{R}\right)^{-1}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\mathbf{H}</span><script type="math/tex">\mathbf{H}</script></span> 为观测矩阵，<span class="arithmatex"><span class="MathJax_Preview">\mathbf{R}</span><script type="math/tex">\mathbf{R}</script></span> 为观测噪声协方差矩阵。</p>
+<p><strong>状态更新</strong>：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\hat{\mathbf{x}}_{k|k} = \hat{\mathbf{x}}_{k|k-1} + \mathbf{K}_k\left(\mathbf{z}_k - \mathbf{H}\hat{\mathbf{x}}_{k|k-1}\right)</div>
+<script type="math/tex; mode=display">\hat{\mathbf{x}}_{k|k} = \hat{\mathbf{x}}_{k|k-1} + \mathbf{K}_k\left(\mathbf{z}_k - \mathbf{H}\hat{\mathbf{x}}_{k|k-1}\right)</script>
+</div>
+<p><strong>协方差更新</strong>：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathbf{P}_{k|k} = (\mathbf{I} - \mathbf{K}_k\mathbf{H})\mathbf{P}_{k|k-1}</div>
+<script type="math/tex; mode=display">\mathbf{P}_{k|k} = (\mathbf{I} - \mathbf{K}_k\mathbf{H})\mathbf{P}_{k|k-1}</script>
+</div>
+<p>创新量（Innovation）<span class="arithmatex"><span class="MathJax_Preview">\mathbf{z}_k - \mathbf{H}\hat{\mathbf{x}}_{k|k-1}</span><script type="math/tex">\mathbf{z}_k - \mathbf{H}\hat{\mathbf{x}}_{k|k-1}</script></span> 衡量了观测值与预测值之间的差异，卡尔曼增益 <span class="arithmatex"><span class="MathJax_Preview">\mathbf{K}_k</span><script type="math/tex">\mathbf{K}_k</script></span> 决定了对观测值的信任程度——当 <span class="arithmatex"><span class="MathJax_Preview">\mathbf{R}</span><script type="math/tex">\mathbf{R}</script></span> 很小（传感器很精确）时，<span class="arithmatex"><span class="MathJax_Preview">\mathbf{K}_k</span><script type="math/tex">\mathbf{K}_k</script></span> 较大，更新步骤更倾向于信任观测值。</p>
+<h3 id="44-ekf">4.4 扩展卡尔曼滤波（EKF）</h3>
+<p>标准卡尔曼滤波假设系统是线性的，但实际运动模型（如雷达的极坐标观测）往往是非线性的。<strong>扩展卡尔曼滤波（Extended Kalman Filter, EKF）</strong> 通过在当前估计点处进行<strong>一阶泰勒展开线性化</strong>来处理非线性问题：</p>
+<p>对于非线性状态方程 <span class="arithmatex"><span class="MathJax_Preview">\mathbf{x}_k = f(\mathbf{x}_{k-1}) + \mathbf{w}</span><script type="math/tex">\mathbf{x}_k = f(\mathbf{x}_{k-1}) + \mathbf{w}</script></span> 和观测方程 <span class="arithmatex"><span class="MathJax_Preview">\mathbf{z}_k = h(\mathbf{x}_k) + \mathbf{v}</span><script type="math/tex">\mathbf{z}_k = h(\mathbf{x}_k) + \mathbf{v}</script></span>，EKF 使用雅可比矩阵（Jacobian Matrix）代替线性系统中的 <span class="arithmatex"><span class="MathJax_Preview">\mathbf{F}</span><script type="math/tex">\mathbf{F}</script></span> 和 <span class="arithmatex"><span class="MathJax_Preview">\mathbf{H}</span><script type="math/tex">\mathbf{H}</script></span>：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathbf{F}_k = \left.\frac{\partial f}{\partial \mathbf{x}}\right|_{\hat{\mathbf{x}}_{k-1|k-1}}, \quad \mathbf{H}_k = \left.\frac{\partial h}{\partial \mathbf{x}}\right|_{\hat{\mathbf{x}}_{k|k-1}}</div>
+<script type="math/tex; mode=display">\mathbf{F}_k = \left.\frac{\partial f}{\partial \mathbf{x}}\right|_{\hat{\mathbf{x}}_{k-1|k-1}}, \quad \mathbf{H}_k = \left.\frac{\partial h}{\partial \mathbf{x}}\right|_{\hat{\mathbf{x}}_{k|k-1}}</script>
+</div>
+<p>EKF 广泛用于 LiDAR-IMU 融合（如 LOAM 类方法）和雷达-GPS 融合定位系统中。</p>
+<h3 id="45-ukf">4.5 无迹卡尔曼滤波（UKF）</h3>
+<p>EKF 的线性化会引入截断误差，在高度非线性系统中精度较差。<strong>无迹卡尔曼滤波（Unscented Kalman Filter, UKF）</strong> 采用确定性采样策略，通过一组精心选取的 <strong>Sigma 点</strong> 来捕捉状态分布的统计特性，无需计算雅可比矩阵：</p>
+<p>对于 <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 维状态向量，选取 <span class="arithmatex"><span class="MathJax_Preview">2n+1</span><script type="math/tex">2n+1</script></span> 个 Sigma 点：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\boldsymbol{\sigma}_0 = \hat{\mathbf{x}}, \quad \boldsymbol{\sigma}_i = \hat{\mathbf{x}} + \left(\sqrt{(n+\lambda)\mathbf{P}}\right)_i, \quad \boldsymbol{\sigma}_{n+i} = \hat{\mathbf{x}} - \left(\sqrt{(n+\lambda)\mathbf{P}}\right)_i</div>
+<script type="math/tex; mode=display">\boldsymbol{\sigma}_0 = \hat{\mathbf{x}}, \quad \boldsymbol{\sigma}_i = \hat{\mathbf{x}} + \left(\sqrt{(n+\lambda)\mathbf{P}}\right)_i, \quad \boldsymbol{\sigma}_{n+i} = \hat{\mathbf{x}} - \left(\sqrt{(n+\lambda)\mathbf{P}}\right)_i</script>
+</div>
+<p>将每个 Sigma 点通过非线性函数传播，加权求和得到均值和协方差的近似。UKF 能达到三阶精度（对高斯分布），比 EKF 的一阶精度更准确，且避免了雅可比矩阵的计算。</p>
+<hr />
+<h2 id="5-occupancy-grid">5. 占用栅格地图融合（Occupancy Grid）</h2>
+<p>占用栅格地图（Occupancy Grid Map）将环境离散化为均匀的栅格，每个栅格存储被障碍物占据的概率，是多传感器融合感知的重要表达形式。</p>
+<h3 id="51-dempster-shafer">5.1 Dempster-Shafer 证据理论</h3>
+<p>Dempster-Shafer（DS）证据理论是一种处理不确定性和不完整信息的框架，适用于多传感器融合场景。对于每个栅格，定义三种状态：</p>
+<ul>
+<li><strong>占据（Occupied）</strong>：栅格被障碍物占据</li>
+<li><strong>空闲（Free）</strong>：栅格是自由可通行区域</li>
+<li><strong>未知（Unknown）</strong>：信息不足，无法判断</li>
+</ul>
+<p>DS 理论使用以下量描述传感器的信念：</p>
+<ul>
+<li><strong>信念函数（Belief）</strong>：<span class="arithmatex"><span class="MathJax_Preview">Bel(A)</span><script type="math/tex">Bel(A)</script></span>，对命题 <span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 成立的最小确信度</li>
+<li><strong>似真函数（Plausibility）</strong>：<span class="arithmatex"><span class="MathJax_Preview">Pl(A)</span><script type="math/tex">Pl(A)</script></span>，对命题 <span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 成立的最大可能性</li>
+<li><strong>不确定性（Uncertainty）</strong>：<span class="arithmatex"><span class="MathJax_Preview">Pl(A) - Bel(A)</span><script type="math/tex">Pl(A) - Bel(A)</script></span>，表示信息的模糊程度</li>
+</ul>
+<p>多个传感器的证据通过 DS 组合规则（Dempster's Rule of Combination）融合。</p>
+<h3 id="52">5.2 贝叶斯更新</h3>
+<p>更常见的实现采用贝叶斯概率更新方式。对于每个栅格，维护其被占据的后验概率，在收到新的传感器观测 <span class="arithmatex"><span class="MathJax_Preview">z_t</span><script type="math/tex">z_t</script></span> 时进行贝叶斯更新：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">P(occ \mid z_{1:t}) \propto P(z_t \mid occ) \cdot P(occ \mid z_{1:t-1})</div>
+<script type="math/tex; mode=display">P(occ \mid z_{1:t}) \propto P(z_t \mid occ) \cdot P(occ \mid z_{1:t-1})</script>
+</div>
+<p>为了计算效率，通常使用<strong>对数奇数比（Log-Odds）</strong>形式：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">l_t = l_{t-1} + \log\frac{P(z_t \mid occ)}{P(z_t \mid free)}</div>
+<script type="math/tex; mode=display">l_t = l_{t-1} + \log\frac{P(z_t \mid occ)}{P(z_t \mid free)}</script>
+</div>
+<p>对数奇数比的加法操作比概率乘法在数值上更稳定，且避免了概率趋近于 0 或 1 时的数值问题。</p>
+<h3 id="53-dogma">5.3 动态占用栅格（DOGMa）</h3>
+<p>经典占用栅格假设环境是静态的，无法处理动态障碍物。<strong>动态占用栅格（Dynamic Occupancy Grid Map, DOGMa）</strong> 为每个栅格引入速度状态，通过粒子滤波或卡尔曼滤波追踪栅格的动态变化：</p>
+<p>每个栅格维护一个粒子集合 <span class="arithmatex"><span class="MathJax_Preview">\{(\mathbf{x}_i, \mathbf{v}_i, w_i)\}</span><script type="math/tex">\{(\mathbf{x}_i, \mathbf{v}_i, w_i)\}</script></span>，表示可能存在于该位置的目标的位置、速度和权重。通过时序更新和多传感器测量更新，可以同时估计静态环境结构和动态目标的速度场。</p>
+<h3 id="54">5.4 多传感器联合概率地图更新</h3>
+<p>当有多个传感器同时提供观测时，可以进行联合更新：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">l_t = l_{t-1} + \sum_{s \in \mathcal{S}} \log\frac{P(z_t^{(s)} \mid occ)}{P(z_t^{(s)} \mid free)}</div>
+<script type="math/tex; mode=display">l_t = l_{t-1} + \sum_{s \in \mathcal{S}} \log\frac{P(z_t^{(s)} \mid occ)}{P(z_t^{(s)} \mid free)}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\mathcal{S}</span><script type="math/tex">\mathcal{S}</script></span> 为所有传感器的集合。这要求各传感器的传感器模型（Sensor Model）准确描述其在占据和空闲栅格下产生观测的概率分布。</p>
+<hr />
+<h2 id="6">6. 基于深度学习的融合</h2>
+<p>近年来，深度学习方法极大地推动了传感器融合技术的发展，涌现出一批性能卓越的多模态融合网络。</p>
+<h3 id="61-bevfusionmit">6.1 BEVFusion（MIT / 北京大学）</h3>
+<p><strong>BEVFusion</strong> 是目前影响力最大的多模态融合框架之一，核心思想是将所有传感器的特征统一变换到 <strong>BEV（Bird's Eye View）空间</strong>后进行融合：</p>
+<ol>
+<li><strong>LiDAR 分支</strong>：使用 VoxelNet 类方法将点云体素化并提取 BEV 特征</li>
+<li><strong>Camera 分支</strong>：使用视锥变换（Lift-Splat-Shoot，LSS）将图像特征提升到 BEV 空间</li>
+<li><strong>BEV 特征融合</strong>：对 LiDAR BEV 和 Camera BEV 特征进行通道维度拼接（Concatenation），再通过卷积层融合</li>
+<li><strong>多任务输出头</strong>：同时输出 3D 目标检测、BEV 语义分割等任务结果</li>
+</ol>
+<p>BEVFusion 在 nuScenes 数据集上大幅超越了此前的单模态和融合方法，尤其是对于骑行者、行人等小目标的检测性能提升显著。</p>
+<h3 id="62-transfusion">6.2 TransFusion（香港大学）</h3>
+<p><strong>TransFusion</strong> 引入 Transformer 架构实现跨模态注意力融合：</p>
+<ol>
+<li>以 <strong>LiDAR 检测框作为查询（Query）</strong>，初始化目标候选</li>
+<li>利用 Transformer 的交叉注意力（Cross-Attention）机制，从<strong>图像特征（Key/Value）</strong> 中提取与每个候选目标相关的语义信息</li>
+<li>通过位置编码（Positional Encoding）建立 LiDAR 空间位置与图像特征位置的对应关系</li>
+</ol>
+<p>这种设计使得图像特征能够精确地补充 LiDAR 对应区域的颜色和纹理信息，对于提升远距离目标的分类精度尤为有效。</p>
+<h3 id="63-futr3d">6.3 FUTR3D</h3>
+<p><strong>FUTR3D</strong> 提出了一个统一的多传感器融合查询框架，支持 Camera、LiDAR、Radar 的<strong>任意组合</strong>输入：</p>
+<ul>
+<li>核心是一个模态无关的特征采样模块，无论输入何种传感器组合，均通过统一的可变形注意力（Deformable Attention）从各模态特征中采样</li>
+<li>这使得同一套模型可以在不同传感器配置下运行（例如测试阶段某传感器不可用时），具有良好的鲁棒性</li>
+</ul>
+<h3 id="64-centerfusion">6.4 CenterFusion</h3>
+<p><strong>CenterFusion</strong> 基于 CenterPoint 检测框架，设计了一套雷达-相机融合流程：</p>
+<ol>
+<li>使用 CenterPoint 在图像上检测目标中心点，生成 2D 检测结果</li>
+<li>通过将<strong>毫米波雷达点云</strong>投影到图像平面，与 2D 检测中心点进行关联</li>
+<li>将关联成功的雷达点的<strong>深度和速度信息</strong>作为额外特征，增强目标属性估计</li>
+</ol>
+<p>CenterFusion 在低成本传感器方案（无 LiDAR）下表现出色，适合量产 ADAS 系统。</p>
+<h3 id="65">6.5 跨模态特征投影</h3>
+<p>深度学习融合方法中常用的两种特征投影方向：</p>
+<p><strong>图像特征投影到 LiDAR 空间（深度补全）</strong>：</p>
+<p>通过稀疏 LiDAR 点云提供深度先验，结合图像上下文信息，使用深度补全网络（Depth Completion）将稀疏深度图补全为稠密深度图，从而将图像像素提升到三维空间。常见方法包括 S-D Fusion、NLSPN 等。</p>
+<p><strong>点云投影到图像空间（深度先验）</strong>：</p>
+<p>将 LiDAR 点云通过已知的相机内外参数投影到图像平面，生成深度先验图（Depth Prior Map）。图像特征提取网络可以利用这一先验获得更精确的深度感知能力，常见于 PointPainting、DeepFusion 等方法。</p>
+<hr />
+<h2 id="7-temporal-fusion">7. 时序融合（Temporal Fusion）</h2>
+<p>单帧传感器数据往往存在遮挡、稀疏等问题，利用时序信息进行融合可以显著提升感知质量。</p>
+<h3 id="71">7.1 多帧点云累积</h3>
+<p>将相邻多帧的 LiDAR 点云在补偿自车运动后叠加，可以有效增加点云密度：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathcal{P}_{acc} = \bigcup_{t=T-N+1}^{T} \mathbf{T}_{ego}^{t \to T} \cdot \mathcal{P}_t</div>
+<script type="math/tex; mode=display">\mathcal{P}_{acc} = \bigcup_{t=T-N+1}^{T} \mathbf{T}_{ego}^{t \to T} \cdot \mathcal{P}_t</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\mathbf{T}_{ego}^{t \to T}</span><script type="math/tex">\mathbf{T}_{ego}^{t \to T}</script></span> 为从时刻 <span class="arithmatex"><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> 到当前时刻 <span class="arithmatex"><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> 的自车运动变换矩阵（由 IMU/轮速计/GNSS 估计）。</p>
+<p>多帧累积后，原本稀疏的远距离点云变得更加稠密，对于 pedestrian（行人）等小目标的检测效果提升尤为明显。但对高速运动目标，需要精确的目标级运动补偿，否则会产生"鬼影"（Ghost Points）。</p>
+<h3 id="72-bev">7.2 BEV 特征时序融合</h3>
+<p><strong>BEVFormer</strong> 引入时间自注意力（Temporal Self-Attention），将历史帧的 BEV 特征与当前帧对齐融合：</p>
+<ol>
+<li>将历史 BEV 特征根据自车运动进行空间对齐（Spatial Alignment）</li>
+<li>通过可变形注意力从历史 BEV 特征中查询与当前 BEV 位置相关的信息</li>
+<li>将时序信息与当前帧特征融合，使得模型对被遮挡物体仍有"记忆"</li>
+</ol>
+<p>时序融合使得纯视觉方案（Pure Camera）在速度估计和遮挡目标检测上的性能大幅提升。</p>
+<h3 id="73">7.3 障碍物历史轨迹融合</h3>
+<p>在目标追踪层面，卡尔曼追踪器为每个目标维护历史轨迹，并通过预测步骤填充短暂的检测缺失（如遮挡帧）。历史轨迹信息还可以：</p>
+<ul>
+<li>提供速度和加速度的平滑估计，减少单帧噪声影响</li>
+<li>预测目标的未来位置，支持后续路径规划模块</li>
+</ul>
+<h3 id="74">7.4 时序融合解决的核心问题</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">问题</th>
+<th style="text-align: center;">时序融合解决方案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">单帧遮挡（瞬间被其他物体遮挡）</td>
+<td style="text-align: center;">历史帧信息 + 预测填充</td>
+</tr>
+<tr>
+<td style="text-align: center;">稀疏点云（远距离 LiDAR 点极少）</td>
+<td style="text-align: center;">多帧点云累积增密</td>
+</tr>
+<tr>
+<td style="text-align: center;">速度估计噪声大</td>
+<td style="text-align: center;">卡尔曼滤波平滑</td>
+</tr>
+<tr>
+<td style="text-align: center;">纯视觉深度模糊</td>
+<td style="text-align: center;">BEV 时序特征融合</td>
+</tr>
+<tr>
+<td style="text-align: center;">夜间弱纹理场景</td>
+<td style="text-align: center;">历史高质量帧特征复用</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-mot">8. 目标级融合与多目标追踪（MOT）</h2>
+<h3 id="81-">8.1 检测-追踪关联（匈牙利算法）</h3>
+<p>多目标追踪（Multi-Object Tracking, MOT）的核心任务是将当前帧的新检测结果与已有追踪轨迹进行关联（Data Association）。最经典的方法是<strong>匈牙利算法（Hungarian Algorithm）</strong>，它求解最小代价二分图匹配问题。</p>
+<p>构造代价矩阵 <span class="arithmatex"><span class="MathJax_Preview">\mathbf{C}</span><script type="math/tex">\mathbf{C}</script></span>，其中每个元素衡量第 <span class="arithmatex"><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 个检测结果与第 <span class="arithmatex"><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> 条追踪轨迹之间的关联代价：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathbf{C}_{ij} = 1 - IoU(det_i, track_j)</div>
+<script type="math/tex; mode=display">\mathbf{C}_{ij} = 1 - IoU(det_i, track_j)</script>
+</div>
+<p>对于三维目标追踪，常使用 3D IoU 或中心点距离作为代价度量。匈牙利算法以 <span class="arithmatex"><span class="MathJax_Preview">O(n^3)</span><script type="math/tex">O(n^3)</script></span> 时间复杂度求解全局最优匹配，返回检测-追踪对的一一对应关系。</p>
+<h3 id="82">8.2 代价度量方法</h3>
+<p>不同的代价矩阵计算方式适用于不同场景：</p>
+<ul>
+<li><strong>IoU（Intersection over Union）</strong>：<span class="arithmatex"><span class="MathJax_Preview">IoU = \frac{|A \cap B|}{|A \cup B|}</span><script type="math/tex">IoU = \frac{|A \cap B|}{|A \cup B|}</script></span>，适用于目标不重叠、尺寸相近的场景</li>
+<li><strong>GIoU（Generalized IoU）</strong>：<span class="arithmatex"><span class="MathJax_Preview">GIoU = IoU - \frac{|C \setminus (A \cup B)|}{|C|}</span><script type="math/tex">GIoU = IoU - \frac{|C \setminus (A \cup B)|}{|C|}</script></span>，处理无重叠框时的梯度消失问题，<span class="arithmatex"><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> 为最小包围框</li>
+<li><strong>中心点距离（Mahalanobis Distance）</strong>：考虑追踪器预测不确定性的距离度量，适用于预测框与检测框位置偏移较大的场景</li>
+<li><strong>外观特征距离（ReID Distance）</strong>：利用目标外观嵌入向量的余弦距离，用于长时遮挡后的重识别</li>
+</ul>
+<h3 id="83">8.3 跨传感器检测结果关联</h3>
+<p>当 LiDAR 和 Camera 各自独立输出检测结果时，需要将两个检测列表进行关联：</p>
+<ol>
+<li><strong>投影关联</strong>：将 LiDAR 3D 检测框投影到图像平面，计算与 Camera 2D 检测框的 2D IoU</li>
+<li><strong>空间距离关联</strong>：使用 Camera 单目深度估计将 2D 检测框提升到 3D，计算 3D 距离</li>
+<li><strong>特征距离关联</strong>：利用多模态特征网络提取统一的目标嵌入，计算特征相似度</li>
+</ol>
+<h3 id="84">8.4 追踪器状态管理</h3>
+<p>每条追踪轨迹的生命周期管理：</p>
+<ul>
+<li><strong>新建（Birth）</strong>：检测结果无法与任何现有轨迹匹配，新建一条"待确认"（Tentative）轨迹</li>
+<li><strong>确认（Confirmed）</strong>：轨迹连续若干帧都有匹配检测结果，升级为"确认"（Confirmed）状态，开始输出</li>
+<li><strong>更新（Update）</strong>：已确认轨迹与检测成功匹配，使用卡尔曼滤波更新状态</li>
+<li><strong>预测（Predict）</strong>：轨迹在当前帧未能匹配，使用卡尔曼预测维持状态，进入"丢失"（Lost）状态</li>
+<li><strong>删除（Delete）</strong>：轨迹连续若干帧未能匹配，超过最大丢失帧数，删除轨迹</li>
+</ul>
+<h3 id="85">8.5 主流开源追踪器</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">追踪器</th>
+<th style="text-align: center;">特点</th>
+<th style="text-align: center;">适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>AB3DMOT</strong></td>
+<td style="text-align: center;">简洁的 3D 卡尔曼 + 匈牙利算法框架</td>
+<td style="text-align: center;">离线评测基线</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>SimpleTrack</strong></td>
+<td style="text-align: center;">统一 3D MOT 框架，支持多数据集</td>
+<td style="text-align: center;">快速验证</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>CasTrack</strong></td>
+<td style="text-align: center;">级联匹配策略（高/低置信度分层匹配）</td>
+<td style="text-align: center;">高遮挡场景</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>ImmortalTracker</strong></td>
+<td style="text-align: center;">长时追踪，抗长时遮挡</td>
+<td style="text-align: center;">城市复杂场景</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>StrongSORT</strong></td>
+<td style="text-align: center;">集成 ReID 和运动模型的增强版 DeepSORT</td>
+<td style="text-align: center;">行人追踪</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9">9. 融合系统标定</h2>
+<p>传感器融合的基础是精确的<strong>外参标定（Extrinsic Calibration）</strong>，即确定不同传感器坐标系之间的变换关系（旋转矩阵 <span class="arithmatex"><span class="MathJax_Preview">\mathbf{R}</span><script type="math/tex">\mathbf{R}</script></span> 和平移向量 <span class="arithmatex"><span class="MathJax_Preview">\mathbf{t}</span><script type="math/tex">\mathbf{t}</script></span>）。标定误差直接影响融合精度，是工程落地中最关键的环节之一。</p>
+<h3 id="91-lidar">9.1 相机-LiDAR 外参标定</h3>
+<p><strong>基于棋盘格的联合标定</strong>是最常见的相机-LiDAR 外参标定方法：</p>
+<ol>
+<li>在场景中放置棋盘格标定板，从多个位置和角度采集数据</li>
+<li>在图像中提取棋盘格角点（像素坐标），使用 <code>cv2.findChessboardCorners</code></li>
+<li>在点云中提取标定板平面（通过平面拟合），确定棋盘格在三维空间中的位置</li>
+<li>通过最小化点云平面上的点到图像投影对应点的重投影误差，求解外参矩阵</li>
+</ol>
+<p>优化目标：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\min_{\mathbf{R}, \mathbf{t}} \sum_{i} \left\| \mathbf{p}_i^{cam} - \pi\left(\mathbf{R} \mathbf{p}_i^{lidar} + \mathbf{t}\right) \right\|^2</div>
+<script type="math/tex; mode=display">\min_{\mathbf{R}, \mathbf{t}} \sum_{i} \left\| \mathbf{p}_i^{cam} - \pi\left(\mathbf{R} \mathbf{p}_i^{lidar} + \mathbf{t}\right) \right\|^2</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\pi(\cdot)</span><script type="math/tex">\pi(\cdot)</script></span> 为相机投影函数，<span class="arithmatex"><span class="MathJax_Preview">\mathbf{p}_i^{cam}</span><script type="math/tex">\mathbf{p}_i^{cam}</script></span> 和 <span class="arithmatex"><span class="MathJax_Preview">\mathbf{p}_i^{lidar}</span><script type="math/tex">\mathbf{p}_i^{lidar}</script></span> 为对应点的图像和 LiDAR 坐标。</p>
+<h3 id="92-radar">9.2 相机-Radar 标定</h3>
+<p>毫米波雷达的角分辨率低，无法直接提取几何特征，通常采用<strong>目标级联合标定</strong>：</p>
+<ol>
+<li>使用强反射角反射器（Corner Reflector）作为标定目标，其在雷达和摄像头中均易于识别</li>
+<li>在不同位置采集雷达点（距离、方位角）和图像目标位置的对应数据</li>
+<li>通过最小化投影误差求解外参</li>
+</ol>
+<h3 id="93">9.3 时间同步</h3>
+<p>时间同步（Time Synchronization）是多传感器融合中常被忽视但至关重要的因素：</p>
+<ul>
+<li><strong>硬触发（Hardware Trigger）</strong>：通过硬件电路同步信号（如 GPIO 脉冲）同时触发多个传感器采集，时间对齐精度可达微秒级。常见于高端自动驾驶研究平台。</li>
+<li><strong>PTP（Precision Time Protocol, IEEE 1588）</strong>：通过以太网协议对多设备的系统时钟进行对齐，典型精度为亚毫秒级，适合车载以太网架构。</li>
+<li><strong>GPS/GNSS 授时</strong>：利用 GPS 信号提供的 PPS（Pulse Per Second）信号作为时间基准，驱动各传感器的时钟同步，精度可达纳秒级。</li>
+<li><strong>软件时间戳插值</strong>：当硬件同步无法实现时，记录各传感器的软件时间戳，在数据处理时根据时间戳差值进行插值对齐，精度较低（毫秒级），在高速场景下会引入显著的位置对齐误差。</li>
+</ul>
+<p>对于以 <span class="arithmatex"><span class="MathJax_Preview">v = 30 \text{ m/s}</span><script type="math/tex">v = 30 \text{ m/s}</script></span>（约 108 km/h）行驶的车辆，<span class="arithmatex"><span class="MathJax_Preview">10 \text{ ms}</span><script type="math/tex">10 \text{ ms}</script></span> 的时间同步误差会导致约 <strong>30 cm</strong> 的目标位置偏差，因此精确的时间同步对融合精度至关重要。</p>
+<h3 id="94-online-calibration">9.4 在线标定（Online Calibration）</h3>
+<p>受温度变化、车辆振动、传感器老化等因素影响，传感器外参在使用过程中会发生漂移。<strong>在线标定（Online Calibration）</strong> 旨在车辆行驶过程中持续监测和修正外参：</p>
+<ul>
+<li><strong>基于运动估计的在线标定</strong>：分别估计各传感器坐标系下的自车运动，通过最小化多传感器运动估计的不一致性来修正外参</li>
+<li><strong>基于特征对应的在线标定</strong>：在正常行驶过程中持续提取环境特征（如车道线、路边建筑物角点）的跨传感器对应关系，实时优化外参</li>
+<li><strong>基于深度学习的隐式标定</strong>：端到端训练融合网络时将外参作为可学习参数，允许网络根据任务损失自适应调整标定参数</li>
+</ul>
+<hr />
+<h2 id="10">10. 参考资料</h2>
+<ol>
+<li>
+<p><strong>Liu, Z., Tang, H., et al.</strong> "BEVFusion: Multi-Task Multi-Sensor Fusion with Unified Bird's-Eye View Representation." <em>ICRA 2023</em>. <a href="https://arxiv.org/abs/2205.13542">arXiv:2205.13542</a></p>
+</li>
+<li>
+<p><strong>Bai, X., Hu, Z., et al.</strong> "TransFusion: Robust LiDAR-Camera Fusion for 3D Object Detection with Transformers." <em>CVPR 2022</em>. <a href="https://arxiv.org/abs/2203.11496">arXiv:2203.11496</a></p>
+</li>
+<li>
+<p><strong>Chen, T., et al.</strong> "FUTR3D: A Unified Sensor Fusion Framework for 3D Detection." <em>CVPR 2023 Workshop</em>. <a href="https://arxiv.org/abs/2203.10642">arXiv:2203.10642</a></p>
+</li>
+<li>
+<p><strong>Nabati, R., Qi, H.</strong> "CenterFusion: Center-based Radar and Camera Fusion for 3D Object Detection." <em>WACV 2021</em>. <a href="https://arxiv.org/abs/2011.04841">arXiv:2011.04841</a></p>
+</li>
+<li>
+<p><strong>Li, Z., Wang, W., et al.</strong> "BEVFormer: Learning Bird's-Eye-View Representation from Multi-Camera Images via Spatiotemporal Transformers." <em>ECCV 2022</em>. <a href="https://arxiv.org/abs/2203.17270">arXiv:2203.17270</a></p>
+</li>
+<li>
+<p><strong>Weng, X., Wang, J., et al.</strong> "AB3DMOT: A Baseline for 3D Multi-Object Tracking and New Evaluation Metrics." <em>ECCV 2020 Workshop</em>. <a href="https://arxiv.org/abs/2008.08063">arXiv:2008.08063</a></p>
+</li>
+<li>
+<p><strong>Thrun, S., Burgard, W., Fox, D.</strong> <em>Probabilistic Robotics</em>. MIT Press, 2005. — 贝叶斯占用栅格与卡尔曼滤波的经典教材参考。</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../_static/js/mathjaxhelper.js"></script>
+      
+    
+  </body>
+</html>

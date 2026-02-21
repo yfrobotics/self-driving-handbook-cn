@@ -15,21 +15,21 @@
         <link rel="canonical" href="https://yfrobotics.github.io/self-driving-handbook-cn/algorithm/decision_making/">
       
       
-        <link rel="prev" href="../path_planning/">
+        <link rel="prev" href="../prediction/">
       
       
-        <link rel="next" href="../nlp/">
+        <link rel="next" href="../control/">
       
       
         
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
-        <title>决策 (Decision Making Process) - 自动驾驶指南</title>
+        <title>决策 (Decision Making) - 自动驾驶指南</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#decision-making-process" class="md-skip">
+        <a href="#decision-making" class="md-skip">
           跳转至
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              决策 (Decision Making Process)
+              决策 (Decision Making)
             
           </span>
         </div>
@@ -317,7 +317,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶介绍
+    第一章：概述
   
 
     
@@ -373,7 +373,35 @@
   <span class="md-ellipsis">
     
   
-    自主性等级分类
+    自动驾驶等级分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶发展历史
   
 
     
@@ -455,7 +483,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶系统
+    第二章：系统
   
 
     
@@ -483,7 +511,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶车辆
+    自动驾驶车辆系统
   
 
     
@@ -511,7 +539,7 @@
   <span class="md-ellipsis">
     
   
-    智能交通
+    车联网（V2X）技术详解
   
 
     
@@ -539,7 +567,63 @@
   <span class="md-ellipsis">
     
   
-    设计与仿真平台
+    仿真平台与数据集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hdmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高精地图（HD Map）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人机交互系统（HMI）
   
 
     
@@ -568,6 +652,62 @@
     
   
     系统安全保障
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶测试体系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/cybersecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶网络安全
   
 
     
@@ -677,7 +817,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶硬件
+    第三章：硬件
   
 
     
@@ -733,7 +873,7 @@
   <span class="md-ellipsis">
     
   
-    中控单元 (AI芯片, GPGPU)
+    中央计算单元 (CCU / 车载AI芯片)
   
 
     
@@ -761,7 +901,7 @@
   <span class="md-ellipsis">
     
   
-    线控系统
+    线控系统（Drive-by-Wire）
   
 
     
@@ -789,7 +929,7 @@
   <span class="md-ellipsis">
     
   
-    车内总线
+    车载通信系统
   
 
     
@@ -845,7 +985,7 @@
   <span class="md-ellipsis">
     
   
-    视觉传感器
+    视觉传感器（摄像头）
   
 
     
@@ -929,7 +1069,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶核心算法
+    第四章：核心算法
   
 
     
@@ -985,7 +1125,7 @@
   <span class="md-ellipsis">
     
   
-    图像识别与分割
+    图像感知与处理
   
 
     
@@ -1014,6 +1154,62 @@
     
   
     激光点云数据处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensor_fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器融合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../occupancy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    占用网络（Occupancy Network）
   
 
     
@@ -1087,6 +1283,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../prediction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行为预测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1106,7 +1330,7 @@
   <span class="md-ellipsis">
     
   
-    决策 (Decision Making Process)
+    决策 (Decision Making)
   
 
     
@@ -1124,7 +1348,7 @@
   <span class="md-ellipsis">
     
   
-    决策 (Decision Making Process)
+    决策 (Decision Making)
   
 
     
@@ -1150,140 +1374,501 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 开篇介绍
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 开篇介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 感知→预测→决策→规划链条
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 决策的难点
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 决策层次结构
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 决策层次结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-mission-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 任务规划（Mission Planning）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-behavior-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 行为规划（Behavior Planning）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-motion-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 动作规划（Motion Planning）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 三层架构示意图
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-fsm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 有限状态机（FSM）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 有限状态机（FSM）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 状态定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 状态转移条件（触发器）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 优缺点分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-fsmhfsm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 层次 FSM（HFSM）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-behavior-tree-fsm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 行为树（Behavior Tree）与 FSM 对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 基于规则的决策
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 基于规则的决策">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 交通规则编码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-potential-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 势场评估（Potential Field）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 基于代价函数的决策
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-mpdm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. MPDM（多策略并行决策模型）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. MPDM（多策略并行决策模型）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 策略集合定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 前向仿真评估
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 策略选择（最大期望回报）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-pomdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. POMDP（部分可观测马尔可夫决策过程）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. POMDP（部分可观测马尔可夫决策过程）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 形式化定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 信念状态更新
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 近似求解算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-pomdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 POMDP 在路口博弈中的应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 基于学习的决策
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 基于学习的决策">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-imitation-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 行为克隆（Imitation Learning）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-irl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 逆强化学习（IRL）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-rl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 强化学习（RL）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 奖励函数设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 博弈论与交互决策
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 博弈论与交互决策">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 纳什均衡在交通中的应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-stackelberg-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 主从博弈（Stackelberg Game）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 意图感知决策
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 风险评估
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 风险评估">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-ttctte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 碰撞时间（TTC）和碰撞余量（TTE）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-rss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 责任敏感安全（RSS）在决策中的集成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-risk-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 风险地图（Risk Map）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        层次化决策模型
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        决策方法
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="决策方法">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fsm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        有限状态机 (FSM)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        决策树与规则系统
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mdppomdp" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MDP/POMDP
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reinforcement-learning" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        强化学习 (Reinforcement Learning)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#game-theory" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        博弈论 (Game Theory)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        典型场景决策
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        安全保障
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="安全保障">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rss" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RSS 模型
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#safety-envelope" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        安全护栏 (Safety Envelope)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         参考资料
@@ -1309,6 +1894,90 @@
   
   
     <li class="md-nav__item">
+      <a href="../control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    控制算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../end_to_end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端自动驾驶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶ML数据管道
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nlp/" class="md-nav__link">
         
   
@@ -1316,7 +1985,7 @@
   <span class="md-ellipsis">
     
   
-    自然语言识别与交互
+    自然语言处理与大语言模型
   
 
     
@@ -1398,7 +2067,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶案例
+    第五章：实例
   
 
     
@@ -1426,7 +2095,119 @@
   <span class="md-ellipsis">
     
   
-    百度无人驾驶
+    百度 Apollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/waymo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waymo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/tesla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla FSD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/chinese_players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国自动驾驶企业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/robotaxi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robotaxi：自动驾驶商业化的主战场
   
 
     
@@ -1474,140 +2255,501 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 开篇介绍
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 开篇介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 感知→预测→决策→规划链条
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 决策的难点
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 决策层次结构
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 决策层次结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-mission-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 任务规划（Mission Planning）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-behavior-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 行为规划（Behavior Planning）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-motion-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 动作规划（Motion Planning）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 三层架构示意图
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-fsm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 有限状态机（FSM）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 有限状态机（FSM）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 状态定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 状态转移条件（触发器）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 优缺点分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-fsmhfsm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 层次 FSM（HFSM）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-behavior-tree-fsm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 行为树（Behavior Tree）与 FSM 对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 基于规则的决策
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 基于规则的决策">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 交通规则编码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-potential-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 势场评估（Potential Field）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 基于代价函数的决策
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-mpdm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. MPDM（多策略并行决策模型）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. MPDM（多策略并行决策模型）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 策略集合定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 前向仿真评估
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 策略选择（最大期望回报）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-pomdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. POMDP（部分可观测马尔可夫决策过程）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. POMDP（部分可观测马尔可夫决策过程）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 形式化定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 信念状态更新
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 近似求解算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-pomdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 POMDP 在路口博弈中的应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 基于学习的决策
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 基于学习的决策">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-imitation-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 行为克隆（Imitation Learning）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-irl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 逆强化学习（IRL）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-rl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 强化学习（RL）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 奖励函数设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 博弈论与交互决策
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 博弈论与交互决策">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 纳什均衡在交通中的应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-stackelberg-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 主从博弈（Stackelberg Game）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 意图感知决策
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 风险评估
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 风险评估">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-ttctte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 碰撞时间（TTC）和碰撞余量（TTE）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-rss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 责任敏感安全（RSS）在决策中的集成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-risk-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 风险地图（Risk Map）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        层次化决策模型
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        决策方法
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="决策方法">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fsm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        有限状态机 (FSM)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        决策树与规则系统
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mdppomdp" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MDP/POMDP
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reinforcement-learning" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        强化学习 (Reinforcement Learning)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#game-theory" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        博弈论 (Game Theory)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        典型场景决策
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        安全保障
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="安全保障">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rss" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RSS 模型
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#safety-envelope" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        安全护栏 (Safety Envelope)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         参考资料
@@ -1634,111 +2776,529 @@
 
 
 
-<h1 id="decision-making-process">决策 (Decision Making Process)</h1>
-<p>决策系统是自动驾驶的"大脑"，决定了一个系统的性质是自动系统 (Automated Systems) 还是自主系统 (Autonomous Systems)。它根据感知和定位结果，做出驾驶行为的判断，并将指令传递给规划和控制模块。</p>
-<h2 id="_1">层次化决策模型</h2>
-<p>自动驾驶决策通常采用三层架构：</p>
+<h1 id="decision-making">决策 (Decision Making)</h1>
+<h2 id="1">1. 开篇介绍</h2>
+<p>决策系统是自动驾驶的"大脑"，决定了一个系统的性质是自动系统（Automated Systems）还是自主系统（Autonomous Systems）。在自动驾驶软件栈中，决策模块位于感知与规划之间，承上启下，是整个系统智能化程度的核心体现。</p>
+<h3 id="11">1.1 感知→预测→决策→规划链条</h3>
+<p>自动驾驶软件栈可以抽象为以下处理链：</p>
+<div class="highlight"><pre><span></span><code>传感器原始数据
+      ↓
+感知（Perception）：目标检测、语义分割、占据栅格
+      ↓
+预测（Prediction）：周围车辆/行人未来轨迹预测
+      ↓
+决策（Decision Making）：选择驾驶行为策略
+      ↓
+规划（Planning）：生成具体可执行轨迹
+      ↓
+控制（Control）：执行油门/制动/转向指令
+</code></pre></div>
+<p>感知模块提供对当前世界状态的理解，预测模块估计环境的未来演化，决策模块在此基础上确定自车应采取的高层行为（如变道、跟车、礼让），最终由规划模块将这一行为决策转化为精确的时空轨迹。</p>
+<h3 id="12">1.2 决策的难点</h3>
+<p>相比感知和控制，决策面临以下特有挑战：</p>
+<ul>
+<li><strong>不确定性叠加</strong>：传感器噪声、预测误差、他车意图未知，决策需要在多重不确定性下保证安全。</li>
+<li><strong>多智能体交互</strong>：路口、合流等场景中，自车行为会影响他车行为，形成反应循环，难以用单智能体模型描述。</li>
+<li><strong>长时序依赖</strong>：一次超车决策的安全性需要考虑数秒乃至十几秒的未来演化，而非仅看当前时刻。</li>
+<li><strong>场景多样性</strong>：从高速直道到复杂城区，驾驶场景的组合几乎是无限的，难以穷举所有情况进行规则编码。</li>
+<li><strong>可解释性与安全性</strong>：决策系统的输出必须可追溯、可验证，以满足功能安全标准（如 ISO 26262）的要求。</li>
+</ul>
+<h2 id="2">2. 决策层次结构</h2>
+<p>自动驾驶决策通常采用三层架构，不同层次在时间尺度、抽象程度和求解方法上各有侧重。</p>
+<h3 id="21-mission-planning">2.1 任务规划（Mission Planning）</h3>
+<p>任务规划在地图层面确定从起点到终点的最优路线，时间尺度为分钟到小时级别。主要输入包括高精度地图（HD Map）、实时交通信息和用户目的地。常用算法有 Dijkstra 最短路径和 A* 启发式搜索。</p>
+<p>任务规划的核心是代价函数设计，综合考虑行驶距离、预计时间、道路等级和通行费等因素：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">C_{route} = w_d \cdot d + w_t \cdot t + w_r \cdot r_{toll} + w_e \cdot e_{energy}</div>
+<script type="math/tex; mode=display">C_{route} = w_d \cdot d + w_t \cdot t + w_r \cdot r_{toll} + w_e \cdot e_{energy}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> 为距离，<span class="arithmatex"><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> 为预计行驶时间，<span class="arithmatex"><span class="MathJax_Preview">r_{toll}</span><script type="math/tex">r_{toll}</script></span> 为通行费，<span class="arithmatex"><span class="MathJax_Preview">e_{energy}</span><script type="math/tex">e_{energy}</script></span> 为能耗估计，<span class="arithmatex"><span class="MathJax_Preview">w_*</span><script type="math/tex">w_*</script></span> 为对应权重。</p>
+<h3 id="22-behavior-planning">2.2 行为规划（Behavior Planning）</h3>
+<p>行为规划是决策的核心层，在道路场景中选择合适的驾驶行为，时间尺度为秒级。典型行为包括：车道保持（Lane Keeping）、变道（Lane Change）、跟车（Car Following）、超车（Overtaking）、汇入（Merging）、礼让（Yielding）和停车（Stopping）。</p>
+<p>行为规划的输入来自感知和预测模块，输出的是离散化的高层行为指令，供运动规划模块进一步细化。</p>
+<h3 id="23-motion-planning">2.3 动作规划（Motion Planning）</h3>
+<p>动作规划将行为规划的高层指令转化为时间上连续的可执行轨迹 <span class="arithmatex"><span class="MathJax_Preview">\{(x_t, y_t, \theta_t, v_t)\}_{t=0}^{T}</span><script type="math/tex">\{(x_t, y_t, \theta_t, v_t)\}_{t=0}^{T}</script></span>，需要满足车辆运动学约束、舒适性约束（曲率连续、加速度有界）和障碍物约束。</p>
+<h3 id="24">2.4 三层架构示意图</h3>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────┐
+│              任务规划（Mission Planning）                │
+│   输入：地图 + 目的地    输出：参考路线（Road Graph）    │
+│   时间尺度：分钟～小时   方法：A*, Dijkstra             │
+└─────────────────────────┬───────────────────────────────┘
+                          │ 参考路线
+┌─────────────────────────▼───────────────────────────────┐
+│              行为规划（Behavior Planning）               │
+│   输入：感知 + 预测      输出：驾驶行为指令              │
+│   时间尺度：秒级         方法：FSM, MPDM, POMDP, RL     │
+└─────────────────────────┬───────────────────────────────┘
+                          │ 行为指令
+┌─────────────────────────▼───────────────────────────────┐
+│              运动规划（Motion Planning）                 │
+│   输入：行为指令 + 环境  输出：时空轨迹                  │
+│   时间尺度：毫秒～秒     方法：Frenet, Lattice, MPC      │
+└─────────────────────────────────────────────────────────┘
+</code></pre></div>
+<h2 id="3-fsm">3. 有限状态机（FSM）</h2>
+<p>有限状态机是最早用于自动驾驶行为决策的方法，凭借其结构清晰、可解释性强的特点，至今仍被广泛应用于工业系统。</p>
+<h3 id="31">3.1 状态定义</h3>
+<p>一个典型的高速公路场景 FSM 包含以下状态：</p>
 <table>
 <thead>
 <tr>
-<th>层级</th>
+<th>状态名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>车道保持（Lane Keep）</td>
+<td>在当前车道内以目标速度行驶</td>
+</tr>
+<tr>
+<td>跟车（Car Follow）</td>
+<td>检测到前车，以安全车距跟随</td>
+</tr>
+<tr>
+<td>变道准备（Prepare LC）</td>
+<td>评估目标车道可行性</td>
+</tr>
+<tr>
+<td>变道执行（Execute LC）</td>
+<td>执行横向变道机动</td>
+</tr>
+<tr>
+<td>超车（Overtake）</td>
+<td>超越慢速前车后返回原车道</td>
+</tr>
+<tr>
+<td>停车（Stop）</td>
+<td>减速并停止于停止线或障碍物前</td>
+</tr>
+<tr>
+<td>紧急制动（Emergency）</td>
+<td>触发 AEB，以最大减速度制动</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32">3.2 状态转移条件（触发器）</h3>
+<p>状态转移由条件触发器驱动，例如：</p>
+<ul>
+<li><strong>车道保持 → 跟车</strong>：前方 <span class="arithmatex"><span class="MathJax_Preview">d &lt; d_{safe}</span><script type="math/tex">d < d_{safe}</script></span>，且相对速度 <span class="arithmatex"><span class="MathJax_Preview">\Delta v &lt; 0</span><script type="math/tex">\Delta v < 0</script></span>（前车更慢）</li>
+<li><strong>跟车 → 变道准备</strong>：前车速度 <span class="arithmatex"><span class="MathJax_Preview">v_{lead} &lt; v_{target} - \Delta v_{thresh}</span><script type="math/tex">v_{lead} < v_{target} - \Delta v_{thresh}</script></span>，且持续时间超过 <span class="arithmatex"><span class="MathJax_Preview">t_{thresh}</span><script type="math/tex">t_{thresh}</script></span></li>
+<li><strong>变道准备 → 变道执行</strong>：目标车道间隙 <span class="arithmatex"><span class="MathJax_Preview">gap &gt; gap_{min}</span><script type="math/tex">gap > gap_{min}</script></span>，且无后方快速接近车辆</li>
+<li><strong>任意状态 → 紧急制动</strong>：TTC（碰撞时间）<span class="arithmatex"><span class="MathJax_Preview">&lt; T_{emergency}</span><script type="math/tex">< T_{emergency}</script></span></li>
+</ul>
+<h3 id="33">3.3 优缺点分析</h3>
+<p><strong>优点：</strong>
+- 逻辑清晰，每个状态和转移条件均可解释和审计
+- 开发和调试周期短，适合快速工程落地
+- 可直接编码交通规则，与法规合规性对齐</p>
+<p><strong>缺点：</strong>
+- <strong>状态爆炸</strong>：场景复杂度增加时，状态数量呈指数级增长，难以维护
+- <strong>转移条件脆弱</strong>：阈值参数需要大量人工调优，泛化能力差
+- <strong>无法处理不确定性</strong>：FSM 假设感知结果确定，无法建模传感器噪声
+- <strong>多智能体局限</strong>：难以显式建模他车的响应行为</p>
+<h3 id="34-fsmhfsm">3.4 层次 FSM（HFSM）</h3>
+<p>为缓解状态爆炸问题，可将 FSM 组织为层次结构（Hierarchical FSM）。高层 FSM 管理抽象行为（如高速行驶、城区行驶、停车场行驶），每个高层状态内部嵌套一个子 FSM 处理具体操作。</p>
+<div class="highlight"><pre><span></span><code>高层 FSM
+├── 高速公路模式
+│   ├── 子FSM：车道保持 / 跟车 / 变道
+├── 城区模式
+│   ├── 子FSM：直行 / 转弯 / 让行 / 路口通过
+└── 紧急模式
+    └── 子FSM：紧急制动 / 靠边停车
+</code></pre></div>
+<h3 id="35-behavior-tree-fsm">3.5 行为树（Behavior Tree）与 FSM 对比</h3>
+<p>行为树（Behavior Tree, BT）是另一种常用的决策表示形式，通过组合控制节点（Sequence、Selector、Parallel）和叶节点（条件、动作）构建决策逻辑。</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>有限状态机（FSM）</th>
+<th>行为树（BT）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>模块化</td>
+<td>差（全局状态转移）</td>
+<td>强（子树可复用）</td>
+</tr>
+<tr>
+<td>可扩展性</td>
+<td>差（状态爆炸）</td>
+<td>好（局部修改）</td>
+</tr>
+<tr>
+<td>并发处理</td>
+<td>困难</td>
+<td>原生支持（Parallel 节点）</td>
+</tr>
+<tr>
+<td>调试难度</td>
+<td>低（状态明确）</td>
+<td>中等</td>
+</tr>
+<tr>
+<td>工业应用</td>
+<td>广泛（Waymo 早期）</td>
+<td>增长（ROS 2 生态）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4">4. 基于规则的决策</h2>
+<h3 id="41">4.1 交通规则编码</h3>
+<p>交通规则可以被系统化地编码为一组约束和优先级规则，常见规则包括：</p>
+<ul>
+<li><strong>限速规则</strong>：<span class="arithmatex"><span class="MathJax_Preview">v \leq v_{limit}(road\_type, weather, visibility)</span><script type="math/tex">v \leq v_{limit}(road\_type, weather, visibility)</script></span></li>
+<li><strong>安全车距规则</strong>（2秒原则）：<span class="arithmatex"><span class="MathJax_Preview">d_{safe} \geq v_{ego} \cdot t_{headway}</span><script type="math/tex">d_{safe} \geq v_{ego} \cdot t_{headway}</script></span>，其中 <span class="arithmatex"><span class="MathJax_Preview">t_{headway} \approx 2s</span><script type="math/tex">t_{headway} \approx 2s</script></span></li>
+<li><strong>优先权规则</strong>：右侧优先、直行优先于转弯、主路优先于辅路</li>
+<li><strong>礼让规则</strong>：在无保护转弯时必须等待间隙（Gap Acceptance）足够大才可通行</li>
+</ul>
+<p>间隙接受模型（Gap Acceptance Model）用于判断是否可以插入某个间隙：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">P(accept) = \begin{cases} 1 &amp; \text{若 } gap \geq gap_{critical} \\ 0 &amp; \text{若 } gap &lt; gap_{critical} \end{cases}</div>
+<script type="math/tex; mode=display">P(accept) = \begin{cases} 1 & \text{若 } gap \geq gap_{critical} \\ 0 & \text{若 } gap < gap_{critical} \end{cases}</script>
+</div>
+<p>更精细的概率模型可以用 Logistic 函数建模：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">P(accept \mid gap) = \frac{1}{1 + e^{-\beta(gap - \mu)}}</div>
+<script type="math/tex; mode=display">P(accept \mid gap) = \frac{1}{1 + e^{-\beta(gap - \mu)}}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span> 为临界间隙均值，<span class="arithmatex"><span class="MathJax_Preview">\beta</span><script type="math/tex">\beta</script></span> 为陡峭度参数。</p>
+<h3 id="42-potential-field">4.2 势场评估（Potential Field）</h3>
+<p>人工势场法将道路环境建模为势能场，自车受到目标点的引力和障碍物的斥力共同作用：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">U_{total}(q) = U_{att}(q) + U_{rep}(q)</div>
+<script type="math/tex; mode=display">U_{total}(q) = U_{att}(q) + U_{rep}(q)</script>
+</div>
+<p>引力场（指向目标）：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">U_{att}(q) = \frac{1}{2} k_{att} \|q - q_{goal}\|^2</div>
+<script type="math/tex; mode=display">U_{att}(q) = \frac{1}{2} k_{att} \|q - q_{goal}\|^2</script>
+</div>
+<p>斥力场（远离障碍物）：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">U_{rep}(q) = \begin{cases} \frac{1}{2} k_{rep} \left(\frac{1}{\rho(q)} - \frac{1}{\rho_0}\right)^2 &amp; \text{若 } \rho(q) \leq \rho_0 \\ 0 &amp; \text{若 } \rho(q) &gt; \rho_0 \end{cases}</div>
+<script type="math/tex; mode=display">U_{rep}(q) = \begin{cases} \frac{1}{2} k_{rep} \left(\frac{1}{\rho(q)} - \frac{1}{\rho_0}\right)^2 & \text{若 } \rho(q) \leq \rho_0 \\ 0 & \text{若 } \rho(q) > \rho_0 \end{cases}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\rho(q)</span><script type="math/tex">\rho(q)</script></span> 为自车到最近障碍物的距离，<span class="arithmatex"><span class="MathJax_Preview">\rho_0</span><script type="math/tex">\rho_0</script></span> 为影响范围阈值，<span class="arithmatex"><span class="MathJax_Preview">k_{att}</span><script type="math/tex">k_{att}</script></span>、<span class="arithmatex"><span class="MathJax_Preview">k_{rep}</span><script type="math/tex">k_{rep}</script></span> 为权重系数。决策方向沿负梯度方向 <span class="arithmatex"><span class="MathJax_Preview">F = -\nabla U_{total}</span><script type="math/tex">F = -\nabla U_{total}</script></span>。</p>
+<h3 id="43">4.3 基于代价函数的决策</h3>
+<p>对候选行为 <span class="arithmatex"><span class="MathJax_Preview">\{a_1, a_2, \ldots, a_n\}</span><script type="math/tex">\{a_1, a_2, \ldots, a_n\}</script></span> 分别计算综合代价，选择代价最低的行为：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">a^* = \arg\min_{a_i} C(a_i) = \arg\min_{a_i} \left[ w_s \cdot C_{safety} + w_e \cdot C_{efficiency} + w_c \cdot C_{comfort} + w_r \cdot C_{rule} \right]</div>
+<script type="math/tex; mode=display">a^* = \arg\min_{a_i} C(a_i) = \arg\min_{a_i} \left[ w_s \cdot C_{safety} + w_e \cdot C_{efficiency} + w_c \cdot C_{comfort} + w_r \cdot C_{rule} \right]</script>
+</div>
+<p>其中各分项代价分别量化安全风险、行驶效率（与期望速度的偏差）、乘坐舒适度（加速度/急动度）和交规遵守程度。</p>
+<h2 id="5-mpdm">5. MPDM（多策略并行决策模型）</h2>
+<p>MPDM（Multipolicy Decision Making）是斯坦福大学提出的一种面向城区驾驶的决策框架，通过对有限策略集合进行前向仿真来选择最优策略。</p>
+<h3 id="51">5.1 策略集合定义</h3>
+<p>MPDM 使用一组参数化的闭环策略（Closed-loop Policy）来描述候选行为，典型策略集合包括：</p>
+<table>
+<thead>
+<tr>
+<th>策略 <span class="arithmatex"><span class="MathJax_Preview">\pi_i</span><script type="math/tex">\pi_i</script></span></th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex"><span class="MathJax_Preview">\pi_{LK}</span><script type="math/tex">\pi_{LK}</script></span></td>
+<td>车道保持（Lane Keep），以目标速度巡航</td>
+</tr>
+<tr>
+<td><span class="arithmatex"><span class="MathJax_Preview">\pi_{LCL}</span><script type="math/tex">\pi_{LCL}</script></span></td>
+<td>向左变道（Lane Change Left）</td>
+</tr>
+<tr>
+<td><span class="arithmatex"><span class="MathJax_Preview">\pi_{LCR}</span><script type="math/tex">\pi_{LCR}</script></span></td>
+<td>向右变道（Lane Change Right）</td>
+</tr>
+<tr>
+<td><span class="arithmatex"><span class="MathJax_Preview">\pi_{ACC}</span><script type="math/tex">\pi_{ACC}</script></span></td>
+<td>加速（Accelerate）至速度上限</td>
+</tr>
+<tr>
+<td><span class="arithmatex"><span class="MathJax_Preview">\pi_{DEC}</span><script type="math/tex">\pi_{DEC}</script></span></td>
+<td>减速（Decelerate）并准备停车</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52">5.2 前向仿真评估</h3>
+<p>对每个候选策略 <span class="arithmatex"><span class="MathJax_Preview">\pi_i</span><script type="math/tex">\pi_i</script></span>，MPDM 利用预测模块对场景进行前向仿真，得到一条预测轨迹 <span class="arithmatex"><span class="MathJax_Preview">\tau_i = \{s_0, s_1, \ldots, s_T\}</span><script type="math/tex">\tau_i = \{s_0, s_1, \ldots, s_T\}</script></span>，其中他车行为同样采用闭环策略建模（通常假设他车也执行某一预定策略）。</p>
+<h3 id="53">5.3 策略选择（最大期望回报）</h3>
+<p>策略价值通过折扣累积奖励计算：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">V(\pi_i) = \sum_{t=0}^{T} \gamma^t R(s_t, a_t)</div>
+<script type="math/tex; mode=display">V(\pi_i) = \sum_{t=0}^{T} \gamma^t R(s_t, a_t)</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\gamma \in (0,1]</span><script type="math/tex">\gamma \in (0,1]</script></span> 为折扣因子，<span class="arithmatex"><span class="MathJax_Preview">R(s_t, a_t)</span><script type="math/tex">R(s_t, a_t)</script></span> 为即时奖励函数，综合安全、效率和舒适度：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">R(s_t, a_t) = r_{safety}(s_t) + \lambda_e \cdot r_{efficiency}(s_t) + \lambda_c \cdot r_{comfort}(a_t)</div>
+<script type="math/tex; mode=display">R(s_t, a_t) = r_{safety}(s_t) + \lambda_e \cdot r_{efficiency}(s_t) + \lambda_c \cdot r_{comfort}(a_t)</script>
+</div>
+<p>最终选择价值最高的策略：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\pi^* = \arg\max_{\pi_i} V(\pi_i)</div>
+<script type="math/tex; mode=display">\pi^* = \arg\max_{\pi_i} V(\pi_i)</script>
+</div>
+<p>MPDM 的计算复杂度为 <span class="arithmatex"><span class="MathJax_Preview">O(|\Pi| \cdot N_{sim} \cdot T)</span><script type="math/tex">O(|\Pi| \cdot N_{sim} \cdot T)</script></span>，其中 <span class="arithmatex"><span class="MathJax_Preview">|\Pi|</span><script type="math/tex">|\Pi|</script></span> 为策略数量，<span class="arithmatex"><span class="MathJax_Preview">N_{sim}</span><script type="math/tex">N_{sim}</script></span> 为仿真步数，满足实时性要求。</p>
+<h2 id="6-pomdp">6. POMDP（部分可观测马尔可夫决策过程）</h2>
+<p>POMDP 是处理不确定性决策的理论框架，相比 MDP，它显式地建模了感知的不完整性，更贴近真实驾驶场景。</p>
+<h3 id="61">6.1 形式化定义</h3>
+<p>一个 POMDP 由七元组 <span class="arithmatex"><span class="MathJax_Preview">(S, A, T, R, \Omega, O, \gamma)</span><script type="math/tex">(S, A, T, R, \Omega, O, \gamma)</script></span> 定义：</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
 <th>名称</th>
-<th>时间尺度</th>
-<th>任务</th>
-<th>示例</th>
+<th>含义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>战略层</td>
-<td>路径决策 (Route Planning)</td>
-<td>分钟–小时</td>
-<td>全局路线选择</td>
-<td>选择高速或国道</td>
+<td><span class="arithmatex"><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span></td>
+<td>状态空间</td>
+<td>环境的真实状态（含他车意图等隐变量）</td>
 </tr>
 <tr>
-<td>战术层</td>
-<td>行为决策 (Behavioral Decision)</td>
-<td>秒级</td>
-<td>驾驶行为选择</td>
-<td>变道、跟车、超车</td>
+<td><span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span></td>
+<td>动作空间</td>
+<td>自车可执行的行为集合</td>
 </tr>
 <tr>
-<td>操作层</td>
-<td>运动规划 (Motion Planning)</td>
-<td>毫秒级</td>
-<td>轨迹生成与执行</td>
-<td>具体转向和加减速</td>
+<td><span class="arithmatex"><span class="MathJax_Preview">T(s'\|s,a)</span><script type="math/tex">T(s'\|s,a)</script></span></td>
+<td>状态转移函数</td>
+<td>在状态 <span class="arithmatex"><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> 执行动作 <span class="arithmatex"><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> 后转移到 <span class="arithmatex"><span class="MathJax_Preview">s'</span><script type="math/tex">s'</script></span> 的概率</td>
+</tr>
+<tr>
+<td><span class="arithmatex"><span class="MathJax_Preview">R(s,a)</span><script type="math/tex">R(s,a)</script></span></td>
+<td>奖励函数</td>
+<td>在状态 <span class="arithmatex"><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> 执行动作 <span class="arithmatex"><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> 的即时奖励</td>
+</tr>
+<tr>
+<td><span class="arithmatex"><span class="MathJax_Preview">\Omega</span><script type="math/tex">\Omega</script></span></td>
+<td>观测空间</td>
+<td>传感器可观测到的量（带噪声）</td>
+</tr>
+<tr>
+<td><span class="arithmatex"><span class="MathJax_Preview">O(o\|s',a)</span><script type="math/tex">O(o\|s',a)</script></span></td>
+<td>观测函数</td>
+<td>到达状态 <span class="arithmatex"><span class="MathJax_Preview">s'</span><script type="math/tex">s'</script></span> 后观测到 <span class="arithmatex"><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> 的概率</td>
+</tr>
+<tr>
+<td><span class="arithmatex"><span class="MathJax_Preview">\gamma</span><script type="math/tex">\gamma</script></span></td>
+<td>折扣因子</td>
+<td>对未来奖励的折扣（<span class="arithmatex"><span class="MathJax_Preview">\gamma \in [0,1)</span><script type="math/tex">\gamma \in [0,1)</script></span>）</td>
 </tr>
 </tbody>
 </table>
-<p>战术层是决策的核心，需要综合交通规则、周围车辆意图和安全约束来选择合适的驾驶行为。</p>
-<h2 id="_2">决策方法</h2>
-<h3 id="fsm">有限状态机 (FSM)</h3>
-<p>将驾驶行为建模为有限个状态（巡航、跟车、变道、停车等）及其转移条件。实现简单、可解释性强，但难以处理复杂交互场景。</p>
-<h3 id="_3">决策树与规则系统</h3>
-<p>基于 if-then 规则的层次化判断。优点是透明可审计，缺点是规则数量随场景复杂度指数增长。</p>
-<h3 id="mdppomdp">MDP/POMDP</h3>
+<p>在驾驶场景中，隐状态通常包括他车驾驶员的意图（如是否准备变道）、行人的目的地等，这些量无法通过传感器直接观测。</p>
+<h3 id="62">6.2 信念状态更新</h3>
+<p>由于真实状态不可直接观测，POMDP 维护一个<strong>信念状态</strong>（Belief State）<span class="arithmatex"><span class="MathJax_Preview">b(s)</span><script type="math/tex">b(s)</script></span>，表示对当前状态的概率分布。当执行动作 <span class="arithmatex"><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> 并观测到 <span class="arithmatex"><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> 后，信念状态按贝叶斯规则更新：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">b'(s') = \eta \cdot O(o \mid s', a) \sum_{s \in S} T(s' \mid s, a) \cdot b(s)</div>
+<script type="math/tex; mode=display">b'(s') = \eta \cdot O(o \mid s', a) \sum_{s \in S} T(s' \mid s, a) \cdot b(s)</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\eta</span><script type="math/tex">\eta</script></span> 为归一化常数，确保 <span class="arithmatex"><span class="MathJax_Preview">\sum_{s'} b'(s') = 1</span><script type="math/tex">\sum_{s'} b'(s') = 1</script></span>。</p>
+<p>信念状态 <span class="arithmatex"><span class="MathJax_Preview">b(s)</span><script type="math/tex">b(s)</script></span> 是一个连续的概率分布，POMDP 的求解等价于在信念空间上找到最优策略 <span class="arithmatex"><span class="MathJax_Preview">\pi^*: b \rightarrow a</span><script type="math/tex">\pi^*: b \rightarrow a</script></span>。</p>
+<h3 id="63">6.3 近似求解算法</h3>
+<p>精确求解 POMDP 是 PSPACE-hard 问题，实际应用中使用近似算法：</p>
 <ul>
-<li><strong>MDP (马尔可夫决策过程)</strong>：将决策建模为状态-动作-奖励的序贯决策问题</li>
-<li><strong>POMDP (部分可观测 MDP)</strong>：考虑传感器观测不完整性，更贴近真实驾驶场景</li>
+<li><strong>DESPOT（Determinized Sparse Partially Observable Tree）</strong>：通过对随机性进行确定化采样，构建稀疏信念树，时间复杂度大幅降低，适合实时决策。</li>
+<li><strong>POMCP（Partially Observable Monte-Carlo Planning）</strong>：基于蒙特卡洛树搜索（MCTS）的在线规划算法，用粒子滤波近似信念状态。</li>
+<li><strong>QMDP</strong>：一种快速近似方法，假设下一步后状态完全可观测，用于得到策略上界。</li>
 </ul>
-<h3 id="reinforcement-learning">强化学习 (Reinforcement Learning)</h3>
-<p>智能体通过与环境交互学习最优策略。深度强化学习（DQN、PPO、SAC）可处理高维状态空间，但存在安全性和可解释性挑战。</p>
-<h3 id="game-theory">博弈论 (Game Theory)</h3>
-<p>将多车交互建模为博弈，如纳什均衡、Stackelberg 博弈，适合处理合流、交叉路口等竞争场景。</p>
-<h2 id="_4">典型场景决策</h2>
+<h3 id="64-pomdp">6.4 POMDP 在路口博弈中的应用</h3>
+<p>在无保护左转场景中，对向来车的意图（减速礼让 vs. 保持速度通过）是关键隐状态。POMDP 框架可以：</p>
+<ol>
+<li>建模来车在"减速"和"直行"意图下的速度分布（观测模型）</li>
+<li>根据历史观测更新来车意图的信念概率</li>
+<li>在高不确定性时选择保守行为（等待），在信念集中时选择通过</li>
+</ol>
+<p>这使得决策系统能够在不确定条件下做出安全且不过度保守的决策。</p>
+<h2 id="7">7. 基于学习的决策</h2>
+<h3 id="71-imitation-learning">7.1 行为克隆（Imitation Learning）</h3>
+<p>行为克隆（Behavior Cloning, BC）从人类驾驶数据中学习决策策略，将其建模为监督学习问题：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\min_\theta \mathbb{E}_{(s,a) \sim \mathcal{D}_{human}} \left[ \mathcal{L}(f_\theta(s), a) \right]</div>
+<script type="math/tex; mode=display">\min_\theta \mathbb{E}_{(s,a) \sim \mathcal{D}_{human}} \left[ \mathcal{L}(f_\theta(s), a) \right]</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\mathcal{D}_{human}</span><script type="math/tex">\mathcal{D}_{human}</script></span> 为人类驾驶数据集，<span class="arithmatex"><span class="MathJax_Preview">f_\theta</span><script type="math/tex">f_\theta</script></span> 为参数化的策略网络，<span class="arithmatex"><span class="MathJax_Preview">\mathcal{L}</span><script type="math/tex">\mathcal{L}</script></span> 为损失函数（分类行为用交叉熵，连续控制用 MSE）。</p>
+<p>行为克隆的主要问题是<strong>协变量漂移（Covariate Shift）</strong>：训练数据来自专家轨迹，而测试时策略的错误会导致状态分布偏离训练分布，错误不断累积。DAgger 算法通过迭代地在策略执行轨迹上查询专家标注来缓解这一问题。</p>
+<h3 id="72-irl">7.2 逆强化学习（IRL）</h3>
+<p>逆强化学习（Inverse Reinforcement Learning）从专家示范中推断隐含的奖励函数，再用该奖励函数进行强化学习。相比直接克隆行为，IRL 能更好地泛化到新场景。</p>
+<p><strong>最大熵 IRL</strong>（Maximum Entropy IRL）假设专家策略在奖励函数 <span class="arithmatex"><span class="MathJax_Preview">R(s,a;\theta)</span><script type="math/tex">R(s,a;\theta)</script></span> 下具有最大熵分布，求解：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\max_\theta \sum_{(s,a) \in \mathcal{D}} \log P_\theta(\tau) = \max_\theta \sum_{(s,a) \in \mathcal{D}} R(s,a;\theta) - \log Z(\theta)</div>
+<script type="math/tex; mode=display">\max_\theta \sum_{(s,a) \in \mathcal{D}} \log P_\theta(\tau) = \max_\theta \sum_{(s,a) \in \mathcal{D}} R(s,a;\theta) - \log Z(\theta)</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">Z(\theta) = \sum_\tau \exp\left(\sum_t R(s_t, a_t; \theta)\right)</span><script type="math/tex">Z(\theta) = \sum_\tau \exp\left(\sum_t R(s_t, a_t; \theta)\right)</script></span> 为配分函数。梯度为：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\nabla_\theta \mathcal{L} = \mathbb{E}_{\mathcal{D}}[\nabla_\theta R] - \mathbb{E}_{\pi_\theta}[\nabla_\theta R]</div>
+<script type="math/tex; mode=display">\nabla_\theta \mathcal{L} = \mathbb{E}_{\mathcal{D}}[\nabla_\theta R] - \mathbb{E}_{\pi_\theta}[\nabla_\theta R]</script>
+</div>
+<p>即专家特征期望与策略特征期望之差。</p>
+<h3 id="73-rl">7.3 强化学习（RL）</h3>
+<p>深度强化学习通过与（仿真）环境交互，学习最大化长期累积奖励的策略：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">J(\theta) = \mathbb{E}_{\pi_\theta} \left[ \sum_{t=0}^{T} \gamma^t r_t \right]</div>
+<script type="math/tex; mode=display">J(\theta) = \mathbb{E}_{\pi_\theta} \left[ \sum_{t=0}^{T} \gamma^t r_t \right]</script>
+</div>
+<p>常用算法：</p>
+<ul>
+<li><strong>PPO（Proximal Policy Optimization）</strong>：限制策略更新幅度，训练稳定，适合连续动作控制</li>
+<li><strong>SAC（Soft Actor-Critic）</strong>：最大熵强化学习，鼓励探索，适合高维连续动作空间</li>
+<li><strong>TD3（Twin Delayed Deep Deterministic Policy Gradient）</strong>：解决 Q 值高估问题，适合确定性策略</li>
+</ul>
+<h3 id="74">7.4 奖励函数设计</h3>
+<p>奖励函数是 RL 系统的核心，通常综合以下分项：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">r_t = r_{safe} + w_e \cdot r_{eff} + w_c \cdot r_{comf} + w_r \cdot r_{rule}</div>
+<script type="math/tex; mode=display">r_t = r_{safe} + w_e \cdot r_{eff} + w_c \cdot r_{comf} + w_r \cdot r_{rule}</script>
+</div>
 <table>
 <thead>
 <tr>
-<th>场景</th>
-<th>决策要素</th>
-<th>难点</th>
+<th>分项</th>
+<th>正奖励条件</th>
+<th>负奖励（惩罚）条件</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>高速跟车</td>
-<td>车距、相对速度</td>
-<td>舒适性与安全性平衡</td>
+<td><span class="arithmatex"><span class="MathJax_Preview">r_{safe}</span><script type="math/tex">r_{safe}</script></span></td>
+<td>TTC 充足，无碰撞风险</td>
+<td>碰撞：<span class="arithmatex"><span class="MathJax_Preview">-100</span><script type="math/tex">-100</script></span>；TTC <span class="arithmatex"><span class="MathJax_Preview">&lt;</span><script type="math/tex"><</script></span> 阈值：<span class="arithmatex"><span class="MathJax_Preview">-10</span><script type="math/tex">-10</script></span></td>
 </tr>
 <tr>
-<td>无保护左转</td>
-<td>对向来车间隙、行人</td>
-<td>意图预测不确定性</td>
+<td><span class="arithmatex"><span class="MathJax_Preview">r_{eff}</span><script type="math/tex">r_{eff}</script></span></td>
+<td>车速接近限速</td>
+<td>过慢行驶；不必要停车</td>
 </tr>
 <tr>
-<td>环形交叉路口</td>
-<td>多车博弈、让行规则</td>
-<td>多智能体交互</td>
+<td><span class="arithmatex"><span class="MathJax_Preview">r_{comf}</span><script type="math/tex">r_{comf}</script></span></td>
+<td>加速度/急动度在舒适范围内</td>
+<td>急刹车；急转向</td>
 </tr>
 <tr>
-<td>施工区域</td>
-<td>临时标志、锥桶</td>
-<td>非标准道路元素</td>
-</tr>
-<tr>
-<td>紧急避障</td>
-<td>突然出现的障碍物</td>
-<td>极短反应时间</td>
+<td><span class="arithmatex"><span class="MathJax_Preview">r_{rule}</span><script type="math/tex">r_{rule}</script></span></td>
+<td>遵守交通信号和路权规则</td>
+<td>闯红灯；逆行；违规变道</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_5">安全保障</h2>
-<h3 id="rss">RSS 模型</h3>
-<p>Mobileye 提出的责任敏感安全模型 (Responsibility-Sensitive Safety)，定义了数学化的安全距离公式，保证自动驾驶车辆在任何可归责事故中不承担责任。核心思想包括：</p>
+<p>奖励塑形（Reward Shaping）时需注意：过强的安全惩罚会使策略极度保守，过强的效率奖励会导致激进驾驶。</p>
+<h2 id="8">8. 博弈论与交互决策</h2>
+<h3 id="81">8.1 纳什均衡在交通中的应用</h3>
+<p>在多车交互场景中，每辆车的最优策略依赖于其他车辆的策略选择，形成策略耦合。纳什均衡（Nash Equilibrium）描述了这样一个状态：在均衡点，任何一方单独改变策略都不能提高自身收益。</p>
+<p>对于两车博弈（自车 <span class="arithmatex"><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span>，他车 <span class="arithmatex"><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span>），纳什均衡 <span class="arithmatex"><span class="MathJax_Preview">(\pi_e^*, \pi_o^*)</span><script type="math/tex">(\pi_e^*, \pi_o^*)</script></span> 满足：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">V_e(\pi_e^*, \pi_o^*) \geq V_e(\pi_e, \pi_o^*), \quad \forall \pi_e$$
+$$V_o(\pi_e^*, \pi_o^*) \geq V_o(\pi_e^*, \pi_o), \quad \forall \pi_o</div>
+<script type="math/tex; mode=display">V_e(\pi_e^*, \pi_o^*) \geq V_e(\pi_e, \pi_o^*), \quad \forall \pi_e$$
+$$V_o(\pi_e^*, \pi_o^*) \geq V_o(\pi_e^*, \pi_o), \quad \forall \pi_o</script>
+</div>
+<p>在合流场景中，博弈矩阵可能出现"鹰鸽博弈"（Hawk-Dove Game）结构：双方都激进则可能碰撞，双方都保守则效率低下，纳什均衡给出理性的混合策略。</p>
+<h3 id="82-stackelberg-game">8.2 主从博弈（Stackelberg Game）</h3>
+<p>在许多实际驾驶场景中，博弈双方并非同时做决策，而是存在领导者（Leader）和跟随者（Follower）的层次结构。主从博弈（Stackelberg Game）刻画这种场景：</p>
 <ul>
-<li>纵向安全距离：基于最大制动能力和响应时间计算</li>
-<li>横向安全距离：确保变道和并线时的最小间距</li>
-<li>路权优先级：明确定义交通参与者的通行优先权</li>
+<li><strong>领导者</strong>（通常为自车）率先宣告并承诺其策略 <span class="arithmatex"><span class="MathJax_Preview">\pi_e</span><script type="math/tex">\pi_e</script></span></li>
+<li><strong>跟随者</strong>（他车）观察到领导者策略后，选择最优响应 <span class="arithmatex"><span class="MathJax_Preview">\pi_o^*(\pi_e)</span><script type="math/tex">\pi_o^*(\pi_e)</script></span></li>
+<li>领导者预见跟随者的响应，选择自身最优策略：</li>
 </ul>
-<h3 id="safety-envelope">安全护栏 (Safety Envelope)</h3>
-<p>在决策模块输出后增加安全校验层，确保规划的轨迹不违反物理约束和安全规则，类似于 NVIDIA 的 Safety Force Field。</p>
-<h2 id="_6">参考资料</h2>
+<div class="arithmatex">
+<div class="MathJax_Preview">\pi_e^* = \arg\max_{\pi_e} V_e\left(\pi_e, \pi_o^*(\pi_e)\right)</div>
+<script type="math/tex; mode=display">\pi_e^* = \arg\max_{\pi_e} V_e\left(\pi_e, \pi_o^*(\pi_e)\right)</script>
+</div>
+<p>主从博弈适用于超车场景：自车（领导者）通过加速表明超车意图，他车（跟随者）预计会礼让，从而形成安全的交互结果。</p>
+<h3 id="83">8.3 意图感知决策</h3>
+<p>意图感知决策将他车意图的推断与自车决策紧密耦合，形成闭环：</p>
 <ol>
-<li>S. Shalev-Shwartz, S. Shammah, and A. Shashua. On a Formal Model of Safe and Scalable Self-driving Cars. arXiv:1708.06374, 2017.</li>
-<li>S. Ulbrich et al. Defining and Substantiating the Terms Scene, Situation, and Scenario. IEEE ITSC, 2015.</li>
-<li>D. Silver et al. Mastering the Game of Go with Deep Neural Networks and Tree Search. Nature, 2016.</li>
+<li><strong>意图推断</strong>：基于他车的历史轨迹和当前状态，推断其驾驶意图（如是否准备变道），得到意图分布 <span class="arithmatex"><span class="MathJax_Preview">P(intent_o)</span><script type="math/tex">P(intent_o)</script></span></li>
+<li><strong>条件规划</strong>：对每种可能的他车意图分别规划自车最优响应</li>
+<li><strong>期望最优化</strong>：取期望意义下的最优策略，或采用最坏情况（Minimax）准则保证安全</li>
+</ol>
+<div class="arithmatex">
+<div class="MathJax_Preview">a_e^* = \arg\max_{a_e} \sum_{intent} P(intent_o) \cdot V_e(a_e \mid intent_o)</div>
+<script type="math/tex; mode=display">a_e^* = \arg\max_{a_e} \sum_{intent} P(intent_o) \cdot V_e(a_e \mid intent_o)</script>
+</div>
+<h2 id="9">9. 风险评估</h2>
+<h3 id="91-ttctte">9.1 碰撞时间（TTC）和碰撞余量（TTE）</h3>
+<p><strong>碰撞时间</strong>（Time To Collision, TTC）是最常用的危险度量指标，定义为在当前相对速度下两车碰撞所需的时间：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">TTC = \frac{d_{rel}}{v_{rel}} = \frac{x_{lead} - x_{ego} - l_{ego}}{v_{ego} - v_{lead}}</div>
+<script type="math/tex; mode=display">TTC = \frac{d_{rel}}{v_{rel}} = \frac{x_{lead} - x_{ego} - l_{ego}}{v_{ego} - v_{lead}}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">d_{rel}</span><script type="math/tex">d_{rel}</script></span> 为车辆间净距，<span class="arithmatex"><span class="MathJax_Preview">v_{rel} = v_{ego} - v_{lead}</span><script type="math/tex">v_{rel} = v_{ego} - v_{lead}</script></span> 为相对速度（仅在追赶时有意义，即 <span class="arithmatex"><span class="MathJax_Preview">v_{ego} &gt; v_{lead}</span><script type="math/tex">v_{ego} > v_{lead}</script></span>）。</p>
+<p><strong>碰撞余裕时间</strong>（Time to Escape, TTE）在障碍物来自侧向时使用，量化脱离危险区域所需时间。</p>
+<p>决策安全阈值参考：</p>
+<table>
+<thead>
+<tr>
+<th>TTC 值</th>
+<th>危险等级</th>
+<th>建议决策动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex"><span class="MathJax_Preview">TTC &gt; 4s</span><script type="math/tex">TTC > 4s</script></span></td>
+<td>安全</td>
+<td>保持当前状态</td>
+</tr>
+<tr>
+<td><span class="arithmatex"><span class="MathJax_Preview">2s &lt; TTC \leq 4s</span><script type="math/tex">2s < TTC \leq 4s</script></span></td>
+<td>警告</td>
+<td>轻微减速或变道评估</td>
+</tr>
+<tr>
+<td><span class="arithmatex"><span class="MathJax_Preview">1s &lt; TTC \leq 2s</span><script type="math/tex">1s < TTC \leq 2s</script></span></td>
+<td>危险</td>
+<td>立即减速，禁止变道</td>
+</tr>
+<tr>
+<td><span class="arithmatex"><span class="MathJax_Preview">TTC \leq 1s</span><script type="math/tex">TTC \leq 1s</script></span></td>
+<td>紧急</td>
+<td>触发 AEB</td>
+</tr>
+</tbody>
+</table>
+<h3 id="92-rss">9.2 责任敏感安全（RSS）在决策中的集成</h3>
+<p>RSS（Responsibility-Sensitive Safety）由 Mobileye 提出，通过数学化定义安全距离，为决策提供形式化的安全保证。</p>
+<p><strong>纵向安全距离</strong>（后车对前车的安全要求）：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">d_{safe}^{lon} = \left[v_{rear} \cdot \rho + \frac{v_{rear}^2}{2 a_{min,rear}} - \frac{v_{front}^2}{2 a_{max,front}}\right]^+</div>
+<script type="math/tex; mode=display">d_{safe}^{lon} = \left[v_{rear} \cdot \rho + \frac{v_{rear}^2}{2 a_{min,rear}} - \frac{v_{front}^2}{2 a_{max,front}}\right]^+</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\rho</span><script type="math/tex">\rho</script></span> 为反应时间，<span class="arithmatex"><span class="MathJax_Preview">a_{min,rear}</span><script type="math/tex">a_{min,rear}</script></span> 为后车最大制动加速度，<span class="arithmatex"><span class="MathJax_Preview">a_{max,front}</span><script type="math/tex">a_{max,front}</script></span> 为前车最大制动加速度，<span class="arithmatex"><span class="MathJax_Preview">[\cdot]^+</span><script type="math/tex">[\cdot]^+</script></span> 表示取正值部分。</p>
+<p><strong>横向安全距离</strong>（相邻车道间）：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">d_{safe}^{lat} = \mu + \left[\frac{(v_{lat,1} + v_{lat,2})^2}{2 a_{lat,min}}\right]^+</div>
+<script type="math/tex; mode=display">d_{safe}^{lat} = \mu + \left[\frac{(v_{lat,1} + v_{lat,2})^2}{2 a_{lat,min}}\right]^+</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span> 为最小横向间距，<span class="arithmatex"><span class="MathJax_Preview">v_{lat}</span><script type="math/tex">v_{lat}</script></span> 为横向速度分量。</p>
+<p>RSS 在决策中的集成方式：将 RSS 安全条件作为硬约束，过滤掉所有违反 RSS 的候选动作，仅在安全动作集合中进行优化选择。</p>
+<h3 id="93-risk-map">9.3 风险地图（Risk Map）</h3>
+<p>风险地图将场景中各点的危险程度以栅格形式表示，综合考虑以下因素：</p>
+<ul>
+<li><strong>碰撞概率</strong>：基于对周围障碍物轨迹的预测，计算自车到达某位置时的碰撞概率</li>
+<li><strong>历史事故数据</strong>：路口、盲区等高风险区域有更高的先验风险值</li>
+<li><strong>交通规则违规代价</strong>：违反交规的区域（如对向车道）被赋予高风险值</li>
+</ul>
+<p>风险地图可以与运动规划无缝集成，规划算法在最小化代价的同时，自动避开高风险区域：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">C_{path} = \int_0^L \left[ w_{risk} \cdot Risk(x(s), y(s)) + w_{len} \right] ds</div>
+<script type="math/tex; mode=display">C_{path} = \int_0^L \left[ w_{risk} \cdot Risk(x(s), y(s)) + w_{len} \right] ds</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> 为路径弧长参数，<span class="arithmatex"><span class="MathJax_Preview">Risk(\cdot)</span><script type="math/tex">Risk(\cdot)</script></span> 为风险地图在该位置的风险值。</p>
+<h2 id="_1">参考资料</h2>
+<ol>
+<li>Shalev-Shwartz, S., Shammah, S., &amp; Shashua, A. (2017). On a Formal Model of Safe and Scalable Self-driving Cars. <em>arXiv:1708.06374</em>.</li>
+<li>Cunningham, A. G., Galceran, E., Eustice, R. M., &amp; Olson, E. (2015). MPDM: Multipolicy Decision-Making in Dynamic, Uncertain Environments for Autonomous Driving. <em>IEEE ICRA 2015</em>.</li>
+<li>Somani, A., Ye, N., Hsu, D., &amp; Lee, W. S. (2013). DESPOT: Online POMDP Planning with Regularization. <em>NeurIPS 2013</em>.</li>
+<li>Ziebart, B. D., Maas, A., Bagnell, J. A., &amp; Dey, A. K. (2008). Maximum Entropy Inverse Reinforcement Learning. <em>AAAI 2008</em>.</li>
+<li>Schulman, J., Wolski, F., Dhariwal, P., Radford, A., &amp; Klimov, O. (2017). Proximal Policy Optimization Algorithms. <em>arXiv:1707.06347</em>.</li>
+<li>Fisac, J. F., Bronstein, E., Stefansson, E., Sadigh, D., Sastry, S. S., &amp; Dragan, A. D. (2019). Hierarchical Game-Theoretic Planning for Autonomous Vehicles. <em>IEEE ICRA 2019</em>.</li>
 </ol>
 
 

@@ -1,0 +1,2475 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="自动驾驶历史与技术">
+      
+      
+        <meta name="author" content="YFRL">
+      
+      
+        <link rel="canonical" href="https://yfrobotics.github.io/self-driving-handbook-cn/intro/history/">
+      
+      
+        <link rel="prev" href="../category/">
+      
+      
+        <link rel="next" href="../../system/main/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>自动驾驶发展历史 - 自动驾驶指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,700,700i%7CFira+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Fira Sans";--md-code-font:"Fira Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../_static/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="自动驾驶指南" class="md-header__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            自动驾驶指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              自动驾驶发展历史
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yfrobotics/self-driving-handbook-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yfrobotics/self-driving-handbook-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="自动驾驶指南" class="md-nav__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    自动驾驶指南
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yfrobotics/self-driving-handbook-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yfrobotics/self-driving-handbook-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶技术指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 概述
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1. 概述
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一章：概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../define/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶系统定义
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶等级分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶发展历史
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶发展历史
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#19201990" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        早期探索（1920–1990）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#darpa-20042007" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DARPA 大挑战时代（2004–2007）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DARPA 大挑战时代（2004–2007）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2004" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2004 年：一场零成绩的起点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2005" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2005 年：沙漠中的胜利
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2007" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2007 年：从沙漠到城市
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20082015" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        互联网科技公司入局（2008–2015）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="互联网科技公司入局（2008–2015）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#google-2009" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Google 自动驾驶项目（2009）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tesla-autopilot2014" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tesla Autopilot（2014）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20132016" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        中国第一波布局（2013–2016）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20162020" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        资本涌入时代（2016–2020）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="资本涌入时代（2016–2020）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        明星公司融资情况
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键技术突破
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20202023" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        冷静期与深水区（2020–2023）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2023" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        商业化破局（2023 至今）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="商业化破局（2023 至今）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#waymo-robotaxi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Waymo 规模化 Robotaxi 运营
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#robotaxi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        中国 Robotaxi 崛起
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        端到端革命
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        技术路线演进总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 系统
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. 系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二章：系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/vehicle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶车辆系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/v2x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车联网（V2X）技术详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真平台与数据集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hdmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高精地图（HD Map）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人机交互系统（HMI）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统安全保障
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶测试体系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/cybersecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶网络安全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/regulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    政策与法律法规
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 硬件
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. 硬件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三章：硬件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/hw_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    硬件总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/ccu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中央计算单元 (CCU / 车载AI芯片)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/drive_by_wire/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线控系统（Drive-by-Wire）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/communication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车载通信系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知传感器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/camera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    视觉传感器（摄像头）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. 算法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4. 算法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第四章：核心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sw_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统软件框架总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/image_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图像感知与处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/laser_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    激光点云数据处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sensor_fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器融合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/occupancy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    占用网络（Occupancy Network）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/localisation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    地图与定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/path_planning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    路径规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/prediction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行为预测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/decision_making/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    决策 (Decision Making)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    控制算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/end_to_end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端自动驾驶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/data_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶ML数据管道
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/nlp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自然语言处理与大语言模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 实例
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    5. 实例
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第五章：实例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/apollo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    百度 Apollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/waymo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waymo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/tesla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla FSD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/chinese_players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国自动驾驶企业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/robotaxi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robotaxi：自动驾驶商业化的主战场
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#19201990" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        早期探索（1920–1990）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#darpa-20042007" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DARPA 大挑战时代（2004–2007）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DARPA 大挑战时代（2004–2007）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2004" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2004 年：一场零成绩的起点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2005" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2005 年：沙漠中的胜利
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2007" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2007 年：从沙漠到城市
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20082015" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        互联网科技公司入局（2008–2015）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="互联网科技公司入局（2008–2015）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#google-2009" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Google 自动驾驶项目（2009）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tesla-autopilot2014" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tesla Autopilot（2014）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20132016" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        中国第一波布局（2013–2016）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20162020" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        资本涌入时代（2016–2020）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="资本涌入时代（2016–2020）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        明星公司融资情况
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键技术突破
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20202023" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        冷静期与深水区（2020–2023）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2023" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        商业化破局（2023 至今）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="商业化破局（2023 至今）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#waymo-robotaxi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Waymo 规模化 Robotaxi 运营
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#robotaxi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        中国 Robotaxi 崛起
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        端到端革命
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        技术路线演进总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">自动驾驶发展历史</h1>
+<p>自动驾驶的梦想与汽车本身几乎同龄——早在 20 世纪初，工程师们就幻想让机器代替人类掌控方向盘。然而，真正意义上的技术突破发生在过去 20 年：从 DARPA 大挑战中步履蹒跚的沙漠越野，到如今每天在城市街道上接载乘客的 Robotaxi，自动驾驶正以出人意料的速度从科幻走向现实。</p>
+<h2 id="19201990">早期探索（1920–1990）</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>事件</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1925</td>
+<td>美国工程师 Francis Houdina 展示无线电控制的"American Wonder"汽车，在纽约街头行驶</td>
+<td>最早的"自动"行驶公开演示</td>
+</tr>
+<tr>
+<td>1939</td>
+<td>通用汽车在纽约世博会 Futurama 展馆，展示 1960 年代自动化高速公路愿景</td>
+<td>首次将自动驾驶纳入公众视野</td>
+</tr>
+<tr>
+<td>1977</td>
+<td>日本筑波机械工程实验室研发出能跟随白色道路标记的自动车辆（≤ 30 km/h）</td>
+<td>基于视觉的自动驾驶原型</td>
+</tr>
+<tr>
+<td>1987</td>
+<td>Ernst Dickmanns 领导 VaMoRs 项目（慕尼黑工大），基于视觉实现高速公路自动行驶</td>
+<td>开创计算机视觉驾驶研究范式</td>
+</tr>
+<tr>
+<td>1995</td>
+<td>Dickmanns 的 VaMP 和 VITA-2 完成巴黎→波尔多约 1,500 km 自动驾驶，最高时速 130 km/h</td>
+<td>首次公路自动驾驶长途演示</td>
+</tr>
+</tbody>
+</table>
+<p>这一阶段的技术以规则化图像处理为主，受限于计算能力，只能处理简单的结构化场景。</p>
+<h2 id="darpa-20042007">DARPA 大挑战时代（2004–2007）</h2>
+<p>美国国防高级研究计划局（DARPA）举办的系列机器人车辆竞赛，是自动驾驶从学术走向工程的转折点，催生了大量后来成为业界中坚的人才和技术。</p>
+<h3 id="2004">2004 年：一场零成绩的起点</h3>
+<p><strong>DARPA Grand Challenge 2004</strong> 要求车辆在莫哈韦沙漠完成 240 km 越野路线——结果，<strong>没有一辆车完成</strong>。最好成绩来自 Carnegie Mellon 大学的 Sandstorm，仅行驶了 <strong>11.78 km</strong> 便陷入沙丘。这次失败让全世界看到了自动驾驶的巨大难度，也激发了更多研究投入。</p>
+<h3 id="2005">2005 年：沙漠中的胜利</h3>
+<p><strong>DARPA Grand Challenge 2005</strong> 共有 5 辆车完成全程：</p>
+<ul>
+<li><strong>Stanford Stanley</strong>（斯坦福大学，Sebastian Thrun 领队）：以 <strong>6 小时 53 分</strong>夺冠</li>
+<li>CMU 的 Sandstorm 和 H1ghlander 分获二三名</li>
+</ul>
+<p>Stanley 的核心技术：机器学习（SVM）结合激光雷达和摄像头，通过概率路面分类导航。这是<strong>深度学习时代之前</strong>，基于统计学习的自动驾驶最高水平展示。</p>
+<h3 id="2007">2007 年：从沙漠到城市</h3>
+<p><strong>DARPA Urban Challenge 2007</strong> 将场景搬入模拟城市道路，要求遵守交通法规、与其他车辆交互——难度远超沙漠越野：</p>
+<ul>
+<li><strong>CMU 的 Boss</strong>（基于雪佛兰 Tahoe）以 <strong>4 小时 10 分</strong>夺冠</li>
+<li>斯坦福 Junior 获得第二名</li>
+</ul>
+<p>Boss 的规划系统后来演化为 Uber ATG 和 Aurora 的核心技术。这次比赛展示了<strong>城区结构化环境下全自主驾驶的可行性</strong>，标志着自动驾驶从"能否行驶"进化到"能否安全地与人共存"。</p>
+<h2 id="20082015">互联网科技公司入局（2008–2015）</h2>
+<p>DARPA 比赛结束后，互联网科技巨头将优秀工程师网罗旗下，推动自动驾驶进入产业化探索期。</p>
+<h3 id="google-2009">Google 自动驾驶项目（2009）</h3>
+<p>DARPA 大挑战冠军队队长 <strong>Sebastian Thrun</strong> 加入 Google，组建秘密自动驾驶团队（后称 Google X）：</p>
+<ul>
+<li><strong>传感器方案</strong>：以 Prius 为基础，搭载 Velodyne 64 线激光雷达（当时约 7 万美元/个）</li>
+<li><strong>2012 年里程碑</strong>：车队无人驾驶累计 30 万英里，内华达州发放首张自动驾驶路测牌照</li>
+<li><strong>2016 年独立</strong>：成立 Waymo（Alphabet 子公司），历史测试里程已超过 200 万英里</li>
+</ul>
+<h3 id="tesla-autopilot2014">Tesla Autopilot（2014）</h3>
+<p>Tesla 通过 OTA 推送，首次为全球量产车辆引入 <strong>L2 级自动驾驶</strong>（与 Mobileye 合作）：
+- 自适应巡航 + 自动车道保持，消费者首次可在公路上"放手"
+- <strong>2016 年 5 月</strong>：全球首例 Autopilot 激活状态下的致死事故发生（车辆未识别白色卡车侧面），引发监管广泛关注和行业对 L2 安全的深刻反思</p>
+<h3 id="20132016">中国第一波布局（2013–2016）</h3>
+<ul>
+<li><strong>百度</strong>：2013 年启动无人车项目，2015 年 12 月在北京五环完成城区路测，引发国内媒体广泛报道</li>
+<li><strong>上汽、长安</strong>：传统主机厂开始布局 ADAS，与博世、大陆等 Tier1 合作引入 L1/L2 技术</li>
+</ul>
+<h2 id="20162020">资本涌入时代（2016–2020）</h2>
+<p>2016–2020 年间，自动驾驶赛道迎来史上最大规模融资浪潮，全球资本竞相押注这一"下一个十年最大产业机会"。</p>
+<h3 id="_2">明星公司融资情况</h3>
+<table>
+<thead>
+<tr>
+<th>公司</th>
+<th>融资金额</th>
+<th>主要投资方</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Waymo</td>
+<td>30 亿美元（2020）</td>
+<td>外部机构投资者</td>
+<td>首次对外独立融资</td>
+</tr>
+<tr>
+<td>Cruise（通用旗下）</td>
+<td>10 亿美元</td>
+<td>Softbank</td>
+<td>软银"愿景基金"入局</td>
+</tr>
+<tr>
+<td>Argo AI（Ford+VW）</td>
+<td>36 亿美元</td>
+<td>福特、大众</td>
+<td>两大车企联合押注</td>
+</tr>
+<tr>
+<td>小马智行</td>
+<td>11 亿美元</td>
+<td>丰田、IDG 资本</td>
+<td>丰田战略投资入局</td>
+</tr>
+<tr>
+<td>文远知行</td>
+<td>超 10 亿美元</td>
+<td>雷诺-日产-三菱联盟</td>
+<td>汽车联盟加速布局</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">关键技术突破</h3>
+<ul>
+<li><strong>深度学习取代手工特征</strong>：KITTI、nuScenes 等基准数据集推动感知算法快速迭代，CNN 成为感知主流</li>
+<li><strong>激光雷达降价</strong>：64 线 LiDAR 从数万美元降至数千美元；固态 LiDAR 开始商业化</li>
+<li><strong>NVIDIA 推出 Drive PX</strong>：专为自动驾驶设计的计算平台，让车载 GPU 推理成为可能</li>
+</ul>
+<h2 id="20202023">冷静期与深水区（2020–2023）</h2>
+<p>经历过于乐观的时间表预期后，行业在 2020 年代初期迎来痛苦的"冷静期"：</p>
+<p><strong>Uber ATG 出售（2020）：</strong></p>
+<p>Uber 将自动驾驶部门（约 1,200 名工程师）以 40 亿美元估值出售给 Aurora，承认 Robotaxi 商业化比预想困难 10 倍。这被视为该轮自动驾驶泡沫破裂的标志性事件。</p>
+<p><strong>Argo AI 解散（2022）：</strong></p>
+<p>福特和大众联合投资 36 亿美元的 Argo AI 宣布解散，约 2,000 名员工失业。两大车企"直接赋能整车量产 L4"的路径宣告受挫，证明 L4 商业化时间线远比想象中长。</p>
+<p><strong>Tesla FSD 的争议与坚持（2020–2023）：</strong></p>
+<p>Tesla "完全自动驾驶"（FSD）功能多次推迟交付，Elon Musk 的多个"年内实现无人驾驶"预测落空；与此同时，NHTSA 对 Autopilot 涉事事故发起多项调查。但 Tesla 坚持纯视觉+端到端路线，2023 年 FSD V12 的表现令行业刮目相看。</p>
+<h2 id="2023">商业化破局（2023 至今）</h2>
+<h3 id="waymo-robotaxi">Waymo 规模化 Robotaxi 运营</h3>
+<ul>
+<li><strong>2023 年</strong>：旧金山开放全城商业化运营（无安全员），获得监管批准</li>
+<li><strong>2024 年里程碑</strong>：</li>
+<li>扩展至洛杉矶、凤凰城商业运营</li>
+<li>全无人驾驶单日行程超 50,000 次</li>
+<li>累计无人驾驶里程突破 700 万英里</li>
+</ul>
+<h3 id="robotaxi">中国 Robotaxi 崛起</h3>
+<ul>
+<li><strong>百度萝卜快跑</strong>：2023 年 8 月武汉开放全无人驾驶收费服务（全球首例城市规模），2024 年武汉日订单峰值超 2 万单，引发出租车司机大规模关注</li>
+<li><strong>文远知行</strong>：广州南沙全无人 Robotaxi 商业运营，并宣布计划在全球多个城市扩张</li>
+<li><strong>小马智行</strong>：2024 年在纽交所上市，成为首家上市的中国 L4 自动驾驶公司</li>
+</ul>
+<h3 id="_4">端到端革命</h3>
+<ul>
+<li><strong>Tesla FSD V12（2023）</strong>：以单一端到端神经网络替代模块化 C++ 代码，城区驾驶能力大幅跃升</li>
+<li><strong>国内跟进</strong>：华为 ADS 2.0、小鹏 XNGP、理想 AD Max、毫末 DriveGPT 等纷纷引入端到端技术</li>
+<li><strong>大模型介入</strong>：DriveVLM、GPT-Driver 等工作将 VLM/LLM 引入驾驶决策，开启"具身智能"新篇章</li>
+</ul>
+<h2 id="_5">技术路线演进总结</h2>
+<div class="highlight"><pre><span></span><code>1990s–2000s   规则 + 传统计算机视觉（手工特征，HOG/Haar/Hough）
+      │
+      ▼
+2010s 初期    激光雷达 + 高精地图（重传感器，重先验地图，重规则）
+      │
+      ▼
+2015–2020     深度学习感知 + 模块化规划（CNN 目标检测成为主流）
+      │
+      ▼
+2020–2022     BEV 多相机感知 + Transformer 架构（多任务统一表示）
+      │
+      ▼
+2023 至今     端到端大模型 + 数据飞轮（感知-规划-控制统一优化）
+                    ＋ 世界模型 ＋ VLM 驾驶推理
+</code></pre></div>
+<p>自动驾驶的历史证明：技术进步从来不是线性的，每一次"不可能"背后都隐藏着下一次突破的种子。</p>
+<h2 id="_6">参考资料</h2>
+<ol>
+<li>S. Thrun et al. Stanley: The Robot That Won the DARPA Grand Challenge. JFR, 2006.</li>
+<li>C. Urmson et al. Autonomous Driving in Urban Environments: Boss and the Urban Challenge. JFR, 2008.</li>
+<li>KPMG. Autonomous Vehicles Readiness Index, 2023.</li>
+<li>亿欧智库. 中国自动驾驶行业研究报告, 2024.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../_static/js/mathjaxhelper.js"></script>
+      
+    
+  </body>
+</html>

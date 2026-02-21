@@ -25,11 +25,11 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
-        <title>视觉传感器 - 自动驾驶指南</title>
+        <title>视觉传感器（摄像头） - 自动驾驶指南</title>
       
     
     
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              视觉传感器
+              视觉传感器（摄像头）
             
           </span>
         </div>
@@ -317,7 +317,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶介绍
+    第一章：概述
   
 
     
@@ -373,7 +373,35 @@
   <span class="md-ellipsis">
     
   
-    自主性等级分类
+    自动驾驶等级分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶发展历史
   
 
     
@@ -455,7 +483,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶系统
+    第二章：系统
   
 
     
@@ -483,7 +511,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶车辆
+    自动驾驶车辆系统
   
 
     
@@ -511,7 +539,7 @@
   <span class="md-ellipsis">
     
   
-    智能交通
+    车联网（V2X）技术详解
   
 
     
@@ -539,7 +567,63 @@
   <span class="md-ellipsis">
     
   
-    设计与仿真平台
+    仿真平台与数据集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hdmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高精地图（HD Map）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人机交互系统（HMI）
   
 
     
@@ -568,6 +652,62 @@
     
   
     系统安全保障
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶测试体系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/cybersecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶网络安全
   
 
     
@@ -679,7 +819,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶硬件
+    第三章：硬件
   
 
     
@@ -735,7 +875,7 @@
   <span class="md-ellipsis">
     
   
-    中控单元 (AI芯片, GPGPU)
+    中央计算单元 (CCU / 车载AI芯片)
   
 
     
@@ -763,7 +903,7 @@
   <span class="md-ellipsis">
     
   
-    线控系统
+    线控系统（Drive-by-Wire）
   
 
     
@@ -791,7 +931,7 @@
   <span class="md-ellipsis">
     
   
-    车内总线
+    车载通信系统
   
 
     
@@ -856,7 +996,7 @@
   <span class="md-ellipsis">
     
   
-    视觉传感器
+    视觉传感器（摄像头）
   
 
     
@@ -874,7 +1014,7 @@
   <span class="md-ellipsis">
     
   
-    视觉传感器
+    视觉传感器（摄像头）
   
 
     
@@ -900,51 +1040,390 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 摄像头光学基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 摄像头光学基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 小孔成像模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 相机内参矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-fov" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 视场角（FOV）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 景深与光圈
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 图像传感器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 图像传感器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-cmos-vs-ccd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 CMOS vs CCD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-rolling-shutter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 卷帘快门（Rolling Shutter）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-global-shutter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 全局快门（Global Shutter）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 像素尺寸与低光性能
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-hdr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 高动态范围（HDR）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-isp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. ISP图像信号处理管线
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. ISP图像信号处理管线">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-isp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 ISP处理流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 各处理步骤说明
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 镜头畸变与标定
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 镜头畸变与标定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-radial-distortion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 径向畸变（Radial Distortion）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-tangential-distortion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 切向畸变（Tangential Distortion）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-zhangs-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 棋盘格标定法（Zhang's Method）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 鱼眼镜头等距投影模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 多相机外参标定
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 车载摄像头类型对比
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 车载摄像头类型对比">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 各类型摄像头说明
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 车载摄像头规格对比表
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 主流车载摄像头产品
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 主流车载摄像头产品">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-sensor-die" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 图像传感器（Sensor Die）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-camera-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 摄像头模组（Camera Module）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 主流产品规格对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 摄像头时序同步
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 摄像头时序同步">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 硬件触发同步
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 与LiDAR的时间对齐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-30-fps-vs-60-fps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 帧率选择（30 fps vs 60 fps）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        摄像头类型
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        关键参数
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        车载摄像头布置
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        行业方案
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         参考资料
@@ -1031,7 +1510,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶核心算法
+    第四章：核心算法
   
 
     
@@ -1087,7 +1566,7 @@
   <span class="md-ellipsis">
     
   
-    图像识别与分割
+    图像感知与处理
   
 
     
@@ -1116,6 +1595,62 @@
     
   
     激光点云数据处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sensor_fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器融合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/occupancy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    占用网络（Occupancy Network）
   
 
     
@@ -1192,6 +1727,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/prediction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行为预测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/decision_making/" class="md-nav__link">
         
   
@@ -1199,7 +1762,91 @@
   <span class="md-ellipsis">
     
   
-    决策 (Decision Making Process)
+    决策 (Decision Making)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    控制算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/end_to_end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端自动驾驶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/data_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶ML数据管道
   
 
     
@@ -1227,7 +1874,7 @@
   <span class="md-ellipsis">
     
   
-    自然语言识别与交互
+    自然语言处理与大语言模型
   
 
     
@@ -1309,7 +1956,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶案例
+    第五章：实例
   
 
     
@@ -1337,7 +1984,119 @@
   <span class="md-ellipsis">
     
   
-    百度无人驾驶
+    百度 Apollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/waymo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waymo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/tesla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla FSD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/chinese_players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国自动驾驶企业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/robotaxi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robotaxi：自动驾驶商业化的主战场
   
 
     
@@ -1385,51 +2144,390 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 摄像头光学基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 摄像头光学基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 小孔成像模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 相机内参矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-fov" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 视场角（FOV）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 景深与光圈
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 图像传感器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 图像传感器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-cmos-vs-ccd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 CMOS vs CCD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-rolling-shutter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 卷帘快门（Rolling Shutter）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-global-shutter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 全局快门（Global Shutter）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 像素尺寸与低光性能
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-hdr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 高动态范围（HDR）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-isp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. ISP图像信号处理管线
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. ISP图像信号处理管线">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-isp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 ISP处理流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 各处理步骤说明
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 镜头畸变与标定
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 镜头畸变与标定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-radial-distortion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 径向畸变（Radial Distortion）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-tangential-distortion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 切向畸变（Tangential Distortion）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-zhangs-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 棋盘格标定法（Zhang's Method）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 鱼眼镜头等距投影模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 多相机外参标定
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 车载摄像头类型对比
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 车载摄像头类型对比">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 各类型摄像头说明
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 车载摄像头规格对比表
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 主流车载摄像头产品
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 主流车载摄像头产品">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-sensor-die" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 图像传感器（Sensor Die）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-camera-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 摄像头模组（Camera Module）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 主流产品规格对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 摄像头时序同步
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 摄像头时序同步">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 硬件触发同步
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 与LiDAR的时间对齐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-30-fps-vs-60-fps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 帧率选择（30 fps vs 60 fps）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        摄像头类型
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        关键参数
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        车载摄像头布置
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        行业方案
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         参考资料
@@ -1456,102 +2554,544 @@
 
 
 
-<h1 id="_1">视觉传感器</h1>
-<p>摄像头是自动驾驶中最重要的传感器之一，能够提供丰富的颜色、纹理和语义信息。本节介绍车载摄像头的类型、关键参数和典型布置方案。</p>
-<h2 id="_2">摄像头类型</h2>
+<h1 id="_1">视觉传感器（摄像头）</h1>
+<p>摄像头是自动驾驶感知系统的核心传感器。相比激光雷达和毫米波雷达，摄像头具有成本低、信息密度高的显著优势——单颗图像传感器即可同时获取颜色、纹理、形状和语义信息，非常适合交通标志识别、车道线检测、目标分类等需要语义理解的任务。以特斯拉为代表的纯视觉自动驾驶方案证明，在算法足够强大的前提下，摄像头阵列可以成为整个感知体系的基础。</p>
+<h2 id="1">1. 摄像头光学基础</h2>
+<h3 id="11">1.1 小孔成像模型</h3>
+<p>摄像头最常用的数学模型是<strong>小孔相机模型（Pinhole Camera Model）</strong>。三维空间中的点 <span class="arithmatex"><span class="MathJax_Preview">P = (X, Y, Z)</span><script type="math/tex">P = (X, Y, Z)</script></span> 经过光心投影到像平面上的点 <span class="arithmatex"><span class="MathJax_Preview">p = (x, y)</span><script type="math/tex">p = (x, y)</script></span>，满足：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">x = f \cdot \frac{X}{Z}, \quad y = f \cdot \frac{Y}{Z}</div>
+<script type="math/tex; mode=display">x = f \cdot \frac{X}{Z}, \quad y = f \cdot \frac{Y}{Z}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> 为焦距（单位：像素或毫米）。将像素坐标系与主点偏移结合，得到完整的像素坐标：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">u = f_x \cdot \frac{X}{Z} + c_x, \quad v = f_y \cdot \frac{Y}{Z} + c_y</div>
+<script type="math/tex; mode=display">u = f_x \cdot \frac{X}{Z} + c_x, \quad v = f_y \cdot \frac{Y}{Z} + c_y</script>
+</div>
+<h3 id="12">1.2 相机内参矩阵</h3>
+<p>上述投影关系可以用齐次坐标写成矩阵形式：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\begin{bmatrix} u \\ v \\ 1 \end{bmatrix} = \frac{1}{Z} K \begin{bmatrix} X \\ Y \\ Z \end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix} u \\ v \\ 1 \end{bmatrix} = \frac{1}{Z} K \begin{bmatrix} X \\ Y \\ Z \end{bmatrix}</script>
+</div>
+<p>其中<strong>内参矩阵（Intrinsic Matrix）</strong> <span class="arithmatex"><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span> 定义为：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">K = \begin{bmatrix} f_x &amp; 0 &amp; c_x \\ 0 &amp; f_y &amp; c_y \\ 0 &amp; 0 &amp; 1 \end{bmatrix}</div>
+<script type="math/tex; mode=display">K = \begin{bmatrix} f_x & 0 & c_x \\ 0 & f_y & c_y \\ 0 & 0 & 1 \end{bmatrix}</script>
+</div>
+<ul>
+<li><span class="arithmatex"><span class="MathJax_Preview">f_x, f_y</span><script type="math/tex">f_x, f_y</script></span>：水平/垂直方向的焦距（像素为单位，<span class="arithmatex"><span class="MathJax_Preview">f_x = f / s_x</span><script type="math/tex">f_x = f / s_x</script></span>，<span class="arithmatex"><span class="MathJax_Preview">s_x</span><script type="math/tex">s_x</script></span> 为像素水平尺寸）</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">(c_x, c_y)</span><script type="math/tex">(c_x, c_y)</script></span>：主点（Principal Point），通常接近图像中心</li>
+<li>若像素为正方形（<span class="arithmatex"><span class="MathJax_Preview">f_x = f_y</span><script type="math/tex">f_x = f_y</script></span>），则只需一个焦距参数</li>
+</ul>
+<h3 id="13-fov">1.3 视场角（FOV）</h3>
+<p>视场角描述摄像头的可视范围，由焦距 <span class="arithmatex"><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> 与传感器尺寸 <span class="arithmatex"><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> 共同决定：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\theta = 2\arctan\!\left(\frac{d}{2f}\right)</div>
+<script type="math/tex; mode=display">\theta = 2\arctan\!\left(\frac{d}{2f}\right)</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> 对应水平方向时得到<strong>水平FOV</strong>，对应垂直方向时得到<strong>垂直FOV</strong>，对应对角线时得到<strong>对角FOV</strong>。</p>
+<p>实际车载摄像头的焦距选择遵循以下原则：</p>
+<table>
+<thead>
+<tr>
+<th>焦距类型</th>
+<th>典型水平FOV</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>长焦（如 12 mm）</td>
+<td>约 30°–50°</td>
+<td>远端目标检测（&gt;100 m），高速公路</td>
+</tr>
+<tr>
+<td>中焦（如 6 mm）</td>
+<td>约 60°</td>
+<td>综合感知，城市道路</td>
+</tr>
+<tr>
+<td>广角（如 2.5 mm）</td>
+<td>约 100°–120°</td>
+<td>近场覆盖，交叉路口，变道辅助</td>
+</tr>
+<tr>
+<td>鱼眼（如 1.3 mm）</td>
+<td>约 180°–195°</td>
+<td>泊车环视，盲区覆盖</td>
+</tr>
+</tbody>
+</table>
+<h3 id="14">1.4 景深与光圈</h3>
+<p><strong>景深（Depth of Field, DoF）</strong>是指图像中清晰成像的距离范围，由光圈（F值）、焦距和对焦距离共同决定：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\text{DoF} \approx \frac{2 N c f^2 d}{f^4 - N^2 c^2 d^2}</div>
+<script type="math/tex; mode=display">\text{DoF} \approx \frac{2 N c f^2 d}{f^4 - N^2 c^2 d^2}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> 为光圈F值，<span class="arithmatex"><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 为弥散圆直径，<span class="arithmatex"><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> 为对焦距离。车载摄像头通常使用较大光圈（F1.6–F2.0）以保证低照度性能，同时固定对焦于超焦距以获得最大景深，无需动态对焦机构。</p>
+<h2 id="2">2. 图像传感器</h2>
+<h3 id="21-cmos-vs-ccd">2.1 CMOS vs CCD</h3>
+<table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>CMOS</th>
+<th>CCD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>读取方式</td>
+<td>每个像素独立放大读出</td>
+<td>电荷逐行转移读出</td>
+</tr>
+<tr>
+<td>速度</td>
+<td>高（可局部读取）</td>
+<td>较低</td>
+</tr>
+<tr>
+<td>功耗</td>
+<td>低</td>
+<td>高（约CMOS的10倍）</td>
+</tr>
+<tr>
+<td>集成度</td>
+<td>高（ADC/ISP可片上集成）</td>
+<td>低（需外部电路）</td>
+</tr>
+<tr>
+<td>噪声</td>
+<td>固定图案噪声稍高</td>
+<td>均匀性好，暗电流低</td>
+</tr>
+<tr>
+<td>成本</td>
+<td>低</td>
+<td>高</td>
+</tr>
+<tr>
+<td>车载应用</td>
+<td>主流选择</td>
+<td>基本已淘汰</td>
+</tr>
+</tbody>
+</table>
+<p>目前车载图像传感器几乎全部采用CMOS工艺，主流厂商包括索尼（Sony）、安森美（onsemi）、豪威（OmniVision）等。</p>
+<h3 id="22-rolling-shutter">2.2 卷帘快门（Rolling Shutter）</h3>
+<p>卷帘快门的曝光方式是<strong>逐行依次曝光</strong>，各行之间存在时间差。当拍摄运动目标或相机自身运动时，会产生以下伪影：</p>
+<ul>
+<li><strong>果冻效应（Jello Effect）</strong>：快速横向运动导致垂直边缘倾斜</li>
+<li><strong>运动模糊不一致</strong>：图像上下部分的运动状态不同步</li>
+<li><strong>闪光带（Flash Banding）</strong>：在频闪光源下出现横向亮暗条纹</li>
+</ul>
+<p>在ADAS场景中，车辆高速行驶时卷帘快门会导致测距误差。例如，以 <span class="arithmatex"><span class="MathJax_Preview">v = 30\ \text{m/s}</span><script type="math/tex">v = 30\ \text{m/s}</script></span> 的速度行驶，帧读出时间为 <span class="arithmatex"><span class="MathJax_Preview">16\ \text{ms}</span><script type="math/tex">16\ \text{ms}</script></span>，则图像顶部与底部的位置差可达 <span class="arithmatex"><span class="MathJax_Preview">0.48\ \text{m}</span><script type="math/tex">0.48\ \text{m}</script></span>，对检测精度影响显著。</p>
+<h3 id="23-global-shutter">2.3 全局快门（Global Shutter）</h3>
+<p>全局快门对所有像素<strong>同时开始和结束曝光</strong>，完全消除因逐行读出引起的运动伪影，是高速运动场景的必选方案。代价是像素面积利用率（Fill Factor）较低，在相同工艺下感光度略逊于卷帘快门。</p>
+<p>车载应用中：
+- <strong>前视远焦摄像头</strong>：通常要求全局快门，以保证高速行驶时的目标检测精度
+- <strong>环视鱼眼摄像头</strong>：低速泊车场景，卷帘快门可接受
+- <strong>DMS内舱摄像头</strong>：检测眨眼/头部转动等高频动作，推荐全局快门</p>
+<h3 id="24">2.4 像素尺寸与低光性能</h3>
+<p>像素物理尺寸越大，单位时间内收集的光子数越多，信噪比越高。常见像素尺寸：</p>
+<ul>
+<li>手机摄像头：0.6–1.0 µm</li>
+<li>车载摄像头：2.0–4.0 µm（索尼 IMX490：3.0 µm）</li>
+</ul>
+<p>像素尺寸与信噪比的近似关系：像素面积增大4倍，暗场信噪比提升约6 dB。</p>
+<h3 id="25-hdr">2.5 高动态范围（HDR）</h3>
+<p>自动驾驶场景需要同时看清隧道出口的强光区和隧道内的阴暗区，要求传感器<strong>动态范围（Dynamic Range）</strong>超过120 dB，而普通CMOS只有约60–70 dB。</p>
+<p>常见HDR实现方式：</p>
+<ul>
+<li><strong>双曝光合并（Dual Exposure）</strong>：同一帧内采用长短两次曝光，分别捕获暗部和亮部，再合并为HDR图像</li>
+<li><strong>多曝光交织（Multi-Exposure Interleaving）</strong>：连续帧交替使用不同曝光时间</li>
+<li><strong>分区像素HDR（Lateral Overflow Integration Capacitor, LOFIC）</strong>：像素内集成两个电容，分别存储高/低增益信号</li>
+<li><strong>Log域传感器</strong>：像素响应曲线为对数型，天然压缩高光</li>
+</ul>
+<p>索尼 IMX490 采用 DOL-HDR（Digital Overlap HDR）技术，可实现 120 dB 动态范围，是目前车载摄像头的主流选择。</p>
+<h2 id="3-isp">3. ISP图像信号处理管线</h2>
+<p>原始传感器输出的<strong>RAW数据</strong>（拜尔格式，Bayer Pattern）需要经过图像信号处理器（ISP）的一系列处理才能转换为可用图像。</p>
+<h3 id="31-isp">3.1 ISP处理流程</h3>
+<div class="highlight"><pre><span></span><code>传感器RAW输出（Bayer格式）
+        │
+        ▼
+┌─────────────────────┐
+│  黑电平校正          │  Black Level Correction
+│  (减去暗电流偏置)    │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│  镜头阴影校正        │  Lens Shading Correction (LSC)
+│  (补偿边缘暗角)      │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│  去拜尔/插值         │  Demosaicing / Debayering
+│  (RGGB → RGB)       │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│  自动白平衡          │  Auto White Balance (AWB)
+│  (色温校正)         │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│  色彩校正矩阵        │  Color Correction Matrix (CCM)
+│  (传感器色域→sRGB)   │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│  时域/空域去噪       │  Temporal NR + Spatial NR
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│  Gamma校正          │  Gamma Correction
+│  (线性→感知均匀)    │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│  图像压缩/输出       │  H.264 / H.265 / RAW
+└─────────────────────┘
+</code></pre></div>
+<h3 id="32">3.2 各处理步骤说明</h3>
+<p><strong>去拜尔（Demosaicing）</strong>：传感器使用拜尔滤色阵列（RGGB），每个像素只感知一种颜色。去拜尔算法通过插值恢复每个像素的完整RGB值，常用方法有双线性插值、自适应同色细节保持（AHDHA）等。</p>
+<p><strong>黑电平校正（Black Level Correction）</strong>：传感器即使在完全遮光情况下也会输出非零的暗电流信号，需减去该基准值以保证黑色真正为零。</p>
+<p><strong>镜头阴影校正（Lens Shading Correction, LSC）</strong>：镜头边缘进光量少于中心，导致图像四角变暗（Vignetting）。LSC通过查找表对每个像素施加位置相关的增益补偿。</p>
+<p><strong>去噪（Noise Reduction）</strong>：
+- <strong>空域降噪（Spatial NR）</strong>：在单帧内利用相邻像素相关性平滑噪声，如双边滤波（Bilateral Filter）
+- <strong>时域降噪（Temporal NR）</strong>：跨帧对齐后加权平均，对静止背景去噪效果极佳，但运动区域需谨慎处理</p>
+<p><strong>白平衡（AWB）</strong>：在不同色温光源（晴天 5500K / 阴天 6500K / 钨灯 3200K）下，白色物体在传感器上的R/G/B响应不同。AWB计算增益系数使白色物体的输出接近理想白色。</p>
+<p><strong>色彩校正矩阵（CCM）</strong>：传感器的光谱响应与标准色空间（sRGB）不完全匹配，通过3×3矩阵线性变换进行校正：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\begin{bmatrix} R' \\ G' \\ B' \end{bmatrix} = \begin{bmatrix} a_{11} &amp; a_{12} &amp; a_{13} \\ a_{21} &amp; a_{22} &amp; a_{23} \\ a_{31} &amp; a_{32} &amp; a_{33} \end{bmatrix} \begin{bmatrix} R \\ G \\ B \end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix} R' \\ G' \\ B' \end{bmatrix} = \begin{bmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33} \end{bmatrix} \begin{bmatrix} R \\ G \\ B \end{bmatrix}</script>
+</div>
+<p><strong>Gamma校正</strong>：人眼对亮度的感知是非线性的（对暗部更敏感），Gamma编码将线性光信号压缩为感知均匀的编码值，减少编码位数需求。sRGB标准使用 <span class="arithmatex"><span class="MathJax_Preview">\gamma \approx 2.2</span><script type="math/tex">\gamma \approx 2.2</script></span>：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">V_{out} = V_{in}^{1/\gamma}</div>
+<script type="math/tex; mode=display">V_{out} = V_{in}^{1/\gamma}</script>
+</div>
+<p><strong>图像压缩</strong>：
+- <strong>H.264/H.265</strong>：有损视频压缩，适合录像和远程传输，帧间预测大幅降低码率
+- <strong>RAW输出</strong>：保留原始传感器数据，供后端算法进行自定义ISP处理，占用带宽大（通常需要SerDes链路）</p>
+<h2 id="4">4. 镜头畸变与标定</h2>
+<h3 id="41-radial-distortion">4.1 径向畸变（Radial Distortion）</h3>
+<p>径向畸变是最主要的镜头畸变类型，由镜片曲率不完美导致。以主点为原点，设无畸变像点为 <span class="arithmatex"><span class="MathJax_Preview">(x, y)</span><script type="math/tex">(x, y)</script></span>，畸变后的像点为 <span class="arithmatex"><span class="MathJax_Preview">(x', y')</span><script type="math/tex">(x', y')</script></span>，径向畸变模型为：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">x' = x(1 + k_1 r^2 + k_2 r^4 + k_3 r^6 + \cdots)$$
+$$y' = y(1 + k_1 r^2 + k_2 r^4 + k_3 r^6 + \cdots)</div>
+<script type="math/tex; mode=display">x' = x(1 + k_1 r^2 + k_2 r^4 + k_3 r^6 + \cdots)$$
+$$y' = y(1 + k_1 r^2 + k_2 r^4 + k_3 r^6 + \cdots)</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">r^2 = x^2 + y^2</span><script type="math/tex">r^2 = x^2 + y^2</script></span>，<span class="arithmatex"><span class="MathJax_Preview">k_1, k_2, k_3</span><script type="math/tex">k_1, k_2, k_3</script></span> 为径向畸变系数。</p>
+<ul>
+<li><strong>桶形畸变（Barrel Distortion）</strong>：<span class="arithmatex"><span class="MathJax_Preview">k_1 &lt; 0</span><script type="math/tex">k_1 < 0</script></span>，图像向中心收缩，广角镜头常见</li>
+<li><strong>枕形畸变（Pincushion Distortion）</strong>：<span class="arithmatex"><span class="MathJax_Preview">k_1 &gt; 0</span><script type="math/tex">k_1 > 0</script></span>，图像向外膨胀，长焦镜头常见</li>
+</ul>
+<h3 id="42-tangential-distortion">4.2 切向畸变（Tangential Distortion）</h3>
+<p>切向畸变由镜片与传感器平面不完全平行引起：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">x' = x + [2p_1 xy + p_2(r^2 + 2x^2)]$$
+$$y' = y + [p_1(r^2 + 2y^2) + 2p_2 xy]</div>
+<script type="math/tex; mode=display">x' = x + [2p_1 xy + p_2(r^2 + 2x^2)]$$
+$$y' = y + [p_1(r^2 + 2y^2) + 2p_2 xy]</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">p_1, p_2</span><script type="math/tex">p_1, p_2</script></span> 为切向畸变系数。通常 <span class="arithmatex"><span class="MathJax_Preview">p_1, p_2</span><script type="math/tex">p_1, p_2</script></span> 远小于 <span class="arithmatex"><span class="MathJax_Preview">k_1</span><script type="math/tex">k_1</script></span>，在精度要求不高时可忽略。</p>
+<h3 id="43-zhangs-method">4.3 棋盘格标定法（Zhang's Method）</h3>
+<p>张正友标定法是目前最广泛使用的相机标定方法，无需精密三维标定靶，仅使用平面棋盘格即可标定内参和畸变系数。</p>
+<p>标定流程：
+1. 打印或显示已知尺寸的棋盘格图案（如 <span class="arithmatex"><span class="MathJax_Preview">9 \times 6</span><script type="math/tex">9 \times 6</script></span> 内角点）
+2. 从不同角度和距离采集 15–30 张图像
+3. 使用角点检测算法（如 Harris 角点、亚像素细化）提取图像中的棋盘格角点坐标 <span class="arithmatex"><span class="MathJax_Preview">\{m_i\}</span><script type="math/tex">\{m_i\}</script></span>
+4. 建立世界坐标 <span class="arithmatex"><span class="MathJax_Preview">\{M_i\}</span><script type="math/tex">\{M_i\}</script></span> 与图像坐标的对应关系，通过最小化重投影误差求解参数：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\min_{K, k_1, k_2, p_1, p_2} \sum_i \sum_j \left\| m_{ij} - \hat{m}(K, k_1, k_2, p_1, p_2, R_i, t_i, M_j) \right\|^2</div>
+<script type="math/tex; mode=display">\min_{K, k_1, k_2, p_1, p_2} \sum_i \sum_j \left\| m_{ij} - \hat{m}(K, k_1, k_2, p_1, p_2, R_i, t_i, M_j) \right\|^2</script>
+</div>
+<ol>
+<li>使用 Levenberg-Marquardt 算法进行非线性优化</li>
+<li>标定精度评估：重投影误差（Reprojection Error）通常要求小于 0.5 个像素</li>
+</ol>
+<h3 id="44">4.4 鱼眼镜头等距投影模型</h3>
+<p>普通针孔模型不适用于FOV超过150°的鱼眼镜头，需使用等距投影（Equidistant Projection）或等立体角投影（Equisolid Angle）模型：</p>
+<p><strong>等距投影</strong>：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">r = f \cdot \theta</div>
+<script type="math/tex; mode=display">r = f \cdot \theta</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> 为像点到主点的距离，<span class="arithmatex"><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span> 为入射光线与光轴的夹角。鱼眼标定常用 OpenCV 的 <code>fisheye</code> 模块，畸变系数为 <span class="arithmatex"><span class="MathJax_Preview">k_1, k_2, k_3, k_4</span><script type="math/tex">k_1, k_2, k_3, k_4</script></span>。</p>
+<h3 id="45">4.5 多相机外参标定</h3>
+<p>自动驾驶车辆通常配备多个摄像头，需要标定各摄像头相对于车体坐标系（或某一基准传感器）的外参——即刚体变换矩阵：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">T_{cam \to body} = \begin{bmatrix} R &amp; t \\ 0 &amp; 1 \end{bmatrix} \in SE(3)</div>
+<script type="math/tex; mode=display">T_{cam \to body} = \begin{bmatrix} R & t \\ 0 & 1 \end{bmatrix} \in SE(3)</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">R \in SO(3)</span><script type="math/tex">R \in SO(3)</script></span> 为旋转矩阵（3个自由度），<span class="arithmatex"><span class="MathJax_Preview">t \in \mathbb{R}^3</span><script type="math/tex">t \in \mathbb{R}^3</script></span> 为平移向量。</p>
+<p>多相机外参标定方法：
+- <strong>使用大型平面靶板</strong>：多个摄像头同时观测同一靶板，通过优化各摄像头的相对姿态
+- <strong>使用三维特征点</strong>：在环境中放置已知三维坐标的标定点（如AprilTag），各摄像头独立定位后求相对变换
+- <strong>在线联合标定</strong>：利用运动中的自然特征点（车道线、建筑边缘），通过束调整（Bundle Adjustment）在线优化外参</p>
+<h2 id="5">5. 车载摄像头类型对比</h2>
+<h3 id="51">5.1 各类型摄像头说明</h3>
+<p><strong>前视摄像头（Forward Camera）</strong>：</p>
+<p>特斯拉的三目前视方案（前主摄/前广角/前远摄）代表了行业最佳实践：
+- <strong>前远摄（Narrow）</strong>：FOV约 25°，焦距约 12 mm，最远感知距离 &gt;250 m，用于高速公路跟车和目标预判
+- <strong>前中摄（Main）</strong>：FOV约 52°，覆盖主要前向感知区域，用于目标检测和车道线识别
+- <strong>前广角（Wide）</strong>：FOV约 120°，用于交叉路口和低速跟车场景</p>
+<p><strong>环视鱼眼摄像头（Surround View Camera）</strong>：</p>
+<p>四路鱼眼摄像头布置于车辆前后左右，每路FOV约 185°–195°，通过图像拼接和俯视变换生成鸟瞰图（BEV），主要用于自动泊车和低速辅助驾驶。</p>
+<p><strong>后视摄像头（Rear Camera）</strong>：</p>
+<p>布置于车辆尾部，FOV约 130°–140°，中焦或广角，用于倒车辅助和后方来车检测。部分法规（如美国FMVSS 111）强制要求安装。</p>
+<p><strong>内舱DMS摄像头（Driver Monitoring System Camera）</strong>：</p>
+<p>监测驾驶员疲劳、注意力分散和头部姿态。使用<strong>近红外（NIR）摄像头</strong>（850 nm 或 940 nm 波长），配合红外补光灯，可在强光和黑暗环境下工作，不受驾驶员佩戴太阳镜影响。</p>
+<h3 id="52">5.2 车载摄像头规格对比表</h3>
 <table>
 <thead>
 <tr>
 <th>类型</th>
-<th>特点</th>
-<th>典型应用</th>
+<th>水平FOV</th>
+<th>典型焦距</th>
+<th>分辨率</th>
+<th>快门</th>
+<th>主要应用</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>单目摄像头 (Monocular)</td>
-<td>成本低，无法直接测距</td>
-<td>车道线检测、交通标志识别</td>
+<td>前视远焦</td>
+<td>25°–35°</td>
+<td>10–16 mm</td>
+<td>8 MP</td>
+<td>全局快门</td>
+<td>远距目标检测，&gt;150 m</td>
 </tr>
 <tr>
-<td>双目摄像头 (Stereo)</td>
-<td>通过视差计算深度，精度受基线影响</td>
-<td>近距离障碍物测距</td>
+<td>前视中焦</td>
+<td>50°–60°</td>
+<td>6–8 mm</td>
+<td>8 MP</td>
+<td>全局快门</td>
+<td>综合前向感知</td>
 </tr>
 <tr>
-<td>鱼眼摄像头 (Fisheye)</td>
-<td>FOV 可达 180°–190°，畸变大</td>
-<td>环视泊车系统</td>
+<td>前视广角</td>
+<td>100°–120°</td>
+<td>2.5–4 mm</td>
+<td>2–3 MP</td>
+<td>卷帘/全局</td>
+<td>近场交叉路口覆盖</td>
 </tr>
 <tr>
-<td>红外摄像头 (Infrared)</td>
-<td>感知热辐射，不受光照影响</td>
-<td>夜间行人检测</td>
+<td>环视鱼眼</td>
+<td>180°–195°</td>
+<td>1.2–1.8 mm</td>
+<td>3–5 MP</td>
+<td>卷帘快门</td>
+<td>泊车，BEV拼接</td>
 </tr>
 <tr>
-<td>事件相机 (Event Camera)</td>
-<td>异步输出像素亮度变化，时间分辨率极高</td>
-<td>高速场景、HDR 场景</td>
+<td>后视摄像头</td>
+<td>130°–140°</td>
+<td>2–3 mm</td>
+<td>2–3 MP</td>
+<td>卷帘快门</td>
+<td>倒车辅助</td>
+</tr>
+<tr>
+<td>DMS摄像头</td>
+<td>80°–100°</td>
+<td>3–4 mm</td>
+<td>1–2 MP</td>
+<td>全局快门</td>
+<td>驾驶员状态监测</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_3">关键参数</h2>
+<h2 id="6">6. 主流车载摄像头产品</h2>
+<h3 id="61-sensor-die">6.1 图像传感器（Sensor Die）</h3>
+<p><strong>索尼（Sony）IMX系列</strong></p>
+<p>索尼是全球车载图像传感器的领导者，主要车规级产品：
+- <strong>IMX490</strong>：1/2.5 英寸，5.4 MP，3.0 µm像素，全局快门，DOL-HDR 120 dB，支持车规（AEC-Q100 Grade 2）
+- <strong>IMX728</strong>：1/1.7 英寸，8.3 MP，2.5 µm像素，全局快门，适用于高分辨率前视应用</p>
+<p><strong>安森美（onsemi）AR系列</strong></p>
+<ul>
+<li><strong>AR0820CS</strong>：1/2 英寸，8.3 MP，2.1 µm像素，卷帘/全局快门可选，三曝光HDR，适合L2+前视摄像头</li>
+<li><strong>AR0233</strong>：2.3 MP，全局快门，低功耗，适合ADAS入门级应用</li>
+</ul>
+<p><strong>豪威科技（OmniVision）</strong></p>
+<ul>
+<li><strong>OX08B40</strong>：8 MP，车规级，支持DOL-HDR，广泛用于中端自动驾驶平台</li>
+</ul>
+<p><strong>韦尔半导体（Will Semi / OmniVision）</strong></p>
+<p>韦尔半导体通过收购豪威科技成为中国最大的图像传感器设计公司，积极拓展车载市场，其CMOS传感器产品已进入多家国内整车厂供应链。</p>
+<h3 id="62-camera-module">6.2 摄像头模组（Camera Module）</h3>
 <table>
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>典型范围</th>
+<th>Tier1模组厂商</th>
+<th>代表产品</th>
+<th>特点</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>分辨率 (Resolution)</td>
-<td>像素数量，影响识别距离</td>
-<td>1–8 MP</td>
+<td>舜宇光学（Sunny Optical）</td>
+<td>SV系列车载模组</td>
+<td>中国最大光学镜头企业，出货量全球领先</td>
 </tr>
 <tr>
-<td>帧率 (Frame Rate)</td>
-<td>每秒采集帧数</td>
-<td>30–60 fps</td>
+<td>联创电子（LianChuang）</td>
+<td>多款前视/环视模组</td>
+<td>专注车载摄像头，客户包括比亚迪、蔚来等</td>
 </tr>
 <tr>
-<td>视场角 (FOV)</td>
-<td>水平/垂直可视范围</td>
-<td>30°–190°</td>
+<td>Sekonix（韩国）</td>
+<td>SF3324/SF3325</td>
+<td>NVIDIA Jetson/DRIVE平台官方推荐</td>
 </tr>
 <tr>
-<td>动态范围 (Dynamic Range)</td>
-<td>明暗场景适应能力</td>
-<td>90–140 dB</td>
+<td>Continental（德国大陆）</td>
+<td>MFC5xx系列</td>
+<td>集成ISP和SoC，Tier1一体化前视模组</td>
 </tr>
 <tr>
-<td>快门类型 (Shutter)</td>
-<td>全局快门消除运动模糊，卷帘快门成本低</td>
-<td>Global / Rolling</td>
+<td>Aptiv（安波福）</td>
+<td>多款ADAS摄像头</td>
+<td>与Mobileye紧密合作，主供欧美OEM</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_4">车载摄像头布置</h2>
-<p>典型 L2+ 自动驾驶车辆配备 6–12 个摄像头，覆盖 360° 视野：</p>
-<ul>
-<li><strong>前视主摄像头</strong>：窄 FOV（约 30°–50°），长焦，用于远距目标检测</li>
-<li><strong>前视广角摄像头</strong>：宽 FOV（约 120°），用于近距离交叉路口感知</li>
-<li><strong>侧视摄像头</strong>：左右各一，覆盖盲区和变道场景</li>
-<li><strong>后视摄像头</strong>：倒车影像与后方来车检测</li>
-<li><strong>环视鱼眼摄像头</strong>：四角各一，组成鸟瞰拼接图 (BEV)，用于泊车</li>
-</ul>
-<h2 id="_5">行业方案</h2>
-<ul>
-<li><strong>Tesla 纯视觉方案</strong>：依靠 8 个摄像头（后改为 7 个）+ HW3/HW4 芯片，通过 Occupancy Network 和 BEV 感知实现端到端自动驾驶，不依赖 LiDAR</li>
-<li><strong>Mobileye</strong>：EyeQ 系列芯片搭配单目/多目摄像头，广泛用于 L2 级 ADAS (Advanced Driver Assistance Systems)，提供车道保持、自动紧急制动等功能</li>
-<li><strong>大疆车载</strong>：基于立体视觉方案，结合惯导实现高性价比感知</li>
-</ul>
-<h2 id="_6">参考资料</h2>
+<h3 id="63">6.3 主流产品规格对比</h3>
+<table>
+<thead>
+<tr>
+<th>产品型号</th>
+<th>传感器</th>
+<th>分辨率</th>
+<th>动态范围</th>
+<th>快门</th>
+<th>接口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>索尼 IMX490</td>
+<td>索尼</td>
+<td>5.4 MP</td>
+<td>120 dB</td>
+<td>全局</td>
+<td>MIPI CSI-2</td>
+</tr>
+<tr>
+<td>索尼 IMX728</td>
+<td>索尼</td>
+<td>8.3 MP</td>
+<td>100 dB</td>
+<td>全局</td>
+<td>MIPI CSI-2</td>
+</tr>
+<tr>
+<td>安森美 AR0820CS</td>
+<td>安森美</td>
+<td>8.3 MP</td>
+<td>120 dB</td>
+<td>全局/卷帘</td>
+<td>MIPI CSI-2</td>
+</tr>
+<tr>
+<td>OmniVision OX08B</td>
+<td>豪威</td>
+<td>8 MP</td>
+<td>120 dB</td>
+<td>卷帘</td>
+<td>MIPI CSI-2</td>
+</tr>
+<tr>
+<td>Sekonix SF3325</td>
+<td>AR0231AT</td>
+<td>2.1 MP</td>
+<td>100 dB</td>
+<td>全局</td>
+<td>GMSL2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7">7. 摄像头时序同步</h2>
+<p>多传感器融合的前提是各传感器数据在时间上严格对齐。摄像头与激光雷达、IMU之间的时间不同步会导致运动目标位置估计错误，是系统设计的关键挑战。</p>
+<h3 id="71">7.1 硬件触发同步</h3>
+<p>最可靠的摄像头同步方式是<strong>硬件触发</strong>：</p>
 <ol>
-<li>Tesla AI Day Presentations, 2021–2023.</li>
-<li>Mobileye. EyeQ Technology Overview.</li>
-<li>R. Szeliski. Computer Vision: Algorithms and Applications. Springer, 2022.</li>
+<li>主控（Domain Controller）或专用时序控制器产生<strong>Trigger信号</strong>（GPIO脉冲）</li>
+<li>脉冲的上升沿（或下降沿）触发所有摄像头同时开始曝光</li>
+<li>各摄像头的曝光中心时刻相同，消除帧间的相对时间差</li>
+</ol>
+<p>对于多路摄像头（如8路360°摄像头阵列），所有Trigger信号应从同一时钟源派生，并考虑线缆传输延迟的补偿（通常 <span class="arithmatex"><span class="MathJax_Preview">&lt;10\ \text{ns}</span><script type="math/tex"><10\ \text{ns}</script></span>）。</p>
+<h3 id="72-lidar">7.2 与LiDAR的时间对齐</h3>
+<p>激光雷达通常以固定频率（如10 Hz或20 Hz）旋转扫描，每圈扫描的起始时刻由内部时钟决定。与摄像头对齐需要：</p>
+<ol>
+<li><strong>PPS脉冲（Pulse Per Second）</strong>：GPS接收机或时钟模块每秒输出一个高精度脉冲，精度可达 <span class="arithmatex"><span class="MathJax_Preview">&lt;1\ \mu\text{s}</span><script type="math/tex"><1\ \mu\text{s}</script></span></li>
+<li><strong>IEEE 1588 PTP（Precision Time Protocol）</strong>：通过以太网实现纳秒级时间同步，各节点（摄像头SoC、LiDAR控制器、ECU）锁定到同一时钟</li>
+<li><strong>时间戳注入（Timestamp Injection）</strong>：在摄像头曝光中心时刻记录精确时间戳，与LiDAR点云的时间戳对应，用于数据融合时的插值对齐</li>
+</ol>
+<p>典型时间同步精度要求：对于100 km/h行驶速度，1 ms的时间误差对应约2.8 cm的位置误差，多数系统要求时间同步精度优于 <span class="arithmatex"><span class="MathJax_Preview">\pm 0.5\ \text{ms}</span><script type="math/tex">\pm 0.5\ \text{ms}</script></span>。</p>
+<h3 id="73-30-fps-vs-60-fps">7.3 帧率选择（30 fps vs 60 fps）</h3>
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>30 fps</th>
+<th>60 fps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>帧间距</td>
+<td>33.3 ms</td>
+<td>16.7 ms</td>
+</tr>
+<tr>
+<td>高速场景（100 km/h）帧间位移</td>
+<td>~92 cm</td>
+<td>~46 cm</td>
+</tr>
+<tr>
+<td>带宽需求</td>
+<td>基准</td>
+<td>约2倍</td>
+</tr>
+<tr>
+<td>功耗</td>
+<td>低</td>
+<td>高（约30–50%增加）</td>
+</tr>
+<tr>
+<td>ISP处理需求</td>
+<td>低</td>
+<td>高</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>L2级ADAS，大多数城市场景</td>
+<td>L3+高速场景，高精度目标跟踪</td>
+</tr>
+</tbody>
+</table>
+<p>实际工程中，前视远焦摄像头（高速行驶）通常使用60 fps，环视鱼眼（低速泊车）使用30 fps，以平衡性能与系统带宽。</p>
+<h2 id="_2">参考资料</h2>
+<ol>
+<li>Zhang, Z. "A Flexible New Technique for Camera Calibration." <em>IEEE Transactions on Pattern Analysis and Machine Intelligence</em>, 22(11):1330–1334, 2000.</li>
+<li>Szeliski, R. <em>Computer Vision: Algorithms and Applications</em>, 2nd ed. Springer, 2022. Chapter 2: Image Formation.</li>
+<li>Sony Semiconductor Solutions. <em>IMX490 Product Brief: Automotive CMOS Image Sensor</em>. 2022.</li>
+<li>Tesla AI Day. "Tesla Vision &amp; Occupancy Networks." Presentation, 2021. https://tesla.com/AI</li>
+<li>AUTOSAR. <em>Specification of Camera ISP Driver</em>. Release 4.4.0, 2019. https://www.autosar.org</li>
 </ol>
 
 

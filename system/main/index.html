@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://yfrobotics.github.io/self-driving-handbook-cn/system/main/">
       
       
-        <link rel="prev" href="../../intro/category/">
+        <link rel="prev" href="../../intro/history/">
       
       
         <link rel="next" href="../vehicle/">
@@ -25,11 +25,11 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
-        <title>自动驾驶系统 - 自动驾驶指南</title>
+        <title>第二章：系统 - 自动驾驶指南</title>
       
     
     
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              自动驾驶系统
+              第二章：系统
             
           </span>
         </div>
@@ -317,7 +317,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶介绍
+    第一章：概述
   
 
     
@@ -373,7 +373,35 @@
   <span class="md-ellipsis">
     
   
-    自主性等级分类
+    自动驾驶等级分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶发展历史
   
 
     
@@ -459,6 +487,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二章：系统
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -466,7 +512,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶系统
+    第二章：系统
   
 
     
@@ -475,6 +521,141 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        系统视角：为什么算法不是全部？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章内容概览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        各小节简介
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="各小节简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-vehicle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 车辆系统（vehicle）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-v2xv2x" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 车联网 V2X（v2x）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 软件平台（platform）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 功能安全（safety）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-regulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 法规与标准（regulation）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-hdmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 高精地图（hdmap）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键概念
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -495,7 +676,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶车辆
+    自动驾驶车辆系统
   
 
     
@@ -523,7 +704,7 @@
   <span class="md-ellipsis">
     
   
-    智能交通
+    车联网（V2X）技术详解
   
 
     
@@ -551,7 +732,63 @@
   <span class="md-ellipsis">
     
   
-    设计与仿真平台
+    仿真平台与数据集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hdmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高精地图（HD Map）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人机交互系统（HMI）
   
 
     
@@ -580,6 +817,62 @@
     
   
     系统安全保障
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶测试体系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cybersecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶网络安全
   
 
     
@@ -689,7 +982,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶硬件
+    第三章：硬件
   
 
     
@@ -745,7 +1038,7 @@
   <span class="md-ellipsis">
     
   
-    中控单元 (AI芯片, GPGPU)
+    中央计算单元 (CCU / 车载AI芯片)
   
 
     
@@ -773,7 +1066,7 @@
   <span class="md-ellipsis">
     
   
-    线控系统
+    线控系统（Drive-by-Wire）
   
 
     
@@ -801,7 +1094,7 @@
   <span class="md-ellipsis">
     
   
-    车内总线
+    车载通信系统
   
 
     
@@ -857,7 +1150,7 @@
   <span class="md-ellipsis">
     
   
-    视觉传感器
+    视觉传感器（摄像头）
   
 
     
@@ -939,7 +1232,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶核心算法
+    第四章：核心算法
   
 
     
@@ -995,7 +1288,7 @@
   <span class="md-ellipsis">
     
   
-    图像识别与分割
+    图像感知与处理
   
 
     
@@ -1024,6 +1317,62 @@
     
   
     激光点云数据处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sensor_fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器融合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/occupancy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    占用网络（Occupancy Network）
   
 
     
@@ -1100,6 +1449,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/prediction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行为预测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/decision_making/" class="md-nav__link">
         
   
@@ -1107,7 +1484,91 @@
   <span class="md-ellipsis">
     
   
-    决策 (Decision Making Process)
+    决策 (Decision Making)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    控制算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/end_to_end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端自动驾驶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/data_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶ML数据管道
   
 
     
@@ -1135,7 +1596,7 @@
   <span class="md-ellipsis">
     
   
-    自然语言识别与交互
+    自然语言处理与大语言模型
   
 
     
@@ -1217,7 +1678,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶案例
+    第五章：实例
   
 
     
@@ -1245,7 +1706,119 @@
   <span class="md-ellipsis">
     
   
-    百度无人驾驶
+    百度 Apollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/waymo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waymo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/tesla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla FSD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/chinese_players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国自动驾驶企业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/robotaxi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robotaxi：自动驾驶商业化的主战场
   
 
     
@@ -1286,6 +1859,130 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        系统视角：为什么算法不是全部？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本章内容概览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        各小节简介
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="各小节简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-vehicle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 车辆系统（vehicle）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-v2xv2x" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 车联网 V2X（v2x）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 软件平台（platform）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 功能安全（safety）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-regulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 法规与标准（regulation）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-hdmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 高精地图（hdmap）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键概念
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1301,8 +1998,86 @@
 
 
 
-<h1 id="_1">自动驾驶系统</h1>
+<h1 id="_1">第二章：系统</h1>
 <p>本章从系统层面介绍自动驾驶系统，包括智慧交通、仿真与设计方法，以及安全保障。</p>
+<hr />
+<h2 id="_2">系统视角：为什么算法不是全部？</h2>
+<p>在讨论自动驾驶时，公众目光往往聚焦在感知算法或深度学习模型上，但真正决定一辆自动驾驶车能否上路的，是整个系统的协同能力。单一算法的局部优越性并不能保证整车的安全可靠运行——感知模块输出的结果需要在毫秒级时间内传递给规划模块，高精地图必须与定位模块实时对齐，车载计算平台的故障必须有冗余方案兜底，所有这些都属于系统工程问题。</p>
+<p>自动驾驶的系统集成难度远超单一算法的研发难度，原因在于：</p>
+<ul>
+<li><strong>接口复杂性</strong>：传感器、计算单元、执行器来自不同供应商，数据格式、通信协议、时序同步均需严格对齐。</li>
+<li><strong>实时性约束</strong>：整个感知-规划-控制闭环必须在几十毫秒内完成，任何一个环节的延迟都可能造成安全风险。</li>
+<li><strong>可靠性要求</strong>：汽车电子遵循 ISO 26262 功能安全标准，系统必须在零部件失效时仍能安全降级运行。</li>
+<li><strong>环境多样性</strong>：城市、高速、隧道、雨雪天气、施工路段——系统必须在所有场景下保持鲁棒性。</li>
+</ul>
+<hr />
+<h2 id="_3">本章内容概览</h2>
+<p>本章涵盖自动驾驶系统的多个关键子领域，从单车智能到车路协同，从软件平台到法律法规，为读者提供完整的系统层面视图。</p>
+<table>
+<thead>
+<tr>
+<th>小节</th>
+<th>标题</th>
+<th>主要内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.1</td>
+<td>车辆系统</td>
+<td>车辆电气架构、域控制器与E/E架构演进</td>
+</tr>
+<tr>
+<td>2.2</td>
+<td>车联网V2X</td>
+<td>V2V/V2I/V2N通信协议与车路协同场景</td>
+</tr>
+<tr>
+<td>2.3</td>
+<td>软件平台</td>
+<td>自动驾驶操作系统、中间件与开发框架</td>
+</tr>
+<tr>
+<td>2.4</td>
+<td>功能安全</td>
+<td>ISO 26262、SOTIF与系统安全设计方法</td>
+</tr>
+<tr>
+<td>2.5</td>
+<td>法规与标准</td>
+<td>国内外自动驾驶相关法规、准入标准与测试规范</td>
+</tr>
+<tr>
+<td>2.6</td>
+<td>高精地图</td>
+<td>HD Map的生产、格式标准与实时更新机制</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_4">各小节简介</h2>
+<h3 id="21-vehicle">2.1 车辆系统（vehicle）</h3>
+<p>现代智能汽车的电气/电子（E/E）架构正经历从分布式 ECU 向域控制器、再向中央计算平台的演进。本节介绍自动驾驶车辆的整体电气架构设计，包括动力域、底盘域、智能驾驶域的划分，以及车载以太网、CAN/LIN 总线等通信骨干网络。</p>
+<h3 id="22-v2xv2x">2.2 车联网 V2X（v2x）</h3>
+<p>单车智能存在感知盲区和视距限制，而 V2X（Vehicle to Everything）通信技术通过车与车（V2V）、车与路侧基础设施（V2I）、车与网络（V2N）的协同，可以显著扩展系统的感知边界。本节介绍 DSRC 和 C-V2X 两大技术路线，以及典型的协同驾驶场景。</p>
+<h3 id="23-platform">2.3 软件平台（platform）</h3>
+<p>自动驾驶软件栈的底层依赖于操作系统和中间件框架。本节介绍主流的开发平台，包括百度 Apollo、Autoware、ROS/ROS2，以及 Autosar Adaptive 等车规级软件框架的基本架构与模块组织方式。</p>
+<h3 id="24-safety">2.4 功能安全（safety）</h3>
+<p>本节介绍汽车功能安全的核心标准 ISO 26262，阐释 ASIL（汽车安全完整性等级）分级方法，以及针对预期功能安全（SOTIF，ISO 21448）的分析思路。功能安全工程是自动驾驶量产落地的必要门槛。</p>
+<h3 id="25-regulation">2.5 法规与标准（regulation）</h3>
+<p>全球主要市场（中国、美国、欧盟、日本）对自动驾驶的准入政策、测试许可与数据监管存在显著差异。本节梳理各地区的法规现状，帮助读者理解政策环境对技术路线选择的深刻影响。</p>
+<h3 id="26-hdmap">2.6 高精地图（hdmap）</h3>
+<p>高精地图（HD Map）是自动驾驶定位和规划的重要基础设施。本节介绍 HD Map 的精度要求（厘米级）、主要图层构成（车道线、标志、限速等）、NDS/OpenDRIVE 等格式标准，以及众包更新与实时维护的技术挑战。</p>
+<hr />
+<h2 id="_5">关键概念</h2>
+<p>读完本章后，读者应掌握以下关键概念：</p>
+<ul>
+<li>E/E 架构演进路径（分布式 → 域集中 → 中央集中）</li>
+<li>C-V2X 与 DSRC 的技术对比</li>
+<li>ISO 26262 ASIL 等级与安全生命周期</li>
+<li>高精地图的核心图层与更新机制</li>
+<li>主要国家/地区自动驾驶法规框架</li>
+</ul>
 
 
 

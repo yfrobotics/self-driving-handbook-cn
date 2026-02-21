@@ -1,0 +1,3605 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="自动驾驶历史与技术">
+      
+      
+        <meta name="author" content="YFRL">
+      
+      
+        <link rel="canonical" href="https://yfrobotics.github.io/self-driving-handbook-cn/system/hdmap/">
+      
+      
+        <link rel="prev" href="../platform/">
+      
+      
+        <link rel="next" href="../hmi/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>高精地图（HD Map） - 自动驾驶指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,700,700i%7CFira+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Fira Sans";--md-code-font:"Fira Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../_static/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hd-map" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="自动驾驶指南" class="md-header__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            自动驾驶指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              高精地图（HD Map）
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yfrobotics/self-driving-handbook-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yfrobotics/self-driving-handbook-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="自动驾驶指南" class="md-nav__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    自动驾驶指南
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yfrobotics/self-driving-handbook-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yfrobotics/self-driving-handbook-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶技术指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 概述
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1. 概述
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一章：概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/define/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶系统定义
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/category/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶等级分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶发展历史
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 系统
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. 系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二章：系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vehicle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶车辆系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v2x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车联网（V2X）技术详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真平台与数据集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高精地图（HD Map）
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高精地图（HD Map）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 开篇介绍
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 高精地图 vs 标准地图
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 高精地图 vs 标准地图">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 对比概述
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 普通地图的特点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 高精地图的特点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-2023" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 "轻地图"趋势（2023年后）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 高精地图的内容层次
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 高精地图的内容层次">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-road-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 道路层（Road Layer）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-lane-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 车道层（Lane Layer）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-landmark-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 交通要素层（Landmark Layer）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-semantic-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 语义层（Semantic Layer）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 层次结构示意
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 高精地图数据格式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 高精地图数据格式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-opendrive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 OpenDRIVE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-ndsnavigation-data-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 NDS（Navigation Data Standard）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-lanelet2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Lanelet2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-apollo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Apollo 地图格式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 格式对比表格
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 高精地图采集
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 高精地图采集">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 采集车配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 采集流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-crowdsourcing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 众包采集（Crowdsourcing）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-map-based-localization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 地图定位（Map-based Localization）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 地图定位（Map-based Localization）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 点云匹配定位
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 特征匹配定位
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 地图失效场景与降级策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 地图更新与维护
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 地图更新与维护">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-change-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 变化检测（Change Detection）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 更新周期
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-map-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 地图版本管理（Map Versioning）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-ota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 OTA地图推送架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 中国测绘法规限制
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 无图/轻图技术趋势
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 无图/轻图技术趋势">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-teslahd-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Tesla：完全无HD Map
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-ads-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 华为ADS 2.0：轻地图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 小鹏：标清地图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-hd-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 HD Map面临的挑战与轻图趋势的原因
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5 无图感知面临的挑战
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 主要高精地图供应商
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 主要高精地图供应商">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 国内供应商
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 国际供应商
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 综合对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人机交互系统（HMI）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统安全保障
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶测试体系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cybersecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶网络安全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../regulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    政策与法律法规
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 硬件
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. 硬件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三章：硬件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/hw_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    硬件总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/ccu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中央计算单元 (CCU / 车载AI芯片)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/drive_by_wire/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线控系统（Drive-by-Wire）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/communication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车载通信系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知传感器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/camera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    视觉传感器（摄像头）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. 算法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4. 算法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第四章：核心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sw_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统软件框架总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/image_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图像感知与处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/laser_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    激光点云数据处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sensor_fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器融合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/occupancy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    占用网络（Occupancy Network）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/localisation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    地图与定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/path_planning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    路径规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/prediction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行为预测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/decision_making/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    决策 (Decision Making)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    控制算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/end_to_end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端自动驾驶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/data_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶ML数据管道
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/nlp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自然语言处理与大语言模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 实例
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    5. 实例
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第五章：实例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/apollo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    百度 Apollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/waymo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waymo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/tesla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla FSD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/chinese_players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国自动驾驶企业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/robotaxi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robotaxi：自动驾驶商业化的主战场
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 开篇介绍
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 高精地图 vs 标准地图
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 高精地图 vs 标准地图">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 对比概述
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 普通地图的特点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 高精地图的特点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-2023" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 "轻地图"趋势（2023年后）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 高精地图的内容层次
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 高精地图的内容层次">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-road-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 道路层（Road Layer）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-lane-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 车道层（Lane Layer）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-landmark-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 交通要素层（Landmark Layer）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-semantic-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 语义层（Semantic Layer）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 层次结构示意
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 高精地图数据格式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 高精地图数据格式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-opendrive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 OpenDRIVE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-ndsnavigation-data-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 NDS（Navigation Data Standard）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-lanelet2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Lanelet2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-apollo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Apollo 地图格式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 格式对比表格
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 高精地图采集
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 高精地图采集">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 采集车配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 采集流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-crowdsourcing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 众包采集（Crowdsourcing）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-map-based-localization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 地图定位（Map-based Localization）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 地图定位（Map-based Localization）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 点云匹配定位
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 特征匹配定位
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 地图失效场景与降级策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 地图更新与维护
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 地图更新与维护">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-change-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 变化检测（Change Detection）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 更新周期
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-map-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 地图版本管理（Map Versioning）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-ota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 OTA地图推送架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 中国测绘法规限制
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 无图/轻图技术趋势
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 无图/轻图技术趋势">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-teslahd-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Tesla：完全无HD Map
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-ads-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 华为ADS 2.0：轻地图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 小鹏：标清地图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-hd-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 HD Map面临的挑战与轻图趋势的原因
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5 无图感知面临的挑战
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 主要高精地图供应商
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 主要高精地图供应商">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 国内供应商
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 国际供应商
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 综合对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="hd-map">高精地图（HD Map）</h1>
+<h2 id="1">1. 开篇介绍</h2>
+<p>高精地图（High Definition Map，HD Map）是自动驾驶系统的"先验知识库"。与手机导航所使用的普通地图不同，高精地图不仅记录道路的拓扑结构，还以厘米级的精度描述道路的三维几何形状、车道边界、交通标志、信号灯等要素。自动驾驶车辆在行驶时，可以将传感器实时感知的数据与高精地图进行匹配，从而实现精确定位，并提前获知前方路段的几何结构与交通规则，大幅降低实时感知的压力。</p>
+<p>普通导航地图的核心目的是为驾驶员提供路径规划指引，精度在米级，信息层次以路网拓扑为主。高精地图的核心目的是为自动驾驶系统提供静态世界的先验描述，要求厘米级精度，信息层次从宏观路网一直延伸到单条车道线的三维坐标。可以说，高精地图是自动驾驶的"预先勘测好的世界模型"，是连接感知、定位与规划的关键基础设施。</p>
+<hr />
+<h2 id="2-vs">2. 高精地图 vs 标准地图</h2>
+<h3 id="21">2.1 对比概述</h3>
+<table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>普通导航地图</th>
+<th>高精地图（HD Map）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>绝对精度</td>
+<td>米级（1–5 m）</td>
+<td>厘米级（5–20 cm）</td>
+</tr>
+<tr>
+<td>车道级信息</td>
+<td>无</td>
+<td>车道中心线、边界线、宽度、限速</td>
+</tr>
+<tr>
+<td>交通要素</td>
+<td>简单图标</td>
+<td>三维位置、类型、朝向</td>
+</tr>
+<tr>
+<td>三维高程</td>
+<td>较粗糙</td>
+<td>精确坡度、横坡、曲率</td>
+</tr>
+<tr>
+<td>更新频率</td>
+<td>季度 / 年级</td>
+<td>天级 / 实时（众包）</td>
+</tr>
+<tr>
+<td>单文件大小</td>
+<td>数 MB（全国）</td>
+<td>数 GB–TB（全国）</td>
+</tr>
+<tr>
+<td>主要用途</td>
+<td>导航、路径规划</td>
+<td>自动驾驶定位、规划、感知辅助</td>
+</tr>
+<tr>
+<td>生产成本</td>
+<td>低</td>
+<td>极高（采集+标注+维护）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22">2.2 普通地图的特点</h3>
+<p>普通导航地图主要描述路网拓扑（Road Network Topology），即道路节点与路段的连接关系。其精度在 <span class="arithmatex"><span class="MathJax_Preview">1\sim5</span><script type="math/tex">1\sim5</script></span> 米范围内，能够满足人类驾驶员在视觉辅助下的导航需求，但对于需要在车道内精确定位的自动驾驶系统而言远远不够。</p>
+<h3 id="23">2.3 高精地图的特点</h3>
+<p>高精地图在三维空间中以厘米级精度描述如下要素：</p>
+<ul>
+<li><strong>车道中心线与边界线</strong>：三维折线，每个采样点间距通常为 <span class="arithmatex"><span class="MathJax_Preview">0.1\sim1</span><script type="math/tex">0.1\sim1</script></span> 米</li>
+<li><strong>道路几何参数</strong>：曲率 <span class="arithmatex"><span class="MathJax_Preview">\kappa</span><script type="math/tex">\kappa</script></span>、坡度 <span class="arithmatex"><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>、横坡（superelevation）</li>
+<li><strong>交通标志与信号灯</strong>：三维位置、朝向、尺寸、类型编码</li>
+<li><strong>停车线、人行横道、路沿石</strong>：精确几何与语义属性</li>
+</ul>
+<h3 id="24-2023">2.4 "轻地图"趋势（2023年后）</h3>
+<p>2023年起，以华为ADS 2.0、特斯拉FSD为代表的方案开始推广"轻地图"（Light Map）或"无图"（Mapless）技术路线。其核心思路是：</p>
+<ul>
+<li>减少对提前采集的高精地图的依赖</li>
+<li>依靠实时感知能力替代部分地图功能</li>
+<li>利用开源地图（如OpenStreetMap）提供粗粒度的拓扑先验</li>
+<li>降低地图维护成本，扩大可通行范围</li>
+</ul>
+<p>这一趋势并不意味着地图的消失，而是地图形态从"厘米级全要素静态地图"向"语义级轻量拓扑地图"演进。</p>
+<hr />
+<h2 id="3">3. 高精地图的内容层次</h2>
+<p>高精地图通常采用分层架构，不同层次承担不同粒度的信息描述。</p>
+<h3 id="31-road-layer">3.1 道路层（Road Layer）</h3>
+<p>道路层描述路段的宏观几何属性，是最基础的一层：</p>
+<ul>
+<li><strong>几何形状</strong>：路段的三维折线表示，参考线（Reference Line）</li>
+<li><strong>曲率</strong>：<span class="arithmatex"><span class="MathJax_Preview">\kappa(s) = \frac{d\theta}{ds}</span><script type="math/tex">\kappa(s) = \frac{d\theta}{ds}</script></span>，其中 <span class="arithmatex"><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> 为弧长参数</li>
+<li><strong>坡度（纵坡）</strong>：<span class="arithmatex"><span class="MathJax_Preview">\alpha = \arctan\left(\frac{\Delta h}{\Delta s}\right)</span><script type="math/tex">\alpha = \arctan\left(\frac{\Delta h}{\Delta s}\right)</script></span></li>
+<li><strong>横坡（superelevation）</strong>：道路截面的横向倾斜角度</li>
+<li><strong>车行道数量与宽度</strong>：整体道路级别的描述</li>
+</ul>
+<h3 id="32-lane-layer">3.2 车道层（Lane Layer）</h3>
+<p>车道层是高精地图最核心的层，直接支撑车道级路径规划与定位：</p>
+<ul>
+<li><strong>车道中心线</strong>：三维折线，采样间距约 <span class="arithmatex"><span class="MathJax_Preview">0.1\sim0.5</span><script type="math/tex">0.1\sim0.5</script></span> 米</li>
+<li><strong>车道边界线</strong>：左右边界，区分实线（禁止变道）、虚线（允许变道）、路沿石</li>
+<li><strong>车道属性</strong>：</li>
+<li>宽度 <span class="arithmatex"><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span>（典型值 <span class="arithmatex"><span class="MathJax_Preview">3.5\sim3.75</span><script type="math/tex">3.5\sim3.75</script></span> 米）</li>
+<li>限速 <span class="arithmatex"><span class="MathJax_Preview">v_{max}</span><script type="math/tex">v_{max}</script></span></li>
+<li>转向约束（直行、左转、右转、掉头）</li>
+<li>车道类型（行车道、应急停车带、公交专用道）</li>
+<li><strong>车道连接关系</strong>：前驱车道、后继车道、相邻车道</li>
+</ul>
+<h3 id="33-landmark-layer">3.3 交通要素层（Landmark Layer）</h3>
+<p>交通要素层记录可作为定位特征和语义约束的固定设施：</p>
+<ul>
+<li><strong>交通标志</strong>：类型（限速/禁止/警告/指示）、三维位置、朝向</li>
+<li><strong>信号灯</strong>：三维位置、信号灯组编号、相位数、所控制的停车线</li>
+<li><strong>停车线</strong>：三维直线段，与信号灯关联</li>
+<li><strong>减速带、收费站</strong>：几何位置与类型</li>
+<li><strong>路沿石</strong>：三维边缘线，用于定位特征提取</li>
+</ul>
+<h3 id="34-semantic-layer">3.4 语义层（Semantic Layer）</h3>
+<p>语义层在几何信息的基础上增加道路拓扑与交通规则的语义描述：</p>
+<ul>
+<li><strong>路口拓扑</strong>：进入路口的车道与离开路口的车道之间的连接关系</li>
+<li><strong>优先级规则</strong>：让行关系（yield）、主路优先</li>
+<li><strong>人行横道</strong>：位置、宽度、关联信号灯</li>
+<li><strong>禁停区、禁令区</strong>：空间范围与时效属性</li>
+</ul>
+<h3 id="35">3.5 层次结构示意</h3>
+<div class="highlight"><pre><span></span><code>高精地图层次结构
+├── 语义层（Semantic Layer）
+│   ├── 路口拓扑
+│   ├── 优先级规则
+│   └── 人行横道
+├── 交通要素层（Landmark Layer）
+│   ├── 交通标志
+│   ├── 信号灯
+│   └── 停车线
+├── 车道层（Lane Layer）
+│   ├── 车道中心线
+│   ├── 车道边界线
+│   └── 车道属性（限速/转向/宽度）
+└── 道路层（Road Layer）
+    ├── 参考线几何
+    ├── 坡度与曲率
+    └── 横坡参数
+</code></pre></div>
+<hr />
+<h2 id="4">4. 高精地图数据格式</h2>
+<h3 id="41-opendrive">4.1 OpenDRIVE</h3>
+<p>OpenDRIVE 是由 ASAM（Association for Standardisation of Automation and Measuring Systems）维护的国际标准格式，采用 XML 文件结构。</p>
+<p><strong>核心设计理念：</strong></p>
+<ul>
+<li>道路以参考线（Reference Line）为核心，采用弧长参数化 <span class="arithmatex"><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> 描述几何</li>
+<li>支持直线段（Line）、圆弧（Arc）、螺旋线（Spiral/Euler Spiral）的混合表达</li>
+<li>车道以相对于参考线的横向偏移 <span class="arithmatex"><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> 定义</li>
+</ul>
+<p><strong>曲率-弧长关系（Euler螺旋线）：</strong></p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\kappa(s) = \kappa_0 + \frac{\kappa_1 - \kappa_0}{L} \cdot s</div>
+<script type="math/tex; mode=display">\kappa(s) = \kappa_0 + \frac{\kappa_1 - \kappa_0}{L} \cdot s</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\kappa_0</span><script type="math/tex">\kappa_0</script></span> 和 <span class="arithmatex"><span class="MathJax_Preview">\kappa_1</span><script type="math/tex">\kappa_1</script></span> 分别为起点和终点曲率，<span class="arithmatex"><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> 为螺旋线段总长度。</p>
+<p><strong>适用场景：</strong> 仿真（CARLA、CarSim）、高精地图生产工具链、标准接口交换</p>
+<h3 id="42-ndsnavigation-data-standard">4.2 NDS（Navigation Data Standard）</h3>
+<p>NDS 是一种分块存储的二进制格式，由 NDS Association 维护，广泛用于车载导航系统。</p>
+<p><strong>主要特点：</strong></p>
+<ul>
+<li>采用瓦片（Tile）分级存储，支持按需加载</li>
+<li>支持增量更新（Delta Update），无需全量下载</li>
+<li>数据压缩率高，适合车载嵌入式存储</li>
+<li>覆盖从普通导航地图到高精地图的多个数据层级</li>
+</ul>
+<p><strong>适用场景：</strong> 量产车载导航、OTA地图更新</p>
+<h3 id="43-lanelet2">4.3 Lanelet2</h3>
+<p>Lanelet2 是由 FZI（Forschungszentrum Informatik）开发的开源格式，基于有向图（Directed Graph）建模车道网络。</p>
+<p><strong>核心概念：</strong></p>
+<ul>
+<li><strong>Lanelet</strong>：由左边界线、右边界线和行驶方向组成的基本单元</li>
+<li><strong>Area</strong>：无方向的多边形区域（停车场、路口内部）</li>
+<li><strong>RegulatoryElement</strong>：与Lanelet关联的规则（限速、禁止进入、信号灯）</li>
+<li>使用 OSM（OpenStreetMap）XML 格式存储，ROS 兼容性良好</li>
+</ul>
+<p><strong>有向图定义：</strong></p>
+<p>设车道集合为 <span class="arithmatex"><span class="MathJax_Preview">\mathcal{L} = \{l_1, l_2, \ldots, l_n\}</span><script type="math/tex">\mathcal{L} = \{l_1, l_2, \ldots, l_n\}</script></span>，相邻关系定义为有向边 <span class="arithmatex"><span class="MathJax_Preview">E \subseteq \mathcal{L} \times \mathcal{L}</span><script type="math/tex">E \subseteq \mathcal{L} \times \mathcal{L}</script></span>，则车道网络构成有向图 <span class="arithmatex"><span class="MathJax_Preview">G = (\mathcal{L}, E)</span><script type="math/tex">G = (\mathcal{L}, E)</script></span>。</p>
+<p><strong>适用场景：</strong> 学术研究、ROS自动驾驶开发、开源社区</p>
+<h3 id="44-apollo">4.4 Apollo 地图格式</h3>
+<p>百度Apollo平台使用基于 Protocol Buffers（Protobuf）的自定义高精地图格式，称为 Apollo HD Map。</p>
+<p><strong>主要特点：</strong></p>
+<ul>
+<li>高效的二进制序列化，适合大规模地图数据存储</li>
+<li>同时提供 XML（.xodr兼容）与二进制（.bin）两种形式</li>
+<li>与Apollo感知、预测、规划模块深度集成</li>
+<li>地图加载采用ROI（Region of Interest）机制，按行驶位置动态加载</li>
+</ul>
+<p><strong>适用场景：</strong> Apollo自动驾驶平台、百度生态</p>
+<h3 id="45">4.5 格式对比表格</h3>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>标准组织</th>
+<th>文件格式</th>
+<th>适用场景</th>
+<th>开源性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenDRIVE</td>
+<td>ASAM</td>
+<td>XML</td>
+<td>仿真、工具链互操作</td>
+<td>标准开放，工具商业</td>
+</tr>
+<tr>
+<td>NDS</td>
+<td>NDS Association</td>
+<td>二进制分块</td>
+<td>量产车载、OTA更新</td>
+<td>需授权</td>
+</tr>
+<tr>
+<td>Lanelet2</td>
+<td>FZI（开源）</td>
+<td>OSM XML</td>
+<td>研究、ROS开发</td>
+<td>完全开源</td>
+</tr>
+<tr>
+<td>Apollo HD Map</td>
+<td>百度</td>
+<td>Protobuf / XML</td>
+<td>Apollo平台</td>
+<td>部分开源</td>
+</tr>
+<tr>
+<td>HERE HD Map</td>
+<td>HERE</td>
+<td>专有格式</td>
+<td>商业量产</td>
+<td>闭源</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5">5. 高精地图采集</h2>
+<h3 id="51">5.1 采集车配置</h3>
+<p>专业高精地图采集车通常配备以下传感器组合：</p>
+<table>
+<thead>
+<tr>
+<th>传感器类型</th>
+<th>典型配置</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多线激光雷达</td>
+<td>64线/128线 LiDAR × 2–4</td>
+<td>三维点云采集，用于几何重建</td>
+</tr>
+<tr>
+<td>高精GNSS/INS</td>
+<td>双天线RTK + IMU</td>
+<td>提供厘米级绝对位置与姿态</td>
+</tr>
+<tr>
+<td>摄像头</td>
+<td>全景相机 × 6–12</td>
+<td>图像采集，用于要素识别与纹理</td>
+</tr>
+<tr>
+<td>里程计</td>
+<td>高精轮速计</td>
+<td>辅助定位，补偿GNSS盲区</td>
+</tr>
+</tbody>
+</table>
+<p>定位精度要求：</p>
+<ul>
+<li>绝对位置误差：<span class="arithmatex"><span class="MathJax_Preview">\leq 5</span><script type="math/tex">\leq 5</script></span> cm（RTK条件下）</li>
+<li>姿态精度：横滚/俯仰 <span class="arithmatex"><span class="MathJax_Preview">\leq 0.01°</span><script type="math/tex">\leq 0.01°</script></span>，偏航 <span class="arithmatex"><span class="MathJax_Preview">\leq 0.05°</span><script type="math/tex">\leq 0.05°</script></span></li>
+</ul>
+<h3 id="52">5.2 采集流程</h3>
+<p>高精地图的生产流程如下：</p>
+<div class="highlight"><pre><span></span><code>原始数据采集
+    │
+    ▼
+时间戳同步与外参标定
+    │
+    ▼
+点云配准（ICP / NDT）
+    │
+    ▼
+三维点云地图重建
+    │
+    ▼
+自动要素提取（深度学习）
+    │  ├── 车道线检测
+    │  ├── 交通标志识别
+    │  └── 信号灯提取
+    ▼
+人工质检与精修
+    │
+    ▼
+逻辑拓扑构建（车道连接关系）
+    │
+    ▼
+质量评估与验证
+    │
+    ▼
+地图发布与版本管理
+</code></pre></div>
+<p><strong>点云配准原理：</strong></p>
+<p>迭代最近点（ICP，Iterative Closest Point）算法通过最小化点云间的欧氏距离完成配准：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\min_{R, t} \sum_{i=1}^{N} \| R \cdot p_i + t - q_i \|^2</div>
+<script type="math/tex; mode=display">\min_{R, t} \sum_{i=1}^{N} \| R \cdot p_i + t - q_i \|^2</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">R \in SO(3)</span><script type="math/tex">R \in SO(3)</script></span> 为旋转矩阵，<span class="arithmatex"><span class="MathJax_Preview">t \in \mathbb{R}^3</span><script type="math/tex">t \in \mathbb{R}^3</script></span> 为平移向量，<span class="arithmatex"><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span> 与 <span class="arithmatex"><span class="MathJax_Preview">q_i</span><script type="math/tex">q_i</script></span> 为对应点对。</p>
+<p>正态分布变换（NDT，Normal Distribution Transform）将空间划分为体素格，每个体素用高斯分布 <span class="arithmatex"><span class="MathJax_Preview">\mathcal{N}(\mu_k, \Sigma_k)</span><script type="math/tex">\mathcal{N}(\mu_k, \Sigma_k)</script></span> 描述点的分布，通过最大化点云落入各体素的概率完成配准：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\max_{T} \sum_{i=1}^{N} \exp\left(-\frac{(T \cdot p_i - \mu_k)^T \Sigma_k^{-1} (T \cdot p_i - \mu_k)}{2}\right)</div>
+<script type="math/tex; mode=display">\max_{T} \sum_{i=1}^{N} \exp\left(-\frac{(T \cdot p_i - \mu_k)^T \Sigma_k^{-1} (T \cdot p_i - \mu_k)}{2}\right)</script>
+</div>
+<p>NDT 对初始值鲁棒性更好，收敛速度更快，是自动驾驶中的主流点云配准算法。</p>
+<h3 id="53-crowdsourcing">5.3 众包采集（Crowdsourcing）</h3>
+<p>由于专业采集车成本极高（单车约 100–300 万元），采集效率约为 300 km/天，难以实现全域高频更新。众包采集利用量产车辆的传感器数据，大规模降低采集成本。</p>
+<p><strong>众包采集架构：</strong></p>
+<div class="highlight"><pre><span></span><code>量产车辆（数百万台）
+    │  ├── 摄像头数据（车道线、标志识别结果）
+    │  ├── GNSS轨迹（米级）
+    │  └── 地图差异报告（异常检测）
+    ▼
+云端融合服务器
+    │  ├── 多源数据融合
+    │  ├── 变化检测与置信度评估
+    │  └── 地图更新决策
+    ▼
+高精地图增量更新
+</code></pre></div>
+<p><strong>优势：</strong></p>
+<ul>
+<li>覆盖里程：众包方案可实现上亿公里级别的数据覆盖</li>
+<li>更新时效：局部变化（如施工区）可在数小时内上报</li>
+<li>成本：边际成本接近零（利用量产车现有传感器）</li>
+</ul>
+<p><strong>挑战：</strong></p>
+<ul>
+<li>单车精度有限，需要多次重复观测融合</li>
+<li>数据隐私与合规（中国需符合测绘法规）</li>
+<li>上传带宽限制</li>
+</ul>
+<hr />
+<h2 id="6-map-based-localization">6. 地图定位（Map-based Localization）</h2>
+<p>高精地图的重要功能之一是辅助自动驾驶车辆实现高精度定位。传统GNSS精度为米级，难以满足车道级定位需求，而地图匹配定位可将精度提升至厘米级。</p>
+<h3 id="61">6.1 点云匹配定位</h3>
+<p>将实时激光雷达点云与预先构建的三维点云地图进行匹配，推算车辆位姿。</p>
+<p><strong>NDT定位目标函数：</strong></p>
+<div class="arithmatex">
+<div class="MathJax_Preview">T^* = \arg\max_T \sum_{i=1}^{N} \mathcal{N}\left(T \cdot p_i;\, \mu_{k(i)},\, \Sigma_{k(i)}\right)</div>
+<script type="math/tex; mode=display">T^* = \arg\max_T \sum_{i=1}^{N} \mathcal{N}\left(T \cdot p_i;\, \mu_{k(i)},\, \Sigma_{k(i)}\right)</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">T = (R, t)</span><script type="math/tex">T = (R, t)</script></span> 为待求位姿，<span class="arithmatex"><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span> 为当前帧点云，<span class="arithmatex"><span class="MathJax_Preview">\mu_{k(i)},\, \Sigma_{k(i)}</span><script type="math/tex">\mu_{k(i)},\, \Sigma_{k(i)}</script></span> 为点 <span class="arithmatex"><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span> 对应地图体素的高斯参数。</p>
+<p><strong>定位精度：</strong></p>
+<ul>
+<li>横向精度：<span class="arithmatex"><span class="MathJax_Preview">\sigma_{\text{lat}} &lt; 10</span><script type="math/tex">\sigma_{\text{lat}} < 10</script></span> cm</li>
+<li>纵向精度：<span class="arithmatex"><span class="MathJax_Preview">\sigma_{\text{lon}} &lt; 20</span><script type="math/tex">\sigma_{\text{lon}} < 20</script></span> cm</li>
+<li>定位频率：通常 <span class="arithmatex"><span class="MathJax_Preview">10\sim20</span><script type="math/tex">10\sim20</script></span> Hz</li>
+</ul>
+<h3 id="62">6.2 特征匹配定位</h3>
+<p>除点云外，还可利用高精地图中的结构化特征进行定位：</p>
+<ul>
+<li><strong>车道线定位</strong>：摄像头检测车道线，与地图中的车道边界进行匹配，估计横向偏移</li>
+<li><strong>路沿石定位</strong>：利用激光雷达检测路沿高度变化，与地图路沿线匹配</li>
+<li><strong>交通标志定位</strong>：识别标志类型与位置，与地图中的标志三维位置匹配</li>
+</ul>
+<p><strong>横向定位误差模型（车道线匹配）：</strong></p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\delta_{\text{lat}} = d_{\text{det}} - d_{\text{map}}</div>
+<script type="math/tex; mode=display">\delta_{\text{lat}} = d_{\text{det}} - d_{\text{map}}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">d_{\text{det}}</span><script type="math/tex">d_{\text{det}}</script></span> 为传感器检测到的车道线横向距离，<span class="arithmatex"><span class="MathJax_Preview">d_{\text{map}}</span><script type="math/tex">d_{\text{map}}</script></span> 为地图中对应车道线的横向距离。通过卡尔曼滤波融合多源特征可进一步降低误差。</p>
+<h3 id="63">6.3 地图失效场景与降级策略</h3>
+<p>高精地图并非在所有场景下都可靠，以下情况可能导致地图失效：</p>
+<table>
+<thead>
+<tr>
+<th>失效场景</th>
+<th>原因</th>
+<th>降级策略</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>施工区</td>
+<td>车道线、标志与地图不符</td>
+<td>切换至感知主导模式，降速行驶</td>
+</tr>
+<tr>
+<td>新建道路</td>
+<td>地图尚未更新</td>
+<td>GNSS+IMU航迹推算，请求人工接管</td>
+</tr>
+<tr>
+<td>季节变化</td>
+<td>积雪覆盖车道线，点云特征变化</td>
+<td>提高匹配阈值，启用纯视觉备份</td>
+</tr>
+<tr>
+<td>隧道/地下停车场</td>
+<td>GNSS信号丢失</td>
+<td>里程计+IMU+特征匹配联合定位</td>
+</tr>
+<tr>
+<td>地图版本不匹配</td>
+<td>OTA更新延迟</td>
+<td>强制版本校验，拒绝使用过期地图</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7">7. 地图更新与维护</h2>
+<h3 id="71-change-detection">7.1 变化检测（Change Detection）</h3>
+<p>量产车辆在行驶过程中持续监测道路状态，并将异常上报云端：</p>
+<ul>
+<li><strong>车道线消失或位置偏移</strong>：摄像头检测结果与地图不符，触发上报</li>
+<li><strong>交通标志变化</strong>：新增/更换/损毁标志的识别与上报</li>
+<li><strong>道路几何变化</strong>：施工导致的路面异常、临时标志</li>
+</ul>
+<p><strong>置信度聚合模型：</strong></p>
+<p>设第 <span class="arithmatex"><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 辆车上报某区域变化的概率为 <span class="arithmatex"><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span>，经过 <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 辆独立车辆观测后，综合置信度为：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">P_{\text{change}} = 1 - \prod_{i=1}^{n} (1 - p_i)</div>
+<script type="math/tex; mode=display">P_{\text{change}} = 1 - \prod_{i=1}^{n} (1 - p_i)</script>
+</div>
+<p>当 <span class="arithmatex"><span class="MathJax_Preview">P_{\text{change}}</span><script type="math/tex">P_{\text{change}}</script></span> 超过阈值 <span class="arithmatex"><span class="MathJax_Preview">\tau</span><script type="math/tex">\tau</script></span>（典型值 0.95）时，触发地图更新流程。</p>
+<h3 id="72">7.2 更新周期</h3>
+<p>不同区域的更新频率差异显著：</p>
+<table>
+<thead>
+<tr>
+<th>区域类型</th>
+<th>变化频率</th>
+<th>目标更新周期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>城市施工密集区</td>
+<td>高</td>
+<td>小时级</td>
+</tr>
+<tr>
+<td>城市主干道</td>
+<td>中</td>
+<td>日级</td>
+</tr>
+<tr>
+<td>城市次干道</td>
+<td>低</td>
+<td>周级</td>
+</tr>
+<tr>
+<td>高速公路</td>
+<td>极低</td>
+<td>月级</td>
+</tr>
+<tr>
+<td>偏远地区</td>
+<td>极低</td>
+<td>季度级</td>
+</tr>
+</tbody>
+</table>
+<h3 id="73-map-versioning">7.3 地图版本管理（Map Versioning）</h3>
+<p>高精地图采用类似代码仓库的版本管理机制：</p>
+<ul>
+<li><strong>全量版本</strong>：基础地图的完整快照，通常在新车出厂或大版本迭代时推送</li>
+<li><strong>增量版本（Delta）</strong>：基于变化检测结果的差异包，体积小，适合OTA推送</li>
+<li><strong>版本号规则</strong>：通常采用 <code>区域代码-年月日-序号</code> 的格式</li>
+<li><strong>历史版本保留</strong>：支持回滚（Rollback），用于异常诊断</li>
+</ul>
+<h3 id="74-ota">7.4 OTA地图推送架构</h3>
+<div class="highlight"><pre><span></span><code>地图生产中心
+    │
+    ▼
+地图分发CDN（按区域分片）
+    │
+    ▼
+车辆OTA客户端
+    │  ├── 版本校验
+    │  ├── 差异包下载（仅下载行驶区域相关切片）
+    │  ├── 完整性校验（SHA256）
+    │  └── 原子化切换（不影响行驶中的地图使用）
+    ▼
+车载地图存储（NVMe/eMMC）
+</code></pre></div>
+<h3 id="75">7.5 中国测绘法规限制</h3>
+<p>在中国运营高精地图业务需严格遵守《测绘法》和相关法规：</p>
+<ul>
+<li><strong>测绘资质</strong>：采集高精地图须持有国家测绘地理信息局颁发的甲级测绘资质</li>
+<li><strong>数据不得出境</strong>：所有地理信息数据须存储于境内服务器，禁止传输至境外</li>
+<li><strong>外资禁止采集</strong>：外资企业不得在中国境内独立开展测绘作业，须与持证的中国企业合作</li>
+<li><strong>安全审查</strong>：高精地图产品须通过国家安全审查后方可商业发布</li>
+<li><strong>GPS偏移（GCJ-02坐标系）</strong>：中国地图须使用国家标准的GCJ-02（火星坐标系），与WGS-84存在约 <span class="arithmatex"><span class="MathJax_Preview">10\sim1000</span><script type="math/tex">10\sim1000</script></span> 米的偏移</li>
+</ul>
+<hr />
+<h2 id="8">8. 无图/轻图技术趋势</h2>
+<h3 id="81-teslahd-map">8.1 Tesla：完全无HD Map</h3>
+<p>特斯拉FSD（Full Self-Driving）采用纯视觉方案，完全不依赖预先采集的高精地图：</p>
+<ul>
+<li><strong>技术路线</strong>：多摄像头鸟瞰图（BEV，Bird's Eye View）感知 + 神经网络路网理解</li>
+<li><strong>记忆地图（Memory Map）</strong>：利用用户行驶数据，在云端积累伪匿名道路拓扑，但不存储厘米级要素</li>
+<li><strong>优势</strong>：零地图维护成本，全球道路覆盖，无地图失效问题</li>
+<li><strong>挑战</strong>：复杂路口理解、无标线道路、极端天气下感知退化</li>
+</ul>
+<h3 id="82-ads-20">8.2 华为ADS 2.0：轻地图</h3>
+<p>华为智能驾驶ADS 2.0（2023年发布）提出"不依赖高精地图"的城区导航辅助驾驶方案：</p>
+<ul>
+<li><strong>技术路线</strong>：开源地图（高德标准地图）提供路网拓扑 + 实时感知构建局部语义地图</li>
+<li><strong>网络结构理解</strong>：利用Transformer架构理解路口几何</li>
+<li><strong>覆盖范围</strong>：2023年底覆盖45城，无需等待高精地图覆盖</li>
+<li><strong>挑战</strong>：在复杂路口（多相位信号灯、非标准几何）场景下仍存在挑战</li>
+</ul>
+<h3 id="83">8.3 小鹏：标清地图</h3>
+<p>小鹏汽车采用"标清地图"路线，自主采集轻量化语义地图：</p>
+<ul>
+<li>基于量产车摄像头的众包数据生成轻量语义地图</li>
+<li>记录道路拓扑、车道数量、限速等关键属性，放弃厘米级几何精度</li>
+<li>配合XNGP感知系统，覆盖城区复杂场景</li>
+</ul>
+<h3 id="84-hd-map">8.4 HD Map面临的挑战与轻图趋势的原因</h3>
+<table>
+<thead>
+<tr>
+<th>挑战维度</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>维护成本</td>
+<td>全国高精地图年维护成本数亿元</td>
+</tr>
+<tr>
+<td>覆盖盲区</td>
+<td>中国高精地图覆盖里程不足50%（截至2024年）</td>
+</tr>
+<tr>
+<td>更新滞后</td>
+<td>道路变化与地图更新之间存在时间差，带来安全风险</td>
+</tr>
+<tr>
+<td>法规限制</td>
+<td>测绘法规增加合规成本</td>
+</tr>
+<tr>
+<td>规模化瓶颈</td>
+<td>高精采集车数量有限，无法快速扩展到小城市和农村道路</td>
+</tr>
+</tbody>
+</table>
+<h3 id="85">8.5 无图感知面临的挑战</h3>
+<p>尽管轻地图/无图方案具有显著优势，但在以下场景中仍面临明显挑战：</p>
+<ul>
+<li><strong>复杂多相位路口</strong>：信号灯相位与车道对应关系难以实时推断</li>
+<li><strong>无标线路段</strong>：乡村道路、临时施工区缺乏可感知的车道要素</li>
+<li><strong>遮挡与恶劣天气</strong>：感知距离和精度显著下降，先验地图提供了安全冗余</li>
+<li><strong>高速变道规划</strong>：需要预知数百米前的车道几何进行提前规划</li>
+</ul>
+<hr />
+<h2 id="9">9. 主要高精地图供应商</h2>
+<h3 id="91">9.1 国内供应商</h3>
+<table>
+<thead>
+<tr>
+<th>供应商</th>
+<th>背景</th>
+<th>覆盖范围</th>
+<th>主要客户</th>
+<th>技术路线</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>四维图新</td>
+<td>与HERE合资，上市公司</td>
+<td>国内主要高速+城区</td>
+<td>吉利、宝马、通用</td>
+<td>专业采集+众包</td>
+</tr>
+<tr>
+<td>高德地图</td>
+<td>阿里巴巴旗下</td>
+<td>国内高速+部分城区</td>
+<td>自研+小鹏等</td>
+<td>众包+专业采集</td>
+</tr>
+<tr>
+<td>百度地图</td>
+<td>百度旗下</td>
+<td>国内，与Apollo深度集成</td>
+<td>Apollo生态</td>
+<td>专业采集+众包</td>
+</tr>
+<tr>
+<td>中国电信</td>
+<td>国企背景</td>
+<td>国内</td>
+<td>部分车企</td>
+<td>依托运营商数据</td>
+</tr>
+<tr>
+<td>Momenta</td>
+<td>独角兽</td>
+<td>国内城区</td>
+<td>上汽、戴姆勒</td>
+<td>AI+众包</td>
+</tr>
+</tbody>
+</table>
+<h3 id="92">9.2 国际供应商</h3>
+<table>
+<thead>
+<tr>
+<th>供应商</th>
+<th>背景</th>
+<th>覆盖范围</th>
+<th>主要客户</th>
+<th>技术路线</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HERE Technologies</td>
+<td>原Nokia Maps，宝马/奔驰/奥迪投资</td>
+<td>全球</td>
+<td>OEM广泛</td>
+<td>专业采集+众包</td>
+</tr>
+<tr>
+<td>TomTom</td>
+<td>荷兰，上市公司</td>
+<td>全球</td>
+<td>大众、Bosch</td>
+<td>专业采集+合作伙伴众包</td>
+</tr>
+<tr>
+<td>Mobileye REM</td>
+<td>Intel Mobileye</td>
+<td>全球（依托量产车）</td>
+<td>宝马、通用等</td>
+<td>纯众包（量产车摄像头）</td>
+</tr>
+<tr>
+<td>DeepMap</td>
+<td>斯坦福创业，被NVIDIA收购</td>
+<td>北美</td>
+<td>并入NVIDIA地图平台</td>
+<td>专业采集+AI</td>
+</tr>
+</tbody>
+</table>
+<h3 id="93">9.3 综合对比</h3>
+<table>
+<thead>
+<tr>
+<th>供应商</th>
+<th>国内高精覆盖</th>
+<th>更新频率</th>
+<th>格式支持</th>
+<th>开放性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>四维图新</td>
+<td>高</td>
+<td>日/周级</td>
+<td>NDS / Apollo兼容</td>
+<td>商业授权</td>
+</tr>
+<tr>
+<td>高德地图</td>
+<td>中高</td>
+<td>日级（众包）</td>
+<td>阿里云生态</td>
+<td>商业授权</td>
+</tr>
+<tr>
+<td>百度地图</td>
+<td>中高</td>
+<td>日级</td>
+<td>Apollo Protobuf</td>
+<td>Apollo开源生态</td>
+</tr>
+<tr>
+<td>HERE</td>
+<td>低（需合规）</td>
+<td>周级</td>
+<td>OpenDRIVE / NDS</td>
+<td>商业授权</td>
+</tr>
+<tr>
+<td>TomTom</td>
+<td>低</td>
+<td>周级</td>
+<td>OpenDRIVE</td>
+<td>商业授权</td>
+</tr>
+<tr>
+<td>Mobileye REM</td>
+<td>中（合规合作）</td>
+<td>近实时</td>
+<td>专有</td>
+<td>闭源</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10">10. 参考资料</h2>
+<ol>
+<li>
+<p>ASAM e.V. <em>OpenDRIVE Format Specification</em>, Version 1.7.0. ASAM, 2021. <a href="https://www.asam.net/standards/detail/opendrive/">https://www.asam.net/standards/detail/opendrive/</a></p>
+</li>
+<li>
+<p>Poggenhans, F., Pauls, J. H., Janosovits, J., et al. "Lanelet2: A High-Definition Map Framework for the Future of Automated Driving." <em>Proceedings of the 21st International Conference on Intelligent Transportation Systems (ITSC)</em>, IEEE, 2018.</p>
+</li>
+<li>
+<p>百度Apollo团队. <em>Apollo HD Map 技术文档</em>. Apollo开放平台, 2022. <a href="https://developer.apollo.auto/">https://developer.apollo.auto/</a></p>
+</li>
+<li>
+<p>Ziegler, J., Bender, P., Schreiber, M., et al. "Making Bertha Drive—An Autonomous Journey on a Historic Route." <em>IEEE Intelligent Transportation Systems Magazine</em>, vol. 6, no. 2, pp. 8–20, 2014.</p>
+</li>
+<li>
+<p>Caesar, H., Bankiti, V., Lang, A. X., et al. "nuScenes: A Multimodal Dataset for Autonomous Driving." <em>Proceedings of CVPR 2020</em>, IEEE, 2020.</p>
+</li>
+<li>
+<p>国家测绘地理信息局. 《测绘法》及《地图管理条例》. 中华人民共和国，2017年修订版. <a href="http://www.mnr.gov.cn/">http://www.mnr.gov.cn/</a></p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../_static/js/mathjaxhelper.js"></script>
+      
+    
+  </body>
+</html>

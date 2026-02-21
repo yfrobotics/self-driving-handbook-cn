@@ -15,17 +15,17 @@
         <link rel="canonical" href="https://yfrobotics.github.io/self-driving-handbook-cn/system/safety/">
       
       
-        <link rel="prev" href="../platform/">
+        <link rel="prev" href="../hmi/">
       
       
-        <link rel="next" href="../regulation/">
+        <link rel="next" href="../testing/">
       
       
         
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
@@ -317,7 +317,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶介绍
+    第一章：概述
   
 
     
@@ -373,7 +373,35 @@
   <span class="md-ellipsis">
     
   
-    自主性等级分类
+    自动驾驶等级分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶发展历史
   
 
     
@@ -457,7 +485,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶系统
+    第二章：系统
   
 
     
@@ -485,7 +513,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶车辆
+    自动驾驶车辆系统
   
 
     
@@ -513,7 +541,7 @@
   <span class="md-ellipsis">
     
   
-    智能交通
+    车联网（V2X）技术详解
   
 
     
@@ -541,7 +569,63 @@
   <span class="md-ellipsis">
     
   
-    设计与仿真平台
+    仿真平台与数据集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hdmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高精地图（HD Map）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人机交互系统（HMI）
   
 
     
@@ -622,29 +706,223 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ras-safety-standard" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RAS Safety Standard
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#asil-automotive-safety-integrity-level" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ASIL: Automotive Safety Integrity Level
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安全标准体系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iso-26262" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ISO 26262：功能安全
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ISO 26262：功能安全">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#asil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ASIL 汽车安全完整性等级
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asil_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ASIL 等级确定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V 字形开发模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fmea-fta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FMEA 与 FTA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iso-21448sotif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ISO 21448：SOTIF（预期功能安全）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        冗余设计原则
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="冗余设计原则">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        传感器冗余
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        计算冗余
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通信冗余
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        电源冗余
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fail-safe-vs-fail-operational" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fail-Safe vs Fail-Operational
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RSS 责任敏感安全模型
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cybersecurity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        汽车网络安全（Cybersecurity）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安全测试与验证
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="安全测试与验证">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        里程验证挑战
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多维度验证策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         参考资料
@@ -658,6 +936,62 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶测试体系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cybersecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶网络安全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -759,7 +1093,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶硬件
+    第三章：硬件
   
 
     
@@ -815,7 +1149,7 @@
   <span class="md-ellipsis">
     
   
-    中控单元 (AI芯片, GPGPU)
+    中央计算单元 (CCU / 车载AI芯片)
   
 
     
@@ -843,7 +1177,7 @@
   <span class="md-ellipsis">
     
   
-    线控系统
+    线控系统（Drive-by-Wire）
   
 
     
@@ -871,7 +1205,7 @@
   <span class="md-ellipsis">
     
   
-    车内总线
+    车载通信系统
   
 
     
@@ -927,7 +1261,7 @@
   <span class="md-ellipsis">
     
   
-    视觉传感器
+    视觉传感器（摄像头）
   
 
     
@@ -1009,7 +1343,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶核心算法
+    第四章：核心算法
   
 
     
@@ -1065,7 +1399,7 @@
   <span class="md-ellipsis">
     
   
-    图像识别与分割
+    图像感知与处理
   
 
     
@@ -1094,6 +1428,62 @@
     
   
     激光点云数据处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sensor_fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器融合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/occupancy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    占用网络（Occupancy Network）
   
 
     
@@ -1170,6 +1560,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/prediction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行为预测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/decision_making/" class="md-nav__link">
         
   
@@ -1177,7 +1595,91 @@
   <span class="md-ellipsis">
     
   
-    决策 (Decision Making Process)
+    决策 (Decision Making)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    控制算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/end_to_end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端自动驾驶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/data_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶ML数据管道
   
 
     
@@ -1205,7 +1707,7 @@
   <span class="md-ellipsis">
     
   
-    自然语言识别与交互
+    自然语言处理与大语言模型
   
 
     
@@ -1287,7 +1789,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶案例
+    第五章：实例
   
 
     
@@ -1315,7 +1817,119 @@
   <span class="md-ellipsis">
     
   
-    百度无人驾驶
+    百度 Apollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/waymo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waymo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/tesla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla FSD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/chinese_players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国自动驾驶企业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/robotaxi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robotaxi：自动驾驶商业化的主战场
   
 
     
@@ -1363,29 +1977,223 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ras-safety-standard" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RAS Safety Standard
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#asil-automotive-safety-integrity-level" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ASIL: Automotive Safety Integrity Level
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安全标准体系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iso-26262" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ISO 26262：功能安全
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ISO 26262：功能安全">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#asil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ASIL 汽车安全完整性等级
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asil_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ASIL 等级确定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V 字形开发模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fmea-fta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FMEA 与 FTA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iso-21448sotif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ISO 21448：SOTIF（预期功能安全）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        冗余设计原则
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="冗余设计原则">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        传感器冗余
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        计算冗余
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通信冗余
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        电源冗余
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fail-safe-vs-fail-operational" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fail-Safe vs Fail-Operational
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RSS 责任敏感安全模型
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cybersecurity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        汽车网络安全（Cybersecurity）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安全测试与验证
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="安全测试与验证">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        里程验证挑战
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多维度验证策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         参考资料
@@ -1413,31 +2221,304 @@
 
 
 <h1 id="_1">系统安全保障</h1>
-<p>自动驾驶和人工智能是目前最火热的话题了。在功能性不断完善的同时，系统的安全往往被人忽略。本文介绍目前自动驾驶系统中存在的安全验证困境，已经可能的解决方法。</p>
-<p>如何验证自动驾驶</p>
+<p>自动驾驶系统的安全性远比普通软件系统复杂——一旦失效可能直接危及生命。与此同时，自动驾驶系统高度依赖人工智能，其行为难以用传统方法完全验证。本章介绍自动驾驶领域的功能安全标准、安全验证方法以及行业最佳实践。</p>
+<h2 id="_2">安全标准体系</h2>
+<p>自动驾驶安全由多个互补标准从不同维度覆盖：</p>
+<table>
+<thead>
+<tr>
+<th>标准</th>
+<th>制定组织</th>
+<th>关注维度</th>
+<th>核心方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ISO 26262</td>
+<td>ISO</td>
+<td>功能安全（系统性和随机性硬件故障）</td>
+<td>ASIL 等级、V字开发、FMEA/FTA</td>
+</tr>
+<tr>
+<td>ISO 21448 (SOTIF)</td>
+<td>ISO</td>
+<td>预期功能安全（感知和AI的性能局限）</td>
+<td>场景分类、覆盖度测试</td>
+</tr>
+<tr>
+<td>ISO/SAE 21434</td>
+<td>ISO/SAE</td>
+<td>汽车网络安全（Cybersecurity）</td>
+<td>TARA 威胁分析、纵深防御</td>
+</tr>
+<tr>
+<td>UL 4600</td>
+<td>UL</td>
+<td>自动驾驶系统整体安全评估框架</td>
+<td>安全案例（Safety Case）</td>
+</tr>
+<tr>
+<td>RSS</td>
+<td>Mobileye</td>
+<td>责任敏感安全（数学化安全保证）</td>
+<td>安全距离公式、责任归属</td>
+</tr>
+<tr>
+<td>E/C-NCAP</td>
+<td>NCAP 联盟</td>
+<td>新车碰撞安全评估</td>
+<td>实车测试、评星</td>
+</tr>
+</tbody>
+</table>
+<h2 id="iso-26262">ISO 26262：功能安全</h2>
+<p>ISO 26262 是汽车行业最核心的功能安全标准，要求系统在存在故障的情况下仍能安全运行或安全停机。</p>
+<h3 id="asil">ASIL 汽车安全完整性等级</h3>
+<p>汽车安全完整性等级（ASIL，Automotive Safety Integrity Level）分为 QM/A/B/C/D 五档，D 级为最高要求：</p>
+<table>
+<thead>
+<tr>
+<th>等级</th>
+<th>故障后果</th>
+<th>设计要求</th>
+<th>典型应用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QM（质量管理）</td>
+<td>无安全风险</td>
+<td>常规质量流程</td>
+<td>车载娱乐、空调控制</td>
+</tr>
+<tr>
+<td>ASIL-A</td>
+<td>轻微伤害风险</td>
+<td>基础安全措施</td>
+<td>雨刷、车窗升降</td>
+</tr>
+<tr>
+<td>ASIL-B</td>
+<td>中等伤害风险</td>
+<td>故障检测与响应</td>
+<td>辅助照明、泊车传感器</td>
+</tr>
+<tr>
+<td>ASIL-C</td>
+<td>严重伤害风险</td>
+<td>冗余设计</td>
+<td>电子稳定控制（ESC）</td>
+</tr>
+<tr>
+<td>ASIL-D</td>
+<td>危及生命</td>
+<td>最高冗余 + 形式验证</td>
+<td>线控制动、安全气囊、线控转向</td>
+</tr>
+</tbody>
+</table>
+<h3 id="asil_1">ASIL 等级确定</h3>
+<p>ASIL 等级由三个因素的组合决定：</p>
 <ul>
-<li>ISO 26262 &amp; IEC 61508的不足</li>
-<li>系统无法先验</li>
-<li>使用人工智能导致的困难</li>
-<li>Fail safe &amp; fail operational</li>
+<li><strong>严重度（Severity, S0–S3）</strong>：S0 无伤害 → S3 危及生命</li>
+<li><strong>暴露率（Exposure, E0–E4）</strong>：E0 不可能 → E4 连续暴露（如行驶中的制动）</li>
+<li><strong>可控性（Controllability, C0–C3）</strong>：C0 完全可控 → C3 几乎不可控</li>
 </ul>
-<h2 id="ras-safety-standard">RAS Safety Standard</h2>
+<p>高严重度 × 高暴露率 × 低可控性 → 高 ASIL 等级。</p>
+<h3 id="v">V 字形开发模型</h3>
+<p>ISO 26262 要求贯穿整个产品生命周期的 V 字形开发，左边为设计分解，右边为集成验证：</p>
+<div class="highlight"><pre><span></span><code>系统需求分析 ─────────────────────────────► 系统验证测试
+      │                                           ▲
+      ▼                                           │
+系统功能设计 ──────────────────────────► 系统集成测试
+      │                                           ▲
+      ▼                                           │
+硬件/软件设计 ──────────────────────► 硬件/软件集成
+      │                                           ▲
+      ▼                                           │
+软件详细设计 ──────────────────────────► 软件单元测试
+</code></pre></div>
+<p>每个阶段需要完成相应的安全分析，并输出<strong>安全案例</strong>（Safety Case）文档证明设计满足安全目标。</p>
+<h3 id="fmea-fta">FMEA 与 FTA</h3>
+<ul>
+<li><strong>FMEA（失效模式与影响分析）</strong>：自底向上，逐一分析每个组件的失效模式（断路、短路、输出错误等）及其对系统的影响，评估风险优先级（RPN = 严重度 × 频率 × 可检测性）</li>
+<li><strong>FTA（故障树分析）</strong>：自顶向下，从系统级危害（如"车辆无法制动"）追溯到底层原因，建立布尔逻辑树，计算顶事件的发生概率</li>
+</ul>
+<h2 id="iso-21448sotif">ISO 21448：SOTIF（预期功能安全）</h2>
+<p>传统功能安全假设"功能正确即安全"。但 AI 感知存在性能局限（如雾天摄像头失效、LiDAR 遇到反光路面），这不是"故障"而是"预期功能的局限"，ISO 21448 补充了这一空白。</p>
+<p><strong>SOTIF 四象限场景分类：</strong></p>
+<div class="highlight"><pre><span></span><code>              已知（Known）    未知（Unknown）
+安全（Safe）  ┌──────────────┬──────────────┐
+              │   K₁：已知   │   U₁：未知   │
+              │   安全场景   │   安全场景   │ ← 可接受（概率低）
+              │ （目标：最大化）│              │
+不安全（Unsafe├──────────────┼──────────────┤
+              │   K₂：已知   │   U₂：未知   │
+              │  不安全场景   │  不安全场景   │ ← 目标：最小化
+              │ （通过设计消除）│              │
+              └──────────────┴──────────────┘
+</code></pre></div>
+<p>验证目标：将 U₂ 场景充分暴露（使其转变为 K₂），再通过系统设计消除 K₂。仿真平台是暴露 U₂ 场景的关键手段。</p>
+<h2 id="_3">冗余设计原则</h2>
+<p>自动驾驶采用多层次冗余，确保任何单点失效不导致系统级危害：</p>
+<h3 id="_4">传感器冗余</h3>
+<ul>
+<li>多种传感器（LiDAR + Camera + Radar）互相备份，任一失效系统仍可感知</li>
+<li>同类型多个传感器（前向双摄、多角度毫米波雷达）提供一致性校验，检测单传感器异常</li>
+</ul>
+<h3 id="_5">计算冗余</h3>
+<ul>
+<li><strong>双主控 SoC</strong>（如 Tesla FSD HW3 双 NPU）：主计算失效，备份立即接管</li>
+<li><strong>Lockstep MCU</strong>：双核同步执行并实时比较输出，检测计算错误，适用于 ASIL-D 功能</li>
+</ul>
+<h3 id="_6">通信冗余</h3>
+<ul>
+<li>双 CAN 总线 / 双车载以太网链路</li>
+<li>关键控制信号多路传输，防止单线故障</li>
+</ul>
+<h3 id="_7">电源冗余</h3>
+<ul>
+<li>主 12 V 电池 + 独立后备超级电容/蓄电池</li>
+<li>制动系统配备独立 48 V 或双 12 V 供电回路，确保 ASIL-D 制动功能不受主电源影响</li>
+</ul>
+<h2 id="fail-safe-vs-fail-operational">Fail-Safe vs Fail-Operational</h2>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>描述</th>
+<th>适用自动驾驶级别</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fail-Safe</td>
+<td>故障后立即执行<strong>最小风险机动（MRM）</strong>：减速靠边停车</td>
+<td>L2 / L3</td>
+</tr>
+<tr>
+<td>Fail-Degraded</td>
+<td>降级功能运行，限速行驶至安全区域</td>
+<td>L3 / L4 过渡</td>
+</tr>
+<tr>
+<td>Fail-Operational</td>
+<td>故障后完整保留足够功能，自主完成当前任务</td>
+<td>L4 / L5</td>
+</tr>
+</tbody>
+</table>
+<p>L4 无人驾驶（无驾驶员备份）<strong>必须实现 Fail-Operational</strong>：即便某传感器或计算单元失效，系统仍能安全地完成最小风险机动，将车辆停至安全位置。</p>
+<h2 id="rss">RSS 责任敏感安全模型</h2>
+<p>Mobileye 提出的 RSS（Responsibility-Sensitive Safety）提供了数学化的安全距离定义，使自动驾驶系统在可归责事故中不承担责任。</p>
+<p><strong>纵向安全距离公式：</strong></p>
+<div class="arithmatex">
+<div class="MathJax_Preview">d_{\min,\text{lon}} = \left[ v_r \rho + \frac{v_r^2}{2 a_{r,\text{brake,min}}} - \frac{v_f^2}{2 a_{f,\text{brake,max}}} \right]^+</div>
+<script type="math/tex; mode=display">d_{\min,\text{lon}} = \left[ v_r \rho + \frac{v_r^2}{2 a_{r,\text{brake,min}}} - \frac{v_f^2}{2 a_{f,\text{brake,max}}} \right]^+</script>
+</div>
+<p>其中：
+- <span class="arithmatex"><span class="MathJax_Preview">v_r, v_f</span><script type="math/tex">v_r, v_f</script></span>：后车和前车速度
+- <span class="arithmatex"><span class="MathJax_Preview">\rho</span><script type="math/tex">\rho</script></span>：反应时间（通常取 1–2 s）
+- <span class="arithmatex"><span class="MathJax_Preview">a_{r,\text{brake,min}}</span><script type="math/tex">a_{r,\text{brake,min}}</script></span>：后车最弱制动能力（保守估计）
+- <span class="arithmatex"><span class="MathJax_Preview">a_{f,\text{brake,max}}</span><script type="math/tex">a_{f,\text{brake,max}}</script></span>：前车最强制动能力（保守估计）
+- <span class="arithmatex"><span class="MathJax_Preview">[\cdot]^+</span><script type="math/tex">[\cdot]^+</script></span>：取正值</p>
+<p>如果当前车间距 <span class="arithmatex"><span class="MathJax_Preview">d &gt; d_{\min}</span><script type="math/tex">d > d_{\min}</script></span>，自车在任何后续碰撞中不承担责任。</p>
+<p><strong>RSS 核心原则：</strong>
+1. 不主动造成危险情景（不切入不安全间距）
+2. 危险出现时必须正确响应（及时制动）
+3. 响应时优先保证其他交通参与者的安全</p>
+<h2 id="cybersecurity">汽车网络安全（Cybersecurity）</h2>
+<p>现代自动驾驶车辆是"四轮移动计算机"，拥有大量无线接口，面临严峻网络攻击风险。ISO/SAE 21434 要求：</p>
+<p><strong>TARA（威胁分析与风险评估）</strong> — 识别主要攻击面：</p>
+<table>
+<thead>
+<tr>
+<th>接口</th>
+<th>攻击向量</th>
+<th>潜在影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V2X/C-V2X</td>
+<td>虚假交通信息注入</td>
+<td>错误驾驶决策</td>
+</tr>
+<tr>
+<td>OTA 更新</td>
+<td>恶意固件</td>
+<td>控制权劫持</td>
+</tr>
+<tr>
+<td>蓝牙/Wi-Fi</td>
+<td>近场攻击</td>
+<td>数据窃取</td>
+</tr>
+<tr>
+<td>OBD-II 端口</td>
+<td>CAN 总线注入</td>
+<td>刹车/转向控制</td>
+</tr>
+<tr>
+<td>摄像头输入</td>
+<td>对抗样本贴纸</td>
+<td>感知失效</td>
+</tr>
+</tbody>
+</table>
+<p><strong>纵深防御策略：</strong>
+- 加密通信（TLS 1.3，证书管理）
+- 固件签名验证（防恶意 OTA）
+- 车内入侵检测系统（IDS）
+- 安全启动（Secure Boot）</p>
+<h2 id="_8">安全测试与验证</h2>
+<h3 id="_9">里程验证挑战</h3>
+<p>RAND Corporation 研究指出：要以 95% 置信度证明自动驾驶故障率优于人类驾驶员，需行驶约 <strong>275 亿英里</strong>——在物理上不可行（以 100 辆车每天行驶 500 英里计算，需要约 1500 年）。</p>
+<h3 id="_10">多维度验证策略</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+<th>优势</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仿真验证</td>
+<td>虚拟环境中并行执行等效测试（Waymo 每年仿真 &gt; 100 亿英里）</td>
+<td>规模化、可重复、安全</td>
+</tr>
+<tr>
+<td>场景化测试</td>
+<td>系统化场景库，覆盖正常/边角/对抗场景</td>
+<td>针对性强</td>
+</tr>
+<tr>
+<td>形式化验证</td>
+<td>数学证明关键算法的安全属性（如 RSS 模型）</td>
+<td>严格保证</td>
+</tr>
+<tr>
+<td>影子模式</td>
+<td>系统在实车上"看"人类驾驶，记录若自主决策会如何</td>
+<td>低风险大规模数据收集</td>
+</tr>
+<tr>
+<td>实车路测</td>
+<td>在真实道路验证，记录脱离（Disengagement）事件</td>
+<td>最接近实际，必不可少</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_11">参考资料</h2>
 <ol>
-<li>Quality management system(ISO9001, IATF16949..) cover product quality, zero defect, zero DPPM</li>
-<li>Functional Safety (ISO26262) cover systematic fault and random fault</li>
-<li>SOTIF cover limitation of intended function</li>
-<li>ASPICE cover software process and capability</li>
-<li>Mobileye RSS (Responsibility-Sensitive Safety) provide model for safety</li>
-<li>NVIDA Safety Force Field protect against real-world traffic</li>
-<li>E-NCAP and C-NCAP for new car assessment</li>
-<li>Cybersecurity to cover system security hole</li>
-</ol>
-<h2 id="asil-automotive-safety-integrity-level">ASIL: Automotive Safety Integrity Level</h2>
-<p><img alt="1565548787832_2" src="../assets/1565548787832_2.png" /></p>
-<hr />
-<h2 id="_2">参考资料</h2>
-<ol>
-<li>A. Bhat, S. Aoki and R. Rajkumar. Tools and Methodologies for Autonomous Driving Systems. Proceedings of the IEEE. 2018</li>
+<li>ISO. ISO 26262: Road Vehicles — Functional Safety, 2nd ed., 2018.</li>
+<li>ISO. ISO 21448: Road Vehicles — Safety of the Intended Functionality (SOTIF), 2019.</li>
+<li>S. Shalev-Shwartz, S. Shammah, A. Shashua. On a Formal Model of Safe and Scalable Self-driving Cars. arXiv:1708.06374, 2017.</li>
+<li>RAND Corporation. Autonomous Vehicle Technology: A Guide for Policymakers, 2020.</li>
+<li>A. Bhat, S. Aoki, R. Rajkumar. Tools and Methodologies for Autonomous Driving Systems. Proceedings of the IEEE, 2018.</li>
 </ol>
 
 

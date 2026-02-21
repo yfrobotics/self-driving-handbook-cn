@@ -25,11 +25,11 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
-        <title>线控系统 - 自动驾驶指南</title>
+        <title>线控系统（Drive-by-Wire） - 自动驾驶指南</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#drive-by-wire" class="md-skip">
           跳转至
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              线控系统
+              线控系统（Drive-by-Wire）
             
           </span>
         </div>
@@ -317,7 +317,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶介绍
+    第一章：概述
   
 
     
@@ -373,7 +373,35 @@
   <span class="md-ellipsis">
     
   
-    自主性等级分类
+    自动驾驶等级分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶发展历史
   
 
     
@@ -455,7 +483,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶系统
+    第二章：系统
   
 
     
@@ -483,7 +511,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶车辆
+    自动驾驶车辆系统
   
 
     
@@ -511,7 +539,7 @@
   <span class="md-ellipsis">
     
   
-    智能交通
+    车联网（V2X）技术详解
   
 
     
@@ -539,7 +567,63 @@
   <span class="md-ellipsis">
     
   
-    设计与仿真平台
+    仿真平台与数据集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hdmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高精地图（HD Map）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人机交互系统（HMI）
   
 
     
@@ -568,6 +652,62 @@
     
   
     系统安全保障
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶测试体系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/cybersecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶网络安全
   
 
     
@@ -679,7 +819,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶硬件
+    第三章：硬件
   
 
     
@@ -735,7 +875,7 @@
   <span class="md-ellipsis">
     
   
-    中控单元 (AI芯片, GPGPU)
+    中央计算单元 (CCU / 车载AI芯片)
   
 
     
@@ -772,7 +912,7 @@
   <span class="md-ellipsis">
     
   
-    线控系统
+    线控系统（Drive-by-Wire）
   
 
     
@@ -790,7 +930,7 @@
   <span class="md-ellipsis">
     
   
-    线控系统
+    线控系统（Drive-by-Wire）
   
 
     
@@ -816,62 +956,467 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心子系统总览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-eps-sbw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 线控转向（EPS / SbW）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 线控转向（EPS / SbW）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-eps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 电动助力转向（EPS）工作原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-steer-by-wiresbw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 线控转向（Steer-by-Wire，SbW）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 冗余设计要求
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 关键性能参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-iso-26262-asil-d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 功能安全要求（ISO 26262 ASIL-D）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 主要供应商
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ehb-emb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 线控制动（EHB / EMB）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 线控制动（EHB / EMB）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-hcu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 传统液压制动结构（HCU）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-ehbone-box" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 电子液压制动（EHB）：One-Box 方案
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-emb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 电子机械制动（EMB）：全线控方案
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 制动响应时间对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-aeb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 AEB 自动紧急制动响应链路
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 主要产品
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-etc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 线控油门（ETC）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 线控油门（ETC）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 电子节气门控制原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 冗余双传感器设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 纯电动车的扭矩矢量控制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 故障模式与安全保障
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-sbsepb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 线控换挡（SbS）与电子驻车（EPB）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 线控换挡（SbS）与电子驻车（EPB）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-shift-by-wire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 电子换挡器（Shift-by-Wire）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-auto-hold-epb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 自动驻车（Auto Hold）与 EPB 联动
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 线控系统冗余架构
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 线控系统冗余架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-l3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 双电源冗余（L3+ 要求）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-ecu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 主备 ECU 热备份
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 通信总线冗余
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-degraded-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 降级模式（Degraded Mode）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 自动驾驶接管机制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 自动驾驶接管机制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-tor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 驾驶员接管请求（TOR）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-ttc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 接管时间（TTC）分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-mrc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 最小风险条件（MRC）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-l3l4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 L3/L4 切换时的车辆状态保障
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 线控底盘集成验证
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 线控底盘集成验证">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-hil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 HIL（硬件在环）测试
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 底盘标定流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-fmea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 FMEA（失效模式与效果分析）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 量产线控底盘案例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        核心子系统
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        线控转向
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        线控制动
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        线控油门与换挡
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        冗余与功能安全
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         参考资料
@@ -904,7 +1449,7 @@
   <span class="md-ellipsis">
     
   
-    车内总线
+    车载通信系统
   
 
     
@@ -960,7 +1505,7 @@
   <span class="md-ellipsis">
     
   
-    视觉传感器
+    视觉传感器（摄像头）
   
 
     
@@ -1042,7 +1587,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶核心算法
+    第四章：核心算法
   
 
     
@@ -1098,7 +1643,7 @@
   <span class="md-ellipsis">
     
   
-    图像识别与分割
+    图像感知与处理
   
 
     
@@ -1127,6 +1672,62 @@
     
   
     激光点云数据处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sensor_fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器融合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/occupancy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    占用网络（Occupancy Network）
   
 
     
@@ -1203,6 +1804,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/prediction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行为预测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/decision_making/" class="md-nav__link">
         
   
@@ -1210,7 +1839,91 @@
   <span class="md-ellipsis">
     
   
-    决策 (Decision Making Process)
+    决策 (Decision Making)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    控制算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/end_to_end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端自动驾驶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/data_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶ML数据管道
   
 
     
@@ -1238,7 +1951,7 @@
   <span class="md-ellipsis">
     
   
-    自然语言识别与交互
+    自然语言处理与大语言模型
   
 
     
@@ -1320,7 +2033,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶案例
+    第五章：实例
   
 
     
@@ -1348,7 +2061,119 @@
   <span class="md-ellipsis">
     
   
-    百度无人驾驶
+    百度 Apollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/waymo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waymo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/tesla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla FSD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/chinese_players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国自动驾驶企业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/robotaxi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robotaxi：自动驾驶商业化的主战场
   
 
     
@@ -1396,62 +2221,467 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心子系统总览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-eps-sbw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 线控转向（EPS / SbW）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 线控转向（EPS / SbW）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-eps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 电动助力转向（EPS）工作原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-steer-by-wiresbw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 线控转向（Steer-by-Wire，SbW）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 冗余设计要求
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 关键性能参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-iso-26262-asil-d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 功能安全要求（ISO 26262 ASIL-D）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 主要供应商
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ehb-emb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 线控制动（EHB / EMB）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 线控制动（EHB / EMB）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-hcu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 传统液压制动结构（HCU）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-ehbone-box" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 电子液压制动（EHB）：One-Box 方案
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-emb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 电子机械制动（EMB）：全线控方案
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 制动响应时间对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-aeb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 AEB 自动紧急制动响应链路
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 主要产品
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-etc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 线控油门（ETC）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 线控油门（ETC）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 电子节气门控制原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 冗余双传感器设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 纯电动车的扭矩矢量控制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 故障模式与安全保障
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-sbsepb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 线控换挡（SbS）与电子驻车（EPB）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 线控换挡（SbS）与电子驻车（EPB）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-shift-by-wire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 电子换挡器（Shift-by-Wire）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-auto-hold-epb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 自动驻车（Auto Hold）与 EPB 联动
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 线控系统冗余架构
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 线控系统冗余架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-l3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 双电源冗余（L3+ 要求）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-ecu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 主备 ECU 热备份
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 通信总线冗余
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-degraded-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 降级模式（Degraded Mode）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 自动驾驶接管机制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 自动驾驶接管机制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-tor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 驾驶员接管请求（TOR）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-ttc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 接管时间（TTC）分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-mrc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 最小风险条件（MRC）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-l3l4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 L3/L4 切换时的车辆状态保障
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 线控底盘集成验证
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 线控底盘集成验证">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-hil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 HIL（硬件在环）测试
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 底盘标定流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-fmea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 FMEA（失效模式与效果分析）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 量产线控底盘案例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        核心子系统
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        线控转向
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        线控制动
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        线控油门与换挡
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        冗余与功能安全
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         参考资料
@@ -1478,80 +2708,777 @@
 
 
 
-<h1 id="_1">线控系统</h1>
-<p>线控技术 (Drive-by-Wire) 用电信号取代传统的机械或液压连接，是实现自动驾驶车辆自主控制的基础。线控系统使得上层决策算法能够直接控制车辆的转向、制动和加速。</p>
-<h2 id="_2">核心子系统</h2>
+<h1 id="drive-by-wire">线控系统（Drive-by-Wire）</h1>
+<p>线控技术（Drive-by-Wire，DbW）以电子信号取代传统的机械或液压连接，是实现自动驾驶车辆自主控制的核心基础。在传统汽车中，驾驶员通过方向盘柱、刹车油管、油门拉线等机械结构直接操控车辆；而在线控架构下，这些物理链路被传感器、电子控制单元（ECU）和执行器所替代，上层自动驾驶决策算法得以精确、实时地控制车辆的所有运动自由度。</p>
+<p><strong>从机械到电信号的变革</strong>意味着：</p>
+<ul>
+<li>消除机械延迟与传动间隙，实现毫秒级响应；</li>
+<li>允许软件灵活定义控制策略，无需改动硬件；</li>
+<li>为多传感器融合控制和远程驾驶提供接口；</li>
+<li>是实现 L3 及以上自动驾驶等级的必要条件。</li>
+</ul>
+<h2 id="_1">核心子系统总览</h2>
 <table>
 <thead>
 <tr>
 <th>子系统</th>
 <th>替代对象</th>
 <th>关键技术</th>
-<th>功能</th>
+<th>典型响应时间</th>
+<th>功能安全等级</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>线控转向 (Steer-by-Wire)</td>
-<td>机械转向柱</td>
-<td>EPS (Electric Power Steering) 电机 + 角度传感器</td>
-<td>方向盘转角→前轮转向角</td>
+<td>线控转向（Steer-by-Wire）</td>
+<td>机械转向柱 + 液压助力</td>
+<td>EPS 电机 + 角度/扭矩传感器</td>
+<td>&lt; 30 ms</td>
+<td>ASIL-D</td>
 </tr>
 <tr>
-<td>线控制动 (Brake-by-Wire)</td>
-<td>液压制动管路</td>
-<td>EMB / EHB + 踏板模拟器</td>
-<td>制动力精确分配与控制</td>
+<td>线控制动（Brake-by-Wire）</td>
+<td>制动液压管路</td>
+<td>EHB / EMB + 踏板模拟器</td>
+<td>&lt; 150 ms</td>
+<td>ASIL-D</td>
 </tr>
 <tr>
-<td>线控油门 (Throttle-by-Wire)</td>
-<td>拉线式油门</td>
-<td>电子节气门</td>
-<td>发动机或电机扭矩控制</td>
+<td>线控油门（Throttle-by-Wire）</td>
+<td>油门拉索 + 机械节气门</td>
+<td>电子节气门 ETC / 电机扭矩控制</td>
+<td>&lt; 100 ms</td>
+<td>ASIL-C</td>
 </tr>
 <tr>
-<td>线控换挡 (Shift-by-Wire)</td>
+<td>线控换挡（Shift-by-Wire）</td>
 <td>机械换挡拉索</td>
 <td>电子换挡执行器</td>
-<td>挡位切换</td>
+<td>&lt; 200 ms</td>
+<td>ASIL-B</td>
+</tr>
+<tr>
+<td>电子驻车（EPB）</td>
+<td>手动驻车拉索</td>
+<td>电机驱动卡钳</td>
+<td>&lt; 500 ms</td>
+<td>ASIL-C</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_3">线控转向</h2>
-<p>线控转向 (Steer-by-Wire, SbW) 去除了方向盘与车轮之间的机械连接。核心部件为电动助力转向系统 (EPS, Electric Power Steering)，通过电机驱动转向机构。</p>
-<p>主要优势：</p>
-<ul>
-<li>转向比可变，低速时轻便、高速时稳定</li>
-<li>消除路面振动对方向盘的传递</li>
-<li>可实现完全自主转向控制</li>
-</ul>
-<p>量产代表：Infiniti Q50（带机械冗余备份）、Tesla Cybertruck。</p>
-<h2 id="_4">线控制动</h2>
-<p>线控制动主要有两种技术路线：</p>
-<ul>
-<li><strong>EHB (电液制动)</strong>：电机驱动液压泵产生制动压力，保留液压管路作为冗余。代表产品有 Bosch iBooster + ESP 组合</li>
-<li><strong>EMB (电子机械制动)</strong>：电机直接驱动卡钳夹紧制动盘，完全取消液压系统，响应更快。目前因安全冗余要求尚未大规模量产</li>
-</ul>
-<p>线控制动需满足严格的响应时间要求（&lt; 150 ms），且必须具备冗余设计以应对单点失效。</p>
-<h2 id="_5">线控油门与换挡</h2>
-<ul>
-<li><strong>线控油门</strong>：电子油门 (ETC, Electronic Throttle Control) 已在现代车辆中普及，通过传感器检测踏板位置并控制节气门或电机扭矩。对于纯电动车，直接控制驱动电机的扭矩输出</li>
-<li><strong>线控换挡</strong>：用电信号替代物理拉索，可实现远程控制和自动换挡，在自动驾驶中用于自动泊车等场景</li>
-</ul>
-<h2 id="_6">冗余与功能安全</h2>
-<p>线控系统取消了机械备份后，必须通过冗余设计保障安全性：</p>
-<ul>
-<li><strong>双电源供电</strong>：主电源故障时由备用电池供电</li>
-<li><strong>双 ECU 冗余</strong>：主控制器失效时备份控制器立即接管</li>
-<li><strong>双通信通道</strong>：独立 CAN/以太网链路，防止通信中断</li>
-<li><strong>功能安全等级</strong>：线控转向和制动需达到 ISO 26262 的 ASIL-D（最高安全等级），要求单点故障度量 &gt; 99%</li>
-</ul>
-<p>冗余架构的目标是实现 <strong>Fail-Operational</strong>（故障后仍可安全运行），而非仅仅 Fail-Safe（故障后停车）。</p>
-<h2 id="_7">参考资料</h2>
+<hr />
+<h2 id="1-eps-sbw">1. 线控转向（EPS / SbW）</h2>
+<h3 id="11-eps">1.1 电动助力转向（EPS）工作原理</h3>
+<p>电动助力转向（Electric Power Steering，EPS）是线控转向的基础，已在现代量产车中广泛普及。其核心工作原理如下：</p>
 <ol>
-<li>R. Isermann. Mechatronic Systems: Fundamentals. Springer, 2005.</li>
-<li>ISO 26262. Road Vehicles — Functional Safety.</li>
-<li>Bosch. iBooster: Electromechanical Brake Booster Technical Documentation.</li>
+<li><strong>扭矩传感器</strong>检测驾驶员施加在转向柱上的手力扭矩 <span class="arithmatex"><span class="MathJax_Preview">T_\text{driver}</span><script type="math/tex">T_\text{driver}</script></span>；</li>
+<li><strong>转角传感器</strong>（Absolute Encoder）测量方向盘当前转角 <span class="arithmatex"><span class="MathJax_Preview">\theta_\text{sw}</span><script type="math/tex">\theta_\text{sw}</script></span>；</li>
+<li><strong>EPS ECU</strong> 根据车速 <span class="arithmatex"><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>、转角和扭矩信号，计算所需助力扭矩：</li>
+</ol>
+<div class="arithmatex">
+<div class="MathJax_Preview">T_\text{assist} = f(T_\text{driver},\, v,\, \theta_\text{sw})</div>
+<script type="math/tex; mode=display">T_\text{assist} = f(T_\text{driver},\, v,\, \theta_\text{sw})</script>
+</div>
+<ol>
+<li><strong>助力电机</strong>（通常为永磁同步电机，PMSM）通过减速机构施加助力，总转向力矩为：</li>
+</ol>
+<div class="arithmatex">
+<div class="MathJax_Preview">T_\text{total} = T_\text{driver} + T_\text{assist}</div>
+<script type="math/tex; mode=display">T_\text{total} = T_\text{driver} + T_\text{assist}</script>
+</div>
+<p>EPS 的布置形式包括：
+- <strong>C-EPS</strong>（转向柱助力）：电机安装在转向柱上，结构简单，适合中小型车；
+- <strong>P-EPS</strong>（小齿轮助力）：电机安装在小齿轮处，助力效率较高；
+- <strong>R-EPS</strong>（齿条助力）：电机直接作用在齿条上，转向感最佳，适合高端车型。</p>
+<h3 id="12-steer-by-wiresbw">1.2 线控转向（Steer-by-Wire，SbW）</h3>
+<p>线控转向在 EPS 基础上进一步断开方向盘与转向机构之间的物理连接，方向盘成为一个纯粹的输入设备（手感反馈由<strong>路感模拟电机</strong>提供），前轮转向角完全由软件控制。</p>
+<p><strong>路感模拟（Force Feedback）</strong> 的实现原理：</p>
+<p>路面作用在轮胎上的回正力矩 <span class="arithmatex"><span class="MathJax_Preview">M_\text{aligning}</span><script type="math/tex">M_\text{aligning}</script></span> 通过轮端传感器或状态估计获得，路感电机将等比例模拟扭矩反馈至方向盘：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">T_\text{feedback} = k_\text{ratio} \cdot M_\text{aligning} + T_\text{damping}</div>
+<script type="math/tex; mode=display">T_\text{feedback} = k_\text{ratio} \cdot M_\text{aligning} + T_\text{damping}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">k_\text{ratio}</span><script type="math/tex">k_\text{ratio}</script></span> 为路感比例系数，可根据车速动态调整，低速时减小（减轻停车负担），高速时增大（增强路感信息）。</p>
+<p><strong>SbW 的主要优势：</strong></p>
+<ul>
+<li>转向传动比可在软件中任意定义（Variable Gear Ratio），无需机械可变比齿轮；</li>
+<li>消除路面冲击（kick-back）对方向盘的传递，提升驾驶舒适性；</li>
+<li>方向盘可完全收折，为自动驾驶模式下的驾驶舱布局提供空间；</li>
+<li>轮端与手端完全解耦，便于自动驾驶系统独立控制前轮。</li>
+</ul>
+<h3 id="13">1.3 冗余设计要求</h3>
+<p>由于 SbW 断开了机械备份，功能安全风险极高，必须实现完整冗余：</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────┐
+│              线控转向冗余架构               │
+│                                             │
+│  方向盘端                  轮端             │
+│  ┌──────────┐             ┌──────────────┐  │
+│  │ 路感电机 │             │  转向电机 A  │  │
+│  │  (主)   │             │    (主)      │  │
+│  └────┬─────┘             └──────┬───────┘  │
+│       │                          │          │
+│  ┌────▼─────┐   双CAN/以太网    ┌▼──────────┐ │
+│  │ ECU-A    ├───────────────────► ECU-B    │ │
+│  │  (主控)  │                   │  (验证)  │ │
+│  └────┬─────┘                   └──────────┘ │
+│       │ 热备份切换                            │
+│  ┌────▼─────┐             ┌──────────────┐  │
+│  │ ECU-B    │             │  转向电机 B  │  │
+│  │  (备控)  │             │    (备用)    │  │
+│  └──────────┘             └──────────────┘  │
+│                                             │
+│  电源：12V主 + 48V/12V备用                  │
+│  机械备份：紧急机械锁定或限位机构            │
+└─────────────────────────────────────────────┘
+</code></pre></div>
+<p>冗余要求包括：
+- <strong>双路独立电源</strong>：主 12V 电源 + 48V 或独立 12V 备用电源；
+- <strong>双路 ECU</strong>：主 ECU 与验证/备份 ECU 同时运行，互相监测；
+- <strong>双路通信</strong>：两条独立 CAN FD 或车载以太网链路；
+- <strong>机械备份</strong>：部分方案在 SbW 彻底失效时通过机械锁将方向盘与轮端临时硬连接。</p>
+<h3 id="14">1.4 关键性能参数</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>典型指标</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>转向响应时延</td>
+<td>&lt; 30 ms</td>
+<td>从 AD 系统发出转向指令到轮端响应的端到端延迟</td>
+</tr>
+<tr>
+<td>角度传感器分辨率</td>
+<td>≤ 0.1°</td>
+<td>方向盘及轮端角度分辨率</td>
+</tr>
+<tr>
+<td>转向角速度</td>
+<td>≥ 500°/s</td>
+<td>紧急避障场景的最大转向速率</td>
+</tr>
+<tr>
+<td>扭矩传感器精度</td>
+<td>± 0.1 N·m</td>
+<td>用于路感模拟的精度要求</td>
+</tr>
+<tr>
+<td>最大转向扭矩</td>
+<td>10 ~ 30 N·m</td>
+<td>根据车型和轴荷确定</td>
+</tr>
+<tr>
+<td>故障检测时间</td>
+<td>&lt; 10 ms</td>
+<td>故障发生到检测并触发冗余切换的时间</td>
+</tr>
+</tbody>
+</table>
+<h3 id="15-iso-26262-asil-d">1.5 功能安全要求（ISO 26262 ASIL-D）</h3>
+<p>线控转向属于 ISO 26262 中安全完整性最高等级 <strong>ASIL-D</strong> 的系统，要求：</p>
+<ul>
+<li>单点故障度量（SPFM）&gt; 99%；</li>
+<li>潜在故障度量（LFM）&gt; 90%；</li>
+<li>诊断覆盖率（DC）&gt; 99%（对随机硬件故障）；</li>
+<li>系统必须在故障后继续提供至少降级转向功能（Fail-Operational），直至驾驶员接管或车辆安全停止。</li>
+</ul>
+<h3 id="16">1.6 主要供应商</h3>
+<table>
+<thead>
+<tr>
+<th>供应商</th>
+<th>主要产品</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>博世（Bosch）</td>
+<td>EPS-H / EPS-P / SbW</td>
+<td>全球最大 EPS 供应商</td>
+</tr>
+<tr>
+<td>捷太格特（JTEKT）</td>
+<td>EPS，SbW Steer-JT</td>
+<td>日系一级供应商</td>
+</tr>
+<tr>
+<td>耐世特（Nexteer）</td>
+<td>EPS，Digital SbW</td>
+<td>全球前三 EPS 供应商</td>
+</tr>
+<tr>
+<td>蒂森克虏伯（ThyssenKrupp）</td>
+<td>Electric-Power-Rack</td>
+<td>欧系高端车型供应商</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-ehb-emb">2. 线控制动（EHB / EMB）</h2>
+<h3 id="21-hcu">2.1 传统液压制动结构（HCU）</h3>
+<p>传统液压制动系统以<strong>真空助力器</strong>（Vacuum Booster）放大驾驶员踏板力，经制动主缸（Master Cylinder）转化为液压，经 ABS/ESC 液压控制单元（HCU）分配至四轮卡钳。</p>
+<p>其局限性在于：
+- 真空助力器依赖发动机进气负压，纯电动车需额外配备真空泵；
+- 液压响应较慢（约 150 ~ 300 ms），不满足 AEB 对响应时间的严格要求；
+- 难以与再生制动（能量回收）精确协调；
+- 机械液压零部件多，集成度低。</p>
+<h3 id="22-ehbone-box">2.2 电子液压制动（EHB）：One-Box 方案</h3>
+<p>电子液压制动（Electro-Hydraulic Brake，EHB）用电机驱动液压泵，取代传统真空助力器，但保留液压管路和卡钳，是液压制动向线控制动的过渡方案。</p>
+<p>以<strong>博世 iBooster + ESP</strong> 为代表的 <strong>One-Box</strong> 集成方案将制动助力器与 ESP 集成为单一模块：</p>
+<ol>
+<li>驾驶员踩下制动踏板，踏板模拟器提供力反馈；</li>
+<li>踏板位置传感器（冗余双传感器）采集踏板行程信号；</li>
+<li>iBooster 电机快速建立制动液压（响应时间 &lt; 120 ms，优于传统真空助力的 200 ms+）；</li>
+<li>ESP 单元精确分配四轮制动力，实现 ABS、ESC、AEB 等功能。</li>
+</ol>
+<p><strong>制动力分配模型：</strong></p>
+<p>设前轴制动力为 <span class="arithmatex"><span class="MathJax_Preview">F_f</span><script type="math/tex">F_f</script></span>，后轴为 <span class="arithmatex"><span class="MathJax_Preview">F_r</span><script type="math/tex">F_r</script></span>，理想制动力分配满足：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\frac{F_f}{F_r} = \frac{G_f}{G_r} = \frac{L_r + h \cdot \mu}{L_f - h \cdot \mu}</div>
+<script type="math/tex; mode=display">\frac{F_f}{F_r} = \frac{G_f}{G_r} = \frac{L_r + h \cdot \mu}{L_f - h \cdot \mu}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">G_f</span><script type="math/tex">G_f</script></span>、<span class="arithmatex"><span class="MathJax_Preview">G_r</span><script type="math/tex">G_r</script></span> 为前后轴动态载荷，<span class="arithmatex"><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span> 为质心高，<span class="arithmatex"><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span> 为路面附着系数，<span class="arithmatex"><span class="MathJax_Preview">L_f</span><script type="math/tex">L_f</script></span>、<span class="arithmatex"><span class="MathJax_Preview">L_r</span><script type="math/tex">L_r</script></span> 为质心到前后轴的距离。</p>
+<h3 id="23-emb">2.3 电子机械制动（EMB）：全线控方案</h3>
+<p>电子机械制动（Electro-Mechanical Brake，EMB）完全取消液压系统，由电机（通常为直流无刷电机或步进电机）通过减速机构直接驱动制动卡钳夹紧制动盘：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">F_\text{clamp} = \frac{T_\text{motor} \cdot \eta}{r_\text{piston}}</div>
+<script type="math/tex; mode=display">F_\text{clamp} = \frac{T_\text{motor} \cdot \eta}{r_\text{piston}}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">T_\text{motor}</span><script type="math/tex">T_\text{motor}</script></span> 为电机输出扭矩，<span class="arithmatex"><span class="MathJax_Preview">\eta</span><script type="math/tex">\eta</script></span> 为传动效率，<span class="arithmatex"><span class="MathJax_Preview">r_\text{piston}</span><script type="math/tex">r_\text{piston}</script></span> 为等效活塞半径。</p>
+<p>EMB 的主要优势：
+- 响应速度最快（&lt; 100 ms），便于实现精确制动力控制；
+- 无液压管路，布置灵活，适合新能源平台；
+- 每个车轮独立控制，便于实现扭矩矢量控制；
+- 与再生制动协调更精确（电控制动力 + 回收制动力精确分配）。</p>
+<p>当前挑战：EMB 仍面临高功率消耗（四轮制动时电功率需求达数千瓦）、冗余设计复杂度高、成本较高等问题，尚未大规模量产。</p>
+<h3 id="24">2.4 制动响应时间对比</h3>
+<table>
+<thead>
+<tr>
+<th>制动类型</th>
+<th>典型响应时间</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>传统真空助力液压制动</td>
+<td>200 ~ 300 ms</td>
+<td>包含真空助力器延迟</td>
+</tr>
+<tr>
+<td>EHB（iBooster 方案）</td>
+<td>100 ~ 150 ms</td>
+<td>电机快速建压</td>
+</tr>
+<tr>
+<td>EMB</td>
+<td>50 ~ 100 ms</td>
+<td>电机直驱，无液压延迟</td>
+</tr>
+<tr>
+<td>AEB 系统端到端响应</td>
+<td>&lt; 150 ms</td>
+<td>从感知触发到制动力建立</td>
+</tr>
+</tbody>
+</table>
+<h3 id="25-aeb">2.5 AEB 自动紧急制动响应链路</h3>
+<p>自动紧急制动（Automatic Emergency Braking，AEB）的完整响应链路如下：</p>
+<div class="highlight"><pre><span></span><code>目标检测（感知）→ TTC 计算（融合）→ AEB 决策（规划）
+→ 制动指令下发（CAN/以太网）→ iBooster/EMB 执行 → 制动力建立
+</code></pre></div>
+<p>各环节时间分配（典型值）：</p>
+<table>
+<thead>
+<tr>
+<th>环节</th>
+<th>时间</th>
+<th>累计</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>感知计算（摄像头/激光雷达）</td>
+<td>30 ~ 50 ms</td>
+<td>50 ms</td>
+</tr>
+<tr>
+<td>融合与决策</td>
+<td>20 ~ 30 ms</td>
+<td>80 ms</td>
+</tr>
+<tr>
+<td>通信传输（CAN FD）</td>
+<td>1 ~ 5 ms</td>
+<td>85 ms</td>
+</tr>
+<tr>
+<td>制动执行器响应</td>
+<td>50 ~ 120 ms</td>
+<td>&lt; 150 ms</td>
+</tr>
+</tbody>
+</table>
+<h3 id="26">2.6 主要产品</h3>
+<table>
+<thead>
+<tr>
+<th>产品</th>
+<th>供应商</th>
+<th>类型</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iBooster + ESP9</td>
+<td>博世（Bosch）</td>
+<td>EHB（One-Box）</td>
+<td>市场占有率最高，响应时间 &lt; 120 ms</td>
+</tr>
+<tr>
+<td>MK C1</td>
+<td>大陆（Continental）</td>
+<td>EHB（One-Box）</td>
+<td>集成液压单元，重量轻</td>
+</tr>
+<tr>
+<td>EHBA</td>
+<td>比亚迪</td>
+<td>EHB</td>
+<td>比亚迪 e 平台专用，与 EPS 深度集成</td>
+</tr>
+<tr>
+<td>EMB-4</td>
+<td>曙光制动 / Brembo</td>
+<td>EMB（研发阶段）</td>
+<td>四轮独立电机制动</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-etc">3. 线控油门（ETC）</h2>
+<h3 id="31">3.1 电子节气门控制原理</h3>
+<p>电子节气门控制（Electronic Throttle Control，ETC）已在现代汽车中全面普及，将油门踏板与节气门的物理连接替换为电子信号链路：</p>
+<ol>
+<li><strong>加速踏板位置传感器（APPS）</strong> 检测踏板行程（通常采用双传感器冗余，主传感器输出范围 0.5 ~ 4.5 V，副传感器输出为主传感器信号的 1/2 作为交叉验证）；</li>
+<li><strong>发动机 ECU（EMS）</strong> 根据踏板信号、发动机转速、进气量等计算目标扭矩；</li>
+<li><strong>节气门执行器</strong>（直流电机 + 弹簧复位机构）调节进气量，控制发动机输出扭矩；</li>
+<li><strong>节气门位置传感器（TPS）</strong> 反馈实际节气门开度，构成闭环控制。</li>
+</ol>
+<p>节气门开度控制采用 PID 闭环：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">u(t) = K_p e(t) + K_i \int_0^t e(\tau)\,d\tau + K_d \frac{de(t)}{dt}</div>
+<script type="math/tex; mode=display">u(t) = K_p e(t) + K_i \int_0^t e(\tau)\,d\tau + K_d \frac{de(t)}{dt}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">e(t) = \theta_\text{target} - \theta_\text{actual}</span><script type="math/tex">e(t) = \theta_\text{target} - \theta_\text{actual}</script></span> 为目标与实际节气门开度之差。</p>
+<h3 id="32">3.2 冗余双传感器设计</h3>
+<p>为防止 APPS 单点故障导致意外加速（Unintended Acceleration），双传感器设计是强制要求：</p>
+<ul>
+<li>主传感器（APPS1）与副传感器（APPS2）安装在同一踏板模块，但电路独立；</li>
+<li>ECU 持续比较两路信号：若 <span class="arithmatex"><span class="MathJax_Preview">|V_{\text{APPS1}} - 2 \times V_{\text{APPS2}}| &gt; \varepsilon</span><script type="math/tex">|V_{\text{APPS1}} - 2 \times V_{\text{APPS2}}| > \varepsilon</script></span>，则判定传感器故障；</li>
+<li>故障发生时，系统限制节气门开度（如最大 20%），触发驾驶员警告并进入跛行模式。</li>
+</ul>
+<h3 id="33">3.3 纯电动车的扭矩矢量控制</h3>
+<p>纯电动车以电机扭矩直接替代节气门控制，响应速度更快（电机扭矩建立 &lt; 10 ms），且可实现 <strong>扭矩矢量控制（Torque Vectoring）</strong>：</p>
+<p>对于四轮独立驱动（4WID）电动车，各轮驱动扭矩 <span class="arithmatex"><span class="MathJax_Preview">T_i</span><script type="math/tex">T_i</script></span>（<span class="arithmatex"><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> = FL, FR, RL, RR）可独立调节，实现：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">M_z = \frac{(T_\text{FR} - T_\text{FL}) \cdot r_w}{2 d_f} + \frac{(T_\text{RR} - T_\text{RL}) \cdot r_w}{2 d_r}</div>
+<script type="math/tex; mode=display">M_z = \frac{(T_\text{FR} - T_\text{FL}) \cdot r_w}{2 d_f} + \frac{(T_\text{RR} - T_\text{RL}) \cdot r_w}{2 d_r}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">M_z</span><script type="math/tex">M_z</script></span> 为绕竖轴的偏航力矩，<span class="arithmatex"><span class="MathJax_Preview">r_w</span><script type="math/tex">r_w</script></span> 为车轮半径，<span class="arithmatex"><span class="MathJax_Preview">d_f</span><script type="math/tex">d_f</script></span>、<span class="arithmatex"><span class="MathJax_Preview">d_r</span><script type="math/tex">d_r</script></span> 为前后轮距。通过控制 <span class="arithmatex"><span class="MathJax_Preview">M_z</span><script type="math/tex">M_z</script></span> 可主动调整车辆转向特性（过度转向 / 不足转向补偿），无需依赖制动介入。</p>
+<h3 id="34">3.4 故障模式与安全保障</h3>
+<table>
+<thead>
+<tr>
+<th>故障类型</th>
+<th>故障描述</th>
+<th>安全措施</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>节气门卡滞（开）</td>
+<td>节气门无法关闭，车辆持续加速</td>
+<td>点火切断 / 变速器切入空挡 / 制动优先逻辑</td>
+</tr>
+<tr>
+<td>节气门卡滞（关）</td>
+<td>节气门无法打开，车辆失去动力</td>
+<td>弹簧复位（默认弹簧使节气门开至约 7% 的怠速位置）</td>
+</tr>
+<tr>
+<td>APPS 信号丢失</td>
+<td>踏板位置无法读取</td>
+<td>跛行模式（限速 / 限扭矩）</td>
+</tr>
+<tr>
+<td>通信中断（CAN 丢帧）</td>
+<td>AD 系统无法下发油门指令</td>
+<td>保持最后有效指令或降为零扭矩</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-sbsepb">4. 线控换挡（SbS）与电子驻车（EPB）</h2>
+<h3 id="41-shift-by-wire">4.1 电子换挡器（Shift-by-Wire）</h3>
+<p>线控换挡（Shift-by-Wire，SbS）以电信号替代传统的机械换挡拉索，执行器直接操作变速器内部的选换挡电磁阀或电机。</p>
+<p>常见换挡控制器形式：
+- <strong>按键式（Push-button）</strong>：每个挡位对应一个独立按键（如 P / R / N / D），操作直观；
+- <strong>旋钮式（Rotary Dial）</strong>：旋转旋钮选择挡位，回中位后挡位保持；
+- <strong>短柄拨杆式（Short Shifter）</strong>：保留传统换挡操作感，但内部为电子信号。</p>
+<p>SbS 的优势：
+- 消除换挡拉索的磨损和调节问题；
+- 支持远程换挡控制（自动泊车时由 AD 系统直接操作换挡）；
+- P 挡可在断电后由独立机构自动接合，防止溜车。</p>
+<h3 id="42-auto-hold-epb">4.2 自动驻车（Auto Hold）与 EPB 联动</h3>
+<p>电子驻车制动（Electronic Parking Brake，EPB）由电机直接驱动后轮卡钳或驻车机构，替代传统手刹拉线。</p>
+<p><strong>Auto Hold（自动保持）功能</strong>工作逻辑：</p>
+<ol>
+<li>车辆减速至完全停止（车速 = 0）；</li>
+<li>检测到驾驶员松开制动踏板；</li>
+<li>Auto Hold 自动接管制动系统，保持当前制动压力；</li>
+<li>驾驶员踩下油门踏板时，Auto Hold 释放，由驱动力防止溜车；</li>
+<li>坡道启动时与 Hill-Start Assist（HSA）协同工作，避免后溜。</li>
+</ol>
+<p><strong>P 挡自动接合逻辑：</strong></p>
+<div class="highlight"><pre><span></span><code>车速 = 0 → 驾驶员拔钥匙 / 开门 / 解开安全带
+                       ↓
+              系统自动切换至 P 挡
+                       ↓
+         EPB 电机锁紧后轮 → 确认锁紧力矩 &gt; 阈值
+                       ↓
+              系统判定停车安全完成
+</code></pre></div>
+<hr />
+<h2 id="5">5. 线控系统冗余架构</h2>
+<h3 id="51-l3">5.1 双电源冗余（L3+ 要求）</h3>
+<p>L3 及以上自动驾驶场景要求线控系统在驾驶员无需即时接管的情况下持续安全运行，单一电源故障不可导致线控功能丧失：</p>
+<table>
+<thead>
+<tr>
+<th>电源层级</th>
+<th>电压等级</th>
+<th>供电对象</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主电源</td>
+<td>12 V（传统） / 48 V（轻混）</td>
+<td>全部线控执行器</td>
+<td>由发电机/电池供电</td>
+</tr>
+<tr>
+<td>备用电源</td>
+<td>独立 12 V 电池</td>
+<td>关键 ECU + 线控转向/制动</td>
+<td>主电源故障时自动切换，续航 ≥ 30 s</td>
+</tr>
+</tbody>
+</table>
+<p>48 V 系统允许以更小电流驱动大功率执行器（线控制动电机），降低线束截面积，提升系统效率。</p>
+<h3 id="52-ecu">5.2 主备 ECU 热备份</h3>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>描述</th>
+<th>切换延迟</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Active-Active（双主模式）</td>
+<td>两个 ECU 同时运行相同算法，互相交叉验证输出</td>
+<td>&lt; 5 ms</td>
+<td>ASIL-D 线控转向/制动</td>
+</tr>
+<tr>
+<td>Active-Standby（主备模式）</td>
+<td>主 ECU 运行，备 ECU 监听并随时接管</td>
+<td>10 ~ 50 ms</td>
+<td>成本敏感的 ASIL-B/C 子系统</td>
+</tr>
+</tbody>
+</table>
+<p>Active-Active 模式下，两个 ECU 的输出通过<strong>表决逻辑（Voting Logic）</strong>仲裁：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\text{Output} = \begin{cases} \text{ECU-A output} &amp; \text{if } |\Delta| &lt; \varepsilon \\ \text{safe default} &amp; \text{if } |\Delta| \geq \varepsilon \text{ (fault detected)} \end{cases}</div>
+<script type="math/tex; mode=display">\text{Output} = \begin{cases} \text{ECU-A output} & \text{if } |\Delta| < \varepsilon \\ \text{safe default} & \text{if } |\Delta| \geq \varepsilon \text{ (fault detected)} \end{cases}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\Delta = \text{Output}_A - \text{Output}_B</span><script type="math/tex">\Delta = \text{Output}_A - \text{Output}_B</script></span>，<span class="arithmatex"><span class="MathJax_Preview">\varepsilon</span><script type="math/tex">\varepsilon</script></span> 为允许偏差阈值。</p>
+<h3 id="53">5.3 通信总线冗余</h3>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────┐
+│               线控系统通信冗余架构                  │
+│                                                     │
+│  自动驾驶域控制器（AD DCU）                         │
+│  ┌─────────────────────────────┐                   │
+│  │  规划模块  │  控制模块      │                   │
+│  └──────┬──────────────┬───────┘                   │
+│         │              │                           │
+│   CAN FD 主路      CAN FD 备路 / 车载以太网        │
+│    (500 kbps)       (1~100 Mbps)                  │
+│         │              │                           │
+│  ┌──────▼──────────────▼───────┐                   │
+│  │    底盘域控制器（Chassis DCU）│                   │
+│  └──────┬──────────────┬───────┘                   │
+│         │              │                           │
+│      EPS ECU        EHB/EMB ECU                   │
+│      ETC ECU        EPB ECU                        │
+└─────────────────────────────────────────────────────┘
+</code></pre></div>
+<ul>
+<li><strong>双 CAN FD 通道</strong>：主通道 + 备份通道，自动故障切换；</li>
+<li><strong>车载以太网（100BASE-T1 / 1000BASE-T1）</strong>：用于高带宽诊断和 OTA 升级；</li>
+<li><strong>通信帧完整性</strong>：CRC 校验 + 滚动计数器 + 超时检测，防止静默失效（Silent Failure）。</li>
+</ul>
+<h3 id="54-degraded-mode">5.4 降级模式（Degraded Mode）</h3>
+<p>当主控制器或传感器发生故障时，系统应进入预定义的降级模式，而非直接失效：</p>
+<table>
+<thead>
+<tr>
+<th>降级层级</th>
+<th>触发条件</th>
+<th>系统能力</th>
+<th>驾驶员要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全功能（Normal）</td>
+<td>所有系统正常</td>
+<td>全自动驾驶（L3/L4）</td>
+<td>监督（L3）/ 无需（L4）</td>
+</tr>
+<tr>
+<td>降级 1（Degraded-1）</td>
+<td>一路 ECU 故障 / 一路传感器故障</td>
+<td>限速 / 限制路线自动驾驶</td>
+<td>准备接管</td>
+</tr>
+<tr>
+<td>降级 2（Degraded-2）</td>
+<td>主通信丢失</td>
+<td>低速跛行（&lt; 20 km/h）</td>
+<td>立即接管</td>
+</tr>
+<tr>
+<td>最小风险状态（MRC）</td>
+<td>严重故障，无法继续</td>
+<td>受控减速至停车</td>
+<td>接管 / 系统自动停车</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6">6. 自动驾驶接管机制</h2>
+<h3 id="61-tor">6.1 驾驶员接管请求（TOR）</h3>
+<p>在 L3 自动驾驶中，系统检测到无法处理的场景时，向驾驶员发出<strong>接管请求（Takeover Request，TOR）</strong>，要求驾驶员在规定时间内重新接管车辆控制。</p>
+<p>TOR 触发条件包括：
+- 自动驾驶系统检测到 ODD（操作设计域）边界（如天气恶化、传感器失效）；
+- 关键线控子系统（转向 / 制动）发生降级；
+- 高精地图数据缺失；
+- 预测时域内存在系统无法处理的障碍物或复杂交互场景。</p>
+<p>TOR 发出方式（多模态）：
+- 视觉警告（仪表屏闪烁 + HUD 红色提示）；
+- 听觉警告（蜂鸣器）；
+- 触觉警告（方向盘振动 / 安全带收紧）。</p>
+<h3 id="62-ttc">6.2 接管时间（TTC）分析</h3>
+<p><strong>接管时间（Time-To-Takeover，TTC）</strong> 定义为从 TOR 发出到驾驶员完成接管（双手握住方向盘、视线回到道路、脚放到踏板）的时间。</p>
+<p>研究表明（NHTSA / SAE 标准引用），典型 TTC 分布：</p>
+<table>
+<thead>
+<tr>
+<th>驾驶员状态</th>
+<th>平均 TTC</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>驾驶员注视道路</td>
+<td>1.5 ~ 2.5 s</td>
+<td>最佳状态</td>
+</tr>
+<tr>
+<td>驾驶员轻度分心</td>
+<td>3 ~ 5 s</td>
+<td>查看手机等</td>
+</tr>
+<tr>
+<td>驾驶员高度分心</td>
+<td>&gt; 8 s</td>
+<td>睡眠、低头</td>
+</tr>
+</tbody>
+</table>
+<p>因此，SAE L3 系统要求：<strong>TOR 发出时刻距离危险事件的最小时间裕量应 ≥ 10 s</strong>，以保证即使驾驶员处于分心状态也有足够时间接管。</p>
+<h3 id="63-mrc">6.3 最小风险条件（MRC）</h3>
+<p>当驾驶员未能在 TTC 内接管，或线控系统发生严重故障时，自动驾驶系统应自主执行<strong>最小风险条件（Minimum Risk Condition，MRC）</strong>策略：</p>
+<ol>
+<li>打开危险警示灯（双闪）；</li>
+<li>平滑减速（纵向加速度 ≤ -3 m/s²，避免后车追尾）；</li>
+<li>向最近的安全区域（路肩 / 应急车道）靠边；</li>
+<li>车辆完全停止后接合 EPB；</li>
+<li>向云端发送紧急位置信息，等待援救。</li>
+</ol>
+<h3 id="64-l3l4">6.4 L3/L4 切换时的车辆状态保障</h3>
+<p>L3 到手动驾驶切换时，线控系统需确保：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\Delta\theta_\text{sw} \leq \theta_\text{threshold},\quad \Delta v \leq v_\text{threshold}</div>
+<script type="math/tex; mode=display">\Delta\theta_\text{sw} \leq \theta_\text{threshold},\quad \Delta v \leq v_\text{threshold}</script>
+</div>
+<p>即切换时方向盘角度偏差和速度变化在可接受范围内，防止因切换导致的瞬态冲击。对于 L4 系统，切换前需完成完整的<strong>车辆状态同步（State Synchronization）</strong>，将当前自动驾驶控制量平滑移交至驾驶员。</p>
+<hr />
+<h2 id="7">7. 线控底盘集成验证</h2>
+<h3 id="71-hil">7.1 HIL（硬件在环）测试</h3>
+<p>硬件在环（Hardware-in-the-Loop，HIL）测试将真实线控 ECU 接入仿真环境，通过实时模拟器模拟车辆动力学、传感器信号和道路环境：</p>
+<div class="highlight"><pre><span></span><code>┌────────────────────────────────────────────┐
+│              HIL 测试台架                  │
+│                                            │
+│  实时仿真器（dSPACE / NI VeriStand）       │
+│  ├── 车辆动力学模型                        │
+│  ├── 传感器信号模拟（CAN 总线注入）        │
+│  └── 故障注入模块（断路 / 短路 / 信号漂移）│
+│                    │                       │
+│              I/O 接口板                    │
+│                    │                       │
+│  ┌─────────────────▼────────────────────┐  │
+│  │    真实线控 ECU（EPS / EHB / ETC）   │  │
+│  └──────────────────────────────────────┘  │
+└────────────────────────────────────────────┘
+</code></pre></div>
+<p>HIL 测试重点验证：
+- 故障注入后的冗余切换逻辑；
+- AEB / TCS / ESC 等功能的响应时间；
+- 通信丢帧、超时场景下的系统行为；
+- 极端工况（高温 / 低温 / 振动）下的 ECU 稳定性。</p>
+<h3 id="72">7.2 底盘标定流程</h3>
+<p>线控底盘在出厂前需完成以下标定：</p>
+<table>
+<thead>
+<tr>
+<th>标定项目</th>
+<th>方法</th>
+<th>目标精度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>转向角零位标定</td>
+<td>直线行驶时自动学习方向盘中位</td>
+<td>± 0.5°</td>
+</tr>
+<tr>
+<td>转向传动比标定</td>
+<td>测量方向盘转角与车轮转角的映射关系</td>
+<td>± 1%</td>
+</tr>
+<tr>
+<td>制动力矩标定</td>
+<td>测功机 + 压力传感器标定卡钳夹紧力</td>
+<td>± 2%</td>
+</tr>
+<tr>
+<td>踏板感觉标定</td>
+<td>踏板力 - 踏板行程曲线调整</td>
+<td>主观评价</td>
+</tr>
+<tr>
+<td>加速踏板零位标定</td>
+<td>传感器上电后自学习空载信号</td>
+<td>± 10 mV</td>
+</tr>
+</tbody>
+</table>
+<h3 id="73-fmea">7.3 FMEA（失效模式与效果分析）</h3>
+<p>失效模式与效果分析（Failure Mode and Effects Analysis，FMEA）是线控系统功能安全开发的核心工具：</p>
+<p>以<strong>线控制动 EHB</strong> 为例，部分 FMEA 条目：</p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>失效模式</th>
+<th>失效效果</th>
+<th>严重度（S）</th>
+<th>发生率（O）</th>
+<th>探测度（D）</th>
+<th>RPN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>APPS 传感器</td>
+<td>信号漂移（偏高）</td>
+<td>意外加速</td>
+<td>9</td>
+<td>3</td>
+<td>2</td>
+<td>54</td>
+</tr>
+<tr>
+<td>iBooster 电机</td>
+<td>绕组开路</td>
+<td>制动助力丧失</td>
+<td>10</td>
+<td>2</td>
+<td>3</td>
+<td>60</td>
+</tr>
+<tr>
+<td>CAN 总线</td>
+<td>持续丢帧</td>
+<td>AD 指令无法传达</td>
+<td>8</td>
+<td>4</td>
+<td>2</td>
+<td>64</td>
+</tr>
+<tr>
+<td>踏板模拟器</td>
+<td>弹簧断裂</td>
+<td>踏板力反馈异常</td>
+<td>6</td>
+<td>1</td>
+<td>4</td>
+<td>24</td>
+</tr>
+</tbody>
+</table>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\text{RPN} = S \times O \times D</span><script type="math/tex">\text{RPN} = S \times O \times D</script></span>，RPN &gt; 100 的项目需优先采取改进措施。</p>
+<h3 id="74">7.4 量产线控底盘案例</h3>
+<p><strong>比亚迪 e 平台 3.0（搭载于海豹 / 汉 EV 等车型）：</strong></p>
+<ul>
+<li>集成 EHB（自研电子液压制动）+ EPS（博世）+ SbS（电子换挡）+ EPB；</li>
+<li>采用 CTB（Cell-to-Body）一体化车身结构，提升底盘整体刚度；</li>
+<li>支持 L2+ 辅助驾驶，线控接口向第三方 AD 域控制器开放；</li>
+<li>底盘域通信：CAN FD 500 kbps + 车载以太网 100BASE-T1。</li>
+</ul>
+<p><strong>吉利 SEA 浩瀚架构（搭载于极氪 001 / 领克 / Smart 等车型）：</strong></p>
+<ul>
+<li>原生线控底盘设计，支持 L3+ 自动驾驶扩展；</li>
+<li>前后双电机四轮驱动，支持扭矩矢量控制；</li>
+<li>采用 One-Box EHB 集成制动方案，响应时间 &lt; 120 ms；</li>
+<li>7 层电气架构（E/E Architecture），线控系统通过区域控制器（Zone Controller）统一管理；</li>
+<li>已量产车型最高支持行业标准 ASIL-C 线控制动，ASIL-D 转向。</li>
+</ul>
+<hr />
+<h2 id="_2">参考资料</h2>
+<ol>
+<li>ISO 26262:2018. <em>Road Vehicles — Functional Safety</em>. International Organization for Standardization.</li>
+<li>Bosch. <em>iBooster: Electromechanical Brake Booster Technical Documentation</em>. Robert Bosch GmbH, 2023.</li>
+<li>R. Isermann. <em>Mechatronic Systems: Fundamentals</em>. Springer-Verlag, 2005.</li>
+<li>SAE International. <em>SAE J3016: Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles</em>. SAE International, 2021.</li>
+<li>龚进峰, 李克强. 《智能网联汽车线控底盘技术综述》. 汽车工程学报, 2022, 12(3): 1-18.</li>
 </ol>
 
 

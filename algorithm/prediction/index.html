@@ -1,0 +1,3310 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="自动驾驶历史与技术">
+      
+      
+        <meta name="author" content="YFRL">
+      
+      
+        <link rel="canonical" href="https://yfrobotics.github.io/self-driving-handbook-cn/algorithm/prediction/">
+      
+      
+        <link rel="prev" href="../path_planning/">
+      
+      
+        <link rel="next" href="../decision_making/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>行为预测 - 自动驾驶指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,700,700i%7CFira+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Fira Sans";--md-code-font:"Fira Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../_static/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="自动驾驶指南" class="md-header__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            自动驾驶指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              行为预测
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yfrobotics/self-driving-handbook-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yfrobotics/self-driving-handbook-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="自动驾驶指南" class="md-nav__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    自动驾驶指南
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yfrobotics/self-driving-handbook-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yfrobotics/self-driving-handbook-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶技术指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 概述
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1. 概述
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一章：概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/define/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶系统定义
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/category/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶等级分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶发展历史
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 系统
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. 系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二章：系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/vehicle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶车辆系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/v2x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车联网（V2X）技术详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真平台与数据集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hdmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高精地图（HD Map）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人机交互系统（HMI）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统安全保障
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶测试体系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/cybersecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶网络安全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/regulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    政策与法律法规
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 硬件
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. 硬件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三章：硬件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/hw_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    硬件总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/ccu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中央计算单元 (CCU / 车载AI芯片)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/drive_by_wire/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线控系统（Drive-by-Wire）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/communication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车载通信系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知传感器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/camera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    视觉传感器（摄像头）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. 算法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4. 算法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第四章：核心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sw_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统软件框架总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图像感知与处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../laser_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    激光点云数据处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensor_fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器融合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../occupancy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    占用网络（Occupancy Network）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localisation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    地图与定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../path_planning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    路径规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行为预测
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行为预测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        预测的必要性
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        预测的分类
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="预测的分类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        按时间尺度
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        按方法论
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于物理的预测
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基于物理的预测">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cvconstant-velocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常速模型（CV，Constant Velocity）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ctrvconstant-turn-rate-and-velocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常转率常速模型（CTRV，Constant Turn Rate and Velocity）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于深度学习的预测
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基于深度学习的预测">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lstm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        序列模型（LSTM）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        社会化模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        图神经网络（GNN）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于地图的预测
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于地图的预测深化
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基于地图的预测深化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lane-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        车道图（Lane Graph）构建
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vectornet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VectorNet 详细架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tnt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TNT 目标驱动轨迹预测详细流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hivt-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HiVT：层次向量 Transformer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多智能体联合预测
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="多智能体联合预测">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        边际预测 vs 联合预测
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        预测的交互感知
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        联合预测的计算复杂度挑战
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多模态预测
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        评估指标
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        运动预测评估基准
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="运动预测评估基准">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nuscenes-prediction-challenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nuScenes Prediction Challenge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#waymo-open-motion-dataset-womd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Waymo Open Motion Dataset (WOMD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#argoverse-2-motion-forecasting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Argoverse 2 Motion Forecasting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#top-k-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Top-K 预测多样性 vs 准确性权衡
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        预测结果在规划中的使用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="预测结果在规划中的使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        预测轨迹作为规划约束
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        预测不确定性在碰撞检测中的处理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        保守预测 vs 乐观预测的规划影响
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        预测-规划联合优化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        语言增强预测
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="语言增强预测">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        行为意图的语言描述
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        大模型辅助罕见场景预测
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常识推理在预测中的应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../decision_making/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    决策 (Decision Making)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    控制算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../end_to_end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端自动驾驶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶ML数据管道
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nlp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自然语言处理与大语言模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 实例
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    5. 实例
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第五章：实例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/apollo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    百度 Apollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/waymo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waymo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/tesla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla FSD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/chinese_players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国自动驾驶企业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/robotaxi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robotaxi：自动驾驶商业化的主战场
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        预测的必要性
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        预测的分类
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="预测的分类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        按时间尺度
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        按方法论
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于物理的预测
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基于物理的预测">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cvconstant-velocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常速模型（CV，Constant Velocity）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ctrvconstant-turn-rate-and-velocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常转率常速模型（CTRV，Constant Turn Rate and Velocity）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于深度学习的预测
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基于深度学习的预测">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lstm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        序列模型（LSTM）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        社会化模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        图神经网络（GNN）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于地图的预测
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于地图的预测深化
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基于地图的预测深化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lane-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        车道图（Lane Graph）构建
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vectornet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VectorNet 详细架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tnt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TNT 目标驱动轨迹预测详细流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hivt-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HiVT：层次向量 Transformer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多智能体联合预测
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="多智能体联合预测">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        边际预测 vs 联合预测
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        预测的交互感知
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        联合预测的计算复杂度挑战
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多模态预测
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        评估指标
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        运动预测评估基准
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="运动预测评估基准">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nuscenes-prediction-challenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nuScenes Prediction Challenge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#waymo-open-motion-dataset-womd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Waymo Open Motion Dataset (WOMD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#argoverse-2-motion-forecasting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Argoverse 2 Motion Forecasting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#top-k-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Top-K 预测多样性 vs 准确性权衡
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        预测结果在规划中的使用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="预测结果在规划中的使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        预测轨迹作为规划约束
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        预测不确定性在碰撞检测中的处理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        保守预测 vs 乐观预测的规划影响
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        预测-规划联合优化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        语言增强预测
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="语言增强预测">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        行为意图的语言描述
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        大模型辅助罕见场景预测
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常识推理在预测中的应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">行为预测</h1>
+<p>行为预测（Behavior Prediction）是自动驾驶软件栈中感知与规划之间的关键桥梁。自动驾驶系统不仅需要知道周围障碍物的当前状态，还需要预测它们在未来数秒内的运动意图和轨迹，才能做出安全合理的规划决策。</p>
+<h2 id="_2">预测的必要性</h2>
+<p>以高速公路变道场景为例：车辆仅凭当前感知结果（邻车位置和速度）无法判断该车是否即将变道。如果无法预测邻车未来 3 秒的运动，规划模块就无法决定是否应该减速让行。</p>
+<p><strong>预测的内在挑战：</strong>
+- <strong>行为多样性</strong>：同一情景下，不同驾驶员可能采取截然不同的行为（激进/保守/礼让）
+- <strong>社会交互性</strong>：多个交通参与者相互博弈，一方行为影响另一方决策
+- <strong>长尾分布</strong>：大部分场景常见且容易预测，少数极端场景（急刹、鬼探头）最危险但样本稀少
+- <strong>意图不可观测</strong>：驾驶员意图是内部状态，只能通过行为间接推断</p>
+<h2 id="_3">预测的分类</h2>
+<h3 id="_4">按时间尺度</h3>
+<table>
+<thead>
+<tr>
+<th>时间范围</th>
+<th>典型应用</th>
+<th>精度要求</th>
+<th>主要方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>短期（0–2 s）</td>
+<td>碰撞检测、紧急制动 AEB</td>
+<td>高（厘米级）</td>
+<td>物理模型、简单外推</td>
+</tr>
+<tr>
+<td>中期（2–5 s）</td>
+<td>变道决策、跟车规划</td>
+<td>中（亚米级）</td>
+<td>深度学习、基于地图</td>
+</tr>
+<tr>
+<td>长期（5–10 s）</td>
+<td>路口决策、超车规划</td>
+<td>低（意图级别）</td>
+<td>意图识别、生成模型</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_5">按方法论</h3>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>代表方法</th>
+<th>优势</th>
+<th>劣势</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基于物理</td>
+<td>常速模型（CV）、CTRV</td>
+<td>实时、无需训练、可解释</td>
+<td>不考虑意图、道路结构</td>
+</tr>
+<tr>
+<td>基于机器学习</td>
+<td>LSTM、GAN、Transformer</td>
+<td>数据驱动、场景适应性强</td>
+<td>可解释性差、泛化需大量数据</td>
+</tr>
+<tr>
+<td>基于意图</td>
+<td>贝叶斯、隐马尔可夫模型</td>
+<td>语义明确、可解释</td>
+<td>意图识别本身困难</td>
+</tr>
+<tr>
+<td>基于交互</td>
+<td>社会力模型、图神经网络</td>
+<td>显式建模多体交互</td>
+<td>计算量大，扩展性有限</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">基于物理的预测</h2>
+<p>最简单的预测方法假设障碍物保持当前运动状态，无需训练，适合短期预测。</p>
+<h3 id="cvconstant-velocity">常速模型（CV，Constant Velocity）</h3>
+<p>假设目标以当前速度做匀速直线运动：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\begin{bmatrix} x_{t+1} \\ y_{t+1} \end{bmatrix} = \begin{bmatrix} x_t + v_x \Delta t \\ y_t + v_y \Delta t \end{bmatrix}</div>
+<script type="math/tex; mode=display">\begin{bmatrix} x_{t+1} \\ y_{t+1} \end{bmatrix} = \begin{bmatrix} x_t + v_x \Delta t \\ y_t + v_y \Delta t \end{bmatrix}</script>
+</div>
+<p>适用于直线行驶的短期预测（&lt; 1 s），在路口转弯等场景误差迅速累积。</p>
+<h3 id="ctrvconstant-turn-rate-and-velocity">常转率常速模型（CTRV，Constant Turn Rate and Velocity）</h3>
+<p>适用于转弯中的车辆，在极坐标下保持速度 <span class="arithmatex"><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> 和转率 <span class="arithmatex"><span class="MathJax_Preview">\dot{\psi}</span><script type="math/tex">\dot{\psi}</script></span> 不变：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\begin{pmatrix} x \\ y \\ \psi \\ v \\ \dot{\psi} \end{pmatrix}_{t+\Delta t} = \begin{pmatrix} x + \frac{v}{\dot{\psi}}\bigl(\sin(\psi + \dot{\psi}\Delta t) - \sin\psi\bigr) \\ y + \frac{v}{\dot{\psi}}\bigl(-\cos(\psi + \dot{\psi}\Delta t) + \cos\psi\bigr) \\ \psi + \dot{\psi}\Delta t \\ v \\ \dot{\psi} \end{pmatrix}</div>
+<script type="math/tex; mode=display">\begin{pmatrix} x \\ y \\ \psi \\ v \\ \dot{\psi} \end{pmatrix}_{t+\Delta t} = \begin{pmatrix} x + \frac{v}{\dot{\psi}}\bigl(\sin(\psi + \dot{\psi}\Delta t) - \sin\psi\bigr) \\ y + \frac{v}{\dot{\psi}}\bigl(-\cos(\psi + \dot{\psi}\Delta t) + \cos\psi\bigr) \\ \psi + \dot{\psi}\Delta t \\ v \\ \dot{\psi} \end{pmatrix}</script>
+</div>
+<p>当 <span class="arithmatex"><span class="MathJax_Preview">\dot{\psi} \approx 0</span><script type="math/tex">\dot{\psi} \approx 0</script></span> 时退化为匀速模型。CTRV 是无迹卡尔曼滤波（UKF）目标跟踪的常用过程模型。</p>
+<h2 id="_7">基于深度学习的预测</h2>
+<h3 id="lstm">序列模型（LSTM）</h3>
+<p>将历史轨迹作为时间序列输入，预测未来位置：</p>
+<div class="highlight"><pre><span></span><code>历史轨迹 [(x₁,y₁), ..., (xₙ,yₙ)]
+         │
+    LSTM × n 层
+         │
+    未来轨迹 [(x̂₁,ŷ₁), ..., (x̂ₘ,ŷₘ)]
+</code></pre></div>
+<ul>
+<li><strong>优点</strong>：简单有效，适合单体长期运动建模</li>
+<li><strong>缺点</strong>：不考虑与其他智能体的交互；不利用道路拓扑信息</li>
+</ul>
+<h3 id="_8">社会化模型</h3>
+<p><strong>Social LSTM（Alahi et al., CVPR 2016）：</strong></p>
+<p>引入"社会池化层"（Social Pooling），将空间邻近行人的隐藏状态汇聚后融合，让模型感知社会交互：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">h_i^t = \text{LSTM}\bigl(h_i^{t-1},\ e_i^t,\ P_i^t\bigr)</div>
+<script type="math/tex; mode=display">h_i^t = \text{LSTM}\bigl(h_i^{t-1},\ e_i^t,\ P_i^t\bigr)</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">P_i^t = \text{MaxPool}\left(\{h_j^{t-1} : j \in \mathcal{N}(i)\}\right)</span><script type="math/tex">P_i^t = \text{MaxPool}\left(\{h_j^{t-1} : j \in \mathcal{N}(i)\}\right)</script></span> 为邻居隐藏状态的池化。</p>
+<p><strong>Social GAN（Gupta et al., CVPR 2018）：</strong></p>
+<p>用生成对抗网络生成多条多样化轨迹，覆盖行人运动的多模态分布。引入多样性损失鼓励生成不同的可能未来。</p>
+<h3 id="gnn">图神经网络（GNN）</h3>
+<p><strong>Trajectron++ / GRIP++：</strong></p>
+<p>将交通场景建模为图（每个智能体为节点，时空关系为边），用图神经网络传递交互信息：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">h_i^{(l+1)} = \sigma\!\left(W^{(l)} \cdot \text{Aggregate}\bigl(\{h_j^{(l)} : j \in \mathcal{N}(i)\}\bigr)\right)</div>
+<script type="math/tex; mode=display">h_i^{(l+1)} = \sigma\!\left(W^{(l)} \cdot \text{Aggregate}\bigl(\{h_j^{(l)} : j \in \mathcal{N}(i)\}\bigr)\right)</script>
+</div>
+<p>图结构能够灵活表示任意数量的参与者和异构交互（车-车、车-行人、车-自行车）。</p>
+<h3 id="_9">基于地图的预测</h3>
+<p>道路结构对车辆运动有极强约束：车辆几乎不会偏离车道，路口行为遵循交通规则。</p>
+<p><strong>TNT（Target-driveN Trajectories，Zhao et al., CoRL 2020）：</strong>
+1. 先预测目标终点分布（路口后会去哪里）
+2. 再为每个候选终点生成完整轨迹
+3. 联合对目标点和轨迹评分，输出 Top-K 候选</p>
+<p><strong>VectorNet（Gao et al., CVPR 2020）：</strong></p>
+<p>用多段折线（Polyline）统一表征地图元素（车道线、红绿灯）和智能体历史轨迹，用全局 Transformer（类 PointNet）进行图级特征融合，避免将地图光栅化为图像的信息损失。</p>
+<h2 id="_10">基于地图的预测深化</h2>
+<h3 id="lane-graph">车道图（Lane Graph）构建</h3>
+<p>基于地图的预测方法的核心是将 HD Map 转化为车道图（Lane Graph），供神经网络编码拓扑关系：</p>
+<ul>
+<li><strong>节点</strong>：每个车道段（Lane Segment）对应一个节点，携带中心线采样点、车道宽度、限速等属性</li>
+<li><strong>边</strong>：两类有向边：（1）前驱/后继连接（车道沿行驶方向延续）；（2）相邻连接（可变道的左右邻车道）</li>
+<li><strong>节点特征向量</strong>：将中心线多段折线编码为固定维度向量，例如将 <span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> 个采样点 <span class="arithmatex"><span class="MathJax_Preview">(x_i, y_i, \theta_i)</span><script type="math/tex">(x_i, y_i, \theta_i)</script></span> 通过 MLP 或 PointNet 聚合为 <span class="arithmatex"><span class="MathJax_Preview">\mathbf{f}_{\text{lane}} \in \mathbb{R}^d</span><script type="math/tex">\mathbf{f}_{\text{lane}} \in \mathbb{R}^d</script></span></li>
+</ul>
+<div class="highlight"><pre><span></span><code>车道图示意（路口场景）：
+
+  L1 ──▶ L3 ──▶ L5（直行）
+          │
+          └──▶ L4 ──▶ L6（右转）
+  L2 ──▶ L7（合流）
+</code></pre></div>
+<p>车道图的构建使预测模型能够"感知"道路拓扑，从而直接在候选车道上推断智能体意图（选择哪条路线），而不是在无约束的二维空间中预测。</p>
+<h3 id="vectornet">VectorNet 详细架构</h3>
+<p>VectorNet（Gao et al., CVPR 2020）提出用统一的向量表示法处理地图和轨迹，分两阶段编码：</p>
+<p><strong>阶段一：子图网络（SubGraph Network）</strong></p>
+<p>每个地图元素（车道线、边界线、人行横道）和每个智能体的历史轨迹都被表示为一条多段折线（Polyline）。对折线中第 <span class="arithmatex"><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 条线段，特征向量定义为：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathbf{v}_i = \left[ d_i^s,\ d_i^e,\ a_i,\ j_i \right]</div>
+<script type="math/tex; mode=display">\mathbf{v}_i = \left[ d_i^s,\ d_i^e,\ a_i,\ j_i \right]</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">d_i^s, d_i^e</span><script type="math/tex">d_i^s, d_i^e</script></span> 分别为线段起止点全局坐标，<span class="arithmatex"><span class="MathJax_Preview">a_i</span><script type="math/tex">a_i</script></span> 为该线段的属性（车道类型、速度等），<span class="arithmatex"><span class="MathJax_Preview">j_i</span><script type="math/tex">j_i</script></span> 为折线编号（用于区分不同元素）。</p>
+<p>子图网络对每条折线内部的线段做局部聚合（类 PointNet 操作）：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathbf{p}_{\text{poly}} = \phi\!\left(\text{MaxPool}\left(\{g(\mathbf{v}_i) : i \in \text{poly}\}\right)\right)</div>
+<script type="math/tex; mode=display">\mathbf{p}_{\text{poly}} = \phi\!\left(\text{MaxPool}\left(\{g(\mathbf{v}_i) : i \in \text{poly}\}\right)\right)</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">g(\cdot)</span><script type="math/tex">g(\cdot)</script></span> 为逐线段的 MLP，<span class="arithmatex"><span class="MathJax_Preview">\phi(\cdot)</span><script type="math/tex">\phi(\cdot)</script></span> 为最终编码层。每条折线输出一个固定维度的折线级特征向量。</p>
+<p><strong>阶段二：全局图 Transformer</strong></p>
+<p>将所有折线特征向量视为图节点，用自注意力（Self-Attention）进行全局交互：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathbf{A} = \text{softmax}\!\left(\frac{\mathbf{Q}\mathbf{K}^\top}{\sqrt{d_k}}\right)\mathbf{V}</div>
+<script type="math/tex; mode=display">\mathbf{A} = \text{softmax}\!\left(\frac{\mathbf{Q}\mathbf{K}^\top}{\sqrt{d_k}}\right)\mathbf{V}</script>
+</div>
+<p>全局图允许任意智能体与任意地图元素之间建立注意力连接，从而编码"哪辆车在哪条车道"的语义关系。最终每个智能体节点的特征用于解码未来轨迹分布。</p>
+<p><strong>VectorNet 的优势：</strong>
+- 无需光栅化，避免像素级表示的空间分辨率损失
+- 计算量与地图元素数量成线性关系，而非图像尺寸的平方
+- 天然支持不规则形状的地图元素</p>
+<h3 id="tnt">TNT 目标驱动轨迹预测详细流程</h3>
+<p>TNT（Target-driveN Trajectories）将预测分解为三个级联子任务：</p>
+<p><strong>步骤一：候选目标点采样</strong></p>
+<p>沿车道图的每条候选路线，均匀采样若干目标位置点 <span class="arithmatex"><span class="MathJax_Preview">\{\tau_k\}_{k=1}^{K}</span><script type="math/tex">\{\tau_k\}_{k=1}^{K}</script></span>（通常 <span class="arithmatex"><span class="MathJax_Preview">K=1000</span><script type="math/tex">K=1000</script></span>），并通过分类器预测每个候选点的概率：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">p(\tau_k \mid x) = \text{softmax}\!\left(f_\theta(\mathbf{z}_{\text{agent}},\ \mathbf{z}_{\tau_k})\right)</div>
+<script type="math/tex; mode=display">p(\tau_k \mid x) = \text{softmax}\!\left(f_\theta(\mathbf{z}_{\text{agent}},\ \mathbf{z}_{\tau_k})\right)</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\mathbf{z}_{\text{agent}}</span><script type="math/tex">\mathbf{z}_{\text{agent}}</script></span> 为智能体编码，<span class="arithmatex"><span class="MathJax_Preview">\mathbf{z}_{\tau_k}</span><script type="math/tex">\mathbf{z}_{\tau_k}</script></span> 为候选目标点的位置编码。</p>
+<p><strong>步骤二：以目标为条件的轨迹生成</strong></p>
+<p>对每个高概率候选目标点 <span class="arithmatex"><span class="MathJax_Preview">\tau_k</span><script type="math/tex">\tau_k</script></span>，生成从当前状态到 <span class="arithmatex"><span class="MathJax_Preview">\tau_k</span><script type="math/tex">\tau_k</script></span> 的完整轨迹：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\hat{y}^{(k)} = g_\phi\!\left(\mathbf{z}_{\text{agent}},\ \tau_k\right)</div>
+<script type="math/tex; mode=display">\hat{y}^{(k)} = g_\phi\!\left(\mathbf{z}_{\text{agent}},\ \tau_k\right)</script>
+</div>
+<p><span class="arithmatex"><span class="MathJax_Preview">g_\phi</span><script type="math/tex">g_\phi</script></span> 为自回归或 MLP 解码器，输出每个时刻的位置分布（高斯）。</p>
+<p><strong>步骤三：联合评分与 NMS</strong></p>
+<p>对所有 <span class="arithmatex"><span class="MathJax_Preview">(τ_k, \hat{y}^{(k)})</span><script type="math/tex">(τ_k, \hat{y}^{(k)})</script></span> 对计算联合得分，用非最大抑制（NMS）过滤相似候选，输出 Top-K 多模态预测结果。</p>
+<h3 id="hivt-transformer">HiVT：层次向量 Transformer</h3>
+<p>HiVT（Hierarchical Vector Transformer，Zhou et al., CVPR 2022）在 VectorNet 基础上引入层次注意力机制，达到 nuScenes 数据集 SOTA 性能：</p>
+<p><strong>局部编码阶段：</strong></p>
+<p>以每个智能体为中心建立局部坐标系，对该智能体附近的地图元素和邻近智能体做局部注意力（Local Attention），提取相对运动和几何特征：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathbf{h}_i^{\text{local}} = \text{LocalTransformer}\!\left(\mathbf{e}_i,\ \{\mathbf{e}_j : j \in \mathcal{N}_r(i)\}\right)</div>
+<script type="math/tex; mode=display">\mathbf{h}_i^{\text{local}} = \text{LocalTransformer}\!\left(\mathbf{e}_i,\ \{\mathbf{e}_j : j \in \mathcal{N}_r(i)\}\right)</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\mathcal{N}_r(i)</span><script type="math/tex">\mathcal{N}_r(i)</script></span> 为智能体 <span class="arithmatex"><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 半径 <span class="arithmatex"><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> 范围内的邻居集合。局部注意力天然具有旋转和平移等变性（Equivariance），提升模型泛化能力。</p>
+<p><strong>全局聚合阶段：</strong></p>
+<p>在局部特征基础上，用全局 Transformer 捕获远距离的智能体间依赖（例如前车减速对后车的影响）：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathbf{h}_i^{\text{global}} = \text{GlobalTransformer}\!\left(\mathbf{h}_1^{\text{local}},\ \ldots,\ \mathbf{h}_N^{\text{local}}\right)</div>
+<script type="math/tex; mode=display">\mathbf{h}_i^{\text{global}} = \text{GlobalTransformer}\!\left(\mathbf{h}_1^{\text{local}},\ \ldots,\ \mathbf{h}_N^{\text{local}}\right)</script>
+</div>
+<p>HiVT 的分层结构降低了全局注意力的计算复杂度（从 <span class="arithmatex"><span class="MathJax_Preview">O(N^2)</span><script type="math/tex">O(N^2)</script></span> 局部化为 <span class="arithmatex"><span class="MathJax_Preview">O(N \cdot |\mathcal{N}_r|)</span><script type="math/tex">O(N \cdot |\mathcal{N}_r|)</script></span>），同时保持了全局场景理解能力。</p>
+<h2 id="_11">多智能体联合预测</h2>
+<h3 id="vs">边际预测 vs 联合预测</h3>
+<p>目前主流预测系统输出<strong>边际预测（Marginal Prediction）</strong>：对每个智能体独立预测其未来轨迹分布，忽略智能体之间的相关性。</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">p(y_1, y_2, \ldots, y_N \mid x) \approx \prod_{i=1}^N p(y_i \mid x) \quad \text{（边际预测假设）}</div>
+<script type="math/tex; mode=display">p(y_1, y_2, \ldots, y_N \mid x) \approx \prod_{i=1}^N p(y_i \mid x) \quad \text{（边际预测假设）}</script>
+</div>
+<p>边际预测的问题在于：多个智能体的预测结果在物理上可能相互冲突（两辆车预测为同时占据同一位置），导致规划层收到"幽灵碰撞"警告，产生过度保守的决策。</p>
+<p><strong>联合预测（Joint Prediction）</strong>直接建模多个智能体的联合未来分布：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">p(y_1, y_2, \ldots, y_N \mid x)</div>
+<script type="math/tex; mode=display">p(y_1, y_2, \ldots, y_N \mid x)</script>
+</div>
+<p>联合预测保证预测结果<strong>场景一致性</strong>（Scene Consistency）——智能体之间的预测轨迹不会相互穿越或碰撞。例如路口汇入场景中，联合预测能够正确建模"A 先行、B 等待"或"B 先行、A 等待"两种联合模式。</p>
+<h3 id="_12">预测的交互感知</h3>
+<p>真实交通行为存在强烈的反应性（Reactivity）：若智能体 A 开始变道，智能体 B 会减速让行。这种条件依赖无法被边际预测捕捉。</p>
+<p><strong>条件预测（Conditional Prediction）：</strong></p>
+<p>给定智能体 A 的轨迹假设 <span class="arithmatex"><span class="MathJax_Preview">y_A</span><script type="math/tex">y_A</script></span>，预测智能体 B 的条件分布：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">p(y_B \mid x,\ y_A)</div>
+<script type="math/tex; mode=display">p(y_B \mid x,\ y_A)</script>
+</div>
+<p>通过枚举 A 的多种行为假设，可以评估"如果 A 这样做，B 会怎么反应"的因果关系，为规划模块的博弈推理提供依据。</p>
+<p><strong>MCMS（Multi-agent Conditional Motion Simulation）：</strong></p>
+<p>MCMS 将联合预测分解为序列化条件预测——先采样 Agent 1 的轨迹，以此为条件采样 Agent 2，依此类推：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">p(y_1, y_2, \ldots, y_N) = p(y_1) \cdot p(y_2 \mid y_1) \cdot p(y_3 \mid y_1, y_2) \cdots</div>
+<script type="math/tex; mode=display">p(y_1, y_2, \ldots, y_N) = p(y_1) \cdot p(y_2 \mid y_1) \cdot p(y_3 \mid y_1, y_2) \cdots</script>
+</div>
+<p>每个条件分布由独立的轨迹生成网络建模，通过注意力机制接收已采样智能体的轨迹作为条件输入。MCMS 在保持场景一致性的同时，避免了指数级的联合状态空间搜索。</p>
+<h3 id="_13">联合预测的计算复杂度挑战</h3>
+<p>联合预测面临的核心难题是<strong>组合爆炸</strong>：若每个智能体有 <span class="arithmatex"><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span> 种模态，<span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> 个智能体的联合模态数为 <span class="arithmatex"><span class="MathJax_Preview">K^N</span><script type="math/tex">K^N</script></span>，在实际场景（<span class="arithmatex"><span class="MathJax_Preview">N=10</span><script type="math/tex">N=10</script></span>，<span class="arithmatex"><span class="MathJax_Preview">K=6</span><script type="math/tex">K=6</script></span>）时联合模态数达 <span class="arithmatex"><span class="MathJax_Preview">6^{10} \approx 6000</span><script type="math/tex">6^{10} \approx 6000</script></span> 万，完全枚举不可行。</p>
+<p>常用应对策略：</p>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>思路</th>
+<th>计算代价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>近似因子分解</td>
+<td>按依赖强度分组，组内联合、组间独立</td>
+<td>中等</td>
+</tr>
+<tr>
+<td>采样近似</td>
+<td>用 MCMC 或自回归采样近似联合分布</td>
+<td>可控</td>
+</tr>
+<tr>
+<td>学习一致性后处理</td>
+<td>先边际预测，再用图模型约束一致性</td>
+<td>低</td>
+</tr>
+<tr>
+<td>端到端联合生成</td>
+<td>Transformer 同时输出所有智能体轨迹</td>
+<td>高（单次前向）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_14">多模态预测</h2>
+<p>真实场景中未来是<strong>多模态</strong>的——同一情景下存在多种合理结局（直行、左转、右转）。单输出均值预测会导致模型在各模式之间折中，产生不合理的平均轨迹。</p>
+<p><strong>高斯混合模型（GMM）：</strong></p>
+<div class="arithmatex">
+<div class="MathJax_Preview">p(\hat{y}) = \sum_{k=1}^K \pi_k \, \mathcal{N}(\hat{y};\ \mu_k,\ \Sigma_k)</div>
+<script type="math/tex; mode=display">p(\hat{y}) = \sum_{k=1}^K \pi_k \, \mathcal{N}(\hat{y};\ \mu_k,\ \Sigma_k)</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span> 为模式数量，<span class="arithmatex"><span class="MathJax_Preview">\pi_k</span><script type="math/tex">\pi_k</script></span> 为各模式权重（<span class="arithmatex"><span class="MathJax_Preview">\sum \pi_k = 1</span><script type="math/tex">\sum \pi_k = 1</script></span>）。</p>
+<p><strong>条件变分自编码器（CVAE）：</strong></p>
+<p>通过随机隐变量 <span class="arithmatex"><span class="MathJax_Preview">z</span><script type="math/tex">z</script></span> 参数化不同的未来模式，从条件分布 <span class="arithmatex"><span class="MathJax_Preview">p(y \mid x, z)</span><script type="math/tex">p(y \mid x, z)</script></span> 采样生成多条轨迹：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">p(y \mid x) = \int p(y \mid x, z) \, p(z \mid x) \, dz</div>
+<script type="math/tex; mode=display">p(y \mid x) = \int p(y \mid x, z) \, p(z \mid x) \, dz</script>
+</div>
+<p><strong>代表性工作：</strong></p>
+<table>
+<thead>
+<tr>
+<th>工作</th>
+<th>机构</th>
+<th>核心贡献</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MultiPath</td>
+<td>Google</td>
+<td>锚点轨迹 + 高斯混合，快速推理</td>
+</tr>
+<tr>
+<td>Wayformer</td>
+<td>Waymo</td>
+<td>统一 Transformer，多模态注意力</td>
+</tr>
+<tr>
+<td>MTR（Motion Transformer）</td>
+<td>上海 AILab</td>
+<td>稀疏运动查询 + 全局意图定位</td>
+</tr>
+<tr>
+<td>MotionDiffuser</td>
+<td>—</td>
+<td>扩散模型生成多模态轨迹分布</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_15">评估指标</h2>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>全称</th>
+<th>计算公式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ADE</td>
+<td>平均位移误差</td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\frac{1}{T}\sum_{t=1}^T \|\hat{y}_t - y_t\|_2</span><script type="math/tex">\frac{1}{T}\sum_{t=1}^T \|\hat{y}_t - y_t\|_2</script></span></td>
+<td>预测轨迹所有时刻的平均误差</td>
+</tr>
+<tr>
+<td>FDE</td>
+<td>最终位移误差</td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\|\hat{y}_T - y_T\|_2</span><script type="math/tex">\|\hat{y}_T - y_T\|_2</script></span></td>
+<td>预测终点与真实终点的距离</td>
+</tr>
+<tr>
+<td>minADE@K</td>
+<td>最优 K 条中最小 ADE</td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\min_{k} \text{ADE}(\hat{y}^{(k)})</span><script type="math/tex">\min_{k} \text{ADE}(\hat{y}^{(k)})</script></span></td>
+<td>多模态评估，衡量最优猜测</td>
+</tr>
+<tr>
+<td>minFDE@K</td>
+<td>最优 K 条中最小 FDE</td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\min_{k} \text{FDE}(\hat{y}^{(k)})</span><script type="math/tex">\min_{k} \text{FDE}(\hat{y}^{(k)})</script></span></td>
+<td>同上，终点精度</td>
+</tr>
+<tr>
+<td>MR（漏检率）</td>
+<td>Miss Rate</td>
+<td>预测终点与真实终点 &gt; 2 m 的比例</td>
+<td>安全相关，关注危险漏报</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_16">运动预测评估基准</h2>
+<h3 id="nuscenes-prediction-challenge">nuScenes Prediction Challenge</h3>
+<p>nuScenes 数据集（nuTonomy，2020）包含波士顿和新加坡城市场景，预测任务要求预测周围车辆未来 6 秒（12 帧 @ 2Hz）轨迹，评测指标为 minADE@5、minFDE@5 和 Miss Rate（终点误差 &gt; 2m 视为漏检）。</p>
+<p>下表列出部分代表性方法的排行榜成绩（数值越低越好）：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>minADE@5 (m)</th>
+<th>minFDE@5 (m)</th>
+<th>Miss Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CV 基线（匀速）</td>
+<td>1.90</td>
+<td>4.42</td>
+<td>0.76</td>
+</tr>
+<tr>
+<td>CoverNet</td>
+<td>1.96</td>
+<td>4.31</td>
+<td>0.64</td>
+</tr>
+<tr>
+<td>MTP</td>
+<td>1.72</td>
+<td>3.93</td>
+<td>0.62</td>
+</tr>
+<tr>
+<td>WIMP</td>
+<td>1.47</td>
+<td>3.33</td>
+<td>0.55</td>
+</tr>
+<tr>
+<td>HiVT</td>
+<td><strong>1.02</strong></td>
+<td><strong>1.89</strong></td>
+<td><strong>0.47</strong></td>
+</tr>
+<tr>
+<td>MTR</td>
+<td>0.97</td>
+<td>1.71</td>
+<td>0.44</td>
+</tr>
+</tbody>
+</table>
+<p>HiVT 和 MTR 等基于 Transformer 的方法相比早期 LSTM 基线将 minFDE@5 降低了约 50%，体现了地图感知和多智能体交互建模的重要性。</p>
+<h3 id="waymo-open-motion-dataset-womd">Waymo Open Motion Dataset (WOMD)</h3>
+<p>WOMD 是目前规模最大的运动预测数据集之一，包含约 10 万个高质量场景片段。评测要求预测多类型道路使用者（车辆、行人、自行车）未来 8 秒轨迹，核心指标为：</p>
+<ul>
+<li><strong>Soft minFDE</strong>（软最小终点误差）：对 Top-K 预测按置信度加权的 FDE</li>
+<li><strong>minADE</strong>（最小平均轨迹误差）：K=6 条候选中最优者</li>
+<li><strong>Overlap Rate</strong>：预测轨迹之间的物理碰撞率，衡量联合预测一致性</li>
+</ul>
+<p>WOMD 要求同时预测最多 8 个感兴趣智能体（Agents of Interest），强调联合预测一致性，显著区别于单体评测框架。</p>
+<h3 id="argoverse-2-motion-forecasting">Argoverse 2 Motion Forecasting</h3>
+<p>Argoverse 2（Argo AI，2023）聚焦城市交叉口场景，提供更详细的 HD Map 标注（包括人行横道、停车标志、中央分隔线）。预测任务为未来 6 秒（60 帧 @ 10Hz），主要指标：</p>
+<ul>
+<li><strong>minADE@K</strong>（<span class="arithmatex"><span class="MathJax_Preview">K \in \{1, 6\}</span><script type="math/tex">K \in \{1, 6\}</script></span>）</li>
+<li><strong>minFDE@K</strong></li>
+<li><strong>brier-minFDE</strong>：将置信度纳入 FDE 计算，惩罚对错误模式赋予高权重的模型</li>
+</ul>
+<p>Argoverse 2 的 10Hz 标注频率（vs nuScenes 的 2Hz）使其更适合评测短期精细轨迹预测。</p>
+<h3 id="top-k-vs">Top-K 预测多样性 vs 准确性权衡</h3>
+<p>多模态预测面临一个根本性权衡：增加预测条数 <span class="arithmatex"><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span> 能覆盖更多可能未来（提高召回率），但代价是规划层需要处理更多候选，计算和决策成本上升。</p>
+<p>对于固定 <span class="arithmatex"><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span>，模型需要在两个目标之间平衡：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathcal{L} = \underbrace{\mathcal{L}_{\text{acc}}}_{\text{准确性：minFDE 最小化}} + \lambda \underbrace{\mathcal{L}_{\text{div}}}_{\text{多样性：轨迹间距离最大化}}</div>
+<script type="math/tex; mode=display">\mathcal{L} = \underbrace{\mathcal{L}_{\text{acc}}}_{\text{准确性：minFDE 最小化}} + \lambda \underbrace{\mathcal{L}_{\text{div}}}_{\text{多样性：轨迹间距离最大化}}</script>
+</div>
+<p>过度追求多样性会导致预测轨迹"发散"（包含大量不合理的低概率轨迹），而过度追求准确性则会退化为单峰预测（所有 <span class="arithmatex"><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span> 条轨迹聚集在同一模式）。实践中通常用 NMS 后处理过滤冗余候选，同时用置信度得分筛选高质量预测。</p>
+<h2 id="_17">预测结果在规划中的使用</h2>
+<h3 id="_18">预测轨迹作为规划约束</h3>
+<p>预测模块输出的多条候选轨迹（通常 Top-5 或 Top-10）传递给规划模块，作为动态障碍物的未来占用区域：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathcal{O}(t) = \bigcup_{k=1}^K \text{BoundingBox}\!\left(\hat{y}^{(k)}_t,\ \theta^{(k)}_t\right) \oplus \mathcal{B}_{\text{safe}}</div>
+<script type="math/tex; mode=display">\mathcal{O}(t) = \bigcup_{k=1}^K \text{BoundingBox}\!\left(\hat{y}^{(k)}_t,\ \theta^{(k)}_t\right) \oplus \mathcal{B}_{\text{safe}}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\oplus</span><script type="math/tex">\oplus</script></span> 表示 Minkowski 和，<span class="arithmatex"><span class="MathJax_Preview">\mathcal{B}_{\text{safe}}</span><script type="math/tex">\mathcal{B}_{\text{safe}}</script></span> 为安全膨胀区域。规划模块生成的轨迹须在所有时刻 <span class="arithmatex"><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> 避开 <span class="arithmatex"><span class="MathJax_Preview">\mathcal{O}(t)</span><script type="math/tex">\mathcal{O}(t)</script></span>。</p>
+<p>在实际工程中，通常取置信度最高的几条预测轨迹（而非全部 <span class="arithmatex"><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span> 条）用于碰撞检测，以控制规划计算量。</p>
+<h3 id="_19">预测不确定性在碰撞检测中的处理</h3>
+<p>预测模型通常输出每个时刻的位置分布，可表示为<strong>概率椭圆（Prediction Uncertainty Ellipse）</strong>：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathbf{y}_t \sim \mathcal{N}(\mu_t,\ \Sigma_t)</div>
+<script type="math/tex; mode=display">\mathbf{y}_t \sim \mathcal{N}(\mu_t,\ \Sigma_t)</script>
+</div>
+<p>碰撞风险概率可通过计算自车轨迹与预测分布的重叠积分得到：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">P_{\text{collision}}(t) = \int_{\mathcal{A}_{\text{ego}}(t)} \mathcal{N}(y;\ \mu_t,\ \Sigma_t) \, dy</div>
+<script type="math/tex; mode=display">P_{\text{collision}}(t) = \int_{\mathcal{A}_{\text{ego}}(t)} \mathcal{N}(y;\ \mu_t,\ \Sigma_t) \, dy</script>
+</div>
+<p>实际中常用保守近似：将概率椭圆扩展为固定置信水平（如 <span class="arithmatex"><span class="MathJax_Preview">2\sigma</span><script type="math/tex">2\sigma</script></span>，对应 95% 概率区域）的确定性边界框，再执行传统碰撞检测。</p>
+<h3 id="vs_1">保守预测 vs 乐观预测的规划影响</h3>
+<table>
+<thead>
+<tr>
+<th>预测策略</th>
+<th>对规划的影响</th>
+<th>风险</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>保守预测（假设最坏情况）</td>
+<td>规划产生大量减速/等待</td>
+<td>舒适性差、路口通行效率低</td>
+</tr>
+<tr>
+<td>乐观预测（假设最有可能情况）</td>
+<td>规划更积极、通行效率高</td>
+<td>若预测错误，碰撞风险上升</td>
+</tr>
+<tr>
+<td>多模态加权</td>
+<td>对高概率模态积极、低概率模态保守</td>
+<td>计算复杂度高</td>
+</tr>
+</tbody>
+</table>
+<p>自动驾驶系统通常在<strong>安全临界场景</strong>（TTC &lt; 3s）采用保守策略，在<strong>正常跟车场景</strong>采用乐观策略，通过场景识别动态切换。</p>
+<h3 id="-">预测-规划联合优化</h3>
+<p>传统"先预测、后规划"的两步法存在根本性缺陷：<strong>预测误差无法被规划纠正</strong>。规划模块的输出（自车未来轨迹）会影响其他智能体的实际行为，但在两步法中这种影响无法反馈给预测模块。</p>
+<p>联合预测-规划的优化目标：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\min_{\xi_{\text{ego}}} \mathcal{C}_{\text{plan}}(\xi_{\text{ego}}) \quad \text{s.t.} \quad p(\xi_{\text{agent}} \mid x,\ \xi_{\text{ego}}) \cdot \text{Safety}(\xi_{\text{ego}},\ \xi_{\text{agent}}) \geq \epsilon</div>
+<script type="math/tex; mode=display">\min_{\xi_{\text{ego}}} \mathcal{C}_{\text{plan}}(\xi_{\text{ego}}) \quad \text{s.t.} \quad p(\xi_{\text{agent}} \mid x,\ \xi_{\text{ego}}) \cdot \text{Safety}(\xi_{\text{ego}},\ \xi_{\text{agent}}) \geq \epsilon</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\xi_{\text{ego}}</span><script type="math/tex">\xi_{\text{ego}}</script></span> 为自车规划轨迹，<span class="arithmatex"><span class="MathJax_Preview">\xi_{\text{agent}}</span><script type="math/tex">\xi_{\text{agent}}</script></span> 为条件于自车行为的其他智能体预测轨迹。</p>
+<p>端到端的 ImitationPlanning 和 PLUTO 等框架尝试用单一网络同时输出预测和规划结果，从根本上消除两步法的误差耦合问题。</p>
+<h2 id="_20">语言增强预测</h2>
+<h3 id="_21">行为意图的语言描述</h3>
+<p>大语言模型（LLM）的兴起为轨迹预测带来了新的研究方向：用自然语言描述驾驶场景中的行为意图，辅助传统预测模型：</p>
+<ul>
+<li>"该车正在低速行驶并频繁停车，可能正在寻找停车位"</li>
+<li>"前方行人正在看手机，注意力不在行驶方向上"</li>
+<li>"该车连续三次触碰车道线，疑似疲劳驾驶"</li>
+</ul>
+<p>语言描述充当了从观测状态到行为意图的"桥梁"，将隐性的驾驶员意图显式化。基于语言意图的预测模型（如 DriveVLM）将文本意图编码作为额外条件输入轨迹解码器：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\hat{y} = f_\theta(\mathbf{z}_{\text{agent}},\ \mathbf{z}_{\text{map}},\ \mathbf{z}_{\text{lang}})</div>
+<script type="math/tex; mode=display">\hat{y} = f_\theta(\mathbf{z}_{\text{agent}},\ \mathbf{z}_{\text{map}},\ \mathbf{z}_{\text{lang}})</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\mathbf{z}_{\text{lang}}</span><script type="math/tex">\mathbf{z}_{\text{lang}}</script></span> 为语言意图描述的文本嵌入，由 CLIP 或 LLM 的文本编码器提取。</p>
+<h3 id="_22">大模型辅助罕见场景预测</h3>
+<p>传统预测模型在<strong>长尾场景</strong>（如救护车高速穿越路口、施工区单行道、洪水积水绕行）中因训练样本稀少而失效。大模型具备丰富的世界知识，可以通过以下方式辅助罕见场景预测：</p>
+<p><strong>思维链推理（Chain-of-Thought Reasoning）：</strong></p>
+<div class="highlight"><pre><span></span><code>输入：场景描述 + 当前状态
+→ LLM：&quot;该场景为施工区，右侧车道封闭，前方车辆必须
+         合并到左车道，预计在 50 m 处开始变道行为。&quot;
+→ 意图识别：变道（右 → 左）
+→ 轨迹生成网络：基于意图约束生成轨迹
+</code></pre></div>
+<p><strong>数据增强（零样本生成训练数据）：</strong></p>
+<p>用 LLM 生成罕见场景的语言描述，结合仿真器合成对应场景数据，弥补真实数据长尾不足的问题。</p>
+<h3 id="_23">常识推理在预测中的应用</h3>
+<p>人类驾驶员依赖大量<strong>隐性常识</strong>进行预测，例如：</p>
+<ul>
+<li>车辆不会无故停在高速公路中间（除非故障）</li>
+<li>儿童放学时间学校附近行人密度高、行为随机性强</li>
+<li>在超市停车场，车辆倒车概率远高于道路场景</li>
+<li>消防车旁边的车辆很快会移走</li>
+</ul>
+<p>这些常识无法从轨迹数据中直接学习，但可以通过 LLM 的知识提取得到。<strong>场景常识约束（Commonsense Constraint）</strong>作为软约束加入预测目标函数，使模型输出在语义上更合理：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{traj}} + \beta \cdot \mathcal{L}_{\text{commonsense}}</div>
+<script type="math/tex; mode=display">\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{traj}} + \beta \cdot \mathcal{L}_{\text{commonsense}}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\mathcal{L}_{\text{commonsense}}</span><script type="math/tex">\mathcal{L}_{\text{commonsense}}</script></span> 由 LLM 对预测轨迹的合理性打分反向传播得到，是将大模型知识蒸馏进预测网络的一种方式。</p>
+<h2 id="_24">参考资料</h2>
+<ol>
+<li>A. Alahi et al. Social LSTM: Human Trajectory Prediction in Crowded Spaces. CVPR, 2016.</li>
+<li>A. Gupta et al. Social GAN: Socially Acceptable Trajectories with Generative Adversarial Networks. CVPR, 2018.</li>
+<li>T. Zhao et al. TNT: Target-driveN Trajectory Prediction. CoRL, 2020.</li>
+<li>J. Gao et al. VectorNet: Encoding HD Maps and Agent Dynamics from Vectorized Representation. CVPR, 2020.</li>
+<li>H. Shi et al. Motion Transformer with Global Intention Localization and Local Movement Refinement. NeurIPS, 2022.</li>
+<li>Z. Zhou et al. HiVT: Hierarchical Vector Transformer for Multi-Agent Motion Prediction. CVPR, 2022.</li>
+<li>C. Ettinger et al. Large Scale Interactive Motion Forecasting for Autonomous Driving: The Waymo Open Motion Dataset. ICCV, 2021.</li>
+<li>B. Wilson et al. Argoverse 2: Next Generation Acceleration of Research in HD Mapping and Motion Forecasting. NeurIPS Datasets, 2023.</li>
+<li>X. Jia et al. DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models. arXiv, 2024.</li>
+<li>Y. Hu et al. PLUTO: Pushing the Limit of Imitation Learning-based Planning for Autonomous Driving. arXiv, 2024.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../_static/js/mathjaxhelper.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,3398 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="自动驾驶历史与技术">
+      
+      
+        <meta name="author" content="YFRL">
+      
+      
+        <link rel="canonical" href="https://yfrobotics.github.io/self-driving-handbook-cn/system/cybersecurity/">
+      
+      
+        <link rel="prev" href="../testing/">
+      
+      
+        <link rel="next" href="../regulation/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>自动驾驶网络安全 - 自动驾驶指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,700,700i%7CFira+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Fira Sans";--md-code-font:"Fira Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../_static/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="自动驾驶指南" class="md-header__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            自动驾驶指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              自动驾驶网络安全
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yfrobotics/self-driving-handbook-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yfrobotics/self-driving-handbook-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="自动驾驶指南" class="md-nav__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    自动驾驶指南
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yfrobotics/self-driving-handbook-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yfrobotics/self-driving-handbook-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶技术指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 概述
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1. 概述
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一章：概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/define/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶系统定义
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/category/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶等级分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶发展历史
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 系统
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. 系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二章：系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vehicle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶车辆系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v2x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车联网（V2X）技术详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真平台与数据集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hdmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高精地图（HD Map）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人机交互系统（HMI）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统安全保障
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶测试体系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶网络安全
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶网络安全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 开篇介绍
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 威胁格局
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 威胁格局">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 攻击面的全面扩大
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-2015-jeep-cherokee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 典型攻击案例：2015年 Jeep Cherokee 远程接管
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 供应链攻击风险
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-robotaxi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 高价值目标：Robotaxi 车队的社会影响
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-isosae-21434" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. ISO/SAE 21434 标准
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. ISO/SAE 21434 标准">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 概述
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-tara" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 TARA：威胁分析与风险评估
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 攻击路径分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 网络安全目标与需求分解
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-cal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 CAL：网络安全保证等级
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-un-ece-wp29-r155" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. UN ECE WP.29 R155 法规
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. UN ECE WP.29 R155 法规">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 法规背景与强制要求
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 执行时间表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-csms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 CSMS 认证流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 传感器攻击
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 传感器攻击">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 相机欺骗攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 LiDAR 欺骗攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 毫米波雷达欺骗
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-gps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 GPS 欺骗攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 车载通信攻击
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 车载通信攻击">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-can" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 CAN 总线攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-obd-ii" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 OBD-II 端口攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-wi-fi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 蓝牙与 Wi-Fi 攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 车载以太网攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 防御体系
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-ota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. OTA 攻击与防御
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. OTA 攻击与防御">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-ota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 OTA 攻击向量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-ota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 OTA 安全防御体系
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-idsips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 入侵检测系统（IDS/IPS）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 入侵检测系统（IDS/IPS）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 车载 IDS 架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 检测方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 IDS 与安全运营中心集成
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 密钥与证书管理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 密钥与证书管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-hsm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 硬件安全模块（HSM）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-v2x-pki" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 V2X PKI 与假名证书
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 证书吊销机制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 密钥生命周期管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 数据隐私
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 数据隐私">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 行车数据的敏感性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-dms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 驾驶员监控系统（DMS）数据保护
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 法规要求
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#104" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 隐私保护技术
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../regulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    政策与法律法规
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 硬件
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. 硬件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三章：硬件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/hw_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    硬件总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/ccu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中央计算单元 (CCU / 车载AI芯片)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/drive_by_wire/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线控系统（Drive-by-Wire）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/communication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车载通信系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知传感器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/camera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    视觉传感器（摄像头）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. 算法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4. 算法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第四章：核心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sw_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统软件框架总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/image_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图像感知与处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/laser_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    激光点云数据处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sensor_fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器融合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/occupancy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    占用网络（Occupancy Network）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/localisation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    地图与定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/path_planning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    路径规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/prediction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行为预测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/decision_making/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    决策 (Decision Making)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    控制算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/end_to_end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端自动驾驶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/data_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶ML数据管道
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/nlp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自然语言处理与大语言模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 实例
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    5. 实例
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第五章：实例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/apollo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    百度 Apollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/waymo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waymo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/tesla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla FSD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/chinese_players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国自动驾驶企业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/robotaxi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robotaxi：自动驾驶商业化的主战场
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 开篇介绍
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 威胁格局
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 威胁格局">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 攻击面的全面扩大
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-2015-jeep-cherokee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 典型攻击案例：2015年 Jeep Cherokee 远程接管
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 供应链攻击风险
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-robotaxi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 高价值目标：Robotaxi 车队的社会影响
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-isosae-21434" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. ISO/SAE 21434 标准
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. ISO/SAE 21434 标准">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 概述
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-tara" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 TARA：威胁分析与风险评估
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 攻击路径分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 网络安全目标与需求分解
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-cal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 CAL：网络安全保证等级
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-un-ece-wp29-r155" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. UN ECE WP.29 R155 法规
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. UN ECE WP.29 R155 法规">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 法规背景与强制要求
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 执行时间表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-csms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 CSMS 认证流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 传感器攻击
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 传感器攻击">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 相机欺骗攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 LiDAR 欺骗攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 毫米波雷达欺骗
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-gps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 GPS 欺骗攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 车载通信攻击
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 车载通信攻击">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-can" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 CAN 总线攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-obd-ii" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 OBD-II 端口攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-wi-fi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 蓝牙与 Wi-Fi 攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 车载以太网攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 防御体系
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-ota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. OTA 攻击与防御
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. OTA 攻击与防御">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-ota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 OTA 攻击向量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-ota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 OTA 安全防御体系
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-idsips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 入侵检测系统（IDS/IPS）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 入侵检测系统（IDS/IPS）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 车载 IDS 架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 检测方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 IDS 与安全运营中心集成
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 密钥与证书管理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 密钥与证书管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-hsm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 硬件安全模块（HSM）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-v2x-pki" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 V2X PKI 与假名证书
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 证书吊销机制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 密钥生命周期管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 数据隐私
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 数据隐私">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 行车数据的敏感性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-dms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 驾驶员监控系统（DMS）数据保护
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 法规要求
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#104" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 隐私保护技术
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">自动驾驶网络安全</h1>
+<h2 id="1">1. 开篇介绍</h2>
+<p>自动驾驶系统的网络安全与传统IT安全有着根本性的差异。在传统IT领域，安全漏洞的最坏后果通常是数据泄露或业务中断；而在自动驾驶场景中，一次成功的网络攻击可能直接导致车辆失控，进而造成乘员伤亡和大规模交通事故。这种"数字攻击产生物理后果"的特性，使得自动驾驶网络安全成为汽车行业最紧迫的挑战之一。</p>
+<p>现代自动驾驶车辆本质上是一台"四轮移动数据中心"。车辆内部运行着数十个电子控制单元（ECU），通过 CAN、LIN、FlexRay、车载以太网等总线互联；对外则通过蓝牙、Wi-Fi、4G/5G 蜂窝网络、V2X（车路协同）持续与外界保持通信。一句话概括当前的安全态势：<strong>联网即暴露</strong>。每一个通信接口都是潜在的攻击入口，每一行代码都可能隐藏漏洞，而系统的高度互联使得一个局部突破往往能够横向扩散至整车核心控制功能。</p>
+<p>与航空领域经过数十年打磨的安全体系不同，汽车行业的网络安全意识觉醒相对较晚，从标准制定到技术落地仍处于快速演进阶段。理解自动驾驶的安全威胁格局、现行法规与标准要求，以及对应的防御技术，是所有从业者的必修课。</p>
+<hr />
+<h2 id="2">2. 威胁格局</h2>
+<h3 id="21">2.1 攻击面的全面扩大</h3>
+<p>随着自动驾驶功能等级的提升，车辆的攻击面呈指数级增长。主要攻击入口包括：</p>
+<table>
+<thead>
+<tr>
+<th>接口类型</th>
+<th>典型协议/标准</th>
+<th>风险说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OBD-II 诊断口</td>
+<td>ISO 15765（CAN）</td>
+<td>直接接入车内总线，是最危险的物理入口</td>
+</tr>
+<tr>
+<td>USB 接口</td>
+<td>USB 2.0/3.0</td>
+<td>恶意设备、BadUSB 攻击、固件植入</td>
+</tr>
+<tr>
+<td>蓝牙</td>
+<td>BT Classic / BLE</td>
+<td>信息娱乐系统漏洞，历史上多次被用于提权</td>
+</tr>
+<tr>
+<td>Wi-Fi</td>
+<td>802.11 a/b/g/n/ac</td>
+<td>热点劫持、中间人攻击</td>
+</tr>
+<tr>
+<td>蜂窝网络</td>
+<td>4G LTE / 5G NR</td>
+<td>远程攻击最主要的通道，覆盖范围无限制</td>
+</tr>
+<tr>
+<td>V2X 通信</td>
+<td>DSRC / C-V2X</td>
+<td>伪造路侧单元信号，影响驾驶决策</td>
+</tr>
+<tr>
+<td>OTA 更新</td>
+<td>HTTPS + 签名</td>
+<td>供应链攻击、降级攻击、恶意固件</td>
+</tr>
+<tr>
+<td>传感器接口</td>
+<td>摄像头/LiDAR/雷达</td>
+<td>物理欺骗攻击，干扰感知系统</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-2015-jeep-cherokee">2.2 典型攻击案例：2015年 Jeep Cherokee 远程接管</h3>
+<p>2015年，安全研究人员查理·米勒（Charlie Miller）和克里斯·瓦拉塞克（Chris Valasek）公开演示了对克莱斯勒 Jeep Cherokee 的远程接管攻击，震惊了整个行业。攻击链如下：</p>
+<ol>
+<li>通过蜂窝网络（Sprint 运营商）扫描并定位暴露在互联网上的 Uconnect 车载娱乐系统；</li>
+<li>利用 Uconnect 系统中的 D-Bus 服务漏洞获取代码执行权限；</li>
+<li>重写芯片固件，突破娱乐系统与 CAN 总线之间的隔离；</li>
+<li>向 CAN 总线注入恶意帧，远程控制车辆的油门、刹车、方向盘和空调。</li>
+</ol>
+<p>演示中，研究人员在数英里之外通过笔记本电脑让行驶中的 Jeep 车速归零、强制切断加速器响应。此事件直接导致克莱斯勒召回 140 万辆车辆，美国国会随后提出《汽车网络安全法案》。这一案例至今仍是汽车网络安全领域最具代表性的警示。</p>
+<h3 id="23">2.3 供应链攻击风险</h3>
+<p>现代汽车的软件代码量已超过 1 亿行，由数百家供应商贡献。原始设备制造商（OEM）往往无法对第三方 ECU 固件进行全面审计，供应链攻击因此成为重要风险源：</p>
+<ul>
+<li><strong>恶意预置后门</strong>：不诚信供应商在固件中植入隐蔽的远程访问通道；</li>
+<li><strong>开源组件漏洞</strong>：车载 Linux、AUTOSAR 等平台依赖大量开源库，其中任何一个高危漏洞（如 Log4Shell 类型）都可能影响整车安全；</li>
+<li><strong>硬件木马</strong>：在芯片制造或封装环节植入硬件后门，极难通过软件手段检测；</li>
+<li><strong>软件物料清单（SBOM）缺失</strong>：缺乏完整的软件成分清单，使得漏洞响应周期大幅延长。</li>
+</ul>
+<h3 id="24-robotaxi">2.4 高价值目标：Robotaxi 车队的社会影响</h3>
+<p>Robotaxi 商业化部署带来了全新的攻击动机。一支规模化的自动驾驶出租车车队是极具吸引力的攻击目标：</p>
+<ul>
+<li>攻击者只需控制车队管理后台，即可同时让数百辆车辆停驶，造成大规模交通瘫痪；</li>
+<li>车辆运营轨迹数据蕴含高度敏感的城市交通信息，具有重要情报价值；</li>
+<li>针对 Robotaxi 的勒索攻击（"付款，否则停止运营"）具有现实可操作性；</li>
+<li>精心策划的单车事故可被用于打击竞争对手或制造政治事件。</li>
+</ul>
+<hr />
+<h2 id="3-isosae-21434">3. ISO/SAE 21434 标准</h2>
+<h3 id="31">3.1 概述</h3>
+<p>ISO/SAE 21434《道路车辆——网络安全工程》是汽车行业首个覆盖整车全生命周期的网络安全工程标准，于 2021 年 8 月正式发布。该标准由国际标准化组织（ISO）与美国汽车工程师学会（SAE）联合制定，为 OEM 和供应商提供了系统化的网络安全工程框架。</p>
+<p>标准覆盖的生命周期阶段包括：概念设计、产品开发（系统/硬件/软件）、生产、运营、维护，直至报废处置。</p>
+<h3 id="32-tara">3.2 TARA：威胁分析与风险评估</h3>
+<p>TARA（Threat Analysis and Risk Assessment）是 ISO/SAE 21434 的核心方法论，相当于功能安全领域 HARA（危害分析与风险评估）在网络安全领域的对应物。TARA 的主要步骤：</p>
+<ol>
+<li><strong>资产识别</strong>：明确需要保护的资产（如制动控制信号、定位数据、OTA 更新机制）；</li>
+<li><strong>威胁场景建模</strong>：识别针对每类资产的潜在威胁（机密性/完整性/可用性/授权性损失）；</li>
+<li><strong>影响评估</strong>：评估威胁实现后对安全、财务、运营、隐私四个维度的影响等级；</li>
+<li><strong>攻击路径分析</strong>：分析攻击者从初始入口到攻击目标的完整路径；</li>
+<li><strong>攻击可行性评估</strong>：使用 CVSS 类方法评估攻击所需的能力、资源和时间窗口；</li>
+<li><strong>风险等级确定</strong>：综合影响与可行性，输出风险矩阵。</li>
+</ol>
+<h3 id="33">3.3 攻击路径分析</h3>
+<p>攻击路径分析（Attack Path Analysis）以图论方式描述攻击者从外部接口到目标资产的所有可能路径。每条路径由若干"攻击步骤"串联组成，每个步骤对应一个具体漏洞或弱点。</p>
+<p>示例——针对自动紧急制动（AEB）的攻击路径：</p>
+<div class="highlight"><pre><span></span><code>蜂窝网络接入
+  → Uconnect 信息娱乐系统 RCE 漏洞
+    → 突破域间防火墙
+      → 向底盘 CAN 总线注入帧
+        → 伪造 AEB 触发信号
+          → 目标：意外制动（安全影响：重大）
+</code></pre></div>
+<p>通过穷举和分析此类路径，工程师可以识别关键节点并优先部署防御措施。</p>
+<h3 id="34">3.4 网络安全目标与需求分解</h3>
+<p>TARA 输出的风险被转化为<strong>网络安全目标（Cybersecurity Goals）</strong>，例如：</p>
+<blockquote>
+<p>"AEB 控制信号的完整性应得到保护，防止未授权的注入或篡改。"</p>
+</blockquote>
+<p>网络安全目标进一步分解为<strong>网络安全需求（Cybersecurity Requirements）</strong>，并分配至系统、硬件、软件各层级，最终落地为具体的技术控制措施（如 SecOC 消息认证、HSM 密钥存储等）。</p>
+<h3 id="35-cal">3.5 CAL：网络安全保证等级</h3>
+<p>类比功能安全的 ASIL，ISO/SAE 21434 定义了四级<strong>网络安全保证等级（Cybersecurity Assurance Level，CAL）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>等级</th>
+<th>适用场景</th>
+<th>要求严格程度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CAL 1</td>
+<td>低风险功能</td>
+<td>基本网络安全实践</td>
+</tr>
+<tr>
+<td>CAL 2</td>
+<td>中等风险</td>
+<td>系统化安全分析 + 独立审查</td>
+</tr>
+<tr>
+<td>CAL 3</td>
+<td>较高风险</td>
+<td>正式安全分析 + 渗透测试</td>
+</tr>
+<tr>
+<td>CAL 4</td>
+<td>最高风险（如制动、转向）</td>
+<td>独立第三方评估 + 严格验证</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-un-ece-wp29-r155">4. UN ECE WP.29 R155 法规</h2>
+<h3 id="41">4.1 法规背景与强制要求</h3>
+<p>联合国欧洲经济委员会（UN ECE）世界车辆法规协调论坛（WP.29）于 2021 年发布 <strong>R155 法规</strong>，要求汽车制造商建立并运营<strong>网络安全管理系统（Cybersecurity Management System，CSMS）</strong>，作为车辆型式认证的前提条件。</p>
+<p>R155 要求覆盖四大领域：</p>
+<ol>
+<li><strong>组织层面</strong>：建立网络安全治理体系，明确责任分工；</li>
+<li><strong>开发阶段</strong>：执行基于风险的安全设计，实施 TARA；</li>
+<li><strong>生产阶段</strong>：确保安全开发实践延伸至制造环节；</li>
+<li><strong>售后阶段</strong>：持续监控威胁、响应漏洞、推送安全更新，全生命周期有效。</li>
+</ol>
+<h3 id="42">4.2 执行时间表</h3>
+<table>
+<thead>
+<tr>
+<th>时间节点</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2022年7月</td>
+<td>新申请型式认证的车型须符合 R155</td>
+</tr>
+<tr>
+<td>2024年7月</td>
+<td>欧洲所有新生产车辆（包括现有平台）须强制符合</td>
+</tr>
+<tr>
+<td>持续有效</td>
+<td>CSMS 认证每三年更新一次</td>
+</tr>
+</tbody>
+</table>
+<p>中国市场方面，工业和信息化部参照 WP.29 框架发布了《汽车数据安全管理若干规定》及相关 GB/T 标准，方向一致但具体要求存在本地化差异。</p>
+<h3 id="43-csms">4.3 CSMS 认证流程</h3>
+<p>CSMS 认证由国家认可的技术服务机构（Technical Service）负责评估，主要审查内容包括：</p>
+<ul>
+<li>网络安全政策与战略文件的完备性；</li>
+<li>TARA 方法论的规范性与完整性；</li>
+<li>供应链安全管理能力（包括供应商审计要求）；</li>
+<li>漏洞管理与事件响应流程的有效性；</li>
+<li>OTA 更新安全机制的实现方案；</li>
+<li>安全监控（车辆 SOC）的部署情况。</li>
+</ul>
+<hr />
+<h2 id="5">5. 传感器攻击</h2>
+<h3 id="51">5.1 相机欺骗攻击</h3>
+<p>自动驾驶感知系统对摄像头图像的依赖，使其成为攻击者的高价值目标。主要攻击手段包括：</p>
+<p><strong>（1）对抗性贴片（Adversarial Patch）</strong></p>
+<p>通过在真实世界中张贴特制的打印图案，欺骗深度学习分类网络产生错误识别结果。例如，将一张特制贴纸贴在停车标志上，可使目标检测模型将其分类为"限速 45 mph"而非"停止"。此类攻击具有物理实体性，不依赖对模型或数字系统的任何访问权限。</p>
+<p><strong>（2）光线注入攻击</strong></p>
+<p>利用激光或红外 LED，向摄像头感光元件注入特定光线模式，在图像中叠加攻击者期望的内容，从而误导感知算法。</p>
+<p><strong>防御措施</strong>：多摄像头交叉验证、输入图像异常检测、对抗性训练增强模型鲁棒性。</p>
+<h3 id="52-lidar">5.2 LiDAR 欺骗攻击</h3>
+<p><strong>（1）激光注入攻击（Laser Injection）</strong></p>
+<p>攻击者使用与目标 LiDAR 波长相同的激光发射器，向 LiDAR 接收器注入虚假返回脉冲，在点云中制造不存在的障碍物（幻影点云）或消除真实障碍物的回波。实验室研究已证明，可在道路中央制造"虚拟车辆"幻影，迫使 AV 系统急刹车或绕行。</p>
+<p><strong>（2）中继攻击（Relay Attack）</strong></p>
+<p>捕获 LiDAR 发射脉冲后进行延迟重放，使 LiDAR 误判目标距离，影响跟车距离控制和碰撞预警。</p>
+<p><strong>防御措施</strong>：随机化激光发射时序（Temporal Encoding）、多线束交叉验证、融合毫米波雷达进行一致性检验。</p>
+<h3 id="53">5.3 毫米波雷达欺骗</h3>
+<p><strong>（1）同频干扰</strong></p>
+<p>对目标车辆雷达发射同频干扰信号，使其在特定角度产生"盲区"，无法探测前方车辆。</p>
+<p><strong>（2）幻影目标注入</strong></p>
+<p>发射精心构造的射频信号，在雷达视野中制造虚假的静止或运动目标，触发不必要的紧急制动。</p>
+<p><strong>防御措施</strong>：随机调频（FMCW 参数随机化）、多站点雷达交叉验证、与摄像头和 LiDAR 的融合异常检测。</p>
+<h3 id="54-gps">5.4 GPS 欺骗攻击</h3>
+<p>通过伪造 GPS 卫星信号，使车辆导航系统接收到错误的位置信息，导致路径规划偏差或使车辆驶入错误区域。已有研究团队在受控环境中验证了对海上船舶和无人机的 GPS 欺骗攻击的可行性，对地面车辆的威胁同样存在。</p>
+<p><strong>防御措施</strong>：
+- 多星座 GNSS 接收（GPS + GLONASS + BeiDou + Galileo）；
+- 惯性导航（IMU）与 GNSS 融合，抵抗突变欺骗；
+- 高精地图（HD Map）与传感器定位的一致性校验；
+- 信号强度异常检测（合法 GPS 信号通常较弱，欺骗信号往往过强）。</p>
+<hr />
+<h2 id="6">6. 车载通信攻击</h2>
+<h3 id="61-can">6.1 CAN 总线攻击</h3>
+<p>CAN（Controller Area Network）总线是汽车电子的基础通信协议，设计于 1980 年代，最初只考虑可靠性而未考虑安全性。其主要安全缺陷：</p>
+<ul>
+<li><strong>无消息认证</strong>：任何连接到总线的节点均可发送任意 ID 的帧；</li>
+<li><strong>广播机制</strong>：所有节点均可监听所有消息，无法实现节点间的访问隔离；</li>
+<li><strong>无加密</strong>：明文传输，内容可轻易被解析。</li>
+</ul>
+<p>攻击者一旦控制任意 ECU（例如通过信息娱乐系统漏洞），即可向底盘 CAN 总线注入制动、转向或油门指令帧，实现对车辆行驶的完全控制。</p>
+<h3 id="62-obd-ii">6.2 OBD-II 端口攻击</h3>
+<p>OBD-II（On-Board Diagnostics）诊断端口是所有量产车辆必须提供的标准接口，默认直连 CAN 总线，用于维修诊断。米勒和瓦拉塞克最初的研究正是从物理接入 OBD-II 开始的。</p>
+<p>风险点：
+- 第三方保险监控插件（OBD Dongle）接入 OBD-II 并具备蜂窝上网能力，成为远程攻击的桥梁；
+- 4G OBD 设备本身若存在安全漏洞，将完全开放对 CAN 总线的远程访问；
+- 停车场中的物理接触攻击（数秒内植入恶意设备）难以防范。</p>
+<h3 id="63-wi-fi">6.3 蓝牙与 Wi-Fi 攻击</h3>
+<p>信息娱乐系统通常支持蓝牙和 Wi-Fi，是攻击者最容易接触到的无线入口：</p>
+<ul>
+<li><strong>蓝牙配对漏洞</strong>：历史上多个高危蓝牙漏洞（如 BlueBorne，2017年）可在无需用户交互的情况下实现远程代码执行；</li>
+<li><strong>Wi-Fi 热点劫持</strong>：伪造车辆自动连接的 Wi-Fi 热点（SSID），实施中间人攻击，窃取车主数据；</li>
+<li><strong>横向提权</strong>：娱乐系统获取代码执行权限后，攻击者尝试突破域间隔离，进入 ADAS 或底盘控制域。</li>
+</ul>
+<h3 id="64">6.4 车载以太网攻击</h3>
+<p>高带宽 ADAS 功能（摄像头、LiDAR 数据传输）已普遍采用车载以太网（100BASE-T1 / 1000BASE-T1）。相关风险包括：</p>
+<ul>
+<li><strong>ARP 欺骗</strong>：在以太网段中伪造 ARP 响应，实施中间人攻击，截获传感器原始数据；</li>
+<li><strong>VLAN 跳转</strong>：利用交换机配置缺陷，跨越不同功能域的 VLAN 隔离；</li>
+<li><strong>DoS 攻击</strong>：通过泛洪攻击占用传感器数据带宽，导致感知系统实时性下降。</li>
+</ul>
+<h3 id="65">6.5 防御体系</h3>
+<table>
+<thead>
+<tr>
+<th>防御技术</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SecOC（Secure Onboard Communication）</td>
+<td>AUTOSAR 标准的 CAN 消息认证机制，为每帧附加 MAC 值</td>
+</tr>
+<tr>
+<td>网络分段与域隔离</td>
+<td>娱乐域/ADAS域/底盘域物理或逻辑隔离</td>
+</tr>
+<tr>
+<td>车载防火墙</td>
+<td>网关 ECU 实施白名单规则，过滤跨域流量</td>
+</tr>
+<tr>
+<td>车载 IDS</td>
+<td>实时监控总线异常，详见第 8 节</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-ota">7. OTA 攻击与防御</h2>
+<h3 id="71-ota">7.1 OTA 攻击向量</h3>
+<p>空中下载（OTA，Over-The-Air）更新是自动驾驶系统快速迭代的关键能力，同时也引入了新的攻击面：</p>
+<p><strong>（1）中间人劫持（MitM）</strong></p>
+<p>攻击者在车辆与 OTA 服务器之间拦截更新请求，将恶意固件包替换合法更新包推送至车辆。若更新包缺乏完整性校验，车辆将直接安装恶意固件。</p>
+<p><strong>（2）降级攻击（Rollback Attack）</strong></p>
+<p>攻击者诱导车辆安装含有已知漏洞的旧版本固件，从而利用已被修复的漏洞实施后续攻击。</p>
+<p><strong>（3）恶意固件植入</strong></p>
+<p>通过攻破 OTA 后台服务器或供应链中的固件构建系统，将后门植入固件，随正规更新通道分发至大量车辆。这类攻击危害极大，因为受害者完全不知情。</p>
+<h3 id="72-ota">7.2 OTA 安全防御体系</h3>
+<div class="highlight"><pre><span></span><code>OTA 安全架构
+├── 传输层安全：TLS 1.3 加密通信，防止中间人截获
+├── 代码签名：OEM 私钥对固件包签名（RSA-2048 或 ECDSA-P256）
+├── 安全启动（Secure Boot）：从硬件信任根（RoT）逐级验证引导链
+│   ├── Boot ROM（不可篡改）
+│   ├── Bootloader
+│   └── 操作系统内核 → 应用软件
+├── 版本防降级：固件版本号写入 HSM OTP 区域，拒绝安装低版本
+└── A/B 分区回滚：更新失败自动回滚至上一个已验证的稳定版本
+</code></pre></div>
+<p>安全启动的信任根通常固化在 SoC 的一次性可编程（OTP）熔丝中，存储 OEM 公钥的哈希值，确保即使操作系统被完全攻陷，也无法绕过启动时的签名验证。</p>
+<hr />
+<h2 id="8-idsips">8. 入侵检测系统（IDS/IPS）</h2>
+<h3 id="81-ids">8.1 车载 IDS 架构</h3>
+<p>车载入侵检测系统（In-Vehicle IDS）对车内通信网络进行实时监控，识别异常行为并触发告警或防御响应。典型部署位置：</p>
+<ul>
+<li><strong>CAN 总线 IDS</strong>：监控每条报文的 ID、数据内容、发送频率和时序，识别注入攻击和设备异常；</li>
+<li><strong>车载以太网 IDS</strong>：在网关节点实施深度包检测（DPI），识别异常流量模式；</li>
+<li><strong>主机型 IDS</strong>：在 ECU 操作系统层监控进程行为、系统调用和文件完整性。</li>
+</ul>
+<h3 id="82">8.2 检测方法</h3>
+<p><strong>（1）基于规则的检测（Signature-based）</strong></p>
+<p>维护已知攻击模式的规则库，匹配特定的帧 ID 序列、数据内容或时序特征。优点是误报率低、响应快速；缺点是无法识别未知攻击手法。</p>
+<p><strong>（2）基于机器学习的异常检测（Anomaly-based）</strong></p>
+<p>对正常行为建立基线模型（如每条 CAN 消息的发送周期分布），检测统计偏差。适用于识别未知攻击，但需要持续更新模型以适应软件升级后的行为变化，误报率相对较高。</p>
+<p>常用算法：
+- 单类 SVM（One-Class SVM）：建立正常流量边界；
+- LSTM 时序模型：预测下一帧内容，偏差超过阈值触发告警；
+- 自编码器（Autoencoder）：重建误差作为异常评分。</p>
+<h3 id="83-ids">8.3 IDS 与安全运营中心集成</h3>
+<p>车载 IDS 产生的告警不仅需要在车辆本地响应（如降级到安全模式），还应上报至云端安全运营中心（SOC），以实现车队级别的威胁感知：</p>
+<div class="highlight"><pre><span></span><code>车辆 IDS → 加密上报 → 车辆 SOC → 威胁情报分析 → OTA 修复推送
+                                  ↓
+                         全车队异常模式关联分析
+</code></pre></div>
+<p>ISO/SAE 21434 明确要求制造商在车辆整个运营生命周期内持续监控网络安全威胁，这要求 IDS 与 SOC 的集成是商业化 AV 系统的必备能力。</p>
+<hr />
+<h2 id="9">9. 密钥与证书管理</h2>
+<h3 id="91-hsm">9.1 硬件安全模块（HSM）</h3>
+<p>硬件安全模块（Hardware Security Module）是车载密码学的基础设施，负责生成、存储和使用密钥，同时物理上防止密钥被提取：</p>
+<ul>
+<li><strong>密钥隔离</strong>：私钥永远不离开 HSM 安全边界，所有加解密运算在 HSM 内部完成；</li>
+<li><strong>防篡改设计</strong>：物理攻击（如探针攻击）触发密钥自毁机制；</li>
+<li><strong>SecOC 支持</strong>：为 CAN 消息认证码（CMAC/HMAC）的实时计算提供硬件加速；</li>
+<li><strong>安全存储</strong>：存储安全启动证书、OTA 签名验证公钥、V2X 私钥等敏感材料。</li>
+</ul>
+<p>AUTOSAR 规范定义了 SHE（Secure Hardware Extension）和 HSM 两种标准接口，主流汽车级 MCU（如英飞凌 AURIX、瑞萨 RH850）均已集成符合规范的 HSM 模块。</p>
+<h3 id="92-v2x-pki">9.2 V2X PKI 与假名证书</h3>
+<p>V2X 通信中的身份认证需要在以下两个目标之间取得平衡：</p>
+<ul>
+<li><strong>可信性</strong>：通信消息需经过认证，防止伪造；</li>
+<li><strong>隐私性</strong>：不能让固定标识符暴露车辆的长期位置轨迹。</li>
+</ul>
+<p>解决方案是<strong>假名证书（Pseudonym Certificate）</strong>体系：</p>
+<ol>
+<li>每辆车持有大量短期证书（假名），每个证书使用不同的公钥，无法被关联；</li>
+<li>每隔约 5 分钟切换一次假名证书，切换时机随机化，防止轨迹追踪；</li>
+<li>假名证书由授权机构（Authorization Authority, AA）签发，证书本身不包含车辆身份信息；</li>
+<li>在需要法律追溯时，注册机构（Enrollment Authority, EA）可解除匿名，还原车辆身份。</li>
+</ol>
+<p>欧洲 ETSI 和美国 IEEE 1609.2 标准分别定义了各自的 V2X PKI 架构。</p>
+<h3 id="93">9.3 证书吊销机制</h3>
+<p>当 V2X 设备遭到攻击或私钥泄露时，需要及时吊销其证书：</p>
+<ul>
+<li><strong>CRL（证书吊销列表）</strong>：定期下载全量或增量吊销列表；适用于网络连接不稳定的场景；</li>
+<li><strong>OCSP（在线证书状态协议）</strong>：实时查询单个证书状态；延迟较低但依赖网络连接；</li>
+<li><strong>V2X 场景的特殊挑战</strong>：V2X 通信需要毫秒级的延迟，在线查询不可行，通常采用预下载 CRL 的方式。</li>
+</ul>
+<h3 id="94">9.4 密钥生命周期管理</h3>
+<p>完整的车载密钥生命周期管理包含以下阶段：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>关键活动</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>生成</td>
+<td>在 HSM 内部使用硬件随机数发生器（TRNG）生成密钥</td>
+</tr>
+<tr>
+<td>分发</td>
+<td>通过安全的工厂注入流程或加密通道下发密钥至 HSM</td>
+</tr>
+<tr>
+<td>使用</td>
+<td>密钥在 HSM 内部参与运算，外部只能调用接口而非密钥本身</td>
+</tr>
+<tr>
+<td>更新</td>
+<td>OTA 安全通道下发新密钥，旧密钥失效前完成轮换</td>
+</tr>
+<tr>
+<td>销毁</td>
+<td>车辆报废或转售前，通过安全清零流程销毁所有车载密钥</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10">10. 数据隐私</h2>
+<h3 id="101">10.1 行车数据的敏感性</h3>
+<p>现代自动驾驶车辆每小时可产生数 TB 的传感器原始数据，其中包含高度敏感的个人信息：</p>
+<ul>
+<li><strong>位置轨迹</strong>：精确的行程记录可还原驾驶员的住所、工作地点、就医记录和社交网络；</li>
+<li><strong>驾驶行为</strong>：急刹车、急转向等行为数据可用于保险定价歧视；</li>
+<li><strong>乘客信息</strong>：车内摄像头（DMS）采集的人脸图像属于生物识别数据；</li>
+<li><strong>语音数据</strong>：语音助手录音可能包含极为私密的对话内容；</li>
+<li><strong>充电与停车数据</strong>：可推断车主的日常规律。</li>
+</ul>
+<h3 id="102-dms">10.2 驾驶员监控系统（DMS）数据保护</h3>
+<p>驾驶员监控系统（Driver Monitoring System）通过近红外摄像头持续采集驾驶员面部图像，用于疲劳检测和注意力监控。面部图像和相关生物特征数据是敏感性最高的个人数据之一：</p>
+<ul>
+<li><strong>本地处理原则</strong>：DMS 数据应在车辆本地完成分析，原始图像不得上传至云端；</li>
+<li><strong>最小化存储</strong>：只保留推断结果（如"疲劳状态"），而非原始图像；</li>
+<li><strong>访问控制</strong>：只有经过明确授权的功能模块才能访问 DMS 传感器数据流。</li>
+</ul>
+<h3 id="103">10.3 法规要求</h3>
+<p><strong>GDPR（通用数据保护条例）</strong>（欧盟）：
+- 数据处理须有明确的法律依据（同意、合同履行等）；
+- 数据主体享有访问权、更正权和删除权；
+- 向第三国传输数据须满足充分性认定或标准合同条款要求。</p>
+<p><strong>中国数据安全法规体系</strong>：
+- 《汽车数据安全管理若干规定》（2021年）：明确汽车数据处理者的合规义务；
+- 《个人信息保护法》（PIPL）：对生物识别信息的处理设置更高门槛；
+- <strong>重要数据本地化</strong>：车辆在中国收集的"重要数据"原则上应在境内存储，跨境传输需经安全评估。</p>
+<h3 id="104">10.4 隐私保护技术</h3>
+<table>
+<thead>
+<tr>
+<th>技术</th>
+<th>应用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据最小化</td>
+<td>只收集实现功能所必需的最少数据</td>
+</tr>
+<tr>
+<td>匿名化</td>
+<td>去除可识别个人身份的信息字段</td>
+</tr>
+<tr>
+<td>假名化</td>
+<td>用随机 ID 替代真实身份，保留数据可用性</td>
+</tr>
+<tr>
+<td>差分隐私（Differential Privacy）</td>
+<td>在统计数据中注入受控噪声，防止个体信息被还原</td>
+</tr>
+<tr>
+<td>联邦学习（Federated Learning）</td>
+<td>模型训练在车端进行，只上传梯度而非原始数据</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11">11. 参考资料</h2>
+<ol>
+<li>
+<p><strong>ISO/SAE 21434:2021</strong> — <em>Road Vehicles – Cybersecurity Engineering</em>. ISO &amp; SAE International, 2021.</p>
+</li>
+<li>
+<p><strong>UN ECE WP.29 R155</strong> — <em>Uniform Provisions Concerning the Approval of Vehicles with Regard to Cybersecurity and Cybersecurity Management System</em>. United Nations Economic Commission for Europe, 2021.</p>
+</li>
+<li>
+<p>Miller, C., &amp; Valasek, C. (2015). <strong>Remote exploitation of an unaltered passenger vehicle</strong>. <em>Black Hat USA 2015 Conference Proceedings</em>. （远程接管 Jeep Cherokee 完整技术报告）</p>
+</li>
+<li>
+<p><strong>ETSI EN 303 097</strong> — <em>Intelligent Transport Systems (ITS); Trust and Privacy Management</em>. European Telecommunications Standards Institute. （V2X 假名证书与 PKI 架构标准）</p>
+</li>
+<li>
+<p>Shin, H., et al. (2017). <strong>Illusion and dazzle: Adversarial optical channel exploits against lidars for automotive applications</strong>. <em>CHES 2017</em>. （LiDAR 激光注入攻击研究）</p>
+</li>
+<li>
+<p>中华人民共和国工业和信息化部. <strong>《汽车数据安全管理若干规定》</strong>. 2021年8月发布. （中国汽车数据安全监管基础法规）</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../_static/js/mathjaxhelper.js"></script>
+      
+    
+  </body>
+</html>

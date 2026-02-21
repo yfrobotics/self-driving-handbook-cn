@@ -1,0 +1,3366 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="自动驾驶历史与技术">
+      
+      
+        <meta name="author" content="YFRL">
+      
+      
+        <link rel="canonical" href="https://yfrobotics.github.io/self-driving-handbook-cn/algorithm/end_to_end/">
+      
+      
+        <link rel="prev" href="../control/">
+      
+      
+        <link rel="next" href="../data_pipeline/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>端到端自动驾驶 - 自动驾驶指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,700,700i%7CFira+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Fira Sans";--md-code-font:"Fira Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../_static/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="自动驾驶指南" class="md-header__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            自动驾驶指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              端到端自动驾驶
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yfrobotics/self-driving-handbook-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yfrobotics/self-driving-handbook-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="自动驾驶指南" class="md-nav__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    自动驾驶指南
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yfrobotics/self-driving-handbook-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yfrobotics/self-driving-handbook-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶技术指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 概述
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1. 概述
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一章：概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/define/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶系统定义
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/category/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶等级分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶发展历史
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 系统
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. 系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二章：系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/vehicle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶车辆系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/v2x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车联网（V2X）技术详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真平台与数据集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hdmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高精地图（HD Map）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人机交互系统（HMI）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统安全保障
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶测试体系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/cybersecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶网络安全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/regulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    政策与法律法规
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 硬件
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. 硬件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三章：硬件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/hw_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    硬件总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/ccu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中央计算单元 (CCU / 车载AI芯片)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/drive_by_wire/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线控系统（Drive-by-Wire）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/communication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车载通信系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知传感器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/camera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    视觉传感器（摄像头）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. 算法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4. 算法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第四章：核心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sw_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统软件框架总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图像感知与处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../laser_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    激光点云数据处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensor_fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器融合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../occupancy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    占用网络（Occupancy Network）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localisation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    地图与定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../path_planning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    路径规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prediction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行为预测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../decision_making/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    决策 (Decision Making)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    控制算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端自动驾驶
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端自动驾驶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模块化管线 vs 端到端
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        发展历程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="发展历程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#20152019" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一阶段：行为克隆萌芽（2015–2019）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bev-20202022" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二阶段：BEV 感知 + 模块化辅助（2020–2022）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2023" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三阶段：大规模端到端量产（2023–至今）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键技术
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="关键技术">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#occupancy-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        占用网络（Occupancy Network）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        知识蒸馏与特权学习
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#world-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        世界模型（World Model）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="世界模型（World Model）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定义与核心思想
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gaia-1wayve-2023" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GAIA-1（Wayve, 2023）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drivedreamer-wovogen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DriveDreamer 与 WoVogen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dreamerv3-rssm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DreamerV3 与 RSSM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        世界模型的两大应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        具身智能与驾驶
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="具身智能与驾驶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vlm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VLM 驱动的驾驶推理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chain-of-thought" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        思维链（Chain-of-Thought）驾驶推理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        语言作为中间表达
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        具身智能的接地问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scaling-laws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据扩展律（Scaling Laws）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据扩展律（Scaling Laws）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自动驾驶中的数据扩展现象
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fsd-v12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        特斯拉 FSD V12 的数据规模
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        视频预训练 → 驾驶微调范式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        合成数据与真实数据配比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        端到端安全性
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="端到端安全性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        黑盒不可解释性问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        形式化验证的局限
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neural-symbolic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        神经符号方法（Neural-Symbolic）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#safety-layerrss-cbf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Safety Layer：RSS 与 CBF 安全过滤器
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        典型开源系统
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="典型开源系统">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uniad2023" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UniAD（上海人工智能实验室，2023）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vad2023" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VAD（向量化场景表示端到端，2023）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sparsedrive2024" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SparseDrive（稀疏表示端到端，2024）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#carla-leaderboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CARLA Leaderboard 性能对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据飞轮
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        大模型与具身智能
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶ML数据管道
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nlp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自然语言处理与大语言模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 实例
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    5. 实例
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第五章：实例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/apollo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    百度 Apollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/waymo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waymo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/tesla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla FSD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/chinese_players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国自动驾驶企业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/robotaxi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robotaxi：自动驾驶商业化的主战场
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模块化管线 vs 端到端
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        发展历程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="发展历程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#20152019" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一阶段：行为克隆萌芽（2015–2019）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bev-20202022" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二阶段：BEV 感知 + 模块化辅助（2020–2022）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2023" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三阶段：大规模端到端量产（2023–至今）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键技术
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="关键技术">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#occupancy-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        占用网络（Occupancy Network）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        知识蒸馏与特权学习
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#world-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        世界模型（World Model）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="世界模型（World Model）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定义与核心思想
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gaia-1wayve-2023" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GAIA-1（Wayve, 2023）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drivedreamer-wovogen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DriveDreamer 与 WoVogen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dreamerv3-rssm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DreamerV3 与 RSSM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        世界模型的两大应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        具身智能与驾驶
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="具身智能与驾驶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vlm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VLM 驱动的驾驶推理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chain-of-thought" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        思维链（Chain-of-Thought）驾驶推理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        语言作为中间表达
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        具身智能的接地问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scaling-laws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据扩展律（Scaling Laws）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据扩展律（Scaling Laws）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自动驾驶中的数据扩展现象
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fsd-v12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        特斯拉 FSD V12 的数据规模
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        视频预训练 → 驾驶微调范式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        合成数据与真实数据配比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        端到端安全性
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="端到端安全性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        黑盒不可解释性问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        形式化验证的局限
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neural-symbolic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        神经符号方法（Neural-Symbolic）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#safety-layerrss-cbf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Safety Layer：RSS 与 CBF 安全过滤器
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        典型开源系统
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="典型开源系统">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uniad2023" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UniAD（上海人工智能实验室，2023）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vad2023" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VAD（向量化场景表示端到端，2023）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sparsedrive2024" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SparseDrive（稀疏表示端到端，2024）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#carla-leaderboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CARLA Leaderboard 性能对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据飞轮
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        大模型与具身智能
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">端到端自动驾驶</h1>
+<p>端到端（End-to-End）自动驾驶是一种将传感器输入直接映射到车辆控制输出的统一深度学习框架，与传统的模块化管线（感知→预测→规划→控制）形成鲜明对比。随着深度学习能力的飞跃和数据规模的膨胀，端到端方法正从实验室走向量产。</p>
+<h2 id="vs">模块化管线 vs 端到端</h2>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>模块化管线（Traditional）</th>
+<th>端到端（End-to-End）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统架构</td>
+<td>感知→预测→规划→控制，各模块串行</td>
+<td>统一神经网络，直接输出控制量</td>
+</tr>
+<tr>
+<td>中间表示</td>
+<td>明确（目标列表、轨迹、地图）</td>
+<td>隐式（神经网络内部特征）</td>
+</tr>
+<tr>
+<td>可解释性</td>
+<td>强，每个模块可独立调试</td>
+<td>弱，"黑盒"特性</td>
+</tr>
+<tr>
+<td>错误传播</td>
+<td>上游模块误差在下游级联放大</td>
+<td>端到端联合优化，避免中间量误差</td>
+</tr>
+<tr>
+<td>泛化能力</td>
+<td>受限于人工规则和中间表示质量</td>
+<td>数据驱动，可拟合复杂分布</td>
+</tr>
+<tr>
+<td>训练方式</td>
+<td>各模块独立训练，可用有标注数据</td>
+<td>需要大规模真实驾驶数据或仿真</td>
+</tr>
+<tr>
+<td>工程复杂度</td>
+<td>模块间接口定义复杂，集成调试繁琐</td>
+<td>架构简洁，但数据管理复杂</td>
+</tr>
+</tbody>
+</table>
+<p>两种路线并非绝对对立。业界趋势是<strong>"端到端骨干 + 可解释辅助监督头"</strong>的混合方案：保留端到端的优化能力，同时通过辅助任务（如中间感知监督）提升可解释性和数据效率。</p>
+<h2 id="_2">发展历程</h2>
+<h3 id="20152019">第一阶段：行为克隆萌芽（2015–2019）</h3>
+<p><strong>NVIDIA DAVE-2（2016）——端到端驾驶先驱：</strong></p>
+<p>直接从单摄像头图像预测转向角，是第一个在真实道路验证的端到端系统：</p>
+<div class="highlight"><pre><span></span><code>摄像头图像（3×66×200）
+    │
+5 个卷积层（特征提取）
+    │
+3 个全连接层
+    │
+转向角输出（单个标量）
+</code></pre></div>
+<p>以约 72 小时人类驾驶视频为训练数据，在高速公路测试有效。局限：仅输出转向角，没有纵向控制；遇到训练分布外场景容易失败。</p>
+<p><strong>ChauffeurNet（Waymo/Google, 2019）：</strong></p>
+<p>将感知结果渲染为俯视语义图像（Road Map + Agent Box），再进行端到端规划。规避了原始传感器的复杂性，加入了对抗训练使模型能处理长尾场景（如交通事故、逆行车辆）。</p>
+<h3 id="bev-20202022">第二阶段：BEV 感知 + 模块化辅助（2020–2022）</h3>
+<p>BEV（Bird's Eye View，鸟瞰视角）感知范式兴起，成为端到端系统的标准中间表示：</p>
+<p><strong>BEVFormer（Li et al., ECCV 2022）：</strong>
+- 跨摄像头、跨时间帧的 Transformer 注意力机制
+- 利用空间可变形注意力将多视角图像特征投影到统一 BEV 网格</p>
+<p><strong>BEVDet（Huang et al., 2021）：</strong>
+- 基于 LSS（Lift-Splat-Shoot）方法，通过深度估计将 2D 特征提升到 3D</p>
+<p><strong>UniAD（Hu et al., CVPR 2023 最佳论文）：</strong></p>
+<p>将感知（追踪、在线地图）、预测和规划统一在单一 Transformer 网络中，端到端优化：</p>
+<div class="highlight"><pre><span></span><code>多摄像头 → BEV 编码器 → [追踪头] → [在线地图头] → [运动预测头] → [规划头] → 轨迹
+                                ↕ 跨任务注意力（Query 交互）
+</code></pre></div>
+<p>UniAD 证明了联合优化有助于规划性能，开创了"以规划为导向的感知"研究范式。</p>
+<h3 id="2023">第三阶段：大规模端到端量产（2023–至今）</h3>
+<p><strong>Tesla FSD V12（2023）——首个量产端到端：</strong></p>
+<p>Tesla 宣布将传统 C++ 模块化代码（超过 300,000 行）替换为统一的端到端神经网络，处理从 8 路摄像头到车辆控制的全流程：
+- 输入：8 路摄像头原始图像帧序列
+- 输出：方向盘转角、油门、制动控制量
+- 规模：数千万参数，需要 HW4 FSD 芯片支持</p>
+<p><strong>DriveVLM（Tian et al., Wayve/清华，2024）：</strong>
+将视觉语言模型（VLM）引入端到端驾驶，实现场景理解和自然语言可解释性：
+- VLM 负责场景分析和高层决策生成（用文字描述驾驶意图）
+- 轨迹生成网络负责将文字决策转化为具体轨迹</p>
+<h2 id="_3">关键技术</h2>
+<h3 id="occupancy-network">占用网络（Occupancy Network）</h3>
+<p>传统目标检测输出稀疏的 3D 边界框，受限于预定义类别（无法检测"奇怪的障碍物"）。<strong>占用网络</strong>将三维空间离散化为体素网格，预测每个体素的占据状态和语义：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">O_{xyz} \in \{0, 1\} \times \text{Class}\ =\ f_\theta(I_1, I_2, \ldots, I_N)</div>
+<script type="math/tex; mode=display">O_{xyz} \in \{0, 1\} \times \text{Class}\ =\ f_\theta(I_1, I_2, \ldots, I_N)</script>
+</div>
+<p><strong>优点：</strong>
+- 表达任意形状的障碍物（不受边界框形状限制）
+- 适合开放世界感知（处理从未见过的物体类型）</p>
+<p><strong>代表工作：</strong> Tesla Occupancy（2022 AI Day）、Occ3D（清华，2023）、SurroundOcc（旷视，2023）。</p>
+<h3 id="_4">知识蒸馏与特权学习</h3>
+<p>端到端视觉模型的挑战之一：纯摄像头无法直接获取精确深度，而 LiDAR 可以。<strong>特权学习</strong>（Privileged Learning）让学生网络（仅摄像头）向教师网络（含 LiDAR）学习：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{task}}(\hat{y}, y) + \lambda \, \mathcal{L}_{\text{KD}}(f_{\text{student}},\ f_{\text{teacher}})</div>
+<script type="math/tex; mode=display">\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{task}}(\hat{y}, y) + \lambda \, \mathcal{L}_{\text{KD}}(f_{\text{student}},\ f_{\text{teacher}})</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\mathcal{L}_{\text{KD}}</span><script type="math/tex">\mathcal{L}_{\text{KD}}</script></span> 为特征级或输出级蒸馏损失。推理时仅用摄像头，无需 LiDAR，但获得了接近 LiDAR 水平的感知能力。</p>
+<h2 id="world-model">世界模型（World Model）</h2>
+<h3 id="_5">定义与核心思想</h3>
+<p>世界模型（World Model）是一种通过<strong>自监督学习</strong>构建的环境内部表征，能够在隐空间预测未来状态，从而在不执行实际动作的情况下支持"想象式"规划。其核心思路受认知科学启发：人类驾驶员在行动前会在脑中模拟可能的场景。</p>
+<p>形式上，世界模型由两部分组成：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">z_t \sim p_\theta(z_t \mid z_{t-1},\ a_{t-1}) \quad \text{（状态转移模型）}$$
+$$\hat{x}_t \sim q_\theta(\hat{x}_t \mid z_t) \quad \text{（解码器，将隐状态还原为观测）}</div>
+<script type="math/tex; mode=display">z_t \sim p_\theta(z_t \mid z_{t-1},\ a_{t-1}) \quad \text{（状态转移模型）}$$
+$$\hat{x}_t \sim q_\theta(\hat{x}_t \mid z_t) \quad \text{（解码器，将隐状态还原为观测）}</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">z_t</span><script type="math/tex">z_t</script></span> 为 <span class="arithmatex"><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> 时刻的隐状态，<span class="arithmatex"><span class="MathJax_Preview">a_{t-1}</span><script type="math/tex">a_{t-1}</script></span> 为上一步动作，<span class="arithmatex"><span class="MathJax_Preview">\hat{x}_t</span><script type="math/tex">\hat{x}_t</script></span> 为预测的观测（图像帧）。训练目标为最大化观测的对数似然：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathcal{L} = \mathbb{E}\left[\sum_t \log q_\theta(\hat{x}_t \mid z_t)\right] - \beta\, D_{\text{KL}}\!\left(p_\theta(z_t) \| \mathcal{N}(0, I)\right)</div>
+<script type="math/tex; mode=display">\mathcal{L} = \mathbb{E}\left[\sum_t \log q_\theta(\hat{x}_t \mid z_t)\right] - \beta\, D_{\text{KL}}\!\left(p_\theta(z_t) \| \mathcal{N}(0, I)\right)</script>
+</div>
+<h3 id="gaia-1wayve-2023">GAIA-1（Wayve, 2023）</h3>
+<p>GAIA-1 是首个专门为自动驾驶设计的大规模生成式视频世界模型：</p>
+<ul>
+<li><strong>参数规模</strong>：约 9B 参数（视频生成 Transformer）</li>
+<li><strong>训练数据</strong>：数千小时英国城市道路驾驶视频</li>
+<li><strong>输入条件</strong>：当前摄像头帧 + 驾驶动作（转向角、速度）+ 文本描述（如"变道至左侧"）</li>
+<li><strong>输出</strong>：未来驾驶视频帧序列（60 fps，时间连续）</li>
+</ul>
+<p>GAIA-1 的关键能力：
+1. <strong>反事实推理</strong>：模拟"如果此刻急打方向会怎样"
+2. <strong>长尾场景生成</strong>：可条件生成罕见事故、施工路段等场景
+3. <strong>行为验证</strong>：在部署前对规划轨迹进行"心理演练"</p>
+<h3 id="drivedreamer-wovogen">DriveDreamer 与 WoVogen</h3>
+<p><strong>DriveDreamer（Wang et al., 2023）：</strong></p>
+<p>以结构化道路信息（高精地图、交通框标注）为条件，利用扩散模型生成逼真的驾驶视频：</p>
+<div class="highlight"><pre><span></span><code>输入条件:
+  ├── 高精地图（车道线、路口）
+  ├── 3D 交通参与者边界框序列
+  └── 自车轨迹
+
+扩散模型 (U-Net + 时序注意力)
+
+输出: 多摄像头同步驾驶视频
+</code></pre></div>
+<p><strong>WoVogen（World-Volume Generation）：</strong></p>
+<p>在三维体积空间中进行场景生成，能够保证多摄像头视角的几何一致性，克服了 DriveDreamer 多视角不一致的问题。</p>
+<h3 id="dreamerv3-rssm">DreamerV3 与 RSSM</h3>
+<p>DreamerV3 是通用世界模型的代表，其核心是<strong>循环状态空间模型（Recurrent State Space Model, RSSM）</strong>：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">h_t = f_\phi(h_{t-1},\ z_{t-1},\ a_{t-1}) \quad \text{（确定性循环状态）}$$
+$$z_t \sim p_\phi(z_t \mid h_t) \quad \text{（随机隐状态，先验）}$$
+$$z_t \sim q_\phi(z_t \mid h_t,\ x_t) \quad \text{（后验，基于实际观测）}</div>
+<script type="math/tex; mode=display">h_t = f_\phi(h_{t-1},\ z_{t-1},\ a_{t-1}) \quad \text{（确定性循环状态）}$$
+$$z_t \sim p_\phi(z_t \mid h_t) \quad \text{（随机隐状态，先验）}$$
+$$z_t \sim q_\phi(z_t \mid h_t,\ x_t) \quad \text{（后验，基于实际观测）}</script>
+</div>
+<p>RSSM 将世界状态分解为确定性分量（GRU 维护的历史记忆）和随机分量（Categorical 或 Gaussian 分布），在保留长时依赖的同时支持多样化的未来预测。</p>
+<p>DreamerV3 在自动驾驶中的应用：
+- 完全在"想象空间"中训练 RL 规划器，无需大量真实环境交互
+- 在 Minecraft、Atari 等多任务上达到 SOTA，正向驾驶任务迁移</p>
+<h3 id="_6">世界模型的两大应用</h3>
+<p><strong>数据增强：</strong></p>
+<p>世界模型可将现有真实数据"变形"为新场景：改变天气（晴天→暴雨）、改变交通密度、插入新的参与者，从而低成本扩充长尾数据：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">x_{\text{aug}} = G_\theta(z_{\text{real}},\ c_{\text{new}}) \quad c_{\text{new}} \in \{\text{rain}, \text{night}, \text{fog}, \ldots\}</div>
+<script type="math/tex; mode=display">x_{\text{aug}} = G_\theta(z_{\text{real}},\ c_{\text{new}}) \quad c_{\text{new}} \in \{\text{rain}, \text{night}, \text{fog}, \ldots\}</script>
+</div>
+<p><strong>基于模型的规划（Model-Based Planning）：</strong></p>
+<p>在世界模型的隐空间中搜索最优行动序列，避免真实世界试错：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">a_{0:H}^* = \arg\max_{a_{0:H}} \sum_{t=0}^{H} \gamma^t r(z_t, a_t), \quad z_{t+1} \sim p_\theta(z_{t+1} \mid z_t, a_t)</div>
+<script type="math/tex; mode=display">a_{0:H}^* = \arg\max_{a_{0:H}} \sum_{t=0}^{H} \gamma^t r(z_t, a_t), \quad z_{t+1} \sim p_\theta(z_{t+1} \mid z_t, a_t)</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> 为奖励函数（如行驶进度、舒适性、无碰撞），<span class="arithmatex"><span class="MathJax_Preview">\gamma</span><script type="math/tex">\gamma</script></span> 为折扣因子，<span class="arithmatex"><span class="MathJax_Preview">H</span><script type="math/tex">H</script></span> 为规划时域。</p>
+<h2 id="_7">具身智能与驾驶</h2>
+<h3 id="vlm">VLM 驱动的驾驶推理</h3>
+<p>视觉语言模型（Vision-Language Model, VLM）将大规模语言模型的常识推理能力引入驾驶感知，实现开放词汇的场景理解：</p>
+<p><strong>DriveVLM（2024）：</strong></p>
+<p>采用"慢思考-快执行"双系统架构：
+- <strong>慢系统（VLM 推理）</strong>：理解复杂场景语义，输出驾驶决策描述（文字）
+- <strong>快系统（轨迹网络）</strong>：将文字决策转化为毫秒级控制指令</p>
+<p><strong>DriveLM（Wang et al., ECCV 2024）：</strong></p>
+<p>将驾驶推理建模为<strong>图形视觉问答（Graph VQA）</strong>任务：构建感知→预测→规划的有向推理图，每个节点对应一个问答对：</p>
+<div class="highlight"><pre><span></span><code>Q: &quot;前方行人是否有穿越意图？&quot;
+A: &quot;是，行人朝向道路，速度约 1.2 m/s&quot;
+  ↓
+Q: &quot;如何响应？&quot;
+A: &quot;减速至 10 km/h，准备礼让&quot;
+  ↓
+Q: &quot;目标轨迹是什么？&quot;
+A: &quot;在 2 s 内减速，保持当前车道&quot;
+</code></pre></div>
+<h3 id="chain-of-thought">思维链（Chain-of-Thought）驾驶推理</h3>
+<p>普通端到端模型直接输出控制量，缺乏中间推理过程。CoT 驾驶要求模型在生成控制指令前显式输出推理步骤：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\text{输入图像} \rightarrow \underbrace{\text{场景描述} \rightarrow \text{风险分析} \rightarrow \text{决策意图}}_{\text{思维链（可见文字）}} \rightarrow \text{控制指令}</div>
+<script type="math/tex; mode=display">\text{输入图像} \rightarrow \underbrace{\text{场景描述} \rightarrow \text{风险分析} \rightarrow \text{决策意图}}_{\text{思维链（可见文字）}} \rightarrow \text{控制指令}</script>
+</div>
+<p>CoT 推理的优势：
+1. <strong>可解释性</strong>：可审查每一步推理是否合理
+2. <strong>推理质量</strong>：复杂场景（如建筑工地、非常规交通）下决策准确率更高
+3. <strong>标注友好</strong>：文字标注成本低于密集轨迹标注</p>
+<h3 id="_8">语言作为中间表达</h3>
+<p>传统端到端中间表示为 BEV 特征图（数值张量）。语言中间表示将其替换为自然语言描述，实现人类可读的中间过程：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>传统表示</th>
+<th>语言表示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>场景描述</td>
+<td>BEV 占据图 + 目标列表</td>
+<td>"前方 15m 有一辆公共汽车正在靠站，右侧有骑行者"</td>
+</tr>
+<tr>
+<td>风险分析</td>
+<td>碰撞概率热图</td>
+<td>"公共汽车可能突然停车，骑行者可能横穿"</td>
+</tr>
+<tr>
+<td>规划意图</td>
+<td>候选轨迹集合</td>
+<td>"减速并向左移动半个车道以保持安全距离"</td>
+</tr>
+<tr>
+<td>控制输出</td>
+<td><span class="arithmatex"><span class="MathJax_Preview">(\delta, a)</span><script type="math/tex">(\delta, a)</script></span> 数值</td>
+<td>轨迹点序列 + 速度曲线</td>
+</tr>
+</tbody>
+</table>
+<p>语言中间表达的局限：推理延迟高（LLM 推理 &gt; 500 ms），难以满足实时控制要求，通常需要异步或缓存机制。</p>
+<h3 id="_9">具身智能的接地问题</h3>
+<p>将语言模型与真实驾驶世界对齐（Grounding）面临根本性挑战：</p>
+<ol>
+<li><strong>空间接地</strong>：语言模型天然缺乏精确空间感知（"前方 15 m"对 LLM 是模糊概念）</li>
+<li><strong>时序接地</strong>：驾驶场景以 10 Hz 变化，而 LLM 推理延迟以秒计</li>
+<li><strong>分布漂移</strong>：LLM 在网络文本上预训练，驾驶场景描述与预训练分布差异大</li>
+<li><strong>幻觉问题</strong>：LLM 可能"虚构"不存在的障碍物或交通规则</li>
+</ol>
+<p>解决方向：多模态对齐训练（视觉 token 与语言 token 联合训练）、视觉感知模块与语言推理模块的专门接口设计、以真实驾驶数据进行指令微调。</p>
+<h2 id="scaling-laws">数据扩展律（Scaling Laws）</h2>
+<h3 id="_10">自动驾驶中的数据扩展现象</h3>
+<p>Scaling Laws 最初由 OpenAI 在语言模型研究中发现：模型性能随参数量 <span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>、数据量 <span class="arithmatex"><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span>、算力 <span class="arithmatex"><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> 呈幂律增长：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">L(N, D) \propto N^{-\alpha} + D^{-\beta} + L_\infty</div>
+<script type="math/tex; mode=display">L(N, D) \propto N^{-\alpha} + D^{-\beta} + L_\infty</script>
+</div>
+<p>自动驾驶领域同样观察到类似现象：随着训练数据规模增加，端到端模型在各类场景上的干预率（Human Intervention Rate）持续下降，且未见明显饱和趋势。</p>
+<h3 id="fsd-v12">特斯拉 FSD V12 的数据规模</h3>
+<p>Tesla 是目前端到端自动驾驶数据规模最大的公司：</p>
+<ul>
+<li><strong>车队规模</strong>：全球超过 600 万辆具备数据采集能力的车辆</li>
+<li><strong>年采集里程</strong>：数十亿英里</li>
+<li><strong>视频帧数</strong>：训练 FSD V12 使用数百亿图像帧（估计）</li>
+<li><strong>标注方式</strong>：自动标注为主，人工复核为辅</li>
+<li><strong>算力投入</strong>：约 10,000 块 H100 GPU 组成的 Dojo 超算集群</li>
+</ul>
+<p>Tesla Elon Musk 公开表示，FSD V12 相比 V11 的核心改进来自于将训练数据从 10 亿帧扩展到 100 亿帧以上（10 倍数据量提升），而非模型架构创新。</p>
+<h3 id="_11">视频预训练 → 驾驶微调范式</h3>
+<p>借鉴 LLM 的"预训练 + 微调"范式，驾驶世界模型采用两阶段训练：</p>
+<p><strong>第一阶段：大规模视频预训练</strong></p>
+<p>在互联网视频（YouTube 行车记录仪、街景视频）上进行自监督预训练，学习物理世界的通用视觉动态：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathcal{L}_{\text{pretrain}} = -\sum_t \log p_\theta(\hat{x}_t \mid x_{&lt;t})</div>
+<script type="math/tex; mode=display">\mathcal{L}_{\text{pretrain}} = -\sum_t \log p_\theta(\hat{x}_t \mid x_{<t})</script>
+</div>
+<p>视频 token 预测（类似语言模型的下一个 token 预测）。</p>
+<p><strong>第二阶段：驾驶场景微调</strong></p>
+<p>在真实或合成驾驶数据上进行有监督微调，引入驾驶特定的动作条件和奖励信号：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathcal{L}_{\text{finetune}} = \mathcal{L}_{\text{pred}} + \lambda_1 \mathcal{L}_{\text{action}} + \lambda_2 \mathcal{L}_{\text{safety}}</div>
+<script type="math/tex; mode=display">\mathcal{L}_{\text{finetune}} = \mathcal{L}_{\text{pred}} + \lambda_1 \mathcal{L}_{\text{action}} + \lambda_2 \mathcal{L}_{\text{safety}}</script>
+</div>
+<p>这一范式的优势：视频预训练赋予模型对光照、天气、物理运动的强先验，大幅降低驾驶阶段的数据需求。</p>
+<h3 id="_12">合成数据与真实数据配比</h3>
+<p>合成数据（来自仿真引擎或生成模型）成本低但存在领域偏差（Sim-to-Real Gap），真实数据昂贵但质量高：</p>
+<table>
+<thead>
+<tr>
+<th>数据来源</th>
+<th>成本</th>
+<th>数量上限</th>
+<th>真实性</th>
+<th>典型用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>真实采集</td>
+<td>高</td>
+<td>受车队规模限制</td>
+<td>高</td>
+<td>核心训练集</td>
+</tr>
+<tr>
+<td>CARLA 仿真</td>
+<td>低</td>
+<td>无上限</td>
+<td>中（视觉差距大）</td>
+<td>规则学习、结构性场景</td>
+</tr>
+<tr>
+<td>神经渲染（NeRF）</td>
+<td>中</td>
+<td>有限（基于真实场景重建）</td>
+<td>很高</td>
+<td>数据增强、视角扩展</td>
+</tr>
+<tr>
+<td>生成模型（扩散）</td>
+<td>低-中</td>
+<td>较大</td>
+<td>中-高</td>
+<td>长尾场景补充</td>
+</tr>
+</tbody>
+</table>
+<p>业界普遍经验：合成数据与真实数据的最优比例约为 <strong>3:1 至 10:1</strong>（合成数据更多），但过高比例的合成数据会导致性能下降（合成数据与真实数据在特征分布上存在差异）。</p>
+<h2 id="_13">端到端安全性</h2>
+<h3 id="_14">黑盒不可解释性问题</h3>
+<p>端到端神经网络的核心安全挑战在于其<strong>不可解释性（Black-Box Nature）</strong>：</p>
+<ul>
+<li>无法事先枚举所有失效场景</li>
+<li>在训练分布外（Out-of-Distribution, OOD）的行为无法预测</li>
+<li>调试困难：当系统做出错误决策时，难以定位原因</li>
+</ul>
+<p>典型失效案例：对抗样本（Adversarial Example）——在路牌上贴一张人眼不可察觉的贴纸，可导致分类器完全失效，而基于规则的感知系统通常不会有此问题。</p>
+<h3 id="_15">形式化验证的局限</h3>
+<p>形式化验证（Formal Verification）在传统软件中证明程序满足规约（Specification），但在深度神经网络上面临根本性困难：</p>
+<ul>
+<li><strong>参数空间维度过高</strong>：数十亿参数的网络状态空间无法穷举</li>
+<li><strong>输入空间无界</strong>：高维图像输入空间（224×224×3 = 150,528 维）的覆盖不可能完备</li>
+<li><strong>当前 SOTA</strong>：仅能验证极小型网络（&lt; 10,000 参数）在有限输入扰动下的局部鲁棒性</li>
+</ul>
+<p>神经网络验证工具（ERAN、Marabou、α-β-CROWN）的实用限制：网络层数 &lt; 20 层，输入扰动半径 <span class="arithmatex"><span class="MathJax_Preview">\epsilon &lt; 0.01</span><script type="math/tex">\epsilon < 0.01</script></span>（L∞ 范数），与量产网络差距数个数量级。</p>
+<h3 id="neural-symbolic">神经符号方法（Neural-Symbolic）</h3>
+<p>神经符号方法将神经网络的感知能力与符号逻辑的可验证性结合：</p>
+<p><strong>架构分层：</strong></p>
+<div class="highlight"><pre><span></span><code>原始传感器输入
+      │
+[神经感知层] → 符号化中间表示（抽象场景图）
+      │
+[符号推理层] → 规则引擎 + 时序逻辑约束
+      │
+[控制输出层] → 经验证的动作指令
+</code></pre></div>
+<p><strong>优势：</strong> 符号层可进行形式化推理（如"如果行人在斑马线内，必须减速"）</p>
+<p><strong>劣势：</strong> 神经感知到符号表示的转换（Perception-to-Symbol）本身是个神经网络，仍有不确定性；符号规则无法覆盖所有长尾场景</p>
+<p>代表工作：DeepProbLog（结合概率逻辑与深度学习）、Neuro-Symbolic Concept Learner（NS-CL）。</p>
+<h3 id="safety-layerrss-cbf">Safety Layer：RSS 与 CBF 安全过滤器</h3>
+<p>最实用的安全方案是在端到端输出上叠加独立的安全过滤层，对不安全的控制指令进行修正或拒绝：</p>
+<p><strong>责任敏感安全（Responsibility-Sensitive Safety, RSS）：</strong></p>
+<p>由 Intel Mobileye 提出，定义了一套形式化的安全驾驶规则集（如最小安全距离、响应时间约束），构成可证明安全的驾驶包络：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">d_{\text{min,rear}} = v_r t_{\text{resp}} + \frac{v_r^2}{2a_{\text{max,brake}}} - \frac{v_f^2}{2a_{\text{min,brake}}}</div>
+<script type="math/tex; mode=display">d_{\text{min,rear}} = v_r t_{\text{resp}} + \frac{v_r^2}{2a_{\text{max,brake}}} - \frac{v_f^2}{2a_{\text{min,brake}}}</script>
+</div>
+<p>若端到端输出的控制指令会违反 RSS 约束，则用 RSS 计算的安全指令替代。</p>
+<p><strong>控制障碍函数（Control Barrier Function, CBF）：</strong></p>
+<p>CBF 是一种基于李雅普诺夫方法的实时安全约束，将安全集 <span class="arithmatex"><span class="MathJax_Preview">\mathcal{C}</span><script type="math/tex">\mathcal{C}</script></span> 定义为状态空间中的不变集：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">h(x) \geq 0 \Rightarrow x \in \mathcal{C} \quad \text{（安全区域）}</div>
+<script type="math/tex; mode=display">h(x) \geq 0 \Rightarrow x \in \mathcal{C} \quad \text{（安全区域）}</script>
+</div>
+<div class="arithmatex">
+<div class="MathJax_Preview">\dot{h}(x, u) \geq -\gamma h(x) \quad \text{（CBF 条件，确保系统不会离开安全集）}</div>
+<script type="math/tex; mode=display">\dot{h}(x, u) \geq -\gamma h(x) \quad \text{（CBF 条件，确保系统不会离开安全集）}</script>
+</div>
+<p>实时 QP 过滤器：在满足 CBF 条件的前提下，寻找最接近端到端输出的安全控制指令：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">u_{\text{safe}} = \arg\min_u \|u - u_{\text{e2e}}\|^2 \quad \text{s.t.} \quad \dot{h}(x, u) \geq -\gamma h(x)</div>
+<script type="math/tex; mode=display">u_{\text{safe}} = \arg\min_u \|u - u_{\text{e2e}}\|^2 \quad \text{s.t.} \quad \dot{h}(x, u) \geq -\gamma h(x)</script>
+</div>
+<p>CBF QP 的求解时间 &lt; 1 ms，可在 1 kHz 控制频率下运行，不影响系统实时性。</p>
+<h2 id="_16">典型开源系统</h2>
+<h3 id="uniad2023">UniAD（上海人工智能实验室，2023）</h3>
+<p>UniAD（Unified Autonomous Driving）是 CVPR 2023 最佳论文，首次将感知、预测、规划统一在单一 Transformer 网络中端到端优化：</p>
+<p><strong>系统架构：</strong></p>
+<div class="highlight"><pre><span></span><code>多摄像头输入
+    │
+BEV 编码器（BEVFormer）
+    │
+┌───┴───┐
+追踪头   地图头
+（TrackFormer）（MapFormer）
+     │
+  运动预测头（MotionFormer）
+     │
+  占用预测头（OccupancyFlow）
+     │
+  规划头（PlannerMLP）
+     │
+  规划轨迹输出
+</code></pre></div>
+<p>所有模块通过<strong>跨任务 Transformer 注意力</strong>共享特征，上游任务（追踪、地图）为规划头提供丰富语义上下文。</p>
+<p><strong>nuScenes 开放数据集性能：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>UniAD</th>
+<th>传统模块化基线</th>
+<th>提升</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>规划碰撞率（L2=2s）</td>
+<td>0.48%</td>
+<td>0.87%</td>
+<td>-45%</td>
+</tr>
+<tr>
+<td>规划 L2 偏差（3s）</td>
+<td>0.88 m</td>
+<td>1.45 m</td>
+<td>-39%</td>
+</tr>
+<tr>
+<td>追踪 AMOTA</td>
+<td>0.359</td>
+<td>0.293</td>
+<td>+22%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vad2023">VAD（向量化场景表示端到端，2023）</h3>
+<p>VAD（Vectorized scene representation for efficient Autonomous Driving）以向量化表示替代栅格 BEV 特征，大幅降低计算量：</p>
+<p><strong>核心创新：</strong>
+- 用向量（折线、多边形）而非密集栅格表示车道线、代理轨迹
+- 向量交叉注意力替代空间卷积，参数更少，速度更快
+- 引入场景约束损失：规划轨迹须满足地图拓扑约束（不逆行、不压实线）</p>
+<p><strong>性能对比（nuScenes val）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>VAD-Base</th>
+<th>UniAD</th>
+<th>VAD-Tiny（轻量版）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>碰撞率（1s）</td>
+<td>0.17%</td>
+<td>0.20%</td>
+<td>0.21%</td>
+</tr>
+<tr>
+<td>L2（3s）</td>
+<td>0.72 m</td>
+<td>0.88 m</td>
+<td>0.83 m</td>
+</tr>
+<tr>
+<td>推理速度</td>
+<td>16.8 FPS</td>
+<td>1.8 FPS</td>
+<td>33.5 FPS</td>
+</tr>
+</tbody>
+</table>
+<p>VAD-Tiny 以接近 UniAD 的性能实现约 18 倍的速度提升，更适合量产部署。</p>
+<h3 id="sparsedrive2024">SparseDrive（稀疏表示端到端，2024）</h3>
+<p>SparseDrive 将稀疏 3D 表示引入端到端框架，进一步降低计算复杂度：</p>
+<p><strong>核心思想：</strong> 仅在有意义的 3D 位置（目标、车道节点）维护稀疏特征，而非对整个 BEV 空间进行密集计算：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">\mathbf{F}_{\text{sparse}} = \{(p_i, f_i)\}_{i=1}^{M}, \quad M \ll H \times W</div>
+<script type="math/tex; mode=display">\mathbf{F}_{\text{sparse}} = \{(p_i, f_i)\}_{i=1}^{M}, \quad M \ll H \times W</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">p_i \in \mathbb{R}^3</span><script type="math/tex">p_i \in \mathbb{R}^3</script></span> 为空间位置，<span class="arithmatex"><span class="MathJax_Preview">f_i \in \mathbb{R}^C</span><script type="math/tex">f_i \in \mathbb{R}^C</script></span> 为对应特征，<span class="arithmatex"><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> 为稀疏 token 数（约 200–500 个），远小于密集 BEV 特征图的 token 数（通常 2500–10000 个）。</p>
+<p><strong>性能表现（nuScenes val）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>SparseDrive-S</th>
+<th>SparseDrive-B</th>
+<th>VAD-Base</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L2（1s/2s/3s）</td>
+<td>0.32/0.56/0.78 m</td>
+<td>0.31/0.54/0.74 m</td>
+<td>0.54/0.72/0.94 m</td>
+</tr>
+<tr>
+<td>碰撞率（3s）</td>
+<td>0.05%</td>
+<td>0.04%</td>
+<td>0.06%</td>
+</tr>
+<tr>
+<td>推理延迟</td>
+<td>39 ms</td>
+<td>58 ms</td>
+<td>比较基准</td>
+</tr>
+</tbody>
+</table>
+<h3 id="carla-leaderboard">CARLA Leaderboard 性能对比</h3>
+<table>
+<thead>
+<tr>
+<th>系统</th>
+<th>公开时间</th>
+<th>Driving Score</th>
+<th>Route Completion</th>
+<th>Infraction Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LAV（Learning from All Vehicles）</td>
+<td>2022</td>
+<td>61.8</td>
+<td>94.1%</td>
+<td>0.71</td>
+</tr>
+<tr>
+<td>TCP（Trajectory-guided Control Prediction）</td>
+<td>2022</td>
+<td>75.9</td>
+<td>95.6%</td>
+<td>0.80</td>
+</tr>
+<tr>
+<td>UniAD（CARLA 适配版）</td>
+<td>2023</td>
+<td>78.4</td>
+<td>96.8%</td>
+<td>0.82</td>
+</tr>
+<tr>
+<td>VAD</td>
+<td>2023</td>
+<td>81.2</td>
+<td>97.3%</td>
+<td>0.83</td>
+</tr>
+<tr>
+<td>DriveVLM-Dual</td>
+<td>2024</td>
+<td>85.7</td>
+<td>98.1%</td>
+<td>0.88</td>
+</tr>
+</tbody>
+</table>
+<p>注：Driving Score = Route Completion × Infraction Score，满分为 100。数值来源于各论文报告，评测版本和传感器配置可能不完全一致。</p>
+<h2 id="_17">数据飞轮</h2>
+<p>端到端自动驾驶的核心竞争力是<strong>数据飞轮</strong>（Data Flywheel）：</p>
+<div class="highlight"><pre><span></span><code>更多行驶里程
+      │
+      ▼
+更多真实驾驶数据
+      │
+      ▼
+更好的端到端模型
+      │
+      ▼
+更安全 / 更智能的驾驶
+      │
+      ▼
+更多用户接受 → 更多订阅收入 → 更多部署车辆
+      │
+      └──────────────────────────────────────┘
+                    （循环飞轮）
+</code></pre></div>
+<p><strong>关键数据技术：</strong></p>
+<table>
+<thead>
+<tr>
+<th>技术</th>
+<th>描述</th>
+<th>目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>影子模式（Shadow Mode）</td>
+<td>实车运行时记录自动驾驶"如果接管会怎么做"</td>
+<td>低风险大规模评估与数据收集</td>
+</tr>
+<tr>
+<td>自动标注（Auto-Labeling）</td>
+<td>离线用多帧 LiDAR 重建 3D 点云，为视觉数据提供伪标注</td>
+<td>降低人工标注成本</td>
+</tr>
+<tr>
+<td>场景挖掘（Scene Mining）</td>
+<td>从海量数据中自动检索困难场景（变道干扰、鬼探头）进行重点训练</td>
+<td>覆盖长尾分布</td>
+</tr>
+<tr>
+<td>对抗数据生成</td>
+<td>用仿真或 GAN 生成罕见危险场景</td>
+<td>提升边角场景覆盖</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_18">大模型与具身智能</h2>
+<p>最前沿的研究将<strong>大语言模型（LLM）</strong>和<strong>视觉语言模型（VLM）</strong>引入自动驾驶：</p>
+<p><strong>GPT-Driver（Mao et al., 2023）：</strong>
+将运动规划问题建模为自然语言生成任务，用 GPT-3.5 直接输出结构化轨迹：
+- 优点：天然可解释（"因为前方有行人，所以我减速至 20 km/h"）
+- 挑战：推理延迟 &gt; 1 s，远超实时控制要求</p>
+<p><strong>DriveVLM（2024）：</strong>
+结合 VLM 的常识推理能力（理解"婚礼车队"、"施工人员"等语义）和高效轨迹生成网络：
+- 双系统设计：慢速 VLM（决策层）+ 快速轨迹网络（执行层）
+- 覆盖"什么是前方物体、应如何响应"的语义推理</p>
+<p><strong>趋势展望：</strong>
+- 感知、预测、规划、控制的边界将进一步模糊
+- 世界模型将成为自动驾驶的"大脑"
+- 多模态大模型将带来更强的零样本泛化和语言可解释性</p>
+<h2 id="_19">参考资料</h2>
+<ol>
+<li>M. Bojarski et al. End to End Learning for Self-Driving Cars. NVIDIA, arXiv:1604.07316, 2016.</li>
+<li>M. Hu et al. Planning-Oriented Autonomous Driving (UniAD). CVPR Best Paper, 2023.</li>
+<li>A. Hu et al. GAIA-1: A Generative World Model for Autonomous Driving. arXiv:2309.17080, 2023.</li>
+<li>Tesla. AI Day Technical Presentations, 2021–2023.</li>
+<li>Y. Tian et al. DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models. arXiv:2402.12289, 2024.</li>
+<li>S. Wang et al. DriveLM: Driving with Graph Visual Question Answering. ECCV, 2024.</li>
+<li>J. Jiang et al. VAD: Vectorized Scene Representation for Efficient Autonomous Driving. ICCV, 2023.</li>
+<li>Z. Sun et al. SparseDrive: End-to-End Autonomous Driving via Sparse Scene Representation. arXiv:2405.19620, 2024.</li>
+<li>D. Hafner et al. Mastering Diverse Domains through World Models (DreamerV3). arXiv:2301.04104, 2023.</li>
+<li>W. Wang et al. DriveDreamer: Towards Real-world-driven World Models for Autonomous Driving. arXiv:2309.09777, 2023.</li>
+<li>S. Shalev-Shwartz et al. On a Formal Model of Safe and Scalable Self-driving Cars (RSS). arXiv:1708.06374, 2017.</li>
+<li>A. D. Ames et al. Control Barrier Functions: Theory and Applications. European Control Conference, 2019.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../_static/js/mathjaxhelper.js"></script>
+      
+    
+  </body>
+</html>

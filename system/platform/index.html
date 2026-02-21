@@ -18,18 +18,18 @@
         <link rel="prev" href="../v2x/">
       
       
-        <link rel="next" href="../safety/">
+        <link rel="next" href="../hdmap/">
       
       
         
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
-        <title>设计与仿真平台 - 自动驾驶指南</title>
+        <title>仿真平台与数据集 - 自动驾驶指南</title>
       
     
     
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              设计与仿真平台
+              仿真平台与数据集
             
           </span>
         </div>
@@ -317,7 +317,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶介绍
+    第一章：概述
   
 
     
@@ -373,7 +373,35 @@
   <span class="md-ellipsis">
     
   
-    自主性等级分类
+    自动驾驶等级分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶发展历史
   
 
     
@@ -457,7 +485,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶系统
+    第二章：系统
   
 
     
@@ -485,7 +513,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶车辆
+    自动驾驶车辆系统
   
 
     
@@ -513,7 +541,7 @@
   <span class="md-ellipsis">
     
   
-    智能交通
+    车联网（V2X）技术详解
   
 
     
@@ -550,7 +578,7 @@
   <span class="md-ellipsis">
     
   
-    设计与仿真平台
+    仿真平台与数据集
   
 
     
@@ -568,7 +596,7 @@
   <span class="md-ellipsis">
     
   
-    设计与仿真平台
+    仿真平台与数据集
   
 
     
@@ -597,63 +625,85 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        开发与仿真平台
+        仿真平台详解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="仿真平台详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carlaue4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CARLA（开源，基于UE4）
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#lgsvl-svl-simulator" class="md-nav__link">
     <span class="md-ellipsis">
       
-        仿真核心能力
+        LGSVL / SVL Simulator
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="仿真核心能力">
-      <ul class="md-nav__list">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#airsimue4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AirSim（微软，基于UE4）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matlab-simulink" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MATLAB / Simulink
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nvidia-drive-simomniverse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NVIDIA DRIVE Sim（基于Omniverse）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        内部仿真平台
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        传感器仿真
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        场景生成
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        车辆动力学
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        交通流仿真
+        仿真平台对比
       
     </span>
   </a>
@@ -666,7 +716,356 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公开数据集
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="公开数据集">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kitti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KITTI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nuscenes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nuScenes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#waymo-open-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Waymo Open Dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#argoverse-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Argoverse 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#once" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ONCE（中国，一汽集团）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opendv-drivex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenDV / DriveX
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据集对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        场景描述语言
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="场景描述语言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openscenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenSCENARIO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opendrive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenDRIVE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        场景库管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#closed-loop-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        闭环评估（Closed-Loop Evaluation）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="闭环评估（Closed-Loop Evaluation）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        开环 vs 闭环的本质区别
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nuplan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nuPlan闭环规划基准
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#waymo-womd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Waymo WOMD运动预测挑战
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pdm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PDM评估框架
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#synthetic-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        合成数据生成（Synthetic Data）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="合成数据生成（Synthetic Data）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#domain-randomization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        域随机化（Domain Randomization）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nerf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NeRF场景重建
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        扩散模型驾驶视频生成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        合成数据配方
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        测试验证框架
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="测试验证框架">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scenario-based-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于场景的测试（Scenario-Based Testing）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coverage-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        覆盖率指标（Coverage Metrics）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#critical-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键场景（Critical Scenario）识别
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accelerated-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        加速仿真（Accelerated Simulation）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        百亿英里等效测试
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         参考资料
@@ -692,6 +1091,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../hdmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高精地图（HD Map）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人机交互系统（HMI）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../safety/" class="md-nav__link">
         
   
@@ -700,6 +1155,62 @@
     
   
     系统安全保障
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶测试体系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cybersecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶网络安全
   
 
     
@@ -809,7 +1320,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶硬件
+    第三章：硬件
   
 
     
@@ -865,7 +1376,7 @@
   <span class="md-ellipsis">
     
   
-    中控单元 (AI芯片, GPGPU)
+    中央计算单元 (CCU / 车载AI芯片)
   
 
     
@@ -893,7 +1404,7 @@
   <span class="md-ellipsis">
     
   
-    线控系统
+    线控系统（Drive-by-Wire）
   
 
     
@@ -921,7 +1432,7 @@
   <span class="md-ellipsis">
     
   
-    车内总线
+    车载通信系统
   
 
     
@@ -977,7 +1488,7 @@
   <span class="md-ellipsis">
     
   
-    视觉传感器
+    视觉传感器（摄像头）
   
 
     
@@ -1059,7 +1570,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶核心算法
+    第四章：核心算法
   
 
     
@@ -1115,7 +1626,7 @@
   <span class="md-ellipsis">
     
   
-    图像识别与分割
+    图像感知与处理
   
 
     
@@ -1144,6 +1655,62 @@
     
   
     激光点云数据处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sensor_fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器融合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/occupancy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    占用网络（Occupancy Network）
   
 
     
@@ -1220,6 +1787,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/prediction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行为预测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/decision_making/" class="md-nav__link">
         
   
@@ -1227,7 +1822,91 @@
   <span class="md-ellipsis">
     
   
-    决策 (Decision Making Process)
+    决策 (Decision Making)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    控制算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/end_to_end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端自动驾驶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/data_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶ML数据管道
   
 
     
@@ -1255,7 +1934,7 @@
   <span class="md-ellipsis">
     
   
-    自然语言识别与交互
+    自然语言处理与大语言模型
   
 
     
@@ -1337,7 +2016,7 @@
   <span class="md-ellipsis">
     
   
-    自动驾驶案例
+    第五章：实例
   
 
     
@@ -1365,7 +2044,119 @@
   <span class="md-ellipsis">
     
   
-    百度无人驾驶
+    百度 Apollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/waymo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waymo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/tesla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla FSD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/chinese_players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国自动驾驶企业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/robotaxi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robotaxi：自动驾驶商业化的主战场
   
 
     
@@ -1416,63 +2207,85 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        开发与仿真平台
+        仿真平台详解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="仿真平台详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carlaue4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CARLA（开源，基于UE4）
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#lgsvl-svl-simulator" class="md-nav__link">
     <span class="md-ellipsis">
       
-        仿真核心能力
+        LGSVL / SVL Simulator
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="仿真核心能力">
-      <ul class="md-nav__list">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#airsimue4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AirSim（微软，基于UE4）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matlab-simulink" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MATLAB / Simulink
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nvidia-drive-simomniverse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NVIDIA DRIVE Sim（基于Omniverse）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        内部仿真平台
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        传感器仿真
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        场景生成
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        车辆动力学
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        交通流仿真
+        仿真平台对比
       
     </span>
   </a>
@@ -1485,7 +2298,356 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公开数据集
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="公开数据集">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kitti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KITTI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nuscenes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nuScenes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#waymo-open-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Waymo Open Dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#argoverse-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Argoverse 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#once" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ONCE（中国，一汽集团）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opendv-drivex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenDV / DriveX
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据集对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        场景描述语言
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="场景描述语言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openscenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenSCENARIO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opendrive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenDRIVE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        场景库管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#closed-loop-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        闭环评估（Closed-Loop Evaluation）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="闭环评估（Closed-Loop Evaluation）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        开环 vs 闭环的本质区别
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nuplan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nuPlan闭环规划基准
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#waymo-womd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Waymo WOMD运动预测挑战
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pdm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PDM评估框架
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#synthetic-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        合成数据生成（Synthetic Data）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="合成数据生成（Synthetic Data）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#domain-randomization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        域随机化（Domain Randomization）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nerf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NeRF场景重建
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        扩散模型驾驶视频生成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        合成数据配方
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        测试验证框架
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="测试验证框架">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scenario-based-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于场景的测试（Scenario-Based Testing）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coverage-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        覆盖率指标（Coverage Metrics）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#critical-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键场景（Critical Scenario）识别
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accelerated-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        加速仿真（Accelerated Simulation）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        百亿英里等效测试
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         参考资料
@@ -1512,83 +2674,521 @@
 
 
 
-<h1 id="_1">设计与仿真平台</h1>
-<p>仿真平台在自动驾驶开发中扮演着关键角色。由于真实路测成本高、危险场景难以复现，仿真系统可以在虚拟环境中高效验证感知、规划和控制算法，加速开发迭代。业界普遍认为自动驾驶系统需要数十亿公里的验证里程，仿真是实现这一目标的唯一可行途径。</p>
-<h2 id="_2">开发与仿真平台</h2>
+<h1 id="_1">仿真平台与数据集</h1>
+<p>仿真平台和公开数据集是自动驾驶开发的"虚拟试验场"，能够大幅降低测试成本和安全风险。由于真实路测成本极高、危险边缘场景（Corner Cases）难以在现实中复现，仿真系统可以在虚拟环境中高效验证感知、规划和控制算法，加速开发迭代。业界普遍认为自动驾驶系统需要数百亿公里的验证里程，仿真是实现这一目标的唯一可行途径。</p>
+<p>公开数据集则为算法训练和基准测试提供了标准化的评测环境，推动了学术界和工业界的技术进步。两者相辅相成：仿真平台负责生成合成数据和闭环测试，公开数据集提供真实世界的分布参考，共同构成自动驾驶技术验证的完整生态。</p>
+<h2 id="_2">仿真平台详解</h2>
+<h3 id="carlaue4">CARLA（开源，基于UE4）</h3>
+<p><a href="http://carla.org/">CARLA</a>（Car Learning to Act）是当前学术界最广泛使用的开源自动驾驶仿真器，由巴塞罗那自治大学与英特尔实验室联合开发，基于虚幻引擎4（Unreal Engine 4）构建，提供高质量的视觉效果和物理仿真。</p>
+<p><strong>传感器仿真能力：</strong></p>
+<ul>
+<li><strong>摄像头</strong>：RGB、深度（Depth）、语义分割（Semantic Segmentation）、实例分割</li>
+<li><strong>LiDAR</strong>：可配置线数、旋转频率、水平/垂直分辨率，支持Ray-Cast模型</li>
+<li><strong>雷达（Radar）</strong>：毫米波雷达，输出点云和速度信息</li>
+<li><strong>GPS / IMU</strong>：提供位置和惯性测量数据，支持误差模型注入</li>
+<li><strong>车道线检测传感器</strong>、<strong>语义LiDAR</strong>、<strong>碰撞/车道侵入传感器</strong></li>
+</ul>
+<p><strong>Python API接口：</strong></p>
+<p>CARLA提供完整的Python API，用户可通过脚本化方式控制仿真世界：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">carla</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">world</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_world</span><span class="p">()</span>
+<span class="n">blueprint_library</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">get_blueprint_library</span><span class="p">()</span>
+
+<span class="c1"># 设置天气</span>
+<span class="n">weather</span> <span class="o">=</span> <span class="n">carla</span><span class="o">.</span><span class="n">WeatherParameters</span><span class="p">(</span>
+    <span class="n">cloudiness</span><span class="o">=</span><span class="mf">80.0</span><span class="p">,</span>
+    <span class="n">precipitation</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span>
+    <span class="n">sun_altitude_angle</span><span class="o">=</span><span class="mf">30.0</span>
+<span class="p">)</span>
+<span class="n">world</span><span class="o">.</span><span class="n">set_weather</span><span class="p">(</span><span class="n">weather</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>地图与场景：</strong></p>
+<p>CARLA内置Town01至Town12共12张地图，涵盖城市街道、高速公路、乡村道路等多种场景。地图采用OpenDRIVE格式描述，支持自定义地图导入。</p>
+<p><strong>场景运行器（Scenario Runner）：</strong></p>
+<p>与CARLA配套的Scenario Runner工具基于OpenSCENARIO标准，支持结构化场景描述和自动执行，是CARLA Challenge（CVPR自动驾驶挑战赛）的核心测试框架。</p>
+<p><strong>适合场景：</strong>
+- 学术算法验证（感知、规划、控制）
+- 强化学习（Reinforcement Learning）智能体训练
+- 端到端（End-to-End）自动驾驶研究
+- 边缘场景（Corner Case）数据合成</p>
+<hr />
+<h3 id="lgsvl-svl-simulator">LGSVL / SVL Simulator</h3>
+<p><a href="https://www.lgsvlsimulator.com/">LGSVL Simulator</a>由LG电子硅谷研究院开发，基于Unity游戏引擎，以与Apollo和Autoware的深度集成著称。</p>
+<p><strong>核心特性：</strong></p>
+<ul>
+<li><strong>引擎</strong>：Unity，支持跨平台部署</li>
+<li><strong>接口</strong>：原生支持ROS/ROS2和百度Cyber RT，可直接对接Apollo/Autoware软件栈</li>
+<li><strong>传感器</strong>：可通过配置文件灵活定义传感器套件（摄像头、LiDAR、雷达、GPS、IMU）</li>
+<li><strong>真值（Ground Truth）传感器</strong>：提供3D检测框、语义地图等理想传感器输出</li>
+</ul>
+<p><strong>现状：</strong></p>
+<p>LG电子于2022年宣布停止对SVL Simulator的官方支持，但由于其与Apollo/Autoware生态的良好兼容性，仍在工业界和学术界被广泛使用。社区维护的分支版本持续提供更新。</p>
+<hr />
+<h3 id="airsimue4">AirSim（微软，基于UE4）</h3>
+<p><a href="https://github.com/microsoft/AirSim">AirSim</a>（Aerial Informatics and Robotics Simulation）由微软研究院开发，基于虚幻引擎4，支持无人机和地面车辆双模式仿真。</p>
+<p><strong>核心特性：</strong></p>
+<ul>
+<li><strong>双模式</strong>：无人机（Multirotor）和汽车（Car）模式，适合多场景研究</li>
+<li><strong>物理引擎</strong>：基于PhysX，物理建模精确，包括空气动力学和地面接触模型</li>
+<li><strong>传感器</strong>：摄像头（多视角、深度、分割）、IMU、气压计、磁力计</li>
+<li><strong>合成数据生成</strong>：天气随机化、光照变化、对象随机放置，支持域随机化</li>
+</ul>
+<p><strong>现状：</strong></p>
+<p>微软于2022年将AirSim开源社区版移交给外部维护（Colosseum分支），官方Microsoft AirSim版本已停止更新。</p>
+<hr />
+<h3 id="matlab-simulink">MATLAB / Simulink</h3>
+<p>MathWorks的MATLAB/Simulink工具链是控制工程和ADAS算法开发的行业标准环境。</p>
+<p><strong>Automated Driving Toolbox：</strong></p>
+<ul>
+<li>提供车道检测、目标检测、跟踪算法的参考实现</li>
+<li>支持传感器融合（摄像头+LiDAR+雷达）仿真</li>
+<li>内置Driving Scenario Designer，可图形化设计测试场景</li>
+<li>代码自动生成（Code Generation），可直接部署到嵌入式平台</li>
+</ul>
+<p><strong>HIL集成：</strong></p>
+<p>MATLAB/Simulink与硬件在环（Hardware-in-the-Loop，HIL）系统深度集成，主要合作伙伴包括：
+- <strong>dSPACE</strong>：SCALEXIO、MicroAutoBox HIL平台
+- <strong>ETAS</strong>：LABCAR HIL系统
+- <strong>NI</strong>：CompactRIO HIL环境</p>
+<hr />
+<h3 id="nvidia-drive-simomniverse">NVIDIA DRIVE Sim（基于Omniverse）</h3>
+<p><a href="https://developer.nvidia.com/drive/simulation">NVIDIA DRIVE Sim</a>基于NVIDIA Omniverse平台，提供工业级传感器物理仿真，是商业自动驾驶开发的主流选择之一。</p>
+<p><strong>核心能力：</strong></p>
+<ul>
+<li><strong>光线追踪（Ray Tracing）传感器仿真</strong>：基于物理的摄像头、LiDAR、雷达仿真，精确模拟光学特性</li>
+<li><strong>大规模并行仿真</strong>：支持在数千GPU上同时运行仿真实例，实现加速测试</li>
+<li><strong>合成数据生成（Synthetic Data Generation）</strong>：域随机化，自动生成带标注的训练数据</li>
+<li><strong>数字孪生（Digital Twin）</strong>：与真实地图数据（HD Map）融合，重建真实道路环境</li>
+</ul>
+<hr />
+<h3 id="_3">内部仿真平台</h3>
+<p>业界头部公司普遍构建了面向自身需求的专有仿真系统：</p>
+<ul>
+<li><strong>Waymo Carcraft</strong>：基于真实采集数据重建的仿真环境，每年可运行超过100亿公里的等效模拟里程</li>
+<li><strong>百度 Apollo仿真</strong>：与Apollo开放平台配套，支持云端大规模仿真和场景库管理</li>
+<li><strong>特斯拉 Dojo仿真</strong>：基于Shadow Mode采集的真实数据，闭环训练和验证FSD神经网络</li>
+</ul>
+<hr />
+<h3 id="_4">仿真平台对比</h3>
 <table>
 <thead>
 <tr>
 <th>平台</th>
-<th>类型</th>
-<th>描述</th>
+<th>开源/商业</th>
+<th>物理精度</th>
+<th>传感器类型</th>
+<th>接口</th>
+<th>典型用途</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://www.autoware.org/">Autoware</a></td>
-<td>开源软件栈</td>
-<td>基于 ROS 的全栈自动驾驶平台，支持感知、规划、控制</td>
+<td>CARLA</td>
+<td>开源</td>
+<td>中高</td>
+<td>摄像头/LiDAR/雷达/GPS/IMU</td>
+<td>Python API / ROS</td>
+<td>学术研究，RL训练</td>
 </tr>
 <tr>
-<td><a href="https://github.com/ApolloAuto/apollo">Apollo</a></td>
-<td>开源软件栈</td>
-<td>百度无人驾驶平台，包含完整工具链和云服务</td>
+<td>LGSVL/SVL</td>
+<td>开源（停更）</td>
+<td>中</td>
+<td>摄像头/LiDAR/雷达/GPS</td>
+<td>ROS / Cyber RT</td>
+<td>Apollo/Autoware集成测试</td>
 </tr>
 <tr>
-<td><a href="http://carla.org/">CARLA</a></td>
-<td>开源仿真器</td>
-<td>基于 Unreal Engine，支持多传感器仿真和场景编辑</td>
+<td>AirSim</td>
+<td>开源（停更）</td>
+<td>高</td>
+<td>摄像头/IMU/气压计</td>
+<td>Python / ROS</td>
+<td>无人机+车辆，合成数据</td>
 </tr>
 <tr>
-<td><a href="https://github.com/microsoft/AirSim">AirSim</a></td>
-<td>开源仿真器</td>
-<td>微软开源，支持无人机和车辆仿真，集成深度学习</td>
+<td>MATLAB/Simulink</td>
+<td>商业</td>
+<td>中</td>
+<td>摄像头/LiDAR/雷达</td>
+<td>MATLAB API / Code Gen</td>
+<td>控制算法，HIL集成</td>
 </tr>
 <tr>
-<td><a href="https://www.lgsvlsimulator.com/">LGSVL Simulator</a></td>
-<td>开源仿真器</td>
-<td>高保真传感器仿真，与 Apollo 和 Autoware 深度集成</td>
-</tr>
-<tr>
-<td>MATLAB - Autonomous Vehicle Toolbox</td>
-<td>商业工具</td>
-<td>MATLAB 机器人工具箱，提供算法开发和可视化 (需付费)</td>
-</tr>
-<tr>
-<td><a href="https://eclipse.dev/sumo/">SUMO</a></td>
-<td>开源交通仿真</td>
-<td>微观交通流仿真器，适合大规模交通场景研究</td>
-</tr>
-<tr>
-<td><a href="https://developer.nvidia.com/drive">NVIDIA DRIVE Sim</a></td>
-<td>商业仿真器</td>
-<td>基于 Omniverse，物理级传感器仿真，支持大规模并行</td>
+<td>NVIDIA DRIVE Sim</td>
+<td>商业</td>
+<td>极高</td>
+<td>摄像头/LiDAR/雷达</td>
+<td>Omniverse API</td>
+<td>工业级传感器仿真</td>
 </tr>
 <tr>
 <td>PreScan (Siemens)</td>
-<td>商业仿真器</td>
-<td>面向 ADAS 和 V2X 测试，丰富的传感器和场景库</td>
+<td>商业</td>
+<td>高</td>
+<td>摄像头/LiDAR/雷达/V2X</td>
+<td>MATLAB / FMI</td>
+<td>ADAS测试，V2X</td>
+</tr>
+<tr>
+<td>SUMO</td>
+<td>开源</td>
+<td>低（交通流）</td>
+<td>无</td>
+<td>TraCI / libsumo</td>
+<td>宏观交通流仿真</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_3">仿真核心能力</h2>
-<h3 id="_4">传感器仿真</h3>
-<p>通过光线追踪和物理引擎模拟摄像头、LiDAR、毫米波雷达等传感器的输出，包括天气（雨雾雪）和光照变化对传感器的影响。</p>
-<h3 id="_5">场景生成</h3>
+<h2 id="_5">公开数据集</h2>
+<h3 id="kitti">KITTI</h3>
+<p><a href="https://www.cvlibs.net/datasets/kitti/">KITTI数据集</a>由德国卡尔斯鲁厄理工学院（KIT）与丰田美国技术研究院联合发布（2012年），是自动驾驶领域最具影响力的早期基准数据集之一。</p>
+<p><strong>采集平台：</strong>
+- <strong>传感器</strong>：Velodyne HDL-64E LiDAR + 2对立体摄像头（灰度/彩色）+ GPS/IMU
+- <strong>采集地点</strong>：德国卡尔斯鲁厄市区及高速公路</p>
+<p><strong>规模与标注：</strong>
+- 原始数据：约400GB，覆盖多种天气和时段
+- 训练序列：21个，测试序列：29个（无标签）
+- 标注：7481帧3D标注（车辆、行人、自行车）</p>
+<p><strong>基准任务：</strong>
+- 3D目标检测（3D Object Detection）
+- 目标追踪（Multi-Object Tracking）
+- 光流估计（Optical Flow）
+- 深度估计（Depth Estimation）
+- 视觉里程计（Visual Odometry）</p>
+<hr />
+<h3 id="nuscenes">nuScenes</h3>
+<p><a href="https://www.nuscenes.org/">nuScenes</a>由Motional（原nuTonomy）发布（2020年），是当前全球使用最广泛的自动驾驶数据集之一，具有完整的全向传感器套件。</p>
+<p><strong>采集平台：</strong>
+- <strong>传感器</strong>：6个摄像头（360°覆盖）+ 1个32线LiDAR + 5个毫米波雷达 + GPS/IMU
+- <strong>采集地点</strong>：波士顿和新加坡</p>
+<p><strong>规模与标注：</strong>
+- 1000个场景（每段约20秒）
+- 1400万个3D标注框（23类目标）
+- 关键帧标注频率：2Hz，原始数据：20Hz</p>
+<p><strong>基准任务：</strong>
+- 3D目标检测（nuScenes Detection Score，NDS）
+- 多目标追踪（AMOTA指标）
+- 运动预测（Trajectory Prediction）
+- 地图分割（Map Segmentation）</p>
+<hr />
+<h3 id="waymo-open-dataset">Waymo Open Dataset</h3>
+<p><a href="https://waymo.com/open/">Waymo Open Dataset</a>由Waymo于2019年发布，以极高的标注质量和传感器配置见长。</p>
+<p><strong>采集平台：</strong>
+- <strong>传感器</strong>：5个LiDAR（含顶部激光雷达）+ 5个摄像头（前向+侧向）
+- <strong>采集地点</strong>：凤凰城、旧金山、山景城等美国城市</p>
+<p><strong>规模与标注：</strong>
+- 1000个场景（感知子集）
+- 2D/3D精细标注，4类目标（车辆、行人、自行车、摩托车）
+- Waymo Motion Dataset：超过10万个场景，用于运动预测</p>
+<p><strong>基准任务：</strong>
+- 3D目标检测
+- 2D目标检测
+- 领域适应（Domain Adaptation）
+- 运动预测（Waymo Motion Prediction Challenge）</p>
+<hr />
+<h3 id="argoverse-2">Argoverse 2</h3>
+<p><a href="https://www.argoverse.org/av2.html">Argoverse 2</a>由Argo AI（现已解散，数据集持续开放）发布，以高精地图集成和运动预测任务闻名。</p>
+<p><strong>核心特性：</strong>
+- <strong>传感器</strong>：7个摄像头（环视）+ 2个LiDAR
+- <strong>高精地图（HD Map）</strong>：与场景数据强绑定，提供车道级地图标注
+- <strong>运动预测数据集</strong>：25万个场景片段，聚焦长尾驾驶行为
+- <strong>3D目标检测数据集</strong>：1000个场景，26类目标</p>
+<hr />
+<h3 id="once">ONCE（中国，一汽集团）</h3>
+<p><a href="https://once-for-auto-driving.github.io/">ONCE数据集</a>（One millioN sCEnes）由一汽集团发布，是国内规模最大的自动驾驶感知数据集之一。</p>
+<p><strong>核心特性：</strong>
+- <strong>规模</strong>：100万帧，约15000个采集片段
+- <strong>传感器</strong>：7个摄像头（前向+环视）+ 1个LiDAR
+- <strong>标注</strong>：100万帧LiDAR标注，覆盖车辆、行人、自行车、交通锥等
+- <strong>场景多样性</strong>：中国城市、郊区、高速公路，包含多种天气和时段
+- <strong>特色</strong>：包含大量中国特有交通参与者（电动自行车、三轮车）</p>
+<hr />
+<h3 id="opendv-drivex">OpenDV / DriveX</h3>
+<p>OpenDV及类似的大规模互联网视频数据集代表了数据驱动自动驾驶的新方向。</p>
+<p><strong>核心理念：</strong>
+- 从互联网（YouTube、行车记录仪视频平台）大规模爬取驾驶视频
+- 无需精细3D标注，用于端到端（End-to-End）驾驶模型预训练
+- 规模可达数万小时，远超传统数据集</p>
+<hr />
+<h3 id="_6">数据集对比</h3>
+<table>
+<thead>
+<tr>
+<th>数据集</th>
+<th>规模</th>
+<th>传感器</th>
+<th>标注类型</th>
+<th>主要任务</th>
+<th>许可</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KITTI</td>
+<td>~15K帧</td>
+<td>摄像头/LiDAR/GPS</td>
+<td>3D框</td>
+<td>检测/追踪/深度/里程计</td>
+<td>CC BY-NC-SA</td>
+</tr>
+<tr>
+<td>nuScenes</td>
+<td>1000场景</td>
+<td>6摄/LiDAR/5雷达</td>
+<td>3D框+属性</td>
+<td>检测/追踪/预测</td>
+<td>CC BY-NC-SA</td>
+</tr>
+<tr>
+<td>Waymo Open</td>
+<td>1000场景</td>
+<td>5摄/5LiDAR</td>
+<td>2D+3D框</td>
+<td>检测/追踪/预测</td>
+<td>Waymo专有</td>
+</tr>
+<tr>
+<td>Argoverse 2</td>
+<td>250K场景</td>
+<td>7摄/2LiDAR</td>
+<td>3D框+地图</td>
+<td>检测/运动预测</td>
+<td>CC BY-NC-SA</td>
+</tr>
+<tr>
+<td>ONCE</td>
+<td>1M帧</td>
+<td>7摄/LiDAR</td>
+<td>3D框</td>
+<td>检测</td>
+<td>学术使用</td>
+</tr>
+<tr>
+<td>OpenDV</td>
+<td>数万小时视频</td>
+<td>摄像头</td>
+<td>无/弱标注</td>
+<td>E2E预训练</td>
+<td>混合</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">场景描述语言</h2>
+<h3 id="openscenario">OpenSCENARIO</h3>
+<p><a href="https://www.asam.net/standards/detail/openscenario/">OpenSCENARIO</a>是ASAM（汽车仿真和测量系统协会）制定的场景描述标准，采用XML格式描述驾驶场景的动态行为。</p>
+<p><strong>核心概念：</strong>
+- <strong>故事板（Storyboard）</strong>：场景的顶层结构，包含Init初始化和Story故事
+- <strong>演员（Actor）</strong>：场景中的参与者（自车、NPC车辆、行人）
+- <strong>事件（Event）</strong>：基于触发条件（距离、时间、速度）激活的动作
+- <strong>动作（Action）</strong>：速度变化、车道变换、路点跟踪等驾驶行为</p>
+<p><strong>应用：</strong>
+- CARLA Scenario Runner
+- openPASS仿真框架
+- dSPACE/ETAS HIL测试系统</p>
+<hr />
+<h3 id="opendrive">OpenDRIVE</h3>
+<p><a href="https://www.asam.net/standards/detail/opendrive/">OpenDRIVE</a>是ASAM制定的道路网络描述标准，定义了高精地图的路网拓扑结构。</p>
+<p><strong>描述内容：</strong>
+- <strong>车道（Lane）</strong>：车道类型、宽度、连接关系
+- <strong>道路拓扑（Road Topology）</strong>：路段、交叉口、匝道
+- <strong>交通信号（Traffic Signs）</strong>：信号灯、限速标志、停止线
+- <strong>表面特性</strong>：路面摩擦系数、超高（Superelevation）</p>
+<p>CARLA的所有内置地图均以OpenDRIVE格式存储，可导出用于其他工具。</p>
+<hr />
+<h3 id="scenic">Scenic</h3>
+<p><a href="https://scenic-lang.org/">Scenic</a>是加州大学伯克利分校开发的概率场景描述语言，采用类Python语法，专门用于生成长尾场景。</p>
+<p><strong>核心特性：</strong>
+- <strong>概率分布</strong>：可将场景参数定义为概率分布，自动采样生成多样化场景
+- <strong>空间关系</strong>：提供<code>ahead of</code>、<code>behind</code>、<code>left of</code>等直觉性空间描述符
+- <strong>与仿真器集成</strong>：支持CARLA、GTA V、Webots等多种仿真环境
+- <strong>反事实场景</strong>：通过蒙特卡洛采样生成罕见但关键的测试场景</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Scenic示例：前方有一辆慢速卡车</span>
+<span class="n">ego</span> <span class="o">=</span> <span class="n">Car</span>
+<span class="n">truck</span> <span class="o">=</span> <span class="n">Car</span> <span class="n">ahead</span> <span class="n">of</span> <span class="n">ego</span> <span class="n">by</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span>
+        <span class="k">with</span> <span class="n">speed</span> <span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># 随机速度0-5 m/s</span>
+<span class="n">require</span> <span class="p">(</span><span class="n">distance</span> <span class="n">to</span> <span class="n">truck</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">20</span>
+</code></pre></div>
+<hr />
+<h3 id="_8">场景库管理</h3>
+<p>规模化仿真需要系统化管理场景库（Scenario Database）：</p>
 <ul>
-<li><strong>数据驱动</strong>：从真实采集数据中重建场景</li>
-<li><strong>规则生成</strong>：基于参数化规则批量创建测试场景</li>
-<li><strong>对抗生成</strong>：自动搜索导致系统失败的极端场景 (Corner Case)</li>
+<li><strong>参数化场景（Parameterized Scenarios）</strong>：定义场景模板，通过参数空间采样生成变体</li>
+<li><strong>场景分类</strong>：按ODD（Operational Design Domain）、危险类型、天气条件分类存储</li>
+<li><strong>场景演化</strong>：基于真实路测数据中的异常事件，自动提取并扩充场景库</li>
+<li><strong>覆盖率追踪</strong>：记录哪些场景类别已被充分测试，指导新场景生成优先级</li>
 </ul>
-<h3 id="_6">车辆动力学</h3>
-<p>仿真车辆的加速、制动、转向等物理特性，常用模型包括单车运动学模型、自行车模型和多体动力学模型。</p>
-<h3 id="_7">交通流仿真</h3>
-<p>生成逼真的背景交通，包括其他车辆、行人、非机动车的行为模型，支持人-车交互场景。</p>
-<h2 id="_8">参考资料</h2>
+<h2 id="closed-loop-evaluation">闭环评估（Closed-Loop Evaluation）</h2>
+<h3 id="vs">开环 vs 闭环的本质区别</h3>
+<table>
+<thead>
+<tr>
+<th>评估方式</th>
+<th>描述</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>开环（Open-Loop）</td>
+<td>在离线日志数据上回放，比较预测输出与真值标注</td>
+<td>成本低，可重复</td>
+<td>忽略因果反馈，存在分布偏移</td>
+</tr>
+<tr>
+<td>闭环（Closed-Loop）</td>
+<td>在仿真中实时执行，系统动作影响后续环境状态</td>
+<td>真实反映系统能力</td>
+<td>需要高质量仿真器，成本高</td>
+</tr>
+</tbody>
+</table>
+<p><strong>分布偏移（Distribution Shift）问题：</strong></p>
+<p>开环评估存在根本性缺陷：被测系统的输出不会影响场景演化。一个规划器即使在关键时刻给出了错误决策，开环日志依然会继续回放"专家"行为，掩盖了系统的真实失误。这一现象称为协变量偏移（Covariate Shift），导致开环指标（如L2位移误差）与真实驾驶性能相关性较低。</p>
+<hr />
+<h3 id="nuplan">nuPlan闭环规划基准</h3>
+<p><a href="https://nuplan.org/">nuPlan</a>是Motional发布的首个大规模闭环规划基准，专门针对规划器的闭环评估。</p>
+<p><strong>特性：</strong>
+- 1500小时真实驾驶日志（来自美国、新加坡、匹兹堡等城市）
+- 基于日志回放的反应式仿真（Reactive Simulation）
+- <strong>评估指标</strong>：无碰撞率、舒适性、进度完成率、交通规则遵从率
+- 支持基于规则（IDM）、基于学习（ML Planner）等多种规划器接入</p>
+<hr />
+<h3 id="waymo-womd">Waymo WOMD运动预测挑战</h3>
+<p><a href="https://waymo.com/open/data/motion/">Waymo Open Motion Dataset（WOMD）</a>挑战赛聚焦多智能体运动预测，是运动预测领域最权威的竞赛之一。</p>
+<ul>
+<li>超过10万个场景，覆盖复杂交互行为</li>
+<li>评估指标：minADE（最小平均位移误差）、minFDE（最终位移误差）、Miss Rate</li>
+<li>每年举办，推动了Transformer-based预测模型的快速发展</li>
+</ul>
+<hr />
+<h3 id="pdm">PDM评估框架</h3>
+<p>PDM（Privileged Driver Model）是一种基于特权信息（Privileged Information）的闭环评估框架。</p>
+<ul>
+<li><strong>核心思想</strong>：用访问完整场景状态（如其他智能体真实轨迹）的特权规划器作为上界参考</li>
+<li>将被测系统的闭环性能与特权规划器对比，量化"与最优解的差距"</li>
+<li>已被多个学术工作（如UniAD、VAD）用于验证端到端规划性能</li>
+</ul>
+<h2 id="synthetic-data">合成数据生成（Synthetic Data）</h2>
+<h3 id="domain-randomization">域随机化（Domain Randomization）</h3>
+<p>域随机化是提升仿真数据多样性、减小"仿真到真实（Sim-to-Real）"差距的核心技术：</p>
+<ul>
+<li><strong>纹理随机化</strong>：随机替换路面、建筑、车辆外表面的纹理贴图</li>
+<li><strong>光照随机化</strong>：随机改变太阳方向角、强度、色温，模拟不同时段和天气</li>
+<li><strong>天气随机化</strong>：雨量、雾浓度、雪深、镜头光晕等参数化控制</li>
+<li><strong>对象放置随机化</strong>：障碍物、行人、临时标识的位置和朝向随机化</li>
+<li><strong>传感器参数随机化</strong>：摄像头曝光、白平衡、LiDAR噪声模型随机化</li>
+</ul>
+<hr />
+<h3 id="nerf">NeRF场景重建</h3>
+<p>神经辐射场（Neural Radiance Field，NeRF）提供了从真实采集数据到可重渲染虚拟场景的新范式：</p>
 <ol>
-<li>A. Dosovitskiy et al. CARLA: An Open Urban Driving Simulator. CoRL, 2017.</li>
-<li>S. Shah et al. AirSim: High-Fidelity Visual and Physical Simulation for Autonomous Vehicles. FSR, 2017.</li>
-<li>NVIDIA. DRIVE Sim Documentation.</li>
+<li><strong>采集</strong>：在真实道路上采集多视角摄像头和LiDAR数据</li>
+<li><strong>重建</strong>：用NeRF或3D Gaussian Splatting拟合场景的隐式表示</li>
+<li><strong>合成</strong>：在重建场景中修改天气、时段、障碍物，生成带标注的训练数据</li>
+<li><strong>优势</strong>：合成数据与真实世界高度一致，减小域差距</li>
+</ol>
+<p>代表工作：Street Surfer、EmerNeRF、UniSim、OmniMatting。</p>
+<hr />
+<h3 id="_9">扩散模型驾驶视频生成</h3>
+<p>基于扩散模型（Diffusion Model）的生成方法可以直接生成逼真的驾驶场景视频：</p>
+<ul>
+<li><strong>UniSim（NVIDIA）</strong>：基于神经闭环传感器仿真，通过扩散模型合成多摄像头、任意轨迹下的驾驶视频</li>
+<li><strong>WoVogen</strong>：World Volume-aware Video Generation，保持3D一致性的驾驶视频生成</li>
+<li><strong>DriveDreamer / DriveX</strong>：基于文本/条件控制的驾驶场景生成，支持罕见场景合成</li>
+</ul>
+<hr />
+<h3 id="_10">合成数据配方</h3>
+<p>实践中，合成数据与真实数据的混合比例（Recipe）对模型性能至关重要：</p>
+<table>
+<thead>
+<tr>
+<th>训练阶段</th>
+<th>真实数据比例</th>
+<th>合成数据比例</th>
+<th>典型用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>预训练</td>
+<td>30%–50%</td>
+<td>50%–70%</td>
+<td>建立基础感知能力</td>
+</tr>
+<tr>
+<td>微调</td>
+<td>70%–90%</td>
+<td>10%–30%</td>
+<td>适配真实数据分布</td>
+</tr>
+<tr>
+<td>长尾增强</td>
+<td>50%</td>
+<td>50%（针对长尾）</td>
+<td>提升边缘场景性能</td>
+</tr>
+</tbody>
+</table>
+<p>合成数据在检测类任务中通常可提升2–5%的AP，对长尾类别（如施工区域、异型障碍物）提升更为显著。</p>
+<h2 id="_11">测试验证框架</h2>
+<h3 id="scenario-based-testing">基于场景的测试（Scenario-Based Testing）</h3>
+<p>基于场景的测试（Scenario-Based Testing，SBT）已成为自动驾驶功能安全验证的主流方法论，取代了传统的基于里程的测试方式。</p>
+<p><strong>核心流程：</strong></p>
+<ol>
+<li><strong>场景空间定义</strong>：基于ODD（Operational Design Domain）划定测试范围</li>
+<li><strong>场景参数化</strong>：将具体场景抽象为参数空间（如车速、跟车距离、能见度）</li>
+<li><strong>场景采样</strong>：系统化采样测试场景，确保参数空间覆盖</li>
+<li><strong>自动执行</strong>：批量在仿真器中运行，收集通过/失败结果</li>
+<li><strong>失败分析</strong>：对失败场景进行根因分析，反馈至算法改进</li>
+</ol>
+<hr />
+<h3 id="coverage-metrics">覆盖率指标（Coverage Metrics）</h3>
+<p>衡量测试充分性的关键指标：</p>
+<ul>
+<li><strong>ODD覆盖度</strong>：已测试场景覆盖ODD参数空间的比例</li>
+<li><strong>场景类别覆盖率</strong>：已测试场景类别数 / 总定义场景类别数</li>
+<li><strong>代码覆盖率（软件层面）</strong>：针对规划/控制代码的分支覆盖</li>
+<li><strong>决策覆盖率</strong>：自动驾驶系统关键决策点（超车、让行、避障）的覆盖比例</li>
+</ul>
+<hr />
+<h3 id="critical-scenario">关键场景（Critical Scenario）识别</h3>
+<p>从海量路测数据中自动挖掘关键/罕见场景：</p>
+<ul>
+<li><strong>数据挖掘方法</strong>：基于碰撞风险指标（TTC、ETTC）从日志中筛选高风险时刻</li>
+<li><strong>异常检测</strong>：用无监督学习识别与正常驾驶分布偏离的片段</li>
+<li><strong>对抗搜索（Adversarial Search）</strong>：用强化学习或进化算法在仿真中自动搜索导致系统失败的场景参数组合</li>
+<li><strong>场景库扩充</strong>：将挖掘到的关键场景纳入场景库，循环迭代提升系统鲁棒性</li>
+</ul>
+<hr />
+<h3 id="accelerated-simulation">加速仿真（Accelerated Simulation）</h3>
+<p>为实现高效的大规模仿真验证，业界采用多种加速手段：</p>
+<ul>
+<li><strong>重要性采样（Importance Sampling）</strong>：优先采样高风险、低概率场景，提升测试效率</li>
+<li><strong>自适应场景生成</strong>：基于历史失败结果，动态调整场景采样分布</li>
+<li><strong>GPU并行仿真</strong>：在多GPU集群上并行运行数千个仿真实例（如NVIDIA DRIVE Sim、Isaac Sim）</li>
+<li><strong>简化物理模型</strong>：对非关键仿真步骤降低物理精度，换取速度</li>
+</ul>
+<hr />
+<h3 id="_12">百亿英里等效测试</h3>
+<p>Waymo的Carcraft仿真系统是目前规模最大的自动驾驶仿真验证体系之一：</p>
+<ul>
+<li><strong>规模</strong>：每年运行超过<strong>100亿英里</strong>的等效模拟里程（截至2023年数据）</li>
+<li><strong>方法</strong>：基于真实采集数据重建的高精度场景，配合对抗场景生成</li>
+<li><strong>意义</strong>：Waymo Rider-Only（无安全员）商业运营的安全验证基础</li>
+</ul>
+<p>对比真实路测：Waymo截至2024年累计真实路测里程约3500万英里，仿真里程与真实路测比例超过250:1。</p>
+<h2 id="_13">参考资料</h2>
+<ol>
+<li>Dosovitskiy, A. et al. "CARLA: An Open Urban Driving Simulator." <em>Conference on Robot Learning (CoRL)</em>, 2017.</li>
+<li>Caesar, H. et al. "nuScenes: A multimodal dataset for autonomous driving." <em>CVPR</em>, 2020.</li>
+<li>Sun, P. et al. "Scalability in Perception for Autonomous Driving: Waymo Open Dataset." <em>CVPR</em>, 2020.</li>
+<li>Karnchanachari, N. et al. "nuPlan: A closed-loop ML-based planning benchmark for autonomous vehicles." <em>ICRA Workshop</em>, 2022.</li>
+<li>Rempe, D. et al. "UniSim: A Neural Closed-Loop Sensor Simulator." <em>CVPR</em>, 2023.</li>
+<li>Fremont, D. J. et al. "Scenic: A Language for Scenario Specification and Scene Generation." <em>PLDI</em>, 2019.</li>
 </ol>
 
 
