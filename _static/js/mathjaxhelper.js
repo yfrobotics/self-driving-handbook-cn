@@ -2,19 +2,10 @@ window.MathJax = {
   loader: {
     load: ['[tex]/tagformat']
   },
-  startup: {
-    pageReady: () => {
-      alert('Running MathJax');
-      return MathJax.startup.defaultPageReady();
-    }
-  },
   tex: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    autoload: {
-        color: [],
-        colorV2: ['color']
-    },
-    packages: {'[+]': ['enclose'], '[-]': ['autoload', 'require']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    packages: {'[+]': ['tagformat']},
     tagSide: 'left',
     macros: {
       RR: '{\\bf R}',
