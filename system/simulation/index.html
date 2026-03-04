@@ -12,13 +12,13 @@
         <meta name="author" content="YFRL">
       
       
-        <link rel="canonical" href="https://yfrobotics.github.io/self-driving-handbook-cn/system/hmi/">
+        <link rel="canonical" href="https://yfrobotics.github.io/self-driving-handbook-cn/system/simulation/">
       
       
-        <link rel="prev" href="../hdmap_localization_lightweight/">
+        <link rel="prev" href="../testing/">
       
       
-        <link rel="next" href="../safety/">
+        <link rel="next" href="../cybersecurity/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>人机交互系统（HMI） - 自动驾驶指南</title>
+        <title>仿真测试 - 自动驾驶指南</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hmi" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              人机交互系统（HMI）
+              仿真测试
             
           </span>
         </div>
@@ -921,37 +921,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    人机交互系统（HMI）
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../hmi/" class="md-nav__link">
         
   
   
@@ -967,558 +940,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 开篇介绍
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-hmi" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. HMI在自动驾驶各级别中的角色
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. HMI在自动驾驶各级别中的角色">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-hmi" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.1 各级别HMI核心职能
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-hmi" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.2 各级别HMI责任对比
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-driver-monitoring-systemdms" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 驾驶员状态监测（Driver Monitoring System，DMS）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. 驾驶员状态监测（Driver Monitoring System，DMS）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.1 硬件方案
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.2 核心检测指标
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33-perclos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.3 PERCLOS指标
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#34" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.4 疲劳驾驶预警等级
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#35-dms" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.5 主要商用DMS系统
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#36" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.6 法规要求
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-takeover-requesttor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 接管请求机制（Takeover Request，TOR）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. 接管请求机制（Takeover Request，TOR）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-tor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.1 TOR触发条件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42-tor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.2 多模态TOR提示设计
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#43" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.3 接管时间分布
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#44-minimal-risk-conditionmrc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.4 最小风险条件（Minimal Risk Condition，MRC）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#45" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.5 相关标准
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-hud" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 仪表盘与抬头显示（HUD）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. 仪表盘与抬头显示（HUD）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.1 数字仪表盘
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#52-ar-hud" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.2 增强现实抬头显示（AR-HUD）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#53" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.3 三屏协同架构
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#54" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.4 主流方案对比
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. 座舱内交互设计
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. 座舱内交互设计">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#61" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6.1 自然语言交互
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#62" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6.2 手势识别
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#63" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6.3 触觉反馈设计
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#64-eye-tracking-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6.4 眼神触控（Eye-tracking UI）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#65" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6.5 多模态融合交互设计原则
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. 透明度与可解释性
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. 透明度与可解释性">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#71" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.1 感知可视化
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#72" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.2 决策原因显示
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#73" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.3 置信度指示
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#74" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.4 用户信任校准
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-hmil4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. 乘客HMI（L4无人驾驶场景）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="8. 乘客HMI（L4无人驾驶场景）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#81-robotaxi" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8.1 Robotaxi车内屏设计
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#82" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8.2 紧急求助机制
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#83" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8.3 安全员远程监控界面
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#84" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8.4 无障碍设计
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-hmi" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9. HMI设计标准与法规
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="9. HMI设计标准与法规">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#91-iso-15008" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9.1 ISO 15008 — 车辆视觉信息要求
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#92-sae-j30162021-l3l4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9.2 SAE J3016（2021版）— L3/L4接管设计指导
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#93-nhtsa" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9.3 NHTSA视觉显示指南
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#94-un-ece-r46" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9.4 UN ECE R46 — 驾驶员分心规定
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        10. 参考资料
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1584,10 +1005,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../simulation/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真测试
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1603,6 +1051,530 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 开篇介绍
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 仿真平台概述
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 仿真平台概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 主流仿真平台
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 仿真平台对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 开源与商业平台的权衡
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 仿真环境建模
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 仿真环境建模">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 三维场景重建
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 高精地图集成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 天气与光照仿真
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 数字孪生
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 传感器仿真
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 传感器仿真">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 LiDAR 仿真
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 摄像头仿真
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 毫米波雷达仿真
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 传感器噪声模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-domain-gap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 域差距（Domain Gap）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 交通场景生成
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 交通场景生成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 场景描述语言
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 基于规则的场景生成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 数据驱动的场景挖掘
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 对抗性场景生成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 角落案例枚举
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 测试方法论
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 测试方法论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-silsoftware-in-the-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 SIL（Software-in-the-Loop，软件在环）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-hilhardware-in-the-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 HIL（Hardware-in-the-Loop，硬件在环）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-vilvehicle-in-the-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 VIL（Vehicle-in-the-Loop，车辆在环）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 测试方法对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 V 模型中的仿真定位
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 评估指标
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 评估指标">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 安全性指标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 舒适性指标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 效率性指标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 覆盖性指标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 评估指标体系总结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-sim-to-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Sim-to-Real 迁移
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Sim-to-Real 迁移">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 域差距的量化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-domain-randomization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 域随机化（Domain Randomization）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-domain-adaptation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 域适应（Domain Adaptation）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 光线追踪与写实渲染
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5 迁移学习
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#86" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.6 现实差距分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4098,22 +4070,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-hmi" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. HMI在自动驾驶各级别中的角色
+        2. 仿真平台概述
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. HMI在自动驾驶各级别中的角色">
+    <nav class="md-nav" aria-label="2. 仿真平台概述">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-hmi" class="md-nav__link">
+  <a href="#21" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 各级别HMI核心职能
+        2.1 主流仿真平台
       
     </span>
   </a>
@@ -4121,10 +4093,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-hmi" class="md-nav__link">
+  <a href="#22" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2 各级别HMI责任对比
+        2.2 仿真平台对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 开源与商业平台的权衡
       
     </span>
   </a>
@@ -4137,22 +4120,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-driver-monitoring-systemdms" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. 驾驶员状态监测（Driver Monitoring System，DMS）
+        3. 仿真环境建模
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. 驾驶员状态监测（Driver Monitoring System，DMS）">
+    <nav class="md-nav" aria-label="3. 仿真环境建模">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#31" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1 硬件方案
+        3.1 三维场景重建
       
     </span>
   </a>
@@ -4163,7 +4146,7 @@
   <a href="#32" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2 核心检测指标
+        3.2 高精地图集成
       
     </span>
   </a>
@@ -4171,10 +4154,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#33-perclos" class="md-nav__link">
+  <a href="#33" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3 PERCLOS指标
+        3.3 天气与光照仿真
       
     </span>
   </a>
@@ -4185,29 +4168,7 @@
   <a href="#34" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.4 疲劳驾驶预警等级
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#35-dms" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.5 主要商用DMS系统
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#36" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.6 法规要求
+        3.4 数字孪生
       
     </span>
   </a>
@@ -4220,22 +4181,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-takeover-requesttor" class="md-nav__link">
+  <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. 接管请求机制（Takeover Request，TOR）
+        4. 传感器仿真
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. 接管请求机制（Takeover Request，TOR）">
+    <nav class="md-nav" aria-label="4. 传感器仿真">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-tor" class="md-nav__link">
+  <a href="#41-lidar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1 TOR触发条件
+        4.1 LiDAR 仿真
       
     </span>
   </a>
@@ -4243,10 +4204,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-tor" class="md-nav__link">
+  <a href="#42" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2 多模态TOR提示设计
+        4.2 摄像头仿真
       
     </span>
   </a>
@@ -4257,7 +4218,7 @@
   <a href="#43" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.3 接管时间分布
+        4.3 毫米波雷达仿真
       
     </span>
   </a>
@@ -4265,10 +4226,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#44-minimal-risk-conditionmrc" class="md-nav__link">
+  <a href="#44" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.4 最小风险条件（Minimal Risk Condition，MRC）
+        4.4 传感器噪声模型
       
     </span>
   </a>
@@ -4276,10 +4237,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#45" class="md-nav__link">
+  <a href="#45-domain-gap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.5 相关标准
+        4.5 域差距（Domain Gap）
       
     </span>
   </a>
@@ -4292,22 +4253,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-hud" class="md-nav__link">
+  <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. 仪表盘与抬头显示（HUD）
+        5. 交通场景生成
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5. 仪表盘与抬头显示（HUD）">
+    <nav class="md-nav" aria-label="5. 交通场景生成">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#51" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.1 数字仪表盘
+        5.1 场景描述语言
       
     </span>
   </a>
@@ -4315,10 +4276,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#52-ar-hud" class="md-nav__link">
+  <a href="#52" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.2 增强现实抬头显示（AR-HUD）
+        5.2 基于规则的场景生成
       
     </span>
   </a>
@@ -4329,7 +4290,7 @@
   <a href="#53" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.3 三屏协同架构
+        5.3 数据驱动的场景挖掘
       
     </span>
   </a>
@@ -4340,7 +4301,18 @@
   <a href="#54" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.4 主流方案对比
+        5.4 对抗性场景生成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 角落案例枚举
       
     </span>
   </a>
@@ -4356,19 +4328,19 @@
   <a href="#6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. 座舱内交互设计
+        6. 测试方法论
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6. 座舱内交互设计">
+    <nav class="md-nav" aria-label="6. 测试方法论">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#61" class="md-nav__link">
+  <a href="#61-silsoftware-in-the-loop" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.1 自然语言交互
+        6.1 SIL（Software-in-the-Loop，软件在环）
       
     </span>
   </a>
@@ -4376,10 +4348,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#62" class="md-nav__link">
+  <a href="#62-hilhardware-in-the-loop" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.2 手势识别
+        6.2 HIL（Hardware-in-the-Loop，硬件在环）
       
     </span>
   </a>
@@ -4387,10 +4359,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#63" class="md-nav__link">
+  <a href="#63-vilvehicle-in-the-loop" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.3 触觉反馈设计
+        6.3 VIL（Vehicle-in-the-Loop，车辆在环）
       
     </span>
   </a>
@@ -4398,10 +4370,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#64-eye-tracking-ui" class="md-nav__link">
+  <a href="#64" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.4 眼神触控（Eye-tracking UI）
+        6.4 测试方法对比
       
     </span>
   </a>
@@ -4409,10 +4381,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#65" class="md-nav__link">
+  <a href="#65-v" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.5 多模态融合交互设计原则
+        6.5 V 模型中的仿真定位
       
     </span>
   </a>
@@ -4428,19 +4400,19 @@
   <a href="#7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. 透明度与可解释性
+        7. 评估指标
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="7. 透明度与可解释性">
+    <nav class="md-nav" aria-label="7. 评估指标">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#71" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.1 感知可视化
+        7.1 安全性指标
       
     </span>
   </a>
@@ -4451,7 +4423,7 @@
   <a href="#72" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.2 决策原因显示
+        7.2 舒适性指标
       
     </span>
   </a>
@@ -4462,7 +4434,7 @@
   <a href="#73" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.3 置信度指示
+        7.3 效率性指标
       
     </span>
   </a>
@@ -4473,7 +4445,18 @@
   <a href="#74" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.4 用户信任校准
+        7.4 覆盖性指标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 评估指标体系总结
       
     </span>
   </a>
@@ -4486,22 +4469,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-hmil4" class="md-nav__link">
+  <a href="#8-sim-to-real" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. 乘客HMI（L4无人驾驶场景）
+        8. Sim-to-Real 迁移
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="8. 乘客HMI（L4无人驾驶场景）">
+    <nav class="md-nav" aria-label="8. Sim-to-Real 迁移">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#81-robotaxi" class="md-nav__link">
+  <a href="#81" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.1 Robotaxi车内屏设计
+        8.1 域差距的量化
       
     </span>
   </a>
@@ -4509,10 +4492,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#82" class="md-nav__link">
+  <a href="#82-domain-randomization" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.2 紧急求助机制
+        8.2 域随机化（Domain Randomization）
       
     </span>
   </a>
@@ -4520,10 +4503,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#83" class="md-nav__link">
+  <a href="#83-domain-adaptation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.3 安全员远程监控界面
+        8.3 域适应（Domain Adaptation）
       
     </span>
   </a>
@@ -4534,7 +4517,29 @@
   <a href="#84" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.4 无障碍设计
+        8.4 光线追踪与写实渲染
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5 迁移学习
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#86" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.6 现实差距分析
       
     </span>
   </a>
@@ -4547,71 +4552,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-hmi" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9. HMI设计标准与法规
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="9. HMI设计标准与法规">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#91-iso-15008" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9.1 ISO 15008 — 车辆视觉信息要求
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#92-sae-j30162021-l3l4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9.2 SAE J3016（2021版）— L3/L4接管设计指导
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#93-nhtsa" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9.3 NHTSA视觉显示指南
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#94-un-ece-r46" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9.4 UN ECE R46 — 驾驶员分心规定
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        10. 参考资料
+        参考资料
       
     </span>
   </a>
@@ -4635,517 +4579,607 @@
 
 
 
-<h1 id="hmi">人机交互系统（HMI）</h1>
+<h1 id="_1">仿真测试</h1>
 <h2 id="1">1. 开篇介绍</h2>
-<p>人机交互（Human-Machine Interface，HMI）是自动驾驶系统与驾驶员或乘客之间的核心桥梁。随着自动驾驶技术从辅助驾驶向高度自动化演进，HMI的角色已从传统仪表盘信息展示，扩展为涵盖状态感知、接管请求、情境透明、紧急处置的综合性安全系统。</p>
-<p>在低级别自动驾驶（L1/L2）中，驾驶员始终是主控角色，HMI承担辅助提示功能；在L3条件自动驾驶阶段，系统可在特定场景下接管纵横向控制，但必须在必要时向驾驶员发出接管请求（Takeover Request，TOR），HMI在此阶段的设计质量直接关系行车安全；在L4/L5全自动驾驶场景下，乘客HMI取代驾驶员HMI成为主要交互界面，设计重心转向乘坐体验与紧急响应。</p>
-<p>HMI设计的核心挑战在于：如何在不分散驾驶员注意力的前提下，高效、准确地传递系统状态信息，并在人机控制权切换时确保安全、平稳的过渡。</p>
+<p>自动驾驶系统的安全验证面临一个根本性的统计学挑战：根据 RAND Corporation 的研究，要以 95% 的置信度证明自动驾驶系统的致命事故率低于人类驾驶员，需要在真实道路上累积行驶约 <strong>110 亿英里（约 177 亿公里）</strong>。即使以 100 辆车 24 小时不间断测试，完成这一里程也需要超过 500 年。这一被称为"<strong>验证里程困境</strong>"（Validation Mileage Problem）的挑战，使得纯粹依赖实车路测来验证自动驾驶系统的安全性在工程上不可行。</p>
+<p><strong>仿真测试（Simulation Testing）</strong> 是解决这一困境的核心技术手段。通过在虚拟环境中构建高保真的驾驶场景，仿真系统可以：</p>
+<ul>
+<li><strong>大规模并行测试</strong>：数千个仿真实例可在 GPU 集群上同时运行，一天内完成相当于数百万公里的测试里程</li>
+<li><strong>安全地测试危险场景</strong>：碰撞、极端天气、行人突然闯入等高风险场景可以在仿真中反复测试，而不会造成任何实际伤害</li>
+<li><strong>精确复现与调试</strong>：每次仿真运行完全可复现，工程师可以逐帧回放问题场景，精确定位算法缺陷</li>
+<li><strong>系统性覆盖边缘案例</strong>：通过参数化场景生成和对抗性测试，系统性地覆盖长尾（Long-Tail）场景</li>
+</ul>
+<p>"<strong>仿真优先</strong>"（Simulation-First）开发范式已成为自动驾驶行业的共识：Waymo 的仿真系统每天运行超过 2500 万英里的虚拟测试；特斯拉利用大规模仿真训练其 FSD（Full Self-Driving）神经网络；百度 Apollo 在 AADS 仿真平台上完成了超过 100 亿公里的虚拟路测。仿真不再是实车测试的补充，而是自动驾驶研发流程中最先执行、最高频使用的验证手段。</p>
 <hr />
-<h2 id="2-hmi">2. HMI在自动驾驶各级别中的角色</h2>
-<h3 id="21-hmi">2.1 各级别HMI核心职能</h3>
-<p><strong>L2（部分自动化）</strong></p>
-<p>驾驶员始终对车辆保持完全监控责任，双手必须保持对方向盘的接触能力。HMI的主要功能为：显示当前激活的辅助功能（如自适应巡航、车道保持），通过指示灯和提示音告知系统边界即将到达，并在检测到驾驶员注意力分散时发出警告。代表系统包括特斯拉 Autopilot（配合 Nag 提示）、通用 Super Cruise（配合 DMS 摄像头）。</p>
-<p><strong>L3（条件自动化）</strong></p>
-<p>系统在特定操作设计域（ODD）内完全接管驾驶任务，驾驶员可将注意力转移至非驾驶活动，但必须能够在系统发出 TOR 后的规定时间内接管控制权。HMI在此阶段的接管请求机制（多模态提示、接管时间窗口管理）是设计核心难点，同时需防止驾驶员对系统能力的过度信任。代表案例：本田 Traffic Jam Pilot（已量产于日本市场）。</p>
-<p><strong>L4（高度自动化）</strong></p>
-<p>在设计区域内无需驾驶员干预，乘客HMI成为主要交互界面。系统需具备最小风险状态（Minimal Risk Condition，MRC）能力，即当系统自身无法继续运行时，能安全停靠至路边。Robotaxi场景（如百度Apollo RT6、Waymo One）是典型应用。</p>
-<p><strong>L5（完全自动化）</strong></p>
-<p>理论上无需任何驾驶员，车内HMI完全面向乘客舒适性与娱乐服务设计。目前仍处于研究阶段。</p>
-<h3 id="22-hmi">2.2 各级别HMI责任对比</h3>
+<h2 id="2">2. 仿真平台概述</h2>
+<h3 id="21">2.1 主流仿真平台</h3>
+<p>当前自动驾驶仿真领域已形成开源与商业并存的多元生态，各平台在渲染质量、传感器仿真精度、交通流建模和接口开放性等方面各有侧重。</p>
+<p><strong>CARLA（Car Learning to Act）</strong> 是由英特尔实验室和巴塞罗那自治大学联合开发的开源仿真平台，基于 Unreal Engine 4 构建。CARLA 提供了丰富的城市驾驶场景（包括多个预构建城镇地图）、多种传感器模型（LiDAR、Camera、Radar、GNSS、IMU）、可编程的交通参与者（车辆、行人、自行车）以及完善的 Python/C++ API。CARLA 是学术界使用最广泛的自动驾驶仿真平台，支持 ROS/ROS2 桥接和 OpenDRIVE 地图标准。</p>
+<p><strong>LGSVL Simulator</strong> 由 LG 电子硅谷实验室开发，基于 Unity 引擎，以高保真渲染和精确传感器建模著称。该平台原生支持 Apollo 和 Autoware 两大开源自动驾驶框架的集成。遗憾的是，LG 于 2022 年停止了 LGSVL Simulator 的维护，但其代码仍以开源形式存在，社区分支继续发展。</p>
+<p><strong>SUMO（Simulation of Urban Mobility）</strong> 是德国航空航天中心（DLR）开发的微观交通流仿真器。SUMO 不提供三维渲染，专注于大规模路网中的交通流建模，支持数万辆车辆的实时仿真。SUMO 常与 CARLA 联合使用——CARLA 负责自车周围的高保真渲染，SUMO 负责远距离的宏观交通流模拟。</p>
+<p><strong>AirSim</strong> 是微软开发的开源仿真平台，最初面向无人机（UAV）仿真，后扩展至自动驾驶汽车场景。AirSim 基于 Unreal Engine 4，提供了精确的物理引擎和丰富的传感器模型，支持强化学习接口。</p>
+<p><strong>NVIDIA DRIVE Sim</strong> 是英伟达推出的商业级仿真平台，基于 Omniverse 实时光线追踪引擎。DRIVE Sim 的核心优势在于物理级传感器仿真——通过 GPU 加速的光线追踪实现逼真的 LiDAR、Camera 和 Radar 仿真，最大限度缩小仿真与真实传感器数据之间的域差距。</p>
+<p><strong>51Sim（五一智能）</strong> 是国内领先的自动驾驶仿真平台厂商，旗下产品 51Sim-One 提供了符合中国道路特征的场景库（包括中国特有的交通标志、车道标线和驾驶行为模式）。51Sim 支持 OpenSCENARIO 场景描述标准，并与国内主流自动驾驶方案集成。</p>
+<h3 id="22">2.2 仿真平台对比</h3>
 <table>
 <thead>
 <tr>
-<th>自动化级别</th>
-<th>主控方</th>
-<th>驾驶员监控要求</th>
-<th>接管请求</th>
-<th>乘客HMI</th>
-<th>紧急处置主体</th>
+<th style="text-align: center;">平台</th>
+<th style="text-align: center;">类型</th>
+<th style="text-align: center;">渲染引擎</th>
+<th style="text-align: center;">传感器仿真</th>
+<th style="text-align: center;">交通流</th>
+<th style="text-align: center;">API 支持</th>
+<th style="text-align: center;">许可证</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>L1</td>
-<td>驾驶员</td>
-<td>全程</td>
-<td>无</td>
-<td>无</td>
-<td>驾驶员</td>
+<td style="text-align: center;">CARLA</td>
+<td style="text-align: center;">开源</td>
+<td style="text-align: center;">Unreal Engine 4</td>
+<td style="text-align: center;">LiDAR/Camera/Radar/GNSS</td>
+<td style="text-align: center;">内置 + SUMO 联合</td>
+<td style="text-align: center;">Python / C++</td>
+<td style="text-align: center;">MIT</td>
 </tr>
 <tr>
-<td>L2</td>
-<td>驾驶员</td>
-<td>全程（强制）</td>
-<td>无（仅警告）</td>
-<td>无</td>
-<td>驾驶员</td>
+<td style="text-align: center;">LGSVL</td>
+<td style="text-align: center;">开源（已停更）</td>
+<td style="text-align: center;">Unity</td>
+<td style="text-align: center;">LiDAR/Camera/Radar</td>
+<td style="text-align: center;">内置</td>
+<td style="text-align: center;">Python / ROS</td>
+<td style="text-align: center;">Apache 2.0</td>
 </tr>
 <tr>
-<td>L3</td>
-<td>系统/驾驶员切换</td>
-<td>ODD内可短暂放松</td>
-<td>必须</td>
-<td>可选</td>
-<td>驾驶员接管</td>
+<td style="text-align: center;">SUMO</td>
+<td style="text-align: center;">开源</td>
+<td style="text-align: center;">无 3D 渲染</td>
+<td style="text-align: center;">无</td>
+<td style="text-align: center;">微观交通流（核心能力）</td>
+<td style="text-align: center;">Python (TraCI)</td>
+<td style="text-align: center;">EPL-2.0</td>
 </tr>
 <tr>
-<td>L4</td>
-<td>系统</td>
-<td>不强制</td>
-<td>可选</td>
-<td>主要界面</td>
-<td>系统MRC/远程操控</td>
+<td style="text-align: center;">AirSim</td>
+<td style="text-align: center;">开源</td>
+<td style="text-align: center;">Unreal Engine 4</td>
+<td style="text-align: center;">LiDAR/Camera/IMU</td>
+<td style="text-align: center;">有限</td>
+<td style="text-align: center;">Python / C++</td>
+<td style="text-align: center;">MIT</td>
 </tr>
 <tr>
-<td>L5</td>
-<td>系统</td>
-<td>无</td>
-<td>无</td>
-<td>全部</td>
-<td>系统自主处置</td>
+<td style="text-align: center;">NVIDIA DRIVE Sim</td>
+<td style="text-align: center;">商业</td>
+<td style="text-align: center;">Omniverse（光线追踪）</td>
+<td style="text-align: center;">物理级 LiDAR/Camera/Radar</td>
+<td style="text-align: center;">内置</td>
+<td style="text-align: center;">Python / C++</td>
+<td style="text-align: center;">商业许可</td>
+</tr>
+<tr>
+<td style="text-align: center;">51Sim-One</td>
+<td style="text-align: center;">商业</td>
+<td style="text-align: center;">自研</td>
+<td style="text-align: center;">LiDAR/Camera/Radar</td>
+<td style="text-align: center;">内置（中国场景）</td>
+<td style="text-align: center;">Python / C++</td>
+<td style="text-align: center;">商业许可</td>
 </tr>
 </tbody>
 </table>
+<h3 id="23">2.3 开源与商业平台的权衡</h3>
+<p><strong>开源平台</strong>（CARLA、SUMO）的核心优势在于社区生态、可定制性和学术可重复性。研究人员可以深入修改仿真器核心代码以适配特定研究需求，且研究成果基于公开平台更易被同行复现和验证。缺点是渲染质量和传感器仿真精度通常低于商业方案，且需要用户自行配置和维护仿真环境。</p>
+<p><strong>商业平台</strong>（NVIDIA DRIVE Sim、51Sim-One）则提供了开箱即用的高保真仿真环境、专业技术支持和面向量产的验证流程集成。商业平台的传感器仿真通常基于物理渲染管线（Physically Based Rendering, PBR），能够更准确地模拟真实传感器的输出特性。缺点是成本高昂且灵活性受限。</p>
 <hr />
-<h2 id="3-driver-monitoring-systemdms">3. 驾驶员状态监测（Driver Monitoring System，DMS）</h2>
-<p>驾驶员状态监测系统是L2/L3 HMI的基础传感组件，负责实时评估驾驶员的注意力水平、疲劳程度及准备接管的能力。</p>
-<h3 id="31">3.1 硬件方案</h3>
-<p>主流DMS采用<strong>近红外（NIR）摄像头</strong>配合专用图像处理芯片，工作在850nm或940nm波段，不受环境光照影响，可在夜间和强逆光条件下正常工作。摄像头通常安装于方向盘柱或仪表盘上方，保证对驾驶员面部的正面或斜面拍摄。部分高端方案配合<strong>ToF（Time-of-Flight）深度传感器</strong>获取三维头部姿态信息，减少遮挡引起的误检。</p>
-<h3 id="32">3.2 核心检测指标</h3>
-<p><strong>眼部状态检测：</strong></p>
-<ul>
-<li><strong>注视方向（Gaze Direction）：</strong> 推断驾驶员视线是否聚焦于道路正前方，偏离超过设定阈值（通常为±20°）触发警告。</li>
-<li><strong>眼睛开合度（Eye Openness）：</strong> 通过眼睑检测计算眼睛开合比例，识别瞌睡或眯眼状态。</li>
-<li><strong>眨眼频率（Blink Rate）：</strong> 正常人每分钟眨眼15-20次，疲劳时频率异常升高或降低。</li>
-</ul>
-<p><strong>头部姿态检测：</strong></p>
-<p>通过三维人脸关键点检测获取<strong>俯仰角（Pitch）、偏航角（Yaw）、翻滚角（Roll）</strong>。头部下垂（Pitch角异常）是瞌睡的强特征。</p>
-<p><strong>行为检测：</strong></p>
-<ul>
-<li><strong>打哈欠频率：</strong> 通过嘴部开合检测识别打哈欠动作，高频率打哈欠是疲劳强指标。</li>
-<li><strong>手部检测：</strong> 检测驾驶员双手是否放置于方向盘上，L2系统要求驾驶员保持手握方向盘。</li>
-</ul>
-<h3 id="33-perclos">3.3 PERCLOS指标</h3>
-<p><strong>PERCLOS（Percentage of Eye Closure，眼睑闭合百分比）</strong> 是国际公认的疲劳驾驶评估指标，定义为在固定时间窗口（通常为60秒或180秒）内，眼睑遮盖80%以上瞳孔面积的时间占比。</p>
-<div class="arithmatex">\[\text{PERCLOS} = \frac{T_{\text{眼睑闭合超过80\%}}}{T_{\text{总时间}}} \times 100\%\]</div>
-<p>研究表明，PERCLOS超过15%时驾驶员进入中度疲劳状态，超过25%则属于重度疲劳，需立即触发预警。</p>
-<h3 id="34">3.4 疲劳驾驶预警等级</h3>
-<table>
-<thead>
-<tr>
-<th>预警等级</th>
-<th>颜色代码</th>
-<th>触发条件</th>
-<th>HMI响应动作</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>正常</td>
-<td>绿色</td>
-<td>PERCLOS &lt; 15%，注视正常</td>
-<td>无动作，状态栏绿色图标</td>
-</tr>
-<tr>
-<td>轻度警告</td>
-<td>黄色</td>
-<td>PERCLOS 15%-25%，或连续2次注视偏离</td>
-<td>仪表盘黄色闪烁，轻度提示音</td>
-</tr>
-<tr>
-<td>中度警告</td>
-<td>橙色</td>
-<td>PERCLOS &gt; 25%，或连续打哈欠3次</td>
-<td>强烈声光警报，建议靠边休息</td>
-</tr>
-<tr>
-<td>严重警告</td>
-<td>红色</td>
-<td>检测到驾驶员失去意识</td>
-<td>触发TOR流程，同时启动MRC</td>
-</tr>
-</tbody>
-</table>
-<h3 id="35-dms">3.5 主要商用DMS系统</h3>
-<ul>
-<li><strong>Smart Eye（瑞典）：</strong> 高精度多摄像头眼动追踪方案，广泛用于高端乘用车，精度达0.5°注视误差。</li>
-<li><strong>Seeing Machines（澳大利亚）：</strong> 商用车DMS领导者，已集成于Caterpillar矿山车辆，面部特征追踪算法成熟。</li>
-<li><strong>商汤科技 SenseAuto（中国）：</strong> 基于深度学习的驾驶员状态监测方案，支持多模态（DMS+OMS车内监测），已量产于多家国内主机厂。</li>
-<li><strong>伟世通（Visteon）：</strong> 集成DMS功能于数字座舱域控制器，与仪表盘显示深度融合。</li>
-</ul>
-<h3 id="36">3.6 法规要求</h3>
-<ul>
-<li><strong>UN ECE R79（2022年修订）：</strong> 要求L2及以上自动驾驶车辆配备车道保持辅助系统，并规定驾驶员接管提示机制。</li>
-<li><strong>UN ECE R158：</strong> 专门针对倒车影像系统的规定，间接促进座舱摄像头基础设施建设。</li>
-<li><strong>欧盟GSR2（General Safety Regulation 2）：</strong> 自2022年7月起，要求所有新型乘用车强制配备驾驶员困倦与注意力警告系统（DDAW）和高级驾驶员分心警告系统（ADEW）。</li>
-</ul>
-<hr />
-<h2 id="4-takeover-requesttor">4. 接管请求机制（Takeover Request，TOR）</h2>
-<p>接管请求是L3自动驾驶系统在需要驾驶员重新获取控制权时发出的信号，是人机协同安全体系的核心机制。</p>
-<h3 id="41-tor">4.1 TOR触发条件</h3>
-<p><strong>操作设计域（ODD）边界：</strong></p>
-<ul>
-<li>驶出高速公路进入城市道路（超出系统ODD）</li>
-<li>道路施工区域、临时交通管制</li>
-<li>恶劣天气（暴雨、浓雾、积雪）导致传感器性能下降</li>
-<li>道路标线模糊或缺失</li>
-</ul>
-<p><strong>系统内部条件：</strong></p>
-<ul>
-<li>感知置信度低于安全阈值（如目标检测置信度 &lt; 0.7）</li>
-<li>规划模块无法找到可行路径</li>
-<li>多个传感器数据不一致（传感器融合异常）</li>
-<li>高精地图数据与实时感知结果严重偏差</li>
-</ul>
-<p><strong>紧急情况：</strong></p>
-<ul>
-<li>车辆机械故障（制动/转向系统异常）</li>
-<li>系统软件异常或硬件失效</li>
-</ul>
-<h3 id="42-tor">4.2 多模态TOR提示设计</h3>
-<p>有效的TOR必须快速引起驾驶员注意，同时不引发恐慌。研究表明，多模态组合提示显著优于单一模态：</p>
-<p><strong>视觉提示：</strong></p>
-<ul>
-<li>仪表盘红色/橙色边框高频闪烁</li>
-<li>HUD上叠加"请接管驾驶"大字提示</li>
-<li>中控屏显示接管倒计时和原因说明</li>
-</ul>
-<p><strong>听觉提示：</strong></p>
-<ul>
-<li>递进式警报音（从柔和提示音逐步升级至强烈警报）</li>
-<li>语音播报："系统即将退出自动驾驶模式，请立即接管"</li>
-</ul>
-<p><strong>触觉提示：</strong></p>
-<ul>
-<li>方向盘振动（特定频率和强度的振动模式）</li>
-<li>座椅振动（左右交替或持续振动）</li>
-<li>部分系统采用安全带轻微收紧</li>
-</ul>
-<h3 id="43">4.3 接管时间分布</h3>
-<p>接管时间（Time-To-Takeover，TTC）是驾驶员从收到TOR到完全接管车辆控制的时间。大量实车测试数据表明：</p>
-<ul>
-<li><strong>平均接管时间：</strong> 3-7秒（非预期TOR）</li>
-<li><strong>最佳准备状态下：</strong> 约1.5-2秒</li>
-<li><strong>从事非驾驶任务时：</strong> 可能延长至10秒以上</li>
-<li><strong>影响因素：</strong> 驾驶员当前任务（阅读/视频/对话）、TOR提示强度、驾驶员年龄、任务紧迫程度</li>
-</ul>
-<p>系统设计需为驾驶员预留足够的接管时间，SAE J3016建议在驾驶员接管能力受限时提前发出TOR（预测性TOR），而非仅在系统即将失效时触发（被动TOR）。</p>
-<h3 id="44-minimal-risk-conditionmrc">4.4 最小风险条件（Minimal Risk Condition，MRC）</h3>
-<p>当驾驶员无法在规定时间内完成接管（如驾驶员失去意识、TOR超时无响应），系统必须自主执行最小风险操作：</p>
+<h2 id="3">3. 仿真环境建模</h2>
+<h3 id="31">3.1 三维场景重建</h3>
+<p>仿真环境的构建质量直接决定了仿真测试的有效性。三维场景重建的目标是在虚拟空间中精确再现真实世界的道路结构、建筑物、植被和基础设施。</p>
+<p><strong>程序化生成（Procedural Generation）</strong> 通过参数化规则自动生成城市道路网络和建筑物。例如，基于 OpenDRIVE 道路描述文件，仿真系统可以自动生成包含车道标线、交通信号灯、路缘石和排水沟等细节的道路三维模型。程序化方法的优势在于可以快速生成大量变异场景（不同宽度的道路、不同形状的交叉路口），但生成的场景缺乏特定地理位置的真实感。</p>
+<p><strong>基于实采数据的重建</strong> 利用移动测量系统（MMS）采集的高精度点云和全景图像，通过三维重建算法生成与真实场景几何一致的虚拟环境。典型流程为：</p>
 <ol>
-<li><strong>减速至安全速度：</strong> 平稳减速，避免急刹引发追尾</li>
-<li><strong>靠边停车：</strong> 寻找安全停靠位置（路肩、紧急停车带）</li>
-<li><strong>开启危险警示灯：</strong> 提醒后方车辆</li>
-<li><strong>解锁车门，发出求救信号：</strong> 通知紧急救援或远程监控中心</li>
-<li><strong>保持记录：</strong> 记录完整的事件数据用于事后分析</li>
+<li>使用激光扫描仪和全景相机采集目标区域的点云与图像数据</li>
+<li>通过 SLAM 算法对点云进行全局配准，生成统一坐标系下的稠密点云地图</li>
+<li>对点云进行语义分割（地面、建筑物、植被、交通设施），提取各类物体的几何网格</li>
+<li>将真实纹理映射到几何网格上，生成可用于仿真渲染的三维资产</li>
 </ol>
-<p>MRC的设计需兼顾安全性（尽快停止）和行车安全（停靠过程不引发二次事故）。</p>
-<h3 id="45">4.5 相关标准</h3>
+<p><strong>神经辐射场（NeRF，Neural Radiance Fields）</strong> 是近年来兴起的新型场景表示方法。NeRF 通过神经网络隐式编码场景的几何和外观信息，从少量真实图像中学习场景的连续体积表示，能够从任意视角合成高度逼真的新视图。基于 NeRF 的仿真场景重建（如 NVIDIA 的 Neural Reconstruction for Autonomous Driving）已展现出比传统网格渲染更高的视觉保真度。</p>
+<h3 id="32">3.2 高精地图集成</h3>
+<p>高精地图（HD Map）是仿真环境的语义骨架。仿真系统需要解析 HD Map 中的以下信息并转化为仿真环境中的对应元素：</p>
 <ul>
-<li><strong>ISO 22736（DMS标准，2021）：</strong> 定义DMS性能要求，包括检测率、误报率、响应延迟，适用于L1-L3车辆。</li>
-<li><strong>SAE J3016（2021版）：</strong> 明确各自动化级别的接管责任划分，规定L3系统必须在退出前向驾驶员发出充分提示。</li>
-<li><strong>ISO/TR 4804：</strong> 针对自动驾驶系统安全的技术报告，涵盖TOR和MRC的功能安全要求。</li>
+<li><strong>车道拓扑</strong>：车道中心线、车道边界、车道宽度、变道许可区域</li>
+<li><strong>交通规则</strong>：信号灯位置与配时方案、限速标志、停车线、让行标志</li>
+<li><strong>道路几何</strong>：曲率、坡度、超高（横向倾斜角度）</li>
+<li><strong>语义元素</strong>：人行横道、公交站台、减速带、施工区域</li>
+</ul>
+<p><strong>OpenDRIVE</strong> 是国际上最广泛采用的高精地图交换格式，使用 XML 描述道路网络的几何和拓扑信息。CARLA 和 NVIDIA DRIVE Sim 均原生支持 OpenDRIVE 地图导入。中国的高精地图厂商（高德、百度、四维图新）通常使用自有格式，需要转换工具进行适配。</p>
+<h3 id="33">3.3 天气与光照仿真</h3>
+<p>天气和光照条件对传感器性能有决定性影响，因此仿真系统必须支持多种环境条件的参数化控制。</p>
+<p><strong>光照模型</strong>：太阳位置由日期、时间和地理经纬度确定，通过大气散射模型（Rayleigh 散射和 Mie 散射）计算天空光照分布。动态时间系统允许在仿真运行过程中实时改变光照条件（如从白天过渡到黄昏）。</p>
+<p><strong>降雨仿真</strong>：雨滴的视觉效果（下落轨迹、地面积水反射、挡风玻璃水珠）通过粒子系统和屏幕空间反射（SSR）实现。更重要的是，降雨对传感器的物理影响需要精确建模——雨滴对激光束的散射导致 LiDAR 点云出现大量噪声点，路面积水导致雷达信号异常反射。</p>
+<p><strong>雾气仿真</strong>：雾对光的衰减遵循 Beer-Lambert 定律：</p>
+<div class="arithmatex">\[I(d) = I_0 \cdot e^{-\beta d}\]</div>
+<p>其中 <span class="arithmatex">\(I_0\)</span> 为光源强度，<span class="arithmatex">\(d\)</span> 为传播距离，<span class="arithmatex">\(\beta\)</span> 为消光系数（与雾的浓度相关）。对于气象能见度 <span class="arithmatex">\(V_{met}\)</span>，消光系数近似为：</p>
+<div class="arithmatex">\[\beta \approx \frac{3.912}{V_{met}}\]</div>
+<p>当 <span class="arithmatex">\(V_{met} = 100 \text{ m}\)</span>（浓雾）时，<span class="arithmatex">\(\beta \approx 0.039 \text{ m}^{-1}\)</span>，200 m 处的光强衰减至原来的 <span class="arithmatex">\(e^{-7.8} \approx 0.04\%\)</span>，这意味着 LiDAR 在浓雾中的有效探测距离将从正常的 200 m 降至不足 50 m。</p>
+<h3 id="34">3.4 数字孪生</h3>
+<p><strong>数字孪生（Digital Twin）</strong> 是将真实世界的物理实体在虚拟空间中建立精确、动态的镜像模型。在仿真测试中，数字孪生的核心价值在于：</p>
+<ul>
+<li><strong>场景精确复现</strong>：将实际路测中遇到的问题场景在仿真中精确复现，用于算法调试和回归测试</li>
+<li><strong>实时同步</strong>：仿真环境与真实世界保持时间同步，实时接收路侧传感器数据并更新虚拟场景</li>
+<li><strong>预测性验证</strong>：在道路施工、新交通信号方案实施前，先在数字孪生中验证自动驾驶系统的适应性</li>
 </ul>
 <hr />
-<h2 id="5-hud">5. 仪表盘与抬头显示（HUD）</h2>
-<h3 id="51">5.1 数字仪表盘</h3>
-<p>现代数字仪表盘（Digital Instrument Cluster，IC）已不再局限于速度和油量显示，在自动驾驶模式下承担以下关键信息展示职能：</p>
-<p><strong>当前自动驾驶状态显示：</strong></p>
-<ul>
-<li>激活状态指示（图标 + 颜色编码：蓝色=激活，灰色=待机，橙色=警告）</li>
-<li>当前自动化级别标识（如"L2 辅助驾驶"或"L3 自动驾驶"）</li>
-<li>剩余可用ODD区域提示（如"高速公路模式，预计30公里后退出"）</li>
-</ul>
-<p><strong>感知结果可视化：</strong></p>
-<ul>
-<li>鸟瞰图显示周围车辆和障碍物的检测结果</li>
-<li>车道线识别状态（实线/虚线，识别置信度）</li>
-<li>前方车辆跟车距离和相对速度</li>
-<li>侧方盲区目标提示</li>
-</ul>
-<h3 id="52-ar-hud">5.2 增强现实抬头显示（AR-HUD）</h3>
-<p>AR-HUD通过将数字信息叠加到前风挡玻璃，实现驾驶员视线不离路面的信息获取，是L2/L3 HMI的前沿方案。</p>
-<p><strong>主要功能：</strong></p>
-<ul>
-<li><strong>导航箭头叠加：</strong> 将转向箭头投影到对应的真实道路位置（如"前方500米路口左转"的箭头直接显示在路面上）</li>
-<li><strong>障碍物标注：</strong> 在检测到的行人、车辆周围显示高亮框，提醒驾驶员注意</li>
-<li><strong>车道保持辅助线：</strong> 在前方路面投影建议行驶路径</li>
-<li><strong>速度限制提示：</strong> 通过摄像头识别路牌后在HUD中显示当前限速</li>
-</ul>
-<p><strong>技术参数要求：</strong></p>
-<p>AR-HUD的成像距离（Virtual Image Distance，VID）通常设定在7-15米，确保驾驶员视线从路面转向HUD的调焦距离最小化。显示区域宽度一般超过10°视场角（FOV），以覆盖车道宽度范围。</p>
-<h3 id="53">5.3 三屏协同架构</h3>
-<p>现代智能座舱通常采用仪表盘（IC）、中控屏（Central Information Display，CID）、HUD三屏协同的信息分发架构：</p>
+<h2 id="4">4. 传感器仿真</h2>
+<p>传感器仿真是连接虚拟环境与自动驾驶感知算法的桥梁。仿真传感器的输出需要尽可能接近真实传感器在相同场景下的输出，以确保在仿真中验证通过的算法能够在真实世界中同样有效。</p>
+<h3 id="41-lidar">4.1 LiDAR 仿真</h3>
+<p>LiDAR 仿真的目标是生成与真实激光雷达扫描特性一致的三维点云数据。</p>
+<p><strong>光线投射法（Ray-Casting）</strong> 是最基础的 LiDAR 仿真方法。根据 LiDAR 的机械结构参数（线束数、垂直视场角、水平角分辨率、旋转频率），计算每一束激光在当前旋转角度下的发射方向，然后在场景的三角网格模型中进行射线-三角形相交测试（Ray-Triangle Intersection），获取交点坐标作为点云数据。</p>
+<p>对于一个 <span class="arithmatex">\(N\)</span> 线束的旋转式 LiDAR，水平角分辨率为 <span class="arithmatex">\(\Delta \phi\)</span>，单帧点云数量为：</p>
+<div class="arithmatex">\[N_{points} = N_{beams} \times \frac{360°}{\Delta \phi}\]</div>
+<p>例如，Velodyne VLP-128（128 线束，<span class="arithmatex">\(\Delta \phi = 0.1°\)</span>）的理论单帧点云数为 <span class="arithmatex">\(128 \times 3600 = 460800\)</span> 个点。</p>
+<p><strong>物理级仿真（Physics-Based Simulation）</strong> 在光线投射的基础上，进一步考虑激光与目标表面材质之间的物理交互。反射强度由目标的<strong>反射率（Reflectivity）</strong>、入射角和距离决定：</p>
+<div class="arithmatex">\[I_{ret} = I_0 \cdot \frac{\rho \cdot \cos\theta}{R^2} \cdot \eta_{atm}(R)\]</div>
+<p>其中 <span class="arithmatex">\(I_0\)</span> 为发射功率，<span class="arithmatex">\(\rho\)</span> 为目标表面反射率，<span class="arithmatex">\(\theta\)</span> 为入射角，<span class="arithmatex">\(R\)</span> 为目标距离，<span class="arithmatex">\(\eta_{atm}(R)\)</span> 为大气衰减因子。物理级仿真还需要考虑多径反射（Multi-Path Reflection）、透射（如对玻璃表面的穿透）和运动模糊（由旋转扫描期间车辆运动引起的点云畸变）等效应。</p>
+<h3 id="42">4.2 摄像头仿真</h3>
+<p>摄像头仿真本质上是计算机图形学中的渲染问题，需要生成与真实相机成像特性一致的图像。</p>
+<p><strong>光栅化渲染（Rasterization）</strong> 是实时渲染的主流方法，将三维场景中的三角形投影到二维图像平面，通过像素着色器计算每个像素的颜色。现代游戏引擎（Unreal Engine、Unity）采用基于物理的渲染管线（PBR），使用金属度-粗糙度工作流和基于图像的光照（IBL）生成高质量图像。光栅化渲染速度快（实时 60+ FPS），但在处理全局光照（反射、折射、柔和阴影）时精度有限。</p>
+<p><strong>光线追踪渲染（Ray-Tracing）</strong> 从相机出发，对每个像素发射光线，追踪光线在场景中的反射、折射和散射路径，精确计算全局光照效果。光线追踪渲染在处理镜面反射（如湿滑路面倒影）、透明物体（如车窗玻璃）和体积散射（如雾气中的光晕）方面远优于光栅化。NVIDIA 的 RTX 系列 GPU 提供了硬件加速的光线追踪单元（RT Core），使实时光线追踪成为可能。</p>
+<p>两种渲染方法的对比：</p>
 <table>
 <thead>
 <tr>
-<th>屏幕</th>
-<th>主要职能</th>
-<th>自动驾驶相关内容</th>
+<th style="text-align: center;">特性</th>
+<th style="text-align: center;">光栅化渲染</th>
+<th style="text-align: center;">光线追踪渲染</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>仪表盘（IC）</td>
-<td>驾驶核心信息</td>
-<td>自驾状态、DMS警告、接管倒计时</td>
+<td style="text-align: center;">渲染速度</td>
+<td style="text-align: center;">实时（&gt; 60 FPS）</td>
+<td style="text-align: center;">较慢（10-30 FPS，RTX 加速可达 60 FPS）</td>
 </tr>
 <tr>
-<td>中控屏（CID）</td>
-<td>功能交互</td>
-<td>自驾设置、路线规划、感知可视化详情</td>
+<td style="text-align: center;">全局光照</td>
+<td style="text-align: center;">近似（屏幕空间方法）</td>
+<td style="text-align: center;">物理精确</td>
 </tr>
 <tr>
-<td>HUD</td>
-<td>前方道路信息</td>
-<td>导航叠加、障碍物标注、速度提示</td>
+<td style="text-align: center;">反射/折射</td>
+<td style="text-align: center;">近似（环境映射）</td>
+<td style="text-align: center;">物理精确</td>
+</tr>
+<tr>
+<td style="text-align: center;">阴影</td>
+<td style="text-align: center;">阶梯状伪影（需 PCF 平滑）</td>
+<td style="text-align: center;">自然柔和</td>
+</tr>
+<tr>
+<td style="text-align: center;">湿滑路面效果</td>
+<td style="text-align: center;">较差</td>
+<td style="text-align: center;">高度逼真</td>
+</tr>
+<tr>
+<td style="text-align: center;">硬件要求</td>
+<td style="text-align: center;">中等</td>
+<td style="text-align: center;">高（需 RTX GPU）</td>
+</tr>
+<tr>
+<td style="text-align: center;">代表平台</td>
+<td style="text-align: center;">CARLA、AirSim</td>
+<td style="text-align: center;">NVIDIA DRIVE Sim</td>
 </tr>
 </tbody>
 </table>
-<h3 id="54">5.4 主流方案对比</h3>
+<h3 id="43">4.3 毫米波雷达仿真</h3>
+<p>毫米波雷达仿真需要建模电磁波在 77 GHz（短距）或 24 GHz（中远距）频段的传播和反射特性。</p>
+<p><strong>基于雷达截面积（RCS）的模型</strong> 将目标简化为具有特定 RCS 值的散射体。接收功率由雷达方程描述：</p>
+<div class="arithmatex">\[P_r = \frac{P_t G_t G_r \lambda^2 \sigma}{(4\pi)^3 R^4}\]</div>
+<p>其中 <span class="arithmatex">\(P_t\)</span> 为发射功率，<span class="arithmatex">\(G_t, G_r\)</span> 为发射和接收天线增益，<span class="arithmatex">\(\lambda\)</span> 为波长，<span class="arithmatex">\(\sigma\)</span> 为目标 RCS，<span class="arithmatex">\(R\)</span> 为目标距离。不同目标的典型 RCS 值：轿车约 <span class="arithmatex">\(10 \text{ m}^2\)</span>，行人约 <span class="arithmatex">\(1 \text{ m}^2\)</span>，自行车约 <span class="arithmatex">\(2 \text{ m}^2\)</span>。</p>
+<p><strong>基于射线追踪的电磁仿真</strong> 更精确地模拟电磁波的多径传播——雷达信号经建筑物、护栏、其他车辆反射后到达接收端，产生虚假目标（Ghost Target）。这种多径效应是真实雷达系统中最具挑战性的干扰源之一，高保真仿真必须对其进行准确建模。</p>
+<h3 id="44">4.4 传感器噪声模型</h3>
+<p>真实传感器输出中不可避免地包含噪声，仿真系统需要注入统计特性与真实传感器一致的噪声以保证仿真有效性。</p>
+<p><strong>LiDAR 噪声模型</strong>：测距噪声通常建模为零均值高斯分布：</p>
+<div class="arithmatex">\[z_{meas} = z_{true} + \epsilon, \quad \epsilon \sim \mathcal{N}(0, \sigma_z^2)\]</div>
+<p>其中 <span class="arithmatex">\(\sigma_z\)</span> 随目标距离和反射率变化。对于典型的 905 nm 激光雷达，<span class="arithmatex">\(\sigma_z \approx 2\text{-}3 \text{ cm}\)</span>（近距离高反射率目标）至 <span class="arithmatex">\(\sigma_z \approx 5\text{-}10 \text{ cm}\)</span>（远距离低反射率目标）。此外还需要建模随机丢点（Drop-Out，由表面材质吸收或角度过大导致）和串扰噪声（Crosstalk，多台 LiDAR 相互干扰）。</p>
+<p><strong>摄像头噪声模型</strong>：包括传感器读出噪声（服从泊松分布）、暗电流噪声、运动模糊（由曝光时间内的相对运动导致）和镜头畸变（径向畸变和切向畸变）。完整的摄像头噪声管线可以表示为：</p>
+<div class="arithmatex">\[I_{noisy}(u,v) = g \cdot \text{Poisson}\left(\frac{I_{clean}(u,v)}{g}\right) + \mathcal{N}(0, \sigma_{read}^2)\]</div>
+<p>其中 <span class="arithmatex">\(g\)</span> 为模拟增益（与 ISO 设置相关），Poisson 项模拟光子散粒噪声，<span class="arithmatex">\(\sigma_{read}\)</span> 为读出噪声标准差。</p>
+<h3 id="45-domain-gap">4.5 域差距（Domain Gap）</h3>
+<p>仿真传感器数据与真实传感器数据之间的分布差异被称为<strong>域差距（Domain Gap）</strong>，这是仿真测试面临的核心挑战。域差距主要体现在以下几个方面：</p>
+<ul>
+<li><strong>视觉保真度差距</strong>：仿真渲染的图像在纹理细节、光照真实感、材质多样性方面与真实图像存在差异</li>
+<li><strong>几何精度差距</strong>：仿真场景中的三维模型（车辆、行人、建筑物）与真实物体的几何细节不完全一致</li>
+<li><strong>传感器物理差距</strong>：仿真传感器模型对真实传感器物理特性的近似误差（如 LiDAR 的光束发散角、相机的色差和渐晕效应）</li>
+<li><strong>动态行为差距</strong>：仿真中的交通参与者行为模式（加减速、变道、行人步态）与真实世界的统计分布不一致</li>
+</ul>
+<p>缩小域差距是仿真技术持续演进的核心方向，具体方法将在第 8 节 Sim-to-Real 迁移中详细讨论。</p>
+<hr />
+<h2 id="5">5. 交通场景生成</h2>
+<h3 id="51">5.1 场景描述语言</h3>
+<p>标准化的场景描述语言是实现仿真测试可重复性和跨平台兼容性的基础。</p>
+<p><strong>OpenSCENARIO</strong> 是由 ASAM（Association for Standardization of Automation and Measuring Systems）制定的国际标准，使用 XML 格式描述动态驾驶场景。OpenSCENARIO 定义了以下核心元素：</p>
+<ul>
+<li><strong>实体（Entities）</strong>：场景中的参与者（自车、他车、行人、障碍物），包括物理尺寸、动力学模型和初始状态</li>
+<li><strong>动作（Actions）</strong>：实体的行为指令（加速、变道、转向、制动），支持绝对值和相对值两种描述方式</li>
+<li><strong>事件（Events）</strong>：由条件触发器（时间条件、距离条件、速度条件、碰撞条件）驱动的状态转换</li>
+<li><strong>故事（Story）</strong>：由事件序列构成的完整场景剧本</li>
+</ul>
+<p><strong>GeoScenario</strong> 是由滑铁卢大学提出的场景描述格式，基于 GeoJSON 地理数据标准，使用键值对描述场景参数。GeoScenario 的设计哲学是"所见即所得"——场景描述文件可以直接在地理信息系统（GIS）工具中可视化和编辑，降低了场景创建的门槛。</p>
+<p><strong>Scenic</strong> 是一种概率编程语言，用于描述具有随机性的场景分布。Scenic 允许用户用自然语言式的语法定义场景约束（如"一辆红色轿车在自车前方 20-50 米处，以 30-60 km/h 的速度行驶"），仿真器根据这些约束进行随机采样生成具体场景实例。</p>
+<h3 id="52">5.2 基于规则的场景生成</h3>
+<p>基于规则的方法通过预定义的交通规则和行为模板生成测试场景。典型的场景类型包括：</p>
+<ul>
+<li><strong>跟车场景（Car Following）</strong>：前车以不同减速度制动（正常制动 <span class="arithmatex">\(a = -3 \text{ m/s}^2\)</span>、紧急制动 <span class="arithmatex">\(a = -8 \text{ m/s}^2\)</span>）</li>
+<li><strong>切入场景（Cut-In）</strong>：相邻车道车辆突然变道至自车前方，参数化变量包括切入距离、切入速度和切入角度</li>
+<li><strong>十字路口场景（Intersection）</strong>：侧向来车/行人以不同时序进入路口，测试自车的路权判断和避让能力</li>
+<li><strong>障碍物规避（Obstacle Avoidance）</strong>：前方道路上的静止障碍物（抛洒物、故障车辆），测试自车的检测和规避能力</li>
+</ul>
+<p>规则方法的优势在于可解释性和可控性，每个场景的危险等级和测试意图明确；缺点是依赖专家知识，难以覆盖未预见的新颖场景。</p>
+<h3 id="53">5.3 数据驱动的场景挖掘</h3>
+<p>从大规模实车路测数据中自动提取有价值的测试场景，是补充规则方法的重要手段。</p>
+<p><strong>关键事件检测</strong>：在路测日志中搜索满足特定条件的片段，例如：
+- 自车执行紧急制动（纵向加速度 <span class="arithmatex">\(a_{lon} &lt; -4 \text{ m/s}^2\)</span>）
+- 碰撞时间（TTC）低于安全阈值
+- 自车发生大角度转向（方向盘转角速率 <span class="arithmatex">\(\dot{\delta} &gt; 100°/\text{s}\)</span>）</p>
+<p><strong>场景聚类</strong>：对提取的大量场景片段进行特征编码（参与者数量、相对速度、相对位置、道路类型），使用聚类算法（K-Means、DBSCAN）识别代表性场景模式，减少冗余测试。</p>
+<p><strong>行为克隆</strong>：利用真实数据训练交通参与者的行为模型（如基于 Transformer 的轨迹预测模型），使仿真中的他车和行人表现出与真实世界统计一致的行为模式。</p>
+<h3 id="54">5.4 对抗性场景生成</h3>
+<p><strong>对抗性场景生成（Adversarial Scenario Generation）</strong> 旨在自动搜索最有可能导致自动驾驶系统失效的场景参数组合，是发现系统安全漏洞的高效手段。</p>
+<p>核心思想是将场景生成建模为一个优化问题：</p>
+<div class="arithmatex">\[\mathbf{s}^* = \arg\max_{\mathbf{s} \in \mathcal{S}} \mathcal{R}(\mathbf{s})\]</div>
+<p>其中 <span class="arithmatex">\(\mathbf{s}\)</span> 为场景参数向量（他车初始位置、速度、行为序列），<span class="arithmatex">\(\mathcal{S}\)</span> 为合理的场景参数空间（受物理约束和交通规则约束），<span class="arithmatex">\(\mathcal{R}(\mathbf{s})\)</span> 为风险度量函数（如碰撞概率、最小 TTC）。</p>
+<p>常用的搜索方法包括：
+- <strong>遗传算法（Genetic Algorithm）</strong>：通过选择、交叉和变异操作在场景参数空间中搜索高风险场景
+- <strong>贝叶斯优化（Bayesian Optimization）</strong>：利用高斯过程代理模型，在有限仿真预算下高效定位高风险区域
+- <strong>强化学习（Reinforcement Learning）</strong>：训练一个"对抗智能体"控制他车行为，目标是最大化与自车的碰撞概率</p>
+<h3 id="55">5.5 角落案例枚举</h3>
+<p><strong>角落案例（Corner Case）</strong> 是指在正常驾驶数据分布中极为罕见但对安全至关重要的场景。系统性地枚举和覆盖角落案例是仿真测试的核心价值之一。</p>
+<p>典型角落案例的分类：</p>
 <table>
 <thead>
 <tr>
-<th>方案</th>
-<th>显示面积</th>
-<th>特点</th>
-<th>自动驾驶集成</th>
+<th style="text-align: center;">类别</th>
+<th style="text-align: center;">示例</th>
+<th style="text-align: center;">仿真生成方法</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>华为 HarmonyOS 座舱</td>
-<td>15.6英寸CID + 10英寸IC</td>
-<td>多屏联动，鸿蒙生态</td>
-<td>与华为ADS深度融合，感知可视化丰富</td>
+<td style="text-align: center;">感知失效</td>
+<td style="text-align: center;">白色卡车被误识别为天空</td>
+<td style="text-align: center;">渲染参数极端化（高曝光+白色物体）</td>
 </tr>
 <tr>
-<td>特斯拉 17英寸中控</td>
-<td>17英寸中央触屏，无传统IC</td>
-<td>极简设计，所有信息集中</td>
-<td>FSD状态显示、感知目标可视化</td>
+<td style="text-align: center;">预测失败</td>
+<td style="text-align: center;">行人突然改变行走方向</td>
+<td style="text-align: center;">行人行为模型注入突变动作</td>
 </tr>
 <tr>
-<td>宝马 iDrive 8</td>
-<td>12.3英寸IC + 14.9英寸CID曲面屏</td>
-<td>BMW Curved Display，驾驶者导向</td>
-<td>自驾状态清晰，接管提示集成</td>
+<td style="text-align: center;">遮挡场景</td>
+<td style="text-align: center;">大卡车后方突然冲出摩托车</td>
+<td style="text-align: center;">参数化遮挡物尺寸和被遮挡物出现时机</td>
 </tr>
 <tr>
-<td>小鹏 XMART OS</td>
-<td>15.6英寸中控 + 10.25英寸IC</td>
-<td>高度智能化，语音交互强</td>
-<td>XNGP感知路况实时可视化</td>
+<td style="text-align: center;">极端天气</td>
+<td style="text-align: center;">暴雨+夜间+对向远光灯</td>
+<td style="text-align: center;">天气和光照参数叠加</td>
+</tr>
+<tr>
+<td style="text-align: center;">罕见物体</td>
+<td style="text-align: center;">道路上的动物、散落货物</td>
+<td style="text-align: center;">三维资产库扩展+随机放置</td>
+</tr>
+<tr>
+<td style="text-align: center;">基础设施异常</td>
+<td style="text-align: center;">信号灯故障、标线磨损</td>
+<td style="text-align: center;">地图元素参数化退化</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="6">6. 座舱内交互设计</h2>
-<h3 id="61">6.1 自然语言交互</h3>
-<p>语音交互是自动驾驶座舱最重要的非接触式交互方式，有助于减少驾驶员视线从道路移开的时间。</p>
-<p><strong>交互流程：</strong></p>
-<div class="highlight"><pre><span></span><code>唤醒词触发 → 语音识别（ASR）→ 自然语言理解（NLU）→ 业务逻辑处理 → 语音合成（TTS）→ 多模态反馈
+<h2 id="6">6. 测试方法论</h2>
+<h3 id="61-silsoftware-in-the-loop">6.1 SIL（Software-in-the-Loop，软件在环）</h3>
+<p>SIL 是仿真测试中最基础也是使用频率最高的方法。在 SIL 测试中，自动驾驶软件栈（感知、规划、控制算法）运行在通用计算平台（PC 或服务器）上，传感器输入和车辆动力学响应均由仿真器提供。</p>
+<p><strong>典型架构</strong>：</p>
+<div class="highlight"><pre><span></span><code>┌─────────────┐      传感器数据      ┌──────────────────────┐
+│   仿真器     │ ──────────────────▶ │  自动驾驶软件栈       │
+│ (CARLA等)   │                     │ (感知→规划→控制)      │
+│             │ ◀────────────────── │                      │
+└─────────────┘      控制指令        └──────────────────────┘
 </code></pre></div>
-<p><strong>核心能力要求：</strong></p>
+<p><strong>优势</strong>：部署成本最低，可大规模并行运行，适合算法快速迭代和回归测试。单台服务器可同时运行数十个 SIL 实例。</p>
+<p><strong>局限性</strong>：SIL 不包含真实硬件，无法验证计算时延、传感器驱动、硬件接口等与硬件相关的问题。软件在通用 CPU 上的运行时序与在嵌入式计算平台上的时序可能存在显著差异。</p>
+<h3 id="62-hilhardware-in-the-loop">6.2 HIL（Hardware-in-the-Loop，硬件在环）</h3>
+<p>HIL 在 SIL 基础上引入真实的嵌入式计算硬件（域控制器、ECU），自动驾驶算法运行在目标硬件上，仿真器通过硬件接口（CAN、Ethernet、GPIO）向计算平台注入仿真传感器数据。</p>
+<p><strong>典型架构</strong>：</p>
+<div class="highlight"><pre><span></span><code>┌─────────────┐   仿真传感器信号    ┌──────────────────────┐
+│   HIL 仿真   │ ──────(CAN/ETH)──▶ │  域控制器（真实硬件） │
+│   工作站     │                     │  运行自动驾驶算法     │
+│             │ ◀──(CAN/ETH)────── │                      │
+└─────────────┘   控制指令           └──────────────────────┘
+</code></pre></div>
+<p><strong>核心价值</strong>：验证算法在目标硬件上的实时性能——包括推理延迟、内存占用、多线程调度和硬件外设驱动。HIL 还可以注入硬件故障（传感器断线、通信中断、电压异常），验证系统的故障检测和降级策略。</p>
+<p><strong>局限性</strong>：HIL 设备成本较高（典型的 HIL 工作站价格在数十万至数百万元），且无法大规模并行运行，通常用于算法成熟度较高阶段的集成验证。</p>
+<h3 id="63-vilvehicle-in-the-loop">6.3 VIL（Vehicle-in-the-Loop，车辆在环）</h3>
+<p>VIL 将真实车辆置于仿真环境中。车辆在封闭测试场地内行驶，部分交通参与者和场景元素由仿真系统通过增强现实（AR）或传感器数据注入的方式叠加到真实感知数据中。</p>
+<p><strong>常见实现方式</strong>：</p>
 <ul>
-<li><strong>唤醒词识别：</strong> 免打扰唤醒（"小艺"/"你好，小鹏"/"嗨，Siri"），唤醒率 &gt; 98%，误唤醒率 &lt; 1次/天</li>
-<li><strong>连续对话：</strong> 支持上下文关联，无需每次重复唤醒词</li>
-<li><strong>方言/口音适配：</strong> 针对中国市场需支持普通话及主要方言</li>
-<li><strong>噪音鲁棒性：</strong> 在80分贝车内噪声环境下正常工作</li>
+<li><strong>AR-VIL</strong>：在车辆前方设置大型显示屏，显示仿真渲染的驾驶场景，车辆传感器"看到"的是仿真图像</li>
+<li><strong>数据注入式 VIL</strong>：在真实传感器数据中注入仿真生成的虚拟障碍物（如在真实 LiDAR 点云中添加虚拟行人的点云数据）</li>
+<li><strong>底盘测功机 VIL</strong>：车辆置于底盘测功机上，车轮在滚筒上转动，同时前方屏幕显示仿真场景</li>
 </ul>
-<p><strong>自动驾驶相关语音指令示例：</strong></p>
-<ul>
-<li>"开启自动驾驶"/"切换到辅助驾驶模式"</li>
-<li>"当前道路支持自动驾驶吗？"</li>
-<li>"前方有什么障碍？"</li>
-<li>"靠边停车"</li>
-</ul>
-<h3 id="62">6.2 手势识别</h3>
-<p>手势识别允许驾驶员或乘客通过空中手势控制娱乐和部分驾驶功能，减少触屏操作带来的注意力分散。</p>
-<p><strong>技术方案：</strong></p>
-<ul>
-<li><strong>ToF深度摄像头：</strong> 在中控台或车顶安装ToF传感器，检测三维手部姿态，识别精度高，对光照不敏感。</li>
-<li><strong>RGB摄像头+AI算法：</strong> 通过深度学习识别2D手势，成本更低但在复杂背景下识别率受影响。</li>
-</ul>
-<p><strong>常用手势：</strong></p>
-<ul>
-<li>滑动手势：音量调节、曲目切换</li>
-<li>点击手势：确认选择</li>
-<li>手掌推出：接听/拒绝电话</li>
-<li>旋转手势：地图缩放</li>
-</ul>
-<h3 id="63">6.3 触觉反馈设计</h3>
-<p>触觉反馈通过物理振动向驾驶员传递不引发视线转移的信息：</p>
-<ul>
-<li><strong>方向盘振动：</strong> 不同频率和强度的振动模式对应不同警告级别（如车道偏离=低频振动，TOR=高频强振动）</li>
-<li><strong>座椅振动：</strong> 左侧/右侧座椅振动模块分别对应左右方向的盲区警告</li>
-<li><strong>振动方向编码：</strong> 左侧振动=左侧危险，右侧振动=右侧危险，有助于快速定向响应</li>
-</ul>
-<h3 id="64-eye-tracking-ui">6.4 眼神触控（Eye-tracking UI）</h3>
-<p>在L4无人驾驶场景中，乘客可通过眼神注视与车载屏幕交互，无需手部操作：</p>
-<ul>
-<li><strong>注视选择：</strong> 注视目标区域1-2秒触发点击</li>
-<li><strong>滚动控制：</strong> 注视屏幕边缘触发页面滚动</li>
-<li><strong>防误触设计：</strong> 结合意图推断算法，避免阅读内容时误触发操作</li>
-</ul>
-<h3 id="65">6.5 多模态融合交互设计原则</h3>
-<ol>
-<li><strong>主次分明：</strong> 驾驶相关信息优先级高于娱乐信息，自动驾驶状态警告可中断任何娱乐交互</li>
-<li><strong>冗余互补：</strong> 重要信息通过至少两种模态同时传递（如声音+视觉）</li>
-<li><strong>认知负荷最小化：</strong> 在关键驾驶场景下减少信息密度，避免信息过载</li>
-<li><strong>一致性：</strong> 同类信息始终使用相同的颜色、图标、音效，降低学习成本</li>
-<li><strong>可定制性：</strong> 允许驾驶员根据偏好调整信息呈现方式，但不能降低安全级别警告的优先级</li>
-</ol>
-<hr />
-<h2 id="7">7. 透明度与可解释性</h2>
-<h3 id="71">7.1 感知可视化</h3>
-<p>为建立驾驶员对系统的合理信任，自动驾驶HMI需向驾驶员展示系统的感知结果——即"系统看到了什么"：</p>
-<ul>
-<li><strong>鸟瞰图（BEV）可视化：</strong> 在仪表盘或中控屏显示鸟瞰视角下的周围环境，包括检测到的车辆（标注类别和距离）、行人、非机动车、道路边界、车道线</li>
-<li><strong>摄像头实时画面：</strong> 显示前视/后视摄像头画面，并叠加感知结果标注框</li>
-<li><strong>感知范围指示：</strong> 显示当前传感器有效感知的范围边界，帮助驾驶员了解"盲区"所在</li>
-</ul>
-<h3 id="72">7.2 决策原因显示</h3>
-<p>当系统执行特定驾驶行为时，向驾驶员简要说明原因，增强可预期性：</p>
+<p><strong>核心价值</strong>：VIL 能够验证完整的系统链路——包括真实传感器的物理特性、真实计算硬件的延迟、真实底盘的动力学响应——是最接近实车路测的仿真测试形式。</p>
+<h3 id="64">6.4 测试方法对比</h3>
 <table>
 <thead>
 <tr>
-<th>系统行为</th>
-<th>HMI显示示例</th>
+<th style="text-align: center;">对比维度</th>
+<th style="text-align: center;">SIL</th>
+<th style="text-align: center;">HIL</th>
+<th style="text-align: center;">VIL</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>主动减速</td>
-<td>"前方100m施工区，减速中"</td>
+<td style="text-align: center;">计算硬件</td>
+<td style="text-align: center;">通用 PC/服务器</td>
+<td style="text-align: center;">目标嵌入式平台</td>
+<td style="text-align: center;">目标嵌入式平台</td>
 </tr>
 <tr>
-<td>自动换道取消</td>
-<td>"右侧车道有车辆，取消换道"</td>
+<td style="text-align: center;">传感器</td>
+<td style="text-align: center;">全仿真</td>
+<td style="text-align: center;">仿真信号注入</td>
+<td style="text-align: center;">真实传感器 + 仿真叠加</td>
 </tr>
 <tr>
-<td>退出自动驾驶</td>
-<td>"即将进入隧道，请接管驾驶"</td>
+<td style="text-align: center;">车辆动力学</td>
+<td style="text-align: center;">数学模型</td>
+<td style="text-align: center;">数学模型</td>
+<td style="text-align: center;">真实车辆</td>
 </tr>
 <tr>
-<td>保持跟车距离</td>
-<td>"前车急刹，保持安全距离"</td>
+<td style="text-align: center;">系统延迟保真度</td>
+<td style="text-align: center;">低</td>
+<td style="text-align: center;">高</td>
+<td style="text-align: center;">最高</td>
+</tr>
+<tr>
+<td style="text-align: center;">并行能力</td>
+<td style="text-align: center;">数千实例</td>
+<td style="text-align: center;">数台</td>
+<td style="text-align: center;">单台</td>
+</tr>
+<tr>
+<td style="text-align: center;">单次测试成本</td>
+<td style="text-align: center;">极低（&lt; 1 元/场景）</td>
+<td style="text-align: center;">中（~100 元/场景）</td>
+<td style="text-align: center;">高（~10000 元/场景）</td>
+</tr>
+<tr>
+<td style="text-align: center;">场景覆盖能力</td>
+<td style="text-align: center;">最强</td>
+<td style="text-align: center;">中</td>
+<td style="text-align: center;">有限</td>
+</tr>
+<tr>
+<td style="text-align: center;">适用阶段</td>
+<td style="text-align: center;">算法开发与回归测试</td>
+<td style="text-align: center;">集成验证与硬件适配</td>
+<td style="text-align: center;">系统级验证与认证</td>
+</tr>
+<tr>
+<td style="text-align: center;">代表工具</td>
+<td style="text-align: center;">CARLA, SUMO</td>
+<td style="text-align: center;">dSPACE, Vector, NI</td>
+<td style="text-align: center;">IPG CarMaker, AVL</td>
 </tr>
 </tbody>
 </table>
-<h3 id="73">7.3 置信度指示</h3>
-<p>系统对当前场景的处理置信度可通过可视化方式传递给驾驶员：</p>
+<h3 id="65-v">6.5 V 模型中的仿真定位</h3>
+<p>自动驾驶系统的开发通常遵循 <strong>V 模型</strong>（V-Model）开发流程，仿真测试贯穿整个开发周期的右半侧（验证与确认）：</p>
 <ul>
-<li><strong>系统状态指示器：</strong> 使用颜色编码（绿色=高置信度，黄色=中等，橙色=低置信度）</li>
-<li><strong>感知质量指示：</strong> 显示"感知良好/受限/受损"，受限时说明原因（如"雨天摄像头受影响"）</li>
-<li><strong>ODD状态指示：</strong> 明确显示当前是否处于系统ODD范围内</li>
+<li><strong>单元测试</strong>：SIL 验证单个算法模块（如目标检测模型的精度）</li>
+<li><strong>集成测试</strong>：SIL/HIL 验证多模块的接口和协同（如感知→规划链路的端到端延迟）</li>
+<li><strong>系统测试</strong>：HIL/VIL 验证完整软硬件系统的功能和性能</li>
+<li><strong>验收测试</strong>：VIL + 实车路测，验证系统在目标运行设计域（ODD）内的安全性</li>
 </ul>
-<h3 id="74">7.4 用户信任校准</h3>
-<p>HMI设计需防止两种信任失调：</p>
-<p><strong>过度信任（Over-reliance）：</strong> 驾驶员完全依赖系统，不保持对道路的监控。应对措施：
-- DMS持续监控驾驶员注意力
-- 定期（如每10分钟）发出"请保持监控"的提醒
-- 在系统边界场景下提前警示ODD限制</p>
-<p><strong>欠信任（Under-trust）：</strong> 驾驶员不敢使用系统或频繁手动干预。应对措施：
-- 提供清晰的系统能力说明
-- 可解释性信息展示，帮助驾驶员理解系统决策逻辑
-- 渐进式功能引导（新用户保姆式引导）</p>
 <hr />
-<h2 id="8-hmil4">8. 乘客HMI（L4无人驾驶场景）</h2>
-<h3 id="81-robotaxi">8.1 Robotaxi车内屏设计</h3>
-<p>在L4无人驾驶出租车（Robotaxi）场景中，车内屏幕完全面向乘客服务，核心信息包括：</p>
+<h2 id="7">7. 评估指标</h2>
+<h3 id="71">7.1 安全性指标</h3>
+<p>安全性是仿真测试最核心的评估维度。</p>
+<p><strong>碰撞率（Collision Rate）</strong>：在大规模仿真测试中，自车与其他交通参与者或静止物体发生碰撞的频率，通常以"碰撞次数 / 百万公里"表示。</p>
+<p><strong>碰撞时间 TTC（Time-to-Collision）</strong>：假设当前运动状态保持不变，自车与前方障碍物发生碰撞所需的时间：</p>
+<div class="arithmatex">\[TTC = \frac{d}{v_{ego} - v_{lead}}\]</div>
+<p>其中 <span class="arithmatex">\(d\)</span> 为自车与前车的车头距（Headway Distance），<span class="arithmatex">\(v_{ego}\)</span> 和 <span class="arithmatex">\(v_{lead}\)</span> 分别为自车和前车的速度。当 <span class="arithmatex">\(v_{ego} &gt; v_{lead}\)</span> 时，<span class="arithmatex">\(TTC\)</span> 为正值，表示存在碰撞风险。工程上通常以 <span class="arithmatex">\(TTC &lt; 3 \text{ s}\)</span> 作为危险预警阈值，<span class="arithmatex">\(TTC &lt; 1.5 \text{ s}\)</span> 作为紧急制动触发阈值。</p>
+<p><strong>后侵入时间 PET（Post-Encroachment Time）</strong>：两个交通参与者先后通过同一空间冲突点的时间差：</p>
+<div class="arithmatex">\[PET = t_{2,arrive} - t_{1,leave}\]</div>
+<p>其中 <span class="arithmatex">\(t_{1,leave}\)</span> 为第一个参与者离开冲突区域的时刻，<span class="arithmatex">\(t_{2,arrive}\)</span> 为第二个参与者到达冲突区域的时刻。<span class="arithmatex">\(PET\)</span> 越小表示越接近碰撞，<span class="arithmatex">\(PET &lt; 1 \text{ s}\)</span> 通常被认为是严重的安全隐患。PET 特别适用于交叉路口场景的安全评估。</p>
+<p><strong>最小安全距离违反率</strong>：自车与周围交通参与者之间的最小距离低于安全阈值的时间占比。安全距离阈值通常与速度相关：</p>
+<div class="arithmatex">\[d_{safe} = v_{ego} \cdot t_{reaction} + \frac{v_{ego}^2 - v_{lead}^2}{2 \cdot a_{max}}\]</div>
+<p>其中 <span class="arithmatex">\(t_{reaction}\)</span> 为系统反应时间（典型值 0.2-0.5 s），<span class="arithmatex">\(a_{max}\)</span> 为最大制动减速度。</p>
+<h3 id="72">7.2 舒适性指标</h3>
+<p><strong>纵向加加速度（Longitudinal Jerk）</strong>：加速度的时间导数，反映乘客感受到的纵向冲击：</p>
+<div class="arithmatex">\[j_{lon} = \frac{da_{lon}}{dt}\]</div>
+<p>舒适性要求 <span class="arithmatex">\(|j_{lon}| &lt; 2.5 \text{ m/s}^3\)</span>（正常驾驶），<span class="arithmatex">\(|j_{lon}| &lt; 5.0 \text{ m/s}^3\)</span>（可接受上限）。</p>
+<p><strong>横向加速度（Lateral Acceleration）</strong>：</p>
+<div class="arithmatex">\[a_{lat} = \frac{v^2}{R} = v^2 \cdot \kappa\]</div>
+<p>其中 <span class="arithmatex">\(R\)</span> 为转弯半径，<span class="arithmatex">\(\kappa\)</span> 为路径曲率。舒适性要求 <span class="arithmatex">\(|a_{lat}| &lt; 3.0 \text{ m/s}^2\)</span>（约 0.3g）。</p>
+<p><strong>舒适性综合评分</strong>：将多个舒适性指标加权组合为单一评分：</p>
+<div class="arithmatex">\[S_{comfort} = 1 - \left( w_j \cdot \frac{\overline{|j_{lon}|}}{j_{max}} + w_a \cdot \frac{\overline{|a_{lat}|}}{a_{lat,max}} + w_{\delta} \cdot \frac{\overline{|\dot{\delta}|}}{\dot{\delta}_{max}} \right)\]</div>
+<p>其中 <span class="arithmatex">\(\dot{\delta}\)</span> 为方向盘转角速率，各权重 <span class="arithmatex">\(w\)</span> 反映不同维度对乘客体感的影响程度。</p>
+<h3 id="73">7.3 效率性指标</h3>
 <ul>
-<li><strong>行程信息：</strong> 当前位置、目的地、预计到达时间（ETA）、行驶路线地图</li>
-<li><strong>车辆状态：</strong> 当前车速、行驶状态（"正在行驶/等待红灯/停靠中"）</li>
-<li><strong>服务信息：</strong> 车费计费、在线客服、乘车评价入口</li>
-<li><strong>安全信息：</strong> 紧急停车按钮位置说明、安全带提示</li>
+<li><strong>行驶时间比</strong>：自车完成任务（从起点到终点）的实际时间与理论最优时间的比值</li>
+<li><strong>任务成功率</strong>：在给定场景集合中，自车成功完成驾驶任务（无碰撞、无违规、到达目标）的比例</li>
+<li><strong>平均速度</strong>：自车在测试过程中的平均行驶速度，过低的平均速度意味着系统过于保守</li>
+<li><strong>不必要停车次数</strong>：自车在无需停车的场景中发生停车的次数，反映系统的过度保守程度</li>
 </ul>
-<p><strong>UI设计原则：</strong></p>
-<ul>
-<li>大字体、高对比度，适应不同年龄用户</li>
-<li>单手可操作（触控区域大于44mm×44mm）</li>
-<li>最少点击次数完成核心操作</li>
-</ul>
-<h3 id="82">8.2 紧急求助机制</h3>
-<p>Robotaxi必须提供多层次的乘客紧急求助能力：</p>
+<h3 id="74">7.4 覆盖性指标</h3>
+<p><strong>ODD 覆盖率（Operational Design Domain Coverage）</strong>：仿真测试覆盖的运行设计域参数空间占目标 ODD 全部参数空间的比例。ODD 参数维度包括：道路类型、天气条件、光照条件、交通密度、速度范围等。</p>
+<p><strong>场景覆盖率（Scenario Coverage）</strong>：在预定义的标准场景集合（如 Euro NCAP 场景、ISO 34502 场景分类框架）中，仿真测试实际执行的场景占总场景数的比例。</p>
+<p><strong>代码覆盖率（Code Coverage）</strong>：自动驾驶软件中被仿真测试实际执行到的代码行/分支占总代码行/分支的比例。高安全性要求的系统（ASIL-D）通常要求 MC/DC（Modified Condition/Decision Coverage）覆盖率达到 100%。</p>
+<h3 id="75">7.5 评估指标体系总结</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">评估维度</th>
+<th style="text-align: center;">核心指标</th>
+<th style="text-align: center;">阈值参考</th>
+<th style="text-align: center;">数据来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">安全性</td>
+<td style="text-align: center;">碰撞率、TTC、PET</td>
+<td style="text-align: center;">碰撞率 &lt; 0.1 次/百万公里</td>
+<td style="text-align: center;">仿真轨迹日志</td>
+</tr>
+<tr>
+<td style="text-align: center;">舒适性</td>
+<td style="text-align: center;">Jerk、横向加速度</td>
+<td style="text-align: center;"><span class="arithmatex">\(\|j\| &lt; 2.5 \text{ m/s}^3\)</span>, <span class="arithmatex">\(\|a_{lat}\| &lt; 3.0 \text{ m/s}^2\)</span></td>
+<td style="text-align: center;">车辆状态记录</td>
+</tr>
+<tr>
+<td style="text-align: center;">效率性</td>
+<td style="text-align: center;">任务成功率、平均速度</td>
+<td style="text-align: center;">成功率 &gt; 99.9%</td>
+<td style="text-align: center;">任务结果统计</td>
+</tr>
+<tr>
+<td style="text-align: center;">覆盖性</td>
+<td style="text-align: center;">ODD 覆盖率、场景覆盖率</td>
+<td style="text-align: center;">ODD 覆盖 &gt; 95%</td>
+<td style="text-align: center;">测试管理系统</td>
+</tr>
+<tr>
+<td style="text-align: center;">合规性</td>
+<td style="text-align: center;">交通违规次数</td>
+<td style="text-align: center;">违规率 = 0</td>
+<td style="text-align: center;">交通规则检查器</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-sim-to-real">8. Sim-to-Real 迁移</h2>
+<h3 id="81">8.1 域差距的量化</h3>
+<p>在讨论 Sim-to-Real 迁移方法之前，首先需要量化仿真数据与真实数据之间的域差距。常用的量化方法包括：</p>
+<p><strong>Frechet Inception Distance（FID）</strong>：衡量仿真图像与真实图像在 Inception 网络特征空间中的分布距离：</p>
+<div class="arithmatex">\[FID = \|\mu_r - \mu_s\|^2 + \text{Tr}\left(\Sigma_r + \Sigma_s - 2(\Sigma_r \Sigma_s)^{1/2}\right)\]</div>
+<p>其中 <span class="arithmatex">\((\mu_r, \Sigma_r)\)</span> 和 <span class="arithmatex">\((\mu_s, \Sigma_s)\)</span> 分别为真实图像和仿真图像的特征均值和协方差。FID 越低表示两类图像的分布越接近。</p>
+<p><strong>感知性能落差</strong>：同一感知模型分别在真实数据和仿真数据上的评测指标差异（如 mAP 差值），直接反映域差距对下游任务的影响程度。</p>
+<h3 id="82-domain-randomization">8.2 域随机化（Domain Randomization）</h3>
+<p><strong>域随机化（Domain Randomization, DR）</strong> 是一种简单而有效的 Sim-to-Real 迁移策略。核心思想是在仿真训练过程中对视觉参数进行大范围随机化（纹理颜色、光照方向、相机位姿、物体尺寸），使训练数据覆盖极其多样的视觉条件，从而迫使模型学习对视觉外观不变的（invariant）语义特征。</p>
+<p>典型的随机化参数包括：
+- 纹理随机化：随机替换物体和背景的纹理贴图
+- 光照随机化：光源数量、位置、颜色和强度的随机变化
+- 相机参数随机化：焦距、曝光时间、白平衡的随机扰动
+- 物体几何随机化：物体尺寸、形状和位置的随机变化</p>
+<p>域随机化的数学直觉是：如果仿真训练数据的分布 <span class="arithmatex">\(p_s(\mathbf{x})\)</span> 足够宽泛，使得真实数据的分布 <span class="arithmatex">\(p_r(\mathbf{x})\)</span> 成为 <span class="arithmatex">\(p_s(\mathbf{x})\)</span> 的子集，那么在 <span class="arithmatex">\(p_s\)</span> 上训练的模型自然能够泛化到 <span class="arithmatex">\(p_r\)</span>。</p>
+<h3 id="83-domain-adaptation">8.3 域适应（Domain Adaptation）</h3>
+<p>与域随机化的"暴力覆盖"策略不同，<strong>域适应（Domain Adaptation）</strong> 通过学习仿真域与真实域之间的映射关系，显式缩小域差距。</p>
+<p><strong>基于 GAN 的风格迁移</strong>：使用 CycleGAN 或 UNIT 等无配对图像翻译网络，将仿真图像转换为具有真实世界视觉风格的图像，同时保留语义内容不变。转换后的图像用于训练感知模型，可以显著缩小视觉域差距。</p>
+<p><strong>对抗域适应</strong>：在特征提取网络中引入域判别器（Domain Discriminator），通过对抗训练使特征提取器生成域不变的（domain-invariant）特征表示：</p>
+<div class="arithmatex">\[\min_{\theta_f} \max_{\theta_d} \mathcal{L}_{task}(\theta_f, \theta_c) - \lambda \mathcal{L}_{domain}(\theta_f, \theta_d)\]</div>
+<p>其中 <span class="arithmatex">\(\theta_f\)</span> 为特征提取器参数，<span class="arithmatex">\(\theta_c\)</span> 为任务分类器参数，<span class="arithmatex">\(\theta_d\)</span> 为域判别器参数。特征提取器试图欺骗域判别器（使其无法区分仿真特征和真实特征），域判别器则试图正确区分来自不同域的特征。</p>
+<h3 id="84">8.4 光线追踪与写实渲染</h3>
+<p>从渲染技术层面缩小域差距是最直接的方法。光线追踪渲染能够精确模拟光线在场景中的全局传播路径，生成具有物理正确的反射、折射、焦散和间接光照效果的图像。</p>
+<p>NVIDIA 的 DRIVE Sim 平台利用 Omniverse 实时光线追踪引擎，在 RTX GPU 上实现了接近电影级质量的实时渲染。结合基于物理的材质模型（PBR）和高动态范围（HDR）光照，光线追踪渲染生成的仿真图像与真实相机图像在视觉统计特征上的差距已经大幅缩小。</p>
+<h3 id="85">8.5 迁移学习</h3>
+<p><strong>迁移学习（Transfer Learning）</strong> 利用仿真数据预训练大规模感知模型，然后使用少量真实标注数据进行微调（Fine-Tuning），是 Sim-to-Real 迁移在工程中最实用的方法。</p>
+<p>典型流程为：
+1. 在大规模仿真数据集（数百万张带标注的仿真图像）上预训练目标检测/语义分割模型
+2. 冻结底层特征提取层（已学到通用的边缘、纹理、形状特征），仅微调高层任务头
+3. 使用数千至数万张真实标注数据进行微调，使模型适应真实数据的统计分布</p>
+<p>实验表明，仿真预训练 + 真实微调的策略通常能够达到与纯真实数据训练相当甚至更优的性能，同时将真实数据标注成本降低一到两个数量级。</p>
+<h3 id="86">8.6 现实差距分析</h3>
+<p>系统性地分析和量化现实差距（Reality Gap）的各个组成部分，有助于确定仿真改进的优先级。一个完整的现实差距分析框架包括：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">差距类别</th>
+<th style="text-align: center;">主要表现</th>
+<th style="text-align: center;">影响程度</th>
+<th style="text-align: center;">弥合方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">视觉外观</td>
+<td style="text-align: center;">纹理/光照不真实</td>
+<td style="text-align: center;">高（影响视觉感知）</td>
+<td style="text-align: center;">光线追踪、GAN 风格迁移</td>
+</tr>
+<tr>
+<td style="text-align: center;">几何精度</td>
+<td style="text-align: center;">3D 模型与实物差异</td>
+<td style="text-align: center;">中</td>
+<td style="text-align: center;">激光扫描重建、NeRF</td>
+</tr>
+<tr>
+<td style="text-align: center;">传感器物理</td>
+<td style="text-align: center;">噪声/失真模型不准确</td>
+<td style="text-align: center;">高（影响所有传感器）</td>
+<td style="text-align: center;">实测标定、物理级仿真</td>
+</tr>
+<tr>
+<td style="text-align: center;">动态行为</td>
+<td style="text-align: center;">交通参与者行为不自然</td>
+<td style="text-align: center;">中高（影响规划评估）</td>
+<td style="text-align: center;">数据驱动行为模型</td>
+</tr>
+<tr>
+<td style="text-align: center;">长尾分布</td>
+<td style="text-align: center;">仿真缺少罕见物体/事件</td>
+<td style="text-align: center;">高（影响鲁棒性评估）</td>
+<td style="text-align: center;">真实数据挖掘、资产库扩展</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_2">参考资料</h2>
 <ol>
-<li><strong>车内紧急按钮：</strong> 物理按键（防止触屏失效情况），按下后触发多种响应：</li>
-<li>车辆安全减速并靠边停车</li>
-<li>与远程客服建立语音连接</li>
 <li>
-<p>自动向急救部门发送位置信息（可选）</p>
+<p>Dosovitskiy, A., Ros, G., Codevilla, F., Lopez, A., Koltun, V. "CARLA: An Open Urban Driving Simulator." <em>Conference on Robot Learning (CoRL)</em>, 2017.</p>
 </li>
 <li>
-<p><strong>语音求助：</strong> 呼喊特定关键词（如"紧急情况"）触发求助流程</p>
+<p>Kalra, N., Paddock, S. M. "Driving to Safety: How Many Miles of Driving Would It Take to Demonstrate Autonomous Vehicle Reliability?" <em>RAND Corporation</em>, 2016.</p>
 </li>
 <li>
-<p><strong>远程人工接管：</strong> 运营商监控中心的安全员可通过5G网络远程接管车辆驾驶控制</p>
-</li>
-</ol>
-<h3 id="83">8.3 安全员远程监控界面</h3>
-<p>Robotaxi运营商监控中心的安全员需要同时监控多辆车辆：</p>
-<ul>
-<li><strong>车队总览仪表盘：</strong> 实时显示所有运营车辆的位置、状态、健康度</li>
-<li><strong>单车详情面板：</strong> 点击选中后显示该车传感器画面、行程信息、系统告警</li>
-<li><strong>远程干预工具：</strong> 语音通话（与乘客/外部）、远程驾驶控制、紧急停车指令</li>
-<li><strong>告警管理：</strong> 按优先级排列的实时告警列表，支持一键响应</li>
-</ul>
-<h3 id="84">8.4 无障碍设计</h3>
-<p>面向老年和残障用户的Robotaxi HMI需满足无障碍设计要求：</p>
-<ul>
-<li><strong>视觉无障碍：</strong> 支持大字体模式（字号 &gt; 20pt），高对比度模式（对比度 &gt; 7:1）</li>
-<li><strong>听觉无障碍：</strong> 关键信息提供视觉和触觉替代，支持助听设备蓝牙连接</li>
-<li><strong>操作无障碍：</strong> 触控目标面积充足，支持语音代替触控操作所有功能</li>
-<li><strong>认知无障碍：</strong> 简化界面，减少操作步骤，提供清晰的操作引导</li>
-</ul>
-<hr />
-<h2 id="9-hmi">9. HMI设计标准与法规</h2>
-<h3 id="91-iso-15008">9.1 ISO 15008 — 车辆视觉信息要求</h3>
-<p>ISO 15008规定了车内视觉信息呈现的人机工程学要求，核心条款包括：</p>
-<ul>
-<li>驾驶员信息显示设备的字符最小尺寸（视角 ≥ 14'）</li>
-<li>显示屏亮度范围（日间 &gt; 400cd/m²，夜间可调至 &lt; 1cd/m²）</li>
-<li>禁止在驾驶员视野内使用动态广告或无关动画</li>
-<li>信息密度限制，确保驾驶员在2秒内完成信息读取</li>
-</ul>
-<h3 id="92-sae-j30162021-l3l4">9.2 SAE J3016（2021版）— L3/L4接管设计指导</h3>
-<p>SAE J3016作为自动化级别定义的权威标准，对HMI设计有以下关键指导：</p>
-<ul>
-<li>L3系统必须在请求最小风险状态前，向驾驶员发出足够的提前警告</li>
-<li>系统必须清晰传达"当前哪个实体（系统或人）负责纵横向控制"</li>
-<li>在人机控制权切换时，必须有明确的状态指示避免歧义</li>
-</ul>
-<h3 id="93-nhtsa">9.3 NHTSA视觉显示指南</h3>
-<p>美国国家公路交通安全管理局（NHTSA）发布的《Driver Distraction Guidelines》对驾驶员注意力管理提出要求：</p>
-<ul>
-<li>驾驶员完成任何车内显示任务的平均单次眼神离路时间不超过2秒</li>
-<li>完成任务的总眼神离路时间不超过12秒</li>
-<li>禁止在行驶中显示与驾驶无关的视频内容（乘客屏幕不在此限）</li>
-</ul>
-<h3 id="94-un-ece-r46">9.4 UN ECE R46 — 驾驶员分心规定</h3>
-<p>联合国法规ECE R46（间接视野设备规定）在2022年修订版中扩展了对车内显示设备的要求：</p>
-<ul>
-<li>限制在驾驶员前方视野内放置显示屏（防止遮挡前方道路视线）</li>
-<li>规定后视镜替代系统（CMS，Camera Monitor System）的显示屏位置和最小尺寸</li>
-<li>要求CMS显示屏在各种光照条件下保证可见性</li>
-</ul>
-<hr />
-<h2 id="10">10. 参考资料</h2>
-<ol>
-<li>
-<p><strong>Gold, C., et al. (2016). "Taking Over Control From Highly Automated Vehicles in Complex Traffic Situations."</strong> <em>Human Factors</em>, 58(4), 642-652. DOI: 10.1177/0018720816634226 — 系统性研究接管时间和接管质量的经典文献。</p>
+<p>ASAM OpenSCENARIO. <em>ASAM OpenSCENARIO V1.1 User Guide</em>. Association for Standardization of Automation and Measuring Systems, 2021.</p>
 </li>
 <li>
-<p><strong>SAE International. (2021). "Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles" (SAE J3016_202104).</strong> Warrendale, PA: SAE International. — 自动驾驶级别与HMI责任划分的权威标准。</p>
+<p>Tobin, J., Fong, R., Ray, A., Schneider, J., Zaremba, W., Abbeel, P. "Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World." <em>IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)</em>, 2017.</p>
 </li>
 <li>
-<p><strong>ISO 22736:2021. "Intelligent Transport Systems — Partially Automated Lane Keeping Systems (PALKS) — Performance Requirements and Test Procedures."</strong> International Organization for Standardization. — 驾驶员监测系统性能要求标准。</p>
+<p>Shah, S., Dey, D., Lovett, C., Kapoor, A. "AirSim: High-Fidelity Visual and Physical Simulation for Autonomous Vehicles." <em>Field and Service Robotics (FSR)</em>, 2018.</p>
 </li>
 <li>
-<p><strong>Naujoks, F., Wiedemann, K., Schömig, N., Jarosch, O., &amp; Gold, C. (2018). "Expert-based controllability assessment of control transitions from automated to manual driving."</strong> <em>MethodsX</em>, 5, 579-592. — 接管请求多模态设计与可控性评估方法。</p>
+<p>Lopez, P. A., Behrisch, M., Bieker-Walz, L., Erdmann, J., et al. "Microscopic Traffic Simulation Using SUMO." <em>IEEE Intelligent Transportation Systems Conference (ITSC)</em>, 2018.</p>
 </li>
 <li>
-<p><strong>欧盟委员会. (2019). "Regulation (EU) 2019/2144 on type-approval requirements for motor vehicles and their trailers."</strong> Official Journal of the European Union, L 325/1. — 欧盟强制要求驾驶员困倦警告和分心警告系统的法规依据（GSR2）。</p>
+<p>Mildenhall, B., Srinivasan, P. P., Tancik, M., Barron, J. T., Ramamoorthi, R., Ng, R. "NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis." <em>European Conference on Computer Vision (ECCV)</em>, 2020.</p>
+</li>
+<li>
+<p>Feng, S., Yan, X., Sun, H., Feng, Y., Liu, H. X. "Intelligent Driving Intelligence Test for Autonomous Vehicles with Naturalistic and Adversarial Environment." <em>Nature Communications</em>, 2021.</p>
+</li>
+<li>
+<p>Sun, P., Kretzschmar, H., Dotiwalla, X., et al. "Scalability in Perception for Autonomous Driving: Waymo Open Dataset." <em>IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</em>, 2020.</p>
+</li>
+<li>
+<p>Rong, G., Shin, B. H., Tabatabaee, H., et al. "LGSVL Simulator: A High Fidelity Simulator for Autonomous Driving." <em>IEEE International Conference on Intelligent Transportation Systems (ITSC)</em>, 2020.</p>
+</li>
+<li>
+<p>Fremont, D. J., Dreossi, T., Ghosh, S., Yue, X., Sangiovanni-Vincentelli, A. L., Seshia, S. A. "Scenic: A Language for Scenario Specification and Scene Generation." <em>ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI)</em>, 2019.</p>
+</li>
+<li>
+<p>ISO 34502:2022. <em>Road Vehicles — Test Scenarios for Automated Driving Systems — Scenario Based Safety Evaluation Framework</em>. International Organization for Standardization, 2022.</p>
 </li>
 </ol>
 

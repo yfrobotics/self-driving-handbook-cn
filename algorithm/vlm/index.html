@@ -12,13 +12,13 @@
         <meta name="author" content="YFRL">
       
       
-        <link rel="canonical" href="https://yfrobotics.github.io/self-driving-handbook-cn/algorithm/decision_making/">
+        <link rel="canonical" href="https://yfrobotics.github.io/self-driving-handbook-cn/algorithm/vlm/">
       
       
-        <link rel="prev" href="../prediction/">
+        <link rel="prev" href="../nlp/">
       
       
-        <link rel="next" href="../control/">
+        <link rel="next" href="../../casestudy/main/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>决策 (Decision Making) - 自动驾驶指南</title>
+        <title>视觉语言大模型与自动驾驶 - 自动驾驶指南</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#decision-making" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              决策 (Decision Making)
+              视觉语言大模型与自动驾驶
             
           </span>
         </div>
@@ -2589,37 +2589,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    决策 (Decision Making)
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../decision_making/" class="md-nav__link">
         
   
   
@@ -2635,531 +2608,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 开篇介绍
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. 开篇介绍">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1.1 感知→预测→决策→规划链条
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1.2 决策的难点
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 决策层次结构
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. 决策层次结构">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-mission-planning" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.1 任务规划（Mission Planning）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-behavior-planning" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.2 行为规划（Behavior Planning）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23-motion-planning" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.3 动作规划（Motion Planning）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#24" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.4 三层架构示意图
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-fsm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 有限状态机（FSM）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. 有限状态机（FSM）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.1 状态定义
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.2 状态转移条件（触发器）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.3 优缺点分析
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#34-fsmhfsm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.4 层次 FSM（HFSM）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#35-behavior-tree-fsm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.5 行为树（Behavior Tree）与 FSM 对比
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 基于规则的决策
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. 基于规则的决策">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.1 交通规则编码
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42-potential-field" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.2 势场评估（Potential Field）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#43" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.3 基于代价函数的决策
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-mpdm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. MPDM（多策略并行决策模型）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. MPDM（多策略并行决策模型）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.1 策略集合定义
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#52" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.2 前向仿真评估
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#53" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.3 策略选择（最大期望回报）
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-pomdp" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. POMDP（部分可观测马尔可夫决策过程）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. POMDP（部分可观测马尔可夫决策过程）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#61" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6.1 形式化定义
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#62" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6.2 信念状态更新
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#63" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6.3 近似求解算法
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#64-pomdp" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6.4 POMDP 在路口博弈中的应用
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. 基于学习的决策
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. 基于学习的决策">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#71-imitation-learning" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.1 行为克隆（Imitation Learning）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#72-irl" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.2 逆强化学习（IRL）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#73-rl" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.3 强化学习（RL）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#74" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.4 奖励函数设计
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. 博弈论与交互决策
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="8. 博弈论与交互决策">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#81" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8.1 纳什均衡在交通中的应用
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#82-stackelberg-game" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8.2 主从博弈（Stackelberg Game）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#83" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8.3 意图感知决策
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9. 风险评估
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="9. 风险评估">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#91-ttctte" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9.1 碰撞时间（TTC）和碰撞余量（TTE）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#92-rss" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9.2 责任敏感安全（RSS）在决策中的集成
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#93-risk-map" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9.3 风险地图（Risk Map）
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        参考资料
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3531,10 +2979,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../vlm/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    视觉语言大模型与自动驾驶
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -3550,6 +3025,514 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 开篇介绍
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 开篇介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-vlm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 为什么需要 VLM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-vlm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 VLM 与传统感知管线的对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 基础模型概述
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 基础模型概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-vision-transformervit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Vision Transformer（ViT）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-clip-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 CLIP：对比学习实现视觉-语言对齐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-llava-internvl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 LLaVA / InternVL 架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 多模态 Token 化与跨模态注意力
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 场景理解与描述
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 场景理解与描述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-scene-captioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 驾驶场景描述（Scene Captioning）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 上下文感知的标志与信号识别
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 道路拓扑与布局理解
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 异常场景识别
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 代表性工作
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-vlm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 基于 VLM 的决策与规划
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 基于 VLM 的决策与规划">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 语言作为中间表征
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-chain-of-thought" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 链式推理（Chain-of-Thought）驾驶决策
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 代表性工作
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 数据标注与闭环
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 数据标注与闭环">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-vlm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 VLM 辅助自动标注
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 困难样本挖掘
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 主动学习闭环
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 人机交互
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 人机交互">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 自然语言导航指令
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 决策解释与乘客沟通
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 语音交互与安全约束
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 部署挑战
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 部署挑战">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 延迟约束
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 模型压缩
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 边缘部署与云边协同
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 安全回退机制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 计算成本分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 代表性工作对比
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 展望与挑战
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 展望与挑战">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 幻觉风险
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 时序推理局限
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 多智能体协调
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 法规与伦理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#95" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5 未来方向
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4072,10 +4055,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#11" class="md-nav__link">
+  <a href="#11-vlm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.1 感知→预测→决策→规划链条
+        1.1 为什么需要 VLM
       
     </span>
   </a>
@@ -4083,10 +4066,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#12" class="md-nav__link">
+  <a href="#12-vlm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.2 决策的难点
+        1.2 VLM 与传统感知管线的对比
       
     </span>
   </a>
@@ -4102,19 +4085,19 @@
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 决策层次结构
+        2. 基础模型概述
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. 决策层次结构">
+    <nav class="md-nav" aria-label="2. 基础模型概述">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-mission-planning" class="md-nav__link">
+  <a href="#21-vision-transformervit" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 任务规划（Mission Planning）
+        2.1 Vision Transformer（ViT）
       
     </span>
   </a>
@@ -4122,10 +4105,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-behavior-planning" class="md-nav__link">
+  <a href="#22-clip-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2 行为规划（Behavior Planning）
+        2.2 CLIP：对比学习实现视觉-语言对齐
       
     </span>
   </a>
@@ -4133,10 +4116,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#23-motion-planning" class="md-nav__link">
+  <a href="#23-llava-internvl" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.3 动作规划（Motion Planning）
+        2.3 LLaVA / InternVL 架构
       
     </span>
   </a>
@@ -4144,10 +4127,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#24" class="md-nav__link">
+  <a href="#24-token" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.4 三层架构示意图
+        2.4 多模态 Token 化与跨模态注意力
       
     </span>
   </a>
@@ -4160,22 +4143,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-fsm" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. 有限状态机（FSM）
+        3. 场景理解与描述
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. 有限状态机（FSM）">
+    <nav class="md-nav" aria-label="3. 场景理解与描述">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31" class="md-nav__link">
+  <a href="#31-scene-captioning" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1 状态定义
+        3.1 驾驶场景描述（Scene Captioning）
       
     </span>
   </a>
@@ -4186,7 +4169,7 @@
   <a href="#32" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2 状态转移条件（触发器）
+        3.2 上下文感知的标志与信号识别
       
     </span>
   </a>
@@ -4197,7 +4180,7 @@
   <a href="#33" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3 优缺点分析
+        3.3 道路拓扑与布局理解
       
     </span>
   </a>
@@ -4205,10 +4188,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#34-fsmhfsm" class="md-nav__link">
+  <a href="#34" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.4 层次 FSM（HFSM）
+        3.4 异常场景识别
       
     </span>
   </a>
@@ -4216,10 +4199,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#35-behavior-tree-fsm" class="md-nav__link">
+  <a href="#35" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.5 行为树（Behavior Tree）与 FSM 对比
+        3.5 代表性工作
       
     </span>
   </a>
@@ -4232,22 +4215,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+  <a href="#4-vlm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. 基于规则的决策
+        4. 基于 VLM 的决策与规划
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. 基于规则的决策">
+    <nav class="md-nav" aria-label="4. 基于 VLM 的决策与规划">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#41" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1 交通规则编码
+        4.1 语言作为中间表征
       
     </span>
   </a>
@@ -4255,10 +4238,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-potential-field" class="md-nav__link">
+  <a href="#42-chain-of-thought" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2 势场评估（Potential Field）
+        4.2 链式推理（Chain-of-Thought）驾驶决策
       
     </span>
   </a>
@@ -4269,7 +4252,7 @@
   <a href="#43" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.3 基于代价函数的决策
+        4.3 代表性工作
       
     </span>
   </a>
@@ -4282,22 +4265,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-mpdm" class="md-nav__link">
+  <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. MPDM（多策略并行决策模型）
+        5. 数据标注与闭环
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5. MPDM（多策略并行决策模型）">
+    <nav class="md-nav" aria-label="5. 数据标注与闭环">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#51" class="md-nav__link">
+  <a href="#51-vlm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.1 策略集合定义
+        5.1 VLM 辅助自动标注
       
     </span>
   </a>
@@ -4308,7 +4291,7 @@
   <a href="#52" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.2 前向仿真评估
+        5.2 困难样本挖掘
       
     </span>
   </a>
@@ -4319,7 +4302,7 @@
   <a href="#53" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.3 策略选择（最大期望回报）
+        5.3 主动学习闭环
       
     </span>
   </a>
@@ -4332,22 +4315,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-pomdp" class="md-nav__link">
+  <a href="#6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. POMDP（部分可观测马尔可夫决策过程）
+        6. 人机交互
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6. POMDP（部分可观测马尔可夫决策过程）">
+    <nav class="md-nav" aria-label="6. 人机交互">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#61" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.1 形式化定义
+        6.1 自然语言导航指令
       
     </span>
   </a>
@@ -4358,7 +4341,7 @@
   <a href="#62" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.2 信念状态更新
+        6.2 决策解释与乘客沟通
       
     </span>
   </a>
@@ -4369,18 +4352,7 @@
   <a href="#63" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.3 近似求解算法
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#64-pomdp" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6.4 POMDP 在路口博弈中的应用
+        6.3 语音交互与安全约束
       
     </span>
   </a>
@@ -4396,19 +4368,19 @@
   <a href="#7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. 基于学习的决策
+        7. 部署挑战
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="7. 基于学习的决策">
+    <nav class="md-nav" aria-label="7. 部署挑战">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#71-imitation-learning" class="md-nav__link">
+  <a href="#71" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.1 行为克隆（Imitation Learning）
+        7.1 延迟约束
       
     </span>
   </a>
@@ -4416,10 +4388,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#72-irl" class="md-nav__link">
+  <a href="#72" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.2 逆强化学习（IRL）
+        7.2 模型压缩
       
     </span>
   </a>
@@ -4427,10 +4399,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#73-rl" class="md-nav__link">
+  <a href="#73" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.3 强化学习（RL）
+        7.3 边缘部署与云边协同
       
     </span>
   </a>
@@ -4441,7 +4413,18 @@
   <a href="#74" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.4 奖励函数设计
+        7.4 安全回退机制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 计算成本分析
       
     </span>
   </a>
@@ -4457,49 +4440,10 @@
   <a href="#8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. 博弈论与交互决策
+        8. 代表性工作对比
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="8. 博弈论与交互决策">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#81" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8.1 纳什均衡在交通中的应用
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#82-stackelberg-game" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8.2 主从博弈（Stackelberg Game）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#83" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8.3 意图感知决策
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -4507,19 +4451,19 @@
   <a href="#9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9. 风险评估
+        9. 展望与挑战
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="9. 风险评估">
+    <nav class="md-nav" aria-label="9. 展望与挑战">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#91-ttctte" class="md-nav__link">
+  <a href="#91" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9.1 碰撞时间（TTC）和碰撞余量（TTE）
+        9.1 幻觉风险
       
     </span>
   </a>
@@ -4527,10 +4471,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#92-rss" class="md-nav__link">
+  <a href="#92" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9.2 责任敏感安全（RSS）在决策中的集成
+        9.2 时序推理局限
       
     </span>
   </a>
@@ -4538,10 +4482,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#93-risk-map" class="md-nav__link">
+  <a href="#93" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9.3 风险地图（Risk Map）
+        9.3 多智能体协调
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 法规与伦理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#95" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5 未来方向
       
     </span>
   </a>
@@ -4554,7 +4520,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         参考资料
@@ -4581,459 +4547,666 @@
 
 
 
-<h1 id="decision-making">决策 (Decision Making)</h1>
+<h1 id="_1">视觉语言大模型与自动驾驶</h1>
+<p>视觉语言大模型（Vision-Language Model, VLM）正在深刻改变自动驾驶技术的研究范式。传统感知管线依赖封闭词汇的目标检测与分类，而 VLM 通过将视觉理解与自然语言推理能力统一到一个模型中，赋予自动驾驶系统前所未有的<strong>语义理解能力</strong>、<strong>常识推理能力</strong>和<strong>可解释性</strong>。本页面系统介绍 VLM 在自动驾驶领域的核心技术、代表性工作和部署挑战。</p>
 <h2 id="1">1. 开篇介绍</h2>
-<p>决策系统是自动驾驶的"大脑"，决定了一个系统的性质是自动系统（Automated Systems）还是自主系统（Autonomous Systems）。在自动驾驶软件栈中，决策模块位于感知与规划之间，承上启下，是整个系统智能化程度的核心体现。</p>
-<h3 id="11">1.1 感知→预测→决策→规划链条</h3>
-<p>自动驾驶软件栈可以抽象为以下处理链：</p>
-<div class="highlight"><pre><span></span><code>传感器原始数据
-      ↓
-感知（Perception）：目标检测、语义分割、占据栅格
-      ↓
-预测（Prediction）：周围车辆/行人未来轨迹预测
-      ↓
-决策（Decision Making）：选择驾驶行为策略
-      ↓
-规划（Planning）：生成具体可执行轨迹
-      ↓
-控制（Control）：执行油门/制动/转向指令
+<h3 id="11-vlm">1.1 为什么需要 VLM</h3>
+<p>传统自动驾驶感知管线采用模块化设计：目标检测输出边界框和类别标签，语义分割输出像素级分类，车道线检测输出几何拟合曲线。这些模块在预定义类别空间内工作良好，但面对真实世界的<strong>开放性</strong>和<strong>长尾性</strong>时暴露出根本局限：</p>
+<ul>
+<li><strong>封闭词汇</strong>：检测器只能识别训练集中出现过的类别（行人、车辆、自行车等），面对"散落在路面的家具"、"倒伏的树木"、"施工路障的非标准摆放"等从未见过的物体时无能为力</li>
+<li><strong>缺乏常识推理</strong>：传统管线无法理解"前方学校区域放学时段需要格外谨慎"或"婚礼车队可能集体停车"等需要社会常识的场景</li>
+<li><strong>不可解释</strong>：端到端模型的控制输出对于乘客和安全审计人员而言是完全不透明的"黑盒"</li>
+<li><strong>长尾场景处理能力不足</strong>：罕见但安全攸关的场景（逆行车辆、行人突然倒地、动物横穿）在数据分布中占比极低，传统模型在这些场景下性能严重退化</li>
+</ul>
+<p><strong>视觉语言大模型（VLM）</strong> 通过在海量图文数据上预训练获得的世界知识和推理能力，为解决上述问题提供了新的技术路径：</p>
+<ul>
+<li><strong>开放词汇感知</strong>：不受预定义类别限制，可以用自然语言描述任意物体和场景</li>
+<li><strong>常识推理</strong>：利用预训练获得的世界知识进行因果推理和风险预判</li>
+<li><strong>可解释决策</strong>：以自然语言输出驾驶决策的理由，支持事后审查和乘客沟通</li>
+<li><strong>长尾泛化</strong>：利用语言的组合性理解从未见过的场景组合</li>
+</ul>
+<h3 id="12-vlm">1.2 VLM 与传统感知管线的对比</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">维度</th>
+<th style="text-align: center;">传统感知管线</th>
+<th style="text-align: center;">VLM 驱动的感知</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">类别体系</td>
+<td style="text-align: center;">封闭词汇（固定类别数）</td>
+<td style="text-align: center;">开放词汇（自然语言描述）</td>
+</tr>
+<tr>
+<td style="text-align: center;">推理能力</td>
+<td style="text-align: center;">仅模式匹配</td>
+<td style="text-align: center;">具备常识和因果推理</td>
+</tr>
+<tr>
+<td style="text-align: center;">输出形式</td>
+<td style="text-align: center;">结构化（边界框、分数）</td>
+<td style="text-align: center;">结构化 + 自然语言解释</td>
+</tr>
+<tr>
+<td style="text-align: center;">长尾处理</td>
+<td style="text-align: center;">依赖数据覆盖</td>
+<td style="text-align: center;">语言泛化 + 零样本推理</td>
+</tr>
+<tr>
+<td style="text-align: center;">实时性</td>
+<td style="text-align: center;">毫秒级（10–50 ms）</td>
+<td style="text-align: center;">秒级（500–2000 ms）</td>
+</tr>
+<tr>
+<td style="text-align: center;">确定性</td>
+<td style="text-align: center;">高（同输入同输出）</td>
+<td style="text-align: center;">较低（存在生成随机性）</td>
+</tr>
+<tr>
+<td style="text-align: center;">可验证性</td>
+<td style="text-align: center;">可量化评测</td>
+<td style="text-align: center;">难以形式化验证</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2">2. 基础模型概述</h2>
+<h3 id="21-vision-transformervit">2.1 Vision Transformer（ViT）</h3>
+<p><strong>Vision Transformer（ViT）</strong> 是 VLM 视觉编码器的基础架构。ViT 将输入图像分割为固定大小的图像块（Patch），将每个 Patch 线性投影为 Token，再经过标准 Transformer 编码器处理：</p>
+<p>给定输入图像 <span class="arithmatex">\(\mathbf{I} \in \mathbb{R}^{H \times W \times 3}\)</span>，将其分割为 <span class="arithmatex">\(N = \frac{HW}{P^2}\)</span> 个大小为 <span class="arithmatex">\(P \times P\)</span> 的 Patch，经线性投影得到 Patch 嵌入：</p>
+<div class="arithmatex">\[\mathbf{z}_0 = [\mathbf{x}_{cls};\ \mathbf{E}\mathbf{x}_1;\ \mathbf{E}\mathbf{x}_2;\ \ldots;\ \mathbf{E}\mathbf{x}_N] + \mathbf{E}_{pos}\]</div>
+<p>其中 <span class="arithmatex">\(\mathbf{E} \in \mathbb{R}^{D \times (P^2 \cdot 3)}\)</span> 为 Patch 投影矩阵，<span class="arithmatex">\(\mathbf{E}_{pos}\)</span> 为位置编码，<span class="arithmatex">\(\mathbf{x}_{cls}\)</span> 为可学习的分类 Token。</p>
+<p>Transformer 编码器的核心是<strong>多头自注意力机制（Multi-Head Self-Attention, MHSA）</strong>：</p>
+<div class="arithmatex">\[\text{Attention}(\mathbf{Q}, \mathbf{K}, \mathbf{V}) = \text{softmax}\!\left(\frac{\mathbf{Q}\mathbf{K}^T}{\sqrt{d_k}}\right)\mathbf{V}\]</div>
+<p>其中 <span class="arithmatex">\(\mathbf{Q} = \mathbf{z}\mathbf{W}_Q\)</span>，<span class="arithmatex">\(\mathbf{K} = \mathbf{z}\mathbf{W}_K\)</span>，<span class="arithmatex">\(\mathbf{V} = \mathbf{z}\mathbf{W}_V\)</span> 分别为查询、键、值矩阵，<span class="arithmatex">\(d_k\)</span> 为键的维度。自注意力使每个 Patch Token 能够关注图像中所有其他 Patch 的信息，建立全局上下文感知。</p>
+<h3 id="22-clip-">2.2 CLIP：对比学习实现视觉-语言对齐</h3>
+<p><strong>CLIP（Contrastive Language-Image Pre-training）</strong> 是 OpenAI 于 2021 年提出的视觉-语言对齐模型，是绝大多数 VLM 的视觉编码器基础。CLIP 使用<strong>对比学习</strong>在 4 亿图文对上训练，使匹配的图文对在嵌入空间中距离更近，不匹配的图文对距离更远。</p>
+<p>CLIP 的训练目标为<strong>对称交叉熵对比损失（InfoNCE Loss）</strong>：</p>
+<div class="arithmatex">\[\mathcal{L}_{CLIP} = -\frac{1}{2N}\sum_{i=1}^{N}\left[\log\frac{\exp(\text{sim}(\mathbf{v}_i, \mathbf{t}_i)/\tau)}{\sum_{j=1}^{N}\exp(\text{sim}(\mathbf{v}_i, \mathbf{t}_j)/\tau)} + \log\frac{\exp(\text{sim}(\mathbf{t}_i, \mathbf{v}_i)/\tau)}{\sum_{j=1}^{N}\exp(\text{sim}(\mathbf{t}_i, \mathbf{v}_j)/\tau)}\right]\]</div>
+<p>其中 <span class="arithmatex">\(\mathbf{v}_i\)</span>、<span class="arithmatex">\(\mathbf{t}_i\)</span> 分别为第 <span class="arithmatex">\(i\)</span> 个图像和文本的嵌入向量，<span class="arithmatex">\(\text{sim}(\cdot,\cdot)\)</span> 为余弦相似度，<span class="arithmatex">\(\tau\)</span> 为温度参数。</p>
+<p>CLIP 在自动驾驶中的应用场景：
+- <strong>开放词汇目标检测</strong>：无需重新训练即可识别"施工锥桶"、"轮椅"等非标准类别
+- <strong>场景分类</strong>：判断"高速公路"、"学校区域"、"施工路段"等场景类型
+- <strong>异常检测</strong>：通过衡量场景与"正常道路"描述的语义距离，检测异常状况</p>
+<h3 id="23-llava-internvl">2.3 LLaVA / InternVL 架构</h3>
+<p>现代 VLM 普遍采用<strong>视觉编码器 + 投影层 + 大语言模型（LLM）</strong>的三段式架构。以 <strong>LLaVA（Large Language and Vision Assistant）</strong> 为代表：</p>
+<div class="highlight"><pre><span></span><code>输入图像
+    │
+视觉编码器（CLIP ViT-L/14）
+    │
+视觉 Token 序列（N 个 Token）
+    │
+线性投影层（MLP Projector）
+    │
+映射到 LLM 的词嵌入空间
+    │
+与文本 Token 拼接
+    │
+大语言模型（LLaMA / Vicuna）
+    │
+自然语言输出
 </code></pre></div>
-<p>感知模块提供对当前世界状态的理解，预测模块估计环境的未来演化，决策模块在此基础上确定自车应采取的高层行为（如变道、跟车、礼让），最终由规划模块将这一行为决策转化为精确的时空轨迹。</p>
-<h3 id="12">1.2 决策的难点</h3>
-<p>相比感知和控制，决策面临以下特有挑战：</p>
-<ul>
-<li><strong>不确定性叠加</strong>：传感器噪声、预测误差、他车意图未知，决策需要在多重不确定性下保证安全。</li>
-<li><strong>多智能体交互</strong>：路口、合流等场景中，自车行为会影响他车行为，形成反应循环，难以用单智能体模型描述。</li>
-<li><strong>长时序依赖</strong>：一次超车决策的安全性需要考虑数秒乃至十几秒的未来演化，而非仅看当前时刻。</li>
-<li><strong>场景多样性</strong>：从高速直道到复杂城区，驾驶场景的组合几乎是无限的，难以穷举所有情况进行规则编码。</li>
-<li><strong>可解释性与安全性</strong>：决策系统的输出必须可追溯、可验证，以满足功能安全标准（如 ISO 26262）的要求。</li>
-</ul>
-<h2 id="2">2. 决策层次结构</h2>
-<p>自动驾驶决策通常采用三层架构，不同层次在时间尺度、抽象程度和求解方法上各有侧重。</p>
-<h3 id="21-mission-planning">2.1 任务规划（Mission Planning）</h3>
-<p>任务规划在地图层面确定从起点到终点的最优路线，时间尺度为分钟到小时级别。主要输入包括高精度地图（HD Map）、实时交通信息和用户目的地。常用算法有 Dijkstra 最短路径和 A* 启发式搜索。</p>
-<p>任务规划的核心是代价函数设计，综合考虑行驶距离、预计时间、道路等级和通行费等因素：</p>
-<div class="arithmatex">\[C_{route} = w_d \cdot d + w_t \cdot t + w_r \cdot r_{toll} + w_e \cdot e_{energy}\]</div>
-<p>其中 <span class="arithmatex">\(d\)</span> 为距离，<span class="arithmatex">\(t\)</span> 为预计行驶时间，<span class="arithmatex">\(r_{toll}\)</span> 为通行费，<span class="arithmatex">\(e_{energy}\)</span> 为能耗估计，<span class="arithmatex">\(w_*\)</span> 为对应权重。</p>
-<h3 id="22-behavior-planning">2.2 行为规划（Behavior Planning）</h3>
-<p>行为规划是决策的核心层，在道路场景中选择合适的驾驶行为，时间尺度为秒级。典型行为包括：车道保持（Lane Keeping）、变道（Lane Change）、跟车（Car Following）、超车（Overtaking）、汇入（Merging）、礼让（Yielding）和停车（Stopping）。</p>
-<p>行为规划的输入来自感知和预测模块，输出的是离散化的高层行为指令，供运动规划模块进一步细化。</p>
-<h3 id="23-motion-planning">2.3 动作规划（Motion Planning）</h3>
-<p>动作规划将行为规划的高层指令转化为时间上连续的可执行轨迹 <span class="arithmatex">\(\{(x_t, y_t, \theta_t, v_t)\}_{t=0}^{T}\)</span>，需要满足车辆运动学约束、舒适性约束（曲率连续、加速度有界）和障碍物约束。</p>
-<h3 id="24">2.4 三层架构示意图</h3>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────┐
-│              任务规划（Mission Planning）                │
-│   输入：地图 + 目的地    输出：参考路线（Road Graph）    │
-│   时间尺度：分钟～小时   方法：A*, Dijkstra             │
-└─────────────────────────┬───────────────────────────────┘
-                          │ 参考路线
-┌─────────────────────────▼───────────────────────────────┐
-│              行为规划（Behavior Planning）               │
-│   输入：感知 + 预测      输出：驾驶行为指令              │
-│   时间尺度：秒级         方法：FSM, MPDM, POMDP, RL     │
-└─────────────────────────┬───────────────────────────────┘
-                          │ 行为指令
-┌─────────────────────────▼───────────────────────────────┐
-│              运动规划（Motion Planning）                 │
-│   输入：行为指令 + 环境  输出：时空轨迹                  │
-│   时间尺度：毫秒～秒     方法：Frenet, Lattice, MPC      │
-└─────────────────────────────────────────────────────────┘
+<p><strong>InternVL</strong> 进一步优化了视觉编码器的规模和分辨率，采用 InternViT-6B（60 亿参数视觉编码器）和动态分辨率策略，支持高达 <span class="arithmatex">\(448 \times 448\)</span> 乃至更高分辨率的输入，对自动驾驶中的远距离小目标识别尤为关键。</p>
+<h3 id="24-token">2.4 多模态 Token 化与跨模态注意力</h3>
+<p>VLM 的核心设计理念是将视觉和语言统一到<strong>同一 Token 空间</strong>进行联合推理。跨模态推理通过 Transformer 的交叉注意力实现：</p>
+<div class="arithmatex">\[\text{CrossAttn}(\mathbf{Q}_{text}, \mathbf{K}_{vis}, \mathbf{V}_{vis}) = \text{softmax}\!\left(\frac{\mathbf{Q}_{text}\mathbf{K}_{vis}^T}{\sqrt{d_k}}\right)\mathbf{V}_{vis}\]</div>
+<p>这使得语言 Token 在生成时可以"看到"视觉信息，从而将视觉内容描述为语言、用语言回答关于图像的问题。在自动驾驶场景中，这一机制使模型能够将"前方红色八角形标志"映射到"停车让行"的语义理解。</p>
+<hr />
+<h2 id="3">3. 场景理解与描述</h2>
+<h3 id="31-scene-captioning">3.1 驾驶场景描述（Scene Captioning）</h3>
+<p>VLM 可以生成对当前驾驶场景的自然语言描述，将复杂的视觉信息压缩为结构化的语义摘要。与传统感知模块输出的目标列表不同，场景描述能够捕捉<strong>场景级语义</strong>：</p>
+<div class="highlight"><pre><span></span><code>传统感知输出:
+  - 检测目标: {car: 3, pedestrian: 1, traffic_light: red}
+  - 车道线: {left: solid_white, right: dashed_white}
+
+VLM 场景描述:
+  &quot;当前车辆行驶在双向四车道城市道路上，前方约 30 米处红灯亮起，
+   有三辆车排队等候。右侧人行横道上一名行人正准备过街，手中
+   提着大件行李，步行速度较慢。左侧为实线，禁止变道。&quot;
 </code></pre></div>
-<h2 id="3-fsm">3. 有限状态机（FSM）</h2>
-<p>有限状态机是最早用于自动驾驶行为决策的方法，凭借其结构清晰、可解释性强的特点，至今仍被广泛应用于工业系统。</p>
-<h3 id="31">3.1 状态定义</h3>
-<p>一个典型的高速公路场景 FSM 包含以下状态：</p>
+<p>场景描述提供了传统感知无法表达的信息维度：行人意图推断（"正准备过街"）、物体属性细节（"手中提着大件行李"）、交通规则解读（"禁止变道"）。</p>
+<h3 id="32">3.2 上下文感知的标志与信号识别</h3>
+<p>传统交通标志识别系统依赖分类器输出标志类别，但无法理解标志与当前驾驶上下文的关系。VLM 能够实现<strong>上下文感知的语义理解</strong>：</p>
+<ul>
+<li>识别"前方学校区域，限速 30 km/h"的同时判断当前是否为上学/放学时段</li>
+<li>理解"此路段施工，限速 20 km/h"与周围施工设备的一致性</li>
+<li>解读非标准标志（手写的临时指示牌、地面涂写的箭头）</li>
+</ul>
+<h3 id="33">3.3 道路拓扑与布局理解</h3>
+<p>VLM 对道路结构的理解超越了传统的车道线检测。模型可以推理出：</p>
+<ul>
+<li>路口类型（十字路口、丁字路口、环形交叉路口）及通行规则</li>
+<li>匝道入口/出口的合流区域和加速车道长度</li>
+<li>非结构化道路（乡村道路、工地临时便道）的可通行区域</li>
+</ul>
+<h3 id="34">3.4 异常场景识别</h3>
+<p>长尾异常场景是 VLM 最具价值的应用场景之一。传统检测器在以下场景中通常完全失效，而 VLM 利用预训练知识可以进行合理推断：</p>
 <table>
 <thead>
 <tr>
-<th>状态名称</th>
-<th>描述</th>
+<th style="text-align: center;">异常场景</th>
+<th style="text-align: center;">传统方案表现</th>
+<th style="text-align: center;">VLM 方案表现</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>车道保持（Lane Keep）</td>
-<td>在当前车道内以目标速度行驶</td>
+<td style="text-align: center;">道路坍塌</td>
+<td style="text-align: center;">无法识别（不在训练类别内）</td>
+<td style="text-align: center;">可描述并判断风险等级</td>
 </tr>
 <tr>
-<td>跟车（Car Follow）</td>
-<td>检测到前车，以安全车距跟随</td>
+<td style="text-align: center;">消防车横停封路</td>
+<td style="text-align: center;">可检测车辆但无法理解意图</td>
+<td style="text-align: center;">理解封路意图并规划绕行</td>
 </tr>
 <tr>
-<td>变道准备（Prepare LC）</td>
-<td>评估目标车道可行性</td>
+<td style="text-align: center;">行人举牌指挥交通</td>
+<td style="text-align: center;">仅检测为行人</td>
+<td style="text-align: center;">理解指挥手势含义</td>
 </tr>
 <tr>
-<td>变道执行（Execute LC）</td>
-<td>执行横向变道机动</td>
+<td style="text-align: center;">动物群横穿公路</td>
+<td style="text-align: center;">部分可检测</td>
+<td style="text-align: center;">判断群体行为和等待策略</td>
 </tr>
 <tr>
-<td>超车（Overtake）</td>
-<td>超越慢速前车后返回原车道</td>
-</tr>
-<tr>
-<td>停车（Stop）</td>
-<td>减速并停止于停止线或障碍物前</td>
-</tr>
-<tr>
-<td>紧急制动（Emergency）</td>
-<td>触发 AEB，以最大减速度制动</td>
+<td style="text-align: center;">积水路段反光</td>
+<td style="text-align: center;">可能误检为路面标线</td>
+<td style="text-align: center;">识别积水并评估深度风险</td>
 </tr>
 </tbody>
 </table>
-<h3 id="32">3.2 状态转移条件（触发器）</h3>
-<p>状态转移由条件触发器驱动，例如：</p>
+<h3 id="35">3.5 代表性工作</h3>
+<p><strong>DriveGPT4（Xu et al., 2023）：</strong> 基于多模态大模型对驾驶视频进行细粒度理解，能够回答关于驾驶场景的自由形式问题，输出包含场景描述、风险分析和驾驶建议的结构化文本。</p>
+<p><strong>Talk2BEV（Dewangan et al., 2023）：</strong> 将 VLM 与 BEV 感知结合，允许用户用自然语言查询 BEV 地图上的信息（如"距离最近的可用停车位在哪里？"），并在 BEV 视图上可视化回答。</p>
+<hr />
+<h2 id="4-vlm">4. 基于 VLM 的决策与规划</h2>
+<h3 id="41">4.1 语言作为中间表征</h3>
+<p>传统规划系统的中间表征为数值化的代价图（Cost Map）或轨迹集合，而 VLM 驱动的规划系统使用<strong>自然语言作为中间表征</strong>。这一范式转变的核心优势在于：</p>
 <ul>
-<li><strong>车道保持 → 跟车</strong>：前方 <span class="arithmatex">\(d &lt; d_{safe}\)</span>，且相对速度 <span class="arithmatex">\(\Delta v &lt; 0\)</span>（前车更慢）</li>
-<li><strong>跟车 → 变道准备</strong>：前车速度 <span class="arithmatex">\(v_{lead} &lt; v_{target} - \Delta v_{thresh}\)</span>，且持续时间超过 <span class="arithmatex">\(t_{thresh}\)</span></li>
-<li><strong>变道准备 → 变道执行</strong>：目标车道间隙 <span class="arithmatex">\(gap &gt; gap_{min}\)</span>，且无后方快速接近车辆</li>
-<li><strong>任意状态 → 紧急制动</strong>：TTC（碰撞时间）<span class="arithmatex">\(&lt; T_{emergency}\)</span></li>
+<li><strong>可解释性</strong>：决策推理过程以人类可读的文字呈现，支持事后审计和实时监控</li>
+<li><strong>组合泛化</strong>：语言的组合性使模型能够处理从未见过的场景组合（如"施工区域内的逆行电动车"）</li>
+<li><strong>跨域迁移</strong>：语言描述的驾驶策略可以跨越不同地理区域和交通法规体系</li>
 </ul>
-<h3 id="33">3.3 优缺点分析</h3>
-<p><strong>优点：</strong>
-- 逻辑清晰，每个状态和转移条件均可解释和审计
-- 开发和调试周期短，适合快速工程落地
-- 可直接编码交通规则，与法规合规性对齐</p>
-<p><strong>缺点：</strong>
-- <strong>状态爆炸</strong>：场景复杂度增加时，状态数量呈指数级增长，难以维护
-- <strong>转移条件脆弱</strong>：阈值参数需要大量人工调优，泛化能力差
-- <strong>无法处理不确定性</strong>：FSM 假设感知结果确定，无法建模传感器噪声
-- <strong>多智能体局限</strong>：难以显式建模他车的响应行为</p>
-<h3 id="34-fsmhfsm">3.4 层次 FSM（HFSM）</h3>
-<p>为缓解状态爆炸问题，可将 FSM 组织为层次结构（Hierarchical FSM）。高层 FSM 管理抽象行为（如高速行驶、城区行驶、停车场行驶），每个高层状态内部嵌套一个子 FSM 处理具体操作。</p>
-<div class="highlight"><pre><span></span><code>高层 FSM
-├── 高速公路模式
-│   ├── 子FSM：车道保持 / 跟车 / 变道
-├── 城区模式
-│   ├── 子FSM：直行 / 转弯 / 让行 / 路口通过
-└── 紧急模式
-    └── 子FSM：紧急制动 / 靠边停车
+<h3 id="42-chain-of-thought">4.2 链式推理（Chain-of-Thought）驾驶决策</h3>
+<p><strong>思维链推理（Chain-of-Thought, CoT）</strong> 要求模型在输出最终控制指令前显式输出中间推理步骤：</p>
+<div class="arithmatex">\[\text{Image} \xrightarrow{\text{VLM}} \underbrace{\text{场景描述} \to \text{风险评估} \to \text{决策意图} \to \text{行动计划}}_{\text{可审查的推理链}} \xrightarrow{\text{Planner}} \text{轨迹}\]</div>
+<p>典型的 CoT 推理输出示例：</p>
+<div class="highlight"><pre><span></span><code>[场景描述] 当前行驶在城市主干道右车道，前方 50m 处公交车靠站停车，
+          左侧车道有持续车流。
+[风险评估] 公交车可能长时间停车，后方乘客可能从车前方横穿道路。
+          左侧车道车流密度中等，存在变道窗口。
+[决策意图] 等待左侧车流间隙后变道至左侧车道，绕过停靠的公交车。
+[行动计划] 先减速至 25 km/h，打左转向灯，在安全间隙出现时变道。
 </code></pre></div>
-<h3 id="35-behavior-tree-fsm">3.5 行为树（Behavior Tree）与 FSM 对比</h3>
-<p>行为树（Behavior Tree, BT）是另一种常用的决策表示形式，通过组合控制节点（Sequence、Selector、Parallel）和叶节点（条件、动作）构建决策逻辑。</p>
-<table>
-<thead>
-<tr>
-<th>特性</th>
-<th>有限状态机（FSM）</th>
-<th>行为树（BT）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>模块化</td>
-<td>差（全局状态转移）</td>
-<td>强（子树可复用）</td>
-</tr>
-<tr>
-<td>可扩展性</td>
-<td>差（状态爆炸）</td>
-<td>好（局部修改）</td>
-</tr>
-<tr>
-<td>并发处理</td>
-<td>困难</td>
-<td>原生支持（Parallel 节点）</td>
-</tr>
-<tr>
-<td>调试难度</td>
-<td>低（状态明确）</td>
-<td>中等</td>
-</tr>
-<tr>
-<td>工业应用</td>
-<td>广泛（Waymo 早期）</td>
-<td>增长（ROS 2 生态）</td>
-</tr>
-</tbody>
-</table>
-<h2 id="4">4. 基于规则的决策</h2>
-<h3 id="41">4.1 交通规则编码</h3>
-<p>交通规则可以被系统化地编码为一组约束和优先级规则，常见规则包括：</p>
+<h3 id="43">4.3 代表性工作</h3>
+<p><strong>DriveVLM（Tian et al., 2024）：</strong> 采用<strong>"慢思考-快执行"双系统架构</strong>：</p>
 <ul>
-<li><strong>限速规则</strong>：<span class="arithmatex">\(v \leq v_{limit}(road\_type, weather, visibility)\)</span></li>
-<li><strong>安全车距规则</strong>（2秒原则）：<span class="arithmatex">\(d_{safe} \geq v_{ego} \cdot t_{headway}\)</span>，其中 <span class="arithmatex">\(t_{headway} \approx 2s\)</span></li>
-<li><strong>优先权规则</strong>：右侧优先、直行优先于转弯、主路优先于辅路</li>
-<li><strong>礼让规则</strong>：在无保护转弯时必须等待间隙（Gap Acceptance）足够大才可通行</li>
+<li><strong>慢系统（VLM）</strong>：理解复杂场景语义，生成高层驾驶决策描述（约 500 ms–1 s）</li>
+<li><strong>快系统（轨迹网络）</strong>：将文字决策编码为条件向量，输入高效的轨迹生成网络，输出毫秒级可执行轨迹</li>
 </ul>
-<p>间隙接受模型（Gap Acceptance Model）用于判断是否可以插入某个间隙：</p>
-<div class="arithmatex">\[P(accept) = \begin{cases} 1 &amp; \text{若 } gap \geq gap_{critical} \\ 0 &amp; \text{若 } gap &lt; gap_{critical} \end{cases}\]</div>
-<p>更精细的概率模型可以用 Logistic 函数建模：</p>
-<div class="arithmatex">\[P(accept \mid gap) = \frac{1}{1 + e^{-\beta(gap - \mu)}}\]</div>
-<p>其中 <span class="arithmatex">\(\mu\)</span> 为临界间隙均值，<span class="arithmatex">\(\beta\)</span> 为陡峭度参数。</p>
-<h3 id="42-potential-field">4.2 势场评估（Potential Field）</h3>
-<p>人工势场法将道路环境建模为势能场，自车受到目标点的引力和障碍物的斥力共同作用：</p>
-<div class="arithmatex">\[U_{total}(q) = U_{att}(q) + U_{rep}(q)\]</div>
-<p>引力场（指向目标）：</p>
-<div class="arithmatex">\[U_{att}(q) = \frac{1}{2} k_{att} \|q - q_{goal}\|^2\]</div>
-<p>斥力场（远离障碍物）：</p>
-<div class="arithmatex">\[U_{rep}(q) = \begin{cases} \frac{1}{2} k_{rep} \left(\frac{1}{\rho(q)} - \frac{1}{\rho_0}\right)^2 &amp; \text{若 } \rho(q) \leq \rho_0 \\ 0 &amp; \text{若 } \rho(q) &gt; \rho_0 \end{cases}\]</div>
-<p>其中 <span class="arithmatex">\(\rho(q)\)</span> 为自车到最近障碍物的距离，<span class="arithmatex">\(\rho_0\)</span> 为影响范围阈值，<span class="arithmatex">\(k_{att}\)</span>、<span class="arithmatex">\(k_{rep}\)</span> 为权重系数。决策方向沿负梯度方向 <span class="arithmatex">\(F = -\nabla U_{total}\)</span>。</p>
-<h3 id="43">4.3 基于代价函数的决策</h3>
-<p>对候选行为 <span class="arithmatex">\(\{a_1, a_2, \ldots, a_n\}\)</span> 分别计算综合代价，选择代价最低的行为：</p>
-<div class="arithmatex">\[a^* = \arg\min_{a_i} C(a_i) = \arg\min_{a_i} \left[ w_s \cdot C_{safety} + w_e \cdot C_{efficiency} + w_c \cdot C_{comfort} + w_r \cdot C_{rule} \right]\]</div>
-<p>其中各分项代价分别量化安全风险、行驶效率（与期望速度的偏差）、乘坐舒适度（加速度/急动度）和交规遵守程度。</p>
-<h2 id="5-mpdm">5. MPDM（多策略并行决策模型）</h2>
-<p>MPDM（Multipolicy Decision Making）是斯坦福大学提出的一种面向城区驾驶的决策框架，通过对有限策略集合进行前向仿真来选择最优策略。</p>
-<h3 id="51">5.1 策略集合定义</h3>
-<p>MPDM 使用一组参数化的闭环策略（Closed-loop Policy）来描述候选行为，典型策略集合包括：</p>
-<table>
-<thead>
-<tr>
-<th>策略 <span class="arithmatex">\(\pi_i\)</span></th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><span class="arithmatex">\(\pi_{LK}\)</span></td>
-<td>车道保持（Lane Keep），以目标速度巡航</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(\pi_{LCL}\)</span></td>
-<td>向左变道（Lane Change Left）</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(\pi_{LCR}\)</span></td>
-<td>向右变道（Lane Change Right）</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(\pi_{ACC}\)</span></td>
-<td>加速（Accelerate）至速度上限</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(\pi_{DEC}\)</span></td>
-<td>减速（Decelerate）并准备停车</td>
-</tr>
-</tbody>
-</table>
-<h3 id="52">5.2 前向仿真评估</h3>
-<p>对每个候选策略 <span class="arithmatex">\(\pi_i\)</span>，MPDM 利用预测模块对场景进行前向仿真，得到一条预测轨迹 <span class="arithmatex">\(\tau_i = \{s_0, s_1, \ldots, s_T\}\)</span>，其中他车行为同样采用闭环策略建模（通常假设他车也执行某一预定策略）。</p>
-<h3 id="53">5.3 策略选择（最大期望回报）</h3>
-<p>策略价值通过折扣累积奖励计算：</p>
-<div class="arithmatex">\[V(\pi_i) = \sum_{t=0}^{T} \gamma^t R(s_t, a_t)\]</div>
-<p>其中 <span class="arithmatex">\(\gamma \in (0,1]\)</span> 为折扣因子，<span class="arithmatex">\(R(s_t, a_t)\)</span> 为即时奖励函数，综合安全、效率和舒适度：</p>
-<div class="arithmatex">\[R(s_t, a_t) = r_{safety}(s_t) + \lambda_e \cdot r_{efficiency}(s_t) + \lambda_c \cdot r_{comfort}(a_t)\]</div>
-<p>最终选择价值最高的策略：</p>
-<div class="arithmatex">\[\pi^* = \arg\max_{\pi_i} V(\pi_i)\]</div>
-<p>MPDM 的计算复杂度为 <span class="arithmatex">\(O(|\Pi| \cdot N_{sim} \cdot T)\)</span>，其中 <span class="arithmatex">\(|\Pi|\)</span> 为策略数量，<span class="arithmatex">\(N_{sim}\)</span> 为仿真步数，满足实时性要求。</p>
-<h2 id="6-pomdp">6. POMDP（部分可观测马尔可夫决策过程）</h2>
-<p>POMDP 是处理不确定性决策的理论框架，相比 MDP，它显式地建模了感知的不完整性，更贴近真实驾驶场景。</p>
-<h3 id="61">6.1 形式化定义</h3>
-<p>一个 POMDP 由七元组 <span class="arithmatex">\((S, A, T, R, \Omega, O, \gamma)\)</span> 定义：</p>
-<table>
-<thead>
-<tr>
-<th>符号</th>
-<th>名称</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><span class="arithmatex">\(S\)</span></td>
-<td>状态空间</td>
-<td>环境的真实状态（含他车意图等隐变量）</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(A\)</span></td>
-<td>动作空间</td>
-<td>自车可执行的行为集合</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(T(s'\|s,a)\)</span></td>
-<td>状态转移函数</td>
-<td>在状态 <span class="arithmatex">\(s\)</span> 执行动作 <span class="arithmatex">\(a\)</span> 后转移到 <span class="arithmatex">\(s'\)</span> 的概率</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(R(s,a)\)</span></td>
-<td>奖励函数</td>
-<td>在状态 <span class="arithmatex">\(s\)</span> 执行动作 <span class="arithmatex">\(a\)</span> 的即时奖励</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(\Omega\)</span></td>
-<td>观测空间</td>
-<td>传感器可观测到的量（带噪声）</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(O(o\|s',a)\)</span></td>
-<td>观测函数</td>
-<td>到达状态 <span class="arithmatex">\(s'\)</span> 后观测到 <span class="arithmatex">\(o\)</span> 的概率</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(\gamma\)</span></td>
-<td>折扣因子</td>
-<td>对未来奖励的折扣（<span class="arithmatex">\(\gamma \in [0,1)\)</span>）</td>
-</tr>
-</tbody>
-</table>
-<p>在驾驶场景中，隐状态通常包括他车驾驶员的意图（如是否准备变道）、行人的目的地等，这些量无法通过传感器直接观测。</p>
-<h3 id="62">6.2 信念状态更新</h3>
-<p>由于真实状态不可直接观测，POMDP 维护一个<strong>信念状态</strong>（Belief State）<span class="arithmatex">\(b(s)\)</span>，表示对当前状态的概率分布。当执行动作 <span class="arithmatex">\(a\)</span> 并观测到 <span class="arithmatex">\(o\)</span> 后，信念状态按贝叶斯规则更新：</p>
-<div class="arithmatex">\[b'(s') = \eta \cdot O(o \mid s', a) \sum_{s \in S} T(s' \mid s, a) \cdot b(s)\]</div>
-<p>其中 <span class="arithmatex">\(\eta\)</span> 为归一化常数，确保 <span class="arithmatex">\(\sum_{s'} b'(s') = 1\)</span>。</p>
-<p>信念状态 <span class="arithmatex">\(b(s)\)</span> 是一个连续的概率分布，POMDP 的求解等价于在信念空间上找到最优策略 <span class="arithmatex">\(\pi^*: b \rightarrow a\)</span>。</p>
-<h3 id="63">6.3 近似求解算法</h3>
-<p>精确求解 POMDP 是 PSPACE-hard 问题，实际应用中使用近似算法：</p>
+<p>这一设计解耦了语义理解（允许较高延迟）和运动控制（必须实时），是目前最具工程可行性的 VLM 驾驶架构。</p>
+<p><strong>GPT-Driver（Mao et al., 2023）：</strong> 将运动规划建模为自然语言生成任务。给定当前场景的文字描述和历史轨迹的 Token 序列，GPT-3.5 直接生成未来轨迹的 Token 序列：</p>
+<div class="arithmatex">\[\text{Trajectory} = \text{LLM}(\text{Prompt}_{scene},\ \text{Tokens}_{history})\]</div>
+<p>轨迹 Token 被设计为离散化的航路点坐标（<span class="arithmatex">\(x, y\)</span> 量化为字符串），LLM 以自回归方式逐步生成。GPT-Driver 在 nuScenes 数据集上证明了 LLM 具备运动规划的基本能力，但其推理延迟（&gt;1 s）远超实时要求。</p>
+<p><strong>LanguageMPC（Sha et al., 2023）：</strong> 将 LLM 用于高层决策，输出模型预测控制（MPC）的参数调整指令，而非直接输出轨迹。LLM 的输出形如"增大跟车距离权重，降低变道倾向"，由下游 MPC 控制器执行，实现了语言与经典控制的结合。</p>
+<p><strong>LMDrive（Shao et al., 2023）：</strong> 端到端的多模态驾驶模型，支持自然语言导航指令输入。模型接受多视角摄像头图像和 LiDAR 点云作为感知输入，同时接受自然语言导航指令（如"在下一个路口右转"），直接输出控制指令。</p>
+<hr />
+<h2 id="5">5. 数据标注与闭环</h2>
+<h3 id="51-vlm">5.1 VLM 辅助自动标注</h3>
+<p>数据标注是自动驾驶开发中最昂贵的环节之一。VLM 可以大幅降低标注成本和提升标注质量：</p>
+<p><strong>场景级标签生成：</strong> VLM 自动为每一帧驾驶数据生成场景标签（"市区拥堵"、"高速自由流"、"雨天施工区"），支持后续的场景检索和数据均衡采样。</p>
+<p><strong>开放词汇目标标注：</strong> 利用 VLM 的零样本检测能力，自动标注传统标注流程中遗漏的非标准物体（路面碎片、非机动车上的超大货物、临时路障）。</p>
+<p><strong>标注质量审核：</strong> VLM 可以作为"标注审核员"，检查人工标注的一致性和完整性：</p>
 <ul>
-<li><strong>DESPOT（Determinized Sparse Partially Observable Tree）</strong>：通过对随机性进行确定化采样，构建稀疏信念树，时间复杂度大幅降低，适合实时决策。</li>
-<li><strong>POMCP（Partially Observable Monte-Carlo Planning）</strong>：基于蒙特卡洛树搜索（MCTS）的在线规划算法，用粒子滤波近似信念状态。</li>
-<li><strong>QMDP</strong>：一种快速近似方法，假设下一步后状态完全可观测，用于得到策略上界。</li>
+<li>检测漏标：VLM 发现图像中存在人工标注未覆盖的目标</li>
+<li>检测错标：VLM 与人工标注的类别不一致时触发复核流程</li>
+<li>语义完整性：检查标注的属性信息是否与视觉内容一致（如速度标注与运动模糊程度是否匹配）</li>
 </ul>
-<h3 id="64-pomdp">6.4 POMDP 在路口博弈中的应用</h3>
-<p>在无保护左转场景中，对向来车的意图（减速礼让 vs. 保持速度通过）是关键隐状态。POMDP 框架可以：</p>
+<h3 id="52">5.2 困难样本挖掘</h3>
+<p>VLM 可以通过语义理解进行智能的<strong>困难样本挖掘（Corner Case Mining）</strong>：</p>
+<div class="arithmatex">\[\text{Difficulty}(x) = \alpha \cdot H_{VLM}(x) + \beta \cdot D_{semantic}(x, \mathcal{X}_{normal}) + \gamma \cdot \mathbb{1}[\text{VLM disagrees with detector}]\]</div>
+<p>其中 <span class="arithmatex">\(H_{VLM}(x)\)</span> 为 VLM 对场景 <span class="arithmatex">\(x\)</span> 的描述困惑度（Perplexity），<span class="arithmatex">\(D_{semantic}\)</span> 为场景与正常数据的语义距离，最后一项为 VLM 与传统检测器结果的不一致指标。高难度样本被优先选入下一轮训练集。</p>
+<h3 id="53">5.3 主动学习闭环</h3>
+<p>VLM 驱动的主动学习构成完整的数据闭环：</p>
+<div class="highlight"><pre><span></span><code>量产车队实时数据流
+        │
+VLM 在线语义分析（边缘端或云端）
+        │
+    ┌───┴───┐
+ 正常场景   困难/异常场景
+ （丢弃）    │
+         优先回传至数据中心
+              │
+         VLM 自动标注 + 人工复核
+              │
+         加入训练集，更新模型
+              │
+         OTA 推送至量产车队
+              │
+         新一轮数据采集
+</code></pre></div>
+<hr />
+<h2 id="6">6. 人机交互</h2>
+<h3 id="61">6.1 自然语言导航指令</h3>
+<p>VLM 使自动驾驶系统能够理解<strong>自然语言形式的导航指令</strong>，超越传统的地址输入或地图点选：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">指令类型</th>
+<th style="text-align: center;">示例</th>
+<th style="text-align: center;">技术挑战</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">地标参照</td>
+<td style="text-align: center;">"在星巴克旁边的路口左转"</td>
+<td style="text-align: center;">需要识别商铺并定位</td>
+</tr>
+<tr>
+<td style="text-align: center;">相对方位</td>
+<td style="text-align: center;">"停在前面第二个红色建筑前"</td>
+<td style="text-align: center;">需要序数理解和视觉定位</td>
+</tr>
+<tr>
+<td style="text-align: center;">条件指令</td>
+<td style="text-align: center;">"如果前面堵车就走辅路"</td>
+<td style="text-align: center;">需要实时交通状态判断</td>
+</tr>
+<tr>
+<td style="text-align: center;">模糊指令</td>
+<td style="text-align: center;">"找个安全的地方靠边停车"</td>
+<td style="text-align: center;">需要综合判断安全性</td>
+</tr>
+<tr>
+<td style="text-align: center;">偏好表达</td>
+<td style="text-align: center;">"走风景好的路线"</td>
+<td style="text-align: center;">需要主观审美理解</td>
+</tr>
+</tbody>
+</table>
+<h3 id="62">6.2 决策解释与乘客沟通</h3>
+<p>VLM 可以实时向乘客解释自动驾驶系统的行为决策，提升乘客信任度和舒适感：</p>
+<div class="highlight"><pre><span></span><code>[系统行为] 车辆突然减速
+
+[传统系统反馈] &quot;正在减速&quot;
+
+[VLM 增强反馈] &quot;前方约 80 米处检测到一辆快递三轮车正在右侧车道
+               卸货，可能会有人员走出，因此提前减速以确保安全。
+               预计 5 秒后恢复正常行驶速度。&quot;
+</code></pre></div>
+<p>决策解释的质量直接影响用户对系统的信任度。研究表明，提供原因说明的自动驾驶系统相比仅提供行为通知的系统，乘客主观安全感评分提升约 35%。</p>
+<h3 id="63">6.3 语音交互与安全约束</h3>
+<p>语音是车内人机交互的最自然方式，VLM 使语音指令的理解能力从简单命令拓展到复杂语义：</p>
+<ul>
+<li><strong>安全优先级</strong>：任何语音指令的执行必须通过安全性校验，VLM 理解指令意图后由安全模块判断是否可执行</li>
+<li><strong>指令消歧</strong>：当指令存在歧义时（"停在那里"——哪里？），VLM 结合视觉上下文进行消歧，或主动请求澄清</li>
+<li><strong>拒绝不安全指令</strong>：当乘客指令可能导致危险（"直接闯过去"），系统应拒绝执行并给出合理解释</li>
+</ul>
+<hr />
+<h2 id="7">7. 部署挑战</h2>
+<h3 id="71">7.1 延迟约束</h3>
+<p>VLM 的推理延迟是部署到自动驾驶系统中最大的工程障碍。自动驾驶控制回路的典型时序要求为：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">模块</th>
+<th style="text-align: center;">延迟要求</th>
+<th style="text-align: center;">VLM 典型延迟</th>
+<th style="text-align: center;">差距</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">紧急制动决策</td>
+<td style="text-align: center;">&lt; 20 ms</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">不适用（独立安全系统）</td>
+</tr>
+<tr>
+<td style="text-align: center;">感知检测</td>
+<td style="text-align: center;">&lt; 50 ms</td>
+<td style="text-align: center;">200–800 ms</td>
+<td style="text-align: center;">4–16x</td>
+</tr>
+<tr>
+<td style="text-align: center;">轨迹规划</td>
+<td style="text-align: center;">&lt; 100 ms</td>
+<td style="text-align: center;">500–2000 ms</td>
+<td style="text-align: center;">5–20x</td>
+</tr>
+<tr>
+<td style="text-align: center;">场景理解（非实时）</td>
+<td style="text-align: center;">&lt; 500 ms</td>
+<td style="text-align: center;">500–2000 ms</td>
+<td style="text-align: center;">可接受</td>
+</tr>
+</tbody>
+</table>
+<p>主流解决方案是<strong>异步分层架构</strong>：VLM 以较低频率（1–2 Hz）运行场景理解和高层决策，其输出缓存为"场景上下文"，供高频率（10–20 Hz）的传统规划模块使用。</p>
+<h3 id="72">7.2 模型压缩</h3>
+<p>将数十亿参数的 VLM 部署到车载计算平台需要系统性的模型压缩：</p>
+<p><strong>量化（Quantization）：</strong> 将模型参数从 FP32/FP16 降低到 INT8 或 INT4：</p>
+<div class="arithmatex">\[\mathbf{W}_{quant} = \text{round}\!\left(\frac{\mathbf{W} - \min(\mathbf{W})}{\Delta}\right), \quad \Delta = \frac{\max(\mathbf{W}) - \min(\mathbf{W})}{2^b - 1}\]</div>
+<p>其中 <span class="arithmatex">\(b\)</span> 为量化位宽。INT4 量化可将模型体积压缩约 8 倍，推理速度提升 2–4 倍，精度损失通常在 1–3% 以内。</p>
+<p><strong>知识蒸馏（Knowledge Distillation）：</strong> 用大型 VLM（教师模型）的输出监督训练小型模型（学生模型）：</p>
+<div class="arithmatex">\[\mathcal{L}_{KD} = \alpha\, \mathcal{L}_{CE}(y, \hat{y}_{student}) + (1-\alpha)\, \tau^2\, D_{KL}\!\left(\frac{\hat{y}_{teacher}}{\tau} \Big\| \frac{\hat{y}_{student}}{\tau}\right)\]</div>
+<p>其中 <span class="arithmatex">\(\tau\)</span> 为温度参数（通常取 2–5），用于软化概率分布，使学生模型能学到教师模型的"暗知识"。</p>
+<p><strong>LoRA（Low-Rank Adaptation）：</strong> 冻结预训练权重，仅在每层插入低秩分解的可训练矩阵进行微调：</p>
+<div class="arithmatex">\[\mathbf{W}' = \mathbf{W}_0 + \mathbf{B}\mathbf{A}, \quad \mathbf{B} \in \mathbb{R}^{d \times r},\ \mathbf{A} \in \mathbb{R}^{r \times d},\ r \ll d\]</div>
+<p>LoRA 将可训练参数量降低至原模型的 0.1%–1%，在驾驶场景微调中可显著降低训练和部署成本。</p>
+<h3 id="73">7.3 边缘部署与云边协同</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">部署方案</th>
+<th style="text-align: center;">优势</th>
+<th style="text-align: center;">劣势</th>
+<th style="text-align: center;">适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">纯边缘端</td>
+<td style="text-align: center;">无网络依赖，低延迟</td>
+<td style="text-align: center;">算力受限，模型规模有限</td>
+<td style="text-align: center;">高速公路、隧道等无信号区域</td>
+</tr>
+<tr>
+<td style="text-align: center;">纯云端</td>
+<td style="text-align: center;">算力充足，可运行最大模型</td>
+<td style="text-align: center;">网络延迟不确定，断网风险</td>
+<td style="text-align: center;">低速园区、固定路线</td>
+</tr>
+<tr>
+<td style="text-align: center;">云边协同</td>
+<td style="text-align: center;">兼顾算力和实时性</td>
+<td style="text-align: center;">系统复杂度高</td>
+<td style="text-align: center;">量产主流方案</td>
+</tr>
+</tbody>
+</table>
+<p>云边协同的典型分工：</p>
+<ul>
+<li><strong>边缘端</strong>：运行轻量化感知模型（INT8 量化），执行实时控制（10–100 Hz）</li>
+<li><strong>云端</strong>：运行完整 VLM，处理困难场景分析、数据标注、模型更新（1–2 Hz，异步）</li>
+</ul>
+<h3 id="74">7.4 安全回退机制</h3>
+<p>当 VLM 不可用（推理超时、模型异常、网络中断）时，系统必须具备完整的<strong>安全回退（Fail-safe）机制</strong>：</p>
+<ul>
+<li><strong>降级运行</strong>：回退到传统规则-based 感知和规划管线，仅丧失 VLM 提供的高级语义能力</li>
+<li><strong>最小风险状态（MRC）</strong>：在无法确保安全行驶时，自动执行靠边停车或减速停车操作</li>
+<li><strong>VLM 输出置信度监控</strong>：当 VLM 输出的困惑度超过阈值或生成内容与多帧一致性检查不符时，自动忽略 VLM 输出</li>
+</ul>
+<h3 id="75">7.5 计算成本分析</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">模型</th>
+<th style="text-align: center;">参数量</th>
+<th style="text-align: center;">车端推理硬件</th>
+<th style="text-align: center;">单帧延迟</th>
+<th style="text-align: center;">功耗</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">CLIP ViT-L/14</td>
+<td style="text-align: center;">400M</td>
+<td style="text-align: center;">NVIDIA Orin</td>
+<td style="text-align: center;">~30 ms</td>
+<td style="text-align: center;">~15 W</td>
+</tr>
+<tr>
+<td style="text-align: center;">LLaVA-7B (INT8)</td>
+<td style="text-align: center;">7B</td>
+<td style="text-align: center;">NVIDIA Orin (双芯)</td>
+<td style="text-align: center;">~400 ms</td>
+<td style="text-align: center;">~60 W</td>
+</tr>
+<tr>
+<td style="text-align: center;">InternVL-2B (INT4)</td>
+<td style="text-align: center;">2B</td>
+<td style="text-align: center;">NVIDIA Orin</td>
+<td style="text-align: center;">~150 ms</td>
+<td style="text-align: center;">~30 W</td>
+</tr>
+<tr>
+<td style="text-align: center;">GPT-4V (云端)</td>
+<td style="text-align: center;">~1.8T (推测)</td>
+<td style="text-align: center;">A100 集群</td>
+<td style="text-align: center;">~1500 ms</td>
+<td style="text-align: center;">N/A</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8">8. 代表性工作对比</h2>
+<p>下表汇总了当前 VLM 与自动驾驶交叉领域的核心工作：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">系统</th>
+<th style="text-align: center;">年份</th>
+<th style="text-align: center;">架构</th>
+<th style="text-align: center;">输入模态</th>
+<th style="text-align: center;">核心任务</th>
+<th style="text-align: center;">骨干模型</th>
+<th style="text-align: center;">关键特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">DriveVLM</td>
+<td style="text-align: center;">2024</td>
+<td style="text-align: center;">双系统（慢/快）</td>
+<td style="text-align: center;">多视角图像</td>
+<td style="text-align: center;">场景理解 + 规划</td>
+<td style="text-align: center;">InternVL</td>
+<td style="text-align: center;">慢思考-快执行分离</td>
+</tr>
+<tr>
+<td style="text-align: center;">GPT-Driver</td>
+<td style="text-align: center;">2023</td>
+<td style="text-align: center;">LLM 直接生成</td>
+<td style="text-align: center;">文本化场景</td>
+<td style="text-align: center;">运动规划</td>
+<td style="text-align: center;">GPT-3.5</td>
+<td style="text-align: center;">轨迹 Token 化</td>
+</tr>
+<tr>
+<td style="text-align: center;">DriveGPT4</td>
+<td style="text-align: center;">2023</td>
+<td style="text-align: center;">多模态 LLM</td>
+<td style="text-align: center;">驾驶视频</td>
+<td style="text-align: center;">场景问答</td>
+<td style="text-align: center;">LLaMA + CLIP</td>
+<td style="text-align: center;">视频级理解</td>
+</tr>
+<tr>
+<td style="text-align: center;">LMDrive</td>
+<td style="text-align: center;">2023</td>
+<td style="text-align: center;">端到端多模态</td>
+<td style="text-align: center;">图像 + LiDAR + 语言</td>
+<td style="text-align: center;">导航 + 控制</td>
+<td style="text-align: center;">LLaMA-7B</td>
+<td style="text-align: center;">语言指令驱动</td>
+</tr>
+<tr>
+<td style="text-align: center;">DriveLM</td>
+<td style="text-align: center;">2024</td>
+<td style="text-align: center;">图结构 VQA</td>
+<td style="text-align: center;">多视角图像</td>
+<td style="text-align: center;">推理链规划</td>
+<td style="text-align: center;">LLaVA</td>
+<td style="text-align: center;">感知-预测-规划图</td>
+</tr>
+<tr>
+<td style="text-align: center;">LanguageMPC</td>
+<td style="text-align: center;">2023</td>
+<td style="text-align: center;">LLM + MPC</td>
+<td style="text-align: center;">文本化场景</td>
+<td style="text-align: center;">高层决策</td>
+<td style="text-align: center;">GPT-4</td>
+<td style="text-align: center;">LLM 调节 MPC 参数</td>
+</tr>
+<tr>
+<td style="text-align: center;">Talk2BEV</td>
+<td style="text-align: center;">2023</td>
+<td style="text-align: center;">VLM + BEV</td>
+<td style="text-align: center;">图像 + BEV 地图</td>
+<td style="text-align: center;">场景查询</td>
+<td style="text-align: center;">LLaVA</td>
+<td style="text-align: center;">自然语言查询 BEV</td>
+</tr>
+<tr>
+<td style="text-align: center;">Dolphins</td>
+<td style="text-align: center;">2023</td>
+<td style="text-align: center;">多模态 LLM</td>
+<td style="text-align: center;">驾驶视频</td>
+<td style="text-align: center;">场景理解 + 推理</td>
+<td style="text-align: center;">OpenFlamingo</td>
+<td style="text-align: center;">驾驶专用微调</td>
+</tr>
+</tbody>
+</table>
+<p>各系统在 nuScenes 等标准数据集上的性能对比（部分结果来自各论文报告，评测条件可能不完全一致）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">系统</th>
+<th style="text-align: center;">场景描述准确率</th>
+<th style="text-align: center;">规划 L2 误差 (3s)</th>
+<th style="text-align: center;">碰撞率 (3s)</th>
+<th style="text-align: center;">推理延迟</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">DriveVLM-Dual</td>
+<td style="text-align: center;">78.3% (GPT-4 评分)</td>
+<td style="text-align: center;">0.68 m</td>
+<td style="text-align: center;">0.03%</td>
+<td style="text-align: center;">~600 ms</td>
+</tr>
+<tr>
+<td style="text-align: center;">GPT-Driver</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">0.94 m</td>
+<td style="text-align: center;">0.08%</td>
+<td style="text-align: center;">&gt; 1000 ms</td>
+</tr>
+<tr>
+<td style="text-align: center;">DriveLM</td>
+<td style="text-align: center;">71.2% (BLEU-4)</td>
+<td style="text-align: center;">0.82 m</td>
+<td style="text-align: center;">0.05%</td>
+<td style="text-align: center;">~800 ms</td>
+</tr>
+<tr>
+<td style="text-align: center;">LMDrive</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">0.91 m</td>
+<td style="text-align: center;">0.06%</td>
+<td style="text-align: center;">~500 ms</td>
+</tr>
+<tr>
+<td style="text-align: center;">传统端到端（UniAD）</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">0.88 m</td>
+<td style="text-align: center;">0.48%</td>
+<td style="text-align: center;">~550 ms</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9">9. 展望与挑战</h2>
+<h3 id="91">9.1 幻觉风险</h3>
+<p><strong>幻觉（Hallucination）</strong> 是 VLM 在安全攸关系统中最严重的风险。VLM 可能"虚构"不存在的障碍物、错误描述交通状况、或遗漏关键风险要素：</p>
+<ul>
+<li><strong>目标幻觉</strong>：报告图像中不存在的行人或车辆，可能导致不必要的急刹车</li>
+<li><strong>属性幻觉</strong>：错误描述交通灯颜色（将绿灯描述为红灯），直接威胁行车安全</li>
+<li><strong>遗漏幻觉</strong>：未提及实际存在的危险物体，导致系统对真实风险视而不见</li>
+</ul>
+<p>缓解策略包括：多帧一致性校验、传统检测器结果交叉验证、VLM 输出的置信度估计与阈值过滤。然而，完全消除幻觉在当前技术水平下尚不可行，这也是 VLM 不应作为安全决策唯一来源的根本原因。</p>
+<h3 id="92">9.2 时序推理局限</h3>
+<p>当前主流 VLM 以单帧或短序列（4–8 帧）图像为输入，<strong>缺乏对长时序动态的建模能力</strong>：</p>
+<ul>
+<li>无法可靠追踪目标的运动轨迹和行为意图变化</li>
+<li>难以理解跨秒级的因果关系（如"那辆车 3 秒前开始加速，可能正准备变道"）</li>
+<li>对周期性行为（交通灯变换周期、行人犹豫后的决策）的预测能力有限</li>
+</ul>
+<p>未来方向包括：视频 VLM（处理长视频序列）、与世界模型结合的时序推理、短期记忆机制的引入。</p>
+<h3 id="93">9.3 多智能体协调</h3>
+<p>当多辆自动驾驶车辆共享同一路段时，VLM 的推理需要考虑<strong>多智能体博弈</strong>：</p>
+<div class="arithmatex">\[a_i^* = \arg\max_{a_i} \mathbb{E}\left[R_i(a_i, a_{-i}) \mid s, \text{VLM}_{context}\right]\]</div>
+<p>其中 <span class="arithmatex">\(a_i\)</span> 为自车行动，<span class="arithmatex">\(a_{-i}\)</span> 为其他车辆行动，<span class="arithmatex">\(s\)</span> 为当前状态。VLM 需要理解其他驾驶员的意图（"那辆车正在犹豫是否让行"）并做出合理的博弈决策。这要求 VLM 具备心智理论（Theory of Mind）能力，即理解他者意图的能力。</p>
+<h3 id="94">9.4 法规与伦理</h3>
+<p>VLM 在自动驾驶中的应用引发了新的法规和伦理问题：</p>
+<ul>
+<li><strong>决策可追溯性</strong>：事故发生后，VLM 的推理链是否具有法律效力？如何保存和审计？</li>
+<li><strong>责任归属</strong>：当 VLM 输出错误的场景描述导致事故时，责任归于 VLM 开发者、系统集成商还是整车制造商？</li>
+<li><strong>数据隐私</strong>：VLM 对场景的语言描述可能包含行人面部、车牌等隐私信息</li>
+<li><strong>偏见与公平</strong>：预训练数据中的地域偏见可能导致模型在某些地区或场景下表现不均衡</li>
+</ul>
+<h3 id="95">9.5 未来方向</h3>
 <ol>
-<li>建模来车在"减速"和"直行"意图下的速度分布（观测模型）</li>
-<li>根据历史观测更新来车意图的信念概率</li>
-<li>在高不确定性时选择保守行为（等待），在信念集中时选择通过</li>
+<li><strong>实时化</strong>：通过专用硬件加速器（如 NPU 优化的注意力计算）和模型架构创新（稀疏注意力、线性注意力）将 VLM 推理延迟降低到 100 ms 以内</li>
+<li><strong>具身对齐</strong>：通过大规模驾驶仿真数据训练 VLM，使其语言推理与物理世界规律精确对齐，减少幻觉</li>
+<li><strong>多模态融合</strong>：将 LiDAR 点云、高精地图、V2X 信息等更多模态纳入 VLM 输入，增强空间推理能力</li>
+<li><strong>安全保证</strong>：开发 VLM 输出的形式化验证方法，建立从自然语言推理到安全约束的可证明映射</li>
+<li><strong>端云一体</strong>：设计支持动态负载分配的 VLM 推理框架，根据场景复杂度自动调整边缘端和云端的计算分配</li>
 </ol>
-<p>这使得决策系统能够在不确定条件下做出安全且不过度保守的决策。</p>
-<h2 id="7">7. 基于学习的决策</h2>
-<h3 id="71-imitation-learning">7.1 行为克隆（Imitation Learning）</h3>
-<p>行为克隆（Behavior Cloning, BC）从人类驾驶数据中学习决策策略，将其建模为监督学习问题：</p>
-<div class="arithmatex">\[\min_\theta \mathbb{E}_{(s,a) \sim \mathcal{D}_{human}} \left[ \mathcal{L}(f_\theta(s), a) \right]\]</div>
-<p>其中 <span class="arithmatex">\(\mathcal{D}_{human}\)</span> 为人类驾驶数据集，<span class="arithmatex">\(f_\theta\)</span> 为参数化的策略网络，<span class="arithmatex">\(\mathcal{L}\)</span> 为损失函数（分类行为用交叉熵，连续控制用 MSE）。</p>
-<p>行为克隆的主要问题是<strong>协变量漂移（Covariate Shift）</strong>：训练数据来自专家轨迹，而测试时策略的错误会导致状态分布偏离训练分布，错误不断累积。DAgger 算法通过迭代地在策略执行轨迹上查询专家标注来缓解这一问题。</p>
-<h3 id="72-irl">7.2 逆强化学习（IRL）</h3>
-<p>逆强化学习（Inverse Reinforcement Learning）从专家示范中推断隐含的奖励函数，再用该奖励函数进行强化学习。相比直接克隆行为，IRL 能更好地泛化到新场景。</p>
-<p><strong>最大熵 IRL</strong>（Maximum Entropy IRL）假设专家策略在奖励函数 <span class="arithmatex">\(R(s,a;\theta)\)</span> 下具有最大熵分布，求解：</p>
-<div class="arithmatex">\[\max_\theta \sum_{(s,a) \in \mathcal{D}} \log P_\theta(\tau) = \max_\theta \sum_{(s,a) \in \mathcal{D}} R(s,a;\theta) - \log Z(\theta)\]</div>
-<p>其中 <span class="arithmatex">\(Z(\theta) = \sum_\tau \exp\left(\sum_t R(s_t, a_t; \theta)\right)\)</span> 为配分函数。梯度为：</p>
-<div class="arithmatex">\[\nabla_\theta \mathcal{L} = \mathbb{E}_{\mathcal{D}}[\nabla_\theta R] - \mathbb{E}_{\pi_\theta}[\nabla_\theta R]\]</div>
-<p>即专家特征期望与策略特征期望之差。</p>
-<h3 id="73-rl">7.3 强化学习（RL）</h3>
-<p>深度强化学习通过与（仿真）环境交互，学习最大化长期累积奖励的策略：</p>
-<div class="arithmatex">\[J(\theta) = \mathbb{E}_{\pi_\theta} \left[ \sum_{t=0}^{T} \gamma^t r_t \right]\]</div>
-<p>常用算法：</p>
-<ul>
-<li><strong>PPO（Proximal Policy Optimization）</strong>：限制策略更新幅度，训练稳定，适合连续动作控制</li>
-<li><strong>SAC（Soft Actor-Critic）</strong>：最大熵强化学习，鼓励探索，适合高维连续动作空间</li>
-<li><strong>TD3（Twin Delayed Deep Deterministic Policy Gradient）</strong>：解决 Q 值高估问题，适合确定性策略</li>
-</ul>
-<h3 id="74">7.4 奖励函数设计</h3>
-<p>奖励函数是 RL 系统的核心，通常综合以下分项：</p>
-<div class="arithmatex">\[r_t = r_{safe} + w_e \cdot r_{eff} + w_c \cdot r_{comf} + w_r \cdot r_{rule}\]</div>
-<table>
-<thead>
-<tr>
-<th>分项</th>
-<th>正奖励条件</th>
-<th>负奖励（惩罚）条件</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><span class="arithmatex">\(r_{safe}\)</span></td>
-<td>TTC 充足，无碰撞风险</td>
-<td>碰撞：<span class="arithmatex">\(-100\)</span>；TTC <span class="arithmatex">\(&lt;\)</span> 阈值：<span class="arithmatex">\(-10\)</span></td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(r_{eff}\)</span></td>
-<td>车速接近限速</td>
-<td>过慢行驶；不必要停车</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(r_{comf}\)</span></td>
-<td>加速度/急动度在舒适范围内</td>
-<td>急刹车；急转向</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(r_{rule}\)</span></td>
-<td>遵守交通信号和路权规则</td>
-<td>闯红灯；逆行；违规变道</td>
-</tr>
-</tbody>
-</table>
-<p>奖励塑形（Reward Shaping）时需注意：过强的安全惩罚会使策略极度保守，过强的效率奖励会导致激进驾驶。</p>
-<h2 id="8">8. 博弈论与交互决策</h2>
-<h3 id="81">8.1 纳什均衡在交通中的应用</h3>
-<p>在多车交互场景中，每辆车的最优策略依赖于其他车辆的策略选择，形成策略耦合。纳什均衡（Nash Equilibrium）描述了这样一个状态：在均衡点，任何一方单独改变策略都不能提高自身收益。</p>
-<p>对于两车博弈（自车 <span class="arithmatex">\(e\)</span>，他车 <span class="arithmatex">\(o\)</span>），纳什均衡 <span class="arithmatex">\((\pi_e^*, \pi_o^*)\)</span> 满足：</p>
-<div class="arithmatex">\[V_e(\pi_e^*, \pi_o^*) \geq V_e(\pi_e, \pi_o^*), \quad \forall \pi_e$$
-$$V_o(\pi_e^*, \pi_o^*) \geq V_o(\pi_e^*, \pi_o), \quad \forall \pi_o\]</div>
-<p>在合流场景中，博弈矩阵可能出现"鹰鸽博弈"（Hawk-Dove Game）结构：双方都激进则可能碰撞，双方都保守则效率低下，纳什均衡给出理性的混合策略。</p>
-<h3 id="82-stackelberg-game">8.2 主从博弈（Stackelberg Game）</h3>
-<p>在许多实际驾驶场景中，博弈双方并非同时做决策，而是存在领导者（Leader）和跟随者（Follower）的层次结构。主从博弈（Stackelberg Game）刻画这种场景：</p>
-<ul>
-<li><strong>领导者</strong>（通常为自车）率先宣告并承诺其策略 <span class="arithmatex">\(\pi_e\)</span></li>
-<li><strong>跟随者</strong>（他车）观察到领导者策略后，选择最优响应 <span class="arithmatex">\(\pi_o^*(\pi_e)\)</span></li>
-<li>领导者预见跟随者的响应，选择自身最优策略：</li>
-</ul>
-<div class="arithmatex">\[\pi_e^* = \arg\max_{\pi_e} V_e\left(\pi_e, \pi_o^*(\pi_e)\right)\]</div>
-<p>主从博弈适用于超车场景：自车（领导者）通过加速表明超车意图，他车（跟随者）预计会礼让，从而形成安全的交互结果。</p>
-<h3 id="83">8.3 意图感知决策</h3>
-<p>意图感知决策将他车意图的推断与自车决策紧密耦合，形成闭环：</p>
+<hr />
+<h2 id="_2">参考资料</h2>
 <ol>
-<li><strong>意图推断</strong>：基于他车的历史轨迹和当前状态，推断其驾驶意图（如是否准备变道），得到意图分布 <span class="arithmatex">\(P(intent_o)\)</span></li>
-<li><strong>条件规划</strong>：对每种可能的他车意图分别规划自车最优响应</li>
-<li><strong>期望最优化</strong>：取期望意义下的最优策略，或采用最坏情况（Minimax）准则保证安全</li>
-</ol>
-<div class="arithmatex">\[a_e^* = \arg\max_{a_e} \sum_{intent} P(intent_o) \cdot V_e(a_e \mid intent_o)\]</div>
-<h2 id="9">9. 风险评估</h2>
-<h3 id="91-ttctte">9.1 碰撞时间（TTC）和碰撞余量（TTE）</h3>
-<p><strong>碰撞时间</strong>（Time To Collision, TTC）是最常用的危险度量指标，定义为在当前相对速度下两车碰撞所需的时间：</p>
-<div class="arithmatex">\[TTC = \frac{d_{rel}}{v_{rel}} = \frac{x_{lead} - x_{ego} - l_{ego}}{v_{ego} - v_{lead}}\]</div>
-<p>其中 <span class="arithmatex">\(d_{rel}\)</span> 为车辆间净距，<span class="arithmatex">\(v_{rel} = v_{ego} - v_{lead}\)</span> 为相对速度（仅在追赶时有意义，即 <span class="arithmatex">\(v_{ego} &gt; v_{lead}\)</span>）。</p>
-<p><strong>碰撞余裕时间</strong>（Time to Escape, TTE）在障碍物来自侧向时使用，量化脱离危险区域所需时间。</p>
-<p>决策安全阈值参考：</p>
-<table>
-<thead>
-<tr>
-<th>TTC 值</th>
-<th>危险等级</th>
-<th>建议决策动作</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><span class="arithmatex">\(TTC &gt; 4s\)</span></td>
-<td>安全</td>
-<td>保持当前状态</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(2s &lt; TTC \leq 4s\)</span></td>
-<td>警告</td>
-<td>轻微减速或变道评估</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(1s &lt; TTC \leq 2s\)</span></td>
-<td>危险</td>
-<td>立即减速，禁止变道</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(TTC \leq 1s\)</span></td>
-<td>紧急</td>
-<td>触发 AEB</td>
-</tr>
-</tbody>
-</table>
-<h3 id="92-rss">9.2 责任敏感安全（RSS）在决策中的集成</h3>
-<p>RSS（Responsibility-Sensitive Safety）由 Mobileye 提出，通过数学化定义安全距离，为决策提供形式化的安全保证。</p>
-<p><strong>纵向安全距离</strong>（后车对前车的安全要求）：</p>
-<div class="arithmatex">\[d_{safe}^{lon} = \left[v_{rear} \cdot \rho + \frac{v_{rear}^2}{2 a_{min,rear}} - \frac{v_{front}^2}{2 a_{max,front}}\right]^+\]</div>
-<p>其中 <span class="arithmatex">\(\rho\)</span> 为反应时间，<span class="arithmatex">\(a_{min,rear}\)</span> 为后车最大制动加速度，<span class="arithmatex">\(a_{max,front}\)</span> 为前车最大制动加速度，<span class="arithmatex">\([\cdot]^+\)</span> 表示取正值部分。</p>
-<p><strong>横向安全距离</strong>（相邻车道间）：</p>
-<div class="arithmatex">\[d_{safe}^{lat} = \mu + \left[\frac{(v_{lat,1} + v_{lat,2})^2}{2 a_{lat,min}}\right]^+\]</div>
-<p>其中 <span class="arithmatex">\(\mu\)</span> 为最小横向间距，<span class="arithmatex">\(v_{lat}\)</span> 为横向速度分量。</p>
-<p>RSS 在决策中的集成方式：将 RSS 安全条件作为硬约束，过滤掉所有违反 RSS 的候选动作，仅在安全动作集合中进行优化选择。</p>
-<h3 id="93-risk-map">9.3 风险地图（Risk Map）</h3>
-<p>风险地图将场景中各点的危险程度以栅格形式表示，综合考虑以下因素：</p>
-<ul>
-<li><strong>碰撞概率</strong>：基于对周围障碍物轨迹的预测，计算自车到达某位置时的碰撞概率</li>
-<li><strong>历史事故数据</strong>：路口、盲区等高风险区域有更高的先验风险值</li>
-<li><strong>交通规则违规代价</strong>：违反交规的区域（如对向车道）被赋予高风险值</li>
-</ul>
-<p>风险地图可以与运动规划无缝集成，规划算法在最小化代价的同时，自动避开高风险区域：</p>
-<div class="arithmatex">\[C_{path} = \int_0^L \left[ w_{risk} \cdot Risk(x(s), y(s)) + w_{len} \right] ds\]</div>
-<p>其中 <span class="arithmatex">\(s\)</span> 为路径弧长参数，<span class="arithmatex">\(Risk(\cdot)\)</span> 为风险地图在该位置的风险值。</p>
-<h2 id="_1">参考资料</h2>
-<ol>
-<li>Shalev-Shwartz, S., Shammah, S., &amp; Shashua, A. (2017). On a Formal Model of Safe and Scalable Self-driving Cars. <em>arXiv:1708.06374</em>.</li>
-<li>Cunningham, A. G., Galceran, E., Eustice, R. M., &amp; Olson, E. (2015). MPDM: Multipolicy Decision-Making in Dynamic, Uncertain Environments for Autonomous Driving. <em>IEEE ICRA 2015</em>.</li>
-<li>Somani, A., Ye, N., Hsu, D., &amp; Lee, W. S. (2013). DESPOT: Online POMDP Planning with Regularization. <em>NeurIPS 2013</em>.</li>
-<li>Ziebart, B. D., Maas, A., Bagnell, J. A., &amp; Dey, A. K. (2008). Maximum Entropy Inverse Reinforcement Learning. <em>AAAI 2008</em>.</li>
-<li>Schulman, J., Wolski, F., Dhariwal, P., Radford, A., &amp; Klimov, O. (2017). Proximal Policy Optimization Algorithms. <em>arXiv:1707.06347</em>.</li>
-<li>Fisac, J. F., Bronstein, E., Stefansson, E., Sadigh, D., Sastry, S. S., &amp; Dragan, A. D. (2019). Hierarchical Game-Theoretic Planning for Autonomous Vehicles. <em>IEEE ICRA 2019</em>.</li>
+<li>
+<p>A. Dosovitskiy et al. An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale (ViT). ICLR, 2021.</p>
+</li>
+<li>
+<p>A. Radford et al. Learning Transferable Visual Models From Natural Language Supervision (CLIP). ICML, 2021.</p>
+</li>
+<li>
+<p>H. Liu et al. Visual Instruction Tuning (LLaVA). NeurIPS, 2023.</p>
+</li>
+<li>
+<p>Z. Chen et al. InternVL: Scaling up Vision Foundation Models and Aligning for Generic Visual-Linguistic Tasks. CVPR, 2024.</p>
+</li>
+<li>
+<p>Y. Tian et al. DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models. arXiv:2402.12289, 2024.</p>
+</li>
+<li>
+<p>J. Mao et al. GPT-Driver: Learning to Drive with GPT. arXiv:2310.01415, 2023.</p>
+</li>
+<li>
+<p>Z. Xu et al. DriveGPT4: Interpretable End-to-End Autonomous Driving via Large Language Model. arXiv:2310.01412, 2023.</p>
+</li>
+<li>
+<p>H. Sha et al. LanguageMPC: Large Language Models as Decision Makers for Autonomous Driving. arXiv:2310.03026, 2023.</p>
+</li>
+<li>
+<p>H. Shao et al. LMDrive: Closed-Loop End-to-End Driving with Large Language Models. arXiv:2312.07488, 2023.</p>
+</li>
+<li>
+<p>S. Wang et al. DriveLM: Driving with Graph Visual Question Answering. ECCV, 2024.</p>
+</li>
+<li>
+<p>V. Dewangan et al. Talk2BEV: Language-Enhanced Bird's Eye View Maps for Autonomous Driving. arXiv:2310.02251, 2023.</p>
+</li>
+<li>
+<p>Y. Ma et al. Dolphins: Multimodal Language Model for Driving. arXiv:2312.00438, 2023.</p>
+</li>
+<li>
+<p>E. J. Hu et al. LoRA: Low-Rank Adaptation of Large Language Models. ICLR, 2022.</p>
+</li>
+<li>
+<p>G. Hinton et al. Distilling the Knowledge in a Neural Network. NIPS Workshop, 2015.</p>
+</li>
 </ol>
 
 
