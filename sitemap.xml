@@ -117,10 +117,6 @@
          <lastmod>2026-03-04</lastmod>
     </url>
     <url>
-         <loc>https://yfrobotics.github.io/self-driving-handbook-cn/algorithm/vlm/</loc>
-         <lastmod>2026-03-04</lastmod>
-    </url>
-    <url>
          <loc>https://yfrobotics.github.io/self-driving-handbook-cn/algorithm/world_models/</loc>
          <lastmod>2026-03-04</lastmod>
     </url>
@@ -249,6 +245,10 @@
          <lastmod>2026-03-04</lastmod>
     </url>
     <url>
+         <loc>https://yfrobotics.github.io/self-driving-handbook-cn/simulation/main/</loc>
+         <lastmod>2026-03-04</lastmod>
+    </url>
+    <url>
          <loc>https://yfrobotics.github.io/self-driving-handbook-cn/system/architecture/</loc>
          <lastmod>2026-03-04</lastmod>
     </url>
@@ -293,10 +293,6 @@
          <lastmod>2026-03-04</lastmod>
     </url>
     <url>
-         <loc>https://yfrobotics.github.io/self-driving-handbook-cn/system/simulation/</loc>
-         <lastmod>2026-03-04</lastmod>
-    </url>
-    <url>
          <loc>https://yfrobotics.github.io/self-driving-handbook-cn/system/testing/</loc>
          <lastmod>2026-03-04</lastmod>
     </url>
@@ -314,6 +310,10 @@
     </url>
     <url>
          <loc>https://yfrobotics.github.io/self-driving-handbook-cn/system/vehicle/</loc>
+         <lastmod>2026-03-04</lastmod>
+    </url>
+    <url>
+         <loc>https://yfrobotics.github.io/self-driving-handbook-cn/vlm/main/</loc>
          <lastmod>2026-03-04</lastmod>
     </url>
 </urlset>
