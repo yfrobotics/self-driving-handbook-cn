@@ -39,7 +39,6 @@ nav:
     - system/hmi.md
     - system/safety.md
     - system/testing.md
-    - system/simulation.md
     - system/cybersecurity.md
     - system/regulation.md
   - '3. 硬件':
@@ -98,8 +97,11 @@ nav:
       - algorithm/end_to_end_safety_deployment.md
     - algorithm/data_pipeline.md
     - algorithm/nlp.md
-    - algorithm/vlm.md
-  - '5. 实例':
+  - '5. 仿真测试':
+    - simulation/main.md
+  - '6. 视觉语言大模型':
+    - vlm/main.md
+  - '7. 实例':
     - casestudy/main.md
     - 'Apollo 案例':
       - casestudy/apollo.md
@@ -109,7 +111,7 @@ nav:
     - casestudy/tesla.md
     - casestudy/chinese_players.md
     - casestudy/robotaxi.md
-  - '6. 参与贡献':
+  - '8. 参与贡献':
     - how-to-contribute.md
     - standard.md
     - contributors.md
