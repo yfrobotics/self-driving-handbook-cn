@@ -31,6 +31,7 @@ nav:
       - system/v2x_comm_rsu.md
       - system/v2x_security_operations.md
     - system/platform.md
+    - system/open_source_platforms.md
     - '高精地图':
       - system/hdmap.md
       - system/hdmap_data_lifecycle.md
@@ -38,6 +39,7 @@ nav:
     - system/hmi.md
     - system/safety.md
     - system/testing.md
+    - system/simulation.md
     - system/cybersecurity.md
     - system/regulation.md
   - '3. 硬件':
@@ -47,6 +49,7 @@ nav:
       - hardware/ccu.md
       - hardware/ccu_soc_selection.md
       - hardware/ccu_arch_safety.md
+    - hardware/compute_chips.md
     - '线控系统':
       - hardware/drive_by_wire.md
       - hardware/drive_by_wire_actuation.md
@@ -73,6 +76,7 @@ nav:
     - algorithm/laser_processing.md
     - algorithm/sensor_fusion.md
     - algorithm/occupancy.md
+    - algorithm/world_models.md
     - '定位':
       - algorithm/localisation.md
       - algorithm/localisation_slam_fusion.md
@@ -94,6 +98,7 @@ nav:
       - algorithm/end_to_end_safety_deployment.md
     - algorithm/data_pipeline.md
     - algorithm/nlp.md
+    - algorithm/vlm.md
   - '5. 实例':
     - casestudy/main.md
     - 'Apollo 案例':
