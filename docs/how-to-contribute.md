@@ -1,13 +1,13 @@
 # 如何贡献这个维基？
 
-[项目GitHub地址](https://github.com/yfrobotics/robowiki)
+[项目GitHub地址](https://github.com/yfrobotics/self-driving-handbook-cn)
 
 ## 贡献方法
 
 你可以通过以下两种方式贡献这个维基：
 
 1. 通过提交代码PR：git clone -> make change -> push & pull request
-2. 通过创建issues：[Create a new issue](https://github.com/yfrobotics/robowiki/issues)
+2. 通过创建issues：[Create a new issue](https://github.com/yfrobotics/self-driving-handbook-cn/issues)
 
 
 ## 环境配置与运行
@@ -35,4 +35,4 @@
 ## 推荐工具
 
 - Git版本控制: SourceTree / GitKraken
-- Markdown编辑工具: Typora / Visual Studi Code 
+- Markdown编辑工具: Typora / Visual Studio Code
