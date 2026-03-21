@@ -1,0 +1,5761 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="自动驾驶历史与技术">
+      
+      
+        <meta name="author" content="YFRL">
+      
+      
+        <link rel="canonical" href="https://yfrobotics.github.io/self-driving-handbook-cn/vlm/decision_planning/">
+      
+      
+        <link rel="prev" href="../scene_understanding/">
+      
+      
+        <link rel="next" href="../data_annotation/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>基于 VLM 的决策与规划 - 自动驾驶指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,700,700i%7CFira+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Fira Sans";--md-code-font:"Fira Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../_static/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-N0PZM76K4V"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-N0PZM76K4V",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-N0PZM76K4V",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vlm" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="自动驾驶指南" class="md-header__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            自动驾驶指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              基于 VLM 的决策与规划
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yfrobotics/self-driving-handbook-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yfrobotics/self-driving-handbook-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="自动驾驶指南" class="md-nav__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    自动驾驶指南
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yfrobotics/self-driving-handbook-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yfrobotics/self-driving-handbook-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶技术指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 概述
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1. 概述
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一章：概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/define/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶系统定义
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/category/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶等级分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶发展历史
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶术语表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 系统
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. 系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二章：系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统架构总览：从数据流到控制流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/vehicle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶车辆系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车联网 V2X
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    车联网 V2X
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/v2x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车联网（V2X）技术详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/v2x_comm_rsu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    V2X 通信与路侧架构：协议、RSU 与部署
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/v2x_security_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    V2X 安全与运营：证书体系、标准与落地指标
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真平台与数据集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/open_source_platforms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开源平台与生态
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高精地图
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    高精地图
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hdmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高精地图（HD Map）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hdmap_data_lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HD Map 数据与生命周期：格式、采集、更新与版本治理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hdmap_localization_lightweight/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    地图定位与轻图路线：融合、降级与工程挑战
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人机交互系统（HMI）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统安全保障
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶测试体系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/cybersecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶网络安全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/regulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    政策与法律法规
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 硬件
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. 硬件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三章：硬件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/hw_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    硬件总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算平台 CCU
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算平台 CCU
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/ccu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中央计算单元 (CCU / 车载AI芯片)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/ccu_soc_selection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    芯片与平台选型：主流 SoC 对比与决策框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/ccu_arch_safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    异构计算与车规要求：架构、带宽、功能安全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/compute_chips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶计算芯片
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线控系统
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    线控系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/drive_by_wire/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线控系统（Drive-by-Wire）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/drive_by_wire_actuation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线控执行层：转向、制动、驱动与换挡
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/drive_by_wire_safety_validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线控安全与验证：冗余、接管与测试
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车载通信
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    车载通信
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/communication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车载通信系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/communication_network_protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网络与协议：总线、以太网、拓扑与服务通信
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/communication_security_ota/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安全与升级：SecOC、IDS 与 OTA 工程实践
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知传感器
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    感知传感器
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知传感器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/sensors_active/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    主动感知传感器：LiDAR、毫米波与超声波
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/sensors_vision_positioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    视觉与定位传感器：摄像头、IMU、GNSS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    摄像头
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    摄像头
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/camera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    视觉传感器（摄像头）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/camera_imaging_calibration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    成像与标定：光学基础、ISP、内外参与误差治理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/camera_sync_reliability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    同步与可靠性：时间对齐、健康监测与量产维护
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. 算法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4. 算法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第四章：核心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    软件框架
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    软件框架
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sw_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统软件框架总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sw_overview_arch_timing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    架构与时延：模块边界、时间预算与功能安全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sw_overview_middleware_deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中间件与部署：ROS2/Cyber RT/AUTOSAR 与云边协同
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/image_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图像感知与处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/laser_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    激光点云数据处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sensor_fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器融合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/occupancy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    占用网络（Occupancy Network）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/world_models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    世界模型与神经场景表示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定位
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    定位
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/localisation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    地图与定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/localisation_slam_fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SLAM 与融合定位：方法、架构与工程实现
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/localisation_metrics_ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定位评估与运维：指标、失效场景与降级策略
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    路径规划
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    路径规划
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/path_planning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    路径规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/path_planning_global_behavior/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    全局路由与行为规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/path_planning_local_trajectory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    局部轨迹与速度规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/prediction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行为预测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/decision_making/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    决策 (Decision Making)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_12" id="__nav_5_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车辆控制
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    车辆控制
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    控制算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/control_lateral/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    横向控制：模型、算法与调参
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/control_longitudinal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    纵向控制：跟驰、制动与舒适性
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/metrics_validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法评估与验证指标
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_14" id="__nav_5_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    端到端
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/end_to_end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端自动驾驶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/end_to_end_data_training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据与训练体系：闭环、扩展律与仿真生成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/end_to_end_safety_deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安全与部署体系：可解释、验证、上线与回滚
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/data_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶ML数据管道
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/nlp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自然语言处理与大语言模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 仿真测试
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    5. 仿真测试
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../simulation/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第五章：仿真测试
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../simulation/platforms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真平台
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../simulation/environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真环境建模
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../simulation/sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../simulation/scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    交通场景生成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../simulation/methodology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真测试方法论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../simulation/metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真评估指标
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../simulation/sim2real/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sim-to-Real 迁移
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 视觉语言大模型
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    6. 视觉语言大模型
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第六章：视觉语言大模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../foundation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VLM 基础模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scene_understanding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    场景理解与描述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基于 VLM 的决策与规划
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基于 VLM 的决策与规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 语言作为中间表征
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 语言作为中间表征">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 核心思想
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 优势分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 局限性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-chain-of-thought" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 链式推理（Chain-of-Thought）驾驶决策
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 链式推理（Chain-of-Thought）驾驶决策">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-cot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 CoT 推理流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 详细示例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-cot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 CoT 推理的形式化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 双系统架构
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 双系统架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 设计动机
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-drivevlm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 DriveVLM 架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 延迟解耦策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. LLM 直接生成轨迹
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. LLM 直接生成轨迹">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-gpt-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 GPT-Driver 方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 轨迹标记化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 自回归轨迹生成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 挑战
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. LLM 参数调节控制器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. LLM 参数调节控制器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-languagempc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 LanguageMPC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 架构设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 示例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 优势
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 端到端多模态驾驶
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 端到端多模态驾驶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-lmdrive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 LMDrive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 输入模态
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 模型架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 训练策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 图结构推理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 图结构推理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-drivelm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 DriveLM 方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 感知-预测-规划图结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 图推理的形式化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 优势
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 安全约束集成
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 安全约束集成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 核心挑战
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 安全监控层
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-veto-mechanism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 否决机制（Veto Mechanism）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 形式化安全保证
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 与传统规划器的融合策略
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 与传统规划器的融合策略">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 融合的必要性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 层次化集成模式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 信任度动态分配
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 回退机制
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 性能基准对比
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 性能基准对比">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-nuscenes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 nuScenes 规划基准
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 关键观察
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 开放挑战
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_annotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据标注与闭环
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人机交互
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    部署与优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../outlook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    展望与挑战
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 实例
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    7. 实例
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第七章：实例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apollo 案例
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Apollo 案例
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/apollo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    百度 Apollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/apollo_tech_stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apollo 技术栈深度解析：架构、感知、定位、规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/apollo_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apollo 商业化与运营实践：Robotaxi 落地与成本路径
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/waymo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waymo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/tesla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla FSD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/chinese_players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国自动驾驶企业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/robotaxi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robotaxi：自动驾驶商业化的主战场
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 参与贡献
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8. 参与贡献
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to-contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    如何贡献这个维基？
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    书写规范
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    贡献者名单
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 语言作为中间表征
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 语言作为中间表征">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 核心思想
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 优势分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 局限性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-chain-of-thought" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 链式推理（Chain-of-Thought）驾驶决策
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 链式推理（Chain-of-Thought）驾驶决策">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-cot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 CoT 推理流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 详细示例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-cot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 CoT 推理的形式化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 双系统架构
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 双系统架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 设计动机
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-drivevlm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 DriveVLM 架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 延迟解耦策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. LLM 直接生成轨迹
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. LLM 直接生成轨迹">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-gpt-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 GPT-Driver 方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 轨迹标记化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 自回归轨迹生成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 挑战
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. LLM 参数调节控制器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. LLM 参数调节控制器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-languagempc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 LanguageMPC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 架构设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 示例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 优势
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 端到端多模态驾驶
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 端到端多模态驾驶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-lmdrive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 LMDrive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 输入模态
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 模型架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 训练策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 图结构推理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 图结构推理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-drivelm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 DriveLM 方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 感知-预测-规划图结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 图推理的形式化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 优势
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 安全约束集成
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 安全约束集成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 核心挑战
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 安全监控层
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-veto-mechanism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 否决机制（Veto Mechanism）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 形式化安全保证
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 与传统规划器的融合策略
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 与传统规划器的融合策略">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 融合的必要性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 层次化集成模式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 信任度动态分配
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 回退机制
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 性能基准对比
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 性能基准对比">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-nuscenes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 nuScenes 规划基准
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 关键观察
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 开放挑战
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="vlm">基于 VLM 的决策与规划</h1>
+<p>视觉语言大模型（VLM）不仅能够增强自动驾驶的感知能力，更有潜力重塑决策与规划模块。传统的规则驱动和优化驱动规划方法在面对复杂、开放场景时往往缺乏灵活性和泛化能力，而 VLM 凭借其语义理解和常识推理能力，为自动驾驶决策规划提供了全新的技术范式。本页面系统阐述 VLM 在自动驾驶决策与规划中的核心方法、代表性架构及关键挑战。</p>
+<h2 id="1">1. 语言作为中间表征</h2>
+<h3 id="11">1.1 核心思想</h3>
+<p>传统自动驾驶系统的中间表征通常是数值化的——向量、张量、占据栅格等。而<strong>语言作为中间表征（Language as Intermediate Representation）</strong> 则主张使用自然语言来桥接感知与规划：</p>
+<div class="arithmatex">\[
+\text{感知输出} \xrightarrow{\text{语言描述}} \text{语义中间表征} \xrightarrow{\text{语言推理}} \text{决策与规划}
+\]</div>
+<p>VLM 将传感器输入（图像、点云等）转化为结构化的自然语言描述，再基于语言推理完成决策。这一范式的核心优势在于语言本身的三大特性。</p>
+<h3 id="12">1.2 优势分析</h3>
+<p><strong>可解释性（Interpretability）</strong></p>
+<p>语言表征天然可读。当系统输出"前方 50 米处有行人正在横穿马路，决定减速让行"时，乘客和安全审查人员可以直接理解决策逻辑，无需对神经网络进行可视化解释。这对于 L3/L4 级自动驾驶的安全审计至关重要。</p>
+<p><strong>组合泛化（Compositional Generalization）</strong></p>
+<p>自然语言具有天然的<strong>组合性</strong>：词汇和语法规则可以自由组合以描述未见过的场景。例如，即使训练数据中从未出现"着火的卡车逆行"，模型仍然可以通过组合"着火"、"卡车"和"逆行"的语义来理解这一场景并作出合理决策。形式化地：</p>
+<div class="arithmatex">\[
+\mathcal{G}(\text{"着火的卡车逆行"}) = f\bigl(\mathcal{G}(\text{"着火"}),\, \mathcal{G}(\text{"卡车"}),\, \mathcal{G}(\text{"逆行"})\bigr)
+\]</div>
+<p>其中 <span class="arithmatex">\(\mathcal{G}\)</span> 表示语义编码函数，<span class="arithmatex">\(f\)</span> 表示组合运算。</p>
+<p><strong>跨域迁移（Cross-domain Transfer）</strong></p>
+<p>语言描述是模态无关的。同一条"前方路口红灯，需停车等待"的语义指令可以在不同城市、不同天气、不同传感器配置下复用。这使得在模拟器中以语言形式积累的驾驶知识可以直接迁移到真实车辆上。</p>
+<h3 id="13">1.3 局限性</h3>
+<p>语言表征也存在固有局限：</p>
+<ul>
+<li><strong>精度损失</strong>：语言难以精确描述连续数值（如"车辆在前方 37.2 m 处以 14.8 m/s 速度行驶"），量化误差不可避免</li>
+<li><strong>带宽瓶颈</strong>：语言的信息密度低于结构化张量表征，描述复杂场景时信息有限</li>
+<li><strong>延迟开销</strong>：生成和解析自然语言需要额外的推理时间</li>
+</ul>
+<h2 id="2-chain-of-thought">2. 链式推理（Chain-of-Thought）驾驶决策</h2>
+<h3 id="21-cot">2.1 CoT 推理流程</h3>
+<p><strong>链式推理（Chain-of-Thought, CoT）</strong> 是将 VLM 应用于驾驶决策的核心技术之一。其基本思想是让模型逐步推理，将复杂的驾驶决策分解为有序的推理链：</p>
+<div class="arithmatex">\[
+\mathcal{D} = \text{LLM}\bigl(P_{\text{scene}},\, P_{\text{risk}},\, P_{\text{intent}},\, P_{\text{action}} \mid \mathbf{V},\, \mathbf{H}\bigr)
+\]</div>
+<p>其中 <span class="arithmatex">\(\mathbf{V}\)</span> 为视觉输入，<span class="arithmatex">\(\mathbf{H}\)</span> 为历史上下文，<span class="arithmatex">\(P_*\)</span> 为各阶段的提示模板，<span class="arithmatex">\(\mathcal{D}\)</span> 为最终决策输出。完整的推理链包含四个阶段：</p>
+<div class="highlight"><pre><span></span><code>场景描述（Scene Description）
+  → 风险评估（Risk Assessment）
+    → 决策意图（Decision Intent）
+      → 行动计划（Action Plan）
+</code></pre></div>
+<h3 id="22">2.2 详细示例</h3>
+<p>以下展示一个完整的 CoT 推理过程：</p>
+<div class="highlight"><pre><span></span><code>=== 输入 ===
+[图像]: 前方十字路口的多视角相机图像
+[车辆状态]: 速度 45 km/h，位于直行车道
+
+=== 第一步：场景描述 ===
+当前场景为城市十字路口，交通信号灯为绿灯。前方约 30 m 处有一辆
+白色轿车正在左转，其转向灯已开启。右侧人行横道上有两名行人等待
+过马路。左侧有一辆公交车正在进站停靠。路面干燥，能见度良好。
+
+=== 第二步：风险评估 ===
+- 高风险：前方左转车辆可能占用本车道，碰撞风险评分 0.7
+- 中风险：右侧行人可能在信号灯变换时横穿，碰撞风险评分 0.4
+- 低风险：左侧公交车正在停靠，暂无变道意图，碰撞风险评分 0.1
+
+=== 第三步：决策意图 ===
+鉴于前方左转车辆的高碰撞风险，应采取预防性减速策略。同时保持
+对右侧行人的持续关注。决策意图：减速通过路口，为左转车辆预留
+安全空间。
+
+=== 第四步：行动计划 ===
+1. 在未来 2 秒内将速度从 45 km/h 降至 30 km/h
+2. 保持当前车道，不变道
+3. 与前方左转车辆保持至少 15 m 的纵向安全距离
+4. 持续监测右侧行人动态，若行人进入车道则进一步制动
+</code></pre></div>
+<h3 id="23-cot">2.3 CoT 推理的形式化</h3>
+<p>CoT 推理可以形式化为条件概率的链式分解：</p>
+<div class="arithmatex">\[
+P(\mathcal{A} \mid \mathbf{V}) = \sum_{\mathcal{S}, \mathcal{R}, \mathcal{I}} P(\mathcal{A} \mid \mathcal{I})\, P(\mathcal{I} \mid \mathcal{R})\, P(\mathcal{R} \mid \mathcal{S})\, P(\mathcal{S} \mid \mathbf{V})
+\]</div>
+<p>其中 <span class="arithmatex">\(\mathcal{S}\)</span> 为场景描述、<span class="arithmatex">\(\mathcal{R}\)</span> 为风险评估、<span class="arithmatex">\(\mathcal{I}\)</span> 为决策意图、<span class="arithmatex">\(\mathcal{A}\)</span> 为行动计划。逐步推理的好处在于每一步都可以独立验证和调试，极大提升了系统的可解释性和可维护性。</p>
+<h2 id="3">3. 双系统架构</h2>
+<h3 id="31">3.1 设计动机</h3>
+<p>VLM 的推理能力强大，但推理延迟通常在数百毫秒到数秒之间，无法满足实时控制的要求（通常需要 10–50 ms 的控制周期）。<strong>双系统架构（Dual-system Architecture）</strong> 借鉴认知科学中"系统 1 / 系统 2"的理论，将慢速的 VLM 推理与快速的轨迹执行网络解耦。</p>
+<h3 id="32-drivevlm">3.2 DriveVLM 架构</h3>
+<p><strong>DriveVLM</strong>（Tian et al., 2024）是双系统架构的代表性工作，其核心设计如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">组件</th>
+<th style="text-align: center;">功能</th>
+<th style="text-align: center;">频率</th>
+<th style="text-align: center;">延迟</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">VLM 慢思考模块</td>
+<td style="text-align: center;">场景理解、CoT 推理、高层决策</td>
+<td style="text-align: center;">1–2 Hz</td>
+<td style="text-align: center;">500–2000 ms</td>
+</tr>
+<tr>
+<td style="text-align: center;">轨迹生成网络</td>
+<td style="text-align: center;">基于 VLM 输出的语义指导生成轨迹</td>
+<td style="text-align: center;">10–20 Hz</td>
+<td style="text-align: center;">20–50 ms</td>
+</tr>
+<tr>
+<td style="text-align: center;">安全检查模块</td>
+<td style="text-align: center;">碰撞检测与约束验证</td>
+<td style="text-align: center;">20 Hz</td>
+<td style="text-align: center;">&lt; 10 ms</td>
+</tr>
+</tbody>
+</table>
+<p>工作流程如下：</p>
+<ol>
+<li><strong>VLM 慢思考</strong>：以较低频率（约 1 Hz）处理多视角图像，输出场景描述、风险评估和高层驾驶意图</li>
+<li><strong>语义-轨迹桥接</strong>：将 VLM 的语义输出编码为条件向量 <span class="arithmatex">\(\mathbf{c}_{\text{vlm}}\)</span>，注入轨迹生成网络</li>
+<li><strong>快速轨迹生成</strong>：轨迹网络以高频率运行，生成未来 <span class="arithmatex">\(T\)</span> 个时间步的轨迹点：</li>
+</ol>
+<div class="arithmatex">\[
+\boldsymbol{\tau} = \{(x_t, y_t, \theta_t)\}_{t=1}^{T} = g_\phi(\mathbf{F}_{\text{bev}},\, \mathbf{c}_{\text{vlm}})
+\]</div>
+<p>其中 <span class="arithmatex">\(\mathbf{F}_{\text{bev}}\)</span> 为 BEV 特征，<span class="arithmatex">\(g_\phi\)</span> 为轨迹解码器。</p>
+<h3 id="33">3.3 延迟解耦策略</h3>
+<p>双系统之间的延迟解耦是关键设计点：</p>
+<ul>
+<li><strong>异步执行</strong>：VLM 模块和轨迹网络运行在不同线程/进程中，VLM 输出结果后缓存，轨迹网络从缓存读取最新的语义指导</li>
+<li><strong>插值更新</strong>：在两次 VLM 推理之间，通过对语义条件向量进行线性插值来平滑过渡</li>
+<li><strong>紧急覆写</strong>：当安全检查模块检测到即将发生碰撞时，直接覆写 VLM 指令，触发紧急制动</li>
+</ul>
+<h2 id="4-llm">4. LLM 直接生成轨迹</h2>
+<h3 id="41-gpt-driver">4.1 GPT-Driver 方法</h3>
+<p><strong>GPT-Driver</strong>（Mao et al., 2023）探索了一条更为激进的路径：让 LLM 直接以文本形式生成驾驶轨迹。</p>
+<p>核心思想是<strong>轨迹标记化（Trajectory Tokenization）</strong>：将连续的轨迹坐标离散化为文本 Token，使 LLM 能够用生成文本的方式生成轨迹。</p>
+<h3 id="42">4.2 轨迹标记化</h3>
+<p>给定未来 <span class="arithmatex">\(T\)</span> 步的目标轨迹 <span class="arithmatex">\(\boldsymbol{\tau} = \{(x_t, y_t)\}_{t=1}^{T}\)</span>，对每个坐标进行量化：</p>
+<div class="arithmatex">\[
+\hat{x}_t = \text{round}\left(\frac{x_t - x_{\min}}{\Delta}\right), \quad \hat{y}_t = \text{round}\left(\frac{y_t - y_{\min}}{\Delta}\right)
+\]</div>
+<p>其中 <span class="arithmatex">\(\Delta\)</span> 为量化步长（如 0.1 m）。量化后的坐标被转化为文本序列：</p>
+<div class="highlight"><pre><span></span><code>&lt;TRAJ&gt; (152, 34) (155, 33) (159, 31) (164, 29) (170, 27) (177, 25) &lt;/TRAJ&gt;
+</code></pre></div>
+<h3 id="43">4.3 自回归轨迹生成</h3>
+<p>LLM 以自回归方式逐 Token 生成轨迹：</p>
+<div class="arithmatex">\[
+P(\boldsymbol{\tau} \mid \mathbf{V}, \mathbf{H}) = \prod_{t=1}^{T} P\bigl((\hat{x}_t, \hat{y}_t) \mid (\hat{x}_{&lt;t}, \hat{y}_{&lt;t}),\, \mathbf{V},\, \mathbf{H}\bigr)
+\]</div>
+<p>这种方法的优势在于可以直接复用 LLM 强大的序列建模能力，并且通过 CoT 提示可以让模型先输出驾驶理由再输出轨迹，提升可解释性。</p>
+<h3 id="44">4.4 挑战</h3>
+<ul>
+<li><strong>量化误差</strong>：轨迹的离散化不可避免地引入精度损失</li>
+<li><strong>物理不可行性</strong>：LLM 生成的轨迹可能违反车辆运动学约束（如曲率过大）</li>
+<li><strong>累积误差</strong>：自回归生成中的误差会逐步累积</li>
+</ul>
+<h2 id="5-llm">5. LLM 参数调节控制器</h2>
+<h3 id="51-languagempc">5.1 LanguageMPC</h3>
+<p><strong>LanguageMPC</strong>（Sha et al., 2023）提出了一种更加保守但实用的集成方案：LLM 不直接生成轨迹，而是输出<strong>模型预测控制（MPC）</strong> 控制器的参数调节量。</p>
+<h3 id="52">5.2 架构设计</h3>
+<p>系统工作流程为：</p>
+<ol>
+<li>VLM 分析当前驾驶场景，生成自然语言描述和驾驶建议</li>
+<li>LLM 将驾驶建议映射为 MPC 代价函数的参数调节量 <span class="arithmatex">\(\Delta \mathbf{w}\)</span></li>
+<li>MPC 控制器使用调节后的参数 <span class="arithmatex">\(\mathbf{w} + \Delta \mathbf{w}\)</span> 求解最优轨迹</li>
+</ol>
+<p>MPC 的代价函数为：</p>
+<div class="arithmatex">\[
+J(\boldsymbol{\tau}) = \sum_{i} (w_i + \Delta w_i)\, C_i(\boldsymbol{\tau})
+\]</div>
+<p>其中 <span class="arithmatex">\(C_i\)</span> 为各项代价分量（安全距离、舒适性、效率等），<span class="arithmatex">\(w_i\)</span> 为基础权重，<span class="arithmatex">\(\Delta w_i\)</span> 为 LLM 输出的调节量。</p>
+<h3 id="53">5.3 示例</h3>
+<div class="highlight"><pre><span></span><code>=== VLM 场景分析 ===
+前方为学校区域，路边有多名儿童，当前时间为放学时段。
+
+=== LLM 参数调节输出 ===
+{
+  &quot;speed_limit_weight&quot;: +0.5,    // 增大限速代价，鼓励降速
+  &quot;safety_distance_weight&quot;: +0.8, // 增大安全距离代价
+  &quot;comfort_weight&quot;: -0.2,         // 适当降低舒适性要求（允许更急的制动）
+  &quot;efficiency_weight&quot;: -0.3       // 降低效率优先级
+}
+</code></pre></div>
+<h3 id="54">5.4 优势</h3>
+<ul>
+<li><strong>安全保障</strong>：轨迹始终由 MPC 求解器生成，满足运动学和动力学约束</li>
+<li><strong>可解释性</strong>：LLM 的参数调节量具有明确的物理含义</li>
+<li><strong>渐进部署</strong>：可以在传统 MPC 系统上逐步引入 LLM，降低工程风险</li>
+</ul>
+<h2 id="6">6. 端到端多模态驾驶</h2>
+<h3 id="61-lmdrive">6.1 LMDrive</h3>
+<p><strong>LMDrive</strong>（Shao et al., 2024）实现了真正的端到端多模态驾驶系统，其核心创新在于将<strong>图像、LiDAR 点云和自然语言导航指令</strong>统一到一个多模态框架中。</p>
+<h3 id="62">6.2 输入模态</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">模态</th>
+<th style="text-align: center;">输入形式</th>
+<th style="text-align: center;">编码方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">视觉</td>
+<td style="text-align: center;">多视角相机图像</td>
+<td style="text-align: center;">ViT 视觉编码器</td>
+</tr>
+<tr>
+<td style="text-align: center;">LiDAR</td>
+<td style="text-align: center;">3D 点云</td>
+<td style="text-align: center;">体素化 + 3D 稀疏卷积</td>
+</tr>
+<tr>
+<td style="text-align: center;">语言</td>
+<td style="text-align: center;">导航指令（如"下个路口左转"）</td>
+<td style="text-align: center;">LLM 文本编码器</td>
+</tr>
+</tbody>
+</table>
+<h3 id="63">6.3 模型架构</h3>
+<p>LMDrive 的架构可概括为：</p>
+<div class="arithmatex">\[
+(\delta_{\text{steer}},\, a_{\text{throttle}},\, a_{\text{brake}}) = h_\psi\bigl(\text{LLM}(\mathbf{F}_{\text{img}},\, \mathbf{F}_{\text{lidar}},\, \mathbf{T}_{\text{nav}})\bigr)
+\]</div>
+<p>其中 <span class="arithmatex">\(\mathbf{F}_{\text{img}}\)</span> 和 <span class="arithmatex">\(\mathbf{F}_{\text{lidar}}\)</span> 分别为图像和 LiDAR 特征，<span class="arithmatex">\(\mathbf{T}_{\text{nav}}\)</span> 为导航指令的 Token 序列，<span class="arithmatex">\(h_\psi\)</span> 为控制头网络。</p>
+<p>关键技术细节：</p>
+<ul>
+<li><strong>多模态对齐</strong>：通过可学习的投影层将视觉和 LiDAR 特征映射到 LLM 的 Token 空间</li>
+<li><strong>指令跟随</strong>：模型需要理解自然语言导航指令并将其转化为具体的驾驶行为</li>
+<li><strong>时序建模</strong>：输入包含过去 <span class="arithmatex">\(K\)</span> 帧的多模态信息，以捕捉动态变化</li>
+</ul>
+<h3 id="64">6.4 训练策略</h3>
+<p>LMDrive 采用两阶段训练：</p>
+<ol>
+<li><strong>预训练阶段</strong>：在大规模驾驶数据集上进行视觉-语言对齐预训练，使模型学会理解驾驶场景</li>
+<li><strong>微调阶段</strong>：在包含导航指令的驾驶数据上进行端到端微调，使模型学会根据指令控制车辆</li>
+</ol>
+<h2 id="7">7. 图结构推理</h2>
+<h3 id="71-drivelm">7.1 DriveLM 方法</h3>
+<p><strong>DriveLM</strong>（Sima et al., 2024）提出了基于<strong>图结构视觉问答（Graph-based VQA）</strong> 的驾驶推理方法。其核心思想是将驾驶场景的推理过程组织为一个有向无环图（DAG），节点为问答对，边表示推理依赖关系。</p>
+<h3 id="72-">7.2 感知-预测-规划图结构</h3>
+<p>DriveLM 将驾驶推理分为三层，形成层次化的图结构：</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────┐
+│  感知层（Perception）                                │
+│  Q: 前方白色车辆的位置和速度？                        │
+│  A: 前方 25 m，速度约 40 km/h，正在减速              │
+│       ↓                    ↓                        │
+│  预测层（Prediction）                                │
+│  Q: 该车辆未来 3 秒的行为预测？                       │
+│  A: 预计将在前方 10 m 处停车（概率 0.8）              │
+│       ↓                                             │
+│  规划层（Planning）                                  │
+│  Q: 本车应采取什么行动？                              │
+│  A: 提前减速，保持 15 m 安全距离                      │
+└─────────────────────────────────────────────────────┘
+</code></pre></div>
+<h3 id="73">7.3 图推理的形式化</h3>
+<p>令 <span class="arithmatex">\(\mathcal{G} = (\mathcal{V}, \mathcal{E})\)</span> 为推理图，其中节点 <span class="arithmatex">\(v_i \in \mathcal{V}\)</span> 表示问答对 <span class="arithmatex">\((q_i, a_i)\)</span>，有向边 <span class="arithmatex">\((v_i, v_j) \in \mathcal{E}\)</span> 表示 <span class="arithmatex">\(v_j\)</span> 的回答依赖于 <span class="arithmatex">\(v_i\)</span> 的回答。推理过程遵循拓扑序：</p>
+<div class="arithmatex">\[
+a_j = \text{VLM}\bigl(q_j,\, \mathbf{V},\, \{a_i \mid (v_i, v_j) \in \mathcal{E}\}\bigr)
+\]</div>
+<p>即每个节点的回答条件于其所有父节点的回答。这种图结构确保了推理的逻辑一致性和层次性。</p>
+<h3 id="74">7.4 优势</h3>
+<ul>
+<li><strong>结构化推理</strong>：图结构强制模型遵循从感知到预测到规划的逻辑顺序</li>
+<li><strong>可追溯性</strong>：每个规划决策都可以追溯到其依赖的感知和预测节点</li>
+<li><strong>灵活性</strong>：图结构可以根据场景复杂度动态扩展</li>
+</ul>
+<h2 id="8">8. 安全约束集成</h2>
+<h3 id="81">8.1 核心挑战</h3>
+<p>VLM 的生成特性意味着其输出可能存在<strong>幻觉（Hallucination）</strong>、<strong>不一致性</strong>和<strong>物理不可行性</strong>。在安全攸关的自动驾驶场景中，必须确保 VLM 的决策输出不会导致危险行为。</p>
+<h3 id="82">8.2 安全监控层</h3>
+<p>安全监控层（Safety Monitor）是一个独立于 VLM 的验证模块，对 VLM 的每一个决策输出进行安全检查：</p>
+<div class="arithmatex">\[
+\mathcal{A}_{\text{final}} = \begin{cases}
+\mathcal{A}_{\text{vlm}} &amp; \text{若 } \mathcal{A}_{\text{vlm}} \in \mathcal{S}_{\text{safe}} \\
+\mathcal{A}_{\text{fallback}} &amp; \text{否则}
+\end{cases}
+\]</div>
+<p>其中 <span class="arithmatex">\(\mathcal{S}_{\text{safe}}\)</span> 为安全动作集合，<span class="arithmatex">\(\mathcal{A}_{\text{fallback}}\)</span> 为回退安全动作（如保持当前车道、匀速行驶或紧急制动）。</p>
+<h3 id="83-veto-mechanism">8.3 否决机制（Veto Mechanism）</h3>
+<p>否决机制的核心是一组硬性安全约束：</p>
+<ul>
+<li><strong>碰撞约束</strong>：规划轨迹的任意时刻与任何障碍物的距离不得小于安全阈值 <span class="arithmatex">\(d_{\min}\)</span></li>
+<li><strong>运动学约束</strong>：轨迹的曲率、加速度、横摆率不得超过车辆物理极限</li>
+<li><strong>交通规则约束</strong>：不得违反红灯停车、限速等基本交通法规</li>
+<li><strong>舒适性约束</strong>：横向和纵向加速度不得超过乘客舒适阈值</li>
+</ul>
+<p>当 VLM 输出的决策或轨迹违反上述任何约束时，否决机制立即触发：</p>
+<ol>
+<li>丢弃 VLM 的当前输出</li>
+<li>激活回退策略（通常为保守的跟车或停车行为）</li>
+<li>记录否决事件以供后续分析和模型改进</li>
+</ol>
+<h3 id="84">8.4 形式化安全保证</h3>
+<p>结合<strong>控制屏障函数（Control Barrier Function, CBF）</strong> 可以提供形式化的安全保证。定义安全集合 <span class="arithmatex">\(\mathcal{C} = \{x \mid h(x) \geq 0\}\)</span>，CBF 约束要求：</p>
+<div class="arithmatex">\[
+\dot{h}(x, u) + \alpha\bigl(h(x)\bigr) \geq 0
+\]</div>
+<p>其中 <span class="arithmatex">\(\alpha\)</span> 为扩展类 <span class="arithmatex">\(\mathcal{K}\)</span> 函数。该约束确保系统状态始终不会离开安全集合，即使 VLM 给出了不安全的决策。</p>
+<h2 id="9">9. 与传统规划器的融合策略</h2>
+<h3 id="91">9.1 融合的必要性</h3>
+<p>纯粹依赖 VLM 进行决策规划面临延迟高、确定性低、难以验证等挑战，而传统规划器（如 lattice planner、RRT*、MPC 等）虽然在开放场景下灵活性不足，但在确定性、实时性和安全性方面具有明确优势。实际部署中通常需要两者的深度融合。</p>
+<h3 id="92">9.2 层次化集成模式</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">集成层级</th>
+<th style="text-align: center;">VLM 角色</th>
+<th style="text-align: center;">传统规划器角色</th>
+<th style="text-align: center;">示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">战略层</td>
+<td style="text-align: center;">路线规划、场景理解</td>
+<td style="text-align: center;">不参与</td>
+<td style="text-align: center;">VLM 判断"前方道路封闭，需绕行"</td>
+</tr>
+<tr>
+<td style="text-align: center;">战术层</td>
+<td style="text-align: center;">行为决策（变道、超车）</td>
+<td style="text-align: center;">候选行为评估</td>
+<td style="text-align: center;">VLM 建议变道，规划器验证可行性</td>
+</tr>
+<tr>
+<td style="text-align: center;">执行层</td>
+<td style="text-align: center;">不直接参与</td>
+<td style="text-align: center;">轨迹优化与跟踪</td>
+<td style="text-align: center;">MPC 生成满足约束的平滑轨迹</td>
+</tr>
+</tbody>
+</table>
+<h3 id="93">9.3 信任度动态分配</h3>
+<p>何时信任 VLM、何时信任传统规划器，是融合系统的关键设计问题。一种常见策略是基于<strong>场景复杂度</strong>动态分配信任度：</p>
+<div class="arithmatex">\[
+\mathbf{w}_{\text{vlm}} = \sigma\bigl(\beta \cdot (\mathcal{C}_{\text{scene}} - \mathcal{C}_{\text{threshold}})\bigr)
+\]</div>
+<p>其中 <span class="arithmatex">\(\mathcal{C}_{\text{scene}}\)</span> 为场景复杂度评分（由 VLM 自身或独立模块估计），<span class="arithmatex">\(\mathcal{C}_{\text{threshold}}\)</span> 为阈值，<span class="arithmatex">\(\sigma\)</span> 为 sigmoid 函数，<span class="arithmatex">\(\beta\)</span> 为温度参数。</p>
+<ul>
+<li><strong>简单场景</strong>（高速公路直行、空旷道路）：<span class="arithmatex">\(\mathbf{w}_{\text{vlm}}\)</span> 较低，传统规划器主导</li>
+<li><strong>复杂场景</strong>（无保护左转、施工区域、异常事件）：<span class="arithmatex">\(\mathbf{w}_{\text{vlm}}\)</span> 较高，VLM 主导决策</li>
+</ul>
+<h3 id="94">9.4 回退机制</h3>
+<p>当 VLM 模块发生异常（推理超时、输出异常、置信度过低）时，系统应无缝切换到传统规划器：</p>
+<ul>
+<li><strong>热备份</strong>：传统规划器始终在后台运行，维持一条可执行轨迹</li>
+<li><strong>平滑切换</strong>：切换时对轨迹进行时间插值，避免控制量跳变</li>
+<li><strong>降级告警</strong>：通知乘客系统已降级运行，建议人工接管</li>
+</ul>
+<h2 id="10">10. 性能基准对比</h2>
+<h3 id="101-nuscenes">10.1 nuScenes 规划基准</h3>
+<p>以下数据汇总了代表性方法在 nuScenes 规划基准上的表现。评估指标包括 L2 位移误差（1s/2s/3s）、碰撞率（1s/2s/3s）以及推理延迟。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">方法</th>
+<th style="text-align: center;">类型</th>
+<th style="text-align: center;">L2 (1s) ↓</th>
+<th style="text-align: center;">L2 (2s) ↓</th>
+<th style="text-align: center;">L2 (3s) ↓</th>
+<th style="text-align: center;">碰撞率 (1s) ↓</th>
+<th style="text-align: center;">碰撞率 (3s) ↓</th>
+<th style="text-align: center;">延迟 (ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">ST-P3</td>
+<td style="text-align: center;">端到端</td>
+<td style="text-align: center;">1.33</td>
+<td style="text-align: center;">2.11</td>
+<td style="text-align: center;">2.90</td>
+<td style="text-align: center;">0.23%</td>
+<td style="text-align: center;">1.27%</td>
+<td style="text-align: center;">82</td>
+</tr>
+<tr>
+<td style="text-align: left;">UniAD</td>
+<td style="text-align: center;">端到端</td>
+<td style="text-align: center;">0.48</td>
+<td style="text-align: center;">0.96</td>
+<td style="text-align: center;">1.65</td>
+<td style="text-align: center;">0.05%</td>
+<td style="text-align: center;">0.71%</td>
+<td style="text-align: center;">333</td>
+</tr>
+<tr>
+<td style="text-align: left;">GPT-Driver</td>
+<td style="text-align: center;">LLM 轨迹</td>
+<td style="text-align: center;">0.41</td>
+<td style="text-align: center;">0.89</td>
+<td style="text-align: center;">1.54</td>
+<td style="text-align: center;">0.04%</td>
+<td style="text-align: center;">0.64%</td>
+<td style="text-align: center;">1200</td>
+</tr>
+<tr>
+<td style="text-align: left;">DriveVLM</td>
+<td style="text-align: center;">双系统</td>
+<td style="text-align: center;">0.39</td>
+<td style="text-align: center;">0.83</td>
+<td style="text-align: center;">1.48</td>
+<td style="text-align: center;">0.04%</td>
+<td style="text-align: center;">0.56%</td>
+<td style="text-align: center;">450*</td>
+</tr>
+<tr>
+<td style="text-align: left;">LanguageMPC</td>
+<td style="text-align: center;">LLM+MPC</td>
+<td style="text-align: center;">0.45</td>
+<td style="text-align: center;">0.91</td>
+<td style="text-align: center;">1.58</td>
+<td style="text-align: center;">0.03%</td>
+<td style="text-align: center;">0.52%</td>
+<td style="text-align: center;">380*</td>
+</tr>
+<tr>
+<td style="text-align: left;">LMDrive</td>
+<td style="text-align: center;">端到端多模态</td>
+<td style="text-align: center;">0.42</td>
+<td style="text-align: center;">0.87</td>
+<td style="text-align: center;">1.53</td>
+<td style="text-align: center;">0.04%</td>
+<td style="text-align: center;">0.59%</td>
+<td style="text-align: center;">520</td>
+</tr>
+<tr>
+<td style="text-align: left;">DriveLM</td>
+<td style="text-align: center;">图推理</td>
+<td style="text-align: center;">0.40</td>
+<td style="text-align: center;">0.86</td>
+<td style="text-align: center;">1.51</td>
+<td style="text-align: center;">0.04%</td>
+<td style="text-align: center;">0.58%</td>
+<td style="text-align: center;">890</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>* 标注的延迟为轨迹输出延迟（不含 VLM 异步推理延迟）。</p>
+</blockquote>
+<h3 id="102">10.2 关键观察</h3>
+<ol>
+<li><strong>精度提升</strong>：VLM 增强的方法在 L2 误差上相比纯端到端基线（如 ST-P3）有显著提升，3s L2 误差降低约 40–50%</li>
+<li><strong>碰撞率改善</strong>：LanguageMPC 凭借 MPC 求解器的硬约束保证，在碰撞率指标上表现最优</li>
+<li><strong>延迟-精度权衡</strong>：双系统架构（DriveVLM）在精度和延迟之间取得了较好的平衡</li>
+<li><strong>推理成本</strong>：纯 LLM 生成轨迹的方法（GPT-Driver）延迟最高，实际部署需要显著优化</li>
+</ol>
+<h3 id="103">10.3 开放挑战</h3>
+<ul>
+<li><strong>闭环评测缺失</strong>：当前大部分评测基于开环（与录制轨迹对比），闭环评测（如 CARLA 仿真）更能反映真实性能</li>
+<li><strong>长尾场景覆盖不足</strong>：标准基准中长尾场景的比例有限，VLM 的泛化优势尚未被充分体现</li>
+<li><strong>计算资源需求</strong>：VLM 方法通常需要 A100 级别的 GPU，距离车载部署仍有差距</li>
+</ul>
+<h2 id="_1">参考资料</h2>
+<ol>
+<li>Tian, X., et al. "DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models." <em>arXiv preprint arXiv:2402.12289</em>, 2024.</li>
+<li>Mao, J., et al. "GPT-Driver: Learning to Drive with GPT." <em>arXiv preprint arXiv:2310.01415</em>, 2023.</li>
+<li>Sha, H., et al. "LanguageMPC: Large Language Models as Decision Makers for Autonomous Driving." <em>arXiv preprint arXiv:2310.03026</em>, 2023.</li>
+<li>Shao, H., et al. "LMDrive: Closed-Loop End-to-End Driving with Large Language Models." <em>CVPR</em>, 2024.</li>
+<li>Sima, C., et al. "DriveLM: Driving with Graph Visual Question Answering." <em>arXiv preprint arXiv:2312.14150</em>, 2024.</li>
+<li>Hu, Y., et al. "Planning-oriented Autonomous Driving." <em>CVPR</em>, 2023. (UniAD)</li>
+<li>Hu, S., et al. "ST-P3: End-to-end Vision-based Autonomous Driving via Spatial-Temporal Feature Learning." <em>ECCV</em>, 2022.</li>
+<li>Wei, J., et al. "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models." <em>NeurIPS</em>, 2022.</li>
+<li>Ames, A.D., et al. "Control Barrier Functions: Theory and Applications." <em>European Control Conference</em>, 2019.</li>
+<li>Cui, C., et al. "A Survey on Multimodal Large Language Models for Autonomous Driving." <em>arXiv preprint arXiv:2311.12320</em>, 2023.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../_static/js/mathjaxhelper.js"></script>
+      
+    
+  </body>
+</html>

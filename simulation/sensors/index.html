@@ -1,0 +1,5432 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="自动驾驶历史与技术">
+      
+      
+        <meta name="author" content="YFRL">
+      
+      
+        <link rel="canonical" href="https://yfrobotics.github.io/self-driving-handbook-cn/simulation/sensors/">
+      
+      
+        <link rel="prev" href="../environment/">
+      
+      
+        <link rel="next" href="../scenarios/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>传感器仿真 - 自动驾驶指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,700,700i%7CFira+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Fira Sans";--md-code-font:"Fira Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../_static/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-N0PZM76K4V"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-N0PZM76K4V",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-N0PZM76K4V",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="自动驾驶指南" class="md-header__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            自动驾驶指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              传感器仿真
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yfrobotics/self-driving-handbook-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yfrobotics/self-driving-handbook-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="自动驾驶指南" class="md-nav__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    自动驾驶指南
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yfrobotics/self-driving-handbook-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yfrobotics/self-driving-handbook-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶技术指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 概述
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1. 概述
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一章：概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/define/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶系统定义
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/category/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶等级分类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶发展历史
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶术语表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 系统
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. 系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二章：系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统架构总览：从数据流到控制流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/vehicle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶车辆系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车联网 V2X
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    车联网 V2X
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/v2x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车联网（V2X）技术详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/v2x_comm_rsu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    V2X 通信与路侧架构：协议、RSU 与部署
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/v2x_security_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    V2X 安全与运营：证书体系、标准与落地指标
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真平台与数据集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/open_source_platforms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开源平台与生态
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高精地图
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    高精地图
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hdmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高精地图（HD Map）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hdmap_data_lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HD Map 数据与生命周期：格式、采集、更新与版本治理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hdmap_localization_lightweight/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    地图定位与轻图路线：融合、降级与工程挑战
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/hmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人机交互系统（HMI）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统安全保障
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶测试体系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/cybersecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶网络安全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/regulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    政策与法律法规
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 硬件
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. 硬件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三章：硬件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/hw_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    硬件总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算平台 CCU
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算平台 CCU
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/ccu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中央计算单元 (CCU / 车载AI芯片)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/ccu_soc_selection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    芯片与平台选型：主流 SoC 对比与决策框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/ccu_arch_safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    异构计算与车规要求：架构、带宽、功能安全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/compute_chips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶计算芯片
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线控系统
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    线控系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/drive_by_wire/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线控系统（Drive-by-Wire）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/drive_by_wire_actuation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线控执行层：转向、制动、驱动与换挡
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/drive_by_wire_safety_validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线控安全与验证：冗余、接管与测试
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车载通信
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    车载通信
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/communication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车载通信系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/communication_network_protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网络与协议：总线、以太网、拓扑与服务通信
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/communication_security_ota/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安全与升级：SecOC、IDS 与 OTA 工程实践
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知传感器
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    感知传感器
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知传感器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/sensors_active/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    主动感知传感器：LiDAR、毫米波与超声波
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/sensors_vision_positioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    视觉与定位传感器：摄像头、IMU、GNSS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    摄像头
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    摄像头
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/camera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    视觉传感器（摄像头）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/camera_imaging_calibration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    成像与标定：光学基础、ISP、内外参与误差治理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/camera_sync_reliability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    同步与可靠性：时间对齐、健康监测与量产维护
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. 算法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4. 算法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第四章：核心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    软件框架
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    软件框架
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sw_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统软件框架总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sw_overview_arch_timing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    架构与时延：模块边界、时间预算与功能安全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sw_overview_middleware_deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中间件与部署：ROS2/Cyber RT/AUTOSAR 与云边协同
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/image_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图像感知与处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/laser_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    激光点云数据处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/sensor_fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器融合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/occupancy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    占用网络（Occupancy Network）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/world_models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    世界模型与神经场景表示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定位
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    定位
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/localisation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    地图与定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/localisation_slam_fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SLAM 与融合定位：方法、架构与工程实现
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/localisation_metrics_ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定位评估与运维：指标、失效场景与降级策略
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    路径规划
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    路径规划
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/path_planning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    路径规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/path_planning_global_behavior/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    全局路由与行为规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/path_planning_local_trajectory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    局部轨迹与速度规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/prediction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行为预测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/decision_making/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    决策 (Decision Making)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_12" id="__nav_5_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车辆控制
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    车辆控制
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    控制算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/control_lateral/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    横向控制：模型、算法与调参
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/control_longitudinal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    纵向控制：跟驰、制动与舒适性
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/metrics_validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法评估与验证指标
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_14" id="__nav_5_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    端到端
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/end_to_end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端自动驾驶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/end_to_end_data_training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据与训练体系：闭环、扩展律与仿真生成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/end_to_end_safety_deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安全与部署体系：可解释、验证、上线与回滚
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/data_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶ML数据管道
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/nlp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自然语言处理与大语言模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 仿真测试
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    5. 仿真测试
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第五章：仿真测试
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../platforms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真平台
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真环境建模
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器仿真
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 概述
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. LiDAR 仿真
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. LiDAR 仿真">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 基本原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-ray-casting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 光线投射法（Ray-Casting）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-physics-based-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 物理级仿真（Physics-Based Simulation）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 多回波与波形仿真
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-motion-distortion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 运动畸变（Motion Distortion）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 摄像头仿真
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 摄像头仿真">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 渲染方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 相机噪声模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 镜头畸变模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 高动态范围与运动模糊
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 毫米波雷达仿真
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 毫米波雷达仿真">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-rcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 基于 RCS 的模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 电磁射线追踪仿真
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 雷达特有仿真挑战
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 超声波传感器仿真
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 超声波传感器仿真">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 近场感知
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 泊车场景仿真
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-gnssimu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. GNSS/IMU 仿真
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. GNSS/IMU 仿真">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-gnss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 GNSS 仿真
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-imu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 IMU 仿真
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 传感器噪声模型
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 传感器噪声模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 各传感器噪声特性总结
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 噪声模型标定
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-domain-gap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 域差距（Domain Gap）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 域差距（Domain Gap）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 域差距的来源
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 域差距度量方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 缩小域差距的方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 传感器融合仿真
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 传感器融合仿真">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 时间同步仿真
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 联合标定仿真
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 端到端融合仿真流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    交通场景生成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../methodology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真测试方法论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真评估指标
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sim2real/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sim-to-Real 迁移
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 视觉语言大模型
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    6. 视觉语言大模型
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vlm/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第六章：视觉语言大模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vlm/foundation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VLM 基础模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vlm/scene_understanding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    场景理解与描述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vlm/decision_planning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基于 VLM 的决策与规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vlm/data_annotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据标注与闭环
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vlm/hmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人机交互
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vlm/deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    部署与优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vlm/outlook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    展望与挑战
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 实例
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    7. 实例
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第七章：实例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apollo 案例
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Apollo 案例
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/apollo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    百度 Apollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/apollo_tech_stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apollo 技术栈深度解析：架构、感知、定位、规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/apollo_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apollo 商业化与运营实践：Robotaxi 落地与成本路径
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/waymo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waymo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/tesla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla FSD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/chinese_players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中国自动驾驶企业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casestudy/robotaxi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robotaxi：自动驾驶商业化的主战场
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 参与贡献
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8. 参与贡献
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to-contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    如何贡献这个维基？
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    书写规范
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    贡献者名单
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 概述
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. LiDAR 仿真
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. LiDAR 仿真">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 基本原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-ray-casting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 光线投射法（Ray-Casting）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-physics-based-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 物理级仿真（Physics-Based Simulation）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 多回波与波形仿真
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-motion-distortion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 运动畸变（Motion Distortion）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 摄像头仿真
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 摄像头仿真">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 渲染方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 相机噪声模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 镜头畸变模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 高动态范围与运动模糊
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 毫米波雷达仿真
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 毫米波雷达仿真">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-rcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 基于 RCS 的模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 电磁射线追踪仿真
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 雷达特有仿真挑战
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 超声波传感器仿真
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 超声波传感器仿真">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 近场感知
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 泊车场景仿真
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-gnssimu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. GNSS/IMU 仿真
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. GNSS/IMU 仿真">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-gnss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 GNSS 仿真
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-imu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 IMU 仿真
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 传感器噪声模型
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 传感器噪声模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 各传感器噪声特性总结
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 噪声模型标定
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-domain-gap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 域差距（Domain Gap）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 域差距（Domain Gap）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 域差距的来源
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 域差距度量方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 缩小域差距的方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 传感器融合仿真
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 传感器融合仿真">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 时间同步仿真
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 联合标定仿真
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 端到端融合仿真流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">传感器仿真</h1>
+<h2 id="1">1. 概述</h2>
+<p>传感器仿真是自动驾驶仿真系统中最关键的子模块之一。自动驾驶系统的感知算法依赖于来自多种传感器的原始数据——LiDAR 点云、摄像头图像、毫米波雷达回波、超声波信号以及 GNSS/IMU 定位信息。仿真系统必须以足够高的保真度生成这些传感器数据，使得在仿真环境中训练和验证的感知算法能够无缝迁移到真实车辆上。</p>
+<p>传感器仿真的核心挑战在于<strong>域差距（Domain Gap）</strong>：仿真生成的传感器数据与真实传感器数据之间总存在分布差异。缩小这一差距需要对传感器的物理原理、噪声特性和环境交互进行精确建模。本章将逐一介绍各类传感器的仿真方法、噪声模型以及域差距的度量与弥合策略。</p>
+<hr />
+<h2 id="2-lidar">2. LiDAR 仿真</h2>
+<h3 id="21">2.1 基本原理</h3>
+<p>LiDAR（Light Detection and Ranging）通过发射激光脉冲并测量反射信号的飞行时间来获取三维点云。LiDAR 仿真的目标是在虚拟场景中生成与真实 LiDAR 扫描结果统计特性一致的点云数据。</p>
+<h3 id="22-ray-casting">2.2 光线投射法（Ray-Casting）</h3>
+<p>光线投射是最基础的 LiDAR 仿真方法。对于 LiDAR 的每个发射通道，根据旋转角度和垂直角度确定激光发射方向，从传感器原点沿该方向投射一条射线，计算与场景几何体的第一个交点。交点的三维坐标即为该激光束对应的点云数据。</p>
+<p>主要步骤如下：</p>
+<ol>
+<li>根据 LiDAR 参数（线束数、水平角分辨率、垂直 FOV）计算所有激光束方向向量</li>
+<li>利用 BVH（Bounding Volume Hierarchy）或 k-d tree 加速射线-三角形求交</li>
+<li>记录交点坐标 <span class="arithmatex">\((x, y, z)\)</span> 和距离 <span class="arithmatex">\(R\)</span></li>
+</ol>
+<p>光线投射法的优点是计算高效，可在 GPU 上实现并行加速。缺点是仅建模几何交互，忽略了激光与材质表面的物理交互过程。</p>
+<h3 id="23-physics-based-simulation">2.3 物理级仿真（Physics-Based Simulation）</h3>
+<p>物理级 LiDAR 仿真在光线投射的基础上引入材质反射特性、大气衰减和探测器噪声模型，以更精确地还原真实 LiDAR 的输出特性。</p>
+<p><strong>反射率建模：</strong> 真实 LiDAR 返回的反射强度受目标表面反射率、入射角和距离等因素的共同影响。返回信号强度可建模为：</p>
+<div class="arithmatex">\[I_{ret} = I_0 \cdot \frac{\rho \cdot \cos\theta}{R^2} \cdot \eta_{atm}(R)\]</div>
+<p>其中：</p>
+<ul>
+<li><span class="arithmatex">\(I_0\)</span> 为发射激光功率</li>
+<li><span class="arithmatex">\(\rho\)</span> 为目标表面在激光波长（通常 905 nm 或 1550 nm）处的反射率</li>
+<li><span class="arithmatex">\(\theta\)</span> 为激光束与表面法线的夹角</li>
+<li><span class="arithmatex">\(R\)</span> 为传感器到目标的距离</li>
+<li><span class="arithmatex">\(\eta_{atm}(R)\)</span> 为大气透过率函数，取决于天气条件（雨、雾、灰尘等）</li>
+</ul>
+<p>大气透过率可用 Beer-Lambert 定律近似：</p>
+<div class="arithmatex">\[\eta_{atm}(R) = e^{-2\alpha R}\]</div>
+<p>其中 <span class="arithmatex">\(\alpha\)</span> 为大气消光系数，因子 2 表示激光需往返传播。在清晰天气下 <span class="arithmatex">\(\alpha \approx 0.001\;\text{m}^{-1}\)</span>，浓雾条件下可达 <span class="arithmatex">\(\alpha \approx 0.1\;\text{m}^{-1}\)</span>。</p>
+<h3 id="24">2.4 多回波与波形仿真</h3>
+<p>高端 LiDAR 传感器支持多回波（Multi-Echo）探测，即单个激光脉冲可返回多个反射信号。典型场景包括：</p>
+<ul>
+<li>激光穿透树叶间隙，同时记录树冠和地面的回波</li>
+<li>激光部分照射到近处物体边缘，部分继续传播到远处目标</li>
+</ul>
+<p>多回波仿真需要在射线追踪过程中记录所有交点（而非仅第一个交点），并根据各交点处的反射能量判断是否超过探测器阈值。</p>
+<h3 id="25-motion-distortion">2.5 运动畸变（Motion Distortion）</h3>
+<p>机械旋转式 LiDAR 的一帧点云并非在同一时刻采集，而是在传感器旋转一周（通常 50-100 ms）的过程中逐步生成。若车辆在此期间发生运动，点云会产生运动畸变。仿真中需要对每个激光点施加基于时间戳的自车位姿插值，以还原真实的运动畸变效应：</p>
+<div class="arithmatex">\[\mathbf{p}_{distorted} = \mathbf{T}_{ego}(t_i) \cdot \mathbf{T}_{ego}^{-1}(t_0) \cdot \mathbf{p}_{ideal}\]</div>
+<p>其中 <span class="arithmatex">\(t_i\)</span> 为第 <span class="arithmatex">\(i\)</span> 个激光点的采集时间，<span class="arithmatex">\(t_0\)</span> 为帧起始时间，<span class="arithmatex">\(\mathbf{T}_{ego}(t)\)</span> 为 <span class="arithmatex">\(t\)</span> 时刻的自车位姿。</p>
+<hr />
+<h2 id="3">3. 摄像头仿真</h2>
+<h3 id="31">3.1 渲染方法</h3>
+<p>摄像头仿真的核心是图像渲染。当前主流方法包括两大类：</p>
+<p><strong>光栅化渲染（Rasterization）：</strong> 传统实时渲染管线，将三维场景投影到二维图像平面。优点是速度快，可借助现代 GPU 实现实时帧率（60+ FPS）。缺点是难以准确模拟全局光照效果（如软阴影、间接光照、镜面反射）。Unreal Engine 和 Unity 等游戏引擎默认采用此方法。</p>
+<p><strong>光线追踪渲染（Ray-Tracing）：</strong> 从相机出发，对每个像素追踪光线在场景中的反射、折射和散射路径。光线追踪能够自然地模拟全局光照效果，生成更逼真的图像。NVIDIA RTX 系列 GPU 提供的硬件光线追踪加速使得实时光线追踪成为可能。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">特性</th>
+<th style="text-align: center;">光栅化渲染</th>
+<th style="text-align: center;">光线追踪渲染</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">渲染速度</td>
+<td style="text-align: center;">快（60+ FPS）</td>
+<td style="text-align: center;">较慢（10-30 FPS）</td>
+</tr>
+<tr>
+<td style="text-align: center;">全局光照</td>
+<td style="text-align: center;">近似（Screen-Space）</td>
+<td style="text-align: center;">物理精确</td>
+</tr>
+<tr>
+<td style="text-align: center;">阴影质量</td>
+<td style="text-align: center;">阴影贴图（有瑕疵）</td>
+<td style="text-align: center;">物理精确软阴影</td>
+</tr>
+<tr>
+<td style="text-align: center;">反射效果</td>
+<td style="text-align: center;">环境贴图近似</td>
+<td style="text-align: center;">物理精确反射</td>
+</tr>
+<tr>
+<td style="text-align: center;">透明/折射</td>
+<td style="text-align: center;">有限支持</td>
+<td style="text-align: center;">物理精确</td>
+</tr>
+<tr>
+<td style="text-align: center;">硬件要求</td>
+<td style="text-align: center;">中等</td>
+<td style="text-align: center;">高（需 RTX GPU）</td>
+</tr>
+<tr>
+<td style="text-align: center;">适用场景</td>
+<td style="text-align: center;">大规模实时仿真</td>
+<td style="text-align: center;">高保真传感器仿真</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32">3.2 相机噪声模型</h3>
+<p>真实相机图像包含多种噪声源，仿真中需要对其进行建模以缩小域差距。典型的相机噪声模型包含以下分量：</p>
+<p><strong>光子散粒噪声（Photon Shot Noise）：</strong> 光子到达传感器的过程服从泊松分布。对于期望光子数为 <span class="arithmatex">\(\lambda\)</span> 的像素，实际接收光子数 <span class="arithmatex">\(n\)</span> 满足：</p>
+<div class="arithmatex">\[P(n) = \frac{\lambda^n e^{-\lambda}}{n!}\]</div>
+<p><strong>读出噪声（Readout Noise）：</strong> 传感器电路引入的加性高斯噪声，标准差通常为 <span class="arithmatex">\(\sigma_{read} \approx 1\text{-}5\;\text{e}^{-}\)</span>。</p>
+<p>综合噪声模型可表示为：</p>
+<div class="arithmatex">\[I_{noisy}(x, y) = \text{Poisson}(I_{clean}(x, y) \cdot g) / g + \mathcal{N}(0, \sigma_{read}^2)\]</div>
+<p>其中 <span class="arithmatex">\(g\)</span> 为模拟增益（analog gain），<span class="arithmatex">\(I_{clean}\)</span> 为理想无噪声图像。</p>
+<h3 id="33">3.3 镜头畸变模型</h3>
+<p>真实相机镜头会引入径向和切向畸变。仿真中常用 Brown-Conrady 模型：</p>
+<div class="arithmatex">\[x_{distorted} = x(1 + k_1 r^2 + k_2 r^4 + k_3 r^6) + 2p_1 xy + p_2(r^2 + 2x^2)\]</div>
+<div class="arithmatex">\[y_{distorted} = y(1 + k_1 r^2 + k_2 r^4 + k_3 r^6) + p_1(r^2 + 2y^2) + 2p_2 xy\]</div>
+<p>其中 <span class="arithmatex">\(r^2 = x^2 + y^2\)</span>，<span class="arithmatex">\(k_1, k_2, k_3\)</span> 为径向畸变系数，<span class="arithmatex">\(p_1, p_2\)</span> 为切向畸变系数。这些参数可通过标定获取，并应用于仿真渲染的后处理阶段。</p>
+<h3 id="34">3.4 高动态范围与运动模糊</h3>
+<p><strong>HDR 仿真：</strong> 真实驾驶场景中，隧道出入口、逆光行驶等场景的亮度范围远超相机的动态范围。仿真需要建模相机的自动曝光（AE）算法和色调映射（Tone Mapping）过程，以还原过曝和欠曝区域的信息丢失现象。</p>
+<p><strong>运动模糊（Motion Blur）：</strong> 当车辆或场景中的物体高速运动时，曝光时间内的运动会导致图像模糊。运动模糊可通过在曝光时间 <span class="arithmatex">\(t_{exp}\)</span> 内对多帧图像进行累积平均来仿真：</p>
+<div class="arithmatex">\[I_{blur}(x, y) = \frac{1}{N} \sum_{i=1}^{N} I(x + \Delta x_i, y + \Delta y_i)\]</div>
+<p>其中 <span class="arithmatex">\((\Delta x_i, \Delta y_i)\)</span> 为第 <span class="arithmatex">\(i\)</span> 个子帧的像素偏移量，<span class="arithmatex">\(N\)</span> 为子帧数。</p>
+<hr />
+<h2 id="4">4. 毫米波雷达仿真</h2>
+<h3 id="41-rcs">4.1 基于 RCS 的模型</h3>
+<p>毫米波雷达（通常工作在 77 GHz 频段）通过发射电磁波并接收回波来探测目标。目标的<strong>雷达散射截面积（Radar Cross Section, RCS）</strong>是影响回波强度的关键参数。</p>
+<p>简化雷达仿真模型基于雷达方程：</p>
+<div class="arithmatex">\[P_r = \frac{P_t G_t G_r \lambda^2 \sigma}{(4\pi)^3 R^4}\]</div>
+<p>其中：</p>
+<ul>
+<li><span class="arithmatex">\(P_r\)</span> 为接收功率</li>
+<li><span class="arithmatex">\(P_t\)</span> 为发射功率</li>
+<li><span class="arithmatex">\(G_t, G_r\)</span> 为发射和接收天线增益</li>
+<li><span class="arithmatex">\(\lambda\)</span> 为电磁波波长</li>
+<li><span class="arithmatex">\(\sigma\)</span> 为目标 RCS</li>
+<li><span class="arithmatex">\(R\)</span> 为目标距离</li>
+</ul>
+<p>RCS 值取决于目标的形状、材质和观测角度。在仿真中，通常为不同类型的目标（轿车、卡车、行人、自行车）预设 RCS 查找表，作为角度的函数存储。</p>
+<h3 id="42">4.2 电磁射线追踪仿真</h3>
+<p>更高保真的雷达仿真采用电磁射线追踪方法，直接模拟电磁波在场景中的传播、反射和散射过程。该方法能够自然地捕捉以下现象：</p>
+<ul>
+<li><strong>多径效应（Multi-Path Effects）：</strong> 电磁波经过多次反射后到达目标或接收器，导致距离和角度测量偏差</li>
+<li><strong>鬼影目标（Ghost Targets）：</strong> 多径传播产生虚假目标检测。例如，护栏的镜面反射可使相邻车道的车辆在雷达中产生镜像鬼影</li>
+<li><strong>遮挡效应：</strong> 大型目标遮挡其后方的小型目标</li>
+</ul>
+<p>电磁射线追踪的计算复杂度远高于几何光线投射，通常需要 GPU 加速。典型实现包括基于 SBR（Shooting and Bouncing Rays）的方法。</p>
+<h3 id="43">4.3 雷达特有仿真挑战</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">挑战</th>
+<th style="text-align: left;">描述</th>
+<th style="text-align: left;">仿真策略</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">角度分辨率</td>
+<td style="text-align: left;">毫米波雷达角度分辨率有限（通常 1°-5°），相邻目标易混淆</td>
+<td style="text-align: left;">仿真天线阵列波束形成</td>
+</tr>
+<tr>
+<td style="text-align: center;">杂波</td>
+<td style="text-align: left;">路面、护栏等环境反射产生大量杂波</td>
+<td style="text-align: left;">RCS 统计模型 + 杂波地图</td>
+</tr>
+<tr>
+<td style="text-align: center;">多径鬼影</td>
+<td style="text-align: left;">隧道、高架桥下的复杂多径环境</td>
+<td style="text-align: left;">电磁射线追踪</td>
+</tr>
+<tr>
+<td style="text-align: center;">微多普勒</td>
+<td style="text-align: left;">行人肢体运动产生的微多普勒特征</td>
+<td style="text-align: left;">关节运动模型 + 多普勒仿真</td>
+</tr>
+<tr>
+<td style="text-align: center;">干扰</td>
+<td style="text-align: left;">其他车载雷达的同频干扰</td>
+<td style="text-align: left;">干扰信号叠加模型</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5">5. 超声波传感器仿真</h2>
+<h3 id="51">5.1 近场感知</h3>
+<p>超声波传感器（通常工作频率 40-60 kHz）主要用于近距离障碍物检测（0.2-5 m），是自动泊车和低速行驶场景的关键传感器。</p>
+<p>超声波仿真的核心是声波传播模型。声波在空气中的传播速度受温度影响：</p>
+<div class="arithmatex">\[v_{sound} = 331.3 + 0.606 \cdot T_{celsius}\;\;\text{(m/s)}\]</div>
+<p>超声波传感器的波束宽度较大（通常 30°-60°），角度分辨率低，仿真中通常采用锥形波束模型来近似声波的传播特性。</p>
+<h3 id="52">5.2 泊车场景仿真</h3>
+<p>在自动泊车场景中，超声波传感器的仿真需要特别关注：</p>
+<ul>
+<li><strong>车位边界检测：</strong> 精确建模车位挡车器、立柱和墙壁的反射特性</li>
+<li><strong>弱反射目标：</strong> 薄型物体（如购物车侧面）和吸声材料的低回波仿真</li>
+<li><strong>地面回波：</strong> 路面反射信号（尤其在减速带和斜坡场景下）需纳入仿真</li>
+<li><strong>多传感器串扰：</strong> 多个超声波传感器同时工作时的互相干扰</li>
+</ul>
+<hr />
+<h2 id="6-gnssimu">6. GNSS/IMU 仿真</h2>
+<h3 id="61-gnss">6.1 GNSS 仿真</h3>
+<p>全球导航卫星系统（GNSS）仿真需要建模以下因素：</p>
+<p><strong>卫星可见性：</strong> 根据星历数据和自车位置，计算某一时刻可见卫星的数量和分布。卫星几何分布通过<strong>精度衰减因子（DOP）</strong>量化：</p>
+<div class="arithmatex">\[\text{GDOP} = \sqrt{\text{tr}((\mathbf{H}^T \mathbf{H})^{-1})}\]</div>
+<p>其中 <span class="arithmatex">\(\mathbf{H}\)</span> 为观测矩阵，GDOP 越小定位精度越高。</p>
+<p><strong>城市峡谷多径效应：</strong> 在高楼密集的城市环境中，GNSS 信号经建筑物反射后到达接收器，导致伪距测量偏差。仿真中需要利用三维城市模型进行射线追踪，计算直达信号和反射信号的到达时间差异。城市峡谷中 GNSS 定位误差可从开阔地带的 1-2 m 劣化至 10-50 m。</p>
+<p><strong>电离层和对流层延迟：</strong> GNSS 信号穿越大气层时的传播延迟可用 Klobuchar 模型（电离层）和 Saastamoinen 模型（对流层）近似。</p>
+<h3 id="62-imu">6.2 IMU 仿真</h3>
+<p>惯性测量单元（IMU）包含三轴加速度计和三轴陀螺仪。IMU 仿真需要建模以下误差源：</p>
+<p><strong>零偏（Bias）：</strong> 包括固定零偏 <span class="arithmatex">\(b_0\)</span> 和随时间缓慢漂移的零偏不稳定性。零偏不稳定性通常建模为随机游走过程：</p>
+<div class="arithmatex">\[b(t + \Delta t) = b(t) + \sigma_b \cdot \sqrt{\Delta t} \cdot w(t), \quad w(t) \sim \mathcal{N}(0, 1)\]</div>
+<p><strong>噪声密度：</strong> 加速度计和陀螺仪的白噪声，由 Allan 方差中的角度随机游走（ARW）和速度随机游走（VRW）参数刻画。</p>
+<p><strong>标度因子误差（Scale Factor Error）：</strong> 传感器输出与真实物理量之间的比例偏差。</p>
+<p>完整的 IMU 误差模型可表示为：</p>
+<div class="arithmatex">\[\tilde{\omega} = (1 + s_g) \cdot \omega_{true} + b_g + n_g\]</div>
+<div class="arithmatex">\[\tilde{a} = (1 + s_a) \cdot \mathbf{R} \cdot (a_{true} - g) + b_a + n_a\]</div>
+<p>其中 <span class="arithmatex">\(s_g, s_a\)</span> 为标度因子误差，<span class="arithmatex">\(b_g, b_a\)</span> 为零偏，<span class="arithmatex">\(n_g, n_a\)</span> 为白噪声，<span class="arithmatex">\(\mathbf{R}\)</span> 为安装偏差旋转矩阵。</p>
+<hr />
+<h2 id="7">7. 传感器噪声模型</h2>
+<h3 id="71">7.1 各传感器噪声特性总结</h3>
+<p>精确的噪声模型是缩小域差距的关键。下表总结了各类传感器的主要噪声源及其统计特性：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">传感器</th>
+<th style="text-align: left;">噪声源</th>
+<th style="text-align: left;">统计模型</th>
+<th style="text-align: left;">典型参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">LiDAR</td>
+<td style="text-align: left;">测距噪声</td>
+<td style="text-align: left;">高斯分布 <span class="arithmatex">\(\mathcal{N}(0, \sigma_R^2)\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\sigma_R = 1\text{-}3\;\text{cm}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">LiDAR</td>
+<td style="text-align: left;">强度噪声</td>
+<td style="text-align: left;">信号相关高斯</td>
+<td style="text-align: left;">SNR 依赖于距离和反射率</td>
+</tr>
+<tr>
+<td style="text-align: center;">LiDAR</td>
+<td style="text-align: left;">丢点（Drop-out）</td>
+<td style="text-align: left;">伯努利分布</td>
+<td style="text-align: left;">丢点率 1%-5%</td>
+</tr>
+<tr>
+<td style="text-align: center;">LiDAR</td>
+<td style="text-align: left;">虚假点（Blooming）</td>
+<td style="text-align: left;">目标边缘概率模型</td>
+<td style="text-align: left;">边缘区域</td>
+</tr>
+<tr>
+<td style="text-align: center;">摄像头</td>
+<td style="text-align: left;">散粒噪声</td>
+<td style="text-align: left;">泊松分布</td>
+<td style="text-align: left;"><span class="arithmatex">\(\sigma = \sqrt{\lambda}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">摄像头</td>
+<td style="text-align: left;">读出噪声</td>
+<td style="text-align: left;">高斯分布</td>
+<td style="text-align: left;"><span class="arithmatex">\(\sigma_{read} = 1\text{-}5\;\text{e}^{-}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">摄像头</td>
+<td style="text-align: left;">暗电流噪声</td>
+<td style="text-align: left;">泊松分布</td>
+<td style="text-align: left;">温度相关</td>
+</tr>
+<tr>
+<td style="text-align: center;">摄像头</td>
+<td style="text-align: left;">固定模式噪声</td>
+<td style="text-align: left;">空间相关</td>
+<td style="text-align: left;">像素间增益差异</td>
+</tr>
+<tr>
+<td style="text-align: center;">毫米波雷达</td>
+<td style="text-align: left;">距离噪声</td>
+<td style="text-align: left;">高斯分布</td>
+<td style="text-align: left;"><span class="arithmatex">\(\sigma_R = 0.1\text{-}0.5\;\text{m}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">毫米波雷达</td>
+<td style="text-align: left;">角度噪声</td>
+<td style="text-align: left;">高斯分布</td>
+<td style="text-align: left;"><span class="arithmatex">\(\sigma_\theta = 0.5°\text{-}2°\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">毫米波雷达</td>
+<td style="text-align: left;">虚假检测</td>
+<td style="text-align: left;">泊松过程</td>
+<td style="text-align: left;">杂波率</td>
+</tr>
+<tr>
+<td style="text-align: center;">超声波</td>
+<td style="text-align: left;">测距噪声</td>
+<td style="text-align: left;">高斯分布</td>
+<td style="text-align: left;"><span class="arithmatex">\(\sigma_R = 1\text{-}3\;\text{cm}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">GNSS</td>
+<td style="text-align: left;">定位噪声</td>
+<td style="text-align: left;">高斯 + 多径偏差</td>
+<td style="text-align: left;"><span class="arithmatex">\(\sigma = 1\text{-}50\;\text{m}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">IMU</td>
+<td style="text-align: left;">零偏不稳定性</td>
+<td style="text-align: left;">随机游走</td>
+<td style="text-align: left;">器件相关</td>
+</tr>
+<tr>
+<td style="text-align: center;">IMU</td>
+<td style="text-align: left;">白噪声</td>
+<td style="text-align: left;">高斯白噪声</td>
+<td style="text-align: left;">ARW / VRW</td>
+</tr>
+</tbody>
+</table>
+<h3 id="72">7.2 噪声模型标定</h3>
+<p>噪声模型的参数需要通过实际传感器数据进行标定。常用方法包括：</p>
+<ul>
+<li><strong>Allan 方差分析：</strong> 用于标定 IMU 噪声参数（ARW、VRW、零偏不稳定性）</li>
+<li><strong>静态场景采集：</strong> 在已知场景中采集多帧数据，统计测量噪声的分布特性</li>
+<li><strong>对比实验：</strong> 在相同场景中同时采集真实传感器数据和仿真数据，对比统计特性</li>
+</ul>
+<hr />
+<h2 id="8-domain-gap">8. 域差距（Domain Gap）</h2>
+<h3 id="81">8.1 域差距的来源</h3>
+<p>仿真数据与真实数据之间的域差距是传感器仿真面临的核心挑战。域差距主要来源于以下四个层面：</p>
+<p><strong>视觉保真度差距（Visual Fidelity Gap）：</strong> 仿真渲染的图像与真实相机图像在纹理细节、光照真实性和材质表现上的差异。尽管现代游戏引擎的渲染质量已大幅提升，但在天空散射、潮湿路面反射、植被细节等方面仍与真实场景存在可感知的差异。</p>
+<p><strong>几何精度差距（Geometric Accuracy Gap）：</strong> 仿真场景的三维几何模型与真实世界之间的偏差，包括道路曲面精度、建筑物细节层次和植被形态。这一差距直接影响 LiDAR 点云的空间分布特性。</p>
+<p><strong>传感器物理差距（Sensor Physics Gap）：</strong> 仿真传感器模型对真实传感器物理特性的近似程度。例如，仿真 LiDAR 是否准确建模了激光波束的发散角、探测器的非线性响应和多回波阈值。</p>
+<p><strong>动态行为差距（Dynamic Behavior Gap）：</strong> 仿真环境中交通参与者的行为模式与真实交通流之间的差异。虽然这不是传感器本身的问题，但不真实的动态行为会影响传感器数据的时序特性和遮挡模式。</p>
+<h3 id="82">8.2 域差距度量方法</h3>
+<p><strong>FID（Frechet Inception Distance）：</strong> 最常用的图像分布相似性度量。FID 计算仿真图像和真实图像在 Inception 网络特征空间中的 Frechet 距离：</p>
+<div class="arithmatex">\[\text{FID} = \|\mu_r - \mu_s\|^2 + \text{tr}(\Sigma_r + \Sigma_s - 2(\Sigma_r \Sigma_s)^{1/2})\]</div>
+<p>其中 <span class="arithmatex">\((\mu_r, \Sigma_r)\)</span> 和 <span class="arithmatex">\((\mu_s, \Sigma_s)\)</span> 分别为真实图像和仿真图像的特征均值和协方差。FID 越低表示分布越接近。</p>
+<p><strong>感知性能差值（Perception Performance Delta）：</strong> 更直接的域差距度量方法是比较同一感知算法在仿真数据和真实数据上的性能差异。例如，3D 目标检测模型在仿真数据上的 mAP 与在真实数据上的 mAP 之差。该差值越小，说明仿真数据对感知算法越"透明"。</p>
+<p><strong>点云统计度量：</strong> 针对 LiDAR 仿真，可使用 Chamfer Distance（CD）和 Earth Mover's Distance（EMD）来度量仿真点云和真实点云之间的几何分布差异：</p>
+<div class="arithmatex">\[\text{CD}(S_1, S_2) = \frac{1}{|S_1|}\sum_{x \in S_1} \min_{y \in S_2}\|x-y\|^2 + \frac{1}{|S_2|}\sum_{y \in S_2}\min_{x \in S_1}\|x-y\|^2\]</div>
+<h3 id="83">8.3 缩小域差距的方法</h3>
+<ul>
+<li><strong>域自适应（Domain Adaptation）：</strong> 利用对抗训练（如 CycleGAN）将仿真图像风格转换为真实图像风格</li>
+<li><strong>域随机化（Domain Randomization）：</strong> 通过随机化仿真参数（纹理、光照、噪声等）迫使模型学习域不变特征</li>
+<li><strong>混合训练（Mixed Training）：</strong> 将仿真数据和真实数据混合用于训练，通常按一定比例（如 7:3）混合</li>
+<li><strong>神经渲染（Neural Rendering）：</strong> 利用 NeRF 等神经辐射场方法从真实数据学习场景表示，生成新视角图像</li>
+</ul>
+<hr />
+<h2 id="9">9. 传感器融合仿真</h2>
+<h3 id="91">9.1 时间同步仿真</h3>
+<p>多传感器融合系统要求各传感器数据在时间上精确对齐。在真实系统中，不同传感器的采样率、触发时刻和数据传输延迟各不相同。仿真需要忠实再现这些时序特性：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">传感器</th>
+<th style="text-align: center;">典型帧率</th>
+<th style="text-align: center;">触发方式</th>
+<th style="text-align: center;">典型延迟</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">LiDAR</td>
+<td style="text-align: center;">10-20 Hz</td>
+<td style="text-align: center;">自由运行</td>
+<td style="text-align: center;">50-100 ms（旋转周期）</td>
+</tr>
+<tr>
+<td style="text-align: center;">摄像头</td>
+<td style="text-align: center;">20-30 Hz</td>
+<td style="text-align: center;">硬件触发 / PTP 同步</td>
+<td style="text-align: center;">10-30 ms</td>
+</tr>
+<tr>
+<td style="text-align: center;">毫米波雷达</td>
+<td style="text-align: center;">13-20 Hz</td>
+<td style="text-align: center;">自由运行</td>
+<td style="text-align: center;">20-50 ms</td>
+</tr>
+<tr>
+<td style="text-align: center;">超声波</td>
+<td style="text-align: center;">10-15 Hz</td>
+<td style="text-align: center;">轮询触发</td>
+<td style="text-align: center;">5-10 ms</td>
+</tr>
+<tr>
+<td style="text-align: center;">GNSS</td>
+<td style="text-align: center;">1-10 Hz</td>
+<td style="text-align: center;">PPS 同步</td>
+<td style="text-align: center;">10-50 ms</td>
+</tr>
+<tr>
+<td style="text-align: center;">IMU</td>
+<td style="text-align: center;">100-400 Hz</td>
+<td style="text-align: center;">自由运行</td>
+<td style="text-align: center;">&lt; 1 ms</td>
+</tr>
+</tbody>
+</table>
+<p>仿真中需要为每个传感器数据包附加精确的时间戳，并模拟以下时序偏差：</p>
+<ul>
+<li><strong>触发抖动（Trigger Jitter）：</strong> 硬件触发信号的时间抖动，通常在微秒到毫秒级</li>
+<li><strong>传输延迟（Transmission Latency）：</strong> 数据从传感器到计算平台的传输时间</li>
+<li><strong>时钟漂移（Clock Drift）：</strong> 不同传感器本地时钟之间的漂移</li>
+</ul>
+<h3 id="92">9.2 联合标定仿真</h3>
+<p>传感器融合的前提是精确的外参标定——各传感器之间的相对位姿关系。在仿真中，传感器的位姿可以精确设定（ground truth），但为了还原真实系统的标定误差，需要引入标定噪声：</p>
+<div class="arithmatex">\[\mathbf{T}_{sim} = \mathbf{T}_{gt} \cdot \Delta\mathbf{T}_{calib}\]</div>
+<p>其中 <span class="arithmatex">\(\Delta\mathbf{T}_{calib}\)</span> 为标定误差扰动，通常建模为小量旋转和平移：</p>
+<div class="arithmatex">\[\Delta\mathbf{T}_{calib} = \begin{bmatrix} \mathbf{R}(\delta\phi, \delta\theta, \delta\psi) &amp; \delta\mathbf{t} \\ \mathbf{0} &amp; 1 \end{bmatrix}\]</div>
+<p>典型标定误差范围：旋转误差 <span class="arithmatex">\(0.1°\)</span>-<span class="arithmatex">\(0.5°\)</span>，平移误差 <span class="arithmatex">\(1\)</span>-<span class="arithmatex">\(5\;\text{cm}\)</span>。</p>
+<h3 id="93">9.3 端到端融合仿真流程</h3>
+<p>完整的传感器融合仿真流程如下：</p>
+<div class="highlight"><pre><span></span><code>三维场景
+  │
+  ├─→ LiDAR 仿真 ──→ 点云 + 时间戳
+  ├─→ 摄像头仿真 ──→ 图像 + 时间戳
+  ├─→ 雷达仿真   ──→ 目标列表 + 时间戳
+  ├─→ 超声波仿真 ──→ 距离测量 + 时间戳
+  ├─→ GNSS 仿真  ──→ 位置 + 时间戳
+  └─→ IMU 仿真   ──→ 角速度/加速度 + 时间戳
+        │
+        ▼
+  时间同步模块（对齐各传感器时间戳）
+        │
+        ▼
+  传感器融合算法（EKF / 图优化 / 深度学习）
+        │
+        ▼
+  感知输出（3D 目标列表、自车定位）
+</code></pre></div>
+<p>仿真的关键价值在于：可以对单一传感器进行失效注入（如 LiDAR 被遮挡、摄像头过曝、GNSS 失锁），验证融合算法在传感器退化条件下的鲁棒性。</p>
+<hr />
+<h2 id="10">10. 参考资料</h2>
+<ol>
+<li>Manivasagam, S., et al. "LiDARsim: Realistic LiDAR Simulation by Leveraging the Real World." <em>CVPR</em>, 2020.</li>
+<li>Fang, J., et al. "Augmented LiDAR Simulator for Autonomous Driving." <em>IEEE Robotics and Automation Letters</em>, 2020.</li>
+<li>Dosovitskiy, A., et al. "CARLA: An Open Urban Driving Simulator." <em>CoRL</em>, 2017.</li>
+<li>Carlson, A., et al. "Sensor Simulation for Autonomous Vehicle Development." <em>IEEE Intelligent Vehicles Symposium</em>, 2019.</li>
+<li>Heusel, M., et al. "GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium." <em>NeurIPS</em>, 2017.（FID 度量方法）</li>
+<li>Tobin, J., et al. "Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World." <em>IROS</em>, 2017.</li>
+<li>Yue, X., et al. "A LiDAR Point Cloud Generator: from a Virtual World to Autonomous Driving." <em>ICMR</em>, 2018.</li>
+<li>Hirsenkorn, N., et al. "Virtual Sensor Models for Real-Time Applications." <em>Sensors</em>, 2016.</li>
+<li>Wheeler, T., et al. "Deep Stochastic Radar Models." <em>IV</em>, 2017.</li>
+<li>Teed, Z., Deng, J. "RAFT: Recurrent All-Pairs Field Transforms for Optical Flow." <em>ECCV</em>, 2020.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../_static/js/mathjaxhelper.js"></script>
+      
+    
+  </body>
+</html>
