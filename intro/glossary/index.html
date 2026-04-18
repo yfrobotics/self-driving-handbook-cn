@@ -614,6 +614,50 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 端到端与大模型
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. 数据与训练
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. 仿真与评测
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. 芯片与部署
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4306,6 +4350,50 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 端到端与大模型
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. 数据与训练
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. 仿真与评测
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. 芯片与部署
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4321,6 +4409,9 @@
                 
                   
 
+
+  
+  
 
 
 <h1 id="_1">自动驾驶术语表</h1>
@@ -4869,6 +4960,263 @@
 <tr>
 <td><strong>Geofencing</strong></td>
 <td>地理围栏，限定自动驾驶运营区域的虚拟边界</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11">11. 端到端与大模型</h2>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>全称</th>
+<th>简要说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>E2E</strong></td>
+<td>End-to-End</td>
+<td>端到端驾驶，从传感器原始输入直接输出轨迹或控制指令</td>
+</tr>
+<tr>
+<td><strong>Modular E2E</strong></td>
+<td>—</td>
+<td>模块化端到端：保留感知/预测/规划子网络，但联合训练</td>
+</tr>
+<tr>
+<td><strong>One-Model E2E</strong></td>
+<td>—</td>
+<td>单模型端到端：一个大网络直接产出轨迹，无显式中间表示</td>
+</tr>
+<tr>
+<td><strong>Occupancy Network</strong></td>
+<td>—</td>
+<td>占据网络，预测三维空间每个体素的占据概率与语义（Tesla/华为）</td>
+</tr>
+<tr>
+<td><strong>World Model</strong></td>
+<td>—</td>
+<td>世界模型，学习环境动态并在潜空间中推演未来（GAIA、DriveDreamer）</td>
+</tr>
+<tr>
+<td><strong>VLM</strong></td>
+<td>Vision-Language Model</td>
+<td>视觉语言模型，联合理解图像与文本（用于场景解释、决策）</td>
+</tr>
+<tr>
+<td><strong>VLA</strong></td>
+<td>Vision-Language-Action</td>
+<td>视觉-语言-动作模型，输出可执行动作（驾驶控制/机器人）</td>
+</tr>
+<tr>
+<td><strong>LLM</strong></td>
+<td>Large Language Model</td>
+<td>大语言模型，驱动推理与自然语言交互</td>
+</tr>
+<tr>
+<td><strong>MoE</strong></td>
+<td>Mixture of Experts</td>
+<td>专家混合，稀疏激活以降低推理成本</td>
+</tr>
+<tr>
+<td><strong>CoT</strong></td>
+<td>Chain of Thought</td>
+<td>思维链，显式输出中间推理步骤</td>
+</tr>
+<tr>
+<td><strong>RAG</strong></td>
+<td>Retrieval-Augmented Generation</td>
+<td>检索增强生成，借外部知识库补足模型参数</td>
+</tr>
+<tr>
+<td><strong>SFT</strong></td>
+<td>Supervised Fine-Tuning</td>
+<td>监督微调</td>
+</tr>
+<tr>
+<td><strong>RLHF</strong></td>
+<td>Reinforcement Learning from Human Feedback</td>
+<td>基于人类反馈的强化学习</td>
+</tr>
+<tr>
+<td><strong>Diffusion Policy</strong></td>
+<td>—</td>
+<td>扩散策略，用扩散模型采样多模态轨迹</td>
+</tr>
+<tr>
+<td><strong>Imitation Learning</strong></td>
+<td>—</td>
+<td>模仿学习，从专家轨迹学习驾驶策略</td>
+</tr>
+<tr>
+<td><strong>Token</strong></td>
+<td>—</td>
+<td>大模型处理的最小语义单元（文字/图像 patch）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="12">12. 数据与训练</h2>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data Pipeline</strong></td>
+<td>数据闭环：采集 → 脱敏 → 标注 → 训练 → 评测 → 回灌</td>
+</tr>
+<tr>
+<td><strong>Auto-Labeling</strong></td>
+<td>自动标注，用大模型/离线高精算法生成训练标签</td>
+</tr>
+<tr>
+<td><strong>Corner Case</strong></td>
+<td>长尾场景，低频但高风险的驾驶情况（施工、异形障碍物）</td>
+</tr>
+<tr>
+<td><strong>Shadow Mode</strong></td>
+<td>影子模式，在量产车后台运行新模型并对比人类驾驶以挖掘 corner case</td>
+</tr>
+<tr>
+<td><strong>Active Learning</strong></td>
+<td>主动学习，优先标注模型不确定的样本</td>
+</tr>
+<tr>
+<td><strong>Domain Gap</strong></td>
+<td>领域差异，训练与部署分布不一致导致的性能下降</td>
+</tr>
+<tr>
+<td><strong>Data Augmentation</strong></td>
+<td>数据增广（旋转、遮挡、光照等）</td>
+</tr>
+<tr>
+<td><strong>Scenario Mining</strong></td>
+<td>场景挖掘，从量产车日志中筛选目标场景</td>
+</tr>
+<tr>
+<td><strong>HIL Replay / Log Replay</strong></td>
+<td>日志回灌，把真实采集数据注入仿真或新算法重放评估</td>
+</tr>
+<tr>
+<td><strong>Ground Truth</strong></td>
+<td>真值，由高精算法/人工标注得到的参考答案</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="13">13. 仿真与评测</h2>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sim-to-Real</strong></td>
+<td>仿真到实车的迁移问题（sim2real gap）</td>
+</tr>
+<tr>
+<td><strong>Digital Twin</strong></td>
+<td>数字孪生，对真实物理世界的高保真数字复刻</td>
+</tr>
+<tr>
+<td><strong>Scenario DSL</strong></td>
+<td>场景领域特定语言（如 OpenSCENARIO、Scenic）</td>
+</tr>
+<tr>
+<td><strong>OpenSCENARIO</strong></td>
+<td>ASAM 发布的场景描述标准（XML/XOSC）</td>
+</tr>
+<tr>
+<td><strong>OpenDRIVE</strong></td>
+<td>ASAM 发布的道路描述标准（XODR）</td>
+</tr>
+<tr>
+<td><strong>NDS</strong></td>
+<td>Navigation Data Standard，导航地图数据标准</td>
+</tr>
+<tr>
+<td><strong>CARLA / LGSVL / VTD</strong></td>
+<td>常见开源/商用自动驾驶仿真器</td>
+</tr>
+<tr>
+<td><strong>PEM</strong></td>
+<td>Perception Error Model，感知误差模型（在仿真中注入感知噪声）</td>
+</tr>
+<tr>
+<td><strong>Collision Rate</strong></td>
+<td>碰撞率，安全评测核心指标</td>
+</tr>
+<tr>
+<td><strong>Route Completion</strong></td>
+<td>路线完成度，CARLA Leaderboard 常用指标</td>
+</tr>
+<tr>
+<td><strong>nuScenes / Waymo Open / Argoverse</strong></td>
+<td>常见感知与预测公开数据集</td>
+</tr>
+<tr>
+<td><strong>nuPlan / Bench2Drive</strong></td>
+<td>常见规划与端到端基准</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="14">14. 芯片与部署</h2>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TOPS</strong></td>
+<td>Tera Operations Per Second，每秒万亿次运算（NPU 算力单位，注意精度）</td>
+</tr>
+<tr>
+<td><strong>INT8 / FP16 / BF16</strong></td>
+<td>推理常用数值格式；低精度减小带宽与算力开销</td>
+</tr>
+<tr>
+<td><strong>Quantization</strong></td>
+<td>量化，将 FP32 权重压缩到 INT8/INT4</td>
+</tr>
+<tr>
+<td><strong>PTQ / QAT</strong></td>
+<td>训练后量化 / 量化感知训练</td>
+</tr>
+<tr>
+<td><strong>Sparsity</strong></td>
+<td>稀疏化，剪枝零权重以加速推理</td>
+</tr>
+<tr>
+<td><strong>Knowledge Distillation</strong></td>
+<td>知识蒸馏，用大模型教小模型</td>
+</tr>
+<tr>
+<td><strong>TensorRT / OpenVINO / TVM</strong></td>
+<td>常见推理优化工具链</td>
+</tr>
+<tr>
+<td><strong>Safety Island</strong></td>
+<td>安全岛，SoC 内独立的 ASIL-D 监控核（锁步 MCU）</td>
+</tr>
+<tr>
+<td><strong>Hypervisor</strong></td>
+<td>虚拟化管理程序，实现智驾域/座舱域隔离</td>
+</tr>
+<tr>
+<td><strong>Zonal Architecture</strong></td>
+<td>区域控制架构，按位置划分 ECU（取代传统功能域布线）</td>
 </tr>
 </tbody>
 </table>
