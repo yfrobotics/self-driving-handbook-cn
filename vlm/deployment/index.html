@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -2914,6 +2942,34 @@
     
   
     自动驾驶ML数据管道
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
   
 
     
@@ -5239,7 +5295,7 @@
 
 
 <h1 id="_1">部署与优化</h1>
-<p>视觉语言模型（VLM）在自动驾驶中的应用前景广阔，但从研究原型到量产部署之间存在巨大的工程鸿沟。本章系统讨论VLM在车载环境中的部署挑战、优化策略和安全保障机制。</p>
+<p>视觉语言模型（<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>）在自动驾驶中的应用前景广阔，但从研究原型到量产部署之间存在巨大的工程鸿沟。本章系统讨论VLM在车载环境中的部署挑战、优化策略和安全保障机制。</p>
 <hr />
 <h2 id="1">1. 延迟约束</h2>
 <p>自动驾驶系统对不同功能模块有严格的延迟要求。VLM作为大参数量模型，其推理延迟是部署的首要挑战。</p>
@@ -5452,9 +5508,9 @@ W' = W_0 + \Delta W = W_0 + BA
 <ul>
 <li><strong>L3降级</strong>：VLM辅助功能失效 → 退回到传统感知+规划算法独立运行</li>
 <li><strong>L2降级</strong>：传统算法也出现不确定性 → 请求驾驶员接管，进入人机共驾模式</li>
-<li><strong>L1降级</strong>：驾驶员未响应接管请求 → 进入最小风险状态（MRC）</li>
+<li><strong>L1降级</strong>：驾驶员未响应接管请求 → 进入最小风险状态（<abbr title="Minimum Risk Condition，最小风险状态">MRC</abbr>）</li>
 </ul>
-<h3 id="42-mrc">4.2 最小风险状态（MRC）</h3>
+<h3 id="42-mrc">4.2 最小风险状态（<abbr title="Minimum Risk Condition，最小风险状态">MRC</abbr>）</h3>
 <p>最小风险状态（Minimal Risk Condition）是车辆在系统失效时应达到的安全状态：</p>
 <ul>
 <li>逐步减速至停车</li>
@@ -5592,14 +5648,14 @@ C_K = \frac{1}{\binom{K}{2}} \sum_{i &lt; j} \text{sim}(o_i, o_j)
 <h3 id="71-nvidia">7.1 NVIDIA 车载平台</h3>
 <p><strong>NVIDIA Orin：</strong></p>
 <ul>
-<li>算力：275 TOPS (INT8)</li>
+<li>算力：275 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr> (INT8)</li>
 <li>GPU架构：Ampere，2048 CUDA核心</li>
 <li>功耗：15–60 W（可配置）</li>
 <li>适用场景：轻量VLM（2–3B参数INT4）实时推理</li>
 </ul>
 <p><strong>NVIDIA Thor（下一代）：</strong></p>
 <ul>
-<li>算力：2000 TOPS (INT8)</li>
+<li>算力：2000 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr> (INT8)</li>
 <li>GPU架构：Blackwell</li>
 <li>功耗：100 W 级别</li>
 <li>适用场景：中等规模VLM（7–13B参数）车端实时推理</li>
@@ -5650,7 +5706,7 @@ C_K = \frac{1}{\binom{K}{2}} \sum_{i &lt; j} \text{sim}(o_i, o_j)
 </ul>
 <hr />
 <h2 id="9-vlm">9. 功能安全与VLM</h2>
-<h3 id="91-asil">9.1 ASIL 等级要求</h3>
+<h3 id="91-asil">9.1 <abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr> 等级要求</h3>
 <p>根据ISO 26262标准，不同ASIL（汽车安全完整性等级）对系统有不同要求：</p>
 <table>
 <thead>
@@ -5663,25 +5719,25 @@ C_K = \frac{1}{\binom{K}{2}} \sum_{i &lt; j} \text{sim}(o_i, o_j)
 </thead>
 <tbody>
 <tr>
-<td>ASIL-D</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-D</td>
 <td>&lt; <span class="arithmatex">\(10^{-8}\)</span>/h</td>
 <td>转向、制动控制</td>
 <td>不可直接参与</td>
 </tr>
 <tr>
-<td>ASIL-C</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-C</td>
 <td>&lt; <span class="arithmatex">\(10^{-7}\)</span>/h</td>
 <td>紧急避障</td>
 <td>仅作为冗余输入</td>
 </tr>
 <tr>
-<td>ASIL-B</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-B</td>
 <td>&lt; <span class="arithmatex">\(10^{-7}\)</span>/h</td>
 <td>自适应巡航</td>
 <td>可作为辅助决策</td>
 </tr>
 <tr>
-<td>ASIL-A</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-A</td>
 <td>&lt; <span class="arithmatex">\(10^{-6}\)</span>/h</td>
 <td>驾驶辅助提示</td>
 <td>可作为主要信息源</td>
@@ -5697,7 +5753,7 @@ C_K = \frac{1}{\binom{K}{2}} \sum_{i &lt; j} \text{sim}(o_i, o_j)
 <h3 id="92">9.2 冗余架构设计</h3>
 <p>VLM在安全关键系统中必须有冗余保障：</p>
 <ul>
-<li><strong>异构冗余</strong>：VLM + 传统算法并行运行，通过仲裁逻辑选择输出</li>
+<li><strong>异构冗余</strong>：<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> + 传统算法并行运行，通过仲裁逻辑选择输出</li>
 <li><strong>同构冗余</strong>：多个VLM实例独立运行，通过投票机制确定最终输出</li>
 <li><strong>时间冗余</strong>：同一输入多次推理，检查结果一致性</li>
 </ul>
@@ -5818,7 +5874,7 @@ C_K = \frac{1}{\binom{K}{2}} \sum_{i &lt; j} \text{sim}(o_i, o_j)
 <h2 id="_2">参考资料</h2>
 <ol>
 <li>Dettmers, T., et al. "GPT3.int8(): 8-bit Matrix Multiplication for Transformers at Scale." <em>NeurIPS</em>, 2022.</li>
-<li>Lin, J., et al. "AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration." <em>MLSys</em>, 2024.</li>
+<li>Lin, J., et al. "AWQ: Activation-aware Weight Quantization for <abbr title="Large Language Model，大语言模型">LLM</abbr> Compression and Acceleration." <em>MLSys</em>, 2024.</li>
 <li>Hu, E.J., et al. "LoRA: Low-Rank Adaptation of Large Language Models." <em>ICLR</em>, 2022.</li>
 <li>Leviathan, Y., et al. "Fast Inference from Transformers via Speculative Decoding." <em>ICML</em>, 2023.</li>
 <li>Dao, T., et al. "FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning." <em>ICLR</em>, 2024.</li>
@@ -5835,6 +5891,27 @@ C_K = \frac{1}{\binom{K}{2}} \sum_{i &lt; j} \text{sim}(o_i, o_j)
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月21日 23:41:48 UTC">2026年3月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

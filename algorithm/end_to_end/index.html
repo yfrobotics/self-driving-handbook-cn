@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3434,6 +3462,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nlp/" class="md-nav__link">
         
   
@@ -5049,11 +5105,11 @@
 <p>以约 72 小时人类驾驶视频为训练数据，在高速公路测试有效。局限：仅输出转向角，没有纵向控制；遇到训练分布外场景容易失败。</p>
 <p><strong>ChauffeurNet（Waymo/Google, 2019）：</strong></p>
 <p>将感知结果渲染为俯视语义图像（Road Map + Agent Box），再进行端到端规划。规避了原始传感器的复杂性，加入了对抗训练使模型能处理长尾场景（如交通事故、逆行车辆）。</p>
-<h3 id="bev-20202022">第二阶段：BEV 感知 + 模块化辅助（2020–2022）</h3>
-<p>BEV（Bird's Eye View，鸟瞰视角）感知范式兴起，成为端到端系统的标准中间表示：</p>
+<h3 id="bev-20202022">第二阶段：<abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 感知 + 模块化辅助（2020–2022）</h3>
+<p><abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr>（Bird's Eye View，鸟瞰视角）感知范式兴起，成为端到端系统的标准中间表示：</p>
 <p><strong>BEVFormer（Li et al., ECCV 2022）：</strong>
 - 跨摄像头、跨时间帧的 Transformer 注意力机制
-- 利用空间可变形注意力将多视角图像特征投影到统一 BEV 网格</p>
+- 利用空间可变形注意力将多视角图像特征投影到统一 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 网格</p>
 <p><strong>BEVDet（Huang et al., 2021）：</strong>
 - 基于 LSS（Lift-Splat-Shoot）方法，通过深度估计将 2D 特征提升到 3D</p>
 <p><strong>UniAD（Hu et al., CVPR 2023 最佳论文）：</strong></p>
@@ -5063,14 +5119,14 @@
 </code></pre></div>
 <p>UniAD 证明了联合优化有助于规划性能，开创了"以规划为导向的感知"研究范式。</p>
 <h3 id="2023">第三阶段：大规模端到端量产（2023–至今）</h3>
-<p><strong>Tesla FSD V12（2023）——首个量产端到端：</strong></p>
+<p><strong>Tesla <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> V12（2023）——首个量产端到端：</strong></p>
 <p>Tesla 宣布将传统 C++ 模块化代码（超过 300,000 行）替换为统一的端到端神经网络，处理从 8 路摄像头到车辆控制的全流程：
 - 输入：8 路摄像头原始图像帧序列
 - 输出：方向盘转角、油门、制动控制量
-- 规模：数千万参数，需要 HW4 FSD 芯片支持</p>
+- 规模：数千万参数，需要 HW4 <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> 芯片支持</p>
 <p><strong>DriveVLM（Tian et al., Wayve/清华，2024）：</strong>
-将视觉语言模型（VLM）引入端到端驾驶，实现场景理解和自然语言可解释性：
-- VLM 负责场景分析和高层决策生成（用文字描述驾驶意图）
+将视觉语言模型（<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>）引入端到端驾驶，实现场景理解和自然语言可解释性：
+- <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 负责场景分析和高层决策生成（用文字描述驾驶意图）
 - 轨迹生成网络负责将文字决策转化为具体轨迹</p>
 <h2 id="_3">关键技术</h2>
 <h3 id="occupancy-network">占用网络（Occupancy Network）</h3>
@@ -5081,9 +5137,9 @@
 - 适合开放世界感知（处理从未见过的物体类型）</p>
 <p><strong>代表工作：</strong> Tesla Occupancy（2022 AI Day）、Occ3D（清华，2023）、SurroundOcc（旷视，2023）。</p>
 <h3 id="_4">知识蒸馏与特权学习</h3>
-<p>端到端视觉模型的挑战之一：纯摄像头无法直接获取精确深度，而 LiDAR 可以。<strong>特权学习</strong>（Privileged Learning）让学生网络（仅摄像头）向教师网络（含 LiDAR）学习：</p>
+<p>端到端视觉模型的挑战之一：纯摄像头无法直接获取精确深度，而 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 可以。<strong>特权学习</strong>（Privileged Learning）让学生网络（仅摄像头）向教师网络（含 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>）学习：</p>
 <div class="arithmatex">\[\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{task}}(\hat{y}, y) + \lambda \, \mathcal{L}_{\text{KD}}(f_{\text{student}},\ f_{\text{teacher}})\]</div>
-<p>其中 <span class="arithmatex">\(\mathcal{L}_{\text{KD}}\)</span> 为特征级或输出级蒸馏损失。推理时仅用摄像头，无需 LiDAR，但获得了接近 LiDAR 水平的感知能力。</p>
+<p>其中 <span class="arithmatex">\(\mathcal{L}_{\text{KD}}\)</span> 为特征级或输出级蒸馏损失。推理时仅用摄像头，无需 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>，但获得了接近 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 水平的感知能力。</p>
 <h2 id="world-model">世界模型（World Model）</h2>
 <h3 id="_5">定义与核心思想</h3>
 <p>世界模型（World Model）是一种通过<strong>自监督学习</strong>构建的环境内部表征，能够在隐空间预测未来状态，从而在不执行实际动作的情况下支持"想象式"规划。其核心思路受认知科学启发：人类驾驶员在行动前会在脑中模拟可能的场景。</p>
@@ -5136,11 +5192,11 @@ $$z_t \sim q_\phi(z_t \mid h_t,\ x_t) \quad \text{（后验，基于实际观测
 <div class="arithmatex">\[a_{0:H}^* = \arg\max_{a_{0:H}} \sum_{t=0}^{H} \gamma^t r(z_t, a_t), \quad z_{t+1} \sim p_\theta(z_{t+1} \mid z_t, a_t)\]</div>
 <p>其中 <span class="arithmatex">\(r\)</span> 为奖励函数（如行驶进度、舒适性、无碰撞），<span class="arithmatex">\(\gamma\)</span> 为折扣因子，<span class="arithmatex">\(H\)</span> 为规划时域。</p>
 <h2 id="_7">具身智能与驾驶</h2>
-<h3 id="vlm">VLM 驱动的驾驶推理</h3>
-<p>视觉语言模型（Vision-Language Model, VLM）将大规模语言模型的常识推理能力引入驾驶感知，实现开放词汇的场景理解：</p>
+<h3 id="vlm"><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 驱动的驾驶推理</h3>
+<p>视觉语言模型（Vision-Language Model, <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>）将大规模语言模型的常识推理能力引入驾驶感知，实现开放词汇的场景理解：</p>
 <p><strong>DriveVLM（2024）：</strong></p>
 <p>采用"慢思考-快执行"双系统架构：
-- <strong>慢系统（VLM 推理）</strong>：理解复杂场景语义，输出驾驶决策描述（文字）
+- <strong>慢系统（<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 推理）</strong>：理解复杂场景语义，输出驾驶决策描述（文字）
 - <strong>快系统（轨迹网络）</strong>：将文字决策转化为毫秒级控制指令</p>
 <p><strong>DriveLM（Wang et al., ECCV 2024）：</strong></p>
 <p>将驾驶推理建模为<strong>图形视觉问答（Graph VQA）</strong>任务：构建感知→预测→规划的有向推理图，每个节点对应一个问答对：</p>
@@ -5161,7 +5217,7 @@ A: &quot;在 2 s 内减速，保持当前车道&quot;
 2. <strong>推理质量</strong>：复杂场景（如建筑工地、非常规交通）下决策准确率更高
 3. <strong>标注友好</strong>：文字标注成本低于密集轨迹标注</p>
 <h3 id="_8">语言作为中间表达</h3>
-<p>传统端到端中间表示为 BEV 特征图（数值张量）。语言中间表示将其替换为自然语言描述，实现人类可读的中间过程：</p>
+<p>传统端到端中间表示为 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征图（数值张量）。语言中间表示将其替换为自然语言描述，实现人类可读的中间过程：</p>
 <table>
 <thead>
 <tr>
@@ -5173,7 +5229,7 @@ A: &quot;在 2 s 内减速，保持当前车道&quot;
 <tbody>
 <tr>
 <td>场景描述</td>
-<td>BEV 占据图 + 目标列表</td>
+<td><abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 占据图 + 目标列表</td>
 <td>"前方 15m 有一辆公共汽车正在靠站，右侧有骑行者"</td>
 </tr>
 <tr>
@@ -5193,14 +5249,14 @@ A: &quot;在 2 s 内减速，保持当前车道&quot;
 </tr>
 </tbody>
 </table>
-<p>语言中间表达的局限：推理延迟高（LLM 推理 &gt; 500 ms），难以满足实时控制要求，通常需要异步或缓存机制。</p>
+<p>语言中间表达的局限：推理延迟高（<abbr title="Large Language Model，大语言模型">LLM</abbr> 推理 &gt; 500 ms），难以满足实时控制要求，通常需要异步或缓存机制。</p>
 <h3 id="_9">具身智能的接地问题</h3>
 <p>将语言模型与真实驾驶世界对齐（Grounding）面临根本性挑战：</p>
 <ol>
-<li><strong>空间接地</strong>：语言模型天然缺乏精确空间感知（"前方 15 m"对 LLM 是模糊概念）</li>
-<li><strong>时序接地</strong>：驾驶场景以 10 Hz 变化，而 LLM 推理延迟以秒计</li>
-<li><strong>分布漂移</strong>：LLM 在网络文本上预训练，驾驶场景描述与预训练分布差异大</li>
-<li><strong>幻觉问题</strong>：LLM 可能"虚构"不存在的障碍物或交通规则</li>
+<li><strong>空间接地</strong>：语言模型天然缺乏精确空间感知（"前方 15 m"对 <abbr title="Large Language Model，大语言模型">LLM</abbr> 是模糊概念）</li>
+<li><strong>时序接地</strong>：驾驶场景以 10 Hz 变化，而 <abbr title="Large Language Model，大语言模型">LLM</abbr> 推理延迟以秒计</li>
+<li><strong>分布漂移</strong>：<abbr title="Large Language Model，大语言模型">LLM</abbr> 在网络文本上预训练，驾驶场景描述与预训练分布差异大</li>
+<li><strong>幻觉问题</strong>：<abbr title="Large Language Model，大语言模型">LLM</abbr> 可能"虚构"不存在的障碍物或交通规则</li>
 </ol>
 <p>解决方向：多模态对齐训练（视觉 token 与语言 token 联合训练）、视觉感知模块与语言推理模块的专门接口设计、以真实驾驶数据进行指令微调。</p>
 <h2 id="scaling-laws">数据扩展律（Scaling Laws）</h2>
@@ -5208,18 +5264,18 @@ A: &quot;在 2 s 内减速，保持当前车道&quot;
 <p>Scaling Laws 最初由 OpenAI 在语言模型研究中发现：模型性能随参数量 <span class="arithmatex">\(N\)</span>、数据量 <span class="arithmatex">\(D\)</span>、算力 <span class="arithmatex">\(C\)</span> 呈幂律增长：</p>
 <div class="arithmatex">\[L(N, D) \propto N^{-\alpha} + D^{-\beta} + L_\infty\]</div>
 <p>自动驾驶领域同样观察到类似现象：随着训练数据规模增加，端到端模型在各类场景上的干预率（Human Intervention Rate）持续下降，且未见明显饱和趋势。</p>
-<h3 id="fsd-v12">特斯拉 FSD V12 的数据规模</h3>
+<h3 id="fsd-v12">特斯拉 <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> V12 的数据规模</h3>
 <p>Tesla 是目前端到端自动驾驶数据规模最大的公司：</p>
 <ul>
 <li><strong>车队规模</strong>：全球超过 600 万辆具备数据采集能力的车辆</li>
 <li><strong>年采集里程</strong>：数十亿英里</li>
-<li><strong>视频帧数</strong>：训练 FSD V12 使用数百亿图像帧（估计）</li>
+<li><strong>视频帧数</strong>：训练 <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> V12 使用数百亿图像帧（估计）</li>
 <li><strong>标注方式</strong>：自动标注为主，人工复核为辅</li>
 <li><strong>算力投入</strong>：约 10,000 块 H100 GPU 组成的 Dojo 超算集群</li>
 </ul>
-<p>Tesla Elon Musk 公开表示，FSD V12 相比 V11 的核心改进来自于将训练数据从 10 亿帧扩展到 100 亿帧以上（10 倍数据量提升），而非模型架构创新。</p>
+<p>Tesla Elon Musk 公开表示，<abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> V12 相比 V11 的核心改进来自于将训练数据从 10 亿帧扩展到 100 亿帧以上（10 倍数据量提升），而非模型架构创新。</p>
 <h3 id="_11">视频预训练 → 驾驶微调范式</h3>
-<p>借鉴 LLM 的"预训练 + 微调"范式，驾驶世界模型采用两阶段训练：</p>
+<p>借鉴 <abbr title="Large Language Model，大语言模型">LLM</abbr> 的"预训练 + 微调"范式，驾驶世界模型采用两阶段训练：</p>
 <p><strong>第一阶段：大规模视频预训练</strong></p>
 <p>在互联网视频（YouTube 行车记录仪、街景视频）上进行自监督预训练，学习物理世界的通用视觉动态：</p>
 <div class="arithmatex">\[\mathcal{L}_{\text{pretrain}} = -\sum_t \log p_\theta(\hat{x}_t \mid x_{&lt;t})\]</div>
@@ -5313,9 +5369,9 @@ A: &quot;在 2 s 内减速，保持当前车道&quot;
 <p>CBF 是一种基于李雅普诺夫方法的实时安全约束，将安全集 <span class="arithmatex">\(\mathcal{C}\)</span> 定义为状态空间中的不变集：</p>
 <div class="arithmatex">\[h(x) \geq 0 \Rightarrow x \in \mathcal{C} \quad \text{（安全区域）}\]</div>
 <div class="arithmatex">\[\dot{h}(x, u) \geq -\gamma h(x) \quad \text{（CBF 条件，确保系统不会离开安全集）}\]</div>
-<p>实时 QP 过滤器：在满足 CBF 条件的前提下，寻找最接近端到端输出的安全控制指令：</p>
+<p>实时 <abbr title="Quadratic Programming，二次规划">QP</abbr> 过滤器：在满足 CBF 条件的前提下，寻找最接近端到端输出的安全控制指令：</p>
 <div class="arithmatex">\[u_{\text{safe}} = \arg\min_u \|u - u_{\text{e2e}}\|^2 \quad \text{s.t.} \quad \dot{h}(x, u) \geq -\gamma h(x)\]</div>
-<p>CBF QP 的求解时间 &lt; 1 ms，可在 1 kHz 控制频率下运行，不影响系统实时性。</p>
+<p>CBF <abbr title="Quadratic Programming，二次规划">QP</abbr> 的求解时间 &lt; 1 ms，可在 1 kHz 控制频率下运行，不影响系统实时性。</p>
 <h2 id="_16">典型开源系统</h2>
 <h3 id="uniad2023">UniAD（上海人工智能实验室，2023）</h3>
 <p>UniAD（Unified Autonomous Driving）是 CVPR 2023 最佳论文，首次将感知、预测、规划统一在单一 Transformer 网络中端到端优化：</p>
@@ -5369,7 +5425,7 @@ BEV 编码器（BEVFormer）
 </tbody>
 </table>
 <h3 id="vad2023">VAD（向量化场景表示端到端，2023）</h3>
-<p>VAD（Vectorized scene representation for efficient Autonomous Driving）以向量化表示替代栅格 BEV 特征，大幅降低计算量：</p>
+<p>VAD（Vectorized scene representation for efficient Autonomous Driving）以向量化表示替代栅格 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征，大幅降低计算量：</p>
 <p><strong>核心创新：</strong>
 - 用向量（折线、多边形）而非密集栅格表示车道线、代理轨迹
 - 向量交叉注意力替代空间卷积，参数更少，速度更快
@@ -5408,9 +5464,9 @@ BEV 编码器（BEVFormer）
 <p>VAD-Tiny 以接近 UniAD 的性能实现约 18 倍的速度提升，更适合量产部署。</p>
 <h3 id="sparsedrive2024">SparseDrive（稀疏表示端到端，2024）</h3>
 <p>SparseDrive 将稀疏 3D 表示引入端到端框架，进一步降低计算复杂度：</p>
-<p><strong>核心思想：</strong> 仅在有意义的 3D 位置（目标、车道节点）维护稀疏特征，而非对整个 BEV 空间进行密集计算：</p>
+<p><strong>核心思想：</strong> 仅在有意义的 3D 位置（目标、车道节点）维护稀疏特征，而非对整个 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 空间进行密集计算：</p>
 <div class="arithmatex">\[\mathbf{F}_{\text{sparse}} = \{(p_i, f_i)\}_{i=1}^{M}, \quad M \ll H \times W\]</div>
-<p>其中 <span class="arithmatex">\(p_i \in \mathbb{R}^3\)</span> 为空间位置，<span class="arithmatex">\(f_i \in \mathbb{R}^C\)</span> 为对应特征，<span class="arithmatex">\(M\)</span> 为稀疏 token 数（约 200–500 个），远小于密集 BEV 特征图的 token 数（通常 2500–10000 个）。</p>
+<p>其中 <span class="arithmatex">\(p_i \in \mathbb{R}^3\)</span> 为空间位置，<span class="arithmatex">\(f_i \in \mathbb{R}^C\)</span> 为对应特征，<span class="arithmatex">\(M\)</span> 为稀疏 token 数（约 200–500 个），远小于密集 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征图的 token 数（通常 2500–10000 个）。</p>
 <p><strong>性能表现（nuScenes val）：</strong></p>
 <table>
 <thead>
@@ -5528,7 +5584,7 @@ BEV 编码器（BEVFormer）
 </tr>
 <tr>
 <td>自动标注（Auto-Labeling）</td>
-<td>离线用多帧 LiDAR 重建 3D 点云，为视觉数据提供伪标注</td>
+<td>离线用多帧 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 重建 3D 点云，为视觉数据提供伪标注</td>
 <td>降低人工标注成本</td>
 </tr>
 <tr>
@@ -5544,14 +5600,14 @@ BEV 编码器（BEVFormer）
 </tbody>
 </table>
 <h2 id="_18">大模型与具身智能</h2>
-<p>最前沿的研究将<strong>大语言模型（LLM）</strong>和<strong>视觉语言模型（VLM）</strong>引入自动驾驶：</p>
+<p>最前沿的研究将<strong>大语言模型（<abbr title="Large Language Model，大语言模型">LLM</abbr>）</strong>和<strong>视觉语言模型（<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>）</strong>引入自动驾驶：</p>
 <p><strong>GPT-Driver（Mao et al., 2023）：</strong>
 将运动规划问题建模为自然语言生成任务，用 GPT-3.5 直接输出结构化轨迹：
 - 优点：天然可解释（"因为前方有行人，所以我减速至 20 km/h"）
 - 挑战：推理延迟 &gt; 1 s，远超实时控制要求</p>
 <p><strong>DriveVLM（2024）：</strong>
-结合 VLM 的常识推理能力（理解"婚礼车队"、"施工人员"等语义）和高效轨迹生成网络：
-- 双系统设计：慢速 VLM（决策层）+ 快速轨迹网络（执行层）
+结合 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的常识推理能力（理解"婚礼车队"、"施工人员"等语义）和高效轨迹生成网络：
+- 双系统设计：慢速 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>（决策层）+ 快速轨迹网络（执行层）
 - 覆盖"什么是前方物体、应如何响应"的语义推理</p>
 <p><strong>趋势展望：</strong>
 - 感知、预测、规划、控制的边界将进一步模糊
@@ -5579,6 +5635,27 @@ BEV 编码器（BEVFormer）
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 01:05:30 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

@@ -1619,6 +1619,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../cybersecurity/" class="md-nav__link">
         
   
@@ -3537,6 +3565,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -5206,7 +5262,7 @@
 </ul>
 <h3 id="12">1.2 开源自动驾驶简史</h3>
 <p>开源自动驾驶的历史可以追溯到 <strong>ROS（Robot Operating System）</strong> 的诞生。2007 年 Willow Garage 发布 ROS，为机器人和自动驾驶研究提供了统一的中间件框架。2015 年，日本名古屋大学发布 <strong>Autoware</strong>，这是首个基于 ROS 的完整 L4 级自动驾驶软件栈。同年，百度启动 Apollo 计划的前身项目。2016 年，comma.ai 创始人 George Hotz 开源了 <strong>openpilot</strong>，将开源自动驾驶推向消费级市场。2017 年，百度正式发布 <strong>Apollo 开放平台</strong>，以"自动驾驶界的 Android"为愿景，构建了迄今规模最大的开源自动驾驶生态。</p>
-<p>时至今日，开源自动驾驶已从学术实验走向商业落地。Apollo 驱动的 Robotaxi 已在多个中国城市商业运营，Autoware 支撑的低速接驳车在日本和欧洲投入服务，openpilot 则为数十万辆消费级汽车提供 ADAS 辅助驾驶功能。</p>
+<p>时至今日，开源自动驾驶已从学术实验走向商业落地。Apollo 驱动的 Robotaxi 已在多个中国城市商业运营，Autoware 支撑的低速接驳车在日本和欧洲投入服务，openpilot 则为数十万辆消费级汽车提供 <abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr> 辅助驾驶功能。</p>
 <hr />
 <h2 id="2-apollo">2. Apollo（百度）</h2>
 <h3 id="21">2.1 项目定位与发展历程</h3>
@@ -5261,7 +5317,7 @@
 <p>Apollo 的软件栈按功能划分为以下核心模块：</p>
 <p><strong>感知模块（Perception）：</strong></p>
 <ul>
-<li>基于 LiDAR 的 3D 目标检测（PointPillars、CenterPoint）</li>
+<li>基于 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 的 3D 目标检测（PointPillars、CenterPoint）</li>
 <li>基于摄像头的 2D/3D 检测与语义分割</li>
 <li>多传感器融合（Late Fusion 架构）</li>
 <li>交通信号灯识别</li>
@@ -5283,13 +5339,13 @@
 <p>规划器输出一条包含位置、速度、加速度、曲率的时序轨迹，供控制模块追踪。</p>
 <p><strong>控制模块（Control）：</strong></p>
 <ul>
-<li>横向控制：LQR（线性二次调节器）</li>
-<li>纵向控制：PID + 前馈</li>
-<li>MPC（模型预测控制）可选方案</li>
+<li>横向控制：<abbr title="Linear Quadratic Regulator，线性二次调节器">LQR</abbr>（线性二次调节器）</li>
+<li>纵向控制：<abbr title="Proportional-Integral-Derivative，比例-积分-微分控制">PID</abbr> + 前馈</li>
+<li><abbr title="Model Predictive Control，模型预测控制">MPC</abbr>（模型预测控制）可选方案</li>
 <li>控制频率：100 Hz</li>
 </ul>
 <p><strong>定位模块（Localization）：</strong></p>
-<p>采用多源融合定位方案，融合 GNSS/RTK、IMU、LiDAR 点云匹配和视觉里程计，目标精度为厘米级。</p>
+<p>采用多源融合定位方案，融合 <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr>/<abbr title="Real-Time Kinematic，实时动态差分">RTK</abbr>、<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>、<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 点云匹配和视觉里程计，目标精度为厘米级。</p>
 <h3 id="24">2.4 开发工具</h3>
 <p><strong>Dreamview：</strong></p>
 <p>Dreamview 是 Apollo 的可视化与调试平台，提供基于 Web 的图形化界面，主要功能包括：</p>
@@ -5369,17 +5425,17 @@
 <h3 id="33">3.3 核心模块详解</h3>
 <p><strong>Sensing（传感器层）：</strong></p>
 <ul>
-<li>LiDAR 点云预处理（去畸变、降采样、地面分割）</li>
+<li><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 点云预处理（去畸变、降采样、地面分割）</li>
 <li>摄像头图像矫正与同步</li>
-<li>GNSS/IMU 数据解析</li>
+<li><abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr>/<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 数据解析</li>
 </ul>
 <p><strong>Localization（定位层）：</strong></p>
-<p>Autoware 的定位以<strong>正态分布变换（Normal Distributions Transform，NDT）</strong>点云匹配为核心，将实时 LiDAR 扫描与预建的 3D 点云地图进行配准。NDT 匹配的目标函数为：</p>
+<p>Autoware 的定位以<strong>正态分布变换（Normal Distributions Transform，<abbr title="Normal Distributions Transform，正态分布变换">NDT</abbr>）</strong>点云匹配为核心，将实时 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 扫描与预建的 3D 点云地图进行配准。<abbr title="Normal Distributions Transform，正态分布变换">NDT</abbr> 匹配的目标函数为：</p>
 <div class="arithmatex">\[\hat{T} = \arg\min_{T} \sum_{i} -\log \mathcal{N}(T \cdot p_i; \mu_k, \Sigma_k)\]</div>
 <p>其中 <span class="arithmatex">\(T\)</span> 为待求的刚体变换矩阵，<span class="arithmatex">\(p_i\)</span> 为当前扫描中的点，<span class="arithmatex">\(\mu_k\)</span> 和 <span class="arithmatex">\(\Sigma_k\)</span> 分别为地图中第 <span class="arithmatex">\(k\)</span> 个体素的均值和协方差。</p>
 <p><strong>Perception（感知层）：</strong></p>
 <ul>
-<li>基于 CenterPoint 的 LiDAR 3D 目标检测</li>
+<li>基于 CenterPoint 的 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 3D 目标检测</li>
 <li>基于 YOLO 系列的摄像头 2D 检测</li>
 <li>多目标跟踪（Multi-Object Tracking）</li>
 <li>占用栅格地图生成</li>
@@ -5392,8 +5448,8 @@
 </ul>
 <p><strong>Control（控制层）：</strong></p>
 <ul>
-<li>横向控制：纯追踪（Pure Pursuit）或 MPC</li>
-<li>纵向控制：PID 速度控制</li>
+<li>横向控制：纯追踪（Pure Pursuit）或 <abbr title="Model Predictive Control，模型预测控制">MPC</abbr></li>
+<li>纵向控制：<abbr title="Proportional-Integral-Derivative，比例-积分-微分控制">PID</abbr> 速度控制</li>
 <li>车辆接口层：抽象化设计，支持多种线控平台</li>
 </ul>
 <h3 id="34">3.4 目标使用场景</h3>
@@ -5426,13 +5482,13 @@
 </tr>
 <tr>
 <td style="text-align: center;">主要传感器</td>
-<td style="text-align: center;">LiDAR + Camera + Radar</td>
-<td style="text-align: center;">LiDAR + Camera</td>
+<td style="text-align: center;"><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> + Camera + Radar</td>
+<td style="text-align: center;"><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> + Camera</td>
 </tr>
 <tr>
 <td style="text-align: center;">定位方案</td>
-<td style="text-align: center;">多源融合（RTK+LiDAR+视觉）</td>
-<td style="text-align: center;">NDT 点云匹配为主</td>
+<td style="text-align: center;">多源融合（<abbr title="Real-Time Kinematic，实时动态差分">RTK</abbr>+<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>+视觉）</td>
+<td style="text-align: center;"><abbr title="Normal Distributions Transform，正态分布变换">NDT</abbr> 点云匹配为主</td>
 </tr>
 <tr>
 <td style="text-align: center;">规划架构</td>
@@ -5464,7 +5520,7 @@
 <hr />
 <h2 id="4-openpilotcommaai">4. OpenPilot（comma.ai）</h2>
 <h3 id="41">4.1 消费级自动驾驶的开拓者</h3>
-<p><strong>openpilot</strong> 是 comma.ai 公司开源的高级驾驶辅助系统（ADAS），定位于为消费者提供类似特斯拉 Autopilot 的功能体验，但以开源、低成本的方式实现。openpilot 的核心理念是：通过一个售价约 $250 的硬件设备（<strong>comma 3X</strong>）和开源软件，即可为已有车辆添加自适应巡航（ACC）和车道居中保持（LKA）功能。</p>
+<p><strong>openpilot</strong> 是 comma.ai 公司开源的高级驾驶辅助系统（<abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr>），定位于为消费者提供类似特斯拉 Autopilot 的功能体验，但以开源、低成本的方式实现。openpilot 的核心理念是：通过一个售价约 $250 的硬件设备（<strong>comma 3X</strong>）和开源软件，即可为已有车辆添加自适应巡航（<abbr title="Adaptive Cruise Control，自适应巡航">ACC</abbr>）和车道居中保持（<abbr title="Lane Keeping Assist，车道保持辅助">LKA</abbr>）功能。</p>
 <p>截至目前，openpilot 支持超过 <strong>250 款车型</strong>（覆盖丰田、本田、现代、大众等主流品牌），社区累计行驶里程超过 <strong>2.5 亿英里</strong>。</p>
 <h3 id="42">4.2 软件架构</h3>
 <p>openpilot 的软件架构高度精简，以 Python 为主要开发语言：</p>
@@ -5487,9 +5543,9 @@
 <ul>
 <li><strong>modeld</strong>：运行端到端神经网络模型，输入为前视摄像头图像，直接输出车道线、前车位置和驾驶路径</li>
 <li><strong>plannerd</strong>：根据 modeld 的输出生成纵向（速度）和横向（转向）规划</li>
-<li><strong>controlsd</strong>：将规划输出转换为 CAN 总线指令（转向角、制动/加速扭矩）</li>
+<li><strong>controlsd</strong>：将规划输出转换为 <abbr title="Controller Area Network，控制器局域网">CAN</abbr> 总线指令（转向角、制动/加速扭矩）</li>
 <li><strong>cereal</strong>：基于 Cap'n Proto 的高效序列化框架，用于进程间通信</li>
-<li><strong>panda</strong>：comma.ai 自研的 CAN 总线适配器固件，支持安全看门狗</li>
+<li><strong>panda</strong>：comma.ai 自研的 <abbr title="Controller Area Network，控制器局域网">CAN</abbr> 总线适配器固件，支持安全看门狗</li>
 </ul>
 <h3 id="43">4.3 端到端学习方法</h3>
 <p>openpilot 是业界较早在量产级产品中采用<strong>端到端学习（End-to-End Learning）</strong>方法的系统。其核心模型 <strong>supercombo</strong> 接收前视摄像头的连续帧图像作为输入，直接输出：</p>
@@ -5503,8 +5559,8 @@
 <h3 id="44">4.4 社区驱动的车型支持</h3>
 <p>openpilot 的车型支持主要依赖社区贡献。每款新车型的适配需要：</p>
 <ol>
-<li><strong>CAN 总线逆向工程</strong>：解析目标车型的 CAN 数据库（DBC 文件），识别转向、制动、油门等关键信号</li>
-<li><strong>指纹识别（Fingerprinting）</strong>：基于 CAN 总线上的特征消息自动识别车型</li>
+<li><strong><abbr title="Controller Area Network，控制器局域网">CAN</abbr> 总线逆向工程</strong>：解析目标车型的 <abbr title="Controller Area Network，控制器局域网">CAN</abbr> 数据库（DBC 文件），识别转向、制动、油门等关键信号</li>
+<li><strong>指纹识别（Fingerprinting）</strong>：基于 <abbr title="Controller Area Network，控制器局域网">CAN</abbr> 总线上的特征消息自动识别车型</li>
 <li><strong>安全测试</strong>：确保横纵向控制的输出范围在车辆安全工作区间内</li>
 <li><strong>社区验证</strong>：由多位车主在真实道路上测试并反馈</li>
 </ol>
@@ -5534,7 +5590,7 @@
 <td style="text-align: center;">部分车型需硬件改装（转向扭矩限制）</td>
 </tr>
 <tr>
-<td style="text-align: center;">持续 OTA 更新</td>
+<td style="text-align: center;">持续 <abbr title="Over-the-Air，空中升级">OTA</abbr> 更新</td>
 <td style="text-align: center;">依赖 comma 3X 专用硬件</td>
 </tr>
 </tbody>
@@ -5596,12 +5652,12 @@
 <li><strong>执行器模型</strong>：提供单线程、多线程和静态执行器，可根据应用需求定制调度策略</li>
 <li><strong>生命周期节点</strong>：标准化的节点状态管理（Unconfigured → Inactive → Active → Finalized），便于系统级状态协调</li>
 </ul>
-<p>然而，ROS 2 的实时性仍无法与 AUTOSAR Adaptive 或专用 RTOS 相比。在对确定性延迟要求极高的控制回路（如线控制动，要求 &lt; 1 ms 抖动）中，通常需要绕过 ROS 2 通信层，直接在实时线程中处理。</p>
+<p>然而，ROS 2 的实时性仍无法与 <abbr title="Automotive Open System Architecture，汽车开放系统架构">AUTOSAR</abbr> Adaptive 或专用 RTOS 相比。在对确定性延迟要求极高的控制回路（如线控制动，要求 &lt; 1 ms 抖动）中，通常需要绕过 ROS 2 通信层，直接在实时线程中处理。</p>
 <h3 id="54-ad">5.4 关键 AD 相关功能包</h3>
 <p>ROS 2 生态中与自动驾驶密切相关的功能包包括：</p>
 <ul>
 <li><strong>Nav2（Navigation2）</strong>：完整的导航框架，包含路径规划、行为树、代价地图、控制器服务器，虽然最初面向移动机器人，但其架构思想广泛应用于低速自动驾驶</li>
-<li><strong>robot_localization</strong>：基于扩展卡尔曼滤波（EKF）或无迹卡尔曼滤波（UKF）的多传感器融合定位包，支持 GPS、IMU、轮速计等多种输入</li>
+<li><strong>robot_localization</strong>：基于扩展卡尔曼滤波（EKF）或无迹卡尔曼滤波（UKF）的多传感器融合定位包，支持 GPS、<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>、轮速计等多种输入</li>
 <li><strong>pcl_ros</strong>：点云库（Point Cloud Library）的 ROS 2 封装，提供点云滤波、分割、配准等功能</li>
 <li><strong>image_pipeline</strong>：摄像头标定、图像矫正、深度估计等视觉处理工具链</li>
 <li><strong>tf2</strong>：坐标变换库，管理传感器和车身之间的空间几何关系</li>
@@ -5622,7 +5678,7 @@
 <p><strong>CARLA（Car Learning to Act）</strong> 是当前学术界使用最广泛的开源自动驾驶仿真器，基于虚幻引擎 4（Unreal Engine 4）构建，提供高质量的视觉渲染和物理仿真。</p>
 <p><strong>核心能力：</strong></p>
 <ul>
-<li><strong>传感器仿真</strong>：摄像头（RGB、深度、语义分割）、LiDAR（可配置线数和旋转频率）、毫米波雷达、GPS/IMU</li>
+<li><strong>传感器仿真</strong>：摄像头（RGB、深度、语义分割）、<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>（可配置线数和旋转频率）、毫米波雷达、GPS/<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr></li>
 <li><strong>场景管理</strong>：内置 12 张城市地图，支持 OpenDRIVE 格式自定义地图导入</li>
 <li><strong>Scenario Runner</strong>：基于 OpenSCENARIO 标准的场景自动执行工具</li>
 <li><strong>Python API</strong>：完整的脚本化控制接口，可程序化配置天气、交通流、传感器布局</li>
@@ -5662,18 +5718,18 @@
 <p><strong>Label Studio：</strong></p>
 <p>开源数据标注平台，支持图像、文本、音频、视频等多模态数据，具有灵活的标注模板定制能力。</p>
 <p><strong>3D BAT（3D Bounding Box Annotation Tool）：</strong></p>
-<p>专门用于 LiDAR 点云的 3D 目标标注工具，支持点云与摄像头图像的联合标注视图。</p>
+<p>专门用于 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 点云的 3D 目标标注工具，支持点云与摄像头图像的联合标注视图。</p>
 <hr />
 <h2 id="7">7. 开源数据集</h2>
 <p>开源数据集是自动驾驶算法训练和基准测试的基石。以下是当前最具影响力的开源数据集概览。</p>
 <h3 id="71-nuscenes">7.1 nuScenes</h3>
-<p>由 Motional（原 nuTonomy）发布，拥有完整的 360 度传感器套件（6 摄像头 + 1 LiDAR + 5 毫米波雷达）。1000 个场景，1400 万个 3D 标注框，23 类目标，是当前 3D 目标检测和多目标追踪领域最常用的基准。</p>
+<p>由 Motional（原 nuTonomy）发布，拥有完整的 360 度传感器套件（6 摄像头 + 1 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> + 5 毫米波雷达）。1000 个场景，1400 万个 3D 标注框，23 类目标，是当前 3D 目标检测和多目标追踪领域最常用的基准。</p>
 <h3 id="72-kitti">7.2 KITTI</h3>
 <p>由德国卡尔斯鲁厄理工学院（KIT）和丰田美国研究院联合发布（2012 年），是自动驾驶领域最早也最经典的基准数据集。覆盖 3D 检测、追踪、光流、深度估计、视觉里程计等多个任务，至今仍被广泛使用。</p>
 <h3 id="73-waymo-open-dataset">7.3 Waymo Open Dataset</h3>
-<p>Waymo 发布的大规模数据集，以极高的标注质量著称。配备 5 个 LiDAR + 5 个摄像头，涵盖感知子集（1000 场景）和运动预测子集（10 万+ 场景）。</p>
+<p>Waymo 发布的大规模数据集，以极高的标注质量著称。配备 5 个 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> + 5 个摄像头，涵盖感知子集（1000 场景）和运动预测子集（10 万+ 场景）。</p>
 <h3 id="74-argoverse-2">7.4 Argoverse 2</h3>
-<p>由 Argo AI 发布，以高精地图与场景数据的强绑定为特色，特别适合运动预测和地图相关的研究任务。提供 7 摄像头 + 2 LiDAR 的传感器配置。</p>
+<p>由 Argo AI 发布，以高精地图与场景数据的强绑定为特色，特别适合运动预测和地图相关的研究任务。提供 7 摄像头 + 2 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 的传感器配置。</p>
 <h3 id="75">7.5 数据集综合对比</h3>
 <table>
 <thead>
@@ -5692,7 +5748,7 @@
 <td style="text-align: center;">KITTI</td>
 <td style="text-align: center;">2012</td>
 <td style="text-align: center;">~15K 帧</td>
-<td style="text-align: center;">2 摄 + 1 LiDAR + GPS/IMU</td>
+<td style="text-align: center;">2 摄 + 1 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> + GPS/<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr></td>
 <td style="text-align: center;">3</td>
 <td style="text-align: center;">检测/追踪/深度/里程计</td>
 <td style="text-align: center;">CC BY-NC-SA</td>
@@ -5701,7 +5757,7 @@
 <td style="text-align: center;">nuScenes</td>
 <td style="text-align: center;">2020</td>
 <td style="text-align: center;">1000 场景</td>
-<td style="text-align: center;">6 摄 + 1 LiDAR + 5 雷达</td>
+<td style="text-align: center;">6 摄 + 1 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> + 5 雷达</td>
 <td style="text-align: center;">23</td>
 <td style="text-align: center;">检测/追踪/预测/分割</td>
 <td style="text-align: center;">CC BY-NC-SA</td>
@@ -5710,7 +5766,7 @@
 <td style="text-align: center;">Waymo Open</td>
 <td style="text-align: center;">2019</td>
 <td style="text-align: center;">1000 场景</td>
-<td style="text-align: center;">5 摄 + 5 LiDAR</td>
+<td style="text-align: center;">5 摄 + 5 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr></td>
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">检测/追踪/预测</td>
 <td style="text-align: center;">Waymo 专有</td>
@@ -5719,7 +5775,7 @@
 <td style="text-align: center;">Argoverse 2</td>
 <td style="text-align: center;">2022</td>
 <td style="text-align: center;">1000 场景</td>
-<td style="text-align: center;">7 摄 + 2 LiDAR</td>
+<td style="text-align: center;">7 摄 + 2 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr></td>
 <td style="text-align: center;">26</td>
 <td style="text-align: center;">检测/预测/地图分割</td>
 <td style="text-align: center;">CC BY-NC-SA</td>
@@ -5728,7 +5784,7 @@
 <td style="text-align: center;">ONCE</td>
 <td style="text-align: center;">2021</td>
 <td style="text-align: center;">1M 帧</td>
-<td style="text-align: center;">7 摄 + 1 LiDAR</td>
+<td style="text-align: center;">7 摄 + 1 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr></td>
 <td style="text-align: center;">5</td>
 <td style="text-align: center;">3D 检测</td>
 <td style="text-align: center;">学术使用</td>
@@ -5754,15 +5810,15 @@
 </ul>
 <p><strong>算力预算：</strong></p>
 <ul>
-<li><strong>低算力</strong>（&lt; 10 TOPS，如 Jetson Orin Nano）：openpilot（单模型推理，资源占用低）</li>
-<li><strong>中等算力</strong>（30–100 TOPS）：Autoware（模块化架构，可按需裁剪）</li>
-<li><strong>高算力</strong>（100+ TOPS，如 NVIDIA DRIVE Orin）：Apollo（全栈运行需要较高算力）</li>
+<li><strong>低算力</strong>（&lt; 10 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>，如 Jetson Orin Nano）：openpilot（单模型推理，资源占用低）</li>
+<li><strong>中等算力</strong>（30–100 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>）：Autoware（模块化架构，可按需裁剪）</li>
+<li><strong>高算力</strong>（100+ <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>，如 NVIDIA DRIVE Orin）：Apollo（全栈运行需要较高算力）</li>
 </ul>
 <p><strong>传感器配置：</strong></p>
 <ul>
 <li><strong>仅摄像头</strong>：openpilot（纯视觉方案）</li>
-<li><strong>LiDAR + Camera</strong>：Autoware 或 Apollo</li>
-<li><strong>全套件（LiDAR + Camera + Radar + GPS/IMU）</strong>：Apollo</li>
+<li><strong><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> + Camera</strong>：Autoware 或 Apollo</li>
+<li><strong>全套件（<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> + Camera + Radar + GPS/<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>）</strong>：Apollo</li>
 </ul>
 <p><strong>团队规模与技术栈：</strong></p>
 <ul>
@@ -5805,8 +5861,8 @@
 </tr>
 <tr>
 <td style="text-align: center;">传感器要求</td>
-<td style="text-align: center;">LiDAR + Camera + Radar</td>
-<td style="text-align: center;">LiDAR + Camera</td>
+<td style="text-align: center;"><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> + Camera + Radar</td>
+<td style="text-align: center;"><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> + Camera</td>
 <td style="text-align: center;">仅摄像头</td>
 <td style="text-align: center;">灵活配置</td>
 </tr>
@@ -5828,7 +5884,7 @@
 <td style="text-align: center;">商业落地</td>
 <td style="text-align: center;">Robotaxi（百度）</td>
 <td style="text-align: center;">接驳车（Tier IV）</td>
-<td style="text-align: center;">消费级 ADAS</td>
+<td style="text-align: center;">消费级 <abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr></td>
 <td style="text-align: center;">研究/原型</td>
 </tr>
 <tr>
@@ -5847,9 +5903,9 @@
 </tr>
 <tr>
 <td style="text-align: center;">最低算力</td>
-<td style="text-align: center;">~100 TOPS</td>
-<td style="text-align: center;">~30 TOPS</td>
-<td style="text-align: center;">~5 TOPS</td>
+<td style="text-align: center;">~100 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
+<td style="text-align: center;">~30 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
+<td style="text-align: center;">~5 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 <td style="text-align: center;">视模块而定</td>
 </tr>
 </tbody>
@@ -5865,7 +5921,7 @@
 <li><strong>推荐方案</strong>：Apollo 作为起点，逐步定制化</li>
 <li><strong>理由</strong>：Apollo 提供了从感知到控制的完整量产级框架；Dreamview 和 Apollo Studio 加速开发调试；百度生态（地图、云服务）提供额外支持</li>
 </ul>
-<p><strong>场景三：消费级 ADAS 产品</strong></p>
+<p><strong>场景三：消费级 <abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr> 产品</strong></p>
 <ul>
 <li><strong>推荐方案</strong>：openpilot 作为参考实现</li>
 <li><strong>理由</strong>：openpilot 已在数十万辆车上验证，端到端方案的工程实现成熟；MIT 许可证允许商业使用；社区车型适配经验丰富</li>
@@ -5879,7 +5935,7 @@
 <p>实际工程中，团队往往不会局限于单一平台，而是<strong>混合使用</strong>多个开源项目的组件：</p>
 <ul>
 <li>使用 <strong>ROS 2</strong> 作为中间件基座</li>
-<li>借鉴 <strong>Autoware</strong> 的定位模块（NDT 匹配）</li>
+<li>借鉴 <strong>Autoware</strong> 的定位模块（<abbr title="Normal Distributions Transform，正态分布变换">NDT</abbr> 匹配）</li>
 <li>参考 <strong>Apollo</strong> 的规划架构（场景化 Task Pipeline）</li>
 <li>集成 <strong>openpilot</strong> 的端到端模型作为感知前端</li>
 <li>使用 <strong>CARLA</strong> 进行仿真验证，<strong>CVAT</strong> 进行数据标注</li>
@@ -5908,6 +5964,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月4日 00:00:31 UTC">2026年3月4日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

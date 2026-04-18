@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3307,6 +3335,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -4734,14 +4790,14 @@
 <p>本页聚焦车内网络的数据承载能力与协议选择，从传统总线到高速以太网，涵盖拓扑演进与服务化通信架构。</p>
 <hr />
 <h2 id="1">1. 传统总线技术</h2>
-<h3 id="11-can-can-fd">1.1 CAN 与 CAN FD</h3>
-<p>CAN（Controller Area Network）是汽车领域最成熟的总线技术，具备多主仲裁、差分信号、故障自隔离等特性。</p>
+<h3 id="11-can-can-fd">1.1 <abbr title="Controller Area Network，控制器局域网">CAN</abbr> 与 <abbr title="Controller Area Network，控制器局域网">CAN</abbr> FD</h3>
+<p><abbr title="Controller Area Network，控制器局域网">CAN</abbr>（Controller Area Network）是汽车领域最成熟的总线技术，具备多主仲裁、差分信号、故障自隔离等特性。</p>
 <table>
 <thead>
 <tr>
 <th>特性</th>
-<th>CAN 2.0</th>
-<th>CAN FD</th>
+<th><abbr title="Controller Area Network，控制器局域网">CAN</abbr> 2.0</th>
+<th><abbr title="Controller Area Network，控制器局域网">CAN</abbr> FD</th>
 </tr>
 </thead>
 <tbody>
@@ -4763,26 +4819,26 @@
 <tr>
 <td>向下兼容</td>
 <td>—</td>
-<td>支持与 CAN 节点共存</td>
+<td>支持与 <abbr title="Controller Area Network，控制器局域网">CAN</abbr> 节点共存</td>
 </tr>
 <tr>
 <td>典型用途</td>
 <td>底盘控制、OBD</td>
-<td>域间状态上报、ADAS 辅助链路</td>
+<td>域间状态上报、<abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr> 辅助链路</td>
 </tr>
 </tbody>
 </table>
-<p><strong>帧结构示意（CAN FD）：</strong></p>
+<p><strong>帧结构示意（<abbr title="Controller Area Network，控制器局域网">CAN</abbr> FD）：</strong></p>
 <div class="highlight"><pre><span></span><code>| SOF | Arbitration ID | BRS | ESI | DLC | Data (0-64B) | CRC | ACK | EOF |
 </code></pre></div>
 <ul>
 <li><strong>BRS</strong>（Bit Rate Switch）：控制数据段切换到更高波特率</li>
 <li><strong>ESI</strong>（Error State Indicator）：标识发送节点错误状态</li>
-<li><strong>CRC</strong>：CAN FD 使用更强的 17/21 位 CRC</li>
+<li><strong>CRC</strong>：<abbr title="Controller Area Network，控制器局域网">CAN</abbr> FD 使用更强的 17/21 位 CRC</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">仲裁机制</p>
-<p>CAN 采用非破坏性位仲裁（CSMA/CD-like），显性位（0）优先于隐性位（1）。ID 越小优先级越高，控制帧通常分配低 ID。</p>
+<p><abbr title="Controller Area Network，控制器局域网">CAN</abbr> 采用非破坏性位仲裁（CSMA/CD-like），显性位（0）优先于隐性位（1）。ID 越小优先级越高，控制帧通常分配低 ID。</p>
 </div>
 <h3 id="12-lin">1.2 LIN 总线</h3>
 <p>LIN（Local Interconnect Network）适用于低速、低成本场景：</p>
@@ -4817,7 +4873,7 @@
 <td>100BASE-T1</td>
 <td>100 Mbps</td>
 <td>单对非屏蔽双绞线</td>
-<td>ADAS 感知数据、中低带宽场景</td>
+<td><abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr> 感知数据、中低带宽场景</td>
 </tr>
 <tr>
 <td>1000BASE-T1</td>
@@ -4862,14 +4918,14 @@
 </div>
 <hr />
 <h2 id="3">3. 网络拓扑演进</h2>
-<h3 id="31-ecu">3.1 传统分布式 ECU 架构</h3>
+<h3 id="31-ecu">3.1 传统分布式 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 架构</h3>
 <div class="highlight"><pre><span></span><code>传感器 → ECU₁ ─┐
 传感器 → ECU₂ ─┤─ CAN Bus ─ 网关 ─ OBD/云
 传感器 → ECU₃ ─┘
 </code></pre></div>
 <ul>
-<li>特点：各 ECU 功能独立，线束复杂（部分车型线束重量超 50 kg）</li>
-<li>问题：扩展困难，算法升级需同步多 ECU</li>
+<li>特点：各 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 功能独立，线束复杂（部分车型线束重量超 50 kg）</li>
+<li>问题：扩展困难，算法升级需同步多 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr></li>
 </ul>
 <h3 id="32">3.2 域控制器架构</h3>
 <div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────┐
@@ -4902,7 +4958,7 @@
 </ul>
 <hr />
 <h2 id="4-someip">4. SOME/IP 服务通信</h2>
-<p>SOME/IP（Scalable Service-Oriented Middleware over IP）是 AUTOSAR 定义的车载服务化通信协议。</p>
+<p>SOME/IP（Scalable Service-Oriented Middleware over IP）是 <abbr title="Automotive Open System Architecture，汽车开放系统架构">AUTOSAR</abbr> 定义的车载服务化通信协议。</p>
 <h3 id="41">4.1 核心概念</h3>
 <table>
 <thead>
@@ -4968,7 +5024,7 @@
 <tbody>
 <tr>
 <td>标准来源</td>
-<td>AUTOSAR</td>
+<td><abbr title="Automotive Open System Architecture，汽车开放系统架构">AUTOSAR</abbr></td>
 <td>OMG</td>
 </tr>
 <tr>
@@ -4988,7 +5044,7 @@
 </tr>
 <tr>
 <td>工具链生态</td>
-<td>AUTOSAR 工具链</td>
+<td><abbr title="Automotive Open System Architecture，汽车开放系统架构">AUTOSAR</abbr> 工具链</td>
 <td>ROS 2/Cyber RT 生态</td>
 </tr>
 </tbody>
@@ -5051,7 +5107,7 @@ Gate Control List（GCL）控制各队列开关：
 <p>gPTP 基于 IEEE 1588v2，在汽车网络中通常可实现：</p>
 <ul>
 <li>端到端同步精度：&lt; 1 μs（局域网内）</li>
-<li>对于多传感器时间对齐（相机/LiDAR/Radar），通常要求同步精度 &lt; 100 μs</li>
+<li>对于多传感器时间对齐（相机/<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>/Radar），通常要求同步精度 &lt; 100 μs</li>
 </ul>
 <hr />
 <h2 id="7">7. 网络安全基础</h2>
@@ -5099,7 +5155,7 @@ Gate Control List（GCL）控制各队列开关：
 <td>&lt; 60%（控制）</td>
 </tr>
 <tr>
-<td>CAN 错误帧率</td>
+<td><abbr title="Controller Area Network，控制器局域网">CAN</abbr> 错误帧率</td>
 <td>物理层健康</td>
 <td>告警阈值：&gt; 0.01%</td>
 </tr>
@@ -5107,14 +5163,14 @@ Gate Control List（GCL）控制各队列开关：
 </table>
 <h3 id="82">8.2 诊断工具</h3>
 <ul>
-<li><strong>CAN 诊断</strong>：CANalyzer、CANoe（Vector）；车端使用 UDS（ISO 14229）</li>
+<li><strong><abbr title="Controller Area Network，控制器局域网">CAN</abbr> 诊断</strong>：CANalyzer、CANoe（Vector）；车端使用 UDS（ISO 14229）</li>
 <li><strong>以太网诊断</strong>：Wireshark（开发）、车端轻量抓包（tcpdump）</li>
 <li><strong>DDS 诊断</strong>：FastDDS Monitor、ros2 topic echo/hz</li>
 </ul>
 <hr />
 <h2 id="9">9. 设计建议</h2>
 <ol>
-<li><strong>关键控制链路</strong>优先使用确定性网络（TSN/FlexRay/CAN FD）。</li>
+<li><strong>关键控制链路</strong>优先使用确定性网络（TSN/FlexRay/<abbr title="Controller Area Network，控制器局域网">CAN</abbr> FD）。</li>
 <li><strong>感知大流量与控制小流量分网</strong>，或使用 TSN QoS 严格隔离优先级。</li>
 <li><strong>提前规划网关算力</strong>：中央网关需要处理大量协议转换和过滤规则，避免成为系统瓶颈。</li>
 <li><strong>网络带宽预留 30%</strong> 以上冗余，应对突发场景（故障重传、日志上报）。</li>
@@ -5123,9 +5179,9 @@ Gate Control List（GCL）控制各队列开关：
 <hr />
 <h2 id="_2">参考标准</h2>
 <ul>
-<li>ISO 11898（CAN 标准）</li>
+<li>ISO 11898（<abbr title="Controller Area Network，控制器局域网">CAN</abbr> 标准）</li>
 <li>IEEE 802.3bw/bp（100BASE-T1 / 1000BASE-T1）</li>
-<li>AUTOSAR SOME/IP 协议规范</li>
+<li><abbr title="Automotive Open System Architecture，汽车开放系统架构">AUTOSAR</abbr> SOME/IP 协议规范</li>
 <li>IEEE 802.1AS/Qbv/CB（TSN 标准族）</li>
 <li>OPEN Alliance TC（BroadR-Reach/100BASE-T1 推广联盟）</li>
 </ul>
@@ -5136,6 +5192,27 @@ Gate Control List（GCL）控制各队列开关：
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 19:34:57 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

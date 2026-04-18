@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3443,6 +3471,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nlp/" class="md-nav__link">
         
   
@@ -5137,15 +5193,15 @@
 <li>支持视角外推：可从从未拍摄过的视角渲染场景</li>
 </ul>
 <p><strong>Urban Radiance Fields（2022）</strong>：</p>
-<p>针对城市街景的 NeRF 扩展，引入 LiDAR 深度监督以提升几何精度：</p>
+<p>针对城市街景的 NeRF 扩展，引入 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 深度监督以提升几何精度：</p>
 <div class="arithmatex">\[\mathcal{L} = \mathcal{L}_\text{color} + \lambda_d \mathcal{L}_\text{depth} + \lambda_s \mathcal{L}_\text{sky}\]</div>
-<p>其中 <span class="arithmatex">\(\mathcal{L}_\text{depth}\)</span> 利用 LiDAR 点云提供的精确深度约束 NeRF 的几何重建，<span class="arithmatex">\(\mathcal{L}_\text{sky}\)</span> 对天空区域施加无穷远深度约束。</p>
+<p>其中 <span class="arithmatex">\(\mathcal{L}_\text{depth}\)</span> 利用 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 点云提供的精确深度约束 NeRF 的几何重建，<span class="arithmatex">\(\mathcal{L}_\text{sky}\)</span> 对天空区域施加无穷远深度约束。</p>
 <p><strong>UniSim（NVIDIA, 2023）</strong>：</p>
 <p>UniSim 是 NVIDIA 提出的神经场景模拟器，将 NeRF 场景重建与动态物体建模结合，构建可交互的驾驶仿真环境：</p>
 <ul>
 <li>从传感器日志重建静态背景的神经辐射场</li>
 <li>可在重建场景中插入、移除、移动动态物体</li>
-<li>支持从任意视角渲染逼真的摄像头图像和 LiDAR 点云</li>
+<li>支持从任意视角渲染逼真的摄像头图像和 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 点云</li>
 </ul>
 <h3 id="34-nerf">3.4 NeRF 的局限性</h3>
 <table>
@@ -5266,12 +5322,12 @@
 <ul>
 <li><strong>增量式重建</strong>：随着车辆行驶，逐帧添加新的高斯基元，支持任意长度轨迹的场景重建</li>
 <li><strong>组合式动态场景</strong>：静态背景 + 可控动态物体 + 可编辑天气/光照条件</li>
-<li><strong>LiDAR 先验</strong>：利用 LiDAR 点云初始化高斯位置，大幅提升几何精度</li>
+<li><strong><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 先验</strong>：利用 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 点云初始化高斯位置，大幅提升几何精度</li>
 </ul>
 <p><strong>GaussianFormer（2024）</strong>：</p>
 <p>将 3DGS 的理念引入端到端感知，用高斯基元作为三维场景的稀疏表示，替代密集的体素占用：</p>
 <div class="arithmatex">\[\mathbf{S} = \{(\boldsymbol{\mu}_i, \boldsymbol{\Sigma}_i, \mathbf{f}_i)\}_{i=1}^{M}\]</div>
-<p>其中 <span class="arithmatex">\(\mathbf{f}_i\)</span> 为语义特征向量。通过可微分泼溅将高斯语义特征渲染到 BEV 空间，实现高效的三维场景理解。</p>
+<p>其中 <span class="arithmatex">\(\mathbf{f}_i\)</span> 为语义特征向量。通过可微分泼溅将高斯语义特征渲染到 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 空间，实现高效的三维场景理解。</p>
 <h3 id="45">4.5 动态场景建模</h3>
 <p>3DGS 对动态场景的建模主要有两种思路：</p>
 <p><strong>基于变形场的方法</strong>：学习一个时变变形场 <span class="arithmatex">\(\mathcal{D}: (\mathbf{x}, t) \rightarrow \Delta\mathbf{x}\)</span>，将规范空间（Canonical Space）中的高斯基元变形到每个时间步的实际位置：</p>
@@ -5372,7 +5428,7 @@
 <td style="text-align: center;">上海AI Lab</td>
 <td style="text-align: center;">~500M</td>
 <td style="text-align: center;">潜在扩散</td>
-<td style="text-align: center;">BEV+动作</td>
+<td style="text-align: center;"><abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr>+动作</td>
 <td style="text-align: center;">规划与世界模型统一</td>
 </tr>
 <tr>
@@ -5416,7 +5472,7 @@
 <p>MagicDrive 专注于多视角、可控的驾驶视频生成：</p>
 <ul>
 <li>支持6路环视摄像头同步视频生成</li>
-<li>条件控制包括：3D 边界框布局、BEV 地图、文本描述</li>
+<li>条件控制包括：3D 边界框布局、<abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 地图、文本描述</li>
 <li>可精确控制场景中车辆和行人的位置、类型和运动轨迹</li>
 </ul>
 <p><strong>DriveWM（2024）</strong>：</p>
@@ -5564,13 +5620,13 @@
 <div class="arithmatex">\[\mathcal{L}_\text{physics} = \|\mathbf{F}(\hat{z}_{t+1}, \hat{z}_t, a_t)\|^2\]</div>
 <p>其中 <span class="arithmatex">\(\mathbf{F}\)</span> 为物理约束方程（如牛顿运动定律在场景级别的表达）。</p>
 <p><strong>多模态统一世界模型</strong></p>
-<p>当前世界模型大多仅生成摄像头图像，未来的方向是同时生成多种传感器模态（图像、LiDAR 点云、雷达回波），构建统一的多模态世界模拟器。</p>
+<p>当前世界模型大多仅生成摄像头图像，未来的方向是同时生成多种传感器模态（图像、<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 点云、雷达回波），构建统一的多模态世界模拟器。</p>
 <p><strong>可扩展的世界模型架构</strong></p>
 <p>借鉴大语言模型的扩展律（Scaling Law），探索世界模型在参数量、数据量和计算量上的扩展行为。初步研究表明，世界模型的预测质量同样随规模增长呈幂律提升：</p>
 <div class="arithmatex">\[\text{FVD} \propto N^{-\alpha} \cdot D^{-\beta}\]</div>
 <p>其中 <span class="arithmatex">\(N\)</span> 为模型参数量，<span class="arithmatex">\(D\)</span> 为训练数据量。</p>
 <p><strong>世界模型与基础模型的融合</strong></p>
-<p>将视觉语言模型（VLM）的常识推理能力与世界模型的动力学预测能力结合，实现更高层次的场景理解和推理。例如，VLM 理解"前方是学校区域，可能有儿童冲出"，世界模型据此生成多种可能的场景演化，规划模块选择最保守的应对策略。</p>
+<p>将视觉语言模型（<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>）的常识推理能力与世界模型的动力学预测能力结合，实现更高层次的场景理解和推理。例如，<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 理解"前方是学校区域，可能有儿童冲出"，世界模型据此生成多种可能的场景演化，规划模块选择最保守的应对策略。</p>
 <hr />
 <h2 id="_2">参考资料</h2>
 <ol>
@@ -5627,6 +5683,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月4日 00:00:31 UTC">2026年3月4日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

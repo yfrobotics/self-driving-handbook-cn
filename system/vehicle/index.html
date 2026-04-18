@@ -1641,6 +1641,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../cybersecurity/" class="md-nav__link">
         
   
@@ -3559,6 +3587,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -5244,38 +5300,38 @@
 <hr />
 <h2 id="2-ee">2. 整车电子电气（E/E）架构</h2>
 <h3 id="21">2.1 架构演进背景</h3>
-<p>传统汽车的电子电气架构以"功能为核心"进行分散部署，每增加一个功能便增加一个或多个专用电子控制单元（ECU）。随着自动驾驶功能的引入，这种模式已难以为继。业界正经历从<strong>分布式架构</strong>到<strong>域集中式架构</strong>再到<strong>中央计算+区域控制器</strong>的三代演进。</p>
+<p>传统汽车的电子电气架构以"功能为核心"进行分散部署，每增加一个功能便增加一个或多个专用电子控制单元（<abbr title="Electronic Control Unit，电子控制单元">ECU</abbr>）。随着自动驾驶功能的引入，这种模式已难以为继。业界正经历从<strong>分布式架构</strong>到<strong>域集中式架构</strong>再到<strong>中央计算+区域控制器</strong>的三代演进。</p>
 <h3 id="22">2.2 第一代：分布式架构（传统）</h3>
 <p>分布式架构是汽车电子发展早期的主流方案，其核心特征是：</p>
 <ul>
-<li><strong>ECU数量多</strong>：一辆高端传统燃油车可包含 100 个以上的 ECU，每个 ECU 负责单一功能（如雨刮控制、座椅调节、发动机点火等）。</li>
-<li><strong>点对点连接</strong>：ECU 之间通过 CAN 总线点对点直连，拓扑复杂，线束繁多。</li>
+<li><strong>ECU数量多</strong>：一辆高端传统燃油车可包含 100 个以上的 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr>，每个 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 负责单一功能（如雨刮控制、座椅调节、发动机点火等）。</li>
+<li><strong>点对点连接</strong>：<abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 之间通过 <abbr title="Controller Area Network，控制器局域网">CAN</abbr> 总线点对点直连，拓扑复杂，线束繁多。</li>
 <li><strong>线束重量大</strong>：宝马 7 系传统架构的线束总长度约达 <strong>4 公里</strong>，重量超过 60 公斤，既占据大量空间，又增加整备质量。</li>
-<li><strong>OTA 能力受限</strong>：各 ECU 固件独立管理，升级困难，无法实现整车级联动更新。</li>
-<li><strong>算力孤岛</strong>：各 ECU 算力有限且相互独立，无法支撑自动驾驶所需的集中式高性能计算。</li>
+<li><strong><abbr title="Over-the-Air，空中升级">OTA</abbr> 能力受限</strong>：各 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 固件独立管理，升级困难，无法实现整车级联动更新。</li>
+<li><strong>算力孤岛</strong>：各 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 算力有限且相互独立，无法支撑自动驾驶所需的集中式高性能计算。</li>
 </ul>
 <h3 id="23">2.3 第二代：域集中式架构</h3>
 <p>域集中式架构将车辆功能划分为若干"域"，每个域由一个域控制器（Domain Control Unit, DCU）统一管理：</p>
 <ul>
 <li><strong>五大功能域</strong>：</li>
-<li><strong>ADAS 域</strong>：负责自动驾驶感知、决策与规划</li>
-<li><strong>座舱域</strong>：负责车机娱乐、HMI、语音交互</li>
+<li><strong><abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr> 域</strong>：负责自动驾驶感知、决策与规划</li>
+<li><strong>座舱域</strong>：负责车机娱乐、<abbr title="Human-Machine Interface，人机界面">HMI</abbr>、语音交互</li>
 <li><strong>底盘域</strong>：负责制动、转向、悬挂控制</li>
 <li><strong>车身域</strong>：负责灯光、门锁、雨刮等</li>
 <li>
 <p><strong>动力域</strong>：负责电机/发动机、变速箱、电池管理</p>
 </li>
 <li>
-<p><strong>ECU 数量减少</strong>：整车 ECU 数量降至 <strong>30~50 个</strong>，主干网络升级为车载以太网（100BASE-T1 / 1000BASE-T1）。</p>
+<p><strong><abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 数量减少</strong>：整车 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 数量降至 <strong>30~50 个</strong>，主干网络升级为车载以太网（100BASE-T1 / 1000BASE-T1）。</p>
 </li>
-<li><strong>算力集中提升</strong>：ADAS 域控可集成 GPU/NPU，支持多传感器融合。</li>
+<li><strong>算力集中提升</strong>：<abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr> 域控可集成 GPU/<abbr title="Neural Processing Unit，神经网络处理器">NPU</abbr>，支持多传感器融合。</li>
 <li><strong>代表车型</strong>：特斯拉 Model 3（早期）、蔚来 ES8、华为 ADS 平台车型。</li>
 </ul>
 <h3 id="24">2.4 第三代：中央计算 + 区域控制器</h3>
 <p>这是目前最先进的 E/E 架构方案，也是支撑 L4 级自动驾驶的基础架构：</p>
 <ul>
-<li><strong>中央超算（Central Computing Unit, CCU）</strong>：1~2 个中央计算平台，集成超高算力芯片（如 NVIDIA Orin、高通 Snapdragon Ride），负责全车感知、决策、规划及车身控制逻辑。</li>
-<li><strong>区域控制器（Zone ECU）</strong>：按照车身物理区域划分 4~6 个区域 ECU（左前区、右前区、左后区、右后区，部分方案含顶部区和中央区），每个区域 ECU 汇聚该区域内的所有传感器和执行器信号，通过高速以太网上传至 CCU。</li>
+<li><strong>中央超算（Central Computing Unit, <abbr title="Central Compute Unit，中央计算单元">CCU</abbr>）</strong>：1~2 个中央计算平台，集成超高算力芯片（如 NVIDIA Orin、高通 Snapdragon Ride），负责全车感知、决策、规划及车身控制逻辑。</li>
+<li><strong>区域控制器（Zone <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr>）</strong>：按照车身物理区域划分 4~6 个区域 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr>（左前区、右前区、左后区、右后区，部分方案含顶部区和中央区），每个区域 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 汇聚该区域内的所有传感器和执行器信号，通过高速以太网上传至 <abbr title="Central Compute Unit，中央计算单元">CCU</abbr>。</li>
 <li><strong>线束大幅简化</strong>：区域化布线使线束总长度可缩减至传统架构的 <strong>30%~50%</strong>，重量减轻显著。</li>
 <li><strong>代表车型</strong>：特斯拉 Model S Plaid（HW4.0）、大众 SSP 平台、极氪 009。</li>
 </ul>
@@ -5291,7 +5347,7 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;">ECU 数量</td>
+<td style="text-align: center;"><abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 数量</td>
 <td style="text-align: center;">100+</td>
 <td style="text-align: center;">30~50</td>
 <td style="text-align: center;">10~20</td>
@@ -5309,7 +5365,7 @@
 <td style="text-align: center;">高（全车集中）</td>
 </tr>
 <tr>
-<td style="text-align: center;">OTA 友好性</td>
+<td style="text-align: center;"><abbr title="Over-the-Air，空中升级">OTA</abbr> 友好性</td>
 <td style="text-align: center;">差</td>
 <td style="text-align: center;">中</td>
 <td style="text-align: center;">优</td>
@@ -5362,18 +5418,18 @@
 <h3 id="31">3.1 传感器层（感知数据采集）</h3>
 <p>传感器层是整个系统的"眼睛"，负责原始数据的采集：</p>
 <ul>
-<li><strong>激光雷达（LiDAR）</strong>：输出三维点云，帧率 10~20 Hz，数据量约 10~50 Mbps/个</li>
+<li><strong>激光雷达（<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>）</strong>：输出三维点云，帧率 10~20 Hz，数据量约 10~50 Mbps/个</li>
 <li><strong>摄像头（Camera）</strong>：输出 RGB 图像，帧率 30~60 Hz，单路 1080p 约 120 Mbps（未压缩）</li>
 <li><strong>毫米波雷达（Radar）</strong>：输出目标列表（位置/速度），帧率 10~50 Hz，数据量小</li>
 <li><strong>超声波传感器（Ultrasonic）</strong>：输出距离测量值，用于低速泊车场景</li>
-<li><strong>GNSS/IMU</strong>：输出车辆位置与姿态，IMU 频率可达 200 Hz</li>
+<li><strong><abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr>/<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr></strong>：输出车辆位置与姿态，<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 频率可达 200 Hz</li>
 </ul>
 <p><strong>接口标准</strong>：传感器与区域/域控之间常用以下协议：</p>
 <ul>
 <li>摄像头：GMSL2（Gigabit Multimedia Serial Link 2）或 FPD-Link III，支持高速图像序列化传输</li>
-<li>LiDAR：UDP/以太网（原始点云）或 PCIe</li>
-<li>雷达：CAN / CAN-FD / 以太网（AUTOSAR 标准对象列表格式）</li>
-<li>IMU/GNSS：UART / RS-422 / 以太网</li>
+<li><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>：UDP/以太网（原始点云）或 PCIe</li>
+<li>雷达：<abbr title="Controller Area Network，控制器局域网">CAN</abbr> / <abbr title="Controller Area Network，控制器局域网">CAN</abbr>-FD / 以太网（<abbr title="Automotive Open System Architecture，汽车开放系统架构">AUTOSAR</abbr> 标准对象列表格式）</li>
+<li><abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>/<abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr>：UART / RS-422 / 以太网</li>
 </ul>
 <h3 id="32">3.2 感知计算层（域控/中央算力）</h3>
 <p>感知计算层承载自动驾驶算法中计算量最大的部分：</p>
@@ -5381,13 +5437,13 @@
 <li><strong>目标检测与分类</strong>：基于深度学习，识别车辆、行人、骑行者、交通标志等</li>
 <li><strong>3D 目标跟踪</strong>：在时序帧间建立目标关联，估计速度与轨迹</li>
 <li><strong>可行驶区域分割</strong>：划定自车可行驶的空间范围</li>
-<li><strong>传感器融合</strong>：将 LiDAR 点云、摄像头图像、雷达目标列表融合为统一的环境模型</li>
+<li><strong>传感器融合</strong>：将 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 点云、摄像头图像、雷达目标列表融合为统一的环境模型</li>
 </ul>
-<p><strong>典型硬件平台</strong>：NVIDIA Orin（254 TOPS）、地平线 Journey 5（128 TOPS）、Mobileye EyeQ6</p>
+<p><strong>典型硬件平台</strong>：NVIDIA Orin（254 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>）、地平线 Journey 5（128 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>）、Mobileye EyeQ6</p>
 <h3 id="33">3.3 决策规划层（自动驾驶软件栈）</h3>
 <p>在感知层输出的环境模型基础上，决策规划层完成：</p>
 <ul>
-<li><strong>高精定位</strong>：融合 GNSS、IMU、激光点云与高精地图，实现厘米级定位</li>
+<li><strong>高精定位</strong>：融合 <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr>、<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>、激光点云与高精地图，实现厘米级定位</li>
 <li><strong>行为决策</strong>：确定当前场景下的驾驶行为（跟车、变道、绕障等）</li>
 <li><strong>路径规划</strong>：生成满足车辆动力学约束的平滑可行轨迹</li>
 <li><strong>速度规划</strong>：在轨迹基础上规划纵向速度剖面</li>
@@ -5395,18 +5451,18 @@
 <h3 id="34">3.4 执行层（线控底盘）</h3>
 <p>执行层将规划指令转化为物理动作：</p>
 <ul>
-<li><strong>线控转向（EPS/SBW）</strong>：接收目标转角指令，控制方向盘</li>
+<li><strong>线控转向（<abbr title="Electric Power Steering，电动助力转向">EPS</abbr>/SBW）</strong>：接收目标转角指令，控制方向盘</li>
 <li><strong>线控制动（EHB/EPB）</strong>：接收目标减速度指令，控制制动力分配</li>
 <li><strong>线控驱动（EMC）</strong>：接收目标扭矩指令，控制电机输出</li>
-<li><strong>接口协议</strong>：执行器与域控之间通常通过 <strong>CAN-FD</strong> 通信，关键指令帧率 ≥ 100 Hz</li>
+<li><strong>接口协议</strong>：执行器与域控之间通常通过 <strong><abbr title="Controller Area Network，控制器局域网">CAN</abbr>-FD</strong> 通信，关键指令帧率 ≥ 100 Hz</li>
 </ul>
-<h3 id="35-ota">3.5 云端层（OTA/数据回传/高精地图）</h3>
+<h3 id="35-ota">3.5 云端层（<abbr title="Over-the-Air，空中升级">OTA</abbr>/数据回传/高精地图）</h3>
 <p>云端层是自动驾驶持续学习与迭代的关键支撑：</p>
 <ul>
-<li><strong>OTA 升级</strong>：将最新的算法模型和系统固件推送至车辆</li>
+<li><strong><abbr title="Over-the-Air，空中升级">OTA</abbr> 升级</strong>：将最新的算法模型和系统固件推送至车辆</li>
 <li><strong>数据回传</strong>：边缘场景触发数据上传，用于标注与模型训练（Shadow Mode）</li>
-<li><strong>高精地图服务</strong>：实时下发前方路段高精地图瓦片（HD Map Tile）</li>
-<li><strong>V2X 服务</strong>：交通信号灯相位、道路施工信息等路侧数据推送</li>
+<li><strong>高精地图服务</strong>：实时下发前方路段高精地图瓦片（<abbr title="High Definition Map，高精地图">HD Map</abbr> Tile）</li>
+<li><strong><abbr title="Vehicle-to-Everything，车对万物">V2X</abbr> 服务</strong>：交通信号灯相位、道路施工信息等路侧数据推送</li>
 </ul>
 <hr />
 <h2 id="4">4. 自动驾驶专用电气架构</h2>
@@ -5414,7 +5470,7 @@
 <p>从 L3 级自动驾驶开始，功能安全标准（ISO 26262）要求关键执行器具备电源冗余能力，以保障在主电源失效时仍能完成安全靠边停车动作。</p>
 <ul>
 <li><strong>主电源</strong>：12V 铅酸蓄电池（传统）或锂离子电池，驱动全车电子系统</li>
-<li><strong>备用电源</strong>：独立的 12V 超级电容或小型锂电池包，专供转向（EPS）与制动（EHB）使用</li>
+<li><strong>备用电源</strong>：独立的 12V 超级电容或小型锂电池包，专供转向（<abbr title="Electric Power Steering，电动助力转向">EPS</abbr>）与制动（EHB）使用</li>
 <li><strong>切换时间</strong>：主备电源切换时间需 ≤ <strong>10 ms</strong>，保证控制连续性</li>
 <li><strong>持续时间</strong>：备用电源需至少支撑 <strong>10~30 秒</strong>，足以完成最小风险机动</li>
 </ul>
@@ -5444,8 +5500,8 @@
 <h3 id="44-gnd-star-point">4.4 接地策略（GND Star Point）</h3>
 <p>在自动驾驶车辆中，接地设计至关重要：</p>
 <ul>
-<li><strong>星型接地</strong>：所有关键 ECU 的接地回路汇聚至同一个星型接地点，避免不同回路电流产生地电位差，减少 EMI 干扰</li>
-<li><strong>模拟地与数字地隔离</strong>：传感器模拟电路接地与数字控制电路接地需在 ECU 内部隔离，防止高频数字噪声污染模拟信号</li>
+<li><strong>星型接地</strong>：所有关键 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 的接地回路汇聚至同一个星型接地点，避免不同回路电流产生地电位差，减少 EMI 干扰</li>
+<li><strong>模拟地与数字地隔离</strong>：传感器模拟电路接地与数字控制电路接地需在 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 内部隔离，防止高频数字噪声污染模拟信号</li>
 <li><strong>机箱接地</strong>：传感器金属外壳通过专用接地线连接至车身接地点，提供静电泄放路径</li>
 </ul>
 <h3 id="45">4.5 典型功耗分配</h3>
@@ -5470,11 +5526,11 @@
 <td style="text-align: center;">5~10 W</td>
 </tr>
 <tr>
-<td style="text-align: center;">ADAS 域控/中央算力平台</td>
+<td style="text-align: center;"><abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr> 域控/中央算力平台</td>
 <td style="text-align: center;">40~100 W</td>
 </tr>
 <tr>
-<td style="text-align: center;">线控转向（EPS）</td>
+<td style="text-align: center;">线控转向（<abbr title="Electric Power Steering，电动助力转向">EPS</abbr>）</td>
 <td style="text-align: center;">60~150 W（峰值）</td>
 </tr>
 <tr>
@@ -5482,7 +5538,7 @@
 <td style="text-align: center;">60~200 W（建压时）</td>
 </tr>
 <tr>
-<td style="text-align: center;">通信模块（4G/5G/V2X）</td>
+<td style="text-align: center;">通信模块（4G/5G/<abbr title="Vehicle-to-Everything，车对万物">V2X</abbr>）</td>
 <td style="text-align: center;">5~10 W</td>
 </tr>
 <tr>
@@ -5542,7 +5598,7 @@
 <ul>
 <li><strong>Grade 0</strong>：-40°C ~ +150°C（极端环境，如发动机舱）</li>
 <li><strong>Grade 1</strong>：-40°C ~ +125°C（车身控制器标准）</li>
-<li><strong>Grade 2</strong>：-40°C ~ +105°C（座舱/ADAS 域控常用）</li>
+<li><strong>Grade 2</strong>：-40°C ~ +105°C（座舱/<abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr> 域控常用）</li>
 <li><strong>Grade 3</strong>：-40°C ~ +85°C（乘客舱内部件）</li>
 </ul>
 <p>自动驾驶域控通常要求达到 Grade 1 或 Grade 2，传感器接口芯片需达到 Grade 1。</p>
@@ -5561,40 +5617,40 @@
 </ul>
 <hr />
 <h2 id="6">6. 功能安全系统设计</h2>
-<h3 id="61-asil">6.1 ASIL 等级分配</h3>
-<p>根据 ISO 26262 标准，自动驾驶各子系统的汽车安全完整性等级（ASIL）分配如下：</p>
+<h3 id="61-asil">6.1 <abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr> 等级分配</h3>
+<p>根据 ISO 26262 标准，自动驾驶各子系统的汽车安全完整性等级（<abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>）分配如下：</p>
 <table>
 <thead>
 <tr>
 <th style="text-align: center;">子系统</th>
-<th style="text-align: center;">ASIL 等级</th>
+<th style="text-align: center;"><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr> 等级</th>
 <th style="text-align: center;">理由</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;">线控转向（EPS/SBW）</td>
-<td style="text-align: center;"><strong>ASIL-D</strong></td>
+<td style="text-align: center;">线控转向（<abbr title="Electric Power Steering，电动助力转向">EPS</abbr>/SBW）</td>
+<td style="text-align: center;"><strong><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-D</strong></td>
 <td style="text-align: center;">最高安全等级，失效直接导致失去方向控制</td>
 </tr>
 <tr>
 <td style="text-align: center;">线控制动（EHB）</td>
-<td style="text-align: center;"><strong>ASIL-D</strong></td>
+<td style="text-align: center;"><strong><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-D</strong></td>
 <td style="text-align: center;">失效导致无法制动，后果最为严重</td>
 </tr>
 <tr>
-<td style="text-align: center;">ADAS 感知系统</td>
-<td style="text-align: center;"><strong>ASIL-B</strong></td>
+<td style="text-align: center;"><abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr> 感知系统</td>
+<td style="text-align: center;"><strong><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-B</strong></td>
 <td style="text-align: center;">感知误差可通过冗余与降级运行缓解</td>
 </tr>
 <tr>
 <td style="text-align: center;">动力控制（EMC）</td>
-<td style="text-align: center;"><strong>ASIL-C</strong></td>
+<td style="text-align: center;"><strong><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-C</strong></td>
 <td style="text-align: center;">扭矩异常可能导致碰撞</td>
 </tr>
 <tr>
 <td style="text-align: center;">车身控制（BCM）</td>
-<td style="text-align: center;"><strong>QM/ASIL-A</strong></td>
+<td style="text-align: center;"><strong>QM/<abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-A</strong></td>
 <td style="text-align: center;">失效后果相对可控</td>
 </tr>
 </tbody>
@@ -5602,21 +5658,21 @@
 <h3 id="62-safety-concept">6.2 安全概念（Safety Concept）</h3>
 <p>安全概念是 ISO 26262 功能安全开发流程的核心输出，包括：</p>
 <ol>
-<li><strong>危害分析与风险评估（HARA）</strong>：识别所有潜在危害事件，评估严重度（Severity）、暴露度（Exposure）和可控性（Controllability），得到 ASIL 等级</li>
-<li><strong>安全目标（Safety Goal）</strong>：为每个 ASIL ≥ B 的危害定义可测量的安全目标，如"EPS 不得产生超过 5 Nm 的非预期辅助扭矩"</li>
+<li><strong>危害分析与风险评估（<abbr title="Hazard Analysis and Risk Assessment，危害分析与风险评估">HARA</abbr>）</strong>：识别所有潜在危害事件，评估严重度（Severity）、暴露度（Exposure）和可控性（Controllability），得到 <abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr> 等级</li>
+<li><strong>安全目标（Safety Goal）</strong>：为每个 <abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr> ≥ B 的危害定义可测量的安全目标，如"<abbr title="Electric Power Steering，电动助力转向">EPS</abbr> 不得产生超过 5 Nm 的非预期辅助扭矩"</li>
 <li><strong>功能安全概念（FSC）</strong>：在系统层面定义实现安全目标的技术机制，包括监控、冗余和降级策略</li>
 </ol>
 <h3 id="63">6.3 故障检测与处理</h3>
 <ul>
-<li><strong>端到端监控（E2E Protection）</strong>：对 CAN/CAN-FD 报文添加 CRC 和计数器，检测报文丢失、重复和数据错误</li>
-<li><strong>看门狗（Watchdog）</strong>：硬件看门狗定时器监控 MCU 正常运行，超时未喂狗则触发系统复位</li>
-<li><strong>安全监控核（Safety Monitor Core）</strong>：独立的安全 MCU 并行运行，监控主计算核的输出合理性</li>
+<li><strong>端到端监控（<abbr title="End-to-End，端到端">E2E</abbr> Protection）</strong>：对 <abbr title="Controller Area Network，控制器局域网">CAN</abbr>/<abbr title="Controller Area Network，控制器局域网">CAN</abbr>-FD 报文添加 CRC 和计数器，检测报文丢失、重复和数据错误</li>
+<li><strong>看门狗（Watchdog）</strong>：硬件看门狗定时器监控 <abbr title="Microcontroller Unit，微控制器">MCU</abbr> 正常运行，超时未喂狗则触发系统复位</li>
+<li><strong>安全监控核（Safety Monitor Core）</strong>：独立的安全 <abbr title="Microcontroller Unit，微控制器">MCU</abbr> 并行运行，监控主计算核的输出合理性</li>
 <li><strong>传感器合理性检验</strong>：多传感器输出进行交叉验证，若偏差超出阈值则判定传感器故障</li>
 </ul>
 <h3 id="64-minimum-risk-state">6.4 最小风险状态（Minimum Risk State）</h3>
-<p>当系统检测到无法恢复的关键故障时，需执行<strong>最小风险机动（Minimum Risk Maneuver, MRM）</strong>：</p>
+<p>当系统检测到无法恢复的关键故障时，需执行<strong>最小风险机动（Minimum Risk Maneuver, <abbr title="Minimum Risk Maneuver，最小风险机动">MRM</abbr>）</strong>：</p>
 <ol>
-<li><strong>触发条件</strong>：感知系统严重降级、关键 ECU 失联、驾驶员长时间无响应（L3 场景）</li>
+<li><strong>触发条件</strong>：感知系统严重降级、关键 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 失联、驾驶员长时间无响应（L3 场景）</li>
 <li><strong>执行流程</strong>：</li>
 <li>打开危险警示灯</li>
 <li>减速至安全速度（10~20 km/h）</li>
@@ -5639,11 +5695,11 @@
 <td style="text-align: center;">关闭受影响方向的变道功能，其余功能正常</td>
 </tr>
 <tr>
-<td style="text-align: center;">LiDAR 失效</td>
+<td style="text-align: center;"><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 失效</td>
 <td style="text-align: center;">切换至纯视觉模式，限速至 60 km/h</td>
 </tr>
 <tr>
-<td style="text-align: center;">ADAS 域控单核故障</td>
+<td style="text-align: center;"><abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr> 域控单核故障</td>
 <td style="text-align: center;">切换至备用核或备用处理器，降低算法帧率</td>
 </tr>
 <tr>
@@ -5657,7 +5713,7 @@
 </tbody>
 </table>
 <hr />
-<h2 id="7-adas">7. ADAS 传感器布置</h2>
+<h2 id="7-adas">7. <abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr> 传感器布置</h2>
 <h3 id="71">7.1 布置原则</h3>
 <p>传感器布置需满足以下原则：</p>
 <ul>
@@ -5676,7 +5732,7 @@
 <h3 id="73">7.3 侧向感知区</h3>
 <ul>
 <li><strong>角雷达（Corner Radar）</strong>：四个角（前左、前右、后左、后右）各安装一个短距毫米波雷达（24 GHz 或 77 GHz），探测距离 30~80 m，覆盖侧方盲区</li>
-<li><strong>B 柱摄像头</strong>：安装于前门 B 柱位置，朝向侧方，配合角雷达实现侧方 AEB（自动紧急制动）</li>
+<li><strong>B 柱摄像头</strong>：安装于前门 B 柱位置，朝向侧方，配合角雷达实现侧方 <abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr>（自动紧急制动）</li>
 <li><strong>后视镜摄像头</strong>：安装于外后视镜下方，覆盖侧方相邻车道</li>
 </ul>
 <h3 id="74">7.4 后向感知区</h3>
@@ -5738,19 +5794,19 @@
 <li><strong>高压平台兼容性</strong>：800V 高压平台为 48V 执行器的 DC/DC 转换提供充裕的功率余量</li>
 </ul>
 <hr />
-<h2 id="9-ota">9. 整车 OTA 能力</h2>
+<h2 id="9-ota">9. 整车 <abbr title="Over-the-Air，空中升级">OTA</abbr> 能力</h2>
 <h3 id="91-fota-sota">9.1 FOTA 与 SOTA</h3>
-<p>OTA（Over-The-Air）升级是自动驾驶车辆持续迭代的关键能力，分为两类：</p>
+<p><abbr title="Over-the-Air，空中升级">OTA</abbr>（Over-The-Air）升级是自动驾驶车辆持续迭代的关键能力，分为两类：</p>
 <ul>
-<li><strong>FOTA（固件 OTA，Firmware OTA）</strong>：升级 ECU 底层固件，包括 MCU 启动引导程序、传感器固件、通信协议栈固件等。FOTA 需要极高的可靠性，一旦失败可能导致 ECU 变砖。</li>
-<li><strong>SOTA（软件 OTA，Software OTA）</strong>：升级运行于操作系统之上的应用软件，包括自动驾驶算法模型、地图数据、车机 App、语音识别模型等。SOTA 相对灵活，失败后可回滚。</li>
+<li><strong>FOTA（固件 <abbr title="Over-the-Air，空中升级">OTA</abbr>，Firmware <abbr title="Over-the-Air，空中升级">OTA</abbr>）</strong>：升级 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 底层固件，包括 <abbr title="Microcontroller Unit，微控制器">MCU</abbr> 启动引导程序、传感器固件、通信协议栈固件等。FOTA 需要极高的可靠性，一旦失败可能导致 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 变砖。</li>
+<li><strong>SOTA（软件 <abbr title="Over-the-Air，空中升级">OTA</abbr>，Software <abbr title="Over-the-Air，空中升级">OTA</abbr>）</strong>：升级运行于操作系统之上的应用软件，包括自动驾驶算法模型、地图数据、车机 App、语音识别模型等。SOTA 相对灵活，失败后可回滚。</li>
 </ul>
-<h3 id="92-ota">9.2 OTA 安全机制</h3>
-<p>OTA 过程中的安全保障至关重要：</p>
+<h3 id="92-ota">9.2 <abbr title="Over-the-Air，空中升级">OTA</abbr> 安全机制</h3>
+<p><abbr title="Over-the-Air，空中升级">OTA</abbr> 过程中的安全保障至关重要：</p>
 <ul>
 <li><strong>代码签名（Code Signing）</strong>：升级包由 OEM 使用私钥签名，车辆使用预置公钥验证签名，确保升级包来源合法</li>
 <li><strong>安全传输（TLS/HTTPS）</strong>：升级包通过加密信道传输，防止中间人攻击与内容篡改</li>
-<li><strong>安全启动（Secure Boot）</strong>：ECU 上电时验证固件签名，拒绝加载未授权固件，防止恶意代码注入</li>
+<li><strong>安全启动（Secure Boot）</strong>：<abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 上电时验证固件签名，拒绝加载未授权固件，防止恶意代码注入</li>
 <li><strong>完整性校验</strong>：升级包传输完成后通过 SHA-256 等哈希算法验证包完整性</li>
 </ul>
 <h3 id="93">9.3 分级更新策略</h3>
@@ -5766,13 +5822,13 @@
 <tbody>
 <tr>
 <td style="text-align: center;">传感器固件</td>
-<td style="text-align: center;">LiDAR/摄像头/雷达固件</td>
+<td style="text-align: center;"><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>/摄像头/雷达固件</td>
 <td style="text-align: center;">季度~年</td>
 <td style="text-align: center;">1~50 MB</td>
 </tr>
 <tr>
 <td style="text-align: center;">区域控制器固件</td>
-<td style="text-align: center;">Zone ECU MCU 固件</td>
+<td style="text-align: center;">Zone <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> <abbr title="Microcontroller Unit，微控制器">MCU</abbr> 固件</td>
 <td style="text-align: center;">月度~季度</td>
 <td style="text-align: center;">1~10 MB</td>
 </tr>
@@ -5803,7 +5859,7 @@
 </tbody>
 </table>
 <h3 id="94-ab">9.4 A/B 分区策略</h3>
-<p>A/B 分区是保障 OTA 可靠性的核心机制：</p>
+<p>A/B 分区是保障 <abbr title="Over-the-Air，空中升级">OTA</abbr> 可靠性的核心机制：</p>
 <ul>
 <li><strong>双分区存储</strong>：将系统存储划分为 A 区（当前运行系统）和 B 区（升级目标）</li>
 <li><strong>后台升级</strong>：新版本下载并写入 B 区，车辆正常运行不受影响</li>
@@ -5816,7 +5872,7 @@
 <ol>
 <li>ISO 26262-1:2018, <em>Road Vehicles — Functional Safety</em>, International Organization for Standardization, 2018.</li>
 <li>林程，王震坡，孙逢春. <em>电动汽车工程手册：整车设计卷</em>. 机械工业出版社，2019.</li>
-<li>AUTOSAR Consortium. <em>AUTOSAR Classic Platform Specification R22-11</em>, 2022. https://www.autosar.org</li>
+<li><abbr title="Automotive Open System Architecture，汽车开放系统架构">AUTOSAR</abbr> Consortium. <em><abbr title="Automotive Open System Architecture，汽车开放系统架构">AUTOSAR</abbr> Classic Platform Specification R22-11</em>, 2022. https://www.autosar.org</li>
 <li>吴甜，熊璐，余贵珍. 智能汽车电子电气架构技术综述. 汽车工程，2021，43(9)：1289-1302.</li>
 <li>NVIDIA Corporation. <em>DRIVE Orin System-on-Chip Technical Reference Manual</em>, 2023. https://developer.nvidia.com/drive</li>
 </ol>
@@ -5827,6 +5883,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 00:50:24 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

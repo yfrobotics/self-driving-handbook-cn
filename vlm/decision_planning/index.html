@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -2914,6 +2942,34 @@
     
   
     自动驾驶ML数据管道
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
   
 
     
@@ -5238,15 +5294,15 @@
   
 
 
-<h1 id="vlm">基于 VLM 的决策与规划</h1>
-<p>视觉语言大模型（VLM）不仅能够增强自动驾驶的感知能力，更有潜力重塑决策与规划模块。传统的规则驱动和优化驱动规划方法在面对复杂、开放场景时往往缺乏灵活性和泛化能力，而 VLM 凭借其语义理解和常识推理能力，为自动驾驶决策规划提供了全新的技术范式。本页面系统阐述 VLM 在自动驾驶决策与规划中的核心方法、代表性架构及关键挑战。</p>
+<h1 id="vlm">基于 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的决策与规划</h1>
+<p>视觉语言大模型（<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>）不仅能够增强自动驾驶的感知能力，更有潜力重塑决策与规划模块。传统的规则驱动和优化驱动规划方法在面对复杂、开放场景时往往缺乏灵活性和泛化能力，而 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 凭借其语义理解和常识推理能力，为自动驾驶决策规划提供了全新的技术范式。本页面系统阐述 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 在自动驾驶决策与规划中的核心方法、代表性架构及关键挑战。</p>
 <h2 id="1">1. 语言作为中间表征</h2>
 <h3 id="11">1.1 核心思想</h3>
 <p>传统自动驾驶系统的中间表征通常是数值化的——向量、张量、占据栅格等。而<strong>语言作为中间表征（Language as Intermediate Representation）</strong> 则主张使用自然语言来桥接感知与规划：</p>
 <div class="arithmatex">\[
 \text{感知输出} \xrightarrow{\text{语言描述}} \text{语义中间表征} \xrightarrow{\text{语言推理}} \text{决策与规划}
 \]</div>
-<p>VLM 将传感器输入（图像、点云等）转化为结构化的自然语言描述，再基于语言推理完成决策。这一范式的核心优势在于语言本身的三大特性。</p>
+<p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 将传感器输入（图像、点云等）转化为结构化的自然语言描述，再基于语言推理完成决策。这一范式的核心优势在于语言本身的三大特性。</p>
 <h3 id="12">1.2 优势分析</h3>
 <p><strong>可解释性（Interpretability）</strong></p>
 <p>语言表征天然可读。当系统输出"前方 50 米处有行人正在横穿马路，决定减速让行"时，乘客和安全审查人员可以直接理解决策逻辑，无需对神经网络进行可视化解释。这对于 L3/L4 级自动驾驶的安全审计至关重要。</p>
@@ -5267,7 +5323,7 @@
 </ul>
 <h2 id="2-chain-of-thought">2. 链式推理（Chain-of-Thought）驾驶决策</h2>
 <h3 id="21-cot">2.1 CoT 推理流程</h3>
-<p><strong>链式推理（Chain-of-Thought, CoT）</strong> 是将 VLM 应用于驾驶决策的核心技术之一。其基本思想是让模型逐步推理，将复杂的驾驶决策分解为有序的推理链：</p>
+<p><strong>链式推理（Chain-of-Thought, CoT）</strong> 是将 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 应用于驾驶决策的核心技术之一。其基本思想是让模型逐步推理，将复杂的驾驶决策分解为有序的推理链：</p>
 <div class="arithmatex">\[
 \mathcal{D} = \text{LLM}\bigl(P_{\text{scene}},\, P_{\text{risk}},\, P_{\text{intent}},\, P_{\text{action}} \mid \mathbf{V},\, \mathbf{H}\bigr)
 \]</div>
@@ -5312,7 +5368,7 @@ P(\mathcal{A} \mid \mathbf{V}) = \sum_{\mathcal{S}, \mathcal{R}, \mathcal{I}} P(
 <p>其中 <span class="arithmatex">\(\mathcal{S}\)</span> 为场景描述、<span class="arithmatex">\(\mathcal{R}\)</span> 为风险评估、<span class="arithmatex">\(\mathcal{I}\)</span> 为决策意图、<span class="arithmatex">\(\mathcal{A}\)</span> 为行动计划。逐步推理的好处在于每一步都可以独立验证和调试，极大提升了系统的可解释性和可维护性。</p>
 <h2 id="3">3. 双系统架构</h2>
 <h3 id="31">3.1 设计动机</h3>
-<p>VLM 的推理能力强大，但推理延迟通常在数百毫秒到数秒之间，无法满足实时控制的要求（通常需要 10–50 ms 的控制周期）。<strong>双系统架构（Dual-system Architecture）</strong> 借鉴认知科学中"系统 1 / 系统 2"的理论，将慢速的 VLM 推理与快速的轨迹执行网络解耦。</p>
+<p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的推理能力强大，但推理延迟通常在数百毫秒到数秒之间，无法满足实时控制的要求（通常需要 10–50 ms 的控制周期）。<strong>双系统架构（Dual-system Architecture）</strong> 借鉴认知科学中"系统 1 / 系统 2"的理论，将慢速的 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 推理与快速的轨迹执行网络解耦。</p>
 <h3 id="32-drivevlm">3.2 DriveVLM 架构</h3>
 <p><strong>DriveVLM</strong>（Tian et al., 2024）是双系统架构的代表性工作，其核心设计如下：</p>
 <table>
@@ -5326,14 +5382,14 @@ P(\mathcal{A} \mid \mathbf{V}) = \sum_{\mathcal{S}, \mathcal{R}, \mathcal{I}} P(
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;">VLM 慢思考模块</td>
+<td style="text-align: center;"><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 慢思考模块</td>
 <td style="text-align: center;">场景理解、CoT 推理、高层决策</td>
 <td style="text-align: center;">1–2 Hz</td>
 <td style="text-align: center;">500–2000 ms</td>
 </tr>
 <tr>
 <td style="text-align: center;">轨迹生成网络</td>
-<td style="text-align: center;">基于 VLM 输出的语义指导生成轨迹</td>
+<td style="text-align: center;">基于 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 输出的语义指导生成轨迹</td>
 <td style="text-align: center;">10–20 Hz</td>
 <td style="text-align: center;">20–50 ms</td>
 </tr>
@@ -5347,25 +5403,25 @@ P(\mathcal{A} \mid \mathbf{V}) = \sum_{\mathcal{S}, \mathcal{R}, \mathcal{I}} P(
 </table>
 <p>工作流程如下：</p>
 <ol>
-<li><strong>VLM 慢思考</strong>：以较低频率（约 1 Hz）处理多视角图像，输出场景描述、风险评估和高层驾驶意图</li>
-<li><strong>语义-轨迹桥接</strong>：将 VLM 的语义输出编码为条件向量 <span class="arithmatex">\(\mathbf{c}_{\text{vlm}}\)</span>，注入轨迹生成网络</li>
+<li><strong><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 慢思考</strong>：以较低频率（约 1 Hz）处理多视角图像，输出场景描述、风险评估和高层驾驶意图</li>
+<li><strong>语义-轨迹桥接</strong>：将 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的语义输出编码为条件向量 <span class="arithmatex">\(\mathbf{c}_{\text{vlm}}\)</span>，注入轨迹生成网络</li>
 <li><strong>快速轨迹生成</strong>：轨迹网络以高频率运行，生成未来 <span class="arithmatex">\(T\)</span> 个时间步的轨迹点：</li>
 </ol>
 <div class="arithmatex">\[
 \boldsymbol{\tau} = \{(x_t, y_t, \theta_t)\}_{t=1}^{T} = g_\phi(\mathbf{F}_{\text{bev}},\, \mathbf{c}_{\text{vlm}})
 \]</div>
-<p>其中 <span class="arithmatex">\(\mathbf{F}_{\text{bev}}\)</span> 为 BEV 特征，<span class="arithmatex">\(g_\phi\)</span> 为轨迹解码器。</p>
+<p>其中 <span class="arithmatex">\(\mathbf{F}_{\text{bev}}\)</span> 为 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征，<span class="arithmatex">\(g_\phi\)</span> 为轨迹解码器。</p>
 <h3 id="33">3.3 延迟解耦策略</h3>
 <p>双系统之间的延迟解耦是关键设计点：</p>
 <ul>
-<li><strong>异步执行</strong>：VLM 模块和轨迹网络运行在不同线程/进程中，VLM 输出结果后缓存，轨迹网络从缓存读取最新的语义指导</li>
-<li><strong>插值更新</strong>：在两次 VLM 推理之间，通过对语义条件向量进行线性插值来平滑过渡</li>
-<li><strong>紧急覆写</strong>：当安全检查模块检测到即将发生碰撞时，直接覆写 VLM 指令，触发紧急制动</li>
+<li><strong>异步执行</strong>：<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 模块和轨迹网络运行在不同线程/进程中，<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 输出结果后缓存，轨迹网络从缓存读取最新的语义指导</li>
+<li><strong>插值更新</strong>：在两次 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 推理之间，通过对语义条件向量进行线性插值来平滑过渡</li>
+<li><strong>紧急覆写</strong>：当安全检查模块检测到即将发生碰撞时，直接覆写 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 指令，触发紧急制动</li>
 </ul>
-<h2 id="4-llm">4. LLM 直接生成轨迹</h2>
+<h2 id="4-llm">4. <abbr title="Large Language Model，大语言模型">LLM</abbr> 直接生成轨迹</h2>
 <h3 id="41-gpt-driver">4.1 GPT-Driver 方法</h3>
-<p><strong>GPT-Driver</strong>（Mao et al., 2023）探索了一条更为激进的路径：让 LLM 直接以文本形式生成驾驶轨迹。</p>
-<p>核心思想是<strong>轨迹标记化（Trajectory Tokenization）</strong>：将连续的轨迹坐标离散化为文本 Token，使 LLM 能够用生成文本的方式生成轨迹。</p>
+<p><strong>GPT-Driver</strong>（Mao et al., 2023）探索了一条更为激进的路径：让 <abbr title="Large Language Model，大语言模型">LLM</abbr> 直接以文本形式生成驾驶轨迹。</p>
+<p>核心思想是<strong>轨迹标记化（Trajectory Tokenization）</strong>：将连续的轨迹坐标离散化为文本 Token，使 <abbr title="Large Language Model，大语言模型">LLM</abbr> 能够用生成文本的方式生成轨迹。</p>
 <h3 id="42">4.2 轨迹标记化</h3>
 <p>给定未来 <span class="arithmatex">\(T\)</span> 步的目标轨迹 <span class="arithmatex">\(\boldsymbol{\tau} = \{(x_t, y_t)\}_{t=1}^{T}\)</span>，对每个坐标进行量化：</p>
 <div class="arithmatex">\[
@@ -5375,32 +5431,32 @@ P(\mathcal{A} \mid \mathbf{V}) = \sum_{\mathcal{S}, \mathcal{R}, \mathcal{I}} P(
 <div class="highlight"><pre><span></span><code>&lt;TRAJ&gt; (152, 34) (155, 33) (159, 31) (164, 29) (170, 27) (177, 25) &lt;/TRAJ&gt;
 </code></pre></div>
 <h3 id="43">4.3 自回归轨迹生成</h3>
-<p>LLM 以自回归方式逐 Token 生成轨迹：</p>
+<p><abbr title="Large Language Model，大语言模型">LLM</abbr> 以自回归方式逐 Token 生成轨迹：</p>
 <div class="arithmatex">\[
 P(\boldsymbol{\tau} \mid \mathbf{V}, \mathbf{H}) = \prod_{t=1}^{T} P\bigl((\hat{x}_t, \hat{y}_t) \mid (\hat{x}_{&lt;t}, \hat{y}_{&lt;t}),\, \mathbf{V},\, \mathbf{H}\bigr)
 \]</div>
-<p>这种方法的优势在于可以直接复用 LLM 强大的序列建模能力，并且通过 CoT 提示可以让模型先输出驾驶理由再输出轨迹，提升可解释性。</p>
+<p>这种方法的优势在于可以直接复用 <abbr title="Large Language Model，大语言模型">LLM</abbr> 强大的序列建模能力，并且通过 CoT 提示可以让模型先输出驾驶理由再输出轨迹，提升可解释性。</p>
 <h3 id="44">4.4 挑战</h3>
 <ul>
 <li><strong>量化误差</strong>：轨迹的离散化不可避免地引入精度损失</li>
-<li><strong>物理不可行性</strong>：LLM 生成的轨迹可能违反车辆运动学约束（如曲率过大）</li>
+<li><strong>物理不可行性</strong>：<abbr title="Large Language Model，大语言模型">LLM</abbr> 生成的轨迹可能违反车辆运动学约束（如曲率过大）</li>
 <li><strong>累积误差</strong>：自回归生成中的误差会逐步累积</li>
 </ul>
-<h2 id="5-llm">5. LLM 参数调节控制器</h2>
+<h2 id="5-llm">5. <abbr title="Large Language Model，大语言模型">LLM</abbr> 参数调节控制器</h2>
 <h3 id="51-languagempc">5.1 LanguageMPC</h3>
-<p><strong>LanguageMPC</strong>（Sha et al., 2023）提出了一种更加保守但实用的集成方案：LLM 不直接生成轨迹，而是输出<strong>模型预测控制（MPC）</strong> 控制器的参数调节量。</p>
+<p><strong>LanguageMPC</strong>（Sha et al., 2023）提出了一种更加保守但实用的集成方案：<abbr title="Large Language Model，大语言模型">LLM</abbr> 不直接生成轨迹，而是输出<strong>模型预测控制（<abbr title="Model Predictive Control，模型预测控制">MPC</abbr>）</strong> 控制器的参数调节量。</p>
 <h3 id="52">5.2 架构设计</h3>
 <p>系统工作流程为：</p>
 <ol>
-<li>VLM 分析当前驾驶场景，生成自然语言描述和驾驶建议</li>
-<li>LLM 将驾驶建议映射为 MPC 代价函数的参数调节量 <span class="arithmatex">\(\Delta \mathbf{w}\)</span></li>
-<li>MPC 控制器使用调节后的参数 <span class="arithmatex">\(\mathbf{w} + \Delta \mathbf{w}\)</span> 求解最优轨迹</li>
+<li><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 分析当前驾驶场景，生成自然语言描述和驾驶建议</li>
+<li><abbr title="Large Language Model，大语言模型">LLM</abbr> 将驾驶建议映射为 <abbr title="Model Predictive Control，模型预测控制">MPC</abbr> 代价函数的参数调节量 <span class="arithmatex">\(\Delta \mathbf{w}\)</span></li>
+<li><abbr title="Model Predictive Control，模型预测控制">MPC</abbr> 控制器使用调节后的参数 <span class="arithmatex">\(\mathbf{w} + \Delta \mathbf{w}\)</span> 求解最优轨迹</li>
 </ol>
-<p>MPC 的代价函数为：</p>
+<p><abbr title="Model Predictive Control，模型预测控制">MPC</abbr> 的代价函数为：</p>
 <div class="arithmatex">\[
 J(\boldsymbol{\tau}) = \sum_{i} (w_i + \Delta w_i)\, C_i(\boldsymbol{\tau})
 \]</div>
-<p>其中 <span class="arithmatex">\(C_i\)</span> 为各项代价分量（安全距离、舒适性、效率等），<span class="arithmatex">\(w_i\)</span> 为基础权重，<span class="arithmatex">\(\Delta w_i\)</span> 为 LLM 输出的调节量。</p>
+<p>其中 <span class="arithmatex">\(C_i\)</span> 为各项代价分量（安全距离、舒适性、效率等），<span class="arithmatex">\(w_i\)</span> 为基础权重，<span class="arithmatex">\(\Delta w_i\)</span> 为 <abbr title="Large Language Model，大语言模型">LLM</abbr> 输出的调节量。</p>
 <h3 id="53">5.3 示例</h3>
 <div class="highlight"><pre><span></span><code>=== VLM 场景分析 ===
 前方为学校区域，路边有多名儿童，当前时间为放学时段。
@@ -5415,13 +5471,13 @@ J(\boldsymbol{\tau}) = \sum_{i} (w_i + \Delta w_i)\, C_i(\boldsymbol{\tau})
 </code></pre></div>
 <h3 id="54">5.4 优势</h3>
 <ul>
-<li><strong>安全保障</strong>：轨迹始终由 MPC 求解器生成，满足运动学和动力学约束</li>
-<li><strong>可解释性</strong>：LLM 的参数调节量具有明确的物理含义</li>
-<li><strong>渐进部署</strong>：可以在传统 MPC 系统上逐步引入 LLM，降低工程风险</li>
+<li><strong>安全保障</strong>：轨迹始终由 <abbr title="Model Predictive Control，模型预测控制">MPC</abbr> 求解器生成，满足运动学和动力学约束</li>
+<li><strong>可解释性</strong>：<abbr title="Large Language Model，大语言模型">LLM</abbr> 的参数调节量具有明确的物理含义</li>
+<li><strong>渐进部署</strong>：可以在传统 <abbr title="Model Predictive Control，模型预测控制">MPC</abbr> 系统上逐步引入 <abbr title="Large Language Model，大语言模型">LLM</abbr>，降低工程风险</li>
 </ul>
 <h2 id="6">6. 端到端多模态驾驶</h2>
 <h3 id="61-lmdrive">6.1 LMDrive</h3>
-<p><strong>LMDrive</strong>（Shao et al., 2024）实现了真正的端到端多模态驾驶系统，其核心创新在于将<strong>图像、LiDAR 点云和自然语言导航指令</strong>统一到一个多模态框架中。</p>
+<p><strong>LMDrive</strong>（Shao et al., 2024）实现了真正的端到端多模态驾驶系统，其核心创新在于将<strong>图像、<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 点云和自然语言导航指令</strong>统一到一个多模态框架中。</p>
 <h3 id="62">6.2 输入模态</h3>
 <table>
 <thead>
@@ -5438,14 +5494,14 @@ J(\boldsymbol{\tau}) = \sum_{i} (w_i + \Delta w_i)\, C_i(\boldsymbol{\tau})
 <td style="text-align: center;">ViT 视觉编码器</td>
 </tr>
 <tr>
-<td style="text-align: center;">LiDAR</td>
+<td style="text-align: center;"><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr></td>
 <td style="text-align: center;">3D 点云</td>
 <td style="text-align: center;">体素化 + 3D 稀疏卷积</td>
 </tr>
 <tr>
 <td style="text-align: center;">语言</td>
 <td style="text-align: center;">导航指令（如"下个路口左转"）</td>
-<td style="text-align: center;">LLM 文本编码器</td>
+<td style="text-align: center;"><abbr title="Large Language Model，大语言模型">LLM</abbr> 文本编码器</td>
 </tr>
 </tbody>
 </table>
@@ -5454,10 +5510,10 @@ J(\boldsymbol{\tau}) = \sum_{i} (w_i + \Delta w_i)\, C_i(\boldsymbol{\tau})
 <div class="arithmatex">\[
 (\delta_{\text{steer}},\, a_{\text{throttle}},\, a_{\text{brake}}) = h_\psi\bigl(\text{LLM}(\mathbf{F}_{\text{img}},\, \mathbf{F}_{\text{lidar}},\, \mathbf{T}_{\text{nav}})\bigr)
 \]</div>
-<p>其中 <span class="arithmatex">\(\mathbf{F}_{\text{img}}\)</span> 和 <span class="arithmatex">\(\mathbf{F}_{\text{lidar}}\)</span> 分别为图像和 LiDAR 特征，<span class="arithmatex">\(\mathbf{T}_{\text{nav}}\)</span> 为导航指令的 Token 序列，<span class="arithmatex">\(h_\psi\)</span> 为控制头网络。</p>
+<p>其中 <span class="arithmatex">\(\mathbf{F}_{\text{img}}\)</span> 和 <span class="arithmatex">\(\mathbf{F}_{\text{lidar}}\)</span> 分别为图像和 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 特征，<span class="arithmatex">\(\mathbf{T}_{\text{nav}}\)</span> 为导航指令的 Token 序列，<span class="arithmatex">\(h_\psi\)</span> 为控制头网络。</p>
 <p>关键技术细节：</p>
 <ul>
-<li><strong>多模态对齐</strong>：通过可学习的投影层将视觉和 LiDAR 特征映射到 LLM 的 Token 空间</li>
+<li><strong>多模态对齐</strong>：通过可学习的投影层将视觉和 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 特征映射到 <abbr title="Large Language Model，大语言模型">LLM</abbr> 的 Token 空间</li>
 <li><strong>指令跟随</strong>：模型需要理解自然语言导航指令并将其转化为具体的驾驶行为</li>
 <li><strong>时序建模</strong>：输入包含过去 <span class="arithmatex">\(K\)</span> 帧的多模态信息，以捕捉动态变化</li>
 </ul>
@@ -5500,9 +5556,9 @@ a_j = \text{VLM}\bigl(q_j,\, \mathbf{V},\, \{a_i \mid (v_i, v_j) \in \mathcal{E}
 </ul>
 <h2 id="8">8. 安全约束集成</h2>
 <h3 id="81">8.1 核心挑战</h3>
-<p>VLM 的生成特性意味着其输出可能存在<strong>幻觉（Hallucination）</strong>、<strong>不一致性</strong>和<strong>物理不可行性</strong>。在安全攸关的自动驾驶场景中，必须确保 VLM 的决策输出不会导致危险行为。</p>
+<p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的生成特性意味着其输出可能存在<strong>幻觉（Hallucination）</strong>、<strong>不一致性</strong>和<strong>物理不可行性</strong>。在安全攸关的自动驾驶场景中，必须确保 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的决策输出不会导致危险行为。</p>
 <h3 id="82">8.2 安全监控层</h3>
-<p>安全监控层（Safety Monitor）是一个独立于 VLM 的验证模块，对 VLM 的每一个决策输出进行安全检查：</p>
+<p>安全监控层（Safety Monitor）是一个独立于 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的验证模块，对 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的每一个决策输出进行安全检查：</p>
 <div class="arithmatex">\[
 \mathcal{A}_{\text{final}} = \begin{cases}
 \mathcal{A}_{\text{vlm}} &amp; \text{若 } \mathcal{A}_{\text{vlm}} \in \mathcal{S}_{\text{safe}} \\
@@ -5518,9 +5574,9 @@ a_j = \text{VLM}\bigl(q_j,\, \mathbf{V},\, \{a_i \mid (v_i, v_j) \in \mathcal{E}
 <li><strong>交通规则约束</strong>：不得违反红灯停车、限速等基本交通法规</li>
 <li><strong>舒适性约束</strong>：横向和纵向加速度不得超过乘客舒适阈值</li>
 </ul>
-<p>当 VLM 输出的决策或轨迹违反上述任何约束时，否决机制立即触发：</p>
+<p>当 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 输出的决策或轨迹违反上述任何约束时，否决机制立即触发：</p>
 <ol>
-<li>丢弃 VLM 的当前输出</li>
+<li>丢弃 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的当前输出</li>
 <li>激活回退策略（通常为保守的跟车或停车行为）</li>
 <li>记录否决事件以供后续分析和模型改进</li>
 </ol>
@@ -5529,16 +5585,16 @@ a_j = \text{VLM}\bigl(q_j,\, \mathbf{V},\, \{a_i \mid (v_i, v_j) \in \mathcal{E}
 <div class="arithmatex">\[
 \dot{h}(x, u) + \alpha\bigl(h(x)\bigr) \geq 0
 \]</div>
-<p>其中 <span class="arithmatex">\(\alpha\)</span> 为扩展类 <span class="arithmatex">\(\mathcal{K}\)</span> 函数。该约束确保系统状态始终不会离开安全集合，即使 VLM 给出了不安全的决策。</p>
+<p>其中 <span class="arithmatex">\(\alpha\)</span> 为扩展类 <span class="arithmatex">\(\mathcal{K}\)</span> 函数。该约束确保系统状态始终不会离开安全集合，即使 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 给出了不安全的决策。</p>
 <h2 id="9">9. 与传统规划器的融合策略</h2>
 <h3 id="91">9.1 融合的必要性</h3>
-<p>纯粹依赖 VLM 进行决策规划面临延迟高、确定性低、难以验证等挑战，而传统规划器（如 lattice planner、RRT*、MPC 等）虽然在开放场景下灵活性不足，但在确定性、实时性和安全性方面具有明确优势。实际部署中通常需要两者的深度融合。</p>
+<p>纯粹依赖 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 进行决策规划面临延迟高、确定性低、难以验证等挑战，而传统规划器（如 lattice planner、RRT*、<abbr title="Model Predictive Control，模型预测控制">MPC</abbr> 等）虽然在开放场景下灵活性不足，但在确定性、实时性和安全性方面具有明确优势。实际部署中通常需要两者的深度融合。</p>
 <h3 id="92">9.2 层次化集成模式</h3>
 <table>
 <thead>
 <tr>
 <th style="text-align: center;">集成层级</th>
-<th style="text-align: center;">VLM 角色</th>
+<th style="text-align: center;"><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 角色</th>
 <th style="text-align: center;">传统规划器角色</th>
 <th style="text-align: center;">示例</th>
 </tr>
@@ -5548,34 +5604,34 @@ a_j = \text{VLM}\bigl(q_j,\, \mathbf{V},\, \{a_i \mid (v_i, v_j) \in \mathcal{E}
 <td style="text-align: center;">战略层</td>
 <td style="text-align: center;">路线规划、场景理解</td>
 <td style="text-align: center;">不参与</td>
-<td style="text-align: center;">VLM 判断"前方道路封闭，需绕行"</td>
+<td style="text-align: center;"><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 判断"前方道路封闭，需绕行"</td>
 </tr>
 <tr>
 <td style="text-align: center;">战术层</td>
 <td style="text-align: center;">行为决策（变道、超车）</td>
 <td style="text-align: center;">候选行为评估</td>
-<td style="text-align: center;">VLM 建议变道，规划器验证可行性</td>
+<td style="text-align: center;"><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 建议变道，规划器验证可行性</td>
 </tr>
 <tr>
 <td style="text-align: center;">执行层</td>
 <td style="text-align: center;">不直接参与</td>
 <td style="text-align: center;">轨迹优化与跟踪</td>
-<td style="text-align: center;">MPC 生成满足约束的平滑轨迹</td>
+<td style="text-align: center;"><abbr title="Model Predictive Control，模型预测控制">MPC</abbr> 生成满足约束的平滑轨迹</td>
 </tr>
 </tbody>
 </table>
 <h3 id="93">9.3 信任度动态分配</h3>
-<p>何时信任 VLM、何时信任传统规划器，是融合系统的关键设计问题。一种常见策略是基于<strong>场景复杂度</strong>动态分配信任度：</p>
+<p>何时信任 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>、何时信任传统规划器，是融合系统的关键设计问题。一种常见策略是基于<strong>场景复杂度</strong>动态分配信任度：</p>
 <div class="arithmatex">\[
 \mathbf{w}_{\text{vlm}} = \sigma\bigl(\beta \cdot (\mathcal{C}_{\text{scene}} - \mathcal{C}_{\text{threshold}})\bigr)
 \]</div>
-<p>其中 <span class="arithmatex">\(\mathcal{C}_{\text{scene}}\)</span> 为场景复杂度评分（由 VLM 自身或独立模块估计），<span class="arithmatex">\(\mathcal{C}_{\text{threshold}}\)</span> 为阈值，<span class="arithmatex">\(\sigma\)</span> 为 sigmoid 函数，<span class="arithmatex">\(\beta\)</span> 为温度参数。</p>
+<p>其中 <span class="arithmatex">\(\mathcal{C}_{\text{scene}}\)</span> 为场景复杂度评分（由 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 自身或独立模块估计），<span class="arithmatex">\(\mathcal{C}_{\text{threshold}}\)</span> 为阈值，<span class="arithmatex">\(\sigma\)</span> 为 sigmoid 函数，<span class="arithmatex">\(\beta\)</span> 为温度参数。</p>
 <ul>
 <li><strong>简单场景</strong>（高速公路直行、空旷道路）：<span class="arithmatex">\(\mathbf{w}_{\text{vlm}}\)</span> 较低，传统规划器主导</li>
-<li><strong>复杂场景</strong>（无保护左转、施工区域、异常事件）：<span class="arithmatex">\(\mathbf{w}_{\text{vlm}}\)</span> 较高，VLM 主导决策</li>
+<li><strong>复杂场景</strong>（无保护左转、施工区域、异常事件）：<span class="arithmatex">\(\mathbf{w}_{\text{vlm}}\)</span> 较高，<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 主导决策</li>
 </ul>
 <h3 id="94">9.4 回退机制</h3>
-<p>当 VLM 模块发生异常（推理超时、输出异常、置信度过低）时，系统应无缝切换到传统规划器：</p>
+<p>当 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 模块发生异常（推理超时、输出异常、置信度过低）时，系统应无缝切换到传统规划器：</p>
 <ul>
 <li><strong>热备份</strong>：传统规划器始终在后台运行，维持一条可执行轨迹</li>
 <li><strong>平滑切换</strong>：切换时对轨迹进行时间插值，避免控制量跳变</li>
@@ -5620,7 +5676,7 @@ a_j = \text{VLM}\bigl(q_j,\, \mathbf{V},\, \{a_i \mid (v_i, v_j) \in \mathcal{E}
 </tr>
 <tr>
 <td style="text-align: left;">GPT-Driver</td>
-<td style="text-align: center;">LLM 轨迹</td>
+<td style="text-align: center;"><abbr title="Large Language Model，大语言模型">LLM</abbr> 轨迹</td>
 <td style="text-align: center;">0.41</td>
 <td style="text-align: center;">0.89</td>
 <td style="text-align: center;">1.54</td>
@@ -5640,7 +5696,7 @@ a_j = \text{VLM}\bigl(q_j,\, \mathbf{V},\, \{a_i \mid (v_i, v_j) \in \mathcal{E}
 </tr>
 <tr>
 <td style="text-align: left;">LanguageMPC</td>
-<td style="text-align: center;">LLM+MPC</td>
+<td style="text-align: center;"><abbr title="Large Language Model，大语言模型">LLM</abbr>+<abbr title="Model Predictive Control，模型预测控制">MPC</abbr></td>
 <td style="text-align: center;">0.45</td>
 <td style="text-align: center;">0.91</td>
 <td style="text-align: center;">1.58</td>
@@ -5671,20 +5727,20 @@ a_j = \text{VLM}\bigl(q_j,\, \mathbf{V},\, \{a_i \mid (v_i, v_j) \in \mathcal{E}
 </tbody>
 </table>
 <blockquote>
-<p>* 标注的延迟为轨迹输出延迟（不含 VLM 异步推理延迟）。</p>
+<p>* 标注的延迟为轨迹输出延迟（不含 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 异步推理延迟）。</p>
 </blockquote>
 <h3 id="102">10.2 关键观察</h3>
 <ol>
-<li><strong>精度提升</strong>：VLM 增强的方法在 L2 误差上相比纯端到端基线（如 ST-P3）有显著提升，3s L2 误差降低约 40–50%</li>
-<li><strong>碰撞率改善</strong>：LanguageMPC 凭借 MPC 求解器的硬约束保证，在碰撞率指标上表现最优</li>
+<li><strong>精度提升</strong>：<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 增强的方法在 L2 误差上相比纯端到端基线（如 ST-P3）有显著提升，3s L2 误差降低约 40–50%</li>
+<li><strong>碰撞率改善</strong>：LanguageMPC 凭借 <abbr title="Model Predictive Control，模型预测控制">MPC</abbr> 求解器的硬约束保证，在碰撞率指标上表现最优</li>
 <li><strong>延迟-精度权衡</strong>：双系统架构（DriveVLM）在精度和延迟之间取得了较好的平衡</li>
-<li><strong>推理成本</strong>：纯 LLM 生成轨迹的方法（GPT-Driver）延迟最高，实际部署需要显著优化</li>
+<li><strong>推理成本</strong>：纯 <abbr title="Large Language Model，大语言模型">LLM</abbr> 生成轨迹的方法（GPT-Driver）延迟最高，实际部署需要显著优化</li>
 </ol>
 <h3 id="103">10.3 开放挑战</h3>
 <ul>
 <li><strong>闭环评测缺失</strong>：当前大部分评测基于开环（与录制轨迹对比），闭环评测（如 CARLA 仿真）更能反映真实性能</li>
-<li><strong>长尾场景覆盖不足</strong>：标准基准中长尾场景的比例有限，VLM 的泛化优势尚未被充分体现</li>
-<li><strong>计算资源需求</strong>：VLM 方法通常需要 A100 级别的 GPU，距离车载部署仍有差距</li>
+<li><strong>长尾场景覆盖不足</strong>：标准基准中长尾场景的比例有限，<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的泛化优势尚未被充分体现</li>
+<li><strong>计算资源需求</strong>：<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 方法通常需要 A100 级别的 GPU，距离车载部署仍有差距</li>
 </ul>
 <h2 id="_1">参考资料</h2>
 <ol>
@@ -5706,6 +5762,27 @@ a_j = \text{VLM}\bigl(q_j,\, \mathbf{V},\, \{a_i \mid (v_i, v_j) \in \mathcal{E}
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月21日 23:41:48 UTC">2026年3月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

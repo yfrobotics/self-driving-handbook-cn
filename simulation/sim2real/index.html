@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -2914,6 +2942,34 @@
     
   
     自动驾驶ML数据管道
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
   
 
     
@@ -5226,7 +5282,7 @@ D_{\text{KL}}(P \| Q) = \sum_{x} P(x) \log \frac{P(x)}{Q(x)}
 <p>NVIDIA DRIVE Sim 基于 Omniverse 平台，利用实时光线追踪技术生成高保真仿真图像：</p>
 <ul>
 <li><strong>RTX 渲染器</strong>：支持全局光照、反射、折射、焦散等物理光学效果</li>
-<li><strong>多传感器仿真</strong>：相机、LiDAR、雷达的物理级仿真</li>
+<li><strong>多传感器仿真</strong>：相机、<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>、雷达的物理级仿真</li>
 <li><strong>大规模场景</strong>：支持数字孪生城市级别的场景构建</li>
 </ul>
 <h3 id="42-pbr">4.2 物理渲染（PBR）材质</h3>
@@ -5493,7 +5549,7 @@ F_\theta : (\mathbf{x}, \mathbf{d}) \to (\mathbf{c}, \sigma)
 <h3 id="91-waymo">9.1 Waymo</h3>
 <p>Waymo 在 Sim-to-Real 方面的实践特点：</p>
 <ul>
-<li><strong>SurfelGAN</strong>：利用真实 LiDAR 数据重建场景表面元素（Surfel），结合 GAN 生成逼真的相机图像，将真实几何与神经渲染结合</li>
+<li><strong>SurfelGAN</strong>：利用真实 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 数据重建场景表面元素（Surfel），结合 GAN 生成逼真的相机图像，将真实几何与神经渲染结合</li>
 <li><strong>大规模仿真</strong>：每天运行数百万英里的仿真测试，覆盖大量长尾场景</li>
 <li><strong>闭环验证</strong>：建立系统化的 Sim-to-Real 验证流程，持续监控仿真与路测结果的一致性</li>
 <li><strong>数据驱动仿真</strong>：从真实驾驶日志中重放并编辑场景，保持高度真实性</li>
@@ -5520,7 +5576,7 @@ F_\theta : (\mathbf{x}, \mathbf{d}) \to (\mathbf{c}, \sigma)
 <p><strong>当前挑战：</strong></p>
 <ul>
 <li><strong>动态行为差距</strong>：仿真中的交通参与者行为仍难以完全反映真实世界的复杂性和多样性</li>
-<li><strong>传感器退化建模</strong>：雨雾天气对 LiDAR 和相机的影响难以精确建模</li>
+<li><strong>传感器退化建模</strong>：雨雾天气对 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 和相机的影响难以精确建模</li>
 <li><strong>可迁移性评估</strong>：缺乏统一的评估标准来量化仿真训练的实际价值</li>
 <li><strong>计算成本</strong>：高保真仿真和神经渲染的计算需求巨大</li>
 </ul>
@@ -5553,6 +5609,27 @@ F_\theta : (\mathbf{x}, \mathbf{d}) \to (\mathbf{c}, \sigma)
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月21日 23:41:48 UTC">2026年3月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

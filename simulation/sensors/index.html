@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -2914,6 +2942,34 @@
     
   
     自动驾驶ML数据管道
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
   
 
     
@@ -4930,24 +4986,24 @@
 
 <h1 id="_1">传感器仿真</h1>
 <h2 id="1">1. 概述</h2>
-<p>传感器仿真是自动驾驶仿真系统中最关键的子模块之一。自动驾驶系统的感知算法依赖于来自多种传感器的原始数据——LiDAR 点云、摄像头图像、毫米波雷达回波、超声波信号以及 GNSS/IMU 定位信息。仿真系统必须以足够高的保真度生成这些传感器数据，使得在仿真环境中训练和验证的感知算法能够无缝迁移到真实车辆上。</p>
+<p>传感器仿真是自动驾驶仿真系统中最关键的子模块之一。自动驾驶系统的感知算法依赖于来自多种传感器的原始数据——<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 点云、摄像头图像、毫米波雷达回波、超声波信号以及 <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr>/<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 定位信息。仿真系统必须以足够高的保真度生成这些传感器数据，使得在仿真环境中训练和验证的感知算法能够无缝迁移到真实车辆上。</p>
 <p>传感器仿真的核心挑战在于<strong>域差距（Domain Gap）</strong>：仿真生成的传感器数据与真实传感器数据之间总存在分布差异。缩小这一差距需要对传感器的物理原理、噪声特性和环境交互进行精确建模。本章将逐一介绍各类传感器的仿真方法、噪声模型以及域差距的度量与弥合策略。</p>
 <hr />
-<h2 id="2-lidar">2. LiDAR 仿真</h2>
+<h2 id="2-lidar">2. <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 仿真</h2>
 <h3 id="21">2.1 基本原理</h3>
-<p>LiDAR（Light Detection and Ranging）通过发射激光脉冲并测量反射信号的飞行时间来获取三维点云。LiDAR 仿真的目标是在虚拟场景中生成与真实 LiDAR 扫描结果统计特性一致的点云数据。</p>
+<p><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>（Light Detection and Ranging）通过发射激光脉冲并测量反射信号的飞行时间来获取三维点云。<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 仿真的目标是在虚拟场景中生成与真实 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 扫描结果统计特性一致的点云数据。</p>
 <h3 id="22-ray-casting">2.2 光线投射法（Ray-Casting）</h3>
-<p>光线投射是最基础的 LiDAR 仿真方法。对于 LiDAR 的每个发射通道，根据旋转角度和垂直角度确定激光发射方向，从传感器原点沿该方向投射一条射线，计算与场景几何体的第一个交点。交点的三维坐标即为该激光束对应的点云数据。</p>
+<p>光线投射是最基础的 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 仿真方法。对于 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 的每个发射通道，根据旋转角度和垂直角度确定激光发射方向，从传感器原点沿该方向投射一条射线，计算与场景几何体的第一个交点。交点的三维坐标即为该激光束对应的点云数据。</p>
 <p>主要步骤如下：</p>
 <ol>
-<li>根据 LiDAR 参数（线束数、水平角分辨率、垂直 FOV）计算所有激光束方向向量</li>
+<li>根据 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 参数（线束数、水平角分辨率、垂直 FOV）计算所有激光束方向向量</li>
 <li>利用 BVH（Bounding Volume Hierarchy）或 k-d tree 加速射线-三角形求交</li>
 <li>记录交点坐标 <span class="arithmatex">\((x, y, z)\)</span> 和距离 <span class="arithmatex">\(R\)</span></li>
 </ol>
 <p>光线投射法的优点是计算高效，可在 GPU 上实现并行加速。缺点是仅建模几何交互，忽略了激光与材质表面的物理交互过程。</p>
 <h3 id="23-physics-based-simulation">2.3 物理级仿真（Physics-Based Simulation）</h3>
-<p>物理级 LiDAR 仿真在光线投射的基础上引入材质反射特性、大气衰减和探测器噪声模型，以更精确地还原真实 LiDAR 的输出特性。</p>
-<p><strong>反射率建模：</strong> 真实 LiDAR 返回的反射强度受目标表面反射率、入射角和距离等因素的共同影响。返回信号强度可建模为：</p>
+<p>物理级 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 仿真在光线投射的基础上引入材质反射特性、大气衰减和探测器噪声模型，以更精确地还原真实 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 的输出特性。</p>
+<p><strong>反射率建模：</strong> 真实 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 返回的反射强度受目标表面反射率、入射角和距离等因素的共同影响。返回信号强度可建模为：</p>
 <div class="arithmatex">\[I_{ret} = I_0 \cdot \frac{\rho \cdot \cos\theta}{R^2} \cdot \eta_{atm}(R)\]</div>
 <p>其中：</p>
 <ul>
@@ -4961,14 +5017,14 @@
 <div class="arithmatex">\[\eta_{atm}(R) = e^{-2\alpha R}\]</div>
 <p>其中 <span class="arithmatex">\(\alpha\)</span> 为大气消光系数，因子 2 表示激光需往返传播。在清晰天气下 <span class="arithmatex">\(\alpha \approx 0.001\;\text{m}^{-1}\)</span>，浓雾条件下可达 <span class="arithmatex">\(\alpha \approx 0.1\;\text{m}^{-1}\)</span>。</p>
 <h3 id="24">2.4 多回波与波形仿真</h3>
-<p>高端 LiDAR 传感器支持多回波（Multi-Echo）探测，即单个激光脉冲可返回多个反射信号。典型场景包括：</p>
+<p>高端 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 传感器支持多回波（Multi-Echo）探测，即单个激光脉冲可返回多个反射信号。典型场景包括：</p>
 <ul>
 <li>激光穿透树叶间隙，同时记录树冠和地面的回波</li>
 <li>激光部分照射到近处物体边缘，部分继续传播到远处目标</li>
 </ul>
 <p>多回波仿真需要在射线追踪过程中记录所有交点（而非仅第一个交点），并根据各交点处的反射能量判断是否超过探测器阈值。</p>
 <h3 id="25-motion-distortion">2.5 运动畸变（Motion Distortion）</h3>
-<p>机械旋转式 LiDAR 的一帧点云并非在同一时刻采集，而是在传感器旋转一周（通常 50-100 ms）的过程中逐步生成。若车辆在此期间发生运动，点云会产生运动畸变。仿真中需要对每个激光点施加基于时间戳的自车位姿插值，以还原真实的运动畸变效应：</p>
+<p>机械旋转式 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 的一帧点云并非在同一时刻采集，而是在传感器旋转一周（通常 50-100 ms）的过程中逐步生成。若车辆在此期间发生运动，点云会产生运动畸变。仿真中需要对每个激光点施加基于时间戳的自车位姿插值，以还原真实的运动畸变效应：</p>
 <div class="arithmatex">\[\mathbf{p}_{distorted} = \mathbf{T}_{ego}(t_i) \cdot \mathbf{T}_{ego}^{-1}(t_0) \cdot \mathbf{p}_{ideal}\]</div>
 <p>其中 <span class="arithmatex">\(t_i\)</span> 为第 <span class="arithmatex">\(i\)</span> 个激光点的采集时间，<span class="arithmatex">\(t_0\)</span> 为帧起始时间，<span class="arithmatex">\(\mathbf{T}_{ego}(t)\)</span> 为 <span class="arithmatex">\(t\)</span> 时刻的自车位姿。</p>
 <hr />
@@ -5118,21 +5174,21 @@
 <li><strong>多传感器串扰：</strong> 多个超声波传感器同时工作时的互相干扰</li>
 </ul>
 <hr />
-<h2 id="6-gnssimu">6. GNSS/IMU 仿真</h2>
-<h3 id="61-gnss">6.1 GNSS 仿真</h3>
-<p>全球导航卫星系统（GNSS）仿真需要建模以下因素：</p>
+<h2 id="6-gnssimu">6. <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr>/<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 仿真</h2>
+<h3 id="61-gnss">6.1 <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 仿真</h3>
+<p>全球导航卫星系统（<abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr>）仿真需要建模以下因素：</p>
 <p><strong>卫星可见性：</strong> 根据星历数据和自车位置，计算某一时刻可见卫星的数量和分布。卫星几何分布通过<strong>精度衰减因子（DOP）</strong>量化：</p>
 <div class="arithmatex">\[\text{GDOP} = \sqrt{\text{tr}((\mathbf{H}^T \mathbf{H})^{-1})}\]</div>
 <p>其中 <span class="arithmatex">\(\mathbf{H}\)</span> 为观测矩阵，GDOP 越小定位精度越高。</p>
-<p><strong>城市峡谷多径效应：</strong> 在高楼密集的城市环境中，GNSS 信号经建筑物反射后到达接收器，导致伪距测量偏差。仿真中需要利用三维城市模型进行射线追踪，计算直达信号和反射信号的到达时间差异。城市峡谷中 GNSS 定位误差可从开阔地带的 1-2 m 劣化至 10-50 m。</p>
-<p><strong>电离层和对流层延迟：</strong> GNSS 信号穿越大气层时的传播延迟可用 Klobuchar 模型（电离层）和 Saastamoinen 模型（对流层）近似。</p>
-<h3 id="62-imu">6.2 IMU 仿真</h3>
-<p>惯性测量单元（IMU）包含三轴加速度计和三轴陀螺仪。IMU 仿真需要建模以下误差源：</p>
+<p><strong>城市峡谷多径效应：</strong> 在高楼密集的城市环境中，<abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 信号经建筑物反射后到达接收器，导致伪距测量偏差。仿真中需要利用三维城市模型进行射线追踪，计算直达信号和反射信号的到达时间差异。城市峡谷中 <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 定位误差可从开阔地带的 1-2 m 劣化至 10-50 m。</p>
+<p><strong>电离层和对流层延迟：</strong> <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 信号穿越大气层时的传播延迟可用 Klobuchar 模型（电离层）和 Saastamoinen 模型（对流层）近似。</p>
+<h3 id="62-imu">6.2 <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 仿真</h3>
+<p>惯性测量单元（<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>）包含三轴加速度计和三轴陀螺仪。<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 仿真需要建模以下误差源：</p>
 <p><strong>零偏（Bias）：</strong> 包括固定零偏 <span class="arithmatex">\(b_0\)</span> 和随时间缓慢漂移的零偏不稳定性。零偏不稳定性通常建模为随机游走过程：</p>
 <div class="arithmatex">\[b(t + \Delta t) = b(t) + \sigma_b \cdot \sqrt{\Delta t} \cdot w(t), \quad w(t) \sim \mathcal{N}(0, 1)\]</div>
 <p><strong>噪声密度：</strong> 加速度计和陀螺仪的白噪声，由 Allan 方差中的角度随机游走（ARW）和速度随机游走（VRW）参数刻画。</p>
 <p><strong>标度因子误差（Scale Factor Error）：</strong> 传感器输出与真实物理量之间的比例偏差。</p>
-<p>完整的 IMU 误差模型可表示为：</p>
+<p>完整的 <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 误差模型可表示为：</p>
 <div class="arithmatex">\[\tilde{\omega} = (1 + s_g) \cdot \omega_{true} + b_g + n_g\]</div>
 <div class="arithmatex">\[\tilde{a} = (1 + s_a) \cdot \mathbf{R} \cdot (a_{true} - g) + b_a + n_a\]</div>
 <p>其中 <span class="arithmatex">\(s_g, s_a\)</span> 为标度因子误差，<span class="arithmatex">\(b_g, b_a\)</span> 为零偏，<span class="arithmatex">\(n_g, n_a\)</span> 为白噪声，<span class="arithmatex">\(\mathbf{R}\)</span> 为安装偏差旋转矩阵。</p>
@@ -5151,25 +5207,25 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;">LiDAR</td>
+<td style="text-align: center;"><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr></td>
 <td style="text-align: left;">测距噪声</td>
 <td style="text-align: left;">高斯分布 <span class="arithmatex">\(\mathcal{N}(0, \sigma_R^2)\)</span></td>
 <td style="text-align: left;"><span class="arithmatex">\(\sigma_R = 1\text{-}3\;\text{cm}\)</span></td>
 </tr>
 <tr>
-<td style="text-align: center;">LiDAR</td>
+<td style="text-align: center;"><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr></td>
 <td style="text-align: left;">强度噪声</td>
 <td style="text-align: left;">信号相关高斯</td>
 <td style="text-align: left;">SNR 依赖于距离和反射率</td>
 </tr>
 <tr>
-<td style="text-align: center;">LiDAR</td>
+<td style="text-align: center;"><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr></td>
 <td style="text-align: left;">丢点（Drop-out）</td>
 <td style="text-align: left;">伯努利分布</td>
 <td style="text-align: left;">丢点率 1%-5%</td>
 </tr>
 <tr>
-<td style="text-align: center;">LiDAR</td>
+<td style="text-align: center;"><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr></td>
 <td style="text-align: left;">虚假点（Blooming）</td>
 <td style="text-align: left;">目标边缘概率模型</td>
 <td style="text-align: left;">边缘区域</td>
@@ -5223,19 +5279,19 @@
 <td style="text-align: left;"><span class="arithmatex">\(\sigma_R = 1\text{-}3\;\text{cm}\)</span></td>
 </tr>
 <tr>
-<td style="text-align: center;">GNSS</td>
+<td style="text-align: center;"><abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr></td>
 <td style="text-align: left;">定位噪声</td>
 <td style="text-align: left;">高斯 + 多径偏差</td>
 <td style="text-align: left;"><span class="arithmatex">\(\sigma = 1\text{-}50\;\text{m}\)</span></td>
 </tr>
 <tr>
-<td style="text-align: center;">IMU</td>
+<td style="text-align: center;"><abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr></td>
 <td style="text-align: left;">零偏不稳定性</td>
 <td style="text-align: left;">随机游走</td>
 <td style="text-align: left;">器件相关</td>
 </tr>
 <tr>
-<td style="text-align: center;">IMU</td>
+<td style="text-align: center;"><abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr></td>
 <td style="text-align: left;">白噪声</td>
 <td style="text-align: left;">高斯白噪声</td>
 <td style="text-align: left;">ARW / VRW</td>
@@ -5245,7 +5301,7 @@
 <h3 id="72">7.2 噪声模型标定</h3>
 <p>噪声模型的参数需要通过实际传感器数据进行标定。常用方法包括：</p>
 <ul>
-<li><strong>Allan 方差分析：</strong> 用于标定 IMU 噪声参数（ARW、VRW、零偏不稳定性）</li>
+<li><strong>Allan 方差分析：</strong> 用于标定 <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 噪声参数（ARW、VRW、零偏不稳定性）</li>
 <li><strong>静态场景采集：</strong> 在已知场景中采集多帧数据，统计测量噪声的分布特性</li>
 <li><strong>对比实验：</strong> 在相同场景中同时采集真实传感器数据和仿真数据，对比统计特性</li>
 </ul>
@@ -5254,15 +5310,15 @@
 <h3 id="81">8.1 域差距的来源</h3>
 <p>仿真数据与真实数据之间的域差距是传感器仿真面临的核心挑战。域差距主要来源于以下四个层面：</p>
 <p><strong>视觉保真度差距（Visual Fidelity Gap）：</strong> 仿真渲染的图像与真实相机图像在纹理细节、光照真实性和材质表现上的差异。尽管现代游戏引擎的渲染质量已大幅提升，但在天空散射、潮湿路面反射、植被细节等方面仍与真实场景存在可感知的差异。</p>
-<p><strong>几何精度差距（Geometric Accuracy Gap）：</strong> 仿真场景的三维几何模型与真实世界之间的偏差，包括道路曲面精度、建筑物细节层次和植被形态。这一差距直接影响 LiDAR 点云的空间分布特性。</p>
-<p><strong>传感器物理差距（Sensor Physics Gap）：</strong> 仿真传感器模型对真实传感器物理特性的近似程度。例如，仿真 LiDAR 是否准确建模了激光波束的发散角、探测器的非线性响应和多回波阈值。</p>
+<p><strong>几何精度差距（Geometric Accuracy Gap）：</strong> 仿真场景的三维几何模型与真实世界之间的偏差，包括道路曲面精度、建筑物细节层次和植被形态。这一差距直接影响 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 点云的空间分布特性。</p>
+<p><strong>传感器物理差距（Sensor Physics Gap）：</strong> 仿真传感器模型对真实传感器物理特性的近似程度。例如，仿真 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 是否准确建模了激光波束的发散角、探测器的非线性响应和多回波阈值。</p>
 <p><strong>动态行为差距（Dynamic Behavior Gap）：</strong> 仿真环境中交通参与者的行为模式与真实交通流之间的差异。虽然这不是传感器本身的问题，但不真实的动态行为会影响传感器数据的时序特性和遮挡模式。</p>
 <h3 id="82">8.2 域差距度量方法</h3>
 <p><strong>FID（Frechet Inception Distance）：</strong> 最常用的图像分布相似性度量。FID 计算仿真图像和真实图像在 Inception 网络特征空间中的 Frechet 距离：</p>
 <div class="arithmatex">\[\text{FID} = \|\mu_r - \mu_s\|^2 + \text{tr}(\Sigma_r + \Sigma_s - 2(\Sigma_r \Sigma_s)^{1/2})\]</div>
 <p>其中 <span class="arithmatex">\((\mu_r, \Sigma_r)\)</span> 和 <span class="arithmatex">\((\mu_s, \Sigma_s)\)</span> 分别为真实图像和仿真图像的特征均值和协方差。FID 越低表示分布越接近。</p>
 <p><strong>感知性能差值（Perception Performance Delta）：</strong> 更直接的域差距度量方法是比较同一感知算法在仿真数据和真实数据上的性能差异。例如，3D 目标检测模型在仿真数据上的 mAP 与在真实数据上的 mAP 之差。该差值越小，说明仿真数据对感知算法越"透明"。</p>
-<p><strong>点云统计度量：</strong> 针对 LiDAR 仿真，可使用 Chamfer Distance（CD）和 Earth Mover's Distance（EMD）来度量仿真点云和真实点云之间的几何分布差异：</p>
+<p><strong>点云统计度量：</strong> 针对 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 仿真，可使用 Chamfer Distance（CD）和 Earth Mover's Distance（EMD）来度量仿真点云和真实点云之间的几何分布差异：</p>
 <div class="arithmatex">\[\text{CD}(S_1, S_2) = \frac{1}{|S_1|}\sum_{x \in S_1} \min_{y \in S_2}\|x-y\|^2 + \frac{1}{|S_2|}\sum_{y \in S_2}\min_{x \in S_1}\|x-y\|^2\]</div>
 <h3 id="83">8.3 缩小域差距的方法</h3>
 <ul>
@@ -5286,7 +5342,7 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;">LiDAR</td>
+<td style="text-align: center;"><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr></td>
 <td style="text-align: center;">10-20 Hz</td>
 <td style="text-align: center;">自由运行</td>
 <td style="text-align: center;">50-100 ms（旋转周期）</td>
@@ -5310,13 +5366,13 @@
 <td style="text-align: center;">5-10 ms</td>
 </tr>
 <tr>
-<td style="text-align: center;">GNSS</td>
+<td style="text-align: center;"><abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr></td>
 <td style="text-align: center;">1-10 Hz</td>
 <td style="text-align: center;">PPS 同步</td>
 <td style="text-align: center;">10-50 ms</td>
 </tr>
 <tr>
-<td style="text-align: center;">IMU</td>
+<td style="text-align: center;"><abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr></td>
 <td style="text-align: center;">100-400 Hz</td>
 <td style="text-align: center;">自由运行</td>
 <td style="text-align: center;">&lt; 1 ms</td>
@@ -5355,17 +5411,17 @@
         ▼
   感知输出（3D 目标列表、自车定位）
 </code></pre></div>
-<p>仿真的关键价值在于：可以对单一传感器进行失效注入（如 LiDAR 被遮挡、摄像头过曝、GNSS 失锁），验证融合算法在传感器退化条件下的鲁棒性。</p>
+<p>仿真的关键价值在于：可以对单一传感器进行失效注入（如 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 被遮挡、摄像头过曝、<abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 失锁），验证融合算法在传感器退化条件下的鲁棒性。</p>
 <hr />
 <h2 id="10">10. 参考资料</h2>
 <ol>
-<li>Manivasagam, S., et al. "LiDARsim: Realistic LiDAR Simulation by Leveraging the Real World." <em>CVPR</em>, 2020.</li>
-<li>Fang, J., et al. "Augmented LiDAR Simulator for Autonomous Driving." <em>IEEE Robotics and Automation Letters</em>, 2020.</li>
+<li>Manivasagam, S., et al. "LiDARsim: Realistic <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> Simulation by Leveraging the Real World." <em>CVPR</em>, 2020.</li>
+<li>Fang, J., et al. "Augmented <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> Simulator for Autonomous Driving." <em>IEEE Robotics and Automation Letters</em>, 2020.</li>
 <li>Dosovitskiy, A., et al. "CARLA: An Open Urban Driving Simulator." <em>CoRL</em>, 2017.</li>
 <li>Carlson, A., et al. "Sensor Simulation for Autonomous Vehicle Development." <em>IEEE Intelligent Vehicles Symposium</em>, 2019.</li>
 <li>Heusel, M., et al. "GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium." <em>NeurIPS</em>, 2017.（FID 度量方法）</li>
 <li>Tobin, J., et al. "Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World." <em>IROS</em>, 2017.</li>
-<li>Yue, X., et al. "A LiDAR Point Cloud Generator: from a Virtual World to Autonomous Driving." <em>ICMR</em>, 2018.</li>
+<li>Yue, X., et al. "A <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> Point Cloud Generator: from a Virtual World to Autonomous Driving." <em>ICMR</em>, 2018.</li>
 <li>Hirsenkorn, N., et al. "Virtual Sensor Models for Real-Time Applications." <em>Sensors</em>, 2016.</li>
 <li>Wheeler, T., et al. "Deep Stochastic Radar Models." <em>IV</em>, 2017.</li>
 <li>Teed, Z., Deng, J. "RAFT: Recurrent All-Pairs Field Transforms for Optical Flow." <em>ECCV</em>, 2020.</li>
@@ -5377,6 +5433,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月21日 23:41:48 UTC">2026年3月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

@@ -1403,6 +1403,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3321,6 +3349,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -4796,7 +4852,7 @@
 <td>人类+系统（单一）</td>
 <td>人类</td>
 <td>人类</td>
-<td>ACC 或 LKA（二选一）</td>
+<td><abbr title="Adaptive Cruise Control，自适应巡航">ACC</abbr> 或 <abbr title="Lane Keeping Assist，车道保持辅助">LKA</abbr>（二选一）</td>
 </tr>
 <tr>
 <td>L2</td>
@@ -4812,7 +4868,7 @@
 <td>系统</td>
 <td>系统</td>
 <td>人类（需准备接管）</td>
-<td>特定 ODD 内自主行驶</td>
+<td>特定 <abbr title="Operational Design Domain，运行设计域">ODD</abbr> 内自主行驶</td>
 </tr>
 <tr>
 <td>L4</td>
@@ -4820,7 +4876,7 @@
 <td>系统</td>
 <td>系统</td>
 <td>系统</td>
-<td>ODD 内完全自主</td>
+<td><abbr title="Operational Design Domain，运行设计域">ODD</abbr> 内完全自主</td>
 </tr>
 <tr>
 <td>L5</td>
@@ -4828,7 +4884,7 @@
 <td>系统</td>
 <td>系统</td>
 <td>系统</td>
-<td>任意场景，无 ODD 限制</td>
+<td>任意场景，无 <abbr title="Operational Design Domain，运行设计域">ODD</abbr> 限制</td>
 </tr>
 </tbody>
 </table>
@@ -4839,22 +4895,22 @@
 - <strong>前碰撞预警（FCW）</strong>：检测到危险时发出声光警报，但不主动制动
 - <strong>车道偏离预警（LDW）</strong>：检测到车道偏离时报警，但不主动修正方向
 - <strong>盲区监测（BSM）</strong>：提示驾驶员盲区有车，但不介入</p>
-<p>注意：这些功能属于 ADAS（高级驾驶辅助系统）的信息提示层，<strong>不构成自动化</strong>。驾驶员对车辆的完全控制权不受影响。</p>
+<p>注意：这些功能属于 <abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr>（高级驾驶辅助系统）的信息提示层，<strong>不构成自动化</strong>。驾驶员对车辆的完全控制权不受影响。</p>
 <p><strong>责任归属</strong>：100% 由驾驶员承担。</p>
 <h3 id="l1driver-assistance">L1：驾驶辅助（Driver Assistance）</h3>
 <p>L1 系统可以在<strong>横向或纵向</strong>中的一个维度上辅助控制车辆，但不能同时控制两个维度。驾驶员必须始终保持对车辆的总体控制，并持续监控驾驶环境。</p>
 <p>两种典型的 L1 功能：</p>
-<p><strong>自适应巡航控制（ACC，Adaptive Cruise Control）</strong>：
+<p><strong>自适应巡航控制（<abbr title="Adaptive Cruise Control，自适应巡航">ACC</abbr>，Adaptive Cruise Control）</strong>：
 - 纵向控制：自动调节车速，与前车保持设定安全距离
 - 驾驶员仍须掌控方向盘</p>
-<p><strong>车道保持辅助（LKA，Lane Keeping Assist）</strong>：
+<p><strong>车道保持辅助（<abbr title="Lane Keeping Assist，车道保持辅助">LKA</abbr>，Lane Keeping Assist）</strong>：
 - 横向控制：车辆偏离车道时自动施加转向力矩修正
 - 驾驶员仍须控制车速</p>
-<p>L1 功能在中低端量产车上已相当普及。中国销售的新车中，2022年以后 AEB（自动紧急制动）和 LDW 的搭载率已超过 70%。</p>
+<p>L1 功能在中低端量产车上已相当普及。中国销售的新车中，2022年以后 <abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr>（自动紧急制动）和 LDW 的搭载率已超过 70%。</p>
 <p><strong>责任归属</strong>：驾驶员承担主要责任，系统提供辅助。</p>
 <h3 id="l2partial-automation">L2：部分自动化（Partial Automation）</h3>
 <p>L2 是当前<strong>量产规模最大</strong>的自动驾驶级别。系统可以<strong>同时控制横向（转向）和纵向（加减速）</strong>，但驾驶员必须全程监控路况，随时准备接管。</p>
-<p>L2 系统的核心组合：<strong>ACC + LKA</strong>，通常还叠加以下功能：
+<p>L2 系统的核心组合：<strong><abbr title="Adaptive Cruise Control，自适应巡航">ACC</abbr> + <abbr title="Lane Keeping Assist，车道保持辅助">LKA</abbr></strong>，通常还叠加以下功能：
 - 自动变道辅助（ALC）
 - 自动跟车（TJA，Traffic Jam Assist）
 - 高速公路自动导航（NOA/NGP/NOP）</p>
@@ -4870,7 +4926,7 @@
 <tbody>
 <tr>
 <td>特斯拉</td>
-<td>Autopilot / FSD</td>
+<td>Autopilot / <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr></td>
 <td>高速 + 城区（争议见后文）</td>
 </tr>
 <tr>
@@ -4904,16 +4960,16 @@
 <p><strong>责任归属</strong>：驾驶员承担全部责任，制造商在产品缺陷范围内承担产品责任。</p>
 <h3 id="l3conditional-automation">L3：条件自动化（Conditional Automation）</h3>
 <p>L3 是自动驾驶分级中<strong>争议最大、落地最难</strong>的级别，也是 L2 和 L4 之间的关键过渡。</p>
-<p><strong>核心特征</strong>：在特定的<strong>操作设计域（ODD）</strong>内，系统全面接管驾驶任务，包括环境监测。驾驶员可以从事其他活动（如看视频、处理文件），<strong>但必须在系统发出接管请求（TOR，Take-Over Request）后在规定时间内接管车辆</strong>。</p>
+<p><strong>核心特征</strong>：在特定的<strong>操作设计域（<abbr title="Operational Design Domain，运行设计域">ODD</abbr>）</strong>内，系统全面接管驾驶任务，包括环境监测。驾驶员可以从事其他活动（如看视频、处理文件），<strong>但必须在系统发出接管请求（<abbr title="Takeover Request，接管请求">TOR</abbr>，Take-Over Request）后在规定时间内接管车辆</strong>。</p>
 <p>L3 的关键约束：
 - 激活条件严格：通常限于高速公路、限速 60 km/h 以下、交通拥堵等特定场景
 - 接管时间要求：一般为 10 秒内，具体由车型和场景决定
-- 超出 ODD 时：系统必须向驾驶员发出请求，无法自主处理</p>
+- 超出 <abbr title="Operational Design Domain，运行设计域">ODD</abbr> 时：系统必须向驾驶员发出请求，无法自主处理</p>
 <p><strong>全球首个商业 L3 车型</strong>：奔驰 DRIVE PILOT（S 级/EQS）于2021年获得德国联邦机动车管理局批准，是全球首款获得政府认证的 L3 量产车型，限速 60 km/h、仅限德国特定高速公路路段使用。</p>
 <p><strong>责任归属</strong>：系统激活期间，<strong>制造商承担责任</strong>。这是 L3 与 L2 最根本的法律差异，也是大多数车企对推出 L3 产品持谨慎态度的主要原因。</p>
 <h3 id="l4high-automation">L4：高度自动化（High Automation）</h3>
-<p>L4 系统在其 ODD 范围内<strong>无需任何人类干预</strong>即可完成所有驾驶任务。当出现超出 ODD 的情况时，车辆会自行执行<strong>最小风险状态（MRC，Minimal Risk Condition）</strong>——例如安全减速靠边停车——而不是依赖人类接管。</p>
-<p>L4 的标志性差异：<strong>没有"驾驶员"这一角色</strong>（在 ODD 内）。</p>
+<p>L4 系统在其 <abbr title="Operational Design Domain，运行设计域">ODD</abbr> 范围内<strong>无需任何人类干预</strong>即可完成所有驾驶任务。当出现超出 <abbr title="Operational Design Domain，运行设计域">ODD</abbr> 的情况时，车辆会自行执行<strong>最小风险状态（<abbr title="Minimum Risk Condition，最小风险状态">MRC</abbr>，Minimal Risk Condition）</strong>——例如安全减速靠边停车——而不是依赖人类接管。</p>
+<p>L4 的标志性差异：<strong>没有"驾驶员"这一角色</strong>（在 <abbr title="Operational Design Domain，运行设计域">ODD</abbr> 内）。</p>
 <p><strong>代表性 L4 产品与运营</strong>：</p>
 <table>
 <thead>
@@ -4958,11 +5014,11 @@
 </tbody>
 </table>
 <p>L4 目前主要应用场景为 <strong>Robotaxi</strong>（无人出租车）和 <strong>Robobus</strong>（无人公交），以及园区/矿山/港口等封闭场景的无人驾驶车辆。</p>
-<p><strong>责任归属</strong>：ODD 内事故由制造商/运营商承担责任。</p>
+<p><strong>责任归属</strong>：<abbr title="Operational Design Domain，运行设计域">ODD</abbr> 内事故由制造商/运营商承担责任。</p>
 <h3 id="l5full-automation">L5：完全自动化（Full Automation）</h3>
 <p>L5 是理论上的最终形态：系统可在<strong>任何道路条件、任何天气、任何场景</strong>下完成驾驶任务，无需方向盘、油门或刹车踏板。</p>
 <p><strong>现实情况</strong>：目前全球范围内<strong>尚无 L5 量产车型</strong>，也没有明确的商业落地时间表。业界普遍认为，L5 面临的挑战不仅是技术层面的（如极端天气感知、复杂交叉路口决策），更是伦理和法律层面的。</p>
-<p>部分研究者认为 L5 在现实道路上可能永远无法实现100%覆盖，行业更可行的终点或许是在越来越宽泛的 ODD 下运行的 L4 系统。</p>
+<p>部分研究者认为 L5 在现实道路上可能永远无法实现100%覆盖，行业更可行的终点或许是在越来越宽泛的 <abbr title="Operational Design Domain，运行设计域">ODD</abbr> 下运行的 L4 系统。</p>
 <h2 id="l2-l3">L2 与 L3 的本质区别</h2>
 <p>L2 与 L3 之间是自动驾驶最重要的分界线，其本质不是技术能力的差异，而是<strong>责任主体的转移</strong>。</p>
 <h3 id="_4">监控责任对比</h3>
@@ -4983,12 +5039,12 @@
 <tr>
 <td>驾驶员可否分心</td>
 <td>不可以（需始终监控）</td>
-<td>可以（ODD 内）</td>
+<td>可以（<abbr title="Operational Design Domain，运行设计域">ODD</abbr> 内）</td>
 </tr>
 <tr>
 <td>接管义务</td>
 <td>随时（系统不会主动请求）</td>
-<td>接到 TOR 后规定时间内</td>
+<td>接到 <abbr title="Takeover Request，接管请求">TOR</abbr> 后规定时间内</td>
 </tr>
 <tr>
 <td>事故责任主体</td>
@@ -5056,15 +5112,15 @@
 </blockquote>
 <h3 id="_7">主要差异点</h3>
 <ol>
-<li><strong>L0 重新定义</strong>：GB/T 40429 将 L0 命名为"应急辅助"，强调该级别仍允许系统提供短暂的紧急干预（如 AEB），而 SAE 原版 L0 对此描述较为模糊</li>
-<li><strong>术语本土化</strong>：使用"操作设计域"而非直接引用 ODD 缩写，便于国内法规文件引用</li>
+<li><strong>L0 重新定义</strong>：GB/T 40429 将 L0 命名为"应急辅助"，强调该级别仍允许系统提供短暂的紧急干预（如 <abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr>），而 SAE 原版 L0 对此描述较为模糊</li>
+<li><strong>术语本土化</strong>：使用"操作设计域"而非直接引用 <abbr title="Operational Design Domain，运行设计域">ODD</abbr> 缩写，便于国内法规文件引用</li>
 <li><strong>测试标准配套</strong>：GB/T 40429 与 GB/T 39263（道路测试）、GB/T 41798（功能安全）等系列标准形成体系，而 SAE J3016 仅提供分类定义</li>
 </ol>
-<h2 id="odd">ODD：操作设计域</h2>
-<p>ODD（Operational Design Domain，操作设计域）是理解自动驾驶分级的关键前提，也是 L3/L4 系统能够运行的<strong>必要边界条件</strong>。</p>
-<h3 id="odd_1">ODD 的定义</h3>
-<p>ODD 描述了一个自动驾驶系统<strong>被设计为可以正常运行的特定条件集合</strong>。超出这些条件，系统需要降级或请求人类接管。</p>
-<h3 id="odd_2">ODD 的主要维度</h3>
+<h2 id="odd"><abbr title="Operational Design Domain，运行设计域">ODD</abbr>：操作设计域</h2>
+<p><abbr title="Operational Design Domain，运行设计域">ODD</abbr>（Operational Design Domain，操作设计域）是理解自动驾驶分级的关键前提，也是 L3/L4 系统能够运行的<strong>必要边界条件</strong>。</p>
+<h3 id="odd_1"><abbr title="Operational Design Domain，运行设计域">ODD</abbr> 的定义</h3>
+<p><abbr title="Operational Design Domain，运行设计域">ODD</abbr> 描述了一个自动驾驶系统<strong>被设计为可以正常运行的特定条件集合</strong>。超出这些条件，系统需要降级或请求人类接管。</p>
+<h3 id="odd_2"><abbr title="Operational Design Domain，运行设计域">ODD</abbr> 的主要维度</h3>
 <table>
 <thead>
 <tr>
@@ -5099,7 +5155,7 @@
 </tr>
 <tr>
 <td>基础设施</td>
-<td>需要高精地图覆盖、需要 V2X 信号</td>
+<td>需要高精地图覆盖、需要 <abbr title="Vehicle-to-Everything，车对万物">V2X</abbr> 信号</td>
 </tr>
 <tr>
 <td>其他</td>
@@ -5107,14 +5163,14 @@
 </tr>
 </tbody>
 </table>
-<h3 id="odd_3">ODD 对分级的影响</h3>
+<h3 id="odd_3"><abbr title="Operational Design Domain，运行设计域">ODD</abbr> 对分级的影响</h3>
 <ul>
-<li><strong>L2 系统</strong>：有 ODD，但超出范围时驾驶员已在监控，可立即介入</li>
-<li><strong>L3 系统</strong>：ODD 是法律责任边界，系统必须准确识别 ODD 边界并提前发出 TOR</li>
-<li><strong>L4 系统</strong>：ODD 是系统能力的硬边界，超出则执行 MRC，不依赖人类</li>
-<li><strong>L5 系统</strong>：理论上 ODD = 全部道路条件，无约束</li>
+<li><strong>L2 系统</strong>：有 <abbr title="Operational Design Domain，运行设计域">ODD</abbr>，但超出范围时驾驶员已在监控，可立即介入</li>
+<li><strong>L3 系统</strong>：<abbr title="Operational Design Domain，运行设计域">ODD</abbr> 是法律责任边界，系统必须准确识别 <abbr title="Operational Design Domain，运行设计域">ODD</abbr> 边界并提前发出 <abbr title="Takeover Request，接管请求">TOR</abbr></li>
+<li><strong>L4 系统</strong>：<abbr title="Operational Design Domain，运行设计域">ODD</abbr> 是系统能力的硬边界，超出则执行 <abbr title="Minimum Risk Condition，最小风险状态">MRC</abbr>，不依赖人类</li>
+<li><strong>L5 系统</strong>：理论上 <abbr title="Operational Design Domain，运行设计域">ODD</abbr> = 全部道路条件，无约束</li>
 </ul>
-<p>ODD 的精确定义和验证测试，是 L3/L4 系统获得政府认证的核心技术挑战之一。</p>
+<p><abbr title="Operational Design Domain，运行设计域">ODD</abbr> 的精确定义和验证测试，是 L3/L4 系统获得政府认证的核心技术挑战之一。</p>
 <h2 id="_8">各级主流量产产品对比</h2>
 <table>
 <thead>
@@ -5130,11 +5186,11 @@
 <tbody>
 <tr>
 <td>特斯拉</td>
-<td>Model 3/Y（FSD）</td>
+<td>Model 3/Y（<abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr>）</td>
 <td>L2（官方）</td>
 <td>8×摄像头，无雷达</td>
 <td>高速+城区 NOA、自动变道、召唤</td>
-<td>含 FSD 约30万+</td>
+<td>含 <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> 约30万+</td>
 </tr>
 <tr>
 <td>通用</td>
@@ -5220,16 +5276,16 @@
 </table>
 <h2 id="_9">常见误区澄清</h2>
 <h3 id="l4-l3">误区一："L4 一定比 L3 更安全"</h3>
-<p>这一说法不准确。分级描述的是<strong>功能范围和责任归属</strong>，而非绝对安全性。一个严格限定在小范围 ODD 内的 L4 系统，在其运行范围内可能比一个拥有宽泛 ODD 的 L3 系统更可靠——因为前者面临的场景更单一、更可预测。</p>
-<p>换言之，<strong>ODD 的边界比级别数字更能反映系统的实际能力</strong>。</p>
-<h3 id="fsd-l4-l5">误区二："特斯拉 FSD 是 L4 或 L5"</h3>
-<p>特斯拉官方将 FSD（Full Self-Driving）定性为 <strong>L2 辅助驾驶系统</strong>，驾驶员必须随时保持注意力并准备接管。"Full Self-Driving"是商业命名，并非技术级别声明。美国 NHTSA 和多国监管机构均已明确，FSD 属于 L2 范畴。使用 FSD 时发生的事故，驾驶员依然承担法律责任。</p>
+<p>这一说法不准确。分级描述的是<strong>功能范围和责任归属</strong>，而非绝对安全性。一个严格限定在小范围 <abbr title="Operational Design Domain，运行设计域">ODD</abbr> 内的 L4 系统，在其运行范围内可能比一个拥有宽泛 <abbr title="Operational Design Domain，运行设计域">ODD</abbr> 的 L3 系统更可靠——因为前者面临的场景更单一、更可预测。</p>
+<p>换言之，<strong><abbr title="Operational Design Domain，运行设计域">ODD</abbr> 的边界比级别数字更能反映系统的实际能力</strong>。</p>
+<h3 id="fsd-l4-l5">误区二："特斯拉 <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> 是 L4 或 L5"</h3>
+<p>特斯拉官方将 <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr>（Full Self-Driving）定性为 <strong>L2 辅助驾驶系统</strong>，驾驶员必须随时保持注意力并准备接管。"Full Self-Driving"是商业命名，并非技术级别声明。美国 NHTSA 和多国监管机构均已明确，<abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> 属于 L2 范畴。使用 <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> 时发生的事故，驾驶员依然承担法律责任。</p>
 <h3 id="l3">误区三："中国市场的'智能驾驶'都是 L3"</h3>
 <p>中国市场宣传中常见"高阶智驾""城市 NOA""全场景智驾"等说法，但这些产品在法律定义上<strong>几乎全部属于 L2 或 L2+</strong>。截至2025年，中国尚无经法规认证的 L3 量产商业车型（深圳已有地方性立法框架，但正式获批的 L3 商业产品仍处于试点阶段）。</p>
 <h3 id="l3_1">误区四："L3 是过渡级别，会被跳过"</h3>
 <p>确实有部分车企选择"跳过 L3"直接布局 L4，主要动机是规避 L3 的法律责任。但 L3 在技术路线上有其独特价值：它使系统积累了大量"接管请求"场景的数据，有助于提升 L4 系统的边界处理能力。德国、日本等地已有正式 L3 立法，预计未来会有更多 L3 产品进入市场。</p>
 <h3 id="l4l5">误区五："没有方向盘就是 L4/L5"</h3>
-<p>取消方向盘是 L4/L5 车辆的可能设计选择，但并非判断标准。L4 系统的核心是<strong>在 ODD 内无需人类干预</strong>，而非车内硬件形态。部分 L4 Robotaxi 保留了应急操控接口，部分则完全取消。硬件设计与自动化级别是两个独立维度。</p>
+<p>取消方向盘是 L4/L5 车辆的可能设计选择，但并非判断标准。L4 系统的核心是<strong>在 <abbr title="Operational Design Domain，运行设计域">ODD</abbr> 内无需人类干预</strong>，而非车内硬件形态。部分 L4 Robotaxi 保留了应急操控接口，部分则完全取消。硬件设计与自动化级别是两个独立维度。</p>
 <h2 id="_10">参考资料</h2>
 <ol>
 <li>SAE International. <em>J3016_202104: Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles</em>. 2021.</li>
@@ -5244,6 +5300,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 01:05:30 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

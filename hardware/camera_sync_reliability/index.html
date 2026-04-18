@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3257,6 +3285,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -4635,7 +4691,7 @@
 <hr />
 <h2 id="1">1. 多传感器时间同步</h2>
 <h3 id="11">1.1 同步的重要性</h3>
-<p>自动驾驶系统中，多路摄像头 + LiDAR + Radar + IMU 数据在同一时刻采集，才能进行有效融合。若存在时间偏差：</p>
+<p>自动驾驶系统中，多路摄像头 + <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> + Radar + <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 数据在同一时刻采集，才能进行有效融合。若存在时间偏差：</p>
 <div class="highlight"><pre><span></span><code>问题示例：
   摄像头帧时间戳：T = 100 ms
   LiDAR 点云时间戳：T = 110 ms（10 ms 偏差）
@@ -4659,11 +4715,11 @@
 <td>&lt; 1 ms（最好 &lt; 0.1 ms）</td>
 </tr>
 <tr>
-<td>摄像头 ↔ LiDAR</td>
+<td>摄像头 ↔ <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr></td>
 <td>&lt; 1 ms</td>
 </tr>
 <tr>
-<td>摄像头 ↔ GNSS/IMU</td>
+<td>摄像头 ↔ <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr>/<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr></td>
 <td>&lt; 10 ms</td>
 </tr>
 <tr>
@@ -4707,8 +4763,8 @@ PTP 主时钟（域控 SoC）
    相机曝光开始 → 触发信号生成 T_exposure_start → 直接记录到帧头
    误差：&lt; 100 μs（受时钟分辨率限制）
 </code></pre></div>
-<h3 id="14-lidar">1.4 摄像头与 LiDAR 联合同步</h3>
-<p>LiDAR 旋转扫描本身存在扫描时间跨度（机械式 LiDAR 每圈 ~100 ms），需要运动补偿：</p>
+<h3 id="14-lidar">1.4 摄像头与 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 联合同步</h3>
+<p><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 旋转扫描本身存在扫描时间跨度（机械式 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 每圈 ~100 ms），需要运动补偿：</p>
 <div class="highlight"><pre><span></span><code>LiDAR 点云运动补偿步骤：
 1. 记录每个点的采集时刻 T_point（LiDAR 内部时间戳）
 2. 查询 IMU 积分轨迹，得到 T_point 时刻的车体位姿
@@ -4948,20 +5004,20 @@ PTP 主时钟（域控 SoC）
 <tr>
 <td>Level 1</td>
 <td>1–2 路摄像头轻度异常</td>
-<td>降低权重，增大 LiDAR 权重</td>
+<td>降低权重，增大 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 权重</td>
 <td>限速 80 km/h</td>
 </tr>
 <tr>
 <td>Level 2</td>
 <td>关键前视摄像头异常</td>
 <td>切换保守感知策略</td>
-<td>TOR 请求，限速 60 km/h</td>
+<td><abbr title="Takeover Request，接管请求">TOR</abbr> 请求，限速 60 km/h</td>
 </tr>
 <tr>
 <td>Level 3</td>
 <td>多路摄像头重度异常</td>
-<td>仅依赖 LiDAR+Radar</td>
-<td>MRC 执行（减速靠边）</td>
+<td>仅依赖 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>+Radar</td>
+<td><abbr title="Minimum Risk Condition，最小风险状态">MRC</abbr> 执行（减速靠边）</td>
 </tr>
 </tbody>
 </table>
@@ -5010,8 +5066,8 @@ PTP 主时钟（域控 SoC）
 </tr>
 </tbody>
 </table>
-<h3 id="52-ota">5.2 OTA 更新后相机链路回归</h3>
-<p>每次 ECU 软件或参数 OTA 更新后必须验证：</p>
+<h3 id="52-ota">5.2 <abbr title="Over-the-Air，空中升级">OTA</abbr> 更新后相机链路回归</h3>
+<p>每次 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 软件或参数 <abbr title="Over-the-Air，空中升级">OTA</abbr> 更新后必须验证：</p>
 <ul>
 <li>[ ] 相机视频流帧率恢复正常（30 fps ± 0.5 fps）</li>
 <li>[ ] 时间戳同步误差 &lt; 1 ms</li>
@@ -5072,6 +5128,27 @@ DTC-CAM-006: ISP 处理异常（图像全黑/全白）
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 19:34:57 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

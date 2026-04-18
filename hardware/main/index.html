@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3099,6 +3127,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -4349,7 +4405,7 @@
 <tr>
 <td>3.2</td>
 <td>计算控制单元</td>
-<td>CCU/域控制器选型、芯片方案与算力需求</td>
+<td><abbr title="Central Compute Unit，中央计算单元">CCU</abbr>/域控制器选型、芯片方案与算力需求</td>
 </tr>
 <tr>
 <td>3.3</td>
@@ -4359,7 +4415,7 @@
 <tr>
 <td>3.4</td>
 <td>车载通信</td>
-<td>车内总线（CAN/以太网）与无线通信模块</td>
+<td>车内总线（<abbr title="Controller Area Network，控制器局域网">CAN</abbr>/以太网）与无线通信模块</td>
 </tr>
 <tr>
 <td>3.5</td>
@@ -4378,13 +4434,13 @@
 <h3 id="31-hw_overview">3.1 硬件概述（hw_overview）</h3>
 <p>本节从全局视角介绍自动驾驶硬件系统的整体架构，包括感知层、计算层和执行层三大组成部分，以及各模块之间的数据流与控制流关系。同时介绍典型的传感器套件配置方案（Sensor Suite）和不同技术路线的硬件选型差异。</p>
 <h3 id="32-ccu">3.2 计算控制单元（ccu）</h3>
-<p>车载计算平台是自动驾驶的"大脑"，负责处理传感器原始数据并输出控制指令。本节介绍中央计算单元（CCU）的架构设计，主流芯片方案（NVIDIA Orin、高通 8540、英特尔等），以及如何根据算力需求、功耗预算和功能安全等级进行平台选型。</p>
+<p>车载计算平台是自动驾驶的"大脑"，负责处理传感器原始数据并输出控制指令。本节介绍中央计算单元（<abbr title="Central Compute Unit，中央计算单元">CCU</abbr>）的架构设计，主流芯片方案（NVIDIA Orin、高通 8540、英特尔等），以及如何根据算力需求、功耗预算和功能安全等级进行平台选型。</p>
 <h3 id="33-drive_by_wire">3.3 线控底盘（drive_by_wire）</h3>
-<p>线控技术（Drive-by-Wire，DbW）用电信号取代传统的机械连接，是自动驾驶对车辆进行主动控制的前提。本节介绍线控转向（SbW）、线控制动（BbW）、线控油门的工作原理，以及在功能安全框架下如何设计冗余执行机构。</p>
+<p>线控技术（Drive-by-Wire，DbW）用电信号取代传统的机械连接，是自动驾驶对车辆进行主动控制的前提。本节介绍线控转向（<abbr title="Steer-by-Wire，线控转向">SbW</abbr>）、线控制动（BbW）、线控油门的工作原理，以及在功能安全框架下如何设计冗余执行机构。</p>
 <h3 id="34-communication">3.4 车载通信（communication）</h3>
-<p>车内通信网络负责连接传感器、计算单元和执行器。本节介绍 CAN、LIN、FlexRay、以太网（100BASE-T1/1000BASE-T1）等车载总线技术的特点与适用场景，以及 V2X 无线通信模块的集成方式。</p>
+<p>车内通信网络负责连接传感器、计算单元和执行器。本节介绍 <abbr title="Controller Area Network，控制器局域网">CAN</abbr>、LIN、FlexRay、以太网（100BASE-T1/1000BASE-T1）等车载总线技术的特点与适用场景，以及 <abbr title="Vehicle-to-Everything，车对万物">V2X</abbr> 无线通信模块的集成方式。</p>
 <h3 id="35-sensors">3.5 传感器（sensors）</h3>
-<p>多传感器融合是当前主流自动驾驶系统的感知基础。本节对比介绍激光雷达（LiDAR）、毫米波雷达（mmWave Radar）、超声波雷达的工作原理、技术指标与典型应用场景，并讨论各类传感器在不同天气、光照条件下的性能差异。</p>
+<p>多传感器融合是当前主流自动驾驶系统的感知基础。本节对比介绍激光雷达（<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>）、毫米波雷达（mmWave Radar）、超声波雷达的工作原理、技术指标与典型应用场景，并讨论各类传感器在不同天气、光照条件下的性能差异。</p>
 <h3 id="36-camera">3.6 摄像头（camera）</h3>
 <p>摄像头是成本最低、信息最丰富的传感器，也是纯视觉路线（如特斯拉）的核心依赖。本节介绍前视、环视、后视摄像头的配置方案，鱼眼与长焦镜头的选型逻辑，相机内参/外参标定方法，以及图像传感器（CMOS）的关键性能指标。</p>
 <hr />
@@ -4403,6 +4459,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 01:05:30 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

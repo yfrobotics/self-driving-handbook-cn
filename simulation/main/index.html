@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -2934,6 +2962,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -4350,7 +4406,7 @@
 <li><strong>精确复现与调试</strong>：每次仿真运行完全可复现，工程师可以逐帧回放问题场景</li>
 <li><strong>系统性覆盖边缘案例</strong>：通过参数化场景生成和对抗性测试，系统性地覆盖长尾场景</li>
 </ul>
-<p>"<strong>仿真优先</strong>"（Simulation-First）开发范式已成为行业共识：Waymo 每天运行超过 2500 万英里虚拟测试；特斯拉利用大规模仿真训练 FSD 神经网络；百度 Apollo 在 AADS 平台上完成了超过 100 亿公里的虚拟路测。</p>
+<p>"<strong>仿真优先</strong>"（Simulation-First）开发范式已成为行业共识：Waymo 每天运行超过 2500 万英里虚拟测试；特斯拉利用大规模仿真训练 <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> 神经网络；百度 Apollo 在 AADS 平台上完成了超过 100 亿公里的虚拟路测。</p>
 <hr />
 <h2 id="_3">本章内容概览</h2>
 <table>
@@ -4375,7 +4431,7 @@
 <tr>
 <td>5.3</td>
 <td>传感器仿真</td>
-<td>LiDAR/摄像头/雷达仿真、噪声模型、域差距分析</td>
+<td><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>/摄像头/雷达仿真、噪声模型、域差距分析</td>
 </tr>
 <tr>
 <td>5.4</td>
@@ -4385,7 +4441,7 @@
 <tr>
 <td>5.5</td>
 <td>仿真测试方法论</td>
-<td>SIL/HIL/VIL、V 模型、仿真 CI/CD、可信度评估</td>
+<td><abbr title="Software in the Loop，软件在环">SIL</abbr>/<abbr title="Hardware in the Loop，硬件在环">HIL</abbr>/VIL、V 模型、仿真 CI/CD、可信度评估</td>
 </tr>
 <tr>
 <td>5.6</td>
@@ -4406,13 +4462,13 @@
 <h3 id="52-environment">5.2 仿真环境建模（environment）</h3>
 <p>深入讲解虚拟驾驶场景的构建方法：程序化生成、基于实采数据的三维重建、NeRF/3D Gaussian Splatting 等神经渲染方法。涵盖高精地图集成、天气与光照的参数化仿真，以及数字孪生技术在仿真中的应用。</p>
 <h3 id="53-sensors">5.3 传感器仿真（sensors）</h3>
-<p>传感器仿真是连接虚拟环境与感知算法的桥梁。本节详细介绍 LiDAR（光线投射与物理级仿真）、摄像头（光栅化与光线追踪）、毫米波雷达（RCS 模型与电磁仿真）的仿真方法，以及噪声模型和域差距问题。</p>
+<p>传感器仿真是连接虚拟环境与感知算法的桥梁。本节详细介绍 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>（光线投射与物理级仿真）、摄像头（光栅化与光线追踪）、毫米波雷达（RCS 模型与电磁仿真）的仿真方法，以及噪声模型和域差距问题。</p>
 <h3 id="54-scenarios">5.4 交通场景生成（scenarios）</h3>
 <p>介绍标准化场景描述语言（OpenSCENARIO、Scenic）、基于规则的场景模板、数据驱动的场景挖掘，以及对抗性场景生成方法。讨论如何系统性地枚举和覆盖角落案例。</p>
 <h3 id="55-methodology">5.5 仿真测试方法论（methodology）</h3>
-<p>对比三种核心测试方法——SIL（软件在环）、HIL（硬件在环）和 VIL（车辆在环），讲解各自的架构、适用阶段和成本。同时介绍仿真 CI/CD 流程、可信度评估框架和大规模并行仿真的工程实践。</p>
+<p>对比三种核心测试方法——<abbr title="Software in the Loop，软件在环">SIL</abbr>（软件在环）、<abbr title="Hardware in the Loop，硬件在环">HIL</abbr>（硬件在环）和 VIL（车辆在环），讲解各自的架构、适用阶段和成本。同时介绍仿真 CI/CD 流程、可信度评估框架和大规模并行仿真的工程实践。</p>
 <h3 id="56-metrics">5.6 仿真评估指标（metrics）</h3>
-<p>建立完整的仿真评估指标体系，涵盖安全性（TTC、PET、碰撞率）、舒适性（Jerk、横向加速度）、效率性（任务成功率）和覆盖性（ODD 覆盖率）。介绍标准基准测试和统计显著性分析方法。</p>
+<p>建立完整的仿真评估指标体系，涵盖安全性（TTC、PET、碰撞率）、舒适性（Jerk、横向加速度）、效率性（任务成功率）和覆盖性（<abbr title="Operational Design Domain，运行设计域">ODD</abbr> 覆盖率）。介绍标准基准测试和统计显著性分析方法。</p>
 <h3 id="57-sim-to-real-sim2real">5.7 Sim-to-Real 迁移（sim2real）</h3>
 <p>仿真与真实世界之间的域差距是仿真测试面临的核心挑战。本节系统介绍域随机化、域适应、GAN 风格迁移、迁移学习等缩小域差距的方法，并分析各主流公司的工业实践。</p>
 <hr />
@@ -4425,6 +4481,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月21日 23:41:48 UTC">2026年3月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

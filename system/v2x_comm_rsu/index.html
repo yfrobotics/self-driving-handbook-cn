@@ -1306,6 +1306,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../cybersecurity/" class="md-nav__link">
         
   
@@ -3224,6 +3252,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -4564,17 +4620,17 @@
   
 
 
-<h1 id="v2x-rsu">V2X 通信与路侧架构：协议、RSU 与部署</h1>
-<p>本页聚焦 V2X 的通信基础设施和路侧系统工程实现，涵盖通信技术路线、消息标准、RSU 架构设计与规模化部署策略。</p>
+<h1 id="v2x-rsu"><abbr title="Vehicle-to-Everything，车对万物">V2X</abbr> 通信与路侧架构：协议、<abbr title="Roadside Unit，路侧单元">RSU</abbr> 与部署</h1>
+<p>本页聚焦 <abbr title="Vehicle-to-Everything，车对万物">V2X</abbr> 的通信基础设施和路侧系统工程实现，涵盖通信技术路线、消息标准、<abbr title="Roadside Unit，路侧单元">RSU</abbr> 架构设计与规模化部署策略。</p>
 <hr />
 <h2 id="1">1. 通信技术路线对比</h2>
-<h3 id="11-dsrc-vs-c-v2x">1.1 DSRC vs C-V2X</h3>
+<h3 id="11-dsrc-vs-c-v2x">1.1 <abbr title="Dedicated Short Range Communications，专用短程通信">DSRC</abbr> vs <abbr title="Cellular Vehicle-to-Everything，蜂窝车联网">C-V2X</abbr></h3>
 <table>
 <thead>
 <tr>
 <th>维度</th>
-<th>DSRC（IEEE 802.11p）</th>
-<th>C-V2X（LTE-V2X / 5G NR-V2X）</th>
+<th><abbr title="Dedicated Short Range Communications，专用短程通信">DSRC</abbr>（IEEE 802.11p）</th>
+<th><abbr title="Cellular Vehicle-to-Everything，蜂窝车联网">C-V2X</abbr>（LTE-<abbr title="Vehicle-to-Everything，车对万物">V2X</abbr> / 5G NR-<abbr title="Vehicle-to-Everything，车对万物">V2X</abbr>）</th>
 </tr>
 </thead>
 <tbody>
@@ -4596,7 +4652,7 @@
 <tr>
 <td>典型时延</td>
 <td>5–20 ms（直连）</td>
-<td>3–10 ms（5G NR-V2X）</td>
+<td>3–10 ms（5G NR-<abbr title="Vehicle-to-Everything，车对万物">V2X</abbr>）</td>
 </tr>
 <tr>
 <td>通信距离</td>
@@ -4610,17 +4666,17 @@
 </tr>
 <tr>
 <td>演进路径</td>
-<td>停滞（北美 DSRC 资源重分配）</td>
-<td>持续演进（5G NR-V2X）</td>
+<td>停滞（北美 <abbr title="Dedicated Short Range Communications，专用短程通信">DSRC</abbr> 资源重分配）</td>
+<td>持续演进（5G NR-<abbr title="Vehicle-to-Everything，车对万物">V2X</abbr>）</td>
 </tr>
 <tr>
 <td>中国推进</td>
-<td>C-V2X 优先，LTE-V2X 已规模部署</td>
+<td><abbr title="Cellular Vehicle-to-Everything，蜂窝车联网">C-V2X</abbr> 优先，LTE-<abbr title="Vehicle-to-Everything，车对万物">V2X</abbr> 已规模部署</td>
 <td>主流选择</td>
 </tr>
 </tbody>
 </table>
-<h3 id="12-c-v2x">1.2 C-V2X 接口模式</h3>
+<h3 id="12-c-v2x">1.2 <abbr title="Cellular Vehicle-to-Everything，蜂窝车联网">C-V2X</abbr> 接口模式</h3>
 <div class="highlight"><pre><span></span><code>C-V2X 通信接口：
 
 PC5（侧链路，Side Link）：
@@ -4639,7 +4695,7 @@ Uu（蜂窝接口）：
 </code></pre></div>
 <hr />
 <h2 id="2">2. 通信类型与消息标准</h2>
-<h3 id="21-v2v">2.1 V2V（车对车）消息</h3>
+<h3 id="21-v2v">2.1 <abbr title="Vehicle-to-Vehicle，车对车">V2V</abbr>（车对车）消息</h3>
 <table>
 <thead>
 <tr>
@@ -4689,7 +4745,7 @@ Uu（蜂窝接口）：
   size:           车辆尺寸（长宽高）
   safetyExt:      扩展字段（车道、事件类型）
 </code></pre></div>
-<h3 id="22-v2i">2.2 V2I（车对路侧）消息</h3>
+<h3 id="22-v2i">2.2 <abbr title="Vehicle-to-Infrastructure，车对基础设施">V2I</abbr>（车对路侧）消息</h3>
 <table>
 <thead>
 <tr>
@@ -4701,7 +4757,7 @@ Uu（蜂窝接口）：
 </thead>
 <tbody>
 <tr>
-<td>SPAT</td>
+<td><abbr title="Signal Phase and Timing，信号相位与剩余时间">SPAT</abbr></td>
 <td>Signal Phase and Timing</td>
 <td>信号灯当前相位 + 剩余时间</td>
 <td>绿波车速引导（GID）</td>
@@ -4726,7 +4782,7 @@ Uu（蜂窝接口）：
 </tr>
 </tbody>
 </table>
-<p><strong>SPAT 消息使用示例（绿波速度建议）：</strong></p>
+<p><strong><abbr title="Signal Phase and Timing，信号相位与剩余时间">SPAT</abbr> 消息使用示例（绿波速度建议）：</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 绿波通行速度计算（伪代码）</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">compute_advisory_speed</span><span class="p">(</span><span class="n">spat</span><span class="p">,</span> <span class="n">vehicle_position</span><span class="p">,</span> <span class="n">signal_position</span><span class="p">):</span>
     <span class="n">distance</span> <span class="o">=</span> <span class="n">compute_distance</span><span class="p">(</span><span class="n">vehicle_position</span><span class="p">,</span> <span class="n">signal_position</span><span class="p">)</span>
@@ -4742,7 +4798,7 @@ Uu（蜂窝接口）：
         <span class="n">recommended_stop_distance</span> <span class="o">=</span> <span class="n">compute_stop_point</span><span class="p">(</span><span class="n">vehicle_position</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;decelerate&quot;</span><span class="p">,</span> <span class="s2">&quot;stop_at&quot;</span><span class="p">:</span> <span class="n">recommended_stop_distance</span><span class="p">}</span>
 </code></pre></div>
-<h3 id="23-v2n">2.3 V2N（车对网络）消息</h3>
+<h3 id="23-v2n">2.3 <abbr title="Vehicle-to-Network，车对网络">V2N</abbr>（车对网络）消息</h3>
 <div class="highlight"><pre><span></span><code>V2N 典型应用：
 
 实时交通态势：
@@ -4759,8 +4815,8 @@ OTA（空中升级）：
   云端审核后下发到相关区域车辆
 </code></pre></div>
 <hr />
-<h2 id="3-rsu">3. RSU（路侧单元）架构</h2>
-<h3 id="31-rsu">3.1 RSU 硬件组成</h3>
+<h2 id="3-rsu">3. <abbr title="Roadside Unit，路侧单元">RSU</abbr>（路侧单元）架构</h2>
+<h3 id="31-rsu">3.1 <abbr title="Roadside Unit，路侧单元">RSU</abbr> 硬件组成</h3>
 <div class="highlight"><pre><span></span><code>RSU 系统架构：
 
 ┌──────────────────────────────────────────────┐
@@ -4788,7 +4844,7 @@ OTA（空中升级）：
 │  └────────────────────────────────────────┘  │
 └──────────────────────────────────────────────┘
 </code></pre></div>
-<h3 id="32-rsu">3.2 RSU 路侧感知处理流程</h3>
+<h3 id="32-rsu">3.2 <abbr title="Roadside Unit，路侧单元">RSU</abbr> 路侧感知处理流程</h3>
 <div class="highlight"><pre><span></span><code>路侧感知处理（RSU 端）：
 
 摄像头 / 雷达采集
@@ -4807,7 +4863,7 @@ OTA（空中升级）：
   - 速度误差：&lt; 0.5 m/s
   - 分类准确率：行人/非机动车/汽车 &gt; 90%
 </code></pre></div>
-<h3 id="33-rsu">3.3 RSU 与信号机联动</h3>
+<h3 id="33-rsu">3.3 <abbr title="Roadside Unit，路侧单元">RSU</abbr> 与信号机联动</h3>
 <div class="highlight"><pre><span></span><code>RSU ↔ 信号控制机集成协议（NTCIP 1202 / GB/T 标准）：
 
 信号机实时状态读取：
@@ -4870,7 +4926,7 @@ RSU 广播 SPAT 消息（10 Hz 刷新率）：
 <tr>
 <td>车端解码与融合</td>
 <td>≤ 20 ms</td>
-<td>专用 V2X 处理线程</td>
+<td>专用 <abbr title="Vehicle-to-Everything，车对万物">V2X</abbr> 处理线程</td>
 </tr>
 <tr>
 <td><strong>端到端目标</strong></td>
@@ -4922,7 +4978,7 @@ RSU 广播 SPAT 消息（10 Hz 刷新率）：
   KPI：全局信号协同效率提升，平均停车次数减少
 </code></pre></div>
 <h3 id="53">5.3 互操作性要求</h3>
-<p>多厂商 RSU 设备共存时的兼容性挑战：</p>
+<p>多厂商 <abbr title="Roadside Unit，路侧单元">RSU</abbr> 设备共存时的兼容性挑战：</p>
 <div class="highlight"><pre><span></span><code>标准符合性验证：
   1. 消息格式：GB/T 27930 / ETSI EN 302 637 兼容
   2. 安全层：SCMS 证书互信（需建立 PKI 根信任）
@@ -4946,8 +5002,8 @@ RSU 广播 SPAT 消息（10 Hz 刷新率）：
 <tbody>
 <tr>
 <td>路侧感知与车端融合位置偏差大</td>
-<td>RSU 坐标系标定不准</td>
-<td>使用高精 GNSS 标定 RSU 天线位置（&lt; 5 cm）</td>
+<td><abbr title="Roadside Unit，路侧单元">RSU</abbr> 坐标系标定不准</td>
+<td>使用高精 <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 标定 <abbr title="Roadside Unit，路侧单元">RSU</abbr> 天线位置（&lt; 5 cm）</td>
 </tr>
 <tr>
 <td>多厂家设备互通性差</td>
@@ -4983,6 +5039,27 @@ RSU 广播 SPAT 消息（10 Hz 刷新率）：
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 19:34:57 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

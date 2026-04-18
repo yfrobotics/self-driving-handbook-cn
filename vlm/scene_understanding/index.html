@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -2914,6 +2942,34 @@
     
   
     自动驾驶ML数据管道
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
   
 
     
@@ -5095,11 +5151,11 @@
 
 
 <h1 id="_1">场景理解与描述</h1>
-<p>视觉语言大模型（VLM）为自动驾驶场景理解带来了范式性变革。传统感知系统以目标检测、语义分割等结构化输出为核心，而 VLM 能够以自然语言形式对驾驶场景进行<strong>全局语义描述</strong>、<strong>上下文推理</strong>和<strong>异常识别</strong>。本页面系统介绍 VLM 在场景理解与描述中的关键技术方向、代表性工作及评估方法。</p>
+<p>视觉语言大模型（<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>）为自动驾驶场景理解带来了范式性变革。传统感知系统以目标检测、语义分割等结构化输出为核心，而 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 能够以自然语言形式对驾驶场景进行<strong>全局语义描述</strong>、<strong>上下文推理</strong>和<strong>异常识别</strong>。本页面系统介绍 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 在场景理解与描述中的关键技术方向、代表性工作及评估方法。</p>
 <hr />
 <h2 id="1-scene-captioning">1. 驾驶场景描述（Scene Captioning）</h2>
-<h3 id="11-vs-vlm">1.1 传统感知输出 vs VLM 场景描述</h3>
-<p>传统感知管线输出的是结构化数据——边界框坐标、类别标签、置信度分数。这些输出精确但语义贫乏，无法表达场景级别的语义关系。VLM 则可以生成自然语言描述，捕获对象间关系、场景上下文和潜在风险。</p>
+<h3 id="11-vs-vlm">1.1 传统感知输出 vs <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 场景描述</h3>
+<p>传统感知管线输出的是结构化数据——边界框坐标、类别标签、置信度分数。这些输出精确但语义贫乏，无法表达场景级别的语义关系。<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 则可以生成自然语言描述，捕获对象间关系、场景上下文和潜在风险。</p>
 <p><strong>传统感知输出示例：</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;objects&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -5109,7 +5165,7 @@
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>VLM 场景描述输出示例：</strong></p>
+<p><strong><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 场景描述输出示例：</strong></p>
 <div class="highlight"><pre><span></span><code>当前车辆正行驶在城市双向四车道道路上，前方红灯亮起，一辆白色轿车正在
 减速停车。右侧人行横道处有一名行人正准备过马路，手中推着婴儿车，需要
 特别注意。道路左侧有施工围挡，可用车道宽度减少，建议保持低速并适当右偏。
@@ -5119,7 +5175,7 @@
 <tr>
 <th style="text-align: center;">对比维度</th>
 <th style="text-align: center;">传统感知输出</th>
-<th style="text-align: center;">VLM 场景描述</th>
+<th style="text-align: center;"><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 场景描述</th>
 </tr>
 </thead>
 <tbody>
@@ -5156,7 +5212,7 @@
 </tbody>
 </table>
 <h3 id="12">1.2 场景级语义捕获</h3>
-<p>VLM 场景描述的核心优势在于<strong>场景级语义捕获</strong>，即从全局视角理解场景而非逐目标独立处理。场景级语义包括：</p>
+<p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 场景描述的核心优势在于<strong>场景级语义捕获</strong>，即从全局视角理解场景而非逐目标独立处理。场景级语义包括：</p>
 <ul>
 <li><strong>空间布局</strong>：道路结构、车道分布、交叉口类型</li>
 <li><strong>交通态势</strong>：交通流方向、拥堵程度、整体车速</li>
@@ -5165,7 +5221,7 @@
 <li><strong>风险预判</strong>：基于场景上下文的潜在危险推理</li>
 </ul>
 <h3 id="13-vs">1.3 结构化 vs 自由形式描述</h3>
-<p>VLM 场景描述可分为<strong>结构化描述</strong>和<strong>自由形式描述</strong>两种范式：</p>
+<p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 场景描述可分为<strong>结构化描述</strong>和<strong>自由形式描述</strong>两种范式：</p>
 <p><strong>结构化描述</strong>采用预定义的键值对格式，便于下游模块解析：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;scene_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;城市交叉路口&quot;</span><span class="p">,</span>
@@ -5181,13 +5237,13 @@
 <hr />
 <h2 id="2">2. 上下文感知的标志与信号识别</h2>
 <h3 id="21">2.1 超越分类的语义理解</h3>
-<p>传统交通标志识别将任务建模为图像分类问题，在标准标志数据集（如 GTSRB）上性能优异，但在真实场景中面临诸多局限。VLM 通过引入上下文感知能力，实现对标志与信号的<strong>深层语义理解</strong>：</p>
+<p>传统交通标志识别将任务建模为图像分类问题，在标准标志数据集（如 GTSRB）上性能优异，但在真实场景中面临诸多局限。<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 通过引入上下文感知能力，实现对标志与信号的<strong>深层语义理解</strong>：</p>
 <table>
 <thead>
 <tr>
 <th style="text-align: center;">能力</th>
 <th style="text-align: center;">传统分类器</th>
-<th style="text-align: center;">VLM 上下文理解</th>
+<th style="text-align: center;"><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 上下文理解</th>
 </tr>
 </thead>
 <tbody>
@@ -5219,18 +5275,18 @@
 </tbody>
 </table>
 <h3 id="22">2.2 非标准标志理解</h3>
-<p>非标准标志是传统感知系统的盲区。例如手写的"前方塌方，绕行"告示、临时张贴的施工通知、停车场手绘的方向指引等。VLM 能够：</p>
+<p>非标准标志是传统感知系统的盲区。例如手写的"前方塌方，绕行"告示、临时张贴的施工通知、停车场手绘的方向指引等。<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 能够：</p>
 <ul>
 <li>识别并阅读手写或打印的非标准文字告示</li>
 <li>理解箭头、图标等非标准化视觉符号的含义</li>
 <li>结合道路上下文判断非标准标志的可信度和适用范围</li>
 </ul>
 <h3 id="23">2.3 时间上下文推理</h3>
-<p>许多交通标志的语义与<strong>时间上下文</strong>密切相关。VLM 可以结合当前时间信息进行推理：</p>
+<p>许多交通标志的语义与<strong>时间上下文</strong>密切相关。<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 可以结合当前时间信息进行推理：</p>
 <ul>
-<li><strong>学校区域限速</strong>："学校区域，限速 30 km/h（7:00–18:00）"——VLM 可判断当前时间是否在限速时段内</li>
+<li><strong>学校区域限速</strong>："学校区域，限速 30 km/h（7:00–18:00）"——<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 可判断当前时间是否在限速时段内</li>
 <li><strong>潮汐车道</strong>：根据当前时间判断可变车道的通行方向</li>
-<li><strong>停车限制</strong>："工作日 8:00–20:00 禁止停车"——VLM 可判断当前是否为限制时段</li>
+<li><strong>停车限制</strong>："工作日 8:00–20:00 禁止停车"——<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 可判断当前是否为限制时段</li>
 </ul>
 <div class="highlight"><pre><span></span><code>[查询] 当前时间为周三下午 3:30，前方有&quot;学校区域限速30&quot;标志，应如何决策？
 
@@ -5241,7 +5297,7 @@
 <hr />
 <h2 id="3">3. 道路拓扑与布局理解</h2>
 <h3 id="31">3.1 交叉口类型推理</h3>
-<p>道路交叉口的类型和结构对规划决策至关重要。VLM 能够对交叉口进行语义级别的类型推理：</p>
+<p>道路交叉口的类型和结构对规划决策至关重要。<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 能够对交叉口进行语义级别的类型推理：</p>
 <ul>
 <li><strong>十字路口</strong>：识别四向交叉，判断是否有信号灯控制、是否有左转待转区</li>
 <li><strong>T 型路口</strong>：判断优先通行方向、是否需要让行</li>
@@ -5250,35 +5306,35 @@
 <li><strong>立交桥匝道</strong>：分合流区域识别与通行建议</li>
 </ul>
 <h3 id="32">3.2 匝道与合流区域</h3>
-<p>高速公路匝道合流区域是驾驶难度较高的场景，VLM 可以提供：</p>
+<p>高速公路匝道合流区域是驾驶难度较高的场景，<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 可以提供：</p>
 <div class="highlight"><pre><span></span><code>[场景描述] 当前车辆正沿高速公路主路行驶，右侧约 200 米处有一条入口
 匝道正在合流。匝道上有三辆车正以较低车速（约 60 km/h）依次汇入，
 主路当前车道车速约 100 km/h。建议提前变道至左侧车道为合流车辆
 让出空间，或适当减速配合合流。
 </code></pre></div>
 <h3 id="33">3.3 非结构化道路理解</h3>
-<p>城市道路和高速公路有清晰的车道标线和交通设施，但许多场景中道路是<strong>非结构化</strong>的：乡村土路、停车场内部、施工区域临时通道等。传统车道线检测在这些场景中完全失效，而 VLM 可以：</p>
+<p>城市道路和高速公路有清晰的车道标线和交通设施，但许多场景中道路是<strong>非结构化</strong>的：乡村土路、停车场内部、施工区域临时通道等。传统车道线检测在这些场景中完全失效，而 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 可以：</p>
 <ul>
 <li>根据路面纹理、边界和上下文推断可通行区域</li>
 <li>识别非标准的通行路径（如停车场中的行驶方向）</li>
 <li>理解临时交通组织方案（如施工绕行路线）</li>
 </ul>
-<h3 id="34-bev">3.4 BEV 场景理解</h3>
-<p>鸟瞰图（Bird's Eye View, BEV）是自动驾驶中重要的空间表示形式。VLM 可与 BEV 特征结合，实现更精确的空间推理：</p>
+<h3 id="34-bev">3.4 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 场景理解</h3>
+<p>鸟瞰图（Bird's Eye View, <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr>）是自动驾驶中重要的空间表示形式。<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 可与 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征结合，实现更精确的空间推理：</p>
 <div class="arithmatex">\[\mathbf{F}_{BEV} = \text{BEVEncoder}(\mathbf{I}_1, \mathbf{I}_2, \ldots, \mathbf{I}_N)\]</div>
-<p>其中 <span class="arithmatex">\(\mathbf{I}_i\)</span> 为第 <span class="arithmatex">\(i\)</span> 个相机视角的输入图像。BEV 特征提供了统一的俯视空间表示，VLM 可在此基础上进行自然语言形式的空间关系推理。Talk2BEV 等工作已证明这一路径的可行性。</p>
+<p>其中 <span class="arithmatex">\(\mathbf{I}_i\)</span> 为第 <span class="arithmatex">\(i\)</span> 个相机视角的输入图像。<abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征提供了统一的俯视空间表示，<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 可在此基础上进行自然语言形式的空间关系推理。Talk2BEV 等工作已证明这一路径的可行性。</p>
 <hr />
 <h2 id="4">4. 异常场景识别</h2>
 <h3 id="41">4.1 长尾场景挑战</h3>
-<p>异常场景（Anomaly Scenarios）是自动驾驶安全的核心挑战。这些场景在训练数据中极为罕见，但在真实道路上一旦出现可能造成严重后果。VLM 凭借预训练获得的世界知识，在长尾异常场景的识别上展现出显著优势。</p>
-<h3 id="42-vs-vlm">4.2 传统方法 vs VLM 异常识别能力对比</h3>
+<p>异常场景（Anomaly Scenarios）是自动驾驶安全的核心挑战。这些场景在训练数据中极为罕见，但在真实道路上一旦出现可能造成严重后果。<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 凭借预训练获得的世界知识，在长尾异常场景的识别上展现出显著优势。</p>
+<h3 id="42-vs-vlm">4.2 传统方法 vs <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 异常识别能力对比</h3>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">异常场景</th>
 <th style="text-align: left;">传统方法表现</th>
-<th style="text-align: left;">VLM 表现</th>
-<th style="text-align: left;">VLM 优势来源</th>
+<th style="text-align: left;"><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 表现</th>
+<th style="text-align: left;"><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 优势来源</th>
 </tr>
 </thead>
 <tbody>
@@ -5345,7 +5401,7 @@
 </tbody>
 </table>
 <h3 id="43">4.3 异常描述与风险评估</h3>
-<p>VLM 不仅可以<strong>检测</strong>异常，还可以对异常进行<strong>描述</strong>和<strong>风险评估</strong>：</p>
+<p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 不仅可以<strong>检测</strong>异常，还可以对异常进行<strong>描述</strong>和<strong>风险评估</strong>：</p>
 <div class="highlight"><pre><span></span><code>[异常检测输出]
 - 异常类型：路面障碍物
 - 描述：前方车道中央有一个大型纸箱，可能从前方货车掉落，
@@ -5357,16 +5413,16 @@
 </code></pre></div>
 <hr />
 <h2 id="5-3d">5. 3D 场景理解</h2>
-<h3 id="51-vlm">5.1 基于 VLM 的深度估计</h3>
-<p>VLM 可以从单目图像中推理出近似的深度关系，虽然不如 LiDAR 精确，但能以自然语言形式表达空间距离：</p>
+<h3 id="51-vlm">5.1 基于 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的深度估计</h3>
+<p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 可以从单目图像中推理出近似的深度关系，虽然不如 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 精确，但能以自然语言形式表达空间距离：</p>
 <ul>
 <li><strong>相对深度</strong>："白色 SUV 在红色轿车前方约两个车身的距离"</li>
 <li><strong>绝对距离估计</strong>："前方行人距离本车约 30 米"</li>
 <li><strong>尺度推理</strong>：利用已知物体尺寸（车辆、行人）作为参照物估计距离</li>
 </ul>
-<p>深度感知能力使 VLM 在纯视觉自动驾驶方案中具有额外价值，可作为传统单目深度估计的语义补充。</p>
+<p>深度感知能力使 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 在纯视觉自动驾驶方案中具有额外价值，可作为传统单目深度估计的语义补充。</p>
 <h3 id="52">5.2 空间关系推理</h3>
-<p>VLM 的空间关系推理能力超越简单的距离估计，支持复杂的三维空间关系描述：</p>
+<p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的空间关系推理能力超越简单的距离估计，支持复杂的三维空间关系描述：</p>
 <div class="highlight"><pre><span></span><code>[查询] 描述自车周围的空间关系。
 
 [VLM 输出] 自车当前位于三车道道路的中间车道。左前方约 20 米处有一辆
@@ -5375,12 +5431,12 @@
 左侧车道因前方有慢车而出现排队，不建议向左变道。
 </code></pre></div>
 <h3 id="53">5.3 自然语言距离估计</h3>
-<p>VLM 可将精确的距离测量转化为更符合人类认知的自然语言表达：</p>
+<p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 可将精确的距离测量转化为更符合人类认知的自然语言表达：</p>
 <table>
 <thead>
 <tr>
 <th style="text-align: center;">精确距离</th>
-<th style="text-align: left;">VLM 自然语言表达</th>
+<th style="text-align: left;"><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 自然语言表达</th>
 </tr>
 </thead>
 <tbody>
@@ -5410,11 +5466,11 @@
 <hr />
 <h2 id="6">6. 多视角融合理解</h2>
 <h3 id="61">6.1 环视图像理解</h3>
-<p>自动驾驶车辆通常配备 6–8 个环视摄像头，提供 360 度视觉覆盖。VLM 可以对多视角图像进行联合理解：</p>
+<p>自动驾驶车辆通常配备 6–8 个环视摄像头，提供 360 度视觉覆盖。<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 可以对多视角图像进行联合理解：</p>
 <div class="arithmatex">\[\mathbf{S} = \text{VLM}(\mathbf{I}_{front}, \mathbf{I}_{front\_left}, \mathbf{I}_{front\_right}, \mathbf{I}_{rear}, \mathbf{I}_{rear\_left}, \mathbf{I}_{rear\_right})\]</div>
-<p>其中 <span class="arithmatex">\(\mathbf{S}\)</span> 为融合后的场景描述。多视角融合使 VLM 能够生成完整的全景场景描述，而非仅依赖单一前视图。</p>
+<p>其中 <span class="arithmatex">\(\mathbf{S}\)</span> 为融合后的场景描述。多视角融合使 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 能够生成完整的全景场景描述，而非仅依赖单一前视图。</p>
 <h3 id="62">6.2 全景场景描述</h3>
-<p>基于多视角融合，VLM 可以生成 360 度全景场景描述：</p>
+<p>基于多视角融合，<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 可以生成 360 度全景场景描述：</p>
 <div class="highlight"><pre><span></span><code>[全景场景描述]
 前方：城市主干道，双向六车道，前方 100m 处为信号灯控制的十字路口，
       当前绿灯，车流通畅。
@@ -5425,19 +5481,19 @@
 后方：后方约 50m 处有一辆白色 SUV 跟随行驶，保持稳定车距。
 </code></pre></div>
 <h3 id="63">6.3 跨相机一致性</h3>
-<p>多视角理解的一个关键挑战是<strong>跨相机一致性</strong>——同一目标可能出现在相邻摄像头的重叠区域，VLM 需要确保描述的一致性：</p>
+<p>多视角理解的一个关键挑战是<strong>跨相机一致性</strong>——同一目标可能出现在相邻摄像头的重叠区域，<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 需要确保描述的一致性：</p>
 <ul>
 <li><strong>目标身份一致</strong>：左前方摄像头和前方摄像头看到的同一辆车应被识别为同一目标</li>
 <li><strong>空间位置一致</strong>：对同一目标的距离和方位描述在不同视角间应保持一致</li>
 <li><strong>属性描述一致</strong>：颜色、类型等属性描述不应因视角不同而产生矛盾</li>
 </ul>
-<p>实现跨相机一致性通常需要在 VLM 输入中显式编码相机位姿信息，或引入 BEV 中间表示进行统一。</p>
+<p>实现跨相机一致性通常需要在 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 输入中显式编码相机位姿信息，或引入 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 中间表示进行统一。</p>
 <hr />
 <h2 id="7">7. 时序场景理解</h2>
 <h3 id="71">7.1 基于视频的场景理解</h3>
-<p>单帧场景理解存在固有局限——无法捕获运动信息、趋势变化和因果关系。基于视频的 VLM 场景理解通过处理连续帧序列，获取时间维度的语义信息：</p>
+<p>单帧场景理解存在固有局限——无法捕获运动信息、趋势变化和因果关系。基于视频的 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 场景理解通过处理连续帧序列，获取时间维度的语义信息：</p>
 <div class="arithmatex">\[\mathbf{S}_t = \text{VLM}(\mathbf{I}_{t-T}, \mathbf{I}_{t-T+1}, \ldots, \mathbf{I}_{t})\]</div>
-<p>其中 <span class="arithmatex">\(T\)</span> 为时间窗口长度。视频 VLM 可以捕获：</p>
+<p>其中 <span class="arithmatex">\(T\)</span> 为时间窗口长度。视频 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 可以捕获：</p>
 <ul>
 <li><strong>运动模式</strong>：车辆加速、减速、变道等行为</li>
 <li><strong>行为意图</strong>：行人是否准备过马路、前车是否准备转向</li>
@@ -5451,10 +5507,10 @@
 [T=3s] 该红色轿车开启右转向灯，准备变道避让。
 </code></pre></div>
 <h3 id="73">7.3 基于语言的目标跟踪</h3>
-<p>传统目标跟踪依赖视觉特征匹配（如 Re-ID 特征），而 VLM 支持基于自然语言的目标跟踪——用语言描述指定跟踪目标：</p>
+<p>传统目标跟踪依赖视觉特征匹配（如 Re-ID 特征），而 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 支持基于自然语言的目标跟踪——用语言描述指定跟踪目标：</p>
 <ul>
 <li><strong>查询</strong>："跟踪右侧车道那辆车顶载有行李架的蓝色 SUV"</li>
-<li><strong>跟踪输出</strong>：VLM 在后续帧中持续定位并描述该目标的位置和行为变化</li>
+<li><strong>跟踪输出</strong>：<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 在后续帧中持续定位并描述该目标的位置和行为变化</li>
 </ul>
 <p>这种语言驱动的跟踪方式在人机交互场景中尤为有用，例如乘客可以用自然语言指定关注的目标。</p>
 <hr />
@@ -5475,12 +5531,12 @@
 <li>在 BDD-X 数据集上验证了描述生成质量</li>
 </ul>
 <h3 id="82-talk2bev">8.2 Talk2BEV</h3>
-<p><strong>Talk2BEV</strong> 将大语言模型与 BEV 感知特征相结合，支持基于自然语言的 BEV 空间查询和推理。</p>
+<p><strong>Talk2BEV</strong> 将大语言模型与 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 感知特征相结合，支持基于自然语言的 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 空间查询和推理。</p>
 <p><strong>架构设计：</strong></p>
 <ul>
-<li><strong>BEV 编码器</strong>：将多视角图像转换为统一 BEV 特征图 <span class="arithmatex">\(\mathbf{F}_{BEV} \in \mathbb{R}^{H' \times W' \times C}\)</span></li>
-<li><strong>空间引用机制（Spatial Referring）</strong>：将自然语言查询与 BEV 空间区域关联</li>
-<li><strong>语言模型</strong>：基于 LLM 进行空间推理和问答</li>
+<li><strong><abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 编码器</strong>：将多视角图像转换为统一 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征图 <span class="arithmatex">\(\mathbf{F}_{BEV} \in \mathbb{R}^{H' \times W' \times C}\)</span></li>
+<li><strong>空间引用机制（Spatial Referring）</strong>：将自然语言查询与 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 空间区域关联</li>
+<li><strong>语言模型</strong>：基于 <abbr title="Large Language Model，大语言模型">LLM</abbr> 进行空间推理和问答</li>
 </ul>
 <p><strong>典型交互示例：</strong></p>
 <div class="highlight"><pre><span></span><code>[用户] BEV 地图中左前方区域有什么？
@@ -5524,7 +5580,7 @@
 <li>比较："哪辆车距离自车更近？"</li>
 <li>距离："最近的行人距离多远？"</li>
 </ul>
-<p>NuScenes-QA 为评估 VLM 在自动驾驶场景中的空间理解和推理能力提供了标准化基准。</p>
+<p>NuScenes-QA 为评估 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 在自动驾驶场景中的空间理解和推理能力提供了标准化基准。</p>
 <h3 id="84-drivelm">8.4 DriveLM</h3>
 <p><strong>DriveLM</strong> 提出了基于图结构的驾驶场景问答框架，将感知、预测和规划组织为层次化的问答图（QA Graph）。</p>
 <p><strong>核心设计：</strong></p>
@@ -5594,7 +5650,7 @@
 </tbody>
 </table>
 <h3 id="93-gpt-4">9.3 GPT-4 评分</h3>
-<p>近年来，使用 GPT-4 等大语言模型作为评估器（LLM-as-a-Judge）已成为评估开放式生成质量的重要方法：</p>
+<p>近年来，使用 GPT-4 等大语言模型作为评估器（<abbr title="Large Language Model，大语言模型">LLM</abbr>-as-a-Judge）已成为评估开放式生成质量的重要方法：</p>
 <div class="highlight"><pre><span></span><code>[评估提示词模板]
 请评估以下自动驾驶场景描述的质量。参考图像内容和标准答案，
 从以下维度进行 1-10 分评分：
@@ -5637,7 +5693,7 @@
 <li>Liu, H., et al. "Visual Instruction Tuning." <em>NeurIPS</em>, 2023.</li>
 <li>Papineni, K., et al. "BLEU: A Method for Automatic Evaluation of Machine Translation." <em>ACL</em>, 2002.</li>
 <li>Vedantam, R., et al. "CIDEr: Consensus-based Image Description Evaluation." <em>CVPR</em>, 2015.</li>
-<li>Zheng, L., et al. "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena." <em>NeurIPS</em>, 2023.</li>
+<li>Zheng, L., et al. "Judging <abbr title="Large Language Model，大语言模型">LLM</abbr>-as-a-Judge with MT-Bench and Chatbot Arena." <em>NeurIPS</em>, 2023.</li>
 </ol>
 
 
@@ -5646,6 +5702,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月21日 23:41:48 UTC">2026年3月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

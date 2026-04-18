@@ -1181,6 +1181,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../cybersecurity/" class="md-nav__link">
         
   
@@ -3099,6 +3127,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -4348,7 +4404,7 @@
 <tr>
 <td>2.2</td>
 <td>车联网V2X</td>
-<td>V2V/V2I/V2N通信协议与车路协同场景</td>
+<td><abbr title="Vehicle-to-Vehicle，车对车">V2V</abbr>/<abbr title="Vehicle-to-Infrastructure，车对基础设施">V2I</abbr>/V2N通信协议与车路协同场景</td>
 </tr>
 <tr>
 <td>2.3</td>
@@ -4375,24 +4431,24 @@
 <hr />
 <h2 id="_4">各小节简介</h2>
 <h3 id="21-vehicle">2.1 车辆系统（vehicle）</h3>
-<p>现代智能汽车的电气/电子（E/E）架构正经历从分布式 ECU 向域控制器、再向中央计算平台的演进。本节介绍自动驾驶车辆的整体电气架构设计，包括动力域、底盘域、智能驾驶域的划分，以及车载以太网、CAN/LIN 总线等通信骨干网络。</p>
-<h3 id="22-v2xv2x">2.2 车联网 V2X（v2x）</h3>
-<p>单车智能存在感知盲区和视距限制，而 V2X（Vehicle to Everything）通信技术通过车与车（V2V）、车与路侧基础设施（V2I）、车与网络（V2N）的协同，可以显著扩展系统的感知边界。本节介绍 DSRC 和 C-V2X 两大技术路线，以及典型的协同驾驶场景。</p>
+<p>现代智能汽车的电气/电子（E/E）架构正经历从分布式 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 向域控制器、再向中央计算平台的演进。本节介绍自动驾驶车辆的整体电气架构设计，包括动力域、底盘域、智能驾驶域的划分，以及车载以太网、<abbr title="Controller Area Network，控制器局域网">CAN</abbr>/LIN 总线等通信骨干网络。</p>
+<h3 id="22-v2xv2x">2.2 车联网 <abbr title="Vehicle-to-Everything，车对万物">V2X</abbr>（v2x）</h3>
+<p>单车智能存在感知盲区和视距限制，而 <abbr title="Vehicle-to-Everything，车对万物">V2X</abbr>（Vehicle to Everything）通信技术通过车与车（<abbr title="Vehicle-to-Vehicle，车对车">V2V</abbr>）、车与路侧基础设施（<abbr title="Vehicle-to-Infrastructure，车对基础设施">V2I</abbr>）、车与网络（<abbr title="Vehicle-to-Network，车对网络">V2N</abbr>）的协同，可以显著扩展系统的感知边界。本节介绍 <abbr title="Dedicated Short Range Communications，专用短程通信">DSRC</abbr> 和 <abbr title="Cellular Vehicle-to-Everything，蜂窝车联网">C-V2X</abbr> 两大技术路线，以及典型的协同驾驶场景。</p>
 <h3 id="23-platform">2.3 软件平台（platform）</h3>
 <p>自动驾驶软件栈的底层依赖于操作系统和中间件框架。本节介绍主流的开发平台，包括百度 Apollo、Autoware、ROS/ROS2，以及 Autosar Adaptive 等车规级软件框架的基本架构与模块组织方式。</p>
 <h3 id="24-safety">2.4 功能安全（safety）</h3>
-<p>本节介绍汽车功能安全的核心标准 ISO 26262，阐释 ASIL（汽车安全完整性等级）分级方法，以及针对预期功能安全（SOTIF，ISO 21448）的分析思路。功能安全工程是自动驾驶量产落地的必要门槛。</p>
+<p>本节介绍汽车功能安全的核心标准 ISO 26262，阐释 <abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>（汽车安全完整性等级）分级方法，以及针对预期功能安全（<abbr title="Safety Of The Intended Functionality，预期功能安全">SOTIF</abbr>，ISO 21448）的分析思路。功能安全工程是自动驾驶量产落地的必要门槛。</p>
 <h3 id="25-regulation">2.5 法规与标准（regulation）</h3>
 <p>全球主要市场（中国、美国、欧盟、日本）对自动驾驶的准入政策、测试许可与数据监管存在显著差异。本节梳理各地区的法规现状，帮助读者理解政策环境对技术路线选择的深刻影响。</p>
 <h3 id="26-hdmap">2.6 高精地图（hdmap）</h3>
-<p>高精地图（HD Map）是自动驾驶定位和规划的重要基础设施。本节介绍 HD Map 的精度要求（厘米级）、主要图层构成（车道线、标志、限速等）、NDS/OpenDRIVE 等格式标准，以及众包更新与实时维护的技术挑战。</p>
+<p>高精地图（<abbr title="High Definition Map，高精地图">HD Map</abbr>）是自动驾驶定位和规划的重要基础设施。本节介绍 <abbr title="High Definition Map，高精地图">HD Map</abbr> 的精度要求（厘米级）、主要图层构成（车道线、标志、限速等）、NDS/OpenDRIVE 等格式标准，以及众包更新与实时维护的技术挑战。</p>
 <hr />
 <h2 id="_5">关键概念</h2>
 <p>读完本章后，读者应掌握以下关键概念：</p>
 <ul>
 <li>E/E 架构演进路径（分布式 → 域集中 → 中央集中）</li>
-<li>C-V2X 与 DSRC 的技术对比</li>
-<li>ISO 26262 ASIL 等级与安全生命周期</li>
+<li><abbr title="Cellular Vehicle-to-Everything，蜂窝车联网">C-V2X</abbr> 与 <abbr title="Dedicated Short Range Communications，专用短程通信">DSRC</abbr> 的技术对比</li>
+<li>ISO 26262 <abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr> 等级与安全生命周期</li>
 <li>高精地图的核心图层与更新机制</li>
 <li>主要国家/地区自动驾驶法规框架</li>
 </ul>
@@ -4403,6 +4459,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 01:05:30 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

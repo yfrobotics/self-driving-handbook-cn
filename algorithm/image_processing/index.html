@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3483,6 +3511,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nlp/" class="md-nav__link">
         
   
@@ -5085,16 +5141,16 @@
 
 
 <h1 id="_1">图像感知与处理</h1>
-<p>视觉感知是自动驾驶系统的核心能力之一。摄像头作为最接近人类视觉的传感器，以低成本、高分辨率和丰富语义信息的优势，在自动驾驶感知栈中扮演着不可替代的角色。本章系统梳理从传统方法到前沿深度学习算法的主要技术路线，涵盖目标检测、语义分割、车道线检测、深度估计以及 BEV（鸟瞰视角）感知范式。</p>
+<p>视觉感知是自动驾驶系统的核心能力之一。摄像头作为最接近人类视觉的传感器，以低成本、高分辨率和丰富语义信息的优势，在自动驾驶感知栈中扮演着不可替代的角色。本章系统梳理从传统方法到前沿深度学习算法的主要技术路线，涵盖目标检测、语义分割、车道线检测、深度估计以及 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr>（鸟瞰视角）感知范式。</p>
 <h2 id="1">1. 视觉感知在自动驾驶中的地位</h2>
-<h3 id="11-lidar">1.1 相机与 LiDAR 的互补性</h3>
-<p>自动驾驶感知系统通常融合多种传感器。相机与 LiDAR 各有优劣，形成天然互补：</p>
+<h3 id="11-lidar">1.1 相机与 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 的互补性</h3>
+<p>自动驾驶感知系统通常融合多种传感器。相机与 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 各有优劣，形成天然互补：</p>
 <table>
 <thead>
 <tr>
 <th>维度</th>
 <th>相机</th>
-<th>LiDAR</th>
+<th><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr></th>
 </tr>
 </thead>
 <tbody>
@@ -5130,7 +5186,7 @@
 </tr>
 </tbody>
 </table>
-<p>主流量产方案（如 Tesla FSD）倾向纯视觉路线，依赖大规模数据和强力算法；而 Waymo 等则坚持相机+LiDAR+雷达的多模态融合路线，以追求极致安全冗余。</p>
+<p>主流量产方案（如 Tesla <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr>）倾向纯视觉路线，依赖大规模数据和强力算法；而 Waymo 等则坚持相机+<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>+雷达的多模态融合路线，以追求极致安全冗余。</p>
 <h3 id="12">1.2 图像感知的核心任务</h3>
 <div class="highlight"><pre><span></span><code>原始图像
     |
@@ -5240,9 +5296,9 @@
 <div class="arithmatex">\[\mathcal{L}_{Hungarian} = \sum_{i=1}^{N} \left[ -\log \hat{p}_{\hat{\sigma}(i)}(c_i) + \mathbb{1}_{c_i \neq \varnothing} \mathcal{L}_{box}(b_i, \hat{b}_{\hat{\sigma}(i)}) \right]\]</div>
 <h4 id="dinodetr-with-improved-denoising-anchor-boxes">DINO（DETR with Improved DeNoising Anchor Boxes）</h4>
 <p>DINO 在 DETR 基础上引入对比去噪训练（CDN）和混合匹配策略，大幅提升收敛速度和检测精度，在 COCO 上达到 63.3 AP，是当前最强的 Transformer 检测器之一。</p>
-<h3 id="24-3d-bev">2.4 3D 目标检测：BEV 相机方案</h3>
+<h3 id="24-3d-bev">2.4 3D 目标检测：<abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 相机方案</h3>
 <h4 id="bevdet">BEVDet</h4>
-<p>BEVDet 将各相机的透视特征通过 LSS（Lift-Splat-Shoot）方法投影到统一的 BEV 空间，再在 BEV 特征图上执行 3D 检测。</p>
+<p>BEVDet 将各相机的透视特征通过 LSS（Lift-Splat-Shoot）方法投影到统一的 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 空间，再在 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征图上执行 3D 检测。</p>
 <h4 id="petrposition-embedding-transformer">PETR（Position Embedding Transformer）</h4>
 <p>PETR 将 3D 位置编码注入图像特征，使得 Transformer cross-attention 能够直接在 3D 空间中建立全局上下文关联，无需显式的视图变换。</p>
 <p>PETR 的核心思路：对图像特征图的每个像素，生成对应的 3D 位置编码 <span class="arithmatex">\(PE_{3D}\)</span>，并与图像特征拼接后送入解码器：</p>
@@ -5291,7 +5347,7 @@
 <ul>
 <li><strong>二分类语义分割</strong>：将像素分为可行驶 / 不可行驶两类</li>
 <li><strong>多类别区分</strong>：可行驶区域、停车区域、限制区域等</li>
-<li><strong>结合 BEV 输出</strong>：在俯视图中输出行驶区域，便于路径规划</li>
+<li><strong>结合 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 输出</strong>：在俯视图中输出行驶区域，便于路径规划</li>
 </ul>
 <h2 id="4">4. 车道线检测</h2>
 <h3 id="41-hough">4.1 传统方法：Hough 变换</h3>
@@ -5380,7 +5436,7 @@
 <div class="arithmatex">\[S(p, d) = C(p, d) + \min \begin{cases} L_r(p-r, d) \\ L_r(p-r, d-1) + P_1 \\ L_r(p-r, d+1) + P_1 \\ \min_{d'} L_r(p-r, d') + P_2 \end{cases}\]</div>
 <p>其中 <span class="arithmatex">\(C(p,d)\)</span> 为像素 <span class="arithmatex">\(p\)</span> 在视差 <span class="arithmatex">\(d\)</span> 下的匹配代价（如 Census 变换），<span class="arithmatex">\(P_1\)</span>、<span class="arithmatex">\(P_2\)</span> 为惩罚系数，<span class="arithmatex">\(P_2 &gt; P_1\)</span> 以惩罚大的视差变化。</p>
 <h3 id="53-sparse-to-dense">5.3 深度补全（Sparse-to-Dense）</h3>
-<p>LiDAR 点云投影到图像平面后得到稀疏深度图（通常仅 5% 像素有效），深度补全任务将稀疏深度与 RGB 图像融合输出稠密深度图。</p>
+<p><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 点云投影到图像平面后得到稀疏深度图（通常仅 5% 像素有效），深度补全任务将稀疏深度与 RGB 图像融合输出稠密深度图。</p>
 <div class="highlight"><pre><span></span><code>RGB 图像  + 稀疏深度图
     |              |
 [RGB Encoder]  [深度 Encoder]
@@ -5392,32 +5448,32 @@
     稠密深度图输出
 </code></pre></div>
 <p>常用方法包括 FuseNet、CSPN（Convolutional Spatial Propagation Network）等，CSPN 通过学习传播系数在邻域像素间迭代更新深度估计，显著改善边界处的深度质量。</p>
-<h2 id="6-bev">6. BEV 感知范式</h2>
+<h2 id="6-bev">6. <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 感知范式</h2>
 <h3 id="61-ipm">6.1 IPM（逆透视变换）</h3>
 <p>逆透视变换（Inverse Perspective Mapping）基于<strong>平坦地面假设</strong>，将透视图像变换为俯视图：</p>
 <p>设图像平面点 <span class="arithmatex">\(\mathbf{u} = (u, v, 1)^T\)</span>，相机内参矩阵 <span class="arithmatex">\(K\)</span>，相机到地面的外参矩阵（旋转 <span class="arithmatex">\(R\)</span>、平移 <span class="arithmatex">\(t\)</span>），地面点 <span class="arithmatex">\(\mathbf{X} = (X, Y, 0)^T\)</span>，则变换关系为：</p>
 <div class="arithmatex">\[\lambda \mathbf{u} = K [R | t] \mathbf{X}\]</div>
 <p>令 <span class="arithmatex">\(Z=0\)</span>，可解出地面点坐标。IPM 计算简单，适合结构化道路，但在坡道、起伏路面上会产生较大误差。</p>
 <h3 id="62-bevformer">6.2 BEVFormer：时空注意力机制</h3>
-<p>BEVFormer（Li et al., ECCV 2022）引入可变形注意力（Deformable Attention）从多相机特征中聚合 BEV 特征，支持时序信息融合。</p>
+<p>BEVFormer（Li et al., ECCV 2022）引入可变形注意力（Deformable Attention）从多相机特征中聚合 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征，支持时序信息融合。</p>
 <p><strong>空间注意力</strong></p>
-<p>对 BEV 查询位置 <span class="arithmatex">\(q\)</span> 对应的 3D 参考点，投影到各相机图像平面采样特征：</p>
+<p>对 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 查询位置 <span class="arithmatex">\(q\)</span> 对应的 3D 参考点，投影到各相机图像平面采样特征：</p>
 <div class="arithmatex">\[\text{SCA}(Q_p, F_t) = \frac{1}{|V_{hit}|} \sum_{i \in V_{hit}} \sum_{j=1}^{N_{ref}} \text{DeformAttn}(Q_p, \mathcal{P}(p, i, j), F_t^i)\]</div>
 <p>其中 <span class="arithmatex">\(V_{hit}\)</span> 为能看到该 3D 点的相机集合，<span class="arithmatex">\(\mathcal{P}(p, i, j)\)</span> 将 3D 参考点投影到第 <span class="arithmatex">\(i\)</span> 个相机的 2D 位置。</p>
 <p><strong>时序注意力</strong></p>
-<p>BEVFormer 保留前一时刻的 BEV 特征 <span class="arithmatex">\(B_{t-1}'\)</span>，通过自车位姿变换对齐后与当前 BEV 查询融合：</p>
+<p>BEVFormer 保留前一时刻的 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征 <span class="arithmatex">\(B_{t-1}'\)</span>，通过自车位姿变换对齐后与当前 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 查询融合：</p>
 <div class="arithmatex">\[\text{TSA}(Q_p, \{Q, B_{t-1}'\}) = \sum_{V \in \{Q, B_{t-1}'\}} \text{DeformAttn}(Q_p, p, V)\]</div>
 <p>时序融合使 BEVFormer 能够推断被遮挡目标的存在，并估计速度信息。</p>
 <h3 id="63-lsslift-splat-shoot">6.3 LSS（Lift, Splat, Shoot）</h3>
-<p>LSS（Philion &amp; Fidler, ECCV 2020）提供了一种优雅的相机到 BEV 变换方式：</p>
+<p>LSS（Philion &amp; Fidler, ECCV 2020）提供了一种优雅的相机到 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 变换方式：</p>
 <p><strong>Lift（提升）</strong>：对每个图像像素，预测其在各离散深度箱 <span class="arithmatex">\(d \in D\)</span> 上的概率分布 <span class="arithmatex">\(\alpha_d\)</span>，将 2D 图像特征"提升"为 3D 特征云：</p>
 <div class="arithmatex">\[c_d(u, v) = \alpha_d \cdot f(u, v)\]</div>
-<p><strong>Splat（溅射）</strong>：将所有相机的 3D 特征云通过体素化（Voxel Pooling）投影到 BEV 平面，使用 Cumsum trick 高效实现：</p>
+<p><strong>Splat（溅射）</strong>：将所有相机的 3D 特征云通过体素化（Voxel Pooling）投影到 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 平面，使用 Cumsum trick 高效实现：</p>
 <div class="arithmatex">\[BEV(x, y) = \sum_{d, u, v: \Pi(u,v,d) \in (x,y)} c_d(u, v)\]</div>
-<p><strong>Shoot（射击）</strong>：在 BEV 特征图上完成下游任务（目标检测、分割等）。</p>
-<p>LSS 的核心优势是深度预测完全由数据驱动，可以端到端训练，无需 LiDAR 监督信号。</p>
-<h3 id="64-bev">6.4 多任务统一 BEV 输出</h3>
-<p>现代 BEV 感知框架（如 BEVFusion、UniAD）在同一 BEV 特征图上联合输出多任务结果：</p>
+<p><strong>Shoot（射击）</strong>：在 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征图上完成下游任务（目标检测、分割等）。</p>
+<p>LSS 的核心优势是深度预测完全由数据驱动，可以端到端训练，无需 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 监督信号。</p>
+<h3 id="64-bev">6.4 多任务统一 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 输出</h3>
+<p>现代 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 感知框架（如 BEVFusion、UniAD）在同一 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征图上联合输出多任务结果：</p>
 <div class="highlight"><pre><span></span><code>多相机图像 [N x C x H x W]
         |
 [视图变换（LSS / BEVFormer）]
@@ -5432,7 +5488,7 @@ BEV 特征图 [C x X x Y]
         |
         +--[地图元素头]--&gt; 道路边界、人行横道
 </code></pre></div>
-<p>多任务共享 BEV 特征，大幅降低计算开销，且各任务之间的特征共享有助于相互约束和提升。</p>
+<p>多任务共享 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征，大幅降低计算开销，且各任务之间的特征共享有助于相互约束和提升。</p>
 <h2 id="7">7. 评估指标</h2>
 <h3 id="71">7.1 指标汇总</h3>
 <table>
@@ -5517,6 +5573,27 @@ BEV 特征图 [C x X x Y]
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 00:50:24 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

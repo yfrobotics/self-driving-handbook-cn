@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -2934,6 +2962,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -4516,18 +4572,18 @@
   
 
 
-<h1 id="tesla-fsd">Tesla FSD</h1>
+<h1 id="tesla-fsd">Tesla <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr></h1>
 <p>Tesla（特斯拉）是全球最大的电动汽车公司，也是自动驾驶领域最具争议性的玩家。Tesla 的自动驾驶策略与行业主流截然不同：放弃激光雷达、依赖纯视觉，通过数百万辆车的数据飞轮迭代进化。这一路线被批评者称为"危险的冒险"，被支持者视为"正确的终局"。</p>
 <h2 id="_1">核心理念：纯视觉路线</h2>
 <p>Tesla CEO Elon Musk 于 2019 年在 Autonomy Day 上发表了著名言论：</p>
 <blockquote>
-<p>"LiDAR 是傻瓜的差事。依赖 LiDAR 的人注定失败。"</p>
+<p>"<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 是傻瓜的差事。依赖 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 的人注定失败。"</p>
 </blockquote>
 <p><strong>Tesla 纯视觉路线的逻辑：</strong>
 1. <strong>人类用眼睛开车</strong>：道路系统是为人眼设计的（交通标志、标线、信号灯均为视觉信号），AI 也应该用"眼睛"驾驶
-2. <strong>规模经济</strong>：摄像头成本极低（每个 &lt; $50），LiDAR 成本极高（每套数千至数万美元），纯视觉方案可大规模部署
+2. <strong>规模经济</strong>：摄像头成本极低（每个 &lt; $50），<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 成本极高（每套数千至数万美元），纯视觉方案可大规模部署
 3. <strong>数据飞轮</strong>：全球数百万台 Tesla 车辆同时采集数据，纯视觉系统可从真实人类驾驶行为学习</p>
-<h2 id="fsd">FSD 芯片演进</h2>
+<h2 id="fsd"><abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> 芯片演进</h2>
 <p>Tesla 的自动驾驶能力与芯片能力深度绑定，是唯一自研 AI 芯片的整车厂：</p>
 <table>
 <thead>
@@ -4544,42 +4600,42 @@
 <td>HW1</td>
 <td>Mobileye EyeQ3</td>
 <td>2014</td>
-<td>约 4 TOPS</td>
+<td>约 4 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 <td>依赖第三方，功能简单</td>
 </tr>
 <tr>
 <td>HW2</td>
 <td>NVIDIA Tegra X2</td>
 <td>2016</td>
-<td>约 12 TOPS</td>
+<td>约 12 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 <td>具备深度学习潜力</td>
 </tr>
 <tr>
 <td>HW2.5</td>
 <td>NVIDIA Parker + Pascal GPU</td>
 <td>2017</td>
-<td>约 100 TOPS</td>
+<td>约 100 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 <td>过渡版，双系统冗余</td>
 </tr>
 <tr>
-<td>HW3 / FSD Chip</td>
-<td>自研 NPU × 2</td>
+<td>HW3 / <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> Chip</td>
+<td>自研 <abbr title="Neural Processing Unit，神经网络处理器">NPU</abbr> × 2</td>
 <td>2019</td>
-<td><strong>144 TOPS × 2 = 288 TOPS</strong></td>
+<td><strong>144 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr> × 2 = 288 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></strong></td>
 <td>完全自研，双芯冗余，效率提升 21 倍</td>
 </tr>
 <tr>
 <td>HW4 / AI5</td>
 <td>自研下一代</td>
 <td>2023</td>
-<td><strong>约 300+ TOPS</strong></td>
-<td>支持更高分辨率摄像头，为 FSD V12 准备</td>
+<td><strong>约 300+ <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></strong></td>
+<td>支持更高分辨率摄像头，为 <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> V12 准备</td>
 </tr>
 </tbody>
 </table>
-<p><strong>HW3 FSD Chip 技术亮点（Tesla Autonomy Day 2019 披露）：</strong>
+<p><strong>HW3 <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> Chip 技术亮点（Tesla Autonomy Day 2019 披露）：</strong>
 - 制程：Samsung 14nm，60 亿晶体管
-- 每颗芯片含 2 个 NPU（Neural Processing Unit），设计算力 72 TOPS/颗
+- 每颗芯片含 2 个 <abbr title="Neural Processing Unit，神经网络处理器">NPU</abbr>（Neural Processing Unit），设计算力 72 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>/颗
 - 每帧推理能耗仅 2 W，远优于同等算力 GPU
 - 双芯片封装提供<strong>硬件冗余</strong>，任一芯片失效另一个接管</p>
 <p><strong>HW4 的摄像头升级：</strong>
@@ -4590,8 +4646,8 @@
 <p>Tesla 的感知算法历经多代革命性演进：</p>
 <h3 id="20162019-2d">早期（2016–2019）：逐摄像头 2D 检测</h3>
 <p>各路摄像头独立运行 2D 目标检测，通过几何融合（三角测量）估计 3D 位置。问题：融合误差大，遮挡场景表现差。</p>
-<h3 id="bev-2021-ai-day">BEV 感知范式（2021 AI Day）</h3>
-<p>Tesla 引入将多摄像头特征统一投影至<strong>鸟瞰视角（BEV）</strong>的感知架构：</p>
+<h3 id="bev-2021-ai-day"><abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 感知范式（2021 AI Day）</h3>
+<p>Tesla 引入将多摄像头特征统一投影至<strong>鸟瞰视角（<abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr>）</strong>的感知架构：</p>
 <div class="highlight"><pre><span></span><code>8路摄像头帧 （当前帧 + 历史帧队列）
      │
 RegNet 图像骨干（特征提取）
@@ -4607,13 +4663,13 @@ BEV 特征图（统一 3D 表示）
 │ 占用网格   │ 可行驶区域   │
 └───────────────────────────┘
 </code></pre></div>
-<p><strong>时序融合：</strong> 利用历史帧建立视频级 BEV 特征，解决单帧遮挡问题。这是<strong>纯摄像头补偿深度估计不确定性</strong>的关键技术。</p>
+<p><strong>时序融合：</strong> 利用历史帧建立视频级 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征，解决单帧遮挡问题。这是<strong>纯摄像头补偿深度估计不确定性</strong>的关键技术。</p>
 <h3 id="occupancy-network2022-ai-day">Occupancy Network（2022 AI Day）</h3>
 <p>将三维空间划分为体素网格，预测每个体素的占据概率和语义类别：
 - 可以表示任意形状的障碍物（不受边界框限制）
 - 可以表示地面、墙壁、植被等非车辆障碍物
 - 输出为"世界的 3D 密集表示"，供规划模块使用</p>
-<h3 id="fsd-v122023">端到端 FSD V12（2023）</h3>
+<h3 id="fsd-v122023">端到端 <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> V12（2023）</h3>
 <p>Tesla 宣布将超过 300,000 行的 C++ 模块化代码替换为统一端到端神经网络：</p>
 <ul>
 <li><strong>输入</strong>：8 路摄像头图像序列</li>
@@ -4621,25 +4677,25 @@ BEV 特征图（统一 3D 表示）
 <li><strong>输出</strong>：车辆控制量（转向角、油门、制动）</li>
 <li><strong>训练</strong>：海量人类驾驶行为的模仿学习</li>
 </ul>
-<p>Elon Musk 表示："FSD V12 是真正的 AI，不是愚蠢的代码。"城区驾驶表现获得大幅提升，处理路口等复杂场景的能力明显增强。</p>
+<p>Elon Musk 表示："<abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> V12 是真正的 AI，不是愚蠢的代码。"城区驾驶表现获得大幅提升，处理路口等复杂场景的能力明显增强。</p>
 <h2 id="_3">数据飞轮</h2>
 <p>Tesla 最核心的竞争壁垒不是算法，而是<strong>数据</strong>：</p>
 <h3 id="_4">车队规模</h3>
 <ul>
-<li><strong>全球 FSD 激活车辆</strong>：约 200 万辆（2024 年，付费 FSD 订阅 + 试用）</li>
+<li><strong>全球 <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> 激活车辆</strong>：约 200 万辆（2024 年，付费 <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> 订阅 + 试用）</li>
 <li><strong>每天数据量</strong>：约 160 PB 视频数据（按每辆车 8 路摄像头 × 每天 30 分钟行驶估算）</li>
 </ul>
 <h3 id="shadow-mode">影子模式（Shadow Mode）</h3>
 <p>Tesla 系统在实车行驶中<strong>持续运行</strong>自动驾驶推断，记录：
 - 若系统自主接管，会做出什么决策
 - 实际人类驾驶与系统预测的差异（"介入触发器"）</p>
-<p>这些差异数据被自动标记为需要改进的训练样本，无需人工标注。每次 OTA 推送后，Tesla 可以评估全球车队的"虚拟干里程"（Shadow miles）。</p>
+<p>这些差异数据被自动标记为需要改进的训练样本，无需人工标注。每次 <abbr title="Over-the-Air，空中升级">OTA</abbr> 推送后，Tesla 可以评估全球车队的"虚拟干里程"（Shadow miles）。</p>
 <h3 id="auto-labeling">自动标注（Auto-Labeling）</h3>
-<p>由于没有 LiDAR，Tesla 无法直接获取精确 3D 标注。解决方案：</p>
+<p>由于没有 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>，Tesla 无法直接获取精确 3D 标注。解决方案：</p>
 <p><strong>离线重建（Offline Reconstruction）：</strong>
 1. 收集同一地点多辆车多次经过的视频
 2. 利用多帧 + 多视角点云重建精确 3D 场景
-3. 用高质量重建结果为单帧摄像头图像提供<strong>伪 LiDAR 标注</strong>
+3. 用高质量重建结果为单帧摄像头图像提供<strong>伪 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 标注</strong>
 4. 规模化自动标注替代手工标注</p>
 <p>这一流程使 Tesla 能以<strong>极低的人工成本</strong>生成海量高质量训练数据。</p>
 <h3 id="dojo">Dojo 超级计算机</h3>
@@ -4648,7 +4704,7 @@ BEV 特征图（统一 3D 表示）
 - 训练瓦片（Training Tile）= 25 × D1 芯片，用 SerDes 直连，无需 NVLink
 - 目标：构建 <strong>100 ExaFLOP</strong> 规模的训练能力
 - 战略意义：摆脱对 NVIDIA GPU 的依赖，掌控训练基础设施</p>
-<h2 id="fsd-2024">FSD 功能现状（截至 2024）</h2>
+<h2 id="fsd-2024"><abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> 功能现状（截至 2024）</h2>
 <h3 id="_5">功能版本历史</h3>
 <table>
 <thead>
@@ -4662,7 +4718,7 @@ BEV 特征图（统一 3D 表示）
 <tr>
 <td>Autopilot（HW1）</td>
 <td>2015</td>
-<td>ACC + LKA，高速公路 L2</td>
+<td><abbr title="Adaptive Cruise Control，自适应巡航">ACC</abbr> + <abbr title="Lane Keeping Assist，车道保持辅助">LKA</abbr>，高速公路 L2</td>
 </tr>
 <tr>
 <td>Autopilot 2.0</td>
@@ -4670,17 +4726,17 @@ BEV 特征图（统一 3D 表示）
 <td>自动变道、自动泊车</td>
 </tr>
 <tr>
-<td>FSD Beta V9</td>
+<td><abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> Beta V9</td>
 <td>2021</td>
 <td>城区街道辅助驾驶（需持续监督）</td>
 </tr>
 <tr>
-<td>FSD V11</td>
+<td><abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> V11</td>
 <td>2022</td>
 <td>统一单一驾驶栈（城区+高速）</td>
 </tr>
 <tr>
-<td><strong>FSD V12</strong></td>
+<td><strong><abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> V12</strong></td>
 <td><strong>2023</strong></td>
 <td><strong>端到端神经网络，城区能力大幅提升</strong></td>
 </tr>
@@ -4720,9 +4776,9 @@ BEV 特征图（统一 3D 表示）
 </table>
 <h3 id="_7">监管争议</h3>
 <ul>
-<li><strong>NHTSA 调查</strong>：多项 Autopilot / FSD 涉事事故（前方静止车辆、紧急车辆）触发调查，召回数百万辆并通过 OTA 修复</li>
+<li><strong>NHTSA 调查</strong>：多项 Autopilot / <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> 涉事事故（前方静止车辆、紧急车辆）触发调查，召回数百万辆并通过 <abbr title="Over-the-Air，空中升级">OTA</abbr> 修复</li>
 <li><strong>"完全自动驾驶"命名争议</strong>：美国加州 DMV 认为该名称具有误导性（实际仍是 L2 级，需驾驶员监督），强制要求 Tesla 澄清</li>
-<li><strong>中国市场推进</strong>：2024 年获准在上海测试 FSD，但数据本地化要求使中国版本需要单独训练</li>
+<li><strong>中国市场推进</strong>：2024 年获准在上海测试 <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr>，但数据本地化要求使中国版本需要单独训练</li>
 </ul>
 <h2 id="robotaxi-cybercab">Robotaxi 计划（Cybercab）</h2>
 <p><strong>2024 年 10 月发布：</strong></p>
@@ -4753,7 +4809,7 @@ BEV 特征图（统一 3D 表示）
 </tr>
 <tr>
 <td>成本结构</td>
-<td>高（多传感器 + HD Map）</td>
+<td>高（多传感器 + <abbr title="High Definition Map，高精地图">HD Map</abbr>）</td>
 <td>低（纯摄像头 + 轻地图）</td>
 </tr>
 <tr>
@@ -4768,7 +4824,7 @@ BEV 特征图（统一 3D 表示）
 <li>Tesla. Autonomy Day Presentation, April 2019.</li>
 <li>Tesla. AI Day Presentations, 2021, 2022.</li>
 <li>M. Bojarski et al. End to End Learning for Self-Driving Cars. NVIDIA, arXiv:1604.07316, 2016.</li>
-<li>NHTSA. Tesla Autopilot / FSD Investigation Reports, 2022–2024.</li>
+<li>NHTSA. Tesla Autopilot / <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> Investigation Reports, 2022–2024.</li>
 <li>中国信通院. 智能网联汽车发展报告, 2024.</li>
 </ol>
 
@@ -4778,6 +4834,27 @@ BEV 特征图（统一 3D 表示）
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 00:31:46 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

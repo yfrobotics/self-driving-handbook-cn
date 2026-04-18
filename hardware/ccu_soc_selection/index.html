@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3290,6 +3318,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -4696,11 +4752,11 @@
   
 
 
-<h1 id="soc">芯片与平台选型：主流 SoC 对比与决策框架</h1>
-<p>本页关注"如何从业务目标反推平台选型"，覆盖主流自动驾驶 SoC 对比、评估方法与决策框架。</p>
+<h1 id="soc">芯片与平台选型：主流 <abbr title="System on Chip，片上系统">SoC</abbr> 对比与决策框架</h1>
+<p>本页关注"如何从业务目标反推平台选型"，覆盖主流自动驾驶 <abbr title="System on Chip，片上系统">SoC</abbr> 对比、评估方法与决策框架。</p>
 <hr />
 <h2 id="1">1. 处理器角色分工</h2>
-<p>现代自动驾驶 SoC 通常集成多种计算单元，各司其职：</p>
+<p>现代自动驾驶 <abbr title="System on Chip，片上系统">SoC</abbr> 通常集成多种计算单元，各司其职：</p>
 <table>
 <thead>
 <tr>
@@ -4717,16 +4773,16 @@
 </tr>
 <tr>
 <td>GPU</td>
-<td>并行矩阵计算、BEV 特征提取、视觉模型推理</td>
+<td>并行矩阵计算、<abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征提取、视觉模型推理</td>
 <td>TFLOPS（FP16）、内存带宽</td>
 </tr>
 <tr>
-<td>NPU/DLA</td>
+<td><abbr title="Neural Processing Unit，神经网络处理器">NPU</abbr>/DLA</td>
 <td>神经网络定点推理（INT8/INT4）</td>
-<td>TOPS（INT8）、功耗效率 TOPS/W</td>
+<td><abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>（INT8）、功耗效率 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>/W</td>
 </tr>
 <tr>
-<td>ISP</td>
+<td><abbr title="Image Signal Processor，图像信号处理器">ISP</abbr></td>
 <td>相机图像前处理（去噪、曝光、畸变校正）</td>
 <td>支持路数、HDR 处理</td>
 </tr>
@@ -4736,15 +4792,15 @@
 <td>向量指令集、专用加速</td>
 </tr>
 <tr>
-<td>MCU（安全岛）</td>
-<td>功能安全监控、看门狗、ASIL-D 任务</td>
-<td>实时性、ASIL 认证</td>
+<td><abbr title="Microcontroller Unit，微控制器">MCU</abbr>（安全岛）</td>
+<td>功能安全监控、看门狗、<abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-D 任务</td>
+<td>实时性、<abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr> 认证</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">核心原则</p>
-<p>自动驾驶 SoC 的瓶颈通常不在峰值算力，而在<strong>内存带宽</strong>和<strong>多模型并发稳定性</strong>。选型时应以实际工作负载基准测试为准，而非理论峰值指标。</p>
+<p>自动驾驶 <abbr title="System on Chip，片上系统">SoC</abbr> 的瓶颈通常不在峰值算力，而在<strong>内存带宽</strong>和<strong>多模型并发稳定性</strong>。选型时应以实际工作负载基准测试为准，而非理论峰值指标。</p>
 </div>
 <hr />
 <h2 id="2">2. 主流平台对比</h2>
@@ -4772,10 +4828,10 @@
 <td>Blackwell</td>
 </tr>
 <tr>
-<td>NPU</td>
-<td>170 TOPS</td>
-<td>84 TOPS</td>
-<td>~2000 TOPS</td>
+<td><abbr title="Neural Processing Unit，神经网络处理器">NPU</abbr></td>
+<td>170 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
+<td>84 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
+<td>~2000 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 </tr>
 <tr>
 <td>内存</td>
@@ -4791,14 +4847,14 @@
 </tr>
 <tr>
 <td>功能安全</td>
-<td>ASIL-B（SEooC）</td>
-<td>ASIL-B</td>
-<td>ASIL-B+</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-B（SEooC）</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-B</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-B+</td>
 </tr>
 </tbody>
 </table>
 <p><strong>优势：</strong> CUDA 生态最成熟，PyTorch/TensorRT 工具链完整；大量量产车型验证；性能上限高。
-<strong>挑战：</strong> 功耗较高；安全认证需额外配套 MCU；供应链单一风险。</p>
+<strong>挑战：</strong> 功耗较高；安全认证需额外配套 <abbr title="Microcontroller Unit，微控制器">MCU</abbr>；供应链单一风险。</p>
 <h3 id="22-ride">2.2 高通 Ride 平台</h3>
 <table>
 <thead>
@@ -4815,28 +4871,28 @@
 <td>Kryo（高性能）</td>
 </tr>
 <tr>
-<td>NPU</td>
+<td><abbr title="Neural Processing Unit，神经网络处理器">NPU</abbr></td>
 <td>Hexagon DSP</td>
-<td>高性能 NPU</td>
+<td>高性能 <abbr title="Neural Processing Unit，神经网络处理器">NPU</abbr></td>
 </tr>
 <tr>
 <td>算力</td>
-<td>~30 TOPS</td>
-<td>~100 TOPS</td>
+<td>~30 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
+<td>~100 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 </tr>
 <tr>
 <td>功能安全</td>
-<td>ISO 26262 ASIL-B</td>
-<td>ASIL-B</td>
+<td>ISO 26262 <abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-B</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-B</td>
 </tr>
 <tr>
 <td>优势</td>
-<td>5G/Wi-Fi 集成，座舱 ADAS 合并</td>
+<td>5G/Wi-Fi 集成，座舱 <abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr> 合并</td>
 <td>自驾性能</td>
 </tr>
 </tbody>
 </table>
-<p><strong>特色：</strong> 通信模组（5G/Wi-Fi/蓝牙）原生集成，适合智能座舱与 ADAS 合并平台。</p>
+<p><strong>特色：</strong> 通信模组（5G/Wi-Fi/蓝牙）原生集成，适合智能座舱与 <abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr> 合并平台。</p>
 <h3 id="23">2.3 地平线征程系列</h3>
 <table>
 <thead>
@@ -4848,9 +4904,9 @@
 </thead>
 <tbody>
 <tr>
-<td>NPU</td>
-<td>128 TOPS</td>
-<td>400+ TOPS</td>
+<td><abbr title="Neural Processing Unit，神经网络处理器">NPU</abbr></td>
+<td>128 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
+<td>400+ <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 </tr>
 <tr>
 <td>功耗</td>
@@ -4859,8 +4915,8 @@
 </tr>
 <tr>
 <td>功能安全</td>
-<td>ASIL-B</td>
-<td>ASIL-B</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-B</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-B</td>
 </tr>
 <tr>
 <td>优势</td>
@@ -4882,13 +4938,13 @@
 <tbody>
 <tr>
 <td>算力</td>
-<td>96 TOPS</td>
-<td>352 TOPS</td>
+<td>96 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
+<td>352 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 </tr>
 <tr>
 <td>功能安全</td>
-<td>ASIL-B</td>
-<td>ASIL-B</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-B</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-B</td>
 </tr>
 <tr>
 <td>配套</td>
@@ -4915,8 +4971,8 @@
 </tr>
 <tr>
 <td>功能安全</td>
-<td>ASIL-B/D</td>
-<td>ASIL-B/D</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-B/D</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-B/D</td>
 </tr>
 <tr>
 <td>特点</td>
@@ -4925,11 +4981,11 @@
 </tr>
 </tbody>
 </table>
-<p><strong>特色：</strong> 专注视觉感知，功耗极低；EyeQ 5H 通过了最严格的功能安全认证；适合高阶 ADAS。</p>
+<p><strong>特色：</strong> 专注视觉感知，功耗极低；EyeQ 5H 通过了最严格的功能安全认证；适合高阶 <abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr>。</p>
 <hr />
 <h2 id="3">3. 算力评估方法</h2>
-<h3 id="31-tops-vs">3.1 TOPS vs 有效吞吐</h3>
-<p>理论 TOPS（Tera Operations Per Second）不等于实际推理吞吐：</p>
+<h3 id="31-tops-vs">3.1 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr> vs 有效吞吐</h3>
+<p>理论 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>（Tera Operations Per Second）不等于实际推理吞吐：</p>
 <div class="arithmatex">\[\text{有效利用率} = \frac{\text{实际推理吞吐（GOPS）}}{\text{标称 NPU TOPS}}\]</div>
 <p>常见有效利用率：<strong>30%–70%</strong>（取决于算子支持率、内存带宽、模型结构）。</p>
 <h3 id="32">3.2 精度格式对算力的影响</h3>
@@ -5023,11 +5079,11 @@
 <td>~12 GB/s</td>
 </tr>
 <tr>
-<td>3× LiDAR 点云</td>
+<td>3× <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 点云</td>
 <td>~2 GB/s</td>
 </tr>
 <tr>
-<td>BEV Transformer 特征图</td>
+<td><abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> Transformer 特征图</td>
 <td>~5–20 GB/s（模型相关）</td>
 </tr>
 <tr>
@@ -5036,7 +5092,7 @@
 </tr>
 </tbody>
 </table>
-<p>SoC 的 LPDDR5 带宽通常在 60–260 GB/s，看似充足，但内存访问并发和碎片化会导致实际有效带宽仅 40%–60%。</p>
+<p><abbr title="System on Chip，片上系统">SoC</abbr> 的 LPDDR5 带宽通常在 60–260 GB/s，看似充足，但内存访问并发和碎片化会导致实际有效带宽仅 40%–60%。</p>
 <hr />
 <h2 id="5">5. 工具链生态评估</h2>
 <table>
@@ -5124,34 +5180,34 @@
 </code></pre></div>
 <hr />
 <h2 id="7">7. 功能安全要求</h2>
-<h3 id="71-asil">7.1 ASIL 等级要求</h3>
+<h3 id="71-asil">7.1 <abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr> 等级要求</h3>
 <table>
 <thead>
 <tr>
 <th>自动化功能</th>
-<th>所需 ASIL 等级</th>
+<th>所需 <abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr> 等级</th>
 <th>说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>AEB（自动紧急制动）</td>
-<td>ASIL-D</td>
+<td><abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr>（自动紧急制动）</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-D</td>
 <td>最高安全等级</td>
 </tr>
 <tr>
 <td>车道保持辅助</td>
-<td>ASIL-B</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-B</td>
 <td>L2 功能</td>
 </tr>
 <tr>
 <td>L3 自动驾驶</td>
-<td>ASIL-B（系统）+ ASIL-D（制动/转向）</td>
-<td>ASIL 分解</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-B（系统）+ <abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-D（制动/转向）</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr> 分解</td>
 </tr>
 <tr>
 <td>L4 Robotaxi</td>
-<td>ASIL-D（核心链路）</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-D（核心链路）</td>
 <td>需冗余架构</td>
 </tr>
 </tbody>
@@ -5253,7 +5309,7 @@
 <td>4.0</td>
 </tr>
 <tr>
-<td>功耗效率（TOPS/W）</td>
+<td>功耗效率（<abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>/W）</td>
 <td>15%</td>
 <td>3.5</td>
 <td>4.5</td>
@@ -5328,8 +5384,8 @@
 <td>按预期降级或复位</td>
 </tr>
 <tr>
-<td>OTA 兼容性</td>
-<td>模型/固件多版本 OTA 切换</td>
+<td><abbr title="Over-the-Air，空中升级">OTA</abbr> 兼容性</td>
+<td>模型/固件多版本 <abbr title="Over-the-Air，空中升级">OTA</abbr> 切换</td>
 <td>成功率 100%，回滚正常</td>
 </tr>
 <tr>
@@ -5344,7 +5400,7 @@
 <ol>
 <li><strong>用统一 benchmark 脚本做同工况对比</strong>：相同模型、相同精度、相同输入，在各平台测量真实推理时延</li>
 <li><strong>建立"模型版本-平台版本"兼容矩阵</strong>：防止算法更新后平台工具链不支持新算子</li>
-<li><strong>预留 30% 算力冗余</strong>：为后续 OTA 模型升级和功能扩展预留空间</li>
+<li><strong>预留 30% 算力冗余</strong>：为后续 <abbr title="Over-the-Air，空中升级">OTA</abbr> 模型升级和功能扩展预留空间</li>
 <li><strong>提前建立迁移预案</strong>：即使不切换平台，也应评估迁移成本和时间，作为供应链风险预案</li>
 </ol>
 
@@ -5354,6 +5410,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 19:34:57 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

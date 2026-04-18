@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3456,6 +3484,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -5029,7 +5085,7 @@
 
 
 <h1 id="drive-by-wire">线控系统（Drive-by-Wire）</h1>
-<p>线控技术（Drive-by-Wire，DbW）以电子信号取代传统的机械或液压连接，是实现自动驾驶车辆自主控制的核心基础。在传统汽车中，驾驶员通过方向盘柱、刹车油管、油门拉线等机械结构直接操控车辆；而在线控架构下，这些物理链路被传感器、电子控制单元（ECU）和执行器所替代，上层自动驾驶决策算法得以精确、实时地控制车辆的所有运动自由度。</p>
+<p>线控技术（Drive-by-Wire，DbW）以电子信号取代传统的机械或液压连接，是实现自动驾驶车辆自主控制的核心基础。在传统汽车中，驾驶员通过方向盘柱、刹车油管、油门拉线等机械结构直接操控车辆；而在线控架构下，这些物理链路被传感器、电子控制单元（<abbr title="Electronic Control Unit，电子控制单元">ECU</abbr>）和执行器所替代，上层自动驾驶决策算法得以精确、实时地控制车辆的所有运动自由度。</p>
 <p><strong>从机械到电信号的变革</strong>意味着：</p>
 <ul>
 <li>消除机械延迟与传动间隙，实现毫秒级响应；</li>
@@ -5052,65 +5108,65 @@
 <tr>
 <td>线控转向（Steer-by-Wire）</td>
 <td>机械转向柱 + 液压助力</td>
-<td>EPS 电机 + 角度/扭矩传感器</td>
+<td><abbr title="Electric Power Steering，电动助力转向">EPS</abbr> 电机 + 角度/扭矩传感器</td>
 <td>&lt; 30 ms</td>
-<td>ASIL-D</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-D</td>
 </tr>
 <tr>
 <td>线控制动（Brake-by-Wire）</td>
 <td>制动液压管路</td>
 <td>EHB / EMB + 踏板模拟器</td>
 <td>&lt; 150 ms</td>
-<td>ASIL-D</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-D</td>
 </tr>
 <tr>
 <td>线控油门（Throttle-by-Wire）</td>
 <td>油门拉索 + 机械节气门</td>
 <td>电子节气门 ETC / 电机扭矩控制</td>
 <td>&lt; 100 ms</td>
-<td>ASIL-C</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-C</td>
 </tr>
 <tr>
 <td>线控换挡（Shift-by-Wire）</td>
 <td>机械换挡拉索</td>
 <td>电子换挡执行器</td>
 <td>&lt; 200 ms</td>
-<td>ASIL-B</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-B</td>
 </tr>
 <tr>
 <td>电子驻车（EPB）</td>
 <td>手动驻车拉索</td>
 <td>电机驱动卡钳</td>
 <td>&lt; 500 ms</td>
-<td>ASIL-C</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-C</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="1-eps-sbw">1. 线控转向（EPS / SbW）</h2>
-<h3 id="11-eps">1.1 电动助力转向（EPS）工作原理</h3>
-<p>电动助力转向（Electric Power Steering，EPS）是线控转向的基础，已在现代量产车中广泛普及。其核心工作原理如下：</p>
+<h2 id="1-eps-sbw">1. 线控转向（<abbr title="Electric Power Steering，电动助力转向">EPS</abbr> / <abbr title="Steer-by-Wire，线控转向">SbW</abbr>）</h2>
+<h3 id="11-eps">1.1 电动助力转向（<abbr title="Electric Power Steering，电动助力转向">EPS</abbr>）工作原理</h3>
+<p>电动助力转向（Electric Power Steering，<abbr title="Electric Power Steering，电动助力转向">EPS</abbr>）是线控转向的基础，已在现代量产车中广泛普及。其核心工作原理如下：</p>
 <ol>
 <li><strong>扭矩传感器</strong>检测驾驶员施加在转向柱上的手力扭矩 <span class="arithmatex">\(T_\text{driver}\)</span>；</li>
 <li><strong>转角传感器</strong>（Absolute Encoder）测量方向盘当前转角 <span class="arithmatex">\(\theta_\text{sw}\)</span>；</li>
-<li><strong>EPS ECU</strong> 根据车速 <span class="arithmatex">\(v\)</span>、转角和扭矩信号，计算所需助力扭矩：</li>
+<li><strong><abbr title="Electric Power Steering，电动助力转向">EPS</abbr> <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr></strong> 根据车速 <span class="arithmatex">\(v\)</span>、转角和扭矩信号，计算所需助力扭矩：</li>
 </ol>
 <div class="arithmatex">\[T_\text{assist} = f(T_\text{driver},\, v,\, \theta_\text{sw})\]</div>
 <ol>
 <li><strong>助力电机</strong>（通常为永磁同步电机，PMSM）通过减速机构施加助力，总转向力矩为：</li>
 </ol>
 <div class="arithmatex">\[T_\text{total} = T_\text{driver} + T_\text{assist}\]</div>
-<p>EPS 的布置形式包括：
-- <strong>C-EPS</strong>（转向柱助力）：电机安装在转向柱上，结构简单，适合中小型车；
-- <strong>P-EPS</strong>（小齿轮助力）：电机安装在小齿轮处，助力效率较高；
-- <strong>R-EPS</strong>（齿条助力）：电机直接作用在齿条上，转向感最佳，适合高端车型。</p>
-<h3 id="12-steer-by-wiresbw">1.2 线控转向（Steer-by-Wire，SbW）</h3>
-<p>线控转向在 EPS 基础上进一步断开方向盘与转向机构之间的物理连接，方向盘成为一个纯粹的输入设备（手感反馈由<strong>路感模拟电机</strong>提供），前轮转向角完全由软件控制。</p>
+<p><abbr title="Electric Power Steering，电动助力转向">EPS</abbr> 的布置形式包括：
+- <strong>C-<abbr title="Electric Power Steering，电动助力转向">EPS</abbr></strong>（转向柱助力）：电机安装在转向柱上，结构简单，适合中小型车；
+- <strong>P-<abbr title="Electric Power Steering，电动助力转向">EPS</abbr></strong>（小齿轮助力）：电机安装在小齿轮处，助力效率较高；
+- <strong>R-<abbr title="Electric Power Steering，电动助力转向">EPS</abbr></strong>（齿条助力）：电机直接作用在齿条上，转向感最佳，适合高端车型。</p>
+<h3 id="12-steer-by-wiresbw">1.2 线控转向（Steer-by-Wire，<abbr title="Steer-by-Wire，线控转向">SbW</abbr>）</h3>
+<p>线控转向在 <abbr title="Electric Power Steering，电动助力转向">EPS</abbr> 基础上进一步断开方向盘与转向机构之间的物理连接，方向盘成为一个纯粹的输入设备（手感反馈由<strong>路感模拟电机</strong>提供），前轮转向角完全由软件控制。</p>
 <p><strong>路感模拟（Force Feedback）</strong> 的实现原理：</p>
 <p>路面作用在轮胎上的回正力矩 <span class="arithmatex">\(M_\text{aligning}\)</span> 通过轮端传感器或状态估计获得，路感电机将等比例模拟扭矩反馈至方向盘：</p>
 <div class="arithmatex">\[T_\text{feedback} = k_\text{ratio} \cdot M_\text{aligning} + T_\text{damping}\]</div>
 <p>其中 <span class="arithmatex">\(k_\text{ratio}\)</span> 为路感比例系数，可根据车速动态调整，低速时减小（减轻停车负担），高速时增大（增强路感信息）。</p>
-<p><strong>SbW 的主要优势：</strong></p>
+<p><strong><abbr title="Steer-by-Wire，线控转向">SbW</abbr> 的主要优势：</strong></p>
 <ul>
 <li>转向传动比可在软件中任意定义（Variable Gear Ratio），无需机械可变比齿轮；</li>
 <li>消除路面冲击（kick-back）对方向盘的传递，提升驾驶舒适性；</li>
@@ -5118,7 +5174,7 @@
 <li>轮端与手端完全解耦，便于自动驾驶系统独立控制前轮。</li>
 </ul>
 <h3 id="13">1.3 冗余设计要求</h3>
-<p>由于 SbW 断开了机械备份，功能安全风险极高，必须实现完整冗余：</p>
+<p>由于 <abbr title="Steer-by-Wire，线控转向">SbW</abbr> 断开了机械备份，功能安全风险极高，必须实现完整冗余：</p>
 <div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────┐
 │              线控转向冗余架构               │
 │                                             │
@@ -5144,9 +5200,9 @@
 </code></pre></div>
 <p>冗余要求包括：
 - <strong>双路独立电源</strong>：主 12V 电源 + 48V 或独立 12V 备用电源；
-- <strong>双路 ECU</strong>：主 ECU 与验证/备份 ECU 同时运行，互相监测；
-- <strong>双路通信</strong>：两条独立 CAN FD 或车载以太网链路；
-- <strong>机械备份</strong>：部分方案在 SbW 彻底失效时通过机械锁将方向盘与轮端临时硬连接。</p>
+- <strong>双路 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr></strong>：主 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 与验证/备份 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 同时运行，互相监测；
+- <strong>双路通信</strong>：两条独立 <abbr title="Controller Area Network，控制器局域网">CAN</abbr> FD 或车载以太网链路；
+- <strong>机械备份</strong>：部分方案在 <abbr title="Steer-by-Wire，线控转向">SbW</abbr> 彻底失效时通过机械锁将方向盘与轮端临时硬连接。</p>
 <h3 id="14">1.4 关键性能参数</h3>
 <table>
 <thead>
@@ -5189,8 +5245,8 @@
 </tr>
 </tbody>
 </table>
-<h3 id="15-iso-26262-asil-d">1.5 功能安全要求（ISO 26262 ASIL-D）</h3>
-<p>线控转向属于 ISO 26262 中安全完整性最高等级 <strong>ASIL-D</strong> 的系统，要求：</p>
+<h3 id="15-iso-26262-asil-d">1.5 功能安全要求（ISO 26262 <abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-D）</h3>
+<p>线控转向属于 ISO 26262 中安全完整性最高等级 <strong><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-D</strong> 的系统，要求：</p>
 <ul>
 <li>单点故障度量（SPFM）&gt; 99%；</li>
 <li>潜在故障度量（LFM）&gt; 90%；</li>
@@ -5209,18 +5265,18 @@
 <tbody>
 <tr>
 <td>博世（Bosch）</td>
-<td>EPS-H / EPS-P / SbW</td>
-<td>全球最大 EPS 供应商</td>
+<td><abbr title="Electric Power Steering，电动助力转向">EPS</abbr>-H / <abbr title="Electric Power Steering，电动助力转向">EPS</abbr>-P / <abbr title="Steer-by-Wire，线控转向">SbW</abbr></td>
+<td>全球最大 <abbr title="Electric Power Steering，电动助力转向">EPS</abbr> 供应商</td>
 </tr>
 <tr>
 <td>捷太格特（JTEKT）</td>
-<td>EPS，SbW Steer-JT</td>
+<td><abbr title="Electric Power Steering，电动助力转向">EPS</abbr>，<abbr title="Steer-by-Wire，线控转向">SbW</abbr> Steer-JT</td>
 <td>日系一级供应商</td>
 </tr>
 <tr>
 <td>耐世特（Nexteer）</td>
-<td>EPS，Digital SbW</td>
-<td>全球前三 EPS 供应商</td>
+<td><abbr title="Electric Power Steering，电动助力转向">EPS</abbr>，Digital <abbr title="Steer-by-Wire，线控转向">SbW</abbr></td>
+<td>全球前三 <abbr title="Electric Power Steering，电动助力转向">EPS</abbr> 供应商</td>
 </tr>
 <tr>
 <td>蒂森克虏伯（ThyssenKrupp）</td>
@@ -5235,7 +5291,7 @@
 <p>传统液压制动系统以<strong>真空助力器</strong>（Vacuum Booster）放大驾驶员踏板力，经制动主缸（Master Cylinder）转化为液压，经 ABS/ESC 液压控制单元（HCU）分配至四轮卡钳。</p>
 <p>其局限性在于：
 - 真空助力器依赖发动机进气负压，纯电动车需额外配备真空泵；
-- 液压响应较慢（约 150 ~ 300 ms），不满足 AEB 对响应时间的严格要求；
+- 液压响应较慢（约 150 ~ 300 ms），不满足 <abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr> 对响应时间的严格要求；
 - 难以与再生制动（能量回收）精确协调；
 - 机械液压零部件多，集成度低。</p>
 <h3 id="22-ehbone-box">2.2 电子液压制动（EHB）：One-Box 方案</h3>
@@ -5245,7 +5301,7 @@
 <li>驾驶员踩下制动踏板，踏板模拟器提供力反馈；</li>
 <li>踏板位置传感器（冗余双传感器）采集踏板行程信号；</li>
 <li>iBooster 电机快速建立制动液压（响应时间 &lt; 120 ms，优于传统真空助力的 200 ms+）；</li>
-<li>ESP 单元精确分配四轮制动力，实现 ABS、ESC、AEB 等功能。</li>
+<li>ESP 单元精确分配四轮制动力，实现 ABS、ESC、<abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr> 等功能。</li>
 </ol>
 <p><strong>制动力分配模型：</strong></p>
 <p>设前轴制动力为 <span class="arithmatex">\(F_f\)</span>，后轴为 <span class="arithmatex">\(F_r\)</span>，理想制动力分配满足：</p>
@@ -5287,14 +5343,14 @@
 <td>电机直驱，无液压延迟</td>
 </tr>
 <tr>
-<td>AEB 系统端到端响应</td>
+<td><abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr> 系统端到端响应</td>
 <td>&lt; 150 ms</td>
 <td>从感知触发到制动力建立</td>
 </tr>
 </tbody>
 </table>
-<h3 id="25-aeb">2.5 AEB 自动紧急制动响应链路</h3>
-<p>自动紧急制动（Automatic Emergency Braking，AEB）的完整响应链路如下：</p>
+<h3 id="25-aeb">2.5 <abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr> 自动紧急制动响应链路</h3>
+<p>自动紧急制动（Automatic Emergency Braking，<abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr>）的完整响应链路如下：</p>
 <div class="highlight"><pre><span></span><code>目标检测（感知）→ TTC 计算（融合）→ AEB 决策（规划）
 → 制动指令下发（CAN/以太网）→ iBooster/EMB 执行 → 制动力建立
 </code></pre></div>
@@ -5319,7 +5375,7 @@
 <td>80 ms</td>
 </tr>
 <tr>
-<td>通信传输（CAN FD）</td>
+<td>通信传输（<abbr title="Controller Area Network，控制器局域网">CAN</abbr> FD）</td>
 <td>1 ~ 5 ms</td>
 <td>85 ms</td>
 </tr>
@@ -5357,7 +5413,7 @@
 <td>EHBA</td>
 <td>比亚迪</td>
 <td>EHB</td>
-<td>比亚迪 e 平台专用，与 EPS 深度集成</td>
+<td>比亚迪 e 平台专用，与 <abbr title="Electric Power Steering，电动助力转向">EPS</abbr> 深度集成</td>
 </tr>
 <tr>
 <td>EMB-4</td>
@@ -5373,18 +5429,18 @@
 <p>电子节气门控制（Electronic Throttle Control，ETC）已在现代汽车中全面普及，将油门踏板与节气门的物理连接替换为电子信号链路：</p>
 <ol>
 <li><strong>加速踏板位置传感器（APPS）</strong> 检测踏板行程（通常采用双传感器冗余，主传感器输出范围 0.5 ~ 4.5 V，副传感器输出为主传感器信号的 1/2 作为交叉验证）；</li>
-<li><strong>发动机 ECU（EMS）</strong> 根据踏板信号、发动机转速、进气量等计算目标扭矩；</li>
+<li><strong>发动机 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr>（EMS）</strong> 根据踏板信号、发动机转速、进气量等计算目标扭矩；</li>
 <li><strong>节气门执行器</strong>（直流电机 + 弹簧复位机构）调节进气量，控制发动机输出扭矩；</li>
 <li><strong>节气门位置传感器（TPS）</strong> 反馈实际节气门开度，构成闭环控制。</li>
 </ol>
-<p>节气门开度控制采用 PID 闭环：</p>
+<p>节气门开度控制采用 <abbr title="Proportional-Integral-Derivative，比例-积分-微分控制">PID</abbr> 闭环：</p>
 <div class="arithmatex">\[u(t) = K_p e(t) + K_i \int_0^t e(\tau)\,d\tau + K_d \frac{de(t)}{dt}\]</div>
 <p>其中 <span class="arithmatex">\(e(t) = \theta_\text{target} - \theta_\text{actual}\)</span> 为目标与实际节气门开度之差。</p>
 <h3 id="32">3.2 冗余双传感器设计</h3>
 <p>为防止 APPS 单点故障导致意外加速（Unintended Acceleration），双传感器设计是强制要求：</p>
 <ul>
 <li>主传感器（APPS1）与副传感器（APPS2）安装在同一踏板模块，但电路独立；</li>
-<li>ECU 持续比较两路信号：若 <span class="arithmatex">\(|V_{\text{APPS1}} - 2 \times V_{\text{APPS2}}| &gt; \varepsilon\)</span>，则判定传感器故障；</li>
+<li><abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 持续比较两路信号：若 <span class="arithmatex">\(|V_{\text{APPS1}} - 2 \times V_{\text{APPS2}}| &gt; \varepsilon\)</span>，则判定传感器故障；</li>
 <li>故障发生时，系统限制节气门开度（如最大 20%），触发驾驶员警告并进入跛行模式。</li>
 </ul>
 <h3 id="33">3.3 纯电动车的扭矩矢量控制</h3>
@@ -5418,7 +5474,7 @@
 <td>跛行模式（限速 / 限扭矩）</td>
 </tr>
 <tr>
-<td>通信中断（CAN 丢帧）</td>
+<td>通信中断（<abbr title="Controller Area Network，控制器局域网">CAN</abbr> 丢帧）</td>
 <td>AD 系统无法下发油门指令</td>
 <td>保持最后有效指令或降为零扭矩</td>
 </tr>
@@ -5478,13 +5534,13 @@
 <tr>
 <td>备用电源</td>
 <td>独立 12 V 电池</td>
-<td>关键 ECU + 线控转向/制动</td>
+<td>关键 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> + 线控转向/制动</td>
 <td>主电源故障时自动切换，续航 ≥ 30 s</td>
 </tr>
 </tbody>
 </table>
 <p>48 V 系统允许以更小电流驱动大功率执行器（线控制动电机），降低线束截面积，提升系统效率。</p>
-<h3 id="52-ecu">5.2 主备 ECU 热备份</h3>
+<h3 id="52-ecu">5.2 主备 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 热备份</h3>
 <table>
 <thead>
 <tr>
@@ -5497,19 +5553,19 @@
 <tbody>
 <tr>
 <td>Active-Active（双主模式）</td>
-<td>两个 ECU 同时运行相同算法，互相交叉验证输出</td>
+<td>两个 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 同时运行相同算法，互相交叉验证输出</td>
 <td>&lt; 5 ms</td>
-<td>ASIL-D 线控转向/制动</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-D 线控转向/制动</td>
 </tr>
 <tr>
 <td>Active-Standby（主备模式）</td>
-<td>主 ECU 运行，备 ECU 监听并随时接管</td>
+<td>主 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 运行，备 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 监听并随时接管</td>
 <td>10 ~ 50 ms</td>
-<td>成本敏感的 ASIL-B/C 子系统</td>
+<td>成本敏感的 <abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-B/C 子系统</td>
 </tr>
 </tbody>
 </table>
-<p>Active-Active 模式下，两个 ECU 的输出通过<strong>表决逻辑（Voting Logic）</strong>仲裁：</p>
+<p>Active-Active 模式下，两个 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 的输出通过<strong>表决逻辑（Voting Logic）</strong>仲裁：</p>
 <div class="arithmatex">\[\text{Output} = \begin{cases} \text{ECU-A output} &amp; \text{if } |\Delta| &lt; \varepsilon \\ \text{safe default} &amp; \text{if } |\Delta| \geq \varepsilon \text{ (fault detected)} \end{cases}\]</div>
 <p>其中 <span class="arithmatex">\(\Delta = \text{Output}_A - \text{Output}_B\)</span>，<span class="arithmatex">\(\varepsilon\)</span> 为允许偏差阈值。</p>
 <h3 id="53">5.3 通信总线冗余</h3>
@@ -5533,8 +5589,8 @@
 └─────────────────────────────────────────────────────┘
 </code></pre></div>
 <ul>
-<li><strong>双 CAN FD 通道</strong>：主通道 + 备份通道，自动故障切换；</li>
-<li><strong>车载以太网（100BASE-T1 / 1000BASE-T1）</strong>：用于高带宽诊断和 OTA 升级；</li>
+<li><strong>双 <abbr title="Controller Area Network，控制器局域网">CAN</abbr> FD 通道</strong>：主通道 + 备份通道，自动故障切换；</li>
+<li><strong>车载以太网（100BASE-T1 / 1000BASE-T1）</strong>：用于高带宽诊断和 <abbr title="Over-the-Air，空中升级">OTA</abbr> 升级；</li>
 <li><strong>通信帧完整性</strong>：CRC 校验 + 滚动计数器 + 超时检测，防止静默失效（Silent Failure）。</li>
 </ul>
 <h3 id="54-degraded-mode">5.4 降级模式（Degraded Mode）</h3>
@@ -5557,7 +5613,7 @@
 </tr>
 <tr>
 <td>降级 1（Degraded-1）</td>
-<td>一路 ECU 故障 / 一路传感器故障</td>
+<td>一路 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 故障 / 一路传感器故障</td>
 <td>限速 / 限制路线自动驾驶</td>
 <td>准备接管</td>
 </tr>
@@ -5568,7 +5624,7 @@
 <td>立即接管</td>
 </tr>
 <tr>
-<td>最小风险状态（MRC）</td>
+<td>最小风险状态（<abbr title="Minimum Risk Condition，最小风险状态">MRC</abbr>）</td>
 <td>严重故障，无法继续</td>
 <td>受控减速至停车</td>
 <td>接管 / 系统自动停车</td>
@@ -5577,19 +5633,19 @@
 </table>
 <hr />
 <h2 id="6">6. 自动驾驶接管机制</h2>
-<h3 id="61-tor">6.1 驾驶员接管请求（TOR）</h3>
-<p>在 L3 自动驾驶中，系统检测到无法处理的场景时，向驾驶员发出<strong>接管请求（Takeover Request，TOR）</strong>，要求驾驶员在规定时间内重新接管车辆控制。</p>
-<p>TOR 触发条件包括：
-- 自动驾驶系统检测到 ODD（操作设计域）边界（如天气恶化、传感器失效）；
+<h3 id="61-tor">6.1 驾驶员接管请求（<abbr title="Takeover Request，接管请求">TOR</abbr>）</h3>
+<p>在 L3 自动驾驶中，系统检测到无法处理的场景时，向驾驶员发出<strong>接管请求（Takeover Request，<abbr title="Takeover Request，接管请求">TOR</abbr>）</strong>，要求驾驶员在规定时间内重新接管车辆控制。</p>
+<p><abbr title="Takeover Request，接管请求">TOR</abbr> 触发条件包括：
+- 自动驾驶系统检测到 <abbr title="Operational Design Domain，运行设计域">ODD</abbr>（操作设计域）边界（如天气恶化、传感器失效）；
 - 关键线控子系统（转向 / 制动）发生降级；
 - 高精地图数据缺失；
 - 预测时域内存在系统无法处理的障碍物或复杂交互场景。</p>
-<p>TOR 发出方式（多模态）：
+<p><abbr title="Takeover Request，接管请求">TOR</abbr> 发出方式（多模态）：
 - 视觉警告（仪表屏闪烁 + HUD 红色提示）；
 - 听觉警告（蜂鸣器）；
 - 触觉警告（方向盘振动 / 安全带收紧）。</p>
 <h3 id="62-ttc">6.2 接管时间（TTC）分析</h3>
-<p><strong>接管时间（Time-To-Takeover，TTC）</strong> 定义为从 TOR 发出到驾驶员完成接管（双手握住方向盘、视线回到道路、脚放到踏板）的时间。</p>
+<p><strong>接管时间（Time-To-Takeover，TTC）</strong> 定义为从 <abbr title="Takeover Request，接管请求">TOR</abbr> 发出到驾驶员完成接管（双手握住方向盘、视线回到道路、脚放到踏板）的时间。</p>
 <p>研究表明（NHTSA / SAE 标准引用），典型 TTC 分布：</p>
 <table>
 <thead>
@@ -5617,9 +5673,9 @@
 </tr>
 </tbody>
 </table>
-<p>因此，SAE L3 系统要求：<strong>TOR 发出时刻距离危险事件的最小时间裕量应 ≥ 10 s</strong>，以保证即使驾驶员处于分心状态也有足够时间接管。</p>
-<h3 id="63-mrc">6.3 最小风险条件（MRC）</h3>
-<p>当驾驶员未能在 TTC 内接管，或线控系统发生严重故障时，自动驾驶系统应自主执行<strong>最小风险条件（Minimum Risk Condition，MRC）</strong>策略：</p>
+<p>因此，SAE L3 系统要求：<strong><abbr title="Takeover Request，接管请求">TOR</abbr> 发出时刻距离危险事件的最小时间裕量应 ≥ 10 s</strong>，以保证即使驾驶员处于分心状态也有足够时间接管。</p>
+<h3 id="63-mrc">6.3 最小风险条件（<abbr title="Minimum Risk Condition，最小风险状态">MRC</abbr>）</h3>
+<p>当驾驶员未能在 TTC 内接管，或线控系统发生严重故障时，自动驾驶系统应自主执行<strong>最小风险条件（Minimum Risk Condition，<abbr title="Minimum Risk Condition，最小风险状态">MRC</abbr>）</strong>策略：</p>
 <ol>
 <li>打开危险警示灯（双闪）；</li>
 <li>平滑减速（纵向加速度 ≤ -3 m/s²，避免后车追尾）；</li>
@@ -5633,8 +5689,8 @@
 <p>即切换时方向盘角度偏差和速度变化在可接受范围内，防止因切换导致的瞬态冲击。对于 L4 系统，切换前需完成完整的<strong>车辆状态同步（State Synchronization）</strong>，将当前自动驾驶控制量平滑移交至驾驶员。</p>
 <hr />
 <h2 id="7">7. 线控底盘集成验证</h2>
-<h3 id="71-hil">7.1 HIL（硬件在环）测试</h3>
-<p>硬件在环（Hardware-in-the-Loop，HIL）测试将真实线控 ECU 接入仿真环境，通过实时模拟器模拟车辆动力学、传感器信号和道路环境：</p>
+<h3 id="71-hil">7.1 <abbr title="Hardware in the Loop，硬件在环">HIL</abbr>（硬件在环）测试</h3>
+<p>硬件在环（Hardware-in-the-Loop，<abbr title="Hardware in the Loop，硬件在环">HIL</abbr>）测试将真实线控 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 接入仿真环境，通过实时模拟器模拟车辆动力学、传感器信号和道路环境：</p>
 <div class="highlight"><pre><span></span><code>┌────────────────────────────────────────────┐
 │              HIL 测试台架                  │
 │                                            │
@@ -5650,11 +5706,11 @@
 │  └──────────────────────────────────────┘  │
 └────────────────────────────────────────────┘
 </code></pre></div>
-<p>HIL 测试重点验证：
+<p><abbr title="Hardware in the Loop，硬件在环">HIL</abbr> 测试重点验证：
 - 故障注入后的冗余切换逻辑；
-- AEB / TCS / ESC 等功能的响应时间；
+- <abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr> / TCS / ESC 等功能的响应时间；
 - 通信丢帧、超时场景下的系统行为；
-- 极端工况（高温 / 低温 / 振动）下的 ECU 稳定性。</p>
+- 极端工况（高温 / 低温 / 振动）下的 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 稳定性。</p>
 <h3 id="72">7.2 底盘标定流程</h3>
 <p>线控底盘在出厂前需完成以下标定：</p>
 <table>
@@ -5728,7 +5784,7 @@
 <td>60</td>
 </tr>
 <tr>
-<td>CAN 总线</td>
+<td><abbr title="Controller Area Network，控制器局域网">CAN</abbr> 总线</td>
 <td>持续丢帧</td>
 <td>AD 指令无法传达</td>
 <td>8</td>
@@ -5751,10 +5807,10 @@
 <h3 id="74">7.4 量产线控底盘案例</h3>
 <p><strong>比亚迪 e 平台 3.0（搭载于海豹 / 汉 EV 等车型）：</strong></p>
 <ul>
-<li>集成 EHB（自研电子液压制动）+ EPS（博世）+ SbS（电子换挡）+ EPB；</li>
+<li>集成 EHB（自研电子液压制动）+ <abbr title="Electric Power Steering，电动助力转向">EPS</abbr>（博世）+ SbS（电子换挡）+ EPB；</li>
 <li>采用 CTB（Cell-to-Body）一体化车身结构，提升底盘整体刚度；</li>
 <li>支持 L2+ 辅助驾驶，线控接口向第三方 AD 域控制器开放；</li>
-<li>底盘域通信：CAN FD 500 kbps + 车载以太网 100BASE-T1。</li>
+<li>底盘域通信：<abbr title="Controller Area Network，控制器局域网">CAN</abbr> FD 500 kbps + 车载以太网 100BASE-T1。</li>
 </ul>
 <p><strong>吉利 SEA 浩瀚架构（搭载于极氪 001 / 领克 / Smart 等车型）：</strong></p>
 <ul>
@@ -5762,7 +5818,7 @@
 <li>前后双电机四轮驱动，支持扭矩矢量控制；</li>
 <li>采用 One-Box EHB 集成制动方案，响应时间 &lt; 120 ms；</li>
 <li>7 层电气架构（E/E Architecture），线控系统通过区域控制器（Zone Controller）统一管理；</li>
-<li>已量产车型最高支持行业标准 ASIL-C 线控制动，ASIL-D 转向。</li>
+<li>已量产车型最高支持行业标准 <abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-C 线控制动，<abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-D 转向。</li>
 </ul>
 <hr />
 <h2 id="_2">参考资料</h2>
@@ -5780,6 +5836,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 00:50:24 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

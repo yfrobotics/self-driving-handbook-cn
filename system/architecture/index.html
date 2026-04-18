@@ -1298,6 +1298,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../cybersecurity/" class="md-nav__link">
         
   
@@ -3216,6 +3244,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -4616,7 +4672,7 @@
 <td>近场感知，泊车</td>
 </tr>
 <tr>
-<td>主 LiDAR（机械式/固态）</td>
+<td>主 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>（机械式/固态）</td>
 <td>点云</td>
 <td>10–20 Hz</td>
 <td>3D 几何感知</td>
@@ -4628,13 +4684,13 @@
 <td>速度测量，全天候</td>
 </tr>
 <tr>
-<td>IMU</td>
+<td><abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr></td>
 <td>加速度+角速度</td>
 <td>100–1000 Hz</td>
 <td>短时姿态估计</td>
 </tr>
 <tr>
-<td>GNSS/RTK</td>
+<td><abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr>/<abbr title="Real-Time Kinematic，实时动态差分">RTK</abbr></td>
 <td>坐标+速度</td>
 <td>10–100 Hz</td>
 <td>全局定位</td>
@@ -4682,8 +4738,8 @@
 <h3 id="25">2.5 控制执行层</h3>
 <p>控制层追踪规划给出的参考轨迹，输出底盘指令：</p>
 <ul>
-<li><strong>横向控制：</strong> LQR/MPC，追踪参考路径</li>
-<li><strong>纵向控制：</strong> PID/MPC，追踪参考速度和间距</li>
+<li><strong>横向控制：</strong> <abbr title="Linear Quadratic Regulator，线性二次调节器">LQR</abbr>/<abbr title="Model Predictive Control，模型预测控制">MPC</abbr>，追踪参考路径</li>
+<li><strong>纵向控制：</strong> <abbr title="Proportional-Integral-Derivative，比例-积分-微分控制">PID</abbr>/<abbr title="Model Predictive Control，模型预测控制">MPC</abbr>，追踪参考速度和间距</li>
 <li><strong>执行频率：</strong> 50–200 Hz</li>
 </ul>
 <hr />
@@ -4704,12 +4760,12 @@
 <td>—</td>
 </tr>
 <tr>
-<td>传感器采样（LiDAR）</td>
+<td>传感器采样（<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>）</td>
 <td>10–20 Hz</td>
 <td>—</td>
 </tr>
 <tr>
-<td>传感器采样（IMU）</td>
+<td>传感器采样（<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>）</td>
 <td>100–1000 Hz</td>
 <td>—</td>
 </tr>
@@ -4822,7 +4878,7 @@ LiDAR 扫描开始时戳（精度 &lt; 1 ms）
 <td>360° 近场</td>
 </tr>
 <tr>
-<td>主 LiDAR</td>
+<td>主 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr></td>
 <td>1–3</td>
 <td>360° 远场</td>
 </tr>
@@ -4837,12 +4893,12 @@ LiDAR 扫描开始时戳（精度 &lt; 1 ms）
 <td>近场泊车</td>
 </tr>
 <tr>
-<td>IMU</td>
+<td><abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr></td>
 <td>1–2（冗余）</td>
 <td>全向</td>
 </tr>
 <tr>
-<td>GNSS</td>
+<td><abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr></td>
 <td>1–2</td>
 <td>全球定位</td>
 </tr>
@@ -4874,7 +4930,7 @@ LiDAR 扫描开始时戳（精度 &lt; 1 ms）
 <td>全自动</td>
 </tr>
 <tr>
-<td>台架（HIL/SIL）</td>
+<td>台架（<abbr title="Hardware in the Loop，硬件在环">HIL</abbr>/<abbr title="Software in the Loop，软件在环">SIL</abbr>）</td>
 <td>接口/时序/硬件验证</td>
 <td>千级场景</td>
 <td>半自动</td>
@@ -4911,7 +4967,7 @@ LiDAR 扫描开始时戳（精度 &lt; 1 ms）
 <tr>
 <td>芯片厂商</td>
 <td>硬件平台、工具链、性能优化</td>
-<td>SoC、编译器、参考设计</td>
+<td><abbr title="System on Chip，片上系统">SoC</abbr>、编译器、参考设计</td>
 </tr>
 <tr>
 <td>地图供应商</td>
@@ -4920,7 +4976,7 @@ LiDAR 扫描开始时戳（精度 &lt; 1 ms）
 </tr>
 <tr>
 <td>云平台</td>
-<td>数据存储、模型训练、OTA</td>
+<td>数据存储、模型训练、<abbr title="Over-the-Air，空中升级">OTA</abbr></td>
 <td>数据湖、训练平台、发布系统</td>
 </tr>
 </tbody>
@@ -4964,6 +5020,27 @@ LiDAR 扫描开始时戳（精度 &lt; 1 ms）
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 19:34:57 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -2934,6 +2962,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -4747,7 +4803,7 @@
 <td>Apollo 1.0</td>
 <td>2017.07</td>
 <td>封闭场地循环路线自动驾驶</td>
-<td>RTK GPS 定位，开放 LQR 控制模块</td>
+<td><abbr title="Real-Time Kinematic，实时动态差分">RTK</abbr> GPS 定位，开放 <abbr title="Linear Quadratic Regulator，线性二次调节器">LQR</abbr> 控制模块</td>
 </tr>
 <tr>
 <td>Apollo 2.0</td>
@@ -4765,7 +4821,7 @@
 <td>Apollo 3.5</td>
 <td>2019.01</td>
 <td>复杂城市道路，裸奔场景处理</td>
-<td><strong>Cyber RT</strong> 替代 ROS，BEV 感知雏形</td>
+<td><strong>Cyber RT</strong> 替代 ROS，<abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 感知雏形</td>
 </tr>
 <tr>
 <td>Apollo 5.0</td>
@@ -4830,7 +4886,7 @@ Cyber RT 协程模型：
 </code></pre></div>
 <p>DAG 配置通过 <code>.dag</code> 文件声明，Cyber RT 在启动时解析拓扑关系，自动分配协程优先级和 CPU 亲和性。</p>
 <h3 id="_3">共享内存通信</h3>
-<p>对于大数据量的传感器数据（4K 摄像头图像约 24 MB/帧，128线 LiDAR 点云约 10 MB/帧），Cyber RT 使用<strong>共享内存（Shared Memory）</strong> 实现零拷贝传输：</p>
+<p>对于大数据量的传感器数据（4K 摄像头图像约 24 MB/帧，128线 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 点云约 10 MB/帧），Cyber RT 使用<strong>共享内存（Shared Memory）</strong> 实现零拷贝传输：</p>
 <table>
 <thead>
 <tr>
@@ -4907,7 +4963,7 @@ Cyber RT 协程模型：
 </table>
 <h2 id="apollo_1">Apollo 感知系统</h2>
 <p>Apollo 感知模块整合多传感器数据，通过多个子模块协作，输出统一的目标列表（Object List）和占用栅格（Occupancy Grid）。</p>
-<h3 id="lidar-3d">LiDAR 3D 目标检测流程</h3>
+<h3 id="lidar-3d"><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 3D 目标检测流程</h3>
 <div class="highlight"><pre><span></span><code>原始点云（128线 LiDAR, ~100万点/帧）
         │
         ▼
@@ -4930,8 +4986,8 @@ Cyber RT 协程模型：
           多帧 LiDAR 融合（时间累积，改善稀疏性）
 </code></pre></div>
 <p><strong>PointPillars 的核心创新：</strong> 将点云划分为垂直方向的柱（Pillar），在每根柱内用 PointNet 提取特征，生成伪图像后用标准 2D CNN 检测，推理速度较 VoxelNet 提升约 5 倍，RT6 上单帧处理时间约 <strong>20 ms</strong>。</p>
-<h3 id="bev">BEV 视觉感知</h3>
-<p>Apollo RT6 引入多摄像头鸟瞰视角（BEV）感知，解决了传统透视视角感知的尺度歧义问题：</p>
+<h3 id="bev"><abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 视觉感知</h3>
+<p>Apollo RT6 引入多摄像头鸟瞰视角（<abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr>）感知，解决了传统透视视角感知的尺度歧义问题：</p>
 <div class="highlight"><pre><span></span><code>12个摄像头（前/后/左/右/斜角）
         │
         ▼
@@ -4949,7 +5005,7 @@ Cyber RT 协程模型：
         ├──► 车道线检测头
         └──► 可行驶区域分割头
 </code></pre></div>
-<p>BEV 感知的关键优势：相机坐标系与地图坐标系统一，便于与 LiDAR 点云、HD Map 进行坐标对齐融合，消除了传统 2D→3D 转换的累积误差。</p>
+<p><abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 感知的关键优势：相机坐标系与地图坐标系统一，便于与 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 点云、<abbr title="High Definition Map，高精地图">HD Map</abbr> 进行坐标对齐融合，消除了传统 2D→3D 转换的累积误差。</p>
 <h3 id="_4">多传感器融合追踪完整流程</h3>
 <div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
 │                      感知融合流水线                           │
@@ -4986,13 +5042,13 @@ Cyber RT 协程模型：
 <tbody>
 <tr>
 <td>点云地图（CloudMap）</td>
-<td>3D LiDAR 扫描点云，密度约 1000点/m²</td>
+<td>3D <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 扫描点云，密度约 1000点/m²</td>
 <td>约 1 GB/km</td>
 <td>季度级（道路变化后）</td>
-<td>LiDAR 实时扫描匹配定位</td>
+<td><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 实时扫描匹配定位</td>
 </tr>
 <tr>
-<td>矢量 HD Map</td>
+<td>矢量 <abbr title="High Definition Map，高精地图">HD Map</abbr></td>
 <td>车道几何、信号灯位置、限速标志、坡度、曲率</td>
 <td>约 10 MB/km</td>
 <td>月度级（人工核验）</td>
@@ -5000,20 +5056,20 @@ Cyber RT 协程模型：
 </tr>
 </tbody>
 </table>
-<p>矢量 HD Map 采用 OpenDRIVE 格式扩展，包含 <strong>Reference Line（参考线）</strong> 标注，Apollo 规划模块直接在参考线坐标系（Frenet坐标系）下进行轨迹优化，将二维曲线规划转化为沿参考线的 <span class="arithmatex">\((s, l)\)</span> 坐标规划。</p>
-<h3 id="ndt">NDT 点云定位</h3>
-<p>Apollo 定位核心采用 <strong>NDT（正态分布变换，Normal Distributions Transform）</strong> 算法进行 LiDAR 点云与预建点云地图的实时匹配：</p>
-<p><strong>NDT 算法原理：</strong>
+<p>矢量 <abbr title="High Definition Map，高精地图">HD Map</abbr> 采用 OpenDRIVE 格式扩展，包含 <strong>Reference Line（参考线）</strong> 标注，Apollo 规划模块直接在参考线坐标系（Frenet坐标系）下进行轨迹优化，将二维曲线规划转化为沿参考线的 <span class="arithmatex">\((s, l)\)</span> 坐标规划。</p>
+<h3 id="ndt"><abbr title="Normal Distributions Transform，正态分布变换">NDT</abbr> 点云定位</h3>
+<p>Apollo 定位核心采用 <strong><abbr title="Normal Distributions Transform，正态分布变换">NDT</abbr>（正态分布变换，Normal Distributions Transform）</strong> 算法进行 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 点云与预建点云地图的实时匹配：</p>
+<p><strong><abbr title="Normal Distributions Transform，正态分布变换">NDT</abbr> 算法原理：</strong>
 1. 将点云地图体素化，每个体素内点云建模为高斯分布 <span class="arithmatex">\(\mathcal{N}(\mu_k, \Sigma_k)\)</span>
 2. 对于实时扫描中的点 <span class="arithmatex">\(p_i\)</span>，计算其在地图体素中的概率得分：</p>
 <div class="arithmatex">\[s(\mathbf{T}) = -\sum_{i} \exp\!\left(-\frac{(\mathbf{T} p_i - \mu_k)^\top \Sigma_k^{-1} (\mathbf{T} p_i - \mu_k)}{2}\right)\]</div>
 <ol>
 <li>通过牛顿法迭代优化变换矩阵 <span class="arithmatex">\(\mathbf{T} = (R, t) \in SE(3)\)</span>，最大化总概率得分</li>
-<li>结合 IMU 预测的初始位姿，通常 3–5 次迭代即收敛</li>
+<li>结合 <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 预测的初始位姿，通常 3–5 次迭代即收敛</li>
 </ol>
 <p><strong>多传感器融合定位架构：</strong></p>
 <div class="arithmatex">\[\hat{x}_t = \text{EKF}(\underbrace{x_{t-1}}_{\text{先验}},\ \underbrace{u_{\text{IMU}}}_{\text{运动模型}},\ \underbrace{z_{\text{NDT}}}_{\text{LiDAR观测}},\ \underbrace{z_{\text{RTK}}}_{\text{GNSS观测}})\]</div>
-<p>通过扩展卡尔曼滤波融合 IMU 高频预测（100 Hz）与 NDT 低频更新（10 Hz）、RTK（1–10 Hz），实现 <strong>5–10 cm</strong> 横向定位精度。</p>
+<p>通过扩展卡尔曼滤波融合 <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 高频预测（100 Hz）与 <abbr title="Normal Distributions Transform，正态分布变换">NDT</abbr> 低频更新（10 Hz）、<abbr title="Real-Time Kinematic，实时动态差分">RTK</abbr>（1–10 Hz），实现 <strong>5–10 cm</strong> 横向定位精度。</p>
 <h3 id="_7">定位精度指标</h3>
 <table>
 <thead>
@@ -5041,18 +5097,18 @@ Cyber RT 协程模型：
 <td>城市峡谷 / 隧道</td>
 <td>10–20 cm</td>
 <td>15–30 cm</td>
-<td>GNSS 信号退化，依赖 IMU 推算</td>
+<td><abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 信号退化，依赖 <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 推算</td>
 </tr>
 <tr>
 <td>停车场（室内）</td>
 <td>15–30 cm</td>
 <td>20–40 cm</td>
-<td>无 GNSS，视觉+超声波辅助</td>
+<td>无 <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr>，视觉+超声波辅助</td>
 </tr>
 </tbody>
 </table>
 <h2 id="_8">规划模块</h2>
-<p>Apollo 规划模块（Planning）将定位位姿、HD Map 路由信息、感知目标列表综合处理，输出车辆未来 5–10 秒内的参考轨迹（Reference Trajectory）。</p>
+<p>Apollo 规划模块（Planning）将定位位姿、<abbr title="High Definition Map，高精地图">HD Map</abbr> 路由信息、感知目标列表综合处理，输出车辆未来 5–10 秒内的参考轨迹（Reference Trajectory）。</p>
 <h3 id="em-planner">EM Planner 架构</h3>
 <p>Apollo 采用 <strong>EM Planner（Expectation-Maximization Planner）</strong> 框架，在 Frenet 坐标系下将轨迹规划分解为<strong>路径优化</strong>和<strong>速度优化</strong>两个互相迭代的子问题：</p>
 <div class="highlight"><pre><span></span><code>行为决策层（Behavior Decision）
@@ -5078,7 +5134,7 @@ Cyber RT 协程模型：
 - 障碍物碰撞约束：<span class="arithmatex">\(l(s) \notin \mathcal{O}_i(s)\)</span>（障碍物投影范围）
 - 道路边界：<span class="arithmatex">\(l_{\min}(s) \leq l(s) \leq l_{\max}(s)\)</span>
 - 起始点连续性：<span class="arithmatex">\(l(0) = l_0,\ l'(0) = l'_0\)</span></p>
-<p>该问题离散化后转化为<strong>二次规划（QP）</strong> 问题，使用 OSQP 求解器求解，典型求解时间 &lt; 20 ms。</p>
+<p>该问题离散化后转化为<strong>二次规划（<abbr title="Quadratic Programming，二次规划">QP</abbr>）</strong> 问题，使用 OSQP 求解器求解，典型求解时间 &lt; 20 ms。</p>
 <h3 id="st">速度优化与 ST 图</h3>
 <p><strong>ST 图（Space-Time Graph）</strong> 是 Apollo 速度规划的核心工具：</p>
 <div class="highlight"><pre><span></span><code>纵向位置 s (m)
@@ -5127,19 +5183,19 @@ Cyber RT 协程模型：
 <td>第三代（Arcfox L4）</td>
 <td>2019</td>
 <td>&gt; 100 万元</td>
-<td>大量依赖进口 LiDAR（Velodyne），国际供应链</td>
+<td>大量依赖进口 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>（Velodyne），国际供应链</td>
 </tr>
 <tr>
 <td>第四代（红旗 EV）</td>
 <td>2020</td>
 <td>约 60 万元</td>
-<td>引入国产 LiDAR（速腾、禾赛），减少传感器数量</td>
+<td>引入国产 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>（速腾、禾赛），减少传感器数量</td>
 </tr>
 <tr>
 <td>第五代（极狐 αS）</td>
 <td>2021</td>
 <td>约 48 万元</td>
-<td>固态 LiDAR 降本，自研感知芯片</td>
+<td>固态 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 降本，自研感知芯片</td>
 </tr>
 <tr>
 <td>RT6（第六代，自研）</td>
@@ -5151,7 +5207,7 @@ Cyber RT 协程模型：
 <td>下一代（预计）</td>
 <td>2026</td>
 <td>&lt; 10 万元目标</td>
-<td>纯固态 LiDAR + 视觉为主，系统进一步集成</td>
+<td>纯固态 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> + 视觉为主，系统进一步集成</td>
 </tr>
 </tbody>
 </table>
@@ -5183,7 +5239,7 @@ Cyber RT 协程模型：
 <td>计算平台，联合优化模型部署</td>
 </tr>
 <tr>
-<td>LiDAR 厂商</td>
+<td><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 厂商</td>
 <td>速腾聚创（RoboSense）、禾赛科技（Hesai）、华为</td>
 <td>传感器供货，联合标定方案</td>
 </tr>
@@ -5205,7 +5261,7 @@ Cyber RT 协程模型：
 <li><strong>GitHub Stars：</strong> 23,000+</li>
 <li><strong>代码提交：</strong> 50,000+ commits</li>
 <li><strong>贡献者：</strong> 500+ 开发者（含百度内部 + 社区）</li>
-<li><strong>开源模块：</strong> 感知（LiDAR/Camera 检测）、规划（EM Planner）、控制（MPC/LQR）、仿真器（Apollo Sim）、Cyber RT 框架</li>
+<li><strong>开源模块：</strong> 感知（<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>/Camera 检测）、规划（EM Planner）、控制（<abbr title="Model Predictive Control，模型预测控制">MPC</abbr>/<abbr title="Linear Quadratic Regulator，线性二次调节器">LQR</abbr>）、仿真器（Apollo Sim）、Cyber RT 框架</li>
 </ul>
 <p>Apollo 还开放了 <strong>Apollo Studio</strong> 数据标注平台和 <strong>Apollo Cloud</strong> 仿真服务，合作伙伴可直接调用百度云端算力进行模型训练和回放验证。</p>
 <h2 id="apollo-rt6">Apollo RT6 硬件规格详表</h2>
@@ -5223,30 +5279,30 @@ Cyber RT 协程模型：
 <tr>
 <td><strong>计算平台</strong></td>
 <td>主算力芯片</td>
-<td>2× NVIDIA Orin X（508 TOPS × 2 = 1016 TOPS）</td>
+<td>2× NVIDIA Orin X（508 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr> × 2 = 1016 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>）</td>
 <td>双芯热备冗余，一颗故障可降级运行</td>
 </tr>
 <tr>
 <td><strong>计算平台</strong></td>
 <td>辅助安全芯片</td>
 <td>1× 德州仪器 TDA4</td>
-<td>功能安全 ASIL-D 监控，独立供电</td>
+<td>功能安全 <abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-D 监控，独立供电</td>
 </tr>
 <tr>
 <td><strong>激光雷达</strong></td>
-<td>前向长距 LiDAR</td>
+<td>前向长距 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr></td>
 <td>2× 机械旋转式（128线，200m量程）</td>
 <td>前向目标检测，远距离障碍物识别</td>
 </tr>
 <tr>
 <td><strong>激光雷达</strong></td>
-<td>侧向/后向 LiDAR</td>
-<td>4× 固态 LiDAR（近场补盲，30m量程）</td>
+<td>侧向/后向 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr></td>
+<td>4× 固态 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>（近场补盲，30m量程）</td>
 <td>车身四角覆盖盲区</td>
 </tr>
 <tr>
 <td><strong>激光雷达</strong></td>
-<td>顶部全景 LiDAR</td>
+<td>顶部全景 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr></td>
 <td>2× 机械式（64线）</td>
 <td>360°环境感知</td>
 </tr>
@@ -5260,7 +5316,7 @@ Cyber RT 协程模型：
 <td><strong>摄像头</strong></td>
 <td>环视摄像头</td>
 <td>4× 120°广角鱼眼（2MP）</td>
-<td>泊车、近场全景，BEV 感知</td>
+<td>泊车、近场全景，<abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 感知</td>
 </tr>
 <tr>
 <td><strong>摄像头</strong></td>
@@ -5282,26 +5338,26 @@ Cyber RT 协程模型：
 </tr>
 <tr>
 <td><strong>定位</strong></td>
-<td>GNSS 模块</td>
-<td>双天线 RTK（GPS + 北斗 + Galileo）</td>
+<td><abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 模块</td>
+<td>双天线 <abbr title="Real-Time Kinematic，实时动态差分">RTK</abbr>（GPS + 北斗 + Galileo）</td>
 <td>开阔场景 2 cm 精度</td>
 </tr>
 <tr>
 <td><strong>定位</strong></td>
 <td>惯性导航</td>
-<td>高精度 IMU（战术级，0.1°/h 漂移）</td>
-<td>高频姿态预测，填补 GNSS 间隙</td>
+<td>高精度 <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>（战术级，0.1°/h 漂移）</td>
+<td>高频姿态预测，填补 <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 间隙</td>
 </tr>
 <tr>
 <td><strong>通信</strong></td>
 <td>蜂窝网络</td>
 <td>5G（Sub-6GHz + mmWave）</td>
-<td>云端 OTA，远程监控</td>
+<td>云端 <abbr title="Over-the-Air，空中升级">OTA</abbr>，远程监控</td>
 </tr>
 <tr>
 <td><strong>通信</strong></td>
 <td>车路协同</td>
-<td>C-V2X（PC5 直连 + Uu 网络）</td>
+<td><abbr title="Cellular Vehicle-to-Everything，蜂窝车联网">C-V2X</abbr>（PC5 直连 + Uu 网络）</td>
 <td>路口信号灯信息接收</td>
 </tr>
 <tr>
@@ -5313,7 +5369,7 @@ Cyber RT 协程模型：
 <tr>
 <td><strong>冗余安全</strong></td>
 <td>转向系统</td>
-<td>双绕组 EPS（电动助力转向）</td>
+<td>双绕组 <abbr title="Electric Power Steering，电动助力转向">EPS</abbr>（电动助力转向）</td>
 <td>主绕组故障时切换备用</td>
 </tr>
 <tr>
@@ -5343,45 +5399,45 @@ Cyber RT 协程模型：
 <th>维度</th>
 <th>百度 Apollo / RT6</th>
 <th>Waymo Driver（第六代）</th>
-<th>Tesla FSD v12</th>
+<th>Tesla <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> v12</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>传感器方案</strong></td>
-<td>LiDAR（8颗）+ Camera（12颗）+ Radar（5颗）</td>
-<td>LiDAR（29颗）+ Camera（29颗）+ Radar</td>
-<td>纯视觉（8 Camera，无 LiDAR）</td>
+<td><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>（8颗）+ Camera（12颗）+ Radar（5颗）</td>
+<td><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>（29颗）+ Camera（29颗）+ Radar</td>
+<td>纯视觉（8 Camera，无 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>）</td>
 </tr>
 <tr>
 <td><strong>高精地图依赖</strong></td>
-<td>强（厘米级 HD Map + 点云地图）</td>
-<td>强（Waymo HD Map）</td>
+<td>强（厘米级 <abbr title="High Definition Map，高精地图">HD Map</abbr> + 点云地图）</td>
+<td>强（Waymo <abbr title="High Definition Map，高精地图">HD Map</abbr>）</td>
 <td>弱（仅标准导航地图，端到端神经网络）</td>
 </tr>
 <tr>
 <td><strong>计算平台</strong></td>
-<td>双 Orin X（1016 TOPS）</td>
+<td>双 Orin X（1016 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>）</td>
 <td>自研 TPU + Waymo Driver 计算单元</td>
-<td>自研 FSD Chip（144 TOPS × 2）</td>
+<td>自研 <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> Chip（144 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr> × 2）</td>
 </tr>
 <tr>
 <td><strong>定位精度</strong></td>
-<td>5–10 cm（城市），NDT + RTK 融合</td>
+<td>5–10 cm（城市），<abbr title="Normal Distributions Transform，正态分布变换">NDT</abbr> + <abbr title="Real-Time Kinematic，实时动态差分">RTK</abbr> 融合</td>
 <td>5 cm（建图覆盖区）</td>
 <td>车道级（无厘米级，依赖车道检测）</td>
 </tr>
 <tr>
 <td><strong>感知范围</strong></td>
-<td>LiDAR 200 m，Camera 200 m</td>
-<td>LiDAR 300 m（自研旋转式）</td>
+<td><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 200 m，Camera 200 m</td>
+<td><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 300 m（自研旋转式）</td>
 <td>Camera 200 m（视差测距）</td>
 </tr>
 <tr>
 <td><strong>商业模式</strong></td>
 <td>Robotaxi 运营（萝卜快跑）+ 赋能主机厂 ANP</td>
 <td>Robotaxi 运营（Waymo One，凤凰城/旧金山/洛杉矶）</td>
-<td>软件订阅（FSD，$99/月）</td>
+<td>软件订阅（<abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr>，$99/月）</td>
 </tr>
 <tr>
 <td><strong>规模化路径</strong></td>
@@ -5425,6 +5481,27 @@ Cyber RT 协程模型：
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 01:05:30 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

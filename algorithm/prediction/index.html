@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3449,6 +3477,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nlp/" class="md-nav__link">
         
   
@@ -5039,7 +5095,7 @@
 <tbody>
 <tr>
 <td>短期（0–2 s）</td>
-<td>碰撞检测、紧急制动 AEB</td>
+<td>碰撞检测、紧急制动 <abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr></td>
 <td>高（厘米级）</td>
 <td>物理模型、简单外推</td>
 </tr>
@@ -5139,7 +5195,7 @@
 <p>用多段折线（Polyline）统一表征地图元素（车道线、红绿灯）和智能体历史轨迹，用全局 Transformer（类 PointNet）进行图级特征融合，避免将地图光栅化为图像的信息损失。</p>
 <h2 id="_10">基于地图的预测深化</h2>
 <h3 id="lane-graph">车道图（Lane Graph）构建</h3>
-<p>基于地图的预测方法的核心是将 HD Map 转化为车道图（Lane Graph），供神经网络编码拓扑关系：</p>
+<p>基于地图的预测方法的核心是将 <abbr title="High Definition Map，高精地图">HD Map</abbr> 转化为车道图（Lane Graph），供神经网络编码拓扑关系：</p>
 <ul>
 <li><strong>节点</strong>：每个车道段（Lane Segment）对应一个节点，携带中心线采样点、车道宽度、限速等属性</li>
 <li><strong>边</strong>：两类有向边：（1）前驱/后继连接（车道沿行驶方向延续）；（2）相邻连接（可变道的左右邻车道）</li>
@@ -5389,7 +5445,7 @@
 </ul>
 <p>WOMD 要求同时预测最多 8 个感兴趣智能体（Agents of Interest），强调联合预测一致性，显著区别于单体评测框架。</p>
 <h3 id="argoverse-2-motion-forecasting">Argoverse 2 Motion Forecasting</h3>
-<p>Argoverse 2（Argo AI，2023）聚焦城市交叉口场景，提供更详细的 HD Map 标注（包括人行横道、停车标志、中央分隔线）。预测任务为未来 6 秒（60 帧 @ 10Hz），主要指标：</p>
+<p>Argoverse 2（Argo AI，2023）聚焦城市交叉口场景，提供更详细的 <abbr title="High Definition Map，高精地图">HD Map</abbr> 标注（包括人行横道、停车标志、中央分隔线）。预测任务为未来 6 秒（60 帧 @ 10Hz），主要指标：</p>
 <ul>
 <li><strong>minADE@K</strong>（<span class="arithmatex">\(K \in \{1, 6\}\)</span>）</li>
 <li><strong>minFDE@K</strong></li>
@@ -5449,7 +5505,7 @@
 <p>端到端的 ImitationPlanning 和 PLUTO 等框架尝试用单一网络同时输出预测和规划结果，从根本上消除两步法的误差耦合问题。</p>
 <h2 id="_20">语言增强预测</h2>
 <h3 id="_21">行为意图的语言描述</h3>
-<p>大语言模型（LLM）的兴起为轨迹预测带来了新的研究方向：用自然语言描述驾驶场景中的行为意图，辅助传统预测模型：</p>
+<p>大语言模型（<abbr title="Large Language Model，大语言模型">LLM</abbr>）的兴起为轨迹预测带来了新的研究方向：用自然语言描述驾驶场景中的行为意图，辅助传统预测模型：</p>
 <ul>
 <li>"该车正在低速行驶并频繁停车，可能正在寻找停车位"</li>
 <li>"前方行人正在看手机，注意力不在行驶方向上"</li>
@@ -5457,7 +5513,7 @@
 </ul>
 <p>语言描述充当了从观测状态到行为意图的"桥梁"，将隐性的驾驶员意图显式化。基于语言意图的预测模型（如 DriveVLM）将文本意图编码作为额外条件输入轨迹解码器：</p>
 <div class="arithmatex">\[\hat{y} = f_\theta(\mathbf{z}_{\text{agent}},\ \mathbf{z}_{\text{map}},\ \mathbf{z}_{\text{lang}})\]</div>
-<p>其中 <span class="arithmatex">\(\mathbf{z}_{\text{lang}}\)</span> 为语言意图描述的文本嵌入，由 CLIP 或 LLM 的文本编码器提取。</p>
+<p>其中 <span class="arithmatex">\(\mathbf{z}_{\text{lang}}\)</span> 为语言意图描述的文本嵌入，由 CLIP 或 <abbr title="Large Language Model，大语言模型">LLM</abbr> 的文本编码器提取。</p>
 <h3 id="_22">大模型辅助罕见场景预测</h3>
 <p>传统预测模型在<strong>长尾场景</strong>（如救护车高速穿越路口、施工区单行道、洪水积水绕行）中因训练样本稀少而失效。大模型具备丰富的世界知识，可以通过以下方式辅助罕见场景预测：</p>
 <p><strong>思维链推理（Chain-of-Thought Reasoning）：</strong></p>
@@ -5468,7 +5524,7 @@
 → 轨迹生成网络：基于意图约束生成轨迹
 </code></pre></div>
 <p><strong>数据增强（零样本生成训练数据）：</strong></p>
-<p>用 LLM 生成罕见场景的语言描述，结合仿真器合成对应场景数据，弥补真实数据长尾不足的问题。</p>
+<p>用 <abbr title="Large Language Model，大语言模型">LLM</abbr> 生成罕见场景的语言描述，结合仿真器合成对应场景数据，弥补真实数据长尾不足的问题。</p>
 <h3 id="_23">常识推理在预测中的应用</h3>
 <p>人类驾驶员依赖大量<strong>隐性常识</strong>进行预测，例如：</p>
 <ul>
@@ -5477,9 +5533,9 @@
 <li>在超市停车场，车辆倒车概率远高于道路场景</li>
 <li>消防车旁边的车辆很快会移走</li>
 </ul>
-<p>这些常识无法从轨迹数据中直接学习，但可以通过 LLM 的知识提取得到。<strong>场景常识约束（Commonsense Constraint）</strong>作为软约束加入预测目标函数，使模型输出在语义上更合理：</p>
+<p>这些常识无法从轨迹数据中直接学习，但可以通过 <abbr title="Large Language Model，大语言模型">LLM</abbr> 的知识提取得到。<strong>场景常识约束（Commonsense Constraint）</strong>作为软约束加入预测目标函数，使模型输出在语义上更合理：</p>
 <div class="arithmatex">\[\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{traj}} + \beta \cdot \mathcal{L}_{\text{commonsense}}\]</div>
-<p>其中 <span class="arithmatex">\(\mathcal{L}_{\text{commonsense}}\)</span> 由 LLM 对预测轨迹的合理性打分反向传播得到，是将大模型知识蒸馏进预测网络的一种方式。</p>
+<p>其中 <span class="arithmatex">\(\mathcal{L}_{\text{commonsense}}\)</span> 由 <abbr title="Large Language Model，大语言模型">LLM</abbr> 对预测轨迹的合理性打分反向传播得到，是将大模型知识蒸馏进预测网络的一种方式。</p>
 <h2 id="_24">参考资料</h2>
 <ol>
 <li>A. Alahi et al. Social LSTM: Human Trajectory Prediction in Crowded Spaces. CVPR, 2016.</li>
@@ -5500,6 +5556,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 01:05:30 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

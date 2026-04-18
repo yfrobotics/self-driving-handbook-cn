@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3140,6 +3168,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nlp/" class="md-nav__link">
         
   
@@ -4499,7 +4555,7 @@
 <li>参数对噪声敏感，高速需要附加滤波</li>
 <li><span class="arithmatex">\(k\)</span> 值过大会导致转向振荡</li>
 </ul>
-<h3 id="33-lqr">3.3 LQR（线性二次调节器）</h3>
+<h3 id="33-lqr">3.3 <abbr title="Linear Quadratic Regulator，线性二次调节器">LQR</abbr>（线性二次调节器）</h3>
 <p><strong>设计流程：</strong></p>
 <ol>
 <li>线性化车辆模型（运动学或动力学）</li>
@@ -4551,21 +4607,21 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">K_high</span>  <span class="c1"># 高速增益</span>
 </code></pre></div>
-<h3 id="34-mpc">3.4 MPC（模型预测控制）</h3>
-<p>MPC 在有限时域内在线求解最优控制序列，每步仅执行第一个控制量。</p>
+<h3 id="34-mpc">3.4 <abbr title="Model Predictive Control，模型预测控制">MPC</abbr>（模型预测控制）</h3>
+<p><abbr title="Model Predictive Control，模型预测控制">MPC</abbr> 在有限时域内在线求解最优控制序列，每步仅执行第一个控制量。</p>
 <p><strong>预测模型（离散化，步长 <span class="arithmatex">\(\Delta t\)</span>）：</strong></p>
 <div class="arithmatex">\[\mathbf{x}_{k+1} = A\mathbf{x}_k + B\mathbf{u}_k\]</div>
 <p><strong>代价函数：</strong></p>
 <div class="arithmatex">\[J = \sum_{k=0}^{N-1} \left( \mathbf{x}_k^T Q \mathbf{x}_k + u_k^T R u_k \right) + \mathbf{x}_N^T P_f \mathbf{x}_N\]</div>
 <p><strong>约束：</strong></p>
 <div class="arithmatex">\[|\delta| \leq \delta_{\max}, \quad |\dot{\delta}| \leq \dot{\delta}_{\max}, \quad |a_y| \leq a_{y,\max}\]</div>
-<p><strong>MPC vs LQR：</strong></p>
+<p><strong><abbr title="Model Predictive Control，模型预测控制">MPC</abbr> vs <abbr title="Linear Quadratic Regulator，线性二次调节器">LQR</abbr>：</strong></p>
 <table>
 <thead>
 <tr>
 <th>维度</th>
-<th>LQR</th>
-<th>MPC</th>
+<th><abbr title="Linear Quadratic Regulator，线性二次调节器">LQR</abbr></th>
+<th><abbr title="Model Predictive Control，模型预测控制">MPC</abbr></th>
 </tr>
 </thead>
 <tbody>
@@ -4577,7 +4633,7 @@
 <tr>
 <td>算力需求</td>
 <td>低（离线求解 <span class="arithmatex">\(K\)</span>）</td>
-<td>高（在线 QP/NLP）</td>
+<td>高（在线 <abbr title="Quadratic Programming，二次规划">QP</abbr>/NLP）</td>
 </tr>
 <tr>
 <td>性能上限</td>
@@ -4599,8 +4655,8 @@
 <div class="arithmatex">\[\mathbf{x}_{\text{predict}} = f(\mathbf{x}_{\text{current}}, u_{\text{prev}}, \Delta t_{\text{delay}})\]</div>
 <p><strong>方法二：Smith 预估器</strong></p>
 <p>在控制回路中引入延迟模型，提前补偿延迟影响。</p>
-<p><strong>方法三：MPC 中建模延迟</strong></p>
-<p>在 MPC 预测模型中将延迟步数作为额外状态处理：</p>
+<p><strong>方法三：<abbr title="Model Predictive Control，模型预测控制">MPC</abbr> 中建模延迟</strong></p>
+<p>在 <abbr title="Model Predictive Control，模型预测控制">MPC</abbr> 预测模型中将延迟步数作为额外状态处理：</p>
 <div class="arithmatex">\[u_k^{\text{actual}} = u_{k-d}^{\text{cmd}} \quad (d \text{ 为延迟步数})\]</div>
 <hr />
 <h2 id="5">5. 常见问题诊断</h2>
@@ -4645,7 +4701,7 @@
 <ol>
 <li><strong>先跑直道验证定位质量</strong>：分析 <span class="arithmatex">\(e_y\)</span> 和 <span class="arithmatex">\(e_\psi\)</span> 的噪声水平</li>
 <li><strong>低速弯道验证基础跟踪</strong>：从 Pure Pursuit 开始，确认基本跟踪可行</li>
-<li><strong>引入 LQR/MPC，先保稳定</strong>：从保守增益开始，逐步提高</li>
+<li><strong>引入 <abbr title="Linear Quadratic Regulator，线性二次调节器">LQR</abbr>/<abbr title="Model Predictive Control，模型预测控制">MPC</abbr>，先保稳定</strong>：从保守增益开始，逐步提高</li>
 <li><strong>分速度段回归</strong>：低速/城区/高速分别测试，建立 Gain Schedule</li>
 <li><strong>压力测试</strong>：急切入、大曲率弯道、颠簸路面验证鲁棒性</li>
 </ol>
@@ -4699,6 +4755,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 19:34:57 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

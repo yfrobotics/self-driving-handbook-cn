@@ -1181,6 +1181,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3099,6 +3127,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -4336,7 +4392,7 @@
 <tr>
 <td><strong>我在哪里？</strong>（Where am I?）</td>
 <td>定位（Localization）&amp; 地图</td>
-<td>GNSS/RTK、SLAM、高精地图匹配</td>
+<td><abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr>/<abbr title="Real-Time Kinematic，实时动态差分">RTK</abbr>、<abbr title="Simultaneous Localization and Mapping，即时定位与建图">SLAM</abbr>、高精地图匹配</td>
 </tr>
 <tr>
 <td><strong>周围有什么？</strong>（What is around me?）</td>
@@ -4346,7 +4402,7 @@
 <tr>
 <td><strong>我该怎么做？</strong>（What should I do?）</td>
 <td>规划与控制（Planning &amp; Control）</td>
-<td>路径规划、行为决策、MPC 控制</td>
+<td>路径规划、行为决策、<abbr title="Model Predictive Control，模型预测控制">MPC</abbr> 控制</td>
 </tr>
 </tbody>
 </table>
@@ -4369,12 +4425,12 @@
 </tr>
 <tr>
 <td>对新场景的适应</td>
-<td>在设计范围（ODD）内，超出则请求接管</td>
-<td>理论上可适应 ODD 之外的场景</td>
+<td>在设计范围（<abbr title="Operational Design Domain，运行设计域">ODD</abbr>）内，超出则请求接管</td>
+<td>理论上可适应 <abbr title="Operational Design Domain，运行设计域">ODD</abbr> 之外的场景</td>
 </tr>
 <tr>
 <td>典型代表</td>
-<td>L2–L4 ADAS 系统</td>
+<td>L2–L4 <abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr> 系统</td>
 <td>L5 全自主（当前尚未实现）</td>
 </tr>
 <tr>
@@ -4385,15 +4441,15 @@
 </tbody>
 </table>
 <p>当前业界的实用系统都是"自动驾驶"，真正意义上的"自主驾驶"（L5）仍是长远目标。</p>
-<h2 id="odd">运行设计域（ODD）</h2>
-<p><strong>运行设计域</strong>（Operational Design Domain，ODD）定义了自动驾驶系统可以安全激活和运行的条件边界。ODD 是 SAE J3016 和 ISO 21448 (SOTIF) 的核心概念。</p>
-<h3 id="odd_1">ODD 的主要维度</h3>
+<h2 id="odd">运行设计域（<abbr title="Operational Design Domain，运行设计域">ODD</abbr>）</h2>
+<p><strong>运行设计域</strong>（Operational Design Domain，<abbr title="Operational Design Domain，运行设计域">ODD</abbr>）定义了自动驾驶系统可以安全激活和运行的条件边界。<abbr title="Operational Design Domain，运行设计域">ODD</abbr> 是 SAE J3016 和 ISO 21448 (<abbr title="Safety Of The Intended Functionality，预期功能安全">SOTIF</abbr>) 的核心概念。</p>
+<h3 id="odd_1"><abbr title="Operational Design Domain，运行设计域">ODD</abbr> 的主要维度</h3>
 <table>
 <thead>
 <tr>
 <th>维度</th>
-<th>低 ODD 示例</th>
-<th>高 ODD 示例</th>
+<th>低 <abbr title="Operational Design Domain，运行设计域">ODD</abbr> 示例</th>
+<th>高 <abbr title="Operational Design Domain，运行设计域">ODD</abbr> 示例</th>
 </tr>
 </thead>
 <tbody>
@@ -4429,17 +4485,17 @@
 </tr>
 </tbody>
 </table>
-<h3 id="odd_2">ODD 与商业化的权衡</h3>
+<h3 id="odd_2"><abbr title="Operational Design Domain，运行设计域">ODD</abbr> 与商业化的权衡</h3>
 <ul>
-<li><strong>ODD 越小</strong>：系统越容易通过安全认证，运营成本低，但商业价值受限</li>
-<li><strong>ODD 越大</strong>：商业价值越高（可服务更多用户），但安全验证难度指数增加</li>
+<li><strong><abbr title="Operational Design Domain，运行设计域">ODD</abbr> 越小</strong>：系统越容易通过安全认证，运营成本低，但商业价值受限</li>
+<li><strong><abbr title="Operational Design Domain，运行设计域">ODD</abbr> 越大</strong>：商业价值越高（可服务更多用户），但安全验证难度指数增加</li>
 </ul>
-<p>当前 L4 Robotaxi（如 Waymo One、萝卜快跑）的策略是：先在限定城市的限定区域（小 ODD）实现安全运营，再逐步扩展 ODD 范围。</p>
-<h3 id="odd_3">ODD 与责任边界</h3>
+<p>当前 L4 Robotaxi（如 Waymo One、萝卜快跑）的策略是：先在限定城市的限定区域（小 <abbr title="Operational Design Domain，运行设计域">ODD</abbr>）实现安全运营，再逐步扩展 <abbr title="Operational Design Domain，运行设计域">ODD</abbr> 范围。</p>
+<h3 id="odd_3"><abbr title="Operational Design Domain，运行设计域">ODD</abbr> 与责任边界</h3>
 <ul>
-<li><strong>L3</strong>：系统在 ODD 内负责，ODD 外必须请求人类接管（Take-Over Request）</li>
-<li><strong>L4</strong>：ODD 内完全自主，超出 ODD 时系统自行执行最小风险机动（靠边停车），不依赖人类</li>
-<li><strong>L5</strong>：ODD 无限制，真正全自主</li>
+<li><strong>L3</strong>：系统在 <abbr title="Operational Design Domain，运行设计域">ODD</abbr> 内负责，<abbr title="Operational Design Domain，运行设计域">ODD</abbr> 外必须请求人类接管（Take-Over Request）</li>
+<li><strong>L4</strong>：<abbr title="Operational Design Domain，运行设计域">ODD</abbr> 内完全自主，超出 <abbr title="Operational Design Domain，运行设计域">ODD</abbr> 时系统自行执行最小风险机动（靠边停车），不依赖人类</li>
+<li><strong>L5</strong>：<abbr title="Operational Design Domain，运行设计域">ODD</abbr> 无限制，真正全自主</li>
 </ul>
 <h2 id="_5">自动驾驶系统的子系统架构</h2>
 <p>一个完整的自动驾驶系统由四类子系统协同构成：</p>
@@ -4456,11 +4512,11 @@
 │                │               │  云端数据平台          │
 └─────────────────┴────────────────┴──────────────────────┘
 </code></pre></div>
-<p>各子系统通过<strong>中间件</strong>（ROS 2 / Cyber RT / AUTOSAR Adaptive）进行标准化消息通信，实现模块解耦和独立升级。</p>
+<p>各子系统通过<strong>中间件</strong>（ROS 2 / Cyber RT / <abbr title="Automotive Open System Architecture，汽车开放系统架构">AUTOSAR</abbr> Adaptive）进行标准化消息通信，实现模块解耦和独立升级。</p>
 <h2 id="_6">参考资料</h2>
 <ol>
 <li>SAE International. J3016: Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles, 2021.</li>
-<li>ISO. ISO 21448: Road Vehicles — Safety of the Intended Functionality (SOTIF), 2019.</li>
+<li>ISO. ISO 21448: Road Vehicles — Safety of the Intended Functionality (<abbr title="Safety Of The Intended Functionality，预期功能安全">SOTIF</abbr>), 2019.</li>
 <li>NHTSA. Automated Driving Systems 2.0: A Vision for Safety, 2017.</li>
 </ol>
 
@@ -4470,6 +4526,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 00:31:46 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

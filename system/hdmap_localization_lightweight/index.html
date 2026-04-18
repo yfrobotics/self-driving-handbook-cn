@@ -1406,6 +1406,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../cybersecurity/" class="md-nav__link">
         
   
@@ -3324,6 +3352,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -4771,20 +4827,20 @@
 <h3 id="11">1.1 定位问题的本质</h3>
 <p>自动驾驶定位的目标是实时估计车辆在地图坐标系中的精确位姿：</p>
 <div class="arithmatex">\[\text{Pose} = \{x, y, z, \text{roll}, \text{pitch}, \text{yaw}\}\]</div>
-<p>单纯依靠 GNSS 的精度（标准定位 1–5 m）远不足以实现车道级定位（&lt; 20 cm）。地图作为先验知识，与实时传感器结合可显著提升定位精度。</p>
-<h3 id="12-lidar">1.2 LiDAR 地图匹配</h3>
-<p><strong>NDT 地图匹配流程：</strong></p>
+<p>单纯依靠 <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 的精度（标准定位 1–5 m）远不足以实现车道级定位（&lt; 20 cm）。地图作为先验知识，与实时传感器结合可显著提升定位精度。</p>
+<h3 id="12-lidar">1.2 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 地图匹配</h3>
+<p><strong><abbr title="Normal Distributions Transform，正态分布变换">NDT</abbr> 地图匹配流程：</strong></p>
 <ol>
-<li>预先建立 NDT 地图（将全局点云体素化，每格建高斯分布）</li>
-<li>实时 LiDAR 扫描与 NDT 地图配准</li>
+<li>预先建立 <abbr title="Normal Distributions Transform，正态分布变换">NDT</abbr> 地图（将全局点云体素化，每格建高斯分布）</li>
+<li>实时 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 扫描与 <abbr title="Normal Distributions Transform，正态分布变换">NDT</abbr> 地图配准</li>
 <li>优化变换矩阵：</li>
 </ol>
 <div class="arithmatex">\[T^* = \arg\max_T \sum_{p \in \text{scan}} p_\text{ndt}(T \cdot p)\]</div>
 <ol>
 <li>输出当前位姿与匹配置信度</li>
 </ol>
-<p><strong>ICP 地图匹配：</strong></p>
-<p>相比 NDT，ICP 对初始值更敏感，但在特征丰富场景（如室内或结构清晰的建筑旁）精度更高。</p>
+<p><strong><abbr title="Iterative Closest Point，迭代最近点">ICP</abbr> 地图匹配：</strong></p>
+<p>相比 <abbr title="Normal Distributions Transform，正态分布变换">NDT</abbr>，<abbr title="Iterative Closest Point，迭代最近点">ICP</abbr> 对初始值更敏感，但在特征丰富场景（如室内或结构清晰的建筑旁）精度更高。</p>
 <p><strong>工程优化：</strong></p>
 <div class="highlight"><pre><span></span><code>优化方向：
   ├─ 多分辨率 NDT：粗→细，加速收敛
@@ -4928,7 +4984,7 @@ coverage_score:   当前区域地图覆盖完整度
 <thead>
 <tr>
 <th>信息层</th>
-<th>完整 HD Map</th>
+<th>完整 <abbr title="High Definition Map，高精地图">HD Map</abbr></th>
 <th>轻地图</th>
 </tr>
 </thead>
@@ -4980,7 +5036,7 @@ coverage_score:   当前区域地图覆盖完整度
 <thead>
 <tr>
 <th>维度</th>
-<th>完整 HD Map</th>
+<th>完整 <abbr title="High Definition Map，高精地图">HD Map</abbr></th>
 <th>轻地图</th>
 </tr>
 </thead>
@@ -5006,7 +5062,7 @@ coverage_score:   当前区域地图覆盖完整度
 <td>高（感知不确定性增加）</td>
 </tr>
 <tr>
-<td>ODD 覆盖</td>
+<td><abbr title="Operational Design Domain，运行设计域">ODD</abbr> 覆盖</td>
 <td>受采集区域限制</td>
 <td>理论上更广</td>
 </tr>
@@ -5062,22 +5118,22 @@ coverage_score:   当前区域地图覆盖完整度
 <tbody>
 <tr>
 <td>Waymo</td>
-<td>完整 HD Map，精细建图</td>
-<td>特定区域超高精度，ODD 明确</td>
+<td>完整 <abbr title="High Definition Map，高精地图">HD Map</abbr>，精细建图</td>
+<td>特定区域超高精度，<abbr title="Operational Design Domain，运行设计域">ODD</abbr> 明确</td>
 </tr>
 <tr>
-<td>Tesla FSD</td>
+<td>Tesla <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr></td>
 <td>仅 SD Map，轻语义先验</td>
 <td>泛化能力强，新区域快速扩展</td>
 </tr>
 <tr>
 <td>Mobileye</td>
 <td>REM 轻图，众包更新</td>
-<td>大规模 ADAS，成本低</td>
+<td>大规模 <abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr>，成本低</td>
 </tr>
 <tr>
 <td>Cruise</td>
-<td>HD Map + 本地特征</td>
+<td><abbr title="High Definition Map，高精地图">HD Map</abbr> + 本地特征</td>
 <td>特定城市深度运营</td>
 </tr>
 </tbody>
@@ -5158,6 +5214,27 @@ coverage_score:   当前区域地图覆盖完整度
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 19:34:57 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

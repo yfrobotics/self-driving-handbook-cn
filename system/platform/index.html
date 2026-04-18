@@ -1519,6 +1519,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../cybersecurity/" class="md-nav__link">
         
   
@@ -3437,6 +3465,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -5001,9 +5057,9 @@
 <p><strong>传感器仿真能力：</strong></p>
 <ul>
 <li><strong>摄像头</strong>：RGB、深度（Depth）、语义分割（Semantic Segmentation）、实例分割</li>
-<li><strong>LiDAR</strong>：可配置线数、旋转频率、水平/垂直分辨率，支持Ray-Cast模型</li>
+<li><strong><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr></strong>：可配置线数、旋转频率、水平/垂直分辨率，支持Ray-Cast模型</li>
 <li><strong>雷达（Radar）</strong>：毫米波雷达，输出点云和速度信息</li>
-<li><strong>GPS / IMU</strong>：提供位置和惯性测量数据，支持误差模型注入</li>
+<li><strong>GPS / <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr></strong>：提供位置和惯性测量数据，支持误差模型注入</li>
 <li><strong>车道线检测传感器</strong>、<strong>语义LiDAR</strong>、<strong>碰撞/车道侵入传感器</strong></li>
 </ul>
 <p><strong>Python API接口：</strong></p>
@@ -5038,7 +5094,7 @@
 <ul>
 <li><strong>引擎</strong>：Unity，支持跨平台部署</li>
 <li><strong>接口</strong>：原生支持ROS/ROS2和百度Cyber RT，可直接对接Apollo/Autoware软件栈</li>
-<li><strong>传感器</strong>：可通过配置文件灵活定义传感器套件（摄像头、LiDAR、雷达、GPS、IMU）</li>
+<li><strong>传感器</strong>：可通过配置文件灵活定义传感器套件（摄像头、<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>、雷达、GPS、<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>）</li>
 <li><strong>真值（Ground Truth）传感器</strong>：提供3D检测框、语义地图等理想传感器输出</li>
 </ul>
 <p><strong>现状：</strong></p>
@@ -5050,7 +5106,7 @@
 <ul>
 <li><strong>双模式</strong>：无人机（Multirotor）和汽车（Car）模式，适合多场景研究</li>
 <li><strong>物理引擎</strong>：基于PhysX，物理建模精确，包括空气动力学和地面接触模型</li>
-<li><strong>传感器</strong>：摄像头（多视角、深度、分割）、IMU、气压计、磁力计</li>
+<li><strong>传感器</strong>：摄像头（多视角、深度、分割）、<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>、气压计、磁力计</li>
 <li><strong>合成数据生成</strong>：天气随机化、光照变化、对象随机放置，支持域随机化</li>
 </ul>
 <p><strong>现状：</strong></p>
@@ -5061,12 +5117,12 @@
 <p><strong>Automated Driving Toolbox：</strong></p>
 <ul>
 <li>提供车道检测、目标检测、跟踪算法的参考实现</li>
-<li>支持传感器融合（摄像头+LiDAR+雷达）仿真</li>
+<li>支持传感器融合（摄像头+<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>+雷达）仿真</li>
 <li>内置Driving Scenario Designer，可图形化设计测试场景</li>
 <li>代码自动生成（Code Generation），可直接部署到嵌入式平台</li>
 </ul>
 <p><strong>HIL集成：</strong></p>
-<p>MATLAB/Simulink与硬件在环（Hardware-in-the-Loop，HIL）系统深度集成，主要合作伙伴包括：
+<p>MATLAB/Simulink与硬件在环（Hardware-in-the-Loop，<abbr title="Hardware in the Loop，硬件在环">HIL</abbr>）系统深度集成，主要合作伙伴包括：
 - <strong>dSPACE</strong>：SCALEXIO、MicroAutoBox HIL平台
 - <strong>ETAS</strong>：LABCAR HIL系统
 - <strong>NI</strong>：CompactRIO HIL环境</p>
@@ -5075,10 +5131,10 @@
 <p><a href="https://developer.nvidia.com/drive/simulation">NVIDIA DRIVE Sim</a>基于NVIDIA Omniverse平台，提供工业级传感器物理仿真，是商业自动驾驶开发的主流选择之一。</p>
 <p><strong>核心能力：</strong></p>
 <ul>
-<li><strong>光线追踪（Ray Tracing）传感器仿真</strong>：基于物理的摄像头、LiDAR、雷达仿真，精确模拟光学特性</li>
+<li><strong>光线追踪（Ray Tracing）传感器仿真</strong>：基于物理的摄像头、<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>、雷达仿真，精确模拟光学特性</li>
 <li><strong>大规模并行仿真</strong>：支持在数千GPU上同时运行仿真实例，实现加速测试</li>
 <li><strong>合成数据生成（Synthetic Data Generation）</strong>：域随机化，自动生成带标注的训练数据</li>
-<li><strong>数字孪生（Digital Twin）</strong>：与真实地图数据（HD Map）融合，重建真实道路环境</li>
+<li><strong>数字孪生（Digital Twin）</strong>：与真实地图数据（<abbr title="High Definition Map，高精地图">HD Map</abbr>）融合，重建真实道路环境</li>
 </ul>
 <hr />
 <h3 id="_3">内部仿真平台</h3>
@@ -5106,7 +5162,7 @@
 <td>CARLA</td>
 <td>开源</td>
 <td>中高</td>
-<td>摄像头/LiDAR/雷达/GPS/IMU</td>
+<td>摄像头/<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>/雷达/GPS/<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr></td>
 <td>Python API / ROS</td>
 <td>学术研究，RL训练</td>
 </tr>
@@ -5114,7 +5170,7 @@
 <td>LGSVL/SVL</td>
 <td>开源（停更）</td>
 <td>中</td>
-<td>摄像头/LiDAR/雷达/GPS</td>
+<td>摄像头/<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>/雷达/GPS</td>
 <td>ROS / Cyber RT</td>
 <td>Apollo/Autoware集成测试</td>
 </tr>
@@ -5122,7 +5178,7 @@
 <td>AirSim</td>
 <td>开源（停更）</td>
 <td>高</td>
-<td>摄像头/IMU/气压计</td>
+<td>摄像头/<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>/气压计</td>
 <td>Python / ROS</td>
 <td>无人机+车辆，合成数据</td>
 </tr>
@@ -5130,7 +5186,7 @@
 <td>MATLAB/Simulink</td>
 <td>商业</td>
 <td>中</td>
-<td>摄像头/LiDAR/雷达</td>
+<td>摄像头/<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>/雷达</td>
 <td>MATLAB API / Code Gen</td>
 <td>控制算法，HIL集成</td>
 </tr>
@@ -5138,7 +5194,7 @@
 <td>NVIDIA DRIVE Sim</td>
 <td>商业</td>
 <td>极高</td>
-<td>摄像头/LiDAR/雷达</td>
+<td>摄像头/<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>/雷达</td>
 <td>Omniverse API</td>
 <td>工业级传感器仿真</td>
 </tr>
@@ -5146,9 +5202,9 @@
 <td>PreScan (Siemens)</td>
 <td>商业</td>
 <td>高</td>
-<td>摄像头/LiDAR/雷达/V2X</td>
+<td>摄像头/<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>/雷达/<abbr title="Vehicle-to-Everything，车对万物">V2X</abbr></td>
 <td>MATLAB / FMI</td>
-<td>ADAS测试，V2X</td>
+<td>ADAS测试，<abbr title="Vehicle-to-Everything，车对万物">V2X</abbr></td>
 </tr>
 <tr>
 <td>SUMO</td>
@@ -5164,7 +5220,7 @@
 <h3 id="kitti">KITTI</h3>
 <p><a href="https://www.cvlibs.net/datasets/kitti/">KITTI数据集</a>由德国卡尔斯鲁厄理工学院（KIT）与丰田美国技术研究院联合发布（2012年），是自动驾驶领域最具影响力的早期基准数据集之一。</p>
 <p><strong>采集平台：</strong>
-- <strong>传感器</strong>：Velodyne HDL-64E LiDAR + 2对立体摄像头（灰度/彩色）+ GPS/IMU
+- <strong>传感器</strong>：Velodyne HDL-64E <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> + 2对立体摄像头（灰度/彩色）+ GPS/<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>
 - <strong>采集地点</strong>：德国卡尔斯鲁厄市区及高速公路</p>
 <p><strong>规模与标注：</strong>
 - 原始数据：约400GB，覆盖多种天气和时段
@@ -5180,7 +5236,7 @@
 <h3 id="nuscenes">nuScenes</h3>
 <p><a href="https://www.nuscenes.org/">nuScenes</a>由Motional（原nuTonomy）发布（2020年），是当前全球使用最广泛的自动驾驶数据集之一，具有完整的全向传感器套件。</p>
 <p><strong>采集平台：</strong>
-- <strong>传感器</strong>：6个摄像头（360°覆盖）+ 1个32线LiDAR + 5个毫米波雷达 + GPS/IMU
+- <strong>传感器</strong>：6个摄像头（360°覆盖）+ 1个32线LiDAR + 5个毫米波雷达 + GPS/<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>
 - <strong>采集地点</strong>：波士顿和新加坡</p>
 <p><strong>规模与标注：</strong>
 - 1000个场景（每段约20秒）
@@ -5211,7 +5267,7 @@
 <p><a href="https://www.argoverse.org/av2.html">Argoverse 2</a>由Argo AI（现已解散，数据集持续开放）发布，以高精地图集成和运动预测任务闻名。</p>
 <p><strong>核心特性：</strong>
 - <strong>传感器</strong>：7个摄像头（环视）+ 2个LiDAR
-- <strong>高精地图（HD Map）</strong>：与场景数据强绑定，提供车道级地图标注
+- <strong>高精地图（<abbr title="High Definition Map，高精地图">HD Map</abbr>）</strong>：与场景数据强绑定，提供车道级地图标注
 - <strong>运动预测数据集</strong>：25万个场景片段，聚焦长尾驾驶行为
 - <strong>3D目标检测数据集</strong>：1000个场景，26类目标</p>
 <hr />
@@ -5247,7 +5303,7 @@
 <tr>
 <td>KITTI</td>
 <td>~15K帧</td>
-<td>摄像头/LiDAR/GPS</td>
+<td>摄像头/<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>/GPS</td>
 <td>3D框</td>
 <td>检测/追踪/深度/里程计</td>
 <td>CC BY-NC-SA</td>
@@ -5255,7 +5311,7 @@
 <tr>
 <td>nuScenes</td>
 <td>1000场景</td>
-<td>6摄/LiDAR/5雷达</td>
+<td>6摄/<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>/5雷达</td>
 <td>3D框+属性</td>
 <td>检测/追踪/预测</td>
 <td>CC BY-NC-SA</td>
@@ -5279,7 +5335,7 @@
 <tr>
 <td>ONCE</td>
 <td>1M帧</td>
-<td>7摄/LiDAR</td>
+<td>7摄/<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr></td>
 <td>3D框</td>
 <td>检测</td>
 <td>学术使用</td>
@@ -5515,6 +5571,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 00:50:24 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

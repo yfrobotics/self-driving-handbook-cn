@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3201,6 +3229,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -4518,12 +4574,12 @@
   
 
 
-<h1 id="lidar">主动感知传感器：LiDAR、毫米波与超声波</h1>
+<h1 id="lidar">主动感知传感器：<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>、毫米波与超声波</h1>
 <p>主动传感器通过主动发射信号（光、电磁波或声波）获取目标信息，在低光照和动态测距场景下价值突出。</p>
 <hr />
-<h2 id="1-lidar">1. LiDAR（激光雷达）</h2>
+<h2 id="1-lidar">1. <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>（激光雷达）</h2>
 <h3 id="11">1.1 工作原理</h3>
-<p>LiDAR 通过发射激光脉冲并测量回波时间计算距离：</p>
+<p><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 通过发射激光脉冲并测量回波时间计算距离：</p>
 <div class="arithmatex">\[d = \frac{c \cdot \Delta t}{2}\]</div>
 <p>其中 <span class="arithmatex">\(c\)</span> 为光速（<span class="arithmatex">\(3 \times 10^8\)</span> m/s），<span class="arithmatex">\(\Delta t\)</span> 为发射到接收的时间差。</p>
 <p><strong>测量方式：</strong></p>
@@ -4542,7 +4598,7 @@
 <td>技术成熟，实现简单</td>
 </tr>
 <tr>
-<td>FMCW（调频连续波）</td>
+<td><abbr title="Frequency Modulated Continuous Wave，调频连续波">FMCW</abbr>（调频连续波）</td>
 <td>测量频率差获得距离和速度</td>
 <td>同时获取速度，抗干扰</td>
 </tr>
@@ -4578,7 +4634,7 @@
 <td>技术成熟度低，量产一致性挑战</td>
 </tr>
 <tr>
-<td>FMCW 固态</td>
+<td><abbr title="Frequency Modulated Continuous Wave，调频连续波">FMCW</abbr> 固态</td>
 <td>调频扫描</td>
 <td>速度测量，抗干扰，高精度</td>
 <td>成本高，量产进度较慢</td>
@@ -4632,22 +4688,22 @@
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">量产挑战</p>
-<p>多辆车的 LiDAR 互相照射会导致串扰（Cross-talk），需要时序错开或使用 FMCW LiDAR（编码调制）来解决。</p>
+<p>多辆车的 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 互相照射会导致串扰（Cross-talk），需要时序错开或使用 <abbr title="Frequency Modulated Continuous Wave，调频连续波">FMCW</abbr> <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>（编码调制）来解决。</p>
 </div>
 <h3 id="15">1.5 标定方法</h3>
 <p><strong>内参标定（出厂固定）：</strong>
 - 旋转中心偏差、各激光器安装角度误差
 - 工厂环境使用精密夹具一次性标定</p>
 <p><strong>外参标定（与车体坐标系）：</strong></p>
-<p>靶板法：在已知位置放置角反射体，通过优化计算 LiDAR 到车体坐标系的变换矩阵 <span class="arithmatex">\(T\)</span>：</p>
+<p>靶板法：在已知位置放置角反射体，通过优化计算 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 到车体坐标系的变换矩阵 <span class="arithmatex">\(T\)</span>：</p>
 <div class="arithmatex">\[T^* = \arg\min_T \sum_i \| T \cdot p_i^{\text{lidar}} - p_i^{\text{map}} \|^2\]</div>
 <p><strong>在线外参监测：</strong>
 - 利用地面平面约束实时监控外参偏移
 - 偏移超过阈值（如 0.5°）时触发重标定告警</p>
 <hr />
 <h2 id="2-mmwave-radar">2. 毫米波雷达（mmWave Radar）</h2>
-<h3 id="21-fmcw">2.1 工作原理（FMCW）</h3>
-<p>毫米波雷达通过发射频率线性调制的连续波（FMCW），利用发射波和回波的频率差同时获取目标的距离、速度和角度：</p>
+<h3 id="21-fmcw">2.1 工作原理（<abbr title="Frequency Modulated Continuous Wave，调频连续波">FMCW</abbr>）</h3>
+<p>毫米波雷达通过发射频率线性调制的连续波（<abbr title="Frequency Modulated Continuous Wave，调频连续波">FMCW</abbr>），利用发射波和回波的频率差同时获取目标的距离、速度和角度：</p>
 <p><strong>距离测量（Range）：</strong></p>
 <div class="arithmatex">\[R = \frac{c \cdot f_{\text{beat}}}{2 \cdot S}\]</div>
 <p>其中 <span class="arithmatex">\(S\)</span> 为调频斜率，<span class="arithmatex">\(f_{\text{beat}}\)</span> 为差拍频率（发射波与回波的频率差）。</p>
@@ -4691,8 +4747,8 @@
 <p>传统 3D 雷达输出（Range, Velocity, Azimuth），4D 成像雷达额外增加<strong>俯仰角（Elevation）</strong>：</p>
 <ul>
 <li>通过大天线阵列（虚拟天线数可达数百）实现更高角分辨率</li>
-<li>点云密度接近稀疏 LiDAR，可用于目标分类</li>
-<li>全天候能力优于 LiDAR，成本介于传统雷达和 LiDAR 之间</li>
+<li>点云密度接近稀疏 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>，可用于目标分类</li>
+<li>全天候能力优于 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>，成本介于传统雷达和 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 之间</li>
 </ul>
 <p><strong>主要厂商：</strong> Continental HRS4、Arbe Phoenix、华为 4D 雷达、安智汽车</p>
 <h3 id="24">2.4 工程注意点</h3>
@@ -4774,7 +4830,7 @@
 <thead>
 <tr>
 <th>维度</th>
-<th>LiDAR</th>
+<th><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr></th>
 <th>毫米波雷达</th>
 <th>超声波</th>
 <th>摄像头</th>
@@ -4797,7 +4853,7 @@
 </tr>
 <tr>
 <td>速度测量</td>
-<td>FMCW 可测</td>
+<td><abbr title="Frequency Modulated Continuous Wave，调频连续波">FMCW</abbr> 可测</td>
 <td>直接（多普勒）</td>
 <td>无</td>
 <td>需连续帧</td>
@@ -4873,7 +4929,7 @@ LiDAR主机─┤   车辆俯视图    ├─摄像头×4（前/后/左/右）
 </thead>
 <tbody>
 <tr>
-<td>LiDAR</td>
+<td><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr></td>
 <td>点频、近场点数、返回功率</td>
 <td>点频下降 &gt; 20%；近场盲区异常增大</td>
 </tr>
@@ -4893,10 +4949,10 @@ LiDAR主机─┤   车辆俯视图    ├─摄像头×4（前/后/左/右）
 <hr />
 <h2 id="7">7. 选型与部署建议</h2>
 <ol>
-<li><strong>先定义 ODD，再确定传感器配置</strong>：高速公路 vs 城区 vs 泊车场景对传感器需求差异极大</li>
-<li><strong>制定清洁/加热策略</strong>：LiDAR 镜面和摄像头玻璃须配备清洗液和加热膜，尤其对雪地、沙尘场景</li>
+<li><strong>先定义 <abbr title="Operational Design Domain，运行设计域">ODD</abbr>，再确定传感器配置</strong>：高速公路 vs 城区 vs 泊车场景对传感器需求差异极大</li>
+<li><strong>制定清洁/加热策略</strong>：<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 镜面和摄像头玻璃须配备清洗液和加热膜，尤其对雪地、沙尘场景</li>
 <li><strong>预留在线标定接口</strong>：外参漂移是长期运营的大问题，应在架构阶段预留在线重标定能力</li>
-<li><strong>建立多传感器互验机制</strong>：LiDAR 目标与雷达目标的速度对比、摄像头检测框与 LiDAR 点云对比，及时发现单传感器异常</li>
+<li><strong>建立多传感器互验机制</strong>：<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 目标与雷达目标的速度对比、摄像头检测框与 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 点云对比，及时发现单传感器异常</li>
 </ol>
 
 
@@ -4905,6 +4961,27 @@ LiDAR主机─┤   车辆俯视图    ├─摄像头×4（前/后/左/右）
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 19:34:57 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

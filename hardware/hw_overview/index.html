@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3371,6 +3399,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -4867,7 +4923,7 @@
 <p>现代自动驾驶硬件系统通常包含数十种传感器、多个高性能计算单元、复杂的车载网络以及精密的执行机构。系统总算力需求从辅助驾驶（L2+）的数十TOPS到完全无人驾驶（L4/L5）的数千TOPS不等。如何在满足车规级（AEC-Q100）可靠性要求、严苛功耗约束以及功能安全（ISO 26262）规范的前提下，构建高性能的车载计算平台，是当前自动驾驶硬件领域最核心的技术挑战。</p>
 <hr />
 <h2 id="2-ee">2. 电子电气（E/E）架构演进</h2>
-<p>车辆电子电气（Electrical/Electronic，E/E）架构描述了车内所有电子控制单元（ECU）的拓扑关系、通信方式及供电方式。随着自动驾驶等级的提升，E/E架构经历了从分散走向集中的深刻变革。</p>
+<p>车辆电子电气（Electrical/Electronic，E/E）架构描述了车内所有电子控制单元（<abbr title="Electronic Control Unit，电子控制单元">ECU</abbr>）的拓扑关系、通信方式及供电方式。随着自动驾驶等级的提升，E/E架构经历了从分散走向集中的深刻变革。</p>
 <h3 id="21-distributed-architecture">2.1 第一代：分布式架构（Distributed Architecture）</h3>
 <p>这是传统汽车沿用数十年的经典架构。车辆的每一项功能（如车窗控制、座椅调节、ABS制动）均由一个独立的ECU负责执行，ECU之间通过CAN总线进行低速通信。</p>
 <ul>
@@ -4886,10 +4942,10 @@
 </ul>
 <p><strong>代表车型：</strong> 小鹏P7、理想ONE早期版本（双域控制器方案）</p>
 <h3 id="23-central-computing-architecture">2.3 第三代：中央计算架构（Central Computing Architecture）</h3>
-<p>进一步将多个域控制器整合为一个或少数几个高性能中央计算单元（Central Compute Unit，CCU），同时引入区域控制器（Zone Controller）就近处理本地IO信号，通过高速车载以太网骨干网连接。</p>
+<p>进一步将多个域控制器整合为一个或少数几个高性能中央计算单元（Central Compute Unit，<abbr title="Central Compute Unit，中央计算单元">CCU</abbr>），同时引入区域控制器（Zone Controller）就近处理本地IO信号，通过高速车载以太网骨干网连接。</p>
 <ul>
 <li><strong>特点：</strong> 算力极度集中，软件定义汽车（SDV）成为可能，OTA能力大幅增强</li>
-<li><strong>代表企业：</strong> 特斯拉（FSD Computer / HW4）、小鹏汽车（X-EEA 3.0）</li>
+<li><strong>代表企业：</strong> 特斯拉（<abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> Computer / HW4）、小鹏汽车（X-EEA 3.0）</li>
 <li><strong>优势：</strong> 线束大幅减少、算力可按需扩展、整车功能可通过软件迭代升级</li>
 </ul>
 <h3 id="24-zonalzonal-architecture">2.4 第四代：分区（Zonal）架构（Zonal Architecture）</h3>
@@ -4911,23 +4967,23 @@
 </thead>
 <tbody>
 <tr>
-<td>ECU/控制器数量</td>
-<td>100+ ECU</td>
+<td><abbr title="Electronic Control Unit，电子控制单元">ECU</abbr>/控制器数量</td>
+<td>100+ <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr></td>
 <td>5~10个域控</td>
 <td>1~3个CCU + 若干区域控制器</td>
 <td>1个中央计算 + 4~6个区域控制器</td>
 </tr>
 <tr>
 <td>典型计算算力</td>
-<td>&lt;1 TOPS（分散）</td>
-<td>10~100 TOPS（ADAS域）</td>
-<td>200~2000 TOPS</td>
-<td>500~2000+ TOPS</td>
+<td>&lt;1 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>（分散）</td>
+<td>10~100 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>（ADAS域）</td>
+<td>200~2000 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
+<td>500~2000+ <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 </tr>
 <tr>
 <td>车载网络带宽</td>
-<td>CAN（1Mbps）</td>
-<td>CAN FD + 百兆以太网</td>
+<td><abbr title="Controller Area Network，控制器局域网">CAN</abbr>（1Mbps）</td>
+<td><abbr title="Controller Area Network，控制器局域网">CAN</abbr> FD + 百兆以太网</td>
 <td>千兆/万兆以太网</td>
 <td>万兆以太网骨干</td>
 </tr>
@@ -5011,8 +5067,8 @@
 <td>目标识别、车道线检测、交通标志识别</td>
 </tr>
 <tr>
-<td>激光雷达（LiDAR）</td>
-<td>Velodyne VLP-32、速腾聚创RS-LiDAR-M1</td>
+<td>激光雷达（<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>）</td>
+<td>Velodyne VLP-32、速腾聚创RS-<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>-M1</td>
 <td>0.5~200m</td>
 <td>3D点云建图、障碍物检测、高精定位</td>
 </tr>
@@ -5029,13 +5085,13 @@
 <td>近距离障碍物检测、泊车辅助</td>
 </tr>
 <tr>
-<td>IMU（惯性测量单元）</td>
+<td><abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>（惯性测量单元）</td>
 <td>Xsens MTi-680、ADI ADIS16470</td>
 <td>N/A</td>
 <td>姿态估计、航位推算</td>
 </tr>
 <tr>
-<td>GNSS（卫星定位）</td>
+<td><abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr>（卫星定位）</td>
 <td>天宝BD992、华测CGI-410</td>
 <td>全球</td>
 <td>绝对位置定位（RTK精度&lt;10cm）</td>
@@ -5046,7 +5102,7 @@
 <h3 id="32">3.2 计算层</h3>
 <p>计算层是自动驾驶系统的"大脑"，负责执行感知、融合、定位、规划和控制等核心算法。</p>
 <ul>
-<li><strong>中央计算单元（CCU）：</strong> 搭载高性能SoC（如NVIDIA Orin/Thor、华为昇腾），承担L2+及以上级别的自动驾驶主算法</li>
+<li><strong>中央计算单元（<abbr title="Central Compute Unit，中央计算单元">CCU</abbr>）：</strong> 搭载高性能SoC（如NVIDIA Orin/Thor、华为昇腾），承担L2+及以上级别的自动驾驶主算法</li>
 <li><strong>域控制器（Domain Controller）：</strong> 域集中式架构中的区域算力节点，通常搭载中端SoC</li>
 <li><strong>边缘计算节点（Edge Node）：</strong> 靠近传感器部署，承担数据预处理、压缩传输等工作，降低骨干网带宽压力</li>
 </ul>
@@ -5062,12 +5118,12 @@
 </thead>
 <tbody>
 <tr>
-<td>CAN（Controller Area Network）</td>
+<td><abbr title="Controller Area Network，控制器局域网">CAN</abbr>（Controller Area Network）</td>
 <td>1 Mbps</td>
 <td>底盘控制、车身控制等低速控制信号</td>
 </tr>
 <tr>
-<td>CAN FD（Flexible Data-rate）</td>
+<td><abbr title="Controller Area Network，控制器局域网">CAN</abbr> FD（Flexible Data-rate）</td>
 <td>8 Mbps</td>
 <td>升级版CAN，支持更大数据帧</td>
 </tr>
@@ -5096,7 +5152,7 @@
 <h3 id="34">3.4 执行层</h3>
 <p>执行层将计算层输出的控制指令转化为车辆的物理动作，实现对车辆的精确控制。</p>
 <ul>
-<li><strong>EPS（Electric Power Steering，电动助力转向）：</strong> 接收转向角指令，精度可达0.1°</li>
+<li><strong><abbr title="Electric Power Steering，电动助力转向">EPS</abbr>（Electric Power Steering，电动助力转向）：</strong> 接收转向角指令，精度可达0.1°</li>
 <li><strong>EHB（Electro-Hydraulic Brake，电子液压制动）/ iBooster：</strong> 接收制动力矩指令，响应时间&lt;150ms</li>
 <li><strong>ETC（Electronic Throttle Control，电子油门）：</strong> 接收加速度指令，控制发动机/电机输出扭矩</li>
 <li><strong>EPB（Electronic Parking Brake，电子驻车制动）：</strong> 配合自动泊车等场景使用</li>
@@ -5110,7 +5166,7 @@
 <tr>
 <th>自动驾驶等级</th>
 <th>典型功能</th>
-<th>算力需求（TOPS）</th>
+<th>算力需求（<abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>）</th>
 <th>代表算法</th>
 </tr>
 </thead>
@@ -5118,31 +5174,31 @@
 <tr>
 <td>L1</td>
 <td>ACC自适应巡航</td>
-<td>&lt;5 TOPS</td>
+<td>&lt;5 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 <td>毫米波雷达目标跟踪</td>
 </tr>
 <tr>
 <td>L2</td>
 <td>车道保持+自动刹车</td>
-<td>5~30 TOPS</td>
+<td>5~30 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 <td>单目视觉+毫米波融合</td>
 </tr>
 <tr>
 <td>L2+（NOA/NGP）</td>
 <td>高速/城市辅助驾驶</td>
-<td>30~100 TOPS</td>
+<td>30~100 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 <td>多摄像头BEV感知+规划</td>
 </tr>
 <tr>
 <td>L3</td>
 <td>限定场景自动驾驶</td>
-<td>100~500 TOPS</td>
+<td>100~500 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 <td>多传感器深度融合+预测规划</td>
 </tr>
 <tr>
 <td>L4（Robotaxi）</td>
 <td>城区全自动驾驶</td>
-<td>500~2000 TOPS</td>
+<td>500~2000 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 <td>大模型感知+端到端规划</td>
 </tr>
 </tbody>
@@ -5154,9 +5210,9 @@
 <th>SoC型号</th>
 <th>厂商</th>
 <th>制程</th>
-<th>AI算力（TOPS）</th>
+<th>AI算力（<abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>）</th>
 <th>功耗（W）</th>
-<th>效率（TOPS/W）</th>
+<th>效率（<abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>/W）</th>
 <th>量产状态</th>
 </tr>
 </thead>
@@ -5165,7 +5221,7 @@
 <td>EyeQ5H</td>
 <td>Mobileye</td>
 <td>7nm</td>
-<td>24 TOPS</td>
+<td>24 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 <td>5W</td>
 <td>4.8</td>
 <td>量产</td>
@@ -5174,7 +5230,7 @@
 <td>Orin X</td>
 <td>NVIDIA</td>
 <td>7nm</td>
-<td>254 TOPS</td>
+<td>254 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 <td>65W</td>
 <td>3.9</td>
 <td>量产</td>
@@ -5183,7 +5239,7 @@
 <td>Thor</td>
 <td>NVIDIA</td>
 <td>4nm</td>
-<td>2000 TOPS</td>
+<td>2000 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 <td>~150W</td>
 <td>13.3</td>
 <td>2025量产</td>
@@ -5192,7 +5248,7 @@
 <td>征程6 Ultra</td>
 <td>地平线</td>
 <td>7nm</td>
-<td>560 TOPS</td>
+<td>560 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 <td>35W</td>
 <td>16.0</td>
 <td>量产</td>
@@ -5201,7 +5257,7 @@
 <td>昇腾910B</td>
 <td>华为海思</td>
 <td>7nm</td>
-<td>400 TOPS</td>
+<td>400 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 <td>75W</td>
 <td>5.3</td>
 <td>量产</td>
@@ -5218,15 +5274,15 @@
 </tbody>
 </table>
 <blockquote>
-<p>注：TOPS（Tera Operations Per Second）为整数运算（INT8精度）峰值算力，实际可用算力因软件栈差异约为标称值的50~80%。</p>
+<p>注：<abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>（Tera Operations Per Second）为整数运算（INT8精度）峰值算力，实际可用算力因软件栈差异约为标称值的50~80%。</p>
 </blockquote>
 <h3 id="43">4.3 异构计算架构</h3>
 <p>现代自动驾驶SoC均采用异构计算架构，不同计算单元各司其职：</p>
 <ul>
 <li><strong>CPU（中央处理器）：</strong> 负责操作系统调度、任务管理、决策规划等串行控制逻辑</li>
 <li><strong>GPU（图形处理器）：</strong> 负责深度学习推理中的大规模并行矩阵运算</li>
-<li><strong>NPU/DLA（神经网络处理单元）：</strong> 专为深度学习推理优化的固定功能加速器，能效比优于GPU</li>
-<li><strong>ISP（图像信号处理器）：</strong> 负责摄像头原始RAW图像的降噪、HDR、色彩校正等预处理</li>
+<li><strong><abbr title="Neural Processing Unit，神经网络处理器">NPU</abbr>/DLA（神经网络处理单元）：</strong> 专为深度学习推理优化的固定功能加速器，能效比优于GPU</li>
+<li><strong><abbr title="Image Signal Processor，图像信号处理器">ISP</abbr>（图像信号处理器）：</strong> 负责摄像头原始RAW图像的降噪、HDR、色彩校正等预处理</li>
 <li><strong>VPU（视频处理单元）：</strong> 负责视频的硬件编解码，降低CPU/GPU负担</li>
 </ul>
 <p>以NVIDIA Orin为例，单颗SoC集成了12核ARM Cortex-A78AE CPU、2048核Ampere GPU、2个深度学习加速器（DLA）以及专用ISP，通过统一的内存架构实现各单元间的高效数据共享。</p>
@@ -5274,39 +5330,39 @@
 <li><strong>热管/均热板（VC）：</strong> 常用于将热点扩散到更大散热面积，配合液冷使用</li>
 </ul>
 <h3 id="53">5.3 功耗效率对比</h3>
-<p>在自动驾驶SoC选型时，TOPS/W（算力功耗比）是核心指标之一：</p>
+<p>在自动驾驶SoC选型时，<abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>/W（算力功耗比）是核心指标之一：</p>
 <table>
 <thead>
 <tr>
 <th>计算平台</th>
 <th>总功耗</th>
 <th>AI算力</th>
-<th>TOPS/W</th>
+<th><abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>/W</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Mobileye EyeQ5H</td>
 <td>5W</td>
-<td>24 TOPS</td>
+<td>24 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 <td>4.8</td>
 </tr>
 <tr>
 <td>NVIDIA Orin X</td>
 <td>65W</td>
-<td>254 TOPS</td>
+<td>254 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 <td>3.9</td>
 </tr>
 <tr>
 <td>地平线征程6 Ultra</td>
 <td>35W</td>
-<td>560 TOPS</td>
+<td>560 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 <td>16.0</td>
 </tr>
 <tr>
 <td>NVIDIA Thor</td>
 <td>~150W</td>
-<td>2000 TOPS</td>
+<td>2000 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 <td>13.3</td>
 </tr>
 </tbody>
@@ -5324,7 +5380,7 @@
 <h2 id="6">6. 功能安全硬件要求</h2>
 <p>自动驾驶硬件系统须满足ISO 26262功能安全标准的相关要求，其中硬件架构的容错设计是核心。</p>
 <h3 id="61">6.1 硬件冗余架构</h3>
-<p>冗余设计是实现高ASIL等级（ASIL C/D）的基本手段：</p>
+<p>冗余设计是实现高ASIL等级（<abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr> C/D）的基本手段：</p>
 <ul>
 <li><strong>双芯冗余（Dual-Core Lockstep，DCLS）：</strong> 两个CPU核心以同步方式执行相同指令，逐周期比对输出结果，若不一致则触发安全机制。适用于ASIL D安全通道。代表产品：英飞凌AURIX TC3xx系列。</li>
 <li><strong>三模冗余（Triple Modular Redundancy，TMR）：</strong> 三套独立系统并行运行，以"多数表决"方式决定最终输出。可容忍任意单点故障，常用于飞行控制、高铁控制等高安全级别场景，在Robotaxi制动/转向冗余中开始应用。</li>
@@ -5359,8 +5415,8 @@
 <li><strong>外部看门狗：</strong> 独立于主SoC的专用安全MCU（如英飞凌TLF35584），可靠性更高</li>
 <li><strong>窗口看门狗（Window Watchdog）：</strong> 要求在规定时间窗口的特定范围内喂狗，既防止程序"死机"，也防止程序"跑飞"</li>
 </ul>
-<h3 id="64-hsm">6.4 硬件安全模块（HSM）</h3>
-<p>硬件安全模块（Hardware Security Module，HSM）是集成于SoC或独立芯片内的安全计算单元，用于：</p>
+<h3 id="64-hsm">6.4 硬件安全模块（<abbr title="Hardware Security Module，硬件安全模块">HSM</abbr>）</h3>
+<p>硬件安全模块（Hardware Security Module，<abbr title="Hardware Security Module，硬件安全模块">HSM</abbr>）是集成于SoC或独立芯片内的安全计算单元，用于：</p>
 <ul>
 <li><strong>安全启动（Secure Boot）：</strong> 通过数字签名验证软件镜像完整性，防止恶意代码注入</li>
 <li><strong>密钥管理：</strong> 安全存储加密密钥，防止物理攻击提取</li>
@@ -5372,8 +5428,8 @@
 <h3 id="71-hw4hardware-4">7.1 特斯拉 HW4（Hardware 4）</h3>
 <p>特斯拉于2023年随Model S/X Plaid率先推出HW4硬件平台，并逐步推广至全系车型。</p>
 <ul>
-<li><strong>处理器：</strong> 双FSD（Full Self-Driving）芯片，共计2颗自研FSD SoC</li>
-<li><strong>算力：</strong> 单片FSD SoC算力约1008 TOPS，双片总计约2016 TOPS</li>
+<li><strong>处理器：</strong> 双FSD（Full Self-Driving）芯片，共计2颗自研FSD <abbr title="System on Chip，片上系统">SoC</abbr></li>
+<li><strong>算力：</strong> 单片FSD SoC算力约1008 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>，双片总计约2016 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></li>
 <li><strong>传感器配置：</strong> 取消超声波雷达，采用纯视觉方案（8摄像头），摄像头分辨率从1.2MP升级至5MP</li>
 <li><strong>制程：</strong> 三星5nm工艺制程</li>
 <li><strong>冗余设计：</strong> 两颗FSD SoC互为冗余，配合独立安全MCU实现Fail-Operational</li>
@@ -5383,7 +5439,7 @@
 <p>理想L7/L8/L9等AD Pro/Max版本采用NVIDIA Orin X平台。</p>
 <ul>
 <li><strong>处理器：</strong> 2颗 NVIDIA Orin X</li>
-<li><strong>总算力：</strong> 2 × 254 TOPS = 508 TOPS</li>
+<li><strong>总算力：</strong> 2 × 254 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr> = 508 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></li>
 <li><strong>传感器配置：</strong> 1颗激光雷达 + 11颗摄像头 + 6颗毫米波雷达 + 12颗超声波雷达（AD Max版本）</li>
 <li><strong>软件平台：</strong> Mind GPT多模态大模型，部署于车端进行实时推理</li>
 <li><strong>功能安全：</strong> Orin内置ASIL-D安全岛（Safety Island），配合独立ADAS MCU实现冗余监控</li>
@@ -5392,16 +5448,16 @@
 <p>华为智能汽车解决方案（HI）面向L4级自动驾驶推出MDC（Mobile Data Centre）810平台。</p>
 <ul>
 <li><strong>处理器：</strong> 昇腾（Ascend）910车规版（简称AtlasRE 2.0/3.0）</li>
-<li><strong>算力：</strong> 400 TOPS（INT8）</li>
+<li><strong>算力：</strong> 400 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>（INT8）</li>
 <li><strong>接口支持：</strong> 支持16路摄像头、5路激光雷达、6路毫米波雷达同步接入</li>
 <li><strong>操作系统：</strong> 运行华为自研AOS（Autonomous Driving OS）</li>
 <li><strong>合作方：</strong> 阿维塔、极狐、问界等华为HI合作品牌</li>
-<li><strong>功能安全：</strong> 通过ISO 26262 ASIL-D认证</li>
+<li><strong>功能安全：</strong> 通过ISO 26262 <abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-D认证</li>
 </ul>
 <h3 id="74-xpilot-40-nvidia-thor">7.4 小鹏 XPILOT 4.0（搭载 NVIDIA Thor）</h3>
 <p>小鹏汽车在其下一代智能驾驶方案中率先宣布采用NVIDIA Thor平台。</p>
 <ul>
-<li><strong>处理器：</strong> NVIDIA Thor（代号"Thor"，单片2000 TOPS）</li>
+<li><strong>处理器：</strong> NVIDIA Thor（代号"Thor"，单片2000 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>）</li>
 <li><strong>架构特点：</strong> Thor将自动驾驶算力与座舱算力整合于单一SoC，实现"智驾+座舱"跨域融合</li>
 <li><strong>传感器配置：</strong> 支持纯视觉方案（无激光雷达）的XNGP城市辅助驾驶</li>
 <li><strong>通信架构：</strong> 基于X-EEA 3.0集中式电子电气架构，配合中央超算与区域控制器</li>
@@ -5432,6 +5488,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 00:50:24 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

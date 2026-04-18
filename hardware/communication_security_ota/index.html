@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3318,6 +3346,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -4752,8 +4808,8 @@
   
 
 
-<h1 id="secocids-ota">安全与升级：SecOC、IDS 与 OTA 工程实践</h1>
-<p>本页关注通信系统在安全攻击和持续升级场景下的可用性与安全性，涵盖车载通信安全机制与 OTA 全生命周期管理。</p>
+<h1 id="secocids-ota">安全与升级：SecOC、IDS 与 <abbr title="Over-the-Air，空中升级">OTA</abbr> 工程实践</h1>
+<p>本页关注通信系统在安全攻击和持续升级场景下的可用性与安全性，涵盖车载通信安全机制与 <abbr title="Over-the-Air，空中升级">OTA</abbr> 全生命周期管理。</p>
 <hr />
 <h2 id="1">1. 车载网络威胁模型</h2>
 <h3 id="11-stride">1.1 攻击面分析（STRIDE 框架）</h3>
@@ -4769,7 +4825,7 @@
 <tr>
 <td>欺骗</td>
 <td>Spoofing</td>
-<td>伪造 CAN 消息、伪造 GNSS 信号</td>
+<td>伪造 <abbr title="Controller Area Network，控制器局域网">CAN</abbr> 消息、伪造 <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 信号</td>
 </tr>
 <tr>
 <td>篡改</td>
@@ -4789,7 +4845,7 @@
 <tr>
 <td>拒绝服务</td>
 <td>Denial of Service</td>
-<td>CAN 总线泛洪、以太网 DoS</td>
+<td><abbr title="Controller Area Network，控制器局域网">CAN</abbr> 总线泛洪、以太网 DoS</td>
 </tr>
 <tr>
 <td>特权提升</td>
@@ -4812,7 +4868,7 @@
 <hr />
 <h2 id="2-secoc">2. SecOC（安全车载通信）</h2>
 <h3 id="21">2.1 基本原理</h3>
-<p>SecOC 是 AUTOSAR 定义的车载总线消息认证框架，通过在原始 PDU 后附加消息认证码（MAC）和 Freshness Value 来防止消息被篡改和重放。</p>
+<p>SecOC 是 <abbr title="Automotive Open System Architecture，汽车开放系统架构">AUTOSAR</abbr> 定义的车载总线消息认证框架，通过在原始 PDU 后附加消息认证码（MAC）和 Freshness Value 来防止消息被篡改和重放。</p>
 <p><strong>受保护 PDU 结构：</strong></p>
 <div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────┐
 │  原始 Data PDU  │  Freshness Value (部分)  │  MAC (截断)  │
@@ -4821,7 +4877,7 @@
 <ul>
 <li><strong>MAC</strong>：通常使用 CMAC-AES-128，截断为 24~64 bit 附在帧中</li>
 <li><strong>Freshness Value</strong>：单调递增计数器或时间戳，防重放攻击</li>
-<li><strong>共享密钥</strong>：发送方和接收方共享对称密钥，存储在 HSM 中</li>
+<li><strong>共享密钥</strong>：发送方和接收方共享对称密钥，存储在 <abbr title="Hardware Security Module，硬件安全模块">HSM</abbr> 中</li>
 </ul>
 <h3 id="22">2.2 消息认证流程</h3>
 <div class="highlight"><pre><span></span><code>发送方：
@@ -4834,13 +4890,13 @@
 <h3 id="23-freshness-value">2.3 Freshness Value 管理</h3>
 <p>Freshness Value 的同步是工程难点：</p>
 <ul>
-<li><strong>方案 A</strong>：计数器（每次发送递增）—— 需要持久化存储，ECU 重启后的恢复策略</li>
+<li><strong>方案 A</strong>：计数器（每次发送递增）—— 需要持久化存储，<abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 重启后的恢复策略</li>
 <li><strong>方案 B</strong>：时间戳（结合 gPTP 同步时钟）—— 依赖精确时间同步</li>
 <li><strong>方案 C</strong>：混合（计数器 + 时间窗口）—— 工程中常见折中方案</li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">工程实践</p>
-<p>SecOC 的 MAC 验证会增加约 10–50 μs 的处理时延（视芯片和 HSM 性能）。对于高频控制帧（1kHz+），应选用硬件 HSM 加速，避免软件实现成为瓶颈。</p>
+<p>SecOC 的 MAC 验证会增加约 10–50 μs 的处理时延（视芯片和 <abbr title="Hardware Security Module，硬件安全模块">HSM</abbr> 性能）。对于高频控制帧（1kHz+），应选用硬件 <abbr title="Hardware Security Module，硬件安全模块">HSM</abbr> 加速，避免软件实现成为瓶颈。</p>
 </div>
 <hr />
 <h2 id="3-idsips">3. IDS/IPS（入侵检测/防御系统）</h2>
@@ -4922,8 +4978,8 @@ Bootloader（已验证）
 <li><strong>回滚保护</strong>：单调计数器防止降级到有漏洞的旧版本</li>
 </ul>
 <hr />
-<h2 id="5-hsm">5. 硬件安全模块（HSM）</h2>
-<p>HSM 是专用安全协处理器，提供：</p>
+<h2 id="5-hsm">5. 硬件安全模块（<abbr title="Hardware Security Module，硬件安全模块">HSM</abbr>）</h2>
+<p><abbr title="Hardware Security Module，硬件安全模块">HSM</abbr> 是专用安全协处理器，提供：</p>
 <table>
 <thead>
 <tr>
@@ -4934,7 +4990,7 @@ Bootloader（已验证）
 <tbody>
 <tr>
 <td>密钥存储</td>
-<td>密钥永不离开 HSM，只暴露计算结果</td>
+<td>密钥永不离开 <abbr title="Hardware Security Module，硬件安全模块">HSM</abbr>，只暴露计算结果</td>
 </tr>
 <tr>
 <td>加密运算</td>
@@ -4954,9 +5010,9 @@ Bootloader（已验证）
 </tr>
 </tbody>
 </table>
-<p>典型 HSM 集成路径：SHE（Secure Hardware Extension）或完整 HSM（如 Renesas RH850/P1x HSM、英飞凌 AURIX HSM）。</p>
+<p>典型 <abbr title="Hardware Security Module，硬件安全模块">HSM</abbr> 集成路径：SHE（Secure Hardware Extension）或完整 <abbr title="Hardware Security Module，硬件安全模块">HSM</abbr>（如 Renesas RH850/P1x <abbr title="Hardware Security Module，硬件安全模块">HSM</abbr>、英飞凌 AURIX <abbr title="Hardware Security Module，硬件安全模块">HSM</abbr>）。</p>
 <hr />
-<h2 id="6-ota">6. OTA 更新体系</h2>
+<h2 id="6-ota">6. <abbr title="Over-the-Air，空中升级">OTA</abbr> 更新体系</h2>
 <h3 id="61-fota-vs-sota">6.1 FOTA vs SOTA</h3>
 <table>
 <thead>
@@ -4968,23 +5024,23 @@ Bootloader（已验证）
 </thead>
 <tbody>
 <tr>
-<td>FOTA（Firmware OTA）</td>
-<td>更新 ECU 固件</td>
-<td>底盘 ECU、执行器固件</td>
+<td>FOTA（Firmware <abbr title="Over-the-Air，空中升级">OTA</abbr>）</td>
+<td>更新 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 固件</td>
+<td>底盘 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr>、执行器固件</td>
 </tr>
 <tr>
-<td>SOTA（Software OTA）</td>
+<td>SOTA（Software <abbr title="Over-the-Air，空中升级">OTA</abbr>）</td>
 <td>更新高层软件</td>
 <td>算法模型、配置参数、应用程序</td>
 </tr>
 <tr>
-<td>DOTA（Data OTA）</td>
+<td>DOTA（Data <abbr title="Over-the-Air，空中升级">OTA</abbr>）</td>
 <td>更新数据</td>
 <td>高精地图、NLU 词库、规则库</td>
 </tr>
 </tbody>
 </table>
-<h3 id="62-ota">6.2 OTA 系统架构</h3>
+<h3 id="62-ota">6.2 <abbr title="Over-the-Air，空中升级">OTA</abbr> 系统架构</h3>
 <div class="highlight"><pre><span></span><code>云端 OTA 后台
     │
     │  ① 创建升级包（签名/加密）
@@ -5026,15 +5082,15 @@ OTA Manager（升级管理器）
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">回滚保护要求</p>
-<p>"可回滚"应作为 OTA 的强制设计条件，而非可选功能。L3+ 级别系统要求无论在任何中断情况下（断电、网络中断）都能安全恢复。</p>
+<p>"可回滚"应作为 <abbr title="Over-the-Air，空中升级">OTA</abbr> 的强制设计条件，而非可选功能。L3+ 级别系统要求无论在任何中断情况下（断电、网络中断）都能安全恢复。</p>
 </div>
-<h3 id="64-ota">6.4 OTA 安全保障</h3>
+<h3 id="64-ota">6.4 <abbr title="Over-the-Air，空中升级">OTA</abbr> 安全保障</h3>
 <ul>
 <li><strong>包签名</strong>：厂商私钥签名，车端公钥验证</li>
 <li><strong>传输加密</strong>：TLS 1.3 加密传输通道</li>
 <li><strong>完整性校验</strong>：SHA-256 哈希对比</li>
 <li><strong>版本锁</strong>：不允许降级到低于最小安全版本的固件</li>
-<li><strong>授权控制</strong>：仅在安全状态（停车、充电）下执行关键 ECU 升级</li>
+<li><strong>授权控制</strong>：仅在安全状态（停车、充电）下执行关键 <abbr title="Electronic Control Unit，电子控制单元">ECU</abbr> 升级</li>
 </ul>
 <hr />
 <h2 id="7">7. 灰度发布策略</h2>
@@ -5061,7 +5117,7 @@ OTA Manager（升级管理器）
 </thead>
 <tbody>
 <tr>
-<td>OTA 成功率</td>
+<td><abbr title="Over-the-Air，空中升级">OTA</abbr> 成功率</td>
 <td>升级完成比例</td>
 <td>&lt; 99% 则暂停</td>
 </tr>
@@ -5077,7 +5133,7 @@ OTA Manager（升级管理器）
 </tr>
 <tr>
 <td>接管率变化</td>
-<td>升级后 ADAS 接管率</td>
+<td>升级后 <abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr> 接管率</td>
 <td>&gt; 基线 10% 则暂停</td>
 </tr>
 <tr>
@@ -5099,10 +5155,10 @@ OTA Manager（升级管理器）
 <li><strong>退役阶段</strong>：密钥吊销与数据清除</li>
 </ul>
 <h3 id="82-un-regulation-r155r156">8.2 UN Regulation R155/R156</h3>
-<p>联合国车辆网络安全（R155）和 OTA（R156）法规：</p>
+<p>联合国车辆网络安全（R155）和 <abbr title="Over-the-Air，空中升级">OTA</abbr>（R156）法规：</p>
 <ul>
 <li><strong>R155</strong>：整车制造商须建立并维护网络安全管理体系（CSMS）</li>
-<li><strong>R156</strong>：OTA 更新须有型式认证，包含版本验证、回滚机制、用户告知</li>
+<li><strong>R156</strong>：<abbr title="Over-the-Air，空中升级">OTA</abbr> 更新须有型式认证，包含版本验证、回滚机制、用户告知</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">中国合规要求</p>
@@ -5138,7 +5194,7 @@ OTA Manager（升级管理器）
 </thead>
 <tbody>
 <tr>
-<td>OTA 成功率</td>
+<td><abbr title="Over-the-Air，空中升级">OTA</abbr> 成功率</td>
 <td>成功升级 / 发起升级总数</td>
 <td>&gt; 99.5%</td>
 </tr>
@@ -5172,7 +5228,7 @@ OTA Manager（升级管理器）
 <hr />
 <h2 id="_1">参考标准</h2>
 <ul>
-<li>AUTOSAR SecOC 规范（AUTOSAR_SWS_SecureOnboardCommunication）</li>
+<li><abbr title="Automotive Open System Architecture，汽车开放系统架构">AUTOSAR</abbr> SecOC 规范（AUTOSAR_SWS_SecureOnboardCommunication）</li>
 <li>ISO/SAE 21434:2021（道路车辆网络安全工程）</li>
 <li>UN Regulation No. 155 / No. 156</li>
 <li>ETSI EN 303 645（消费者 IoT 网络安全）</li>
@@ -5185,6 +5241,27 @@ OTA Manager（升级管理器）
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 19:34:57 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

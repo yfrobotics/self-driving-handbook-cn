@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3443,6 +3471,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nlp/" class="md-nav__link">
         
   
@@ -5005,7 +5061,7 @@
 
 
 <h1 id="_1">激光点云数据处理</h1>
-<p>激光雷达（LiDAR，Light Detection and Ranging）是自动驾驶感知系统的核心传感器之一。它通过发射激光脉冲并测量反射时间（ToF，Time of Flight）来获取三维空间中物体的精确距离信息，进而生成<strong>点云（Point Cloud）</strong>数据。点云以毫米级精度描述车辆周围的三维几何结构，为目标检测、语义分割、定位建图等上游任务提供不可替代的基础信息。</p>
+<p>激光雷达（<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>，Light Detection and Ranging）是自动驾驶感知系统的核心传感器之一。它通过发射激光脉冲并测量反射时间（ToF，Time of Flight）来获取三维空间中物体的精确距离信息，进而生成<strong>点云（Point Cloud）</strong>数据。点云以毫米级精度描述车辆周围的三维几何结构，为目标检测、语义分割、定位建图等上游任务提供不可替代的基础信息。</p>
 <p>与摄像头相比，激光雷达不受光照条件影响，可在夜间、强光及低对比度场景下稳定工作；与毫米波雷达相比，激光雷达的角分辨率高出数十倍，能够精确描绘物体形状轮廓。目前主流车载激光雷达包括机械旋转式（Velodyne HDL-64E）、固态式（Intel RealSense L515）和混合固态式（Livox Avia），线数从16线到128线不等。</p>
 <hr />
 <h2 id="1">1. 点云数据表示</h2>
@@ -5189,7 +5245,7 @@ L_{reg} = \|\mathbf{I} - \mathbf{A}\mathbf{A}^T\|_F^2
 <h3 id="36-centerpoint">3.6 CenterPoint</h3>
 <p>CenterPoint（Yin et al., CVPR 2021）摒弃传统的锚框（Anchor）设计，采用<strong>中心点热力图</strong>表示目标，框架更简洁且对旋转不敏感。</p>
 <p><strong>高斯热力图（Gaussian Heatmap）</strong></p>
-<p>对每个真值目标，以其 BEV 中心点 <span class="arithmatex">\((x_c, y_c)\)</span> 为圆心，在热力图上叠加二维高斯分布：</p>
+<p>对每个真值目标，以其 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 中心点 <span class="arithmatex">\((x_c, y_c)\)</span> 为圆心，在热力图上叠加二维高斯分布：</p>
 <div class="arithmatex">\[
 Y_{xy} = \exp\!\left(-\frac{(x-x_c)^2+(y-y_c)^2}{2\sigma^2}\right)
 \]</div>
@@ -5251,7 +5307,7 @@ Y_{xy} = \exp\!\left(-\frac{(x-x_c)^2+(y-y_c)^2}{2\sigma^2}\right)
 <div class="arithmatex">\[
 \mathbf{p}^{(t)}_i = \mathbf{T}^t_{t_k} \cdot \mathbf{p}^{(t_k)}_i, \quad k = 1, \ldots, K
 \]</div>
-<p>其中 <span class="arithmatex">\(\mathbf{T}^t_{t_k}\)</span> 为从历史时刻 <span class="arithmatex">\(t_k\)</span> 到当前时刻 <span class="arithmatex">\(t\)</span> 的位姿变换矩阵，通过 GPS/IMU 或激光里程计获取。累积帧数通常为 3–10 帧。</p>
+<p>其中 <span class="arithmatex">\(\mathbf{T}^t_{t_k}\)</span> 为从历史时刻 <span class="arithmatex">\(t_k\)</span> 到当前时刻 <span class="arithmatex">\(t\)</span> 的位姿变换矩阵，通过 GPS/<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 或激光里程计获取。累积帧数通常为 3–10 帧。</p>
 <h3 id="42-4d">4.2 4D 点云（加入时间维度）</h3>
 <p>将时间戳作为第四维度附加到点云坐标，构成 <span class="arithmatex">\((x, y, z, \Delta t)\)</span> 的4D点云。运动目标因时间偏移而形成"拖尾"形状，可用于：
 - 区分静态背景与动态目标
@@ -5266,22 +5322,22 @@ Y_{xy} = \exp\!\left(-\frac{(x-x_c)^2+(y-y_c)^2}{2\sigma^2}\right)
 <li><strong>动静分离</strong>：先识别并剔除动态物体点云（行人、车辆），再更新静态背景地图</li>
 </ul>
 <hr />
-<h2 id="5-slam">5. 激光 SLAM</h2>
-<h3 id="51-icp">5.1 ICP（迭代最近点）</h3>
-<p>ICP（Besl &amp; McKay, 1992）是激光点云配准的经典算法，目标是求解变换 <span class="arithmatex">\((\mathbf{R}, \mathbf{t})\)</span> 最小化两帧点云间的距离：</p>
+<h2 id="5-slam">5. 激光 <abbr title="Simultaneous Localization and Mapping，即时定位与建图">SLAM</abbr></h2>
+<h3 id="51-icp">5.1 <abbr title="Iterative Closest Point，迭代最近点">ICP</abbr>（迭代最近点）</h3>
+<p><abbr title="Iterative Closest Point，迭代最近点">ICP</abbr>（Besl &amp; McKay, 1992）是激光点云配准的经典算法，目标是求解变换 <span class="arithmatex">\((\mathbf{R}, \mathbf{t})\)</span> 最小化两帧点云间的距离：</p>
 <div class="arithmatex">\[
 \min_{\mathbf{R}, \mathbf{t}} \sum_{i=1}^{N} \|\mathbf{p}^{source}_i - (\mathbf{R}\mathbf{p}^{target}_{c(i)} + \mathbf{t})\|^2
 \]</div>
-<p>其中 <span class="arithmatex">\(c(i)\)</span> 为点 <span class="arithmatex">\(\mathbf{p}^{source}_i\)</span> 在目标点云中的最近邻。算法交替执行"最近邻匹配"和"最小二乘求解"直至收敛。ICP 对初始值敏感，常需借助 NDT 或 IMU 提供初始位姿估计。</p>
-<p><strong>ICP 变体：</strong>
-- <strong>Point-to-Plane ICP</strong>：最小化源点到目标点所在切平面的距离，收敛速度更快
-- <strong>Generalized ICP（GICP）</strong>：将点云建模为局部协方差分布，兼具 Point-to-Point 和 Point-to-Plane 的优点</p>
-<h3 id="52-ndt">5.2 NDT（正态分布变换）</h3>
-<p>NDT（Biber &amp; Strasser, 2003）将参考点云划分为体素网格，在每个体素内拟合点的正态分布 <span class="arithmatex">\(\mathcal{N}(\boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k)\)</span>。对源点云中的点 <span class="arithmatex">\(\mathbf{p}\)</span>，其得分为：</p>
+<p>其中 <span class="arithmatex">\(c(i)\)</span> 为点 <span class="arithmatex">\(\mathbf{p}^{source}_i\)</span> 在目标点云中的最近邻。算法交替执行"最近邻匹配"和"最小二乘求解"直至收敛。<abbr title="Iterative Closest Point，迭代最近点">ICP</abbr> 对初始值敏感，常需借助 <abbr title="Normal Distributions Transform，正态分布变换">NDT</abbr> 或 <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 提供初始位姿估计。</p>
+<p><strong><abbr title="Iterative Closest Point，迭代最近点">ICP</abbr> 变体：</strong>
+- <strong>Point-to-Plane <abbr title="Iterative Closest Point，迭代最近点">ICP</abbr></strong>：最小化源点到目标点所在切平面的距离，收敛速度更快
+- <strong>Generalized <abbr title="Iterative Closest Point，迭代最近点">ICP</abbr>（GICP）</strong>：将点云建模为局部协方差分布，兼具 Point-to-Point 和 Point-to-Plane 的优点</p>
+<h3 id="52-ndt">5.2 <abbr title="Normal Distributions Transform，正态分布变换">NDT</abbr>（正态分布变换）</h3>
+<p><abbr title="Normal Distributions Transform，正态分布变换">NDT</abbr>（Biber &amp; Strasser, 2003）将参考点云划分为体素网格，在每个体素内拟合点的正态分布 <span class="arithmatex">\(\mathcal{N}(\boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k)\)</span>。对源点云中的点 <span class="arithmatex">\(\mathbf{p}\)</span>，其得分为：</p>
 <div class="arithmatex">\[
 s(\mathbf{p}) = \exp\!\left(-\frac{(\mathbf{p} - \boldsymbol{\mu}_k)^T \boldsymbol{\Sigma}_k^{-1} (\mathbf{p} - \boldsymbol{\mu}_k)}{2}\right)
 \]</div>
-<p>优化目标为最大化所有点的总得分，使用牛顿法迭代求解。NDT 对点云密度变化更鲁棒，是 Autoware 等开源自动驾驶平台的核心定位算法。</p>
+<p>优化目标为最大化所有点的总得分，使用牛顿法迭代求解。<abbr title="Normal Distributions Transform，正态分布变换">NDT</abbr> 对点云密度变化更鲁棒，是 Autoware 等开源自动驾驶平台的核心定位算法。</p>
 <h3 id="53-loam">5.3 LOAM（激光里程计与建图）</h3>
 <p>LOAM（Zhang &amp; Singh, RSS 2014）通过提取两类几何特征进行配准：</p>
 <p><strong>边缘点（Edge Points）</strong>：局部曲率 <span class="arithmatex">\(c\)</span> 较大的点，位于物体棱边处：</p>
@@ -5299,13 +5355,13 @@ c = \frac{1}{|S| \cdot \|\mathbf{p}_i\|} \left\| \sum_{j \in S, j \neq i} (\math
 </ol>
 <p>LeGO-LOAM 在嵌入式平台（如 Jetson TX2）上可实时运行，被广泛用于低速园区自动驾驶场景。</p>
 <h3 id="55-lio-sam">5.5 LIO-SAM（激光惯性里程计）</h3>
-<p>LIO-SAM（Shan et al., IROS 2020）将激光雷达与 IMU 紧耦合，在<strong>因子图（Factor Graph）</strong>框架下联合优化：</p>
+<p>LIO-SAM（Shan et al., IROS 2020）将激光雷达与 <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 紧耦合，在<strong>因子图（Factor Graph）</strong>框架下联合优化：</p>
 <p><strong>系统包含四类因子：</strong>
-- <strong>IMU 预积分因子</strong>：通过预积分在关键帧之间传播高频 IMU 测量
+- <strong><abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 预积分因子</strong>：通过预积分在关键帧之间传播高频 <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 测量
 - <strong>激光里程计因子</strong>：相邻关键帧间的相对位姿约束（由特征匹配得到）
 - <strong>GPS 因子</strong>：当 GPS 信号可用时提供绝对位置约束
 - <strong>回环因子</strong>：检测到回环时加入回环约束</p>
-<p>IMU 预积分在两关键帧 <span class="arithmatex">\(i\)</span>、<span class="arithmatex">\(j\)</span> 之间累积旋转、速度和位移的增量：</p>
+<p><abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 预积分在两关键帧 <span class="arithmatex">\(i\)</span>、<span class="arithmatex">\(j\)</span> 之间累积旋转、速度和位移的增量：</p>
 <div class="arithmatex">\[
 \Delta\mathbf{R}_{ij} = \prod_{k=i}^{j-1}\text{Exp}\!\left(\tilde{\boldsymbol{\omega}}_k \Delta t\right), \quad \Delta\mathbf{v}_{ij} = \sum_{k=i}^{j-1}\Delta\mathbf{R}_{ik}\tilde{\mathbf{a}}_k\Delta t
 \]</div>
@@ -5323,7 +5379,7 @@ c = \frac{1}{|S| \cdot \|\mathbf{p}_i\|} \left\| \sum_{j \in S, j \neq i} (\math
 <p>核心创新：<strong>非对称残差网络（Asymmetrical Residual Block）</strong>在高度方向使用较小的卷积核，在俯仰方向使用较大的卷积核，匹配点云的各向异性分布。Cylinder3D 在 SemanticKITTI 排行榜上长期名列前茅，mIoU 达 65.9%。</p>
 <h3 id="63-panoptic-segmentation">6.3 全景点云分割（Panoptic Segmentation）</h3>
 <p>全景分割同时预测<strong>语义类别</strong>（所有点的类别）和<strong>实例 ID</strong>（可数目标的实例区分），是点云理解的最高层次任务。</p>
-<p><strong>Panoptic-PolarNet</strong>（Zhou et al., CVPR 2021）基于极坐标 BEV 表示：
+<p><strong>Panoptic-PolarNet</strong>（Zhou et al., CVPR 2021）基于极坐标 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 表示：
 - <strong>Stuff 分支</strong>：预测道路、植被等不可数类别的语义标签
 - <strong>Thing 分支</strong>：预测车辆、行人等可数类别的实例中心热力图，结合聚类生成实例 ID
 - <strong>全景融合</strong>：合并两个分支的输出，生成最终全景标注</p>
@@ -5358,7 +5414,7 @@ AP = \int_0^1 p(r)\,dr \approx \sum_{k} p(r_k) \Delta r_k
 <tbody>
 <tr>
 <td>KITTI</td>
-<td>3D AP / BEV AP</td>
+<td>3D AP / <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> AP</td>
 <td>0.7（车）/ 0.5（行人）</td>
 <td>3</td>
 <td>按难易分 Easy/Mod/Hard</td>
@@ -5408,6 +5464,27 @@ mIoU = \frac{1}{C}\sum_{c=1}^{C}\frac{TP_c}{TP_c + FP_c + FN_c}
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 00:50:24 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

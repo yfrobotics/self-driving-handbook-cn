@@ -1588,6 +1588,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../cybersecurity/" class="md-nav__link">
         
   
@@ -3506,6 +3534,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -5128,9 +5184,9 @@
   
 
 
-<h1 id="hd-map">高精地图（HD Map）</h1>
+<h1 id="hd-map">高精地图（<abbr title="High Definition Map，高精地图">HD Map</abbr>）</h1>
 <h2 id="1">1. 开篇介绍</h2>
-<p>高精地图（High Definition Map，HD Map）是自动驾驶系统的"先验知识库"。与手机导航所使用的普通地图不同，高精地图不仅记录道路的拓扑结构，还以厘米级的精度描述道路的三维几何形状、车道边界、交通标志、信号灯等要素。自动驾驶车辆在行驶时，可以将传感器实时感知的数据与高精地图进行匹配，从而实现精确定位，并提前获知前方路段的几何结构与交通规则，大幅降低实时感知的压力。</p>
+<p>高精地图（High Definition Map，<abbr title="High Definition Map，高精地图">HD Map</abbr>）是自动驾驶系统的"先验知识库"。与手机导航所使用的普通地图不同，高精地图不仅记录道路的拓扑结构，还以厘米级的精度描述道路的三维几何形状、车道边界、交通标志、信号灯等要素。自动驾驶车辆在行驶时，可以将传感器实时感知的数据与高精地图进行匹配，从而实现精确定位，并提前获知前方路段的几何结构与交通规则，大幅降低实时感知的压力。</p>
 <p>普通导航地图的核心目的是为驾驶员提供路径规划指引，精度在米级，信息层次以路网拓扑为主。高精地图的核心目的是为自动驾驶系统提供静态世界的先验描述，要求厘米级精度，信息层次从宏观路网一直延伸到单条车道线的三维坐标。可以说，高精地图是自动驾驶的"预先勘测好的世界模型"，是连接感知、定位与规划的关键基础设施。</p>
 <hr />
 <h2 id="2-vs">2. 高精地图 vs 标准地图</h2>
@@ -5140,7 +5196,7 @@
 <tr>
 <th>对比维度</th>
 <th>普通导航地图</th>
-<th>高精地图（HD Map）</th>
+<th>高精地图（<abbr title="High Definition Map，高精地图">HD Map</abbr>）</th>
 </tr>
 </thead>
 <tbody>
@@ -5302,7 +5358,7 @@
 <p>设车道集合为 <span class="arithmatex">\(\mathcal{L} = \{l_1, l_2, \ldots, l_n\}\)</span>，相邻关系定义为有向边 <span class="arithmatex">\(E \subseteq \mathcal{L} \times \mathcal{L}\)</span>，则车道网络构成有向图 <span class="arithmatex">\(G = (\mathcal{L}, E)\)</span>。</p>
 <p><strong>适用场景：</strong> 学术研究、ROS自动驾驶开发、开源社区</p>
 <h3 id="44-apollo">4.4 Apollo 地图格式</h3>
-<p>百度Apollo平台使用基于 Protocol Buffers（Protobuf）的自定义高精地图格式，称为 Apollo HD Map。</p>
+<p>百度Apollo平台使用基于 Protocol Buffers（Protobuf）的自定义高精地图格式，称为 Apollo <abbr title="High Definition Map，高精地图">HD Map</abbr>。</p>
 <p><strong>主要特点：</strong></p>
 <ul>
 <li>高效的二进制序列化，适合大规模地图数据存储</li>
@@ -5345,14 +5401,14 @@
 <td>完全开源</td>
 </tr>
 <tr>
-<td>Apollo HD Map</td>
+<td>Apollo <abbr title="High Definition Map，高精地图">HD Map</abbr></td>
 <td>百度</td>
 <td>Protobuf / XML</td>
 <td>Apollo平台</td>
 <td>部分开源</td>
 </tr>
 <tr>
-<td>HERE HD Map</td>
+<td>HERE <abbr title="High Definition Map，高精地图">HD Map</abbr></td>
 <td>HERE</td>
 <td>专有格式</td>
 <td>商业量产</td>
@@ -5375,12 +5431,12 @@
 <tbody>
 <tr>
 <td>多线激光雷达</td>
-<td>64线/128线 LiDAR × 2–4</td>
+<td>64线/128线 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> × 2–4</td>
 <td>三维点云采集，用于几何重建</td>
 </tr>
 <tr>
 <td>高精GNSS/INS</td>
-<td>双天线RTK + IMU</td>
+<td>双天线RTK + <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr></td>
 <td>提供厘米级绝对位置与姿态</td>
 </tr>
 <tr>
@@ -5431,12 +5487,12 @@
 地图发布与版本管理
 </code></pre></div>
 <p><strong>点云配准原理：</strong></p>
-<p>迭代最近点（ICP，Iterative Closest Point）算法通过最小化点云间的欧氏距离完成配准：</p>
+<p>迭代最近点（<abbr title="Iterative Closest Point，迭代最近点">ICP</abbr>，Iterative Closest Point）算法通过最小化点云间的欧氏距离完成配准：</p>
 <div class="arithmatex">\[\min_{R, t} \sum_{i=1}^{N} \| R \cdot p_i + t - q_i \|^2\]</div>
 <p>其中 <span class="arithmatex">\(R \in SO(3)\)</span> 为旋转矩阵，<span class="arithmatex">\(t \in \mathbb{R}^3\)</span> 为平移向量，<span class="arithmatex">\(p_i\)</span> 与 <span class="arithmatex">\(q_i\)</span> 为对应点对。</p>
-<p>正态分布变换（NDT，Normal Distribution Transform）将空间划分为体素格，每个体素用高斯分布 <span class="arithmatex">\(\mathcal{N}(\mu_k, \Sigma_k)\)</span> 描述点的分布，通过最大化点云落入各体素的概率完成配准：</p>
+<p>正态分布变换（<abbr title="Normal Distributions Transform，正态分布变换">NDT</abbr>，Normal Distribution Transform）将空间划分为体素格，每个体素用高斯分布 <span class="arithmatex">\(\mathcal{N}(\mu_k, \Sigma_k)\)</span> 描述点的分布，通过最大化点云落入各体素的概率完成配准：</p>
 <div class="arithmatex">\[\max_{T} \sum_{i=1}^{N} \exp\left(-\frac{(T \cdot p_i - \mu_k)^T \Sigma_k^{-1} (T \cdot p_i - \mu_k)}{2}\right)\]</div>
-<p>NDT 对初始值鲁棒性更好，收敛速度更快，是自动驾驶中的主流点云配准算法。</p>
+<p><abbr title="Normal Distributions Transform，正态分布变换">NDT</abbr> 对初始值鲁棒性更好，收敛速度更快，是自动驾驶中的主流点云配准算法。</p>
 <h3 id="53-crowdsourcing">5.3 众包采集（Crowdsourcing）</h3>
 <p>由于专业采集车成本极高（单车约 100–300 万元），采集效率约为 300 km/天，难以实现全域高频更新。众包采集利用量产车辆的传感器数据，大规模降低采集成本。</p>
 <p><strong>众包采集架构：</strong></p>
@@ -5507,7 +5563,7 @@
 <tr>
 <td>新建道路</td>
 <td>地图尚未更新</td>
-<td>GNSS+IMU航迹推算，请求人工接管</td>
+<td><abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr>+IMU航迹推算，请求人工接管</td>
 </tr>
 <tr>
 <td>季节变化</td>
@@ -5517,7 +5573,7 @@
 <tr>
 <td>隧道/地下停车场</td>
 <td>GNSS信号丢失</td>
-<td>里程计+IMU+特征匹配联合定位</td>
+<td>里程计+<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>+特征匹配联合定位</td>
 </tr>
 <tr>
 <td>地图版本不匹配</td>
@@ -5614,7 +5670,7 @@
 <h3 id="81-teslahd-map">8.1 Tesla：完全无HD Map</h3>
 <p>特斯拉FSD（Full Self-Driving）采用纯视觉方案，完全不依赖预先采集的高精地图：</p>
 <ul>
-<li><strong>技术路线</strong>：多摄像头鸟瞰图（BEV，Bird's Eye View）感知 + 神经网络路网理解</li>
+<li><strong>技术路线</strong>：多摄像头鸟瞰图（<abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr>，Bird's Eye View）感知 + 神经网络路网理解</li>
 <li><strong>记忆地图（Memory Map）</strong>：利用用户行驶数据，在云端积累伪匿名道路拓扑，但不存储厘米级要素</li>
 <li><strong>优势</strong>：零地图维护成本，全球道路覆盖，无地图失效问题</li>
 <li><strong>挑战</strong>：复杂路口理解、无标线道路、极端天气下感知退化</li>
@@ -5832,7 +5888,7 @@
 <p>Poggenhans, F., Pauls, J. H., Janosovits, J., et al. "Lanelet2: A High-Definition Map Framework for the Future of Automated Driving." <em>Proceedings of the 21st International Conference on Intelligent Transportation Systems (ITSC)</em>, IEEE, 2018.</p>
 </li>
 <li>
-<p>百度Apollo团队. <em>Apollo HD Map 技术文档</em>. Apollo开放平台, 2022. <a href="https://developer.apollo.auto/">https://developer.apollo.auto/</a></p>
+<p>百度Apollo团队. <em>Apollo <abbr title="High Definition Map，高精地图">HD Map</abbr> 技术文档</em>. Apollo开放平台, 2022. <a href="https://developer.apollo.auto/">https://developer.apollo.auto/</a></p>
 </li>
 <li>
 <p>Ziegler, J., Bender, P., Schreiber, M., et al. "Making Bertha Drive—An Autonomous Journey on a Historic Route." <em>IEEE Intelligent Transportation Systems Magazine</em>, vol. 6, no. 2, pp. 8–20, 2014.</p>
@@ -5851,6 +5907,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 01:05:30 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

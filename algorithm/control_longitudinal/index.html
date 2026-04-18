@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3263,6 +3291,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nlp/" class="md-nav__link">
         
   
@@ -4659,11 +4715,11 @@
 <div class="arithmatex">\[F_{\text{cmd}} = m \cdot a_{\text{cmd}} + F_{drag}(v) + F_{roll} + F_{grade}\]</div>
 <div class="admonition note">
 <p class="admonition-title">坡度估计</p>
-<p>实车中坡度 <span class="arithmatex">\(\theta\)</span> 一般通过 IMU 俯仰角估计，或通过高精地图先验。坡度估计误差直接影响坡道起步和停车的平顺性。</p>
+<p>实车中坡度 <span class="arithmatex">\(\theta\)</span> 一般通过 <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 俯仰角估计，或通过高精地图先验。坡度估计误差直接影响坡道起步和停车的平顺性。</p>
 </div>
 <hr />
-<h2 id="2-pid">2. PID 纵向控制</h2>
-<h3 id="21-pid">2.1 速度跟踪 PID</h3>
+<h2 id="2-pid">2. <abbr title="Proportional-Integral-Derivative，比例-积分-微分控制">PID</abbr> 纵向控制</h2>
+<h3 id="21-pid">2.1 速度跟踪 <abbr title="Proportional-Integral-Derivative，比例-积分-微分控制">PID</abbr></h3>
 <p>基础结构：前馈 + 反馈双环设计：</p>
 <div class="arithmatex">\[a_{\text{cmd}} = a_{\text{ff}} + K_p e_v + K_i \int e_v \, dt + K_d \dot{e}_v\]</div>
 <p>其中 <span class="arithmatex">\(e_v = v_{\text{ref}} - v\)</span> 为速度误差，前馈项 <span class="arithmatex">\(a_{\text{ff}}\)</span> 可由参考轨迹加速度直接获取。</p>
@@ -4703,9 +4759,9 @@
 </tbody>
 </table>
 <hr />
-<h2 id="3-acc">3. 自适应巡航控制（ACC）</h2>
+<h2 id="3-acc">3. 自适应巡航控制（<abbr title="Adaptive Cruise Control，自适应巡航">ACC</abbr>）</h2>
 <h3 id="31">3.1 时距策略</h3>
-<p>ACC 核心是在跟车时维持安全时距 <span class="arithmatex">\(T_{gap}\)</span>：</p>
+<p><abbr title="Adaptive Cruise Control，自适应巡航">ACC</abbr> 核心是在跟车时维持安全时距 <span class="arithmatex">\(T_{gap}\)</span>：</p>
 <div class="arithmatex">\[d_{\text{safe}} = T_{gap} \cdot v + d_0\]</div>
 <p>其中 <span class="arithmatex">\(d_0\)</span> 为静止时最小间距（通常 2–5 m），<span class="arithmatex">\(T_{gap}\)</span> 通常设置 1.5–2.5 s（可用户调节）。</p>
 <h3 id="32">3.2 跟车控制律</h3>
@@ -4719,7 +4775,7 @@
 <p><strong>IDM 模型（Intelligent Driver Model）：</strong></p>
 <div class="arithmatex">\[a = a_{\max}\left[1 - \left(\frac{v}{v_0}\right)^4 - \left(\frac{d^*(v, \Delta v)}{d}\right)^2\right]\]</div>
 <div class="arithmatex">\[d^* = d_0 + vT + \frac{v\Delta v}{2\sqrt{a_{\max}b}}\]</div>
-<p>IDM 模型在学术界广泛使用，参数少且行为符合直觉，适合作为 ACC 基线方案。</p>
+<p>IDM 模型在学术界广泛使用，参数少且行为符合直觉，适合作为 <abbr title="Adaptive Cruise Control，自适应巡航">ACC</abbr> 基线方案。</p>
 <h3 id="33-cut-in">3.3 Cut-in 响应</h3>
 <p>前车突然切入时的处理策略：</p>
 <ol>
@@ -4740,7 +4796,7 @@
            同时激活摩擦制动
 </code></pre></div>
 <p>低附着路面（雪地、湿滑）：触发 ABS，制动优先，限制再生制动比例。</p>
-<h3 id="42-aeb">4.2 AEB 制动时序</h3>
+<h3 id="42-aeb">4.2 <abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr> 制动时序</h3>
 <table>
 <thead>
 <tr>
@@ -4758,7 +4814,7 @@
 <tr>
 <td>规划决策延迟</td>
 <td>10–30 ms</td>
-<td>专用 AEB 路径，绕过完整规划栈</td>
+<td>专用 <abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr> 路径，绕过完整规划栈</td>
 </tr>
 <tr>
 <td>控制下发延迟</td>
@@ -4778,8 +4834,8 @@
 </tbody>
 </table>
 <div class="admonition warning">
-<p class="admonition-title">AEB 误触发</p>
-<p>AEB 误触发会严重影响用户体验甚至造成追尾事故。需要对感知置信度门控，并设置"白名单"（隧道假目标、路面积水、桥墩阴影等）。</p>
+<p class="admonition-title"><abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr> 误触发</p>
+<p><abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr> 误触发会严重影响用户体验甚至造成追尾事故。需要对感知置信度门控，并设置"白名单"（隧道假目标、路面积水、桥墩阴影等）。</p>
 </div>
 <h3 id="43">4.3 坡道起步控制</h3>
 <p>避免坡道后溜需要与 EPB（电子驻车制动）或 Auto Hold 联动：</p>
@@ -4790,7 +4846,7 @@
 <li>驱动力超过阈值后，延时 200–300 ms 才释放 Auto Hold</li>
 </ol>
 <hr />
-<h2 id="5-mpc">5. 纵向 MPC</h2>
+<h2 id="5-mpc">5. 纵向 <abbr title="Model Predictive Control，模型预测控制">MPC</abbr></h2>
 <h3 id="51">5.1 预测模型</h3>
 <p>以加速度为控制量，状态为位置和速度：</p>
 <div class="arithmatex">\[\begin{bmatrix} s_{k+1} \\ v_{k+1} \end{bmatrix} = \begin{bmatrix} 1 &amp; \Delta t \\ 0 &amp; 1 \end{bmatrix} \begin{bmatrix} s_k \\ v_k \end{bmatrix} + \begin{bmatrix} \frac{\Delta t^2}{2} \\ \Delta t \end{bmatrix} a_k\]</div>
@@ -4872,7 +4928,7 @@
 <td>设置"丢失超时"保持策略，不立即松开</td>
 </tr>
 <tr>
-<td>隧道内 GNSS 失效</td>
+<td>隧道内 <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 失效</td>
 <td>速度曲线规划精度下降</td>
 <td>切换保守恒速模式，提升感知主导权重</td>
 </tr>
@@ -4928,6 +4984,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 19:34:57 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

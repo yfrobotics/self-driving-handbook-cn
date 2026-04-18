@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -2934,6 +2962,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -4339,11 +4395,11 @@
 
 
 <h1 id="_1">第六章：视觉语言大模型</h1>
-<p>本章介绍视觉语言大模型（VLM）如何重塑自动驾驶技术的研究范式。</p>
+<p>本章介绍视觉语言大模型（<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>）如何重塑自动驾驶技术的研究范式。</p>
 <hr />
-<h2 id="vlm">VLM：从封闭感知到开放理解</h2>
+<h2 id="vlm"><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>：从封闭感知到开放理解</h2>
 <p>传统自动驾驶感知管线依赖封闭词汇的目标检测与分类——检测器只能识别训练集中出现过的类别。面对"散落在路面的家具"、"倒伏的树木"等从未见过的物体时无能为力，更无法理解"前方学校区域放学时段需要格外谨慎"这样需要社会常识的场景。</p>
-<p><strong>视觉语言大模型（Vision-Language Model, VLM）</strong> 通过将视觉理解与自然语言推理能力统一到一个模型中，赋予自动驾驶系统前所未有的能力：</p>
+<p><strong>视觉语言大模型（Vision-Language Model, <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>）</strong> 通过将视觉理解与自然语言推理能力统一到一个模型中，赋予自动驾驶系统前所未有的能力：</p>
 <ul>
 <li><strong>开放词汇感知</strong>：不受预定义类别限制，可以用自然语言描述任意物体和场景</li>
 <li><strong>常识推理</strong>：利用预训练获得的世界知识进行因果推理和风险预判</li>
@@ -4355,7 +4411,7 @@
 <tr>
 <th style="text-align: center;">维度</th>
 <th style="text-align: center;">传统感知管线</th>
-<th style="text-align: center;">VLM 驱动的感知</th>
+<th style="text-align: center;"><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 驱动的感知</th>
 </tr>
 </thead>
 <tbody>
@@ -4409,7 +4465,7 @@
 <tbody>
 <tr>
 <td>6.1</td>
-<td>VLM 基础模型</td>
+<td><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 基础模型</td>
 <td>ViT、CLIP、LLaVA/InternVL 架构与多模态 Token 化</td>
 </tr>
 <tr>
@@ -4420,12 +4476,12 @@
 <tr>
 <td>6.3</td>
 <td>决策与规划</td>
-<td>链式推理驾驶、双系统架构、LLM 轨迹生成、安全约束</td>
+<td>链式推理驾驶、双系统架构、<abbr title="Large Language Model，大语言模型">LLM</abbr> 轨迹生成、安全约束</td>
 </tr>
 <tr>
 <td>6.4</td>
 <td>数据标注与闭环</td>
-<td>VLM 辅助标注、困难样本挖掘、主动学习数据闭环</td>
+<td><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 辅助标注、困难样本挖掘、主动学习数据闭环</td>
 </tr>
 <tr>
 <td>6.5</td>
@@ -4446,23 +4502,23 @@
 </table>
 <hr />
 <h2 id="_3">各小节简介</h2>
-<h3 id="61-vlm-foundation">6.1 VLM 基础模型（foundation）</h3>
-<p>介绍 VLM 的核心基础架构：Vision Transformer（ViT）的 Patch 嵌入和自注意力机制、CLIP 的对比学习视觉-语言对齐、LLaVA/InternVL 的三段式架构（视觉编码器 + 投影层 + LLM），以及多模态 Token 化与跨模态注意力机制。</p>
+<h3 id="61-vlm-foundation">6.1 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 基础模型（foundation）</h3>
+<p>介绍 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的核心基础架构：Vision Transformer（ViT）的 Patch 嵌入和自注意力机制、CLIP 的对比学习视觉-语言对齐、LLaVA/InternVL 的三段式架构（视觉编码器 + 投影层 + <abbr title="Large Language Model，大语言模型">LLM</abbr>），以及多模态 Token 化与跨模态注意力机制。</p>
 <h3 id="62-scene_understanding">6.2 场景理解与描述（scene_understanding）</h3>
-<p>深入讲解 VLM 在驾驶场景理解中的应用：场景描述（Scene Captioning）、上下文感知的标志与信号识别、道路拓扑推理、异常场景识别。对比传统感知与 VLM 在长尾场景下的表现差异，介绍 DriveGPT4、Talk2BEV 等代表性工作。</p>
-<h3 id="63-vlm-decision_planning">6.3 基于 VLM 的决策与规划（decision_planning）</h3>
-<p>介绍以自然语言作为中间表征的新型规划范式：链式推理（Chain-of-Thought）驾驶决策、DriveVLM 的"慢思考-快执行"双系统架构、GPT-Driver 的轨迹 Token 化、LanguageMPC 的 LLM-控制器融合。讨论安全约束集成与传统规划器的融合策略。</p>
+<p>深入讲解 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 在驾驶场景理解中的应用：场景描述（Scene Captioning）、上下文感知的标志与信号识别、道路拓扑推理、异常场景识别。对比传统感知与 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 在长尾场景下的表现差异，介绍 DriveGPT4、Talk2BEV 等代表性工作。</p>
+<h3 id="63-vlm-decision_planning">6.3 基于 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的决策与规划（decision_planning）</h3>
+<p>介绍以自然语言作为中间表征的新型规划范式：链式推理（Chain-of-Thought）驾驶决策、DriveVLM 的"慢思考-快执行"双系统架构、GPT-Driver 的轨迹 Token 化、LanguageMPC 的 <abbr title="Large Language Model，大语言模型">LLM</abbr>-控制器融合。讨论安全约束集成与传统规划器的融合策略。</p>
 <h3 id="64-data_annotation">6.4 数据标注与闭环（data_annotation）</h3>
-<p>VLM 在数据闭环中的应用：自动标注（场景级标签、开放词汇目标标注、标注质量审核）、困难样本挖掘、主动学习闭环。分析 VLM 辅助标注对成本和质量的影响。</p>
+<p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 在数据闭环中的应用：自动标注（场景级标签、开放词汇目标标注、标注质量审核）、困难样本挖掘、主动学习闭环。分析 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 辅助标注对成本和质量的影响。</p>
 <h3 id="65-hmi">6.5 人机交互（hmi）</h3>
-<p>VLM 使自动驾驶系统能够理解自然语言导航指令（地标参照、条件指令、模糊指令），实时向乘客解释决策行为，以及通过语音交互实现安全的车内对话。探讨多轮对话、视觉问答和无障碍出行等应用场景。</p>
+<p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 使自动驾驶系统能够理解自然语言导航指令（地标参照、条件指令、模糊指令），实时向乘客解释决策行为，以及通过语音交互实现安全的车内对话。探讨多轮对话、视觉问答和无障碍出行等应用场景。</p>
 <h3 id="66-deployment">6.6 部署与优化（deployment）</h3>
-<p>将数十亿参数的 VLM 部署到车载计算平台的工程挑战：模型压缩（量化、知识蒸馏、LoRA）、边缘部署与云边协同架构、安全回退机制设计、推理优化技术，以及功能安全（ISO 26262）合规性讨论。</p>
+<p>将数十亿参数的 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 部署到车载计算平台的工程挑战：模型压缩（量化、知识蒸馏、LoRA）、边缘部署与云边协同架构、安全回退机制设计、推理优化技术，以及功能安全（ISO 26262）合规性讨论。</p>
 <h3 id="67-outlook">6.7 展望与挑战（outlook）</h3>
-<p>汇总 VLM 与自动驾驶交叉领域的代表性工作，分析核心挑战（幻觉风险、时序推理局限、多智能体协调），讨论法规伦理问题，展望实时化、具身对齐、多模态融合等未来方向。</p>
+<p>汇总 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 与自动驾驶交叉领域的代表性工作，分析核心挑战（幻觉风险、时序推理局限、多智能体协调），讨论法规伦理问题，展望实时化、具身对齐、多模态融合等未来方向。</p>
 <hr />
 <h2 id="_4">学习建议</h2>
-<p>VLM 是自动驾驶领域最前沿的研究方向之一，建议读者先通过基础模型小节理解 ViT 和 CLIP 的核心原理，再按照场景理解 → 决策规划 → 数据闭环的顺序学习应用层技术，最后通过部署与展望小节了解工程落地的挑战和行业趋势。建议结合第四章（核心算法）的感知和规划内容进行对照阅读。</p>
+<p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 是自动驾驶领域最前沿的研究方向之一，建议读者先通过基础模型小节理解 ViT 和 CLIP 的核心原理，再按照场景理解 → 决策规划 → 数据闭环的顺序学习应用层技术，最后通过部署与展望小节了解工程落地的挑战和行业趋势。建议结合第四章（核心算法）的感知和规划内容进行对照阅读。</p>
 
 
 
@@ -4470,6 +4526,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月21日 23:41:48 UTC">2026年3月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

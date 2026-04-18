@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -2914,6 +2942,34 @@
     
   
     自动驾驶ML数据管道
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
   
 
     
@@ -4929,11 +4985,11 @@
 
 
 <h1 id="_1">数据标注与闭环</h1>
-<p>高质量数据是自动驾驶模型迭代的基石。传统人工标注流程成本高昂、周期漫长，且难以覆盖长尾场景。视觉语言大模型（VLM）的出现为数据标注带来了革命性变化——通过语义理解能力实现自动标注、困难样本挖掘和闭环数据迭代，大幅提升数据生产效率和质量。本页面系统介绍 VLM 辅助数据标注与闭环学习的完整技术体系。</p>
+<p>高质量数据是自动驾驶模型迭代的基石。传统人工标注流程成本高昂、周期漫长，且难以覆盖长尾场景。视觉语言大模型（<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>）的出现为数据标注带来了革命性变化——通过语义理解能力实现自动标注、困难样本挖掘和闭环数据迭代，大幅提升数据生产效率和质量。本页面系统介绍 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 辅助数据标注与闭环学习的完整技术体系。</p>
 <hr />
-<h2 id="1-vlm">1. VLM 辅助自动标注</h2>
+<h2 id="1-vlm">1. <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 辅助自动标注</h2>
 <h3 id="11">1.1 场景级标签生成</h3>
-<p>VLM 具备对驾驶场景的整体语义理解能力，可以自动为采集的原始数据生成场景级标签。与传统单目标检测不同，VLM 能够同时输出：</p>
+<p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 具备对驾驶场景的整体语义理解能力，可以自动为采集的原始数据生成场景级标签。与传统单目标检测不同，<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 能够同时输出：</p>
 <ul>
 <li><strong>场景类型</strong>：城市道路、高速公路、十字路口、环岛、隧道等</li>
 <li><strong>天气与光照</strong>：晴天、雨天、雾天、夜间、逆光、眩光等</li>
@@ -4950,13 +5006,13 @@
 6. 场景描述（一句话自然语言描述）
 </code></pre></div>
 <h3 id="12">1.2 开放词汇目标标注</h3>
-<p>传统检测器受限于预定义类别，无法标注训练集中未出现的物体。VLM 的开放词汇能力可以识别并标注任意目标：</p>
+<p>传统检测器受限于预定义类别，无法标注训练集中未出现的物体。<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的开放词汇能力可以识别并标注任意目标：</p>
 <table>
 <thead>
 <tr>
 <th style="text-align: center;">标注能力</th>
 <th style="text-align: center;">传统检测器</th>
-<th style="text-align: center;">VLM 辅助标注</th>
+<th style="text-align: center;"><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 辅助标注</th>
 </tr>
 </thead>
 <tbody>
@@ -4988,8 +5044,8 @@
 </tbody>
 </table>
 <h3 id="13">1.3 标注质量审查</h3>
-<p>VLM 还可以作为标注质量的审查工具，用于检测人工标注或模型标注中的错误：</p>
-<p><strong>漏标检测</strong>：VLM 对比原始图像和已有标注，识别遗漏的重要目标。对于安全攸关目标（行人、自行车），漏标检测的优先级最高。</p>
+<p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 还可以作为标注质量的审查工具，用于检测人工标注或模型标注中的错误：</p>
+<p><strong>漏标检测</strong>：<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 对比原始图像和已有标注，识别遗漏的重要目标。对于安全攸关目标（行人、自行车），漏标检测的优先级最高。</p>
 <p><strong>错标检测</strong>：检查标注类别是否与目标实际语义一致。例如将"三轮车"标注为"自行车"，或将"停靠的货车"标注为"建筑物"等常见错误。</p>
 <p><strong>语义一致性检查</strong>：验证同一场景中多个标注之间的逻辑一致性。例如：</p>
 <ul>
@@ -5004,7 +5060,7 @@
 <div class="arithmatex">\[S_{\text{diff}}(x) = \alpha \cdot H_{\text{VLM}}(x) + \beta \cdot D_{\text{sem}}(x) + \gamma \cdot \Delta_{\text{det}}(x)\]</div>
 <p>其中各分量定义为：</p>
 <ul>
-<li><strong>VLM 困惑度</strong> <span class="arithmatex">\(H_{\text{VLM}}(x)\)</span>：VLM 对该场景描述时的困惑度（Perplexity），困惑度越高说明场景越不寻常</li>
+<li><strong><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 困惑度</strong> <span class="arithmatex">\(H_{\text{VLM}}(x)\)</span>：<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 对该场景描述时的困惑度（Perplexity），困惑度越高说明场景越不寻常</li>
 </ul>
 <div class="arithmatex">\[H_{\text{VLM}}(x) = \exp\left(-\frac{1}{T}\sum_{t=1}^{T}\log p(w_t | w_{&lt;t}, x)\right)\]</div>
 <ul>
@@ -5038,24 +5094,24 @@
 <td style="text-align: center;"><span class="arithmatex">\(0.6 \leq S_{\text{diff}} &lt; 0.8\)</span></td>
 <td style="text-align: center;">P1（困难）</td>
 <td style="text-align: center;">60% 采样</td>
-<td style="text-align: center;">VLM 标注 + 人工审查</td>
+<td style="text-align: center;"><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 标注 + 人工审查</td>
 </tr>
 <tr>
 <td style="text-align: center;"><span class="arithmatex">\(0.3 \leq S_{\text{diff}} &lt; 0.6\)</span></td>
 <td style="text-align: center;">P2（中等）</td>
 <td style="text-align: center;">20% 采样</td>
-<td style="text-align: center;">VLM 自动标注</td>
+<td style="text-align: center;"><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 自动标注</td>
 </tr>
 <tr>
 <td style="text-align: center;"><span class="arithmatex">\(S_{\text{diff}} &lt; 0.3\)</span></td>
 <td style="text-align: center;">P3（简单）</td>
 <td style="text-align: center;">5% 采样</td>
-<td style="text-align: center;">VLM 自动标注</td>
+<td style="text-align: center;"><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 自动标注</td>
 </tr>
 </tbody>
 </table>
 <h3 id="23">2.3 角落案例分类</h3>
-<p>VLM 还可以对挖掘出的困难样本进行语义分类，自动归纳困难样本的类型分布：</p>
+<p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 还可以对挖掘出的困难样本进行语义分类，自动归纳困难样本的类型分布：</p>
 <ul>
 <li><strong>感知困难</strong>：遮挡严重、光照极端、目标过小、运动模糊</li>
 <li><strong>语义困难</strong>：罕见物体、异常行为、非标准交通标志</li>
@@ -5065,7 +5121,7 @@
 <hr />
 <h2 id="3">3. 主动学习闭环</h2>
 <h3 id="31">3.1 数据闭环全流程</h3>
-<p>VLM 驱动的主动学习闭环将数据采集、标注、训练和部署连接为一个持续迭代的系统：</p>
+<p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 驱动的主动学习闭环将数据采集、标注、训练和部署连接为一个持续迭代的系统：</p>
 <div class="highlight"><pre><span></span><code>+------------------------------------------------------------------+
 |                     数据闭环完整流程                                |
 +------------------------------------------------------------------+
@@ -5092,9 +5148,9 @@
 </code></pre></div>
 <h3 id="32">3.2 各阶段详细说明</h3>
 <p><strong>阶段一：车队数据采集</strong></p>
-<p>量产车辆在日常行驶中持续采集传感器数据。车载边缘计算单元运行轻量化 VLM 进行实时场景评估，仅上传有价值的数据片段，大幅减少传输带宽需求。</p>
-<p><strong>阶段二：VLM 云端分析</strong></p>
-<p>上传的数据在云端由完整规模的 VLM 进行深度分析：</p>
+<p>量产车辆在日常行驶中持续采集传感器数据。车载边缘计算单元运行轻量化 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 进行实时场景评估，仅上传有价值的数据片段，大幅减少传输带宽需求。</p>
+<p><strong>阶段二：<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 云端分析</strong></p>
+<p>上传的数据在云端由完整规模的 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 进行深度分析：</p>
 <ol>
 <li>场景理解与分类</li>
 <li>困难度评分计算</li>
@@ -5102,11 +5158,11 @@
 <li>数据价值评估</li>
 </ol>
 <p><strong>阶段三：自动标注与人工审查</strong></p>
-<p>根据困难度评分分配标注策略（参见第 2 节），VLM 完成初步标注后进入人工审查队列。审查重点放在高困难度、安全攸关的样本上。</p>
+<p>根据困难度评分分配标注策略（参见第 2 节），<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 完成初步标注后进入人工审查队列。审查重点放在高困难度、安全攸关的样本上。</p>
 <p><strong>阶段四：模型训练与验证</strong></p>
 <p>新标注的数据加入训练集，采用增量学习或持续学习策略更新模型。训练后在验证集和困难样本集上进行全面评测。</p>
-<p><strong>阶段五：OTA 部署</strong></p>
-<p>通过空中下载技术（OTA）将更新后的模型推送至车队，开启新一轮数据采集和评估。</p>
+<p><strong>阶段五：<abbr title="Over-the-Air，空中升级">OTA</abbr> 部署</strong></p>
+<p>通过空中下载技术（<abbr title="Over-the-Air，空中升级">OTA</abbr>）将更新后的模型推送至车队，开启新一轮数据采集和评估。</p>
 <h3 id="33">3.3 闭环迭代效果</h3>
 <p>经过多轮闭环迭代，系统在各维度上的性能提升如下：</p>
 <table>
@@ -5153,14 +5209,14 @@
 </table>
 <hr />
 <h2 id="4">4. 标注成本分析</h2>
-<h3 id="41-vs-vlm">4.1 人工标注 vs VLM 辅助标注成本对比</h3>
+<h3 id="41-vs-vlm">4.1 人工标注 vs <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 辅助标注成本对比</h3>
 <p>以标注 10 万帧城市道路场景数据为例，对比两种标注方案的综合成本：</p>
 <table>
 <thead>
 <tr>
 <th style="text-align: center;">指标</th>
 <th style="text-align: center;">纯人工标注</th>
-<th style="text-align: center;">VLM 辅助标注</th>
+<th style="text-align: center;"><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 辅助标注</th>
 <th style="text-align: center;">节省比例</th>
 </tr>
 </thead>
@@ -5198,7 +5254,7 @@
 <tr>
 <td style="text-align: center;">标注一致性</td>
 <td style="text-align: center;">85%（标注员间一致率）</td>
-<td style="text-align: center;">95%（VLM 输出稳定）</td>
+<td style="text-align: center;">95%（<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 输出稳定）</td>
 <td style="text-align: center;">+10pp</td>
 </tr>
 <tr>
@@ -5210,7 +5266,7 @@
 </tbody>
 </table>
 <h3 id="42">4.2 成本构成分析</h3>
-<p>VLM 辅助标注的成本主要由以下部分构成：</p>
+<p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 辅助标注的成本主要由以下部分构成：</p>
 <div class="highlight"><pre><span></span><code>成本构成（VLM 辅助标注方案）：
 
   GPU 推理成本        ████████░░░░░░░░░░░░  35%
@@ -5218,18 +5274,18 @@
   平台与工具成本      ███░░░░░░░░░░░░░░░░░  12%
   数据管理成本        ██░░░░░░░░░░░░░░░░░░   8%
 </code></pre></div>
-<p>可以看到，即使在 VLM 辅助方案中，人工审查仍然是最大的成本项。因此进一步优化人工审查效率（如置信度路由、分级审查）是降低成本的关键。</p>
+<p>可以看到，即使在 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 辅助方案中，人工审查仍然是最大的成本项。因此进一步优化人工审查效率（如置信度路由、分级审查）是降低成本的关键。</p>
 <h3 id="43">4.3 规模效应</h3>
-<p>随着标注规模扩大，VLM 辅助方案的边际成本递减效应更加明显：</p>
+<p>随着标注规模扩大，<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 辅助方案的边际成本递减效应更加明显：</p>
 <ul>
-<li><strong>10 万帧以下</strong>：VLM 辅助方案成本优势约 60%–70%</li>
-<li><strong>10 万–100 万帧</strong>：成本优势扩大至 75%–85%，因为 VLM 推理可批量并行</li>
+<li><strong>10 万帧以下</strong>：<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 辅助方案成本优势约 60%–70%</li>
+<li><strong>10 万–100 万帧</strong>：成本优势扩大至 75%–85%，因为 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 推理可批量并行</li>
 <li><strong>100 万帧以上</strong>：成本优势可达 85%–90%，且标注一致性优势随规模增长更加显著</li>
 </ul>
 <hr />
 <h2 id="5">5. 多级标注策略</h2>
 <h3 id="51">5.1 粗标注到精标注的层级设计</h3>
-<p>VLM 辅助标注采用"由粗到精"的多级策略，在效率和精度之间取得平衡：</p>
+<p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 辅助标注采用"由粗到精"的多级策略，在效率和精度之间取得平衡：</p>
 <div class="highlight"><pre><span></span><code>+------------------+     +------------------+     +------------------+
 |   L1: 粗标注     | --&gt; |   L2: 中等标注   | --&gt; |   L3: 精细标注   |
 |                  |     |                  |     |                  |
@@ -5243,7 +5299,7 @@
 +------------------+     +------------------+     +------------------+
 </code></pre></div>
 <h3 id="52">5.2 置信度路由</h3>
-<p>VLM 在标注时会输出对每个标注结果的置信度分数。基于置信度进行路由决策：</p>
+<p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 在标注时会输出对每个标注结果的置信度分数。基于置信度进行路由决策：</p>
 <div class="arithmatex">\[\text{Route}(x) = \begin{cases} \text{自动通过} &amp; \text{if } C(x) \geq \theta_{\text{high}} \\ \text{人工复核} &amp; \text{if } \theta_{\text{low}} \leq C(x) &lt; \theta_{\text{high}} \\ \text{人工重新标注} &amp; \text{if } C(x) &lt; \theta_{\text{low}} \end{cases}\]</div>
 <p>典型阈值设置：<span class="arithmatex">\(\theta_{\text{high}} = 0.9\)</span>，<span class="arithmatex">\(\theta_{\text{low}} = 0.6\)</span>。</p>
 <p>实际数据分布中，约 65% 的标注可以自动通过，25% 需要人工复核，仅 10% 需要完全人工重新标注。这使得人工标注员可以将精力集中在最有价值的困难样本上。</p>
@@ -5281,7 +5337,7 @@
 <hr />
 <h2 id="6">6. 场景检索与数据管理</h2>
 <h3 id="61">6.1 语义场景检索</h3>
-<p>利用 VLM 的嵌入空间，可以实现基于自然语言的场景检索。将每一帧数据通过 VLM 编码为语义向量并存入向量数据库，即可支持灵活的检索查询：</p>
+<p>利用 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的嵌入空间，可以实现基于自然语言的场景检索。将每一帧数据通过 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 编码为语义向量并存入向量数据库，即可支持灵活的检索查询：</p>
 <p><strong>查询示例</strong>：</p>
 <table>
 <thead>
@@ -5327,24 +5383,24 @@
                   排序返回 Top-K
 </code></pre></div>
 <h3 id="63">6.3 数据平衡</h3>
-<p>训练数据的场景分布不平衡是影响模型泛化能力的重要因素。VLM 语义嵌入可以用于分析和优化数据分布：</p>
+<p>训练数据的场景分布不平衡是影响模型泛化能力的重要因素。<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 语义嵌入可以用于分析和优化数据分布：</p>
 <ol>
-<li><strong>分布可视化</strong>：将所有数据的 VLM 嵌入通过 t-SNE 降维，直观展示场景分布的聚集和稀疏区域</li>
+<li><strong>分布可视化</strong>：将所有数据的 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 嵌入通过 t-SNE 降维，直观展示场景分布的聚集和稀疏区域</li>
 <li><strong>欠采样检测</strong>：识别语义空间中数据密度过低的区域，这些区域对应的场景类型需要补充采集</li>
 <li><strong>过采样处理</strong>：对高密度区域进行下采样，避免模型在常见场景上过拟合</li>
 <li><strong>目标分布设计</strong>：根据场景重要性和安全等级设计目标数据分布，通过主动采集和合成数据生成逐步逼近</li>
 </ol>
 <hr />
 <h2 id="7">7. 合成数据生成</h2>
-<h3 id="71-vlm">7.1 VLM 引导的合成数据</h3>
-<p>当真实数据中某些场景类型样本不足时，可以利用 VLM 引导文本到图像生成模型合成训练数据：</p>
+<h3 id="71-vlm">7.1 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 引导的合成数据</h3>
+<p>当真实数据中某些场景类型样本不足时，可以利用 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 引导文本到图像生成模型合成训练数据：</p>
 <p><strong>生成流程</strong>：</p>
 <ol>
-<li><strong>缺口分析</strong>：VLM 分析现有数据集，识别场景覆盖的空白区域</li>
+<li><strong>缺口分析</strong>：<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 分析现有数据集，识别场景覆盖的空白区域</li>
 <li><strong>Prompt 构造</strong>：根据缺口自动生成详细的场景描述 Prompt</li>
 <li><strong>图像生成</strong>：使用扩散模型（如 Stable Diffusion）生成对应场景图像</li>
-<li><strong>质量筛选</strong>：VLM 评估生成图像的真实性和场景匹配度</li>
-<li><strong>标注生成</strong>：VLM 对通过筛选的合成图像进行自动标注</li>
+<li><strong>质量筛选</strong>：<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 评估生成图像的真实性和场景匹配度</li>
+<li><strong>标注生成</strong>：<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 对通过筛选的合成图像进行自动标注</li>
 </ol>
 <h3 id="72">7.2 领域特定数据生成</h3>
 <p>针对自动驾驶的特殊需求，合成数据生成重点关注以下领域：</p>
@@ -5360,7 +5416,7 @@
 <tr>
 <td style="text-align: center;">恶劣天气</td>
 <td style="text-align: center;">暴雨、大雪、浓雾</td>
-<td style="text-align: center;">天气风格迁移 + VLM 质量评估</td>
+<td style="text-align: center;">天气风格迁移 + <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 质量评估</td>
 </tr>
 <tr>
 <td style="text-align: center;">光照变化</td>
@@ -5387,7 +5443,7 @@
 <h3 id="73">7.3 合成数据质量控制</h3>
 <p>合成数据的质量直接影响训练效果，需要严格的质量控制流程：</p>
 <ul>
-<li><strong>真实性评分</strong>：VLM 对合成图像和真实图像进行对比评分，真实性低于阈值的图像被丢弃</li>
+<li><strong>真实性评分</strong>：<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 对合成图像和真实图像进行对比评分，真实性低于阈值的图像被丢弃</li>
 <li><strong>物理一致性</strong>：检查阴影方向、反射效果、透视关系等是否符合物理规律</li>
 <li><strong>标注准确性</strong>：合成图像的标注是否与生成 Prompt 一致</li>
 <li><strong>训练有效性</strong>：在验证集上监控加入合成数据前后的模型性能变化，确保合成数据带来正向增益</li>
@@ -5396,7 +5452,7 @@
 <hr />
 <h2 id="8">8. 数据质量保证</h2>
 <h3 id="81">8.1 交叉验证机制</h3>
-<p>VLM 标注结果需要与传统检测器的输出进行交叉验证，以发现各自的盲区：</p>
+<p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 标注结果需要与传统检测器的输出进行交叉验证，以发现各自的盲区：</p>
 <div class="highlight"><pre><span></span><code>                 输入图像
                     |
           +---------+---------+
@@ -5419,7 +5475,7 @@
               人工审查   人工审查
 </code></pre></div>
 <h3 id="82">8.2 标注员间一致性度量</h3>
-<p>使用 Fleiss' Kappa 系数衡量多个标注源（VLM、不同标注员）之间的一致性：</p>
+<p>使用 Fleiss' Kappa 系数衡量多个标注源（<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>、不同标注员）之间的一致性：</p>
 <div class="arithmatex">\[\kappa = \frac{\bar{P} - \bar{P}_e}{1 - \bar{P}_e}\]</div>
 <p>其中 <span class="arithmatex">\(\bar{P}\)</span> 是观察到的一致率，<span class="arithmatex">\(\bar{P}_e\)</span> 是随机一致率。一致性等级划分：</p>
 <table>
@@ -5459,7 +5515,7 @@
 <ul>
 <li><strong>数据快照</strong>：每次标注批次完成后保存数据集完整快照</li>
 <li><strong>变更日志</strong>：记录每次变更的内容（新增数据、修正标注、删除数据）及原因</li>
-<li><strong>标注溯源</strong>：每条标注记录其来源（VLM 自动生成、人工标注、人工修正）</li>
+<li><strong>标注溯源</strong>：每条标注记录其来源（<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 自动生成、人工标注、人工修正）</li>
 <li><strong>质量指标</strong>：每个版本关联其质量评测结果，便于回溯</li>
 </ul>
 <p><strong>版本命名规范</strong>：</p>
@@ -5496,8 +5552,8 @@
 <td style="text-align: center;"><span class="arithmatex">\(\geq\)</span> 0.75</td>
 </tr>
 <tr>
-<td style="text-align: center;">VLM-人工一致率</td>
-<td style="text-align: center;">VLM 标注与人工审查一致的比例</td>
+<td style="text-align: center;"><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>-人工一致率</td>
+<td style="text-align: center;"><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 标注与人工审查一致的比例</td>
 <td style="text-align: center;"><span class="arithmatex">\(\geq\)</span> 90%</td>
 </tr>
 <tr>
@@ -5510,16 +5566,16 @@
 <hr />
 <h2 id="_2">参考资料</h2>
 <ol>
-<li>Li, Y., et al. "LLM-Assisted Data Augmentation for Chinese Autonomous Driving Datasets." <em>IEEE Transactions on Intelligent Vehicles</em>, 2024.</li>
+<li>Li, Y., et al. "<abbr title="Large Language Model，大语言模型">LLM</abbr>-Assisted Data Augmentation for Chinese Autonomous Driving Datasets." <em>IEEE Transactions on Intelligent Vehicles</em>, 2024.</li>
 <li>Yang, Z., et al. "DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models." <em>arXiv preprint arXiv:2402.12289</em>, 2024.</li>
 <li>Chen, L., et al. "Data Engine: Towards Scalable Data Selection for Autonomous Driving." <em>NeurIPS</em>, 2023.</li>
-<li>Wang, W., et al. "OmniDrive: A Holistic LLM-Agent Framework for Autonomous Driving with 3D Perception, Reasoning and Planning." <em>arXiv preprint arXiv:2405.01533</em>, 2024.</li>
+<li>Wang, W., et al. "OmniDrive: A Holistic <abbr title="Large Language Model，大语言模型">LLM</abbr>-Agent Framework for Autonomous Driving with 3D Perception, Reasoning and Planning." <em>arXiv preprint arXiv:2405.01533</em>, 2024.</li>
 <li>Settles, B. "Active Learning Literature Survey." <em>Computer Sciences Technical Report 1648, University of Wisconsin-Madison</em>, 2009.</li>
 <li>Wei, J., et al. "Finetuned Language Models Are Zero-Shot Learners." <em>ICLR</em>, 2022.</li>
 <li>Rombach, R., et al. "High-Resolution Image Synthesis with Latent Diffusion Models." <em>CVPR</em>, 2022.</li>
 <li>Fleiss, J. L. "Measuring Nominal Scale Agreement Among Many Raters." <em>Psychological Bulletin</em>, 76(5): 378–382, 1971.</li>
 <li>Siddiqui, S., et al. "Language-Guided Data Curation for Autonomous Driving." <em>ECCV</em>, 2024.</li>
-<li>Ma, Y., et al. "LiDAR-LLM: Exploring the Potential of Large Language Models for 3D LiDAR Understanding." <em>arXiv preprint arXiv:2312.14074</em>, 2023.</li>
+<li>Ma, Y., et al. "<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>-<abbr title="Large Language Model，大语言模型">LLM</abbr>: Exploring the Potential of Large Language Models for 3D <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> Understanding." <em>arXiv preprint arXiv:2312.14074</em>, 2023.</li>
 </ol>
 
 
@@ -5528,6 +5584,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月21日 23:41:48 UTC">2026年3月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://yfrobotics.github.io/self-driving-handbook-cn/algorithm/nlp/">
       
       
-        <link rel="prev" href="../data_pipeline/">
+        <link rel="prev" href="../datasets_benchmarks/">
       
       
         <link rel="next" href="../../simulation/main/">
@@ -996,6 +996,34 @@
     
   
     自动驾驶测试体系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
   
 
     
@@ -2916,6 +2944,34 @@
     
   
     自动驾驶ML数据管道
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
   
 
     
@@ -5053,7 +5109,7 @@
 <p>自然语言处理（Natural Language Processing，NLP）技术在自动驾驶领域的应用已经历了三个明显的发展阶段。</p>
 <p><strong>第一阶段（2010年代初）：关键词触发</strong>。车载语音系统仅能识别有限的预设指令，如"导航"、"打电话"，本质上是模板匹配，用户必须使用固定的措辞才能触发功能。</p>
 <p><strong>第二阶段（2015–2020年）：端到端语音助手</strong>。以深度学习为基础的 ASR + NLU 流水线架构逐渐成熟，Siri、Google Assistant 等消费级助手被引入车机，车载语音交互从"指令识别"升级为"意图理解"，支持自然的多轮对话。</p>
-<p><strong>第三阶段（2021年至今）：大语言模型驱动的智能座舱</strong>。GPT 系列、LLaMA 系列等大语言模型（Large Language Model，LLM）展示出强大的常识推理与指令跟随能力，部分研究者开始探索将 LLM 直接用于驾驶决策。与此同时，以 CLIP、BLIP 为代表的视觉语言模型（Vision-Language Model，VLM）将语言理解与视觉感知结合，为驾驶场景理解提供了全新范式。</p>
+<p><strong>第三阶段（2021年至今）：大语言模型驱动的智能座舱</strong>。GPT 系列、LLaMA 系列等大语言模型（Large Language Model，<abbr title="Large Language Model，大语言模型">LLM</abbr>）展示出强大的常识推理与指令跟随能力，部分研究者开始探索将 <abbr title="Large Language Model，大语言模型">LLM</abbr> 直接用于驾驶决策。与此同时，以 CLIP、BLIP 为代表的视觉语言模型（Vision-Language Model，<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>）将语言理解与视觉感知结合，为驾驶场景理解提供了全新范式。</p>
 <p>自动驾驶对 NLP 的需求可归纳为两大维度：</p>
 <ul>
 <li><strong>人机交互层面</strong>：驾驶员通过语音控制车辆、查询信息、表达偏好；系统通过语音反馈告知决策意图，提升驾乘体验。</li>
@@ -5072,7 +5128,7 @@
 </ul>
 <p>Whisper Large-v3 在 Common Voice 等基准上达到人类水平，且支持 99 种语言。在车载场景中，通常部署 Whisper Medium 或 Small 以平衡精度与延迟。</p>
 <p><strong>端点检测（VAD）</strong></p>
-<p>语音活动检测（Voice Activity Detection，VAD）负责判断何时有人说话，避免将背景噪声送入 ASR 模型。Silero-VAD 是目前流行的轻量级方案，基于 LSTM，模型大小仅约 1 MB，可在车载 MCU 上运行。</p>
+<p>语音活动检测（Voice Activity Detection，VAD）负责判断何时有人说话，避免将背景噪声送入 ASR 模型。Silero-VAD 是目前流行的轻量级方案，基于 LSTM，模型大小仅约 1 MB，可在车载 <abbr title="Microcontroller Unit，微控制器">MCU</abbr> 上运行。</p>
 <p>端点检测的核心指标是端点延迟（End-of-Speech Delay），通常要求在 300 ms 以内，以保证交互的自然流畅。</p>
 <p><strong>车内噪声抑制</strong></p>
 <p>车载环境存在多类噪声源，信噪比（SNR）通常在 10–20 dB 之间：</p>
@@ -5147,8 +5203,8 @@ P(\text{intent}_k \mid \mathbf{x}) = \text{softmax}(\mathbf{W} \cdot \text{BERT}
 </tr>
 <tr>
 <td>驾驶辅助</td>
-<td>"打开 ACC 跟车"</td>
-<td>调用 ADAS 功能</td>
+<td>"打开 <abbr title="Adaptive Cruise Control，自适应巡航">ACC</abbr> 跟车"</td>
+<td>调用 <abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr> 功能</td>
 </tr>
 <tr>
 <td>闲聊</td>
@@ -5170,7 +5226,7 @@ O  O  O  B-dest I-dest I-dest I-dest I-dest I-dest
 系统：已规划路线，预计 2 小时。
 用户：沿途有没有服务区？（"沿途"指代上一轮导航路线）</p>
 </blockquote>
-<p>基于 LLM 的对话管理直接将历史对话拼接为提示词，利用模型的上下文理解能力隐式处理状态跟踪，相比传统 DST 方法更加灵活。</p>
+<p>基于 <abbr title="Large Language Model，大语言模型">LLM</abbr> 的对话管理直接将历史对话拼接为提示词，利用模型的上下文理解能力隐式处理状态跟踪，相比传统 DST 方法更加灵活。</p>
 <h3 id="23-tts">2.3 文字转语音（TTS）</h3>
 <p>文字转语音（Text-to-Speech，TTS）将系统回复文本合成为自然语音。</p>
 <p><strong>FastSpeech 2 架构</strong></p>
@@ -5192,14 +5248,14 @@ O  O  O  B-dest I-dest I-dest I-dest I-dest I-dest
 <li><strong>漏检率（False Reject Rate，FRR）</strong>：用户呼叫时未能触发的比例，通常要求 &lt; 5%。</li>
 </ul>
 <hr />
-<h2 id="3-llm">3. 大语言模型（LLM）与自动驾驶</h2>
-<h3 id="31-llm">3.1 LLM 的核心能力与迁移</h3>
+<h2 id="3-llm">3. 大语言模型（<abbr title="Large Language Model，大语言模型">LLM</abbr>）与自动驾驶</h2>
+<h3 id="31-llm">3.1 <abbr title="Large Language Model，大语言模型">LLM</abbr> 的核心能力与迁移</h3>
 <p>大语言模型通过在海量文本上预训练获得的能力，在迁移至驾驶场景时具有以下显著优势：</p>
 <ul>
-<li><strong>常识推理</strong>：LLM 内化了大量交通法规、驾驶常识，能够推断"前方有施工标志应减速"等隐含规则。</li>
-<li><strong>少样本泛化（Few-Shot Generalization）</strong>：通过提示词中的少量示例，LLM 可快速适应新场景，无需大量重新训练。</li>
+<li><strong>常识推理</strong>：<abbr title="Large Language Model，大语言模型">LLM</abbr> 内化了大量交通法规、驾驶常识，能够推断"前方有施工标志应减速"等隐含规则。</li>
+<li><strong>少样本泛化（Few-Shot Generalization）</strong>：通过提示词中的少量示例，<abbr title="Large Language Model，大语言模型">LLM</abbr> 可快速适应新场景，无需大量重新训练。</li>
 <li><strong>自然语言指令跟随</strong>：驾驶员可用自然语言表达复杂的驾驶偏好，如"遇到老年人过马路多等一会儿"。</li>
-<li><strong>链式思维推理（Chain-of-Thought，CoT）</strong>：引导 LLM 逐步分解推理过程，提升复杂场景的决策准确性。</li>
+<li><strong>链式思维推理（Chain-of-Thought，CoT）</strong>：引导 <abbr title="Large Language Model，大语言模型">LLM</abbr> 逐步分解推理过程，提升复杂场景的决策准确性。</li>
 </ul>
 <h3 id="32-gpt-driver">3.2 GPT-Driver</h3>
 <p>GPT-Driver（Mao et al., 2023）将运动规划任务转化为语言推理问题。其核心思路是：将驾驶场景（感知结果、自车状态、地图信息）格式化为结构化的自然语言描述，输入 GPT-3.5，模型输出包含推理步骤的驾驶轨迹。</p>
@@ -5218,10 +5274,10 @@ O  O  O  B-dest I-dest I-dest I-dest I-dest I-dest
 </code></pre></div>
 <p>在 nuScenes 数据集上，GPT-Driver 的 L2 轨迹误差与专用神经网络规划器相当，验证了语言推理在驾驶任务中的可行性。</p>
 <h3 id="33-dima">3.3 DiMA</h3>
-<p>DiMA（Driving Intelligence and Multimodal Agents）框架利用 LLM 进行驾驶意图理解与场景摘要生成。其关键创新是将结构化感知输出（目标检测框、轨迹预测结果）通过模板化的自然语言"翻译"给 LLM，再由 LLM 输出驾驶员可读的决策解释。</p>
+<p>DiMA（Driving Intelligence and Multimodal Agents）框架利用 <abbr title="Large Language Model，大语言模型">LLM</abbr> 进行驾驶意图理解与场景摘要生成。其关键创新是将结构化感知输出（目标检测框、轨迹预测结果）通过模板化的自然语言"翻译"给 <abbr title="Large Language Model，大语言模型">LLM</abbr>，再由 <abbr title="Large Language Model，大语言模型">LLM</abbr> 输出驾驶员可读的决策解释。</p>
 <p>这一框架解决了传统自动驾驶的"黑箱"问题：每一个驾驶决策都附带可读的文字解释，便于监管和用户信任建立。</p>
 <h3 id="34-prompt-engineering">3.4 提示工程（Prompt Engineering）</h3>
-<p>在驾驶场景中，提示工程的设计对 LLM 性能影响显著，常用策略包括：</p>
+<p>在驾驶场景中，提示工程的设计对 <abbr title="Large Language Model，大语言模型">LLM</abbr> 性能影响显著，常用策略包括：</p>
 <p><strong>角色设定（Role Prompting）：</strong></p>
 <div class="highlight"><pre><span></span><code>你是一名拥有 20 年经验的专业驾驶教练，请根据以下场景给出安全、合法的驾驶建议……
 </code></pre></div>
@@ -5233,7 +5289,7 @@ O  O  O  B-dest I-dest I-dest I-dest I-dest I-dest
 <p><strong>约束输出（Constrained Decoding）：</strong></p>
 <p>将输出限定为预定义的驾驶动作集合（如 <code>[加速, 减速, 变道左, 变道右, 保持]</code>），通过逻辑采样约束避免非法动作。</p>
 <hr />
-<h2 id="4-vlm">4. 视觉语言模型（VLM）</h2>
+<h2 id="4-vlm">4. 视觉语言模型（<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>）</h2>
 <h3 id="41-clip">4.1 CLIP 在驾驶场景理解中的应用</h3>
 <p>CLIP（Contrastive Language-Image Pretraining，Radford et al., 2021）通过对比学习在图像-文本对上预训练，学习到统一的多模态特征空间。</p>
 <p>在驾驶场景中，CLIP 的主要应用是<strong>零样本分类（Zero-Shot Classification）</strong>：</p>
@@ -5251,14 +5307,14 @@ P(\text{class}_k \mid \mathbf{I}) \propto \exp\left(\cos\left(f_{\text{img}}(\ma
 <p>DriveVLM（清华大学 &amp; 上汽，2024）是面向自动驾驶的视觉语言模型，核心创新是将<strong>链式思维推理</strong>与<strong>驾驶规划</strong>深度融合。</p>
 <p><strong>处理流程：</strong></p>
 <ol>
-<li><strong>场景描述（Scene Description）</strong>：VLM 接收环视摄像头图像与 BEV 特征，生成结构化场景描述，包括目标列表、行为预测、关键交互对象。</li>
+<li><strong>场景描述（Scene Description）</strong>：<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 接收环视摄像头图像与 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征，生成结构化场景描述，包括目标列表、行为预测、关键交互对象。</li>
 <li><strong>场景分析（Scene Analysis）</strong>：对关键对象进行深度推理，例如"前方行人正在犹豫是否过马路，需提前减速准备。"</li>
 <li><strong>层次规划（Hierarchical Planning）</strong>：从元动作（如"谨慎通过路口"）逐步细化为轨迹规划。</li>
-<li><strong>DriveVLM-Dual</strong>：将 VLM 与传统运动规划器结合，VLM 处理长尾复杂场景，传统规划器处理常规场景，兼顾性能与效率。</li>
+<li><strong>DriveVLM-Dual</strong>：将 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 与传统运动规划器结合，<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 处理长尾复杂场景，传统规划器处理常规场景，兼顾性能与效率。</li>
 </ol>
 <p>在 nuScenes 数据集上，DriveVLM-Dual 在规划指标上超越了此前的端到端模型。</p>
 <h3 id="43-vqa">4.3 驾驶场景 VQA 数据集</h3>
-<p>视觉问答（Visual Question Answering，VQA）数据集为驾驶 VLM 的训练与评估提供基础：</p>
+<p>视觉问答（Visual Question Answering，VQA）数据集为驾驶 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的训练与评估提供基础：</p>
 <table>
 <thead>
 <tr>
@@ -5291,7 +5347,7 @@ P(\text{class}_k \mid \mathbf{I}) \propto \exp\left(\cos\left(f_{\text{img}}(\ma
 </tbody>
 </table>
 <h3 id="44-vqa">4.4 VQA 用于安全性解释</h3>
-<p>VLM 可为自动驾驶的每一个决策生成自然语言解释，回答如"为什么系统此时刹车？"之类的问题，极大提升系统可解释性（Explainability），对监管合规和用户信任至关重要。</p>
+<p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 可为自动驾驶的每一个决策生成自然语言解释，回答如"为什么系统此时刹车？"之类的问题，极大提升系统可解释性（Explainability），对监管合规和用户信任至关重要。</p>
 <hr />
 <h2 id="5">5. 端到端语言驾驶</h2>
 <h3 id="51-talk2drive">5.1 Talk2Drive</h3>
@@ -5303,7 +5359,7 @@ P(\text{class}_k \mid \mathbf{I}) \propto \exp\left(\cos\left(f_{\text{img}}(\ma
 <li><strong>驾驶行为推理</strong>："系统为什么减速？"</li>
 <li><strong>反事实推理</strong>："如果不减速会发生什么？"</li>
 </ul>
-<p>通过在 LingoQA 上微调，VLM 可以学习驾驶领域的语言-视觉对应关系，提升对复杂驾驶场景的理解能力。</p>
+<p>通过在 LingoQA 上微调，<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 可以学习驾驶领域的语言-视觉对应关系，提升对复杂驾驶场景的理解能力。</p>
 <h3 id="53-rlhf">5.3 RLHF 对齐驾驶风格</h3>
 <p>基于人类反馈的强化学习（Reinforcement Learning from Human Feedback，RLHF）被引入自动驾驶，用于将驾驶策略与人类偏好对齐。</p>
 <p><strong>基本流程：</strong></p>
@@ -5318,17 +5374,17 @@ P(\text{class}_k \mid \mathbf{I}) \propto \exp\left(\cos\left(f_{\text{img}}(\ma
 \]</div>
 <p>RLHF 允许不同用户个性化其驾驶风格（运动型/舒适型/节能型），同时维持安全底线。</p>
 <h3 id="54">5.4 安全约束下的语言驾驶代理</h3>
-<p>语言驾驶代理（Language Driving Agent）将 LLM 作为高层规划器，但其输出必须满足安全约束才能被执行。常用方法包括：</p>
+<p>语言驾驶代理（Language Driving Agent）将 <abbr title="Large Language Model，大语言模型">LLM</abbr> 作为高层规划器，但其输出必须满足安全约束才能被执行。常用方法包括：</p>
 <ul>
-<li><strong>形式化验证层</strong>：对 LLM 输出的轨迹进行碰撞检测和交规合规性验证，不通过则拒绝执行并回退到保守策略。</li>
-<li><strong>双重检查机制</strong>：LLM 规划器给出初始方案，安全规划器（Safety Planner）进行后验修正，确保满足动力学约束和最小安全距离。</li>
-<li><strong>置信度门控</strong>：当 LLM 输出置信度低于阈值时，系统自动切换至传统规划器。</li>
+<li><strong>形式化验证层</strong>：对 <abbr title="Large Language Model，大语言模型">LLM</abbr> 输出的轨迹进行碰撞检测和交规合规性验证，不通过则拒绝执行并回退到保守策略。</li>
+<li><strong>双重检查机制</strong>：<abbr title="Large Language Model，大语言模型">LLM</abbr> 规划器给出初始方案，安全规划器（Safety Planner）进行后验修正，确保满足动力学约束和最小安全距离。</li>
+<li><strong>置信度门控</strong>：当 <abbr title="Large Language Model，大语言模型">LLM</abbr> 输出置信度低于阈值时，系统自动切换至传统规划器。</li>
 </ul>
 <hr />
 <h2 id="6">6. 场景描述与可解释性</h2>
 <h3 id="61">6.1 自动生成驾驶场景文字描述</h3>
 <p>驾驶场景自动描述（Automated Driving Scene Captioning）将传感器数据转化为人类可读的文字摘要，支持事故分析、数据标注和驾驶报告生成。</p>
-<p>典型方法是训练一个以 BEV 特征图为输入、以文本序列为输出的序列到序列模型（Seq2Seq），结合注意力机制关注场景中的关键区域。</p>
+<p>典型方法是训练一个以 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征图为输入、以文本序列为输出的序列到序列模型（Seq2Seq），结合注意力机制关注场景中的关键区域。</p>
 <h3 id="62-rationale-generation">6.2 驾驶决策自然语言解释（Rationale Generation）</h3>
 <p>在自动驾驶系统的每个决策点，生成简洁的自然语言解释，例如：</p>
 <blockquote>
@@ -5379,8 +5435,8 @@ P(\text{class}_k \mid \mathbf{I}) \propto \exp\left(\cos\left(f_{\text{img}}(\ma
 <h3 id="72-huawei-ads">7.2 问界 HUAWEI ADS 智能座舱</h3>
 <p>问界 M9 搭载华为盘古大模型，实现了"聪明的 NPC"式车载助手，支持主动感知用户需求（如根据时间和地点主动推荐导航）以及情感化交互。</p>
 <h3 id="73-ai">7.3 小鹏 AI 天玑系统</h3>
-<p>小鹏汽车的 AI 天玑系统整合了小鹏自研大语言模型，与 XNGP（智能导航辅助驾驶）深度融合，驾驶员可通过语言直接控制 ADAS 功能，如"前面有堵车，帮我规避"。</p>
-<h3 id="74-llm">7.4 国内主流 LLM 车机方案对比</h3>
+<p>小鹏汽车的 AI 天玑系统整合了小鹏自研大语言模型，与 XNGP（智能导航辅助驾驶）深度融合，驾驶员可通过语言直接控制 <abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr> 功能，如"前面有堵车，帮我规避"。</p>
+<h3 id="74-llm">7.4 国内主流 <abbr title="Large Language Model，大语言模型">LLM</abbr> 车机方案对比</h3>
 <table>
 <thead>
 <tr>
@@ -5423,14 +5479,14 @@ P(\text{class}_k \mid \mathbf{I}) \propto \exp\left(\cos\left(f_{\text{img}}(\ma
 <tr>
 <td>比亚迪</td>
 <td>小迪</td>
-<td>第三方 LLM</td>
+<td>第三方 <abbr title="Large Language Model，大语言模型">LLM</abbr></td>
 <td>云端</td>
 <td>广泛车型覆盖</td>
 </tr>
 </tbody>
 </table>
 <h3 id="75">7.5 端侧推理与模型压缩</h3>
-<p>将百亿参数的 LLM 部署到车载芯片（如高通 Snapdragon 8295，AI 算力约 30 TOPS）需要系统性的模型压缩：</p>
+<p>将百亿参数的 <abbr title="Large Language Model，大语言模型">LLM</abbr> 部署到车载芯片（如高通 Snapdragon 8295，AI 算力约 30 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>）需要系统性的模型压缩：</p>
 <ul>
 <li><strong>量化（Quantization）</strong>：将 FP32 权重压缩为 INT4/INT8，在精度损失可接受的情况下将模型大小缩减 4–8 倍，推理速度提升 2–4 倍。</li>
 <li><strong>知识蒸馏（Knowledge Distillation）</strong>：用大模型（Teacher）监督小模型（Student）训练，在参数量减少 10 倍的情况下保留约 90% 的性能。</li>
@@ -5447,12 +5503,12 @@ P(\text{class}_k \mid \mathbf{I}) \propto \exp\left(\cos\left(f_{\text{img}}(\ma
 <hr />
 <h2 id="8">8. 挑战与未来方向</h2>
 <h3 id="81-hallucination">8.1 幻觉问题（Hallucination）的危险性</h3>
-<p>LLM 的幻觉问题（Hallucination）在驾驶场景中具有极高风险。模型可能自信地输出与实际场景不符的描述或错误的驾驶建议，例如将停止标志误描述为"前方道路畅通"。</p>
+<p><abbr title="Large Language Model，大语言模型">LLM</abbr> 的幻觉问题（Hallucination）在驾驶场景中具有极高风险。模型可能自信地输出与实际场景不符的描述或错误的驾驶建议，例如将停止标志误描述为"前方道路畅通"。</p>
 <p>缓解措施包括：</p>
 <ul>
 <li><strong>检索增强生成（RAG）</strong>：将实时感知结果作为上下文注入提示词，约束模型输出与感知一致。</li>
 <li><strong>不确定性量化（Uncertainty Quantification）</strong>：通过 Monte Carlo Dropout 或 Conformal Prediction 估计模型输出的置信度，低置信度输出触发人工干预或保守策略。</li>
-<li><strong>交叉验证</strong>：LLM 输出与传统感知模块结果进行一致性校验，不一致时拒绝执行。</li>
+<li><strong>交叉验证</strong>：<abbr title="Large Language Model，大语言模型">LLM</abbr> 输出与传统感知模块结果进行一致性校验，不一致时拒绝执行。</li>
 </ul>
 <h3 id="82">8.2 实时性约束</h3>
 <p>自动驾驶对决策延迟极为敏感，而大语言模型的推理延迟与安全要求之间存在根本性矛盾：</p>
@@ -5461,14 +5517,14 @@ P(\text{class}_k \mid \mathbf{I}) \propto \exp\left(\cos\left(f_{\text{img}}(\ma
 <tr>
 <th>决策层级</th>
 <th>时间要求</th>
-<th>LLM 可行性</th>
+<th><abbr title="Large Language Model，大语言模型">LLM</abbr> 可行性</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>紧急避障</td>
 <td>&lt; 100 ms</td>
-<td>当前 LLM 不可行</td>
+<td>当前 <abbr title="Large Language Model，大语言模型">LLM</abbr> 不可行</td>
 </tr>
 <tr>
 <td>轨迹规划</td>
@@ -5478,7 +5534,7 @@ P(\text{class}_k \mid \mathbf{I}) \propto \exp\left(\cos\left(f_{\text{img}}(\ma
 <tr>
 <td>行为决策</td>
 <td>500 ms–2 s</td>
-<td>端侧中等规模 LLM 可行</td>
+<td>端侧中等规模 <abbr title="Large Language Model，大语言模型">LLM</abbr> 可行</td>
 </tr>
 <tr>
 <td>场景理解/解释</td>
@@ -5492,7 +5548,7 @@ P(\text{class}_k \mid \mathbf{I}) \propto \exp\left(\cos\left(f_{\text{img}}(\ma
 </tr>
 </tbody>
 </table>
-<p>实时性挑战要求未来研究在<strong>分层决策</strong>框架下合理分配 LLM 的参与深度。</p>
+<p>实时性挑战要求未来研究在<strong>分层决策</strong>框架下合理分配 <abbr title="Large Language Model，大语言模型">LLM</abbr> 的参与深度。</p>
 <h3 id="83">8.3 多语言支持</h3>
 <p>中国市场多语言、多方言的需求对车载 NLP 提出挑战：普通话、粤语、闽南语等方言在语音特征上差异显著，且缺乏高质量的方言驾驶场景标注数据。多语言 TTS 还需处理中英混读（Code-Switching）等口语化现象。</p>
 <h3 id="84">8.4 联邦学习保护用户数据</h3>
@@ -5501,8 +5557,8 @@ P(\text{class}_k \mid \mathbf{I}) \propto \exp\left(\cos\left(f_{\text{img}}(\ma
 <h3 id="85">8.5 未来方向展望</h3>
 <ul>
 <li><strong>具身智能（Embodied AI）</strong>：将语言理解、视觉感知与车辆行动紧密耦合，使车辆具备像人一样通过观察和语言描述学习驾驶技能的能力。</li>
-<li><strong>世界模型（World Model）</strong>：LLM 作为世界模型的语言接口，理解物理规律并对未来场景进行预测，为规划提供先验。</li>
-<li><strong>多智能体协作</strong>：车辆之间通过自然语言共享感知信息和意图，实现协同驾驶（V2V Language Communication）。</li>
+<li><strong>世界模型（World Model）</strong>：<abbr title="Large Language Model，大语言模型">LLM</abbr> 作为世界模型的语言接口，理解物理规律并对未来场景进行预测，为规划提供先验。</li>
+<li><strong>多智能体协作</strong>：车辆之间通过自然语言共享感知信息和意图，实现协同驾驶（<abbr title="Vehicle-to-Vehicle，车对车">V2V</abbr> Language Communication）。</li>
 </ul>
 <hr />
 <h2 id="_2">参考资料</h2>
@@ -5522,6 +5578,27 @@ P(\text{class}_k \mid \mathbf{I}) \propto \exp\left(\cos\left(f_{\text{img}}(\ma
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 00:50:24 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

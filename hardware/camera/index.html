@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3379,6 +3407,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -5013,7 +5069,7 @@
 </ul>
 <p>索尼 IMX490 采用 DOL-HDR（Digital Overlap HDR）技术，可实现 120 dB 动态范围，是目前车载摄像头的主流选择。</p>
 <h2 id="3-isp">3. ISP图像信号处理管线</h2>
-<p>原始传感器输出的<strong>RAW数据</strong>（拜尔格式，Bayer Pattern）需要经过图像信号处理器（ISP）的一系列处理才能转换为可用图像。</p>
+<p>原始传感器输出的<strong>RAW数据</strong>（拜尔格式，Bayer Pattern）需要经过图像信号处理器（<abbr title="Image Signal Processor，图像信号处理器">ISP</abbr>）的一系列处理才能转换为可用图像。</p>
 <h3 id="31-isp">3.1 ISP处理流程</h3>
 <div class="highlight"><pre><span></span><code>传感器RAW输出（Bayer格式）
         │
@@ -5126,7 +5182,7 @@ $$y' = y + [p_1(r^2 + 2y^2) + 2p_2 xy]\]</div>
 - <strong>前中摄（Main）</strong>：FOV约 52°，覆盖主要前向感知区域，用于目标检测和车道线识别
 - <strong>前广角（Wide）</strong>：FOV约 120°，用于交叉路口和低速跟车场景</p>
 <p><strong>环视鱼眼摄像头（Surround View Camera）</strong>：</p>
-<p>四路鱼眼摄像头布置于车辆前后左右，每路FOV约 185°–195°，通过图像拼接和俯视变换生成鸟瞰图（BEV），主要用于自动泊车和低速辅助驾驶。</p>
+<p>四路鱼眼摄像头布置于车辆前后左右，每路FOV约 185°–195°，通过图像拼接和俯视变换生成鸟瞰图（<abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr>），主要用于自动泊车和低速辅助驾驶。</p>
 <p><strong>后视摄像头（Rear Camera）</strong>：</p>
 <p>布置于车辆尾部，FOV约 130°–140°，中焦或广角，用于倒车辅助和后方来车检测。部分法规（如美国FMVSS 111）强制要求安装。</p>
 <p><strong>内舱DMS摄像头（Driver Monitoring System Camera）</strong>：</p>
@@ -5317,7 +5373,7 @@ $$y' = y + [p_1(r^2 + 2y^2) + 2p_2 xy]\]</div>
 <p>激光雷达通常以固定频率（如10 Hz或20 Hz）旋转扫描，每圈扫描的起始时刻由内部时钟决定。与摄像头对齐需要：</p>
 <ol>
 <li><strong>PPS脉冲（Pulse Per Second）</strong>：GPS接收机或时钟模块每秒输出一个高精度脉冲，精度可达 <span class="arithmatex">\(&lt;1\ \mu\text{s}\)</span></li>
-<li><strong>IEEE 1588 PTP（Precision Time Protocol）</strong>：通过以太网实现纳秒级时间同步，各节点（摄像头SoC、LiDAR控制器、ECU）锁定到同一时钟</li>
+<li><strong>IEEE 1588 PTP（Precision Time Protocol）</strong>：通过以太网实现纳秒级时间同步，各节点（摄像头SoC、LiDAR控制器、<abbr title="Electronic Control Unit，电子控制单元">ECU</abbr>）锁定到同一时钟</li>
 <li><strong>时间戳注入（Timestamp Injection）</strong>：在摄像头曝光中心时刻记录精确时间戳，与LiDAR点云的时间戳对应，用于数据融合时的插值对齐</li>
 </ol>
 <p>典型时间同步精度要求：对于100 km/h行驶速度，1 ms的时间误差对应约2.8 cm的位置误差，多数系统要求时间同步精度优于 <span class="arithmatex">\(\pm 0.5\ \text{ms}\)</span>。</p>
@@ -5370,7 +5426,7 @@ $$y' = y + [p_1(r^2 + 2y^2) + 2p_2 xy]\]</div>
 <li>Szeliski, R. <em>Computer Vision: Algorithms and Applications</em>, 2nd ed. Springer, 2022. Chapter 2: Image Formation.</li>
 <li>Sony Semiconductor Solutions. <em>IMX490 Product Brief: Automotive CMOS Image Sensor</em>. 2022.</li>
 <li>Tesla AI Day. "Tesla Vision &amp; Occupancy Networks." Presentation, 2021. https://tesla.com/AI</li>
-<li>AUTOSAR. <em>Specification of Camera ISP Driver</em>. Release 4.4.0, 2019. https://www.autosar.org</li>
+<li><abbr title="Automotive Open System Architecture，汽车开放系统架构">AUTOSAR</abbr>. <em>Specification of Camera <abbr title="Image Signal Processor，图像信号处理器">ISP</abbr> Driver</em>. Release 4.4.0, 2019. https://www.autosar.org</li>
 </ol>
 
 
@@ -5379,6 +5435,27 @@ $$y' = y + [p_1(r^2 + 2y^2) + 2p_2 xy]\]</div>
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 00:50:24 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

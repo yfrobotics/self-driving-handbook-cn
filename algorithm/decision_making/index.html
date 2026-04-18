@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3488,6 +3516,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nlp/" class="md-nav__link">
         
   
@@ -5124,7 +5180,7 @@
 <h2 id="2">2. 决策层次结构</h2>
 <p>自动驾驶决策通常采用三层架构，不同层次在时间尺度、抽象程度和求解方法上各有侧重。</p>
 <h3 id="21-mission-planning">2.1 任务规划（Mission Planning）</h3>
-<p>任务规划在地图层面确定从起点到终点的最优路线，时间尺度为分钟到小时级别。主要输入包括高精度地图（HD Map）、实时交通信息和用户目的地。常用算法有 Dijkstra 最短路径和 A* 启发式搜索。</p>
+<p>任务规划在地图层面确定从起点到终点的最优路线，时间尺度为分钟到小时级别。主要输入包括高精度地图（<abbr title="High Definition Map，高精地图">HD Map</abbr>）、实时交通信息和用户目的地。常用算法有 Dijkstra 最短路径和 A* 启发式搜索。</p>
 <p>任务规划的核心是代价函数设计，综合考虑行驶距离、预计时间、道路等级和通行费等因素：</p>
 <div class="arithmatex">\[C_{route} = w_d \cdot d + w_t \cdot t + w_r \cdot r_{toll} + w_e \cdot e_{energy}\]</div>
 <p>其中 <span class="arithmatex">\(d\)</span> 为距离，<span class="arithmatex">\(t\)</span> 为预计行驶时间，<span class="arithmatex">\(r_{toll}\)</span> 为通行费，<span class="arithmatex">\(e_{energy}\)</span> 为能耗估计，<span class="arithmatex">\(w_*\)</span> 为对应权重。</p>
@@ -5190,7 +5246,7 @@
 </tr>
 <tr>
 <td>紧急制动（Emergency）</td>
-<td>触发 AEB，以最大减速度制动</td>
+<td>触发 <abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr>，以最大减速度制动</td>
 </tr>
 </tbody>
 </table>
@@ -5516,7 +5572,7 @@ $$V_o(\pi_e^*, \pi_o^*) \geq V_o(\pi_e^*, \pi_o), \quad \forall \pi_o\]</div>
 <tr>
 <td><span class="arithmatex">\(TTC \leq 1s\)</span></td>
 <td>紧急</td>
-<td>触发 AEB</td>
+<td>触发 <abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr></td>
 </tr>
 </tbody>
 </table>
@@ -5555,6 +5611,27 @@ $$V_o(\pi_e^*, \pi_o^*) \geq V_o(\pi_e^*, \pi_o), \quad \forall \pi_o\]</div>
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 00:50:24 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

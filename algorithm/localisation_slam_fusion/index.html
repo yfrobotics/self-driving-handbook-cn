@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3263,6 +3291,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nlp/" class="md-nav__link">
         
   
@@ -4642,31 +4698,31 @@
   
 
 
-<h1 id="slam">SLAM 与融合定位：方法、架构与工程实现</h1>
-<p>本页聚焦定位主算法链路，从地图构建与定位（SLAM）到多源融合的工程实现。</p>
+<h1 id="slam"><abbr title="Simultaneous Localization and Mapping，即时定位与建图">SLAM</abbr> 与融合定位：方法、架构与工程实现</h1>
+<p>本页聚焦定位主算法链路，从地图构建与定位（<abbr title="Simultaneous Localization and Mapping，即时定位与建图">SLAM</abbr>）到多源融合的工程实现。</p>
 <hr />
-<h2 id="1-slam">1. SLAM 问题定义</h2>
-<p>SLAM（Simultaneous Localization and Mapping）同时解决<strong>定位</strong>（我在哪？）和<strong>建图</strong>（环境是什么样？）两个相互依赖的问题。</p>
+<h2 id="1-slam">1. <abbr title="Simultaneous Localization and Mapping，即时定位与建图">SLAM</abbr> 问题定义</h2>
+<p><abbr title="Simultaneous Localization and Mapping，即时定位与建图">SLAM</abbr>（Simultaneous Localization and Mapping）同时解决<strong>定位</strong>（我在哪？）和<strong>建图</strong>（环境是什么样？）两个相互依赖的问题。</p>
 <p><strong>状态空间：</strong></p>
 <div class="arithmatex">\[\mathbf{x}_t = \{p_x, p_y, p_z, \phi, \theta, \psi\}^T \quad \text{（6-DOF 位姿）}\]</div>
 <p><strong>贝叶斯框架：</strong></p>
 <div class="arithmatex">\[p(\mathbf{x}_t, \mathbf{m} \mid \mathbf{z}_{1:t}, \mathbf{u}_{1:t})\]</div>
-<p>其中 <span class="arithmatex">\(\mathbf{m}\)</span> 为地图，<span class="arithmatex">\(\mathbf{z}\)</span> 为观测，<span class="arithmatex">\(\mathbf{u}\)</span> 为控制输入（IMU）。</p>
+<p>其中 <span class="arithmatex">\(\mathbf{m}\)</span> 为地图，<span class="arithmatex">\(\mathbf{z}\)</span> 为观测，<span class="arithmatex">\(\mathbf{u}\)</span> 为控制输入（<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>）。</p>
 <hr />
-<h2 id="2-slam">2. 激光 SLAM</h2>
+<h2 id="2-slam">2. 激光 <abbr title="Simultaneous Localization and Mapping，即时定位与建图">SLAM</abbr></h2>
 <h3 id="21">2.1 点云配准原理</h3>
-<p>激光 SLAM 的核心是点云配准——寻找两帧点云之间的变换矩阵 <span class="arithmatex">\(T\)</span>，使重叠区域的点尽量重合。</p>
-<p><strong>ICP（Iterative Closest Point）：</strong></p>
+<p>激光 <abbr title="Simultaneous Localization and Mapping，即时定位与建图">SLAM</abbr> 的核心是点云配准——寻找两帧点云之间的变换矩阵 <span class="arithmatex">\(T\)</span>，使重叠区域的点尽量重合。</p>
+<p><strong><abbr title="Iterative Closest Point，迭代最近点">ICP</abbr>（Iterative Closest Point）：</strong></p>
 <div class="arithmatex">\[T^* = \arg\min_T \sum_{i} \| p_i - T q_i \|^2\]</div>
 <p>迭代步骤：
 1. 为源点云 <span class="arithmatex">\(Q\)</span> 中每个点找最近邻 <span class="arithmatex">\(P\)</span> 中的点
 2. 最小化点对距离求解变换 <span class="arithmatex">\(T\)</span>
 3. 应用变换，重复直到收敛</p>
-<p><strong>NDT（Normal Distribution Transform）：</strong></p>
+<p><strong><abbr title="Normal Distributions Transform，正态分布变换">NDT</abbr>（Normal Distribution Transform）：</strong></p>
 <p>将目标点云划分为体素格，每个格内建立高斯分布；用最大化目标点在分布中的概率来估计变换：</p>
 <div class="arithmatex">\[T^* = \arg\max_T \sum_i \exp\left(-\frac{(T p_i - \mu_k)^T \Sigma_k^{-1} (T p_i - \mu_k)}{2}\right)\]</div>
-<p>NDT 对点云噪声更鲁棒，在自动驾驶定位中广泛使用。</p>
-<h3 id="22-slam">2.2 主流激光 SLAM 系统</h3>
+<p><abbr title="Normal Distributions Transform，正态分布变换">NDT</abbr> 对点云噪声更鲁棒，在自动驾驶定位中广泛使用。</p>
+<h3 id="22-slam">2.2 主流激光 <abbr title="Simultaneous Localization and Mapping，即时定位与建图">SLAM</abbr> 系统</h3>
 <table>
 <thead>
 <tr>
@@ -4688,19 +4744,19 @@
 </tr>
 <tr>
 <td>LIO-SAM</td>
-<td>紧耦合 LiDAR-IMU，因子图后端</td>
+<td>紧耦合 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>-<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>，因子图后端</td>
 <td>城区复杂场景</td>
 </tr>
 <tr>
-<td>HDL Graph SLAM</td>
+<td>HDL Graph <abbr title="Simultaneous Localization and Mapping，即时定位与建图">SLAM</abbr></td>
 <td>图优化，多闭环检测</td>
 <td>建图</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="3-slam">3. 视觉 SLAM</h2>
-<h3 id="31-slamorb-slam">3.1 特征法视觉 SLAM（ORB-SLAM 系列）</h3>
+<h2 id="3-slam">3. 视觉 <abbr title="Simultaneous Localization and Mapping，即时定位与建图">SLAM</abbr></h2>
+<h3 id="31-slamorb-slam">3.1 特征法视觉 <abbr title="Simultaneous Localization and Mapping，即时定位与建图">SLAM</abbr>（ORB-<abbr title="Simultaneous Localization and Mapping，即时定位与建图">SLAM</abbr> 系列）</h3>
 <p>流程：</p>
 <div class="highlight"><pre><span></span><code>图像帧
     │
@@ -4734,19 +4790,19 @@
 </tr>
 </tbody>
 </table>
-<h3 id="32-slamdso">3.2 直接法视觉 SLAM（DSO）</h3>
+<h3 id="32-slamdso">3.2 直接法视觉 <abbr title="Simultaneous Localization and Mapping，即时定位与建图">SLAM</abbr>（DSO）</h3>
 <p>直接最小化光度误差（Photometric Error）：</p>
 <div class="arithmatex">\[E = \sum_i \sum_{j \in \text{obs}(i)} \left\| I_j(\pi(\mathbf{T}, d_i)) - I_{\text{ref}}(p_i) \right\|_\gamma\]</div>
 <p>无需特征提取，对纹理弱场景更好，但对曝光变化和运动模糊敏感。</p>
 <hr />
-<h2 id="4-vio">4. 视觉-惯性紧耦合（VIO）</h2>
-<h3 id="41-imu">4.1 IMU 预积分理论</h3>
-<p>IMU 输出角速度 <span class="arithmatex">\(\omega\)</span> 和加速度 <span class="arithmatex">\(a\)</span>，积分得到姿态和速度：</p>
+<h2 id="4-vio">4. 视觉-惯性紧耦合（<abbr title="Visual-Inertial Odometry，视觉惯导里程计">VIO</abbr>）</h2>
+<h3 id="41-imu">4.1 <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 预积分理论</h3>
+<p><abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 输出角速度 <span class="arithmatex">\(\omega\)</span> 和加速度 <span class="arithmatex">\(a\)</span>，积分得到姿态和速度：</p>
 <div class="arithmatex">\[\Delta R_{ij} = \prod_{k=i}^{j-1} \text{Exp}((\tilde{\omega}_k - b_g)\Delta t)\]</div>
 <div class="arithmatex">\[\Delta v_{ij} = \sum_{k=i}^{j-1} \Delta R_{ik} (\tilde{a}_k - b_a) \Delta t\]</div>
 <div class="arithmatex">\[\Delta p_{ij} = \sum_{k=i}^{j-1} \left[\Delta v_{ik}\Delta t + \frac{1}{2}\Delta R_{ik}(\tilde{a}_k - b_a)\Delta t^2\right]\]</div>
-<p>预积分可以将 IMU 量重复利用，避免在优化迭代中重复积分。</p>
-<h3 id="42-vio">4.2 主流 VIO 系统</h3>
+<p>预积分可以将 <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 量重复利用，避免在优化迭代中重复积分。</p>
+<h3 id="42-vio">4.2 主流 <abbr title="Visual-Inertial Odometry，视觉惯导里程计">VIO</abbr> 系统</h3>
 <table>
 <thead>
 <tr>
@@ -4768,7 +4824,7 @@
 </tr>
 <tr>
 <td>ORB-SLAM3</td>
-<td>特征法 + IMU 紧耦合</td>
+<td>特征法 + <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 紧耦合</td>
 <td>多传感器支持全</td>
 </tr>
 <tr>
@@ -4786,7 +4842,7 @@
 <p>图中包含：</p>
 <ul>
 <li><strong>变量节点</strong>：待估计状态（位姿、速度、偏差）</li>
-<li><strong>因子节点</strong>：对变量施加约束的量测（IMU、GPS、LiDAR 匹配）</li>
+<li><strong>因子节点</strong>：对变量施加约束的量测（<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>、GPS、<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 匹配）</li>
 </ul>
 <p><strong>常用框架：</strong></p>
 <table>
@@ -4827,12 +4883,12 @@ GNSS先验因子        LiDAR匹配因子         回环检测因子
 <h3 id="53-marginalization">5.3 边缘化（Marginalization）</h3>
 <p>为保持实时性，滑动窗口内的旧状态通过边缘化移除，保留其约束对后续状态的影响（Prior Factor）。</p>
 <hr />
-<h2 id="6-gnssimu">6. GNSS/IMU 紧耦合</h2>
+<h2 id="6-gnssimu">6. <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr>/<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 紧耦合</h2>
 <h3 id="61-eskf">6.1 误差状态卡尔曼滤波器（ESKF）</h3>
-<p>状态向量：位置、速度、姿态、IMU 偏差（加速度计零偏 <span class="arithmatex">\(b_a\)</span>、陀螺仪零偏 <span class="arithmatex">\(b_g\)</span>）。</p>
-<p><strong>预测步（IMU 积分）：</strong></p>
+<p>状态向量：位置、速度、姿态、<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 偏差（加速度计零偏 <span class="arithmatex">\(b_a\)</span>、陀螺仪零偏 <span class="arithmatex">\(b_g\)</span>）。</p>
+<p><strong>预测步（<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 积分）：</strong></p>
 <div class="arithmatex">\[\hat{\mathbf{x}}_{k|k-1} = f(\mathbf{x}_{k-1}, \mathbf{u}_k)\]</div>
-<p><strong>更新步（GNSS 量测）：</strong></p>
+<p><strong>更新步（<abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 量测）：</strong></p>
 <div class="arithmatex">\[K_k = P_{k|k-1} H^T (H P_{k|k-1} H^T + R)^{-1}\]</div>
 <div class="arithmatex">\[\mathbf{x}_k = \hat{\mathbf{x}}_{k|k-1} + K_k(\mathbf{z}_k - H\hat{\mathbf{x}}_{k|k-1})\]</div>
 <hr />
@@ -4854,23 +4910,23 @@ GNSS先验因子        LiDAR匹配因子         回环检测因子
 <td>&lt; 1 ms</td>
 </tr>
 <tr>
-<td>LiDAR</td>
+<td><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr></td>
 <td>PPS 信号 + NMEA 句子同步</td>
 <td>&lt; 0.1 ms</td>
 </tr>
 <tr>
-<td>IMU</td>
+<td><abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr></td>
 <td>硬件中断时戳</td>
 <td>&lt; 0.1 ms</td>
 </tr>
 <tr>
-<td>GNSS</td>
+<td><abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr></td>
 <td>PPS 秒脉冲标定</td>
 <td>&lt; 1 μs</td>
 </tr>
 </tbody>
 </table>
-<p>时间同步偏差 &gt; 10 ms 会显著影响 VIO 和激光-视觉联合定位精度。</p>
+<p>时间同步偏差 &gt; 10 ms 会显著影响 <abbr title="Visual-Inertial Odometry，视觉惯导里程计">VIO</abbr> 和激光-视觉联合定位精度。</p>
 <h3 id="72">7.2 外参标定</h3>
 <div class="highlight"><pre><span></span><code>需要标定的外参关系：
   相机 ↔ LiDAR（旋转 + 平移，6-DOF）
@@ -4896,23 +4952,23 @@ GNSS先验因子        LiDAR匹配因子         回环检测因子
 <tbody>
 <tr>
 <td>长隧道</td>
-<td>GNSS 失效，视觉纹理单一</td>
-<td>提高 IMU 权重，LiDAR 主导</td>
+<td><abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 失效，视觉纹理单一</td>
+<td>提高 <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 权重，<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 主导</td>
 </tr>
 <tr>
 <td>暴风雪</td>
-<td>LiDAR 大量噪声点</td>
-<td>点云滤波，降低 LiDAR 权重</td>
+<td><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 大量噪声点</td>
+<td>点云滤波，降低 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 权重</td>
 </tr>
 <tr>
 <td>玻璃幕墙</td>
-<td>LiDAR 穿透，视觉反射</td>
+<td><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 穿透，视觉反射</td>
 <td>点云噪声过滤，依赖地图先验</td>
 </tr>
 <tr>
 <td>十字路口开阔区域</td>
 <td>激光点云特征稀少</td>
-<td>依赖 GNSS + 地图匹配</td>
+<td>依赖 <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> + 地图匹配</td>
 </tr>
 </tbody>
 </table>
@@ -4950,12 +5006,12 @@ GNSS先验因子        LiDAR匹配因子         回环检测因子
 <tr>
 <td>DBoW2</td>
 <td>视觉词袋，图像相似度检索</td>
-<td>视觉 SLAM</td>
+<td>视觉 <abbr title="Simultaneous Localization and Mapping，即时定位与建图">SLAM</abbr></td>
 </tr>
 <tr>
 <td>Scan Context</td>
 <td>激光点云极坐标描述符</td>
-<td>激光 SLAM</td>
+<td>激光 <abbr title="Simultaneous Localization and Mapping，即时定位与建图">SLAM</abbr></td>
 </tr>
 <tr>
 <td>NetVLAD</td>
@@ -4977,6 +5033,27 @@ GNSS先验因子        LiDAR匹配因子         回环检测因子
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 19:34:57 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

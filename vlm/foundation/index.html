@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -2914,6 +2942,34 @@
     
   
     自动驾驶ML数据管道
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
   
 
     
@@ -5016,8 +5072,8 @@
   
 
 
-<h1 id="vlm">VLM 基础模型</h1>
-<p>视觉语言模型（Vision-Language Model, VLM）是连接视觉感知与语言理解的桥梁。在自动驾驶领域，VLM 能够将摄像头捕获的复杂交通场景转化为可推理的语义表示，为场景理解、决策规划提供强大的基础能力。本章将系统介绍 VLM 的核心基础模型及其关键技术。</p>
+<h1 id="vlm"><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 基础模型</h1>
+<p>视觉语言模型（Vision-Language Model, <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>）是连接视觉感知与语言理解的桥梁。在自动驾驶领域，<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 能够将摄像头捕获的复杂交通场景转化为可推理的语义表示，为场景理解、决策规划提供强大的基础能力。本章将系统介绍 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的核心基础模型及其关键技术。</p>
 <h2 id="1-vision-transformervit">1. Vision Transformer（ViT）</h2>
 <h3 id="11">1.1 基本原理</h3>
 <p>Vision Transformer（ViT）由 Dosovitskiy 等人于 2020 年提出，首次将 Transformer 架构直接应用于图像分类任务，打破了卷积神经网络（CNN）在视觉领域的长期主导地位。其核心思想是将图像切分为固定大小的 <strong>图像块（Patch）</strong>，将每个 Patch 线性投影为一个 Token，然后输入标准 Transformer 编码器进行处理。</p>
@@ -5165,8 +5221,8 @@
 <h3 id="32">3.2 视觉指令微调</h3>
 <p>LLaVA 的训练分为两个阶段：</p>
 <ol>
-<li><strong>预训练阶段</strong>：冻结视觉编码器和 LLM，仅训练投影器。使用约 60 万条图像-文本描述数据进行特征对齐</li>
-<li><strong>指令微调阶段</strong>：冻结视觉编码器，同时微调投影器和 LLM。使用多模态指令数据（约 15 万条对话、推理、描述数据）</li>
+<li><strong>预训练阶段</strong>：冻结视觉编码器和 <abbr title="Large Language Model，大语言模型">LLM</abbr>，仅训练投影器。使用约 60 万条图像-文本描述数据进行特征对齐</li>
+<li><strong>指令微调阶段</strong>：冻结视觉编码器，同时微调投影器和 <abbr title="Large Language Model，大语言模型">LLM</abbr>。使用多模态指令数据（约 15 万条对话、推理、描述数据）</li>
 </ol>
 <p>LLaVA 1.5 在此基础上进一步改进：将线性投影器替换为两层 MLP，使用更高分辨率的图像输入（336×336），在多个基准测试上取得显著提升。</p>
 <h3 id="33-internvl">3.3 InternVL 架构</h3>
@@ -5190,7 +5246,7 @@
 <div class="arithmatex">\[\mathbf{Q} = \mathbf{z}_{txt}\mathbf{W}_Q^{cross}\]</div>
 <div class="arithmatex">\[\mathbf{K} = \mathbf{z}_{vis}\mathbf{W}_K^{cross}, \quad \mathbf{V} = \mathbf{z}_{vis}\mathbf{W}_V^{cross}\]</div>
 <div class="arithmatex">\[\text{CrossAttn}(\mathbf{Q}, \mathbf{K}, \mathbf{V}) = \text{softmax}\left(\frac{\mathbf{Q}\mathbf{K}^T}{\sqrt{d_k}}\right)\mathbf{V}\]</div>
-<p>跨模态注意力通常以门控方式（Gated Cross-Attention）插入到 LLM 的自注意力层之间：</p>
+<p>跨模态注意力通常以门控方式（Gated Cross-Attention）插入到 <abbr title="Large Language Model，大语言模型">LLM</abbr> 的自注意力层之间：</p>
 <div class="arithmatex">\[\mathbf{z}_{txt}' = \mathbf{z}_{txt} + \alpha \cdot \text{CrossAttn}(\mathbf{z}_{txt}, \mathbf{z}_{vis})\]</div>
 <p>其中 <span class="arithmatex">\(\alpha\)</span> 为可学习的门控参数，初始化为 0，使得模型在训练初期保持原有语言模型的能力。</p>
 <h3 id="43-token">4.3 视觉 Token 对语言生成的引导</h3>
@@ -5204,7 +5260,7 @@
 <ul>
 <li>使用一组可学习的查询向量（32 个），通过交叉注意力从冻结的视觉编码器中提取最相关的视觉特征</li>
 <li>两阶段预训练：先进行视觉-语言表示学习，再进行视觉-语言生成学习</li>
-<li>参数高效：仅需训练 Q-Former（约 1.88 亿参数），视觉编码器和 LLM 均保持冻结</li>
+<li>参数高效：仅需训练 Q-Former（约 1.88 亿参数），视觉编码器和 <abbr title="Large Language Model，大语言模型">LLM</abbr> 均保持冻结</li>
 </ul>
 <div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────┐
 │             BLIP-2 架构                  │
@@ -5219,7 +5275,7 @@
 <p>Flamingo 由 DeepMind 提出，是最早的大规模多模态少样本学习模型之一：</p>
 <ul>
 <li><strong>Perceiver Resampler</strong>：将可变数量的视觉特征压缩为固定数量的 Token</li>
-<li><strong>门控交叉注意力层</strong>：在冻结的 LLM 层间插入可训练的交叉注意力层</li>
+<li><strong>门控交叉注意力层</strong>：在冻结的 <abbr title="Large Language Model，大语言模型">LLM</abbr> 层间插入可训练的交叉注意力层</li>
 <li><strong>多图像/视频输入</strong>：原生支持交错排列的图像-文本序列</li>
 <li>展示了强大的少样本（Few-shot）学习能力</li>
 </ul>
@@ -5287,7 +5343,7 @@
 <li><strong>掩码图像建模</strong>：遮盖部分图像块，利用上下文重建原始像素或特征</li>
 </ul>
 <h3 id="63">6.3 混合预训练</h3>
-<p>结合对比学习和生成学习的优势，现代 VLM 普遍采用混合预训练策略：</p>
+<p>结合对比学习和生成学习的优势，现代 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 普遍采用混合预训练策略：</p>
 <table>
 <thead>
 <tr>
@@ -5325,7 +5381,7 @@
 </tbody>
 </table>
 <h3 id="64">6.4 数据规模与多样性</h3>
-<p>预训练数据的规模和质量对 VLM 性能有决定性影响：</p>
+<p>预训练数据的规模和质量对 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 性能有决定性影响：</p>
 <table>
 <thead>
 <tr>
@@ -5412,11 +5468,11 @@
 <p>这种分解策略将时空复杂度从 <span class="arithmatex">\(O((T \cdot N)^2)\)</span> 降低到 <span class="arithmatex">\(O(T \cdot N^2 + N \cdot T^2)\)</span>，其中 <span class="arithmatex">\(T\)</span> 为帧数，<span class="arithmatex">\(N\)</span> 为每帧的 Token 数。</p>
 <hr />
 <h2 id="8">8. 模型规模与能力涌现</h2>
-<h3 id="81-vlm">8.1 VLM 的缩放定律</h3>
-<p>与大语言模型类似，VLM 也遵循缩放定律（Scaling Laws）。模型性能与参数规模、数据规模和计算量之间存在幂律关系：</p>
+<h3 id="81-vlm">8.1 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的缩放定律</h3>
+<p>与大语言模型类似，<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 也遵循缩放定律（Scaling Laws）。模型性能与参数规模、数据规模和计算量之间存在幂律关系：</p>
 <div class="arithmatex">\[L(N, D) \approx \left(\frac{N_c}{N}\right)^{\alpha_N} + \left(\frac{D_c}{D}\right)^{\alpha_D} + L_{\infty}\]</div>
 <p>其中 <span class="arithmatex">\(N\)</span> 为参数量，<span class="arithmatex">\(D\)</span> 为数据量，<span class="arithmatex">\(\alpha_N, \alpha_D\)</span> 为缩放指数，<span class="arithmatex">\(L_{\infty}\)</span> 为不可约损失。</p>
-<p>对于 VLM 而言，缩放需要同时考虑视觉编码器和语言模型的规模平衡：</p>
+<p>对于 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 而言，缩放需要同时考虑视觉编码器和语言模型的规模平衡：</p>
 <table>
 <thead>
 <tr>
@@ -5454,7 +5510,7 @@
 </tbody>
 </table>
 <h3 id="82">8.2 涌现能力</h3>
-<p>随着模型规模增大，VLM 会展现出一些在小模型中不存在的<strong>涌现能力</strong>：</p>
+<p>随着模型规模增大，<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 会展现出一些在小模型中不存在的<strong>涌现能力</strong>：</p>
 <p><strong>空间推理能力</strong></p>
 <ul>
 <li>小规模模型（&lt;7B）：可以识别物体，但难以准确判断相对空间关系</li>
@@ -5466,9 +5522,9 @@
 <li>理解交通事件的因果链条（如"因为前车急刹，所以需要减速"）</li>
 <li>预测行为后果（如"如果现在变道，可能与右侧车辆碰撞"）</li>
 </ul>
-<p><strong>思维链（Chain-of-Thought）推理</strong>：大规模 VLM 可以进行多步视觉推理，例如观察到前方红灯和正在过马路的行人后，依次进行场景分析、因果推理、最终做出保持等待的决策。</p>
+<p><strong>思维链（Chain-of-Thought）推理</strong>：大规模 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 可以进行多步视觉推理，例如观察到前方红灯和正在过马路的行人后，依次进行场景分析、因果推理、最终做出保持等待的决策。</p>
 <h3 id="83">8.3 能力涌现的量化分析</h3>
-<p>研究者通过多个基准测试追踪了不同规模 VLM 的能力变化：</p>
+<p>研究者通过多个基准测试追踪了不同规模 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的能力变化：</p>
 <table>
 <thead>
 <tr>
@@ -5531,7 +5587,7 @@
 </tr>
 </tbody>
 </table>
-<p>值得注意的是，对于自动驾驶场景中至关重要的空间推理和因果推理能力，通常需要 13B 以上的模型规模才能初步具备。这也是当前将 VLM 部署到车端面临的主要挑战之一。</p>
+<p>值得注意的是，对于自动驾驶场景中至关重要的空间推理和因果推理能力，通常需要 13B 以上的模型规模才能初步具备。这也是当前将 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 部署到车端面临的主要挑战之一。</p>
 <hr />
 <h2 id="_1">参考资料</h2>
 <ol>
@@ -5555,6 +5611,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月21日 23:41:48 UTC">2026年3月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

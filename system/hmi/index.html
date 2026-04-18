@@ -1597,6 +1597,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../cybersecurity/" class="md-nav__link">
         
   
@@ -3515,6 +3543,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -5148,10 +5204,10 @@
   
 
 
-<h1 id="hmi">人机交互系统（HMI）</h1>
+<h1 id="hmi">人机交互系统（<abbr title="Human-Machine Interface，人机界面">HMI</abbr>）</h1>
 <h2 id="1">1. 开篇介绍</h2>
-<p>人机交互（Human-Machine Interface，HMI）是自动驾驶系统与驾驶员或乘客之间的核心桥梁。随着自动驾驶技术从辅助驾驶向高度自动化演进，HMI的角色已从传统仪表盘信息展示，扩展为涵盖状态感知、接管请求、情境透明、紧急处置的综合性安全系统。</p>
-<p>在低级别自动驾驶（L1/L2）中，驾驶员始终是主控角色，HMI承担辅助提示功能；在L3条件自动驾驶阶段，系统可在特定场景下接管纵横向控制，但必须在必要时向驾驶员发出接管请求（Takeover Request，TOR），HMI在此阶段的设计质量直接关系行车安全；在L4/L5全自动驾驶场景下，乘客HMI取代驾驶员HMI成为主要交互界面，设计重心转向乘坐体验与紧急响应。</p>
+<p>人机交互（Human-Machine Interface，<abbr title="Human-Machine Interface，人机界面">HMI</abbr>）是自动驾驶系统与驾驶员或乘客之间的核心桥梁。随着自动驾驶技术从辅助驾驶向高度自动化演进，HMI的角色已从传统仪表盘信息展示，扩展为涵盖状态感知、接管请求、情境透明、紧急处置的综合性安全系统。</p>
+<p>在低级别自动驾驶（L1/L2）中，驾驶员始终是主控角色，HMI承担辅助提示功能；在L3条件自动驾驶阶段，系统可在特定场景下接管纵横向控制，但必须在必要时向驾驶员发出接管请求（Takeover Request，<abbr title="Takeover Request，接管请求">TOR</abbr>），HMI在此阶段的设计质量直接关系行车安全；在L4/L5全自动驾驶场景下，乘客HMI取代驾驶员HMI成为主要交互界面，设计重心转向乘坐体验与紧急响应。</p>
 <p>HMI设计的核心挑战在于：如何在不分散驾驶员注意力的前提下，高效、准确地传递系统状态信息，并在人机控制权切换时确保安全、平稳的过渡。</p>
 <hr />
 <h2 id="2-hmi">2. HMI在自动驾驶各级别中的角色</h2>
@@ -5159,9 +5215,9 @@
 <p><strong>L2（部分自动化）</strong></p>
 <p>驾驶员始终对车辆保持完全监控责任，双手必须保持对方向盘的接触能力。HMI的主要功能为：显示当前激活的辅助功能（如自适应巡航、车道保持），通过指示灯和提示音告知系统边界即将到达，并在检测到驾驶员注意力分散时发出警告。代表系统包括特斯拉 Autopilot（配合 Nag 提示）、通用 Super Cruise（配合 DMS 摄像头）。</p>
 <p><strong>L3（条件自动化）</strong></p>
-<p>系统在特定操作设计域（ODD）内完全接管驾驶任务，驾驶员可将注意力转移至非驾驶活动，但必须能够在系统发出 TOR 后的规定时间内接管控制权。HMI在此阶段的接管请求机制（多模态提示、接管时间窗口管理）是设计核心难点，同时需防止驾驶员对系统能力的过度信任。代表案例：本田 Traffic Jam Pilot（已量产于日本市场）。</p>
+<p>系统在特定操作设计域（<abbr title="Operational Design Domain，运行设计域">ODD</abbr>）内完全接管驾驶任务，驾驶员可将注意力转移至非驾驶活动，但必须能够在系统发出 <abbr title="Takeover Request，接管请求">TOR</abbr> 后的规定时间内接管控制权。HMI在此阶段的接管请求机制（多模态提示、接管时间窗口管理）是设计核心难点，同时需防止驾驶员对系统能力的过度信任。代表案例：本田 Traffic Jam Pilot（已量产于日本市场）。</p>
 <p><strong>L4（高度自动化）</strong></p>
-<p>在设计区域内无需驾驶员干预，乘客HMI成为主要交互界面。系统需具备最小风险状态（Minimal Risk Condition，MRC）能力，即当系统自身无法继续运行时，能安全停靠至路边。Robotaxi场景（如百度Apollo RT6、Waymo One）是典型应用。</p>
+<p>在设计区域内无需驾驶员干预，乘客HMI成为主要交互界面。系统需具备最小风险状态（Minimal Risk Condition，<abbr title="Minimum Risk Condition，最小风险状态">MRC</abbr>）能力，即当系统自身无法继续运行时，能安全停靠至路边。Robotaxi场景（如百度Apollo RT6、Waymo One）是典型应用。</p>
 <p><strong>L5（完全自动化）</strong></p>
 <p>理论上无需任何驾驶员，车内HMI完全面向乘客舒适性与娱乐服务设计。目前仍处于研究阶段。</p>
 <h3 id="22-hmi">2.2 各级别HMI责任对比</h3>
@@ -5293,10 +5349,10 @@
 <li><strong>欧盟GSR2（General Safety Regulation 2）：</strong> 自2022年7月起，要求所有新型乘用车强制配备驾驶员困倦与注意力警告系统（DDAW）和高级驾驶员分心警告系统（ADEW）。</li>
 </ul>
 <hr />
-<h2 id="4-takeover-requesttor">4. 接管请求机制（Takeover Request，TOR）</h2>
+<h2 id="4-takeover-requesttor">4. 接管请求机制（Takeover Request，<abbr title="Takeover Request，接管请求">TOR</abbr>）</h2>
 <p>接管请求是L3自动驾驶系统在需要驾驶员重新获取控制权时发出的信号，是人机协同安全体系的核心机制。</p>
 <h3 id="41-tor">4.1 TOR触发条件</h3>
-<p><strong>操作设计域（ODD）边界：</strong></p>
+<p><strong>操作设计域（<abbr title="Operational Design Domain，运行设计域">ODD</abbr>）边界：</strong></p>
 <ul>
 <li>驶出高速公路进入城市道路（超出系统ODD）</li>
 <li>道路施工区域、临时交通管制</li>
@@ -5343,7 +5399,7 @@
 <li><strong>影响因素：</strong> 驾驶员当前任务（阅读/视频/对话）、TOR提示强度、驾驶员年龄、任务紧迫程度</li>
 </ul>
 <p>系统设计需为驾驶员预留足够的接管时间，SAE J3016建议在驾驶员接管能力受限时提前发出TOR（预测性TOR），而非仅在系统即将失效时触发（被动TOR）。</p>
-<h3 id="44-minimal-risk-conditionmrc">4.4 最小风险条件（Minimal Risk Condition，MRC）</h3>
+<h3 id="44-minimal-risk-conditionmrc">4.4 最小风险条件（Minimal Risk Condition，<abbr title="Minimum Risk Condition，最小风险状态">MRC</abbr>）</h3>
 <p>当驾驶员无法在规定时间内完成接管（如驾驶员失去意识、TOR超时无响应），系统必须自主执行最小风险操作：</p>
 <ol>
 <li><strong>减速至安全速度：</strong> 平稳减速，避免急刹引发追尾</li>
@@ -5490,7 +5546,7 @@
 <h3 id="63">6.3 触觉反馈设计</h3>
 <p>触觉反馈通过物理振动向驾驶员传递不引发视线转移的信息：</p>
 <ul>
-<li><strong>方向盘振动：</strong> 不同频率和强度的振动模式对应不同警告级别（如车道偏离=低频振动，TOR=高频强振动）</li>
+<li><strong>方向盘振动：</strong> 不同频率和强度的振动模式对应不同警告级别（如车道偏离=低频振动，<abbr title="Takeover Request，接管请求">TOR</abbr>=高频强振动）</li>
 <li><strong>座椅振动：</strong> 左侧/右侧座椅振动模块分别对应左右方向的盲区警告</li>
 <li><strong>振动方向编码：</strong> 左侧振动=左侧危险，右侧振动=右侧危险，有助于快速定向响应</li>
 </ul>
@@ -5514,7 +5570,7 @@
 <h3 id="71">7.1 感知可视化</h3>
 <p>为建立驾驶员对系统的合理信任，自动驾驶HMI需向驾驶员展示系统的感知结果——即"系统看到了什么"：</p>
 <ul>
-<li><strong>鸟瞰图（BEV）可视化：</strong> 在仪表盘或中控屏显示鸟瞰视角下的周围环境，包括检测到的车辆（标注类别和距离）、行人、非机动车、道路边界、车道线</li>
+<li><strong>鸟瞰图（<abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr>）可视化：</strong> 在仪表盘或中控屏显示鸟瞰视角下的周围环境，包括检测到的车辆（标注类别和距离）、行人、非机动车、道路边界、车道线</li>
 <li><strong>摄像头实时画面：</strong> 显示前视/后视摄像头画面，并叠加感知结果标注框</li>
 <li><strong>感知范围指示：</strong> 显示当前传感器有效感知的范围边界，帮助驾驶员了解"盲区"所在</li>
 </ul>
@@ -5668,6 +5724,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 01:05:30 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

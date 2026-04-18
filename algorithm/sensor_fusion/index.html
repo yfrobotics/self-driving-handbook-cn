@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3515,6 +3543,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nlp/" class="md-nav__link">
         
   
@@ -5150,7 +5206,7 @@
 
 <h1 id="_1">传感器融合</h1>
 <h2 id="1">1. 开篇介绍</h2>
-<p>自动驾驶系统依赖多种传感器来感知周围环境，包括激光雷达（LiDAR）、摄像头（Camera）、毫米波雷达（Radar）以及超声波传感器（Ultrasonic）。然而，<strong>单一传感器在面对真实世界复杂场景时往往存在明显的局限性</strong>：LiDAR 在雨雾天气下点云质量急剧下降；摄像头在夜间或强逆光条件下几乎失效；毫米波雷达虽然在极端天气下表现稳健，但分辨率低、无法提供语义信息；超声波传感器探测距离极短，仅适用于低速泊车场景。</p>
+<p>自动驾驶系统依赖多种传感器来感知周围环境，包括激光雷达（<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>）、摄像头（Camera）、毫米波雷达（Radar）以及超声波传感器（Ultrasonic）。然而，<strong>单一传感器在面对真实世界复杂场景时往往存在明显的局限性</strong>：<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 在雨雾天气下点云质量急剧下降；摄像头在夜间或强逆光条件下几乎失效；毫米波雷达虽然在极端天气下表现稳健，但分辨率低、无法提供语义信息；超声波传感器探测距离极短，仅适用于低速泊车场景。</p>
 <p><strong>传感器融合（Sensor Fusion）</strong> 的核心思想是将来自多个传感器的信息有机结合，使得系统能够获得比任何单一传感器更加完整、可靠的环境感知能力。通过融合，可以有效解决"<strong>感知盲区</strong>"问题——即单个传感器因物理原理、天气条件、遮挡关系等因素导致的感知失效区域。</p>
 <p>多传感器融合是自动驾驶系统实现高可靠性的基础技术之一，也是 L3 级及以上自动驾驶系统的功能安全（Functional Safety）要求中明确规定的技术手段。</p>
 <hr />
@@ -5161,7 +5217,7 @@
 <thead>
 <tr>
 <th style="text-align: center;">场景 / 传感器</th>
-<th style="text-align: center;">LiDAR</th>
+<th style="text-align: center;"><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr></th>
 <th style="text-align: center;">摄像头 (Camera)</th>
 <th style="text-align: center;">毫米波雷达 (Radar)</th>
 <th style="text-align: center;">超声波 (Ultrasonic)</th>
@@ -5243,14 +5299,14 @@
 <h3 id="22">2.2 互补性原则</h3>
 <p>不同传感器在物理原理上天然互补，融合后可以形成"1+1&gt;2"的效果：</p>
 <ul>
-<li><strong>LiDAR + Camera</strong>：LiDAR 提供精确的三维空间坐标和距离信息，但没有颜色和纹理语义；Camera 提供丰富的颜色、纹理、语义信息，但无法直接获得精确深度。两者融合可以实现<strong>带语义的精确三维感知</strong>。</li>
-<li><strong>LiDAR + Radar</strong>：LiDAR 提供精确点云形状，Radar 提供直接速度测量（多普勒效应）和极端天气下的稳定性，融合后在恶劣天气下仍能保持较好的目标检测与速度估计能力。</li>
-<li><strong>Camera + Radar</strong>：成本最低的融合方案，Radar 补充深度和速度信息，Camera 提供语义，常见于 ADAS 系统（如特斯拉早期方案）。</li>
+<li><strong><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> + Camera</strong>：<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 提供精确的三维空间坐标和距离信息，但没有颜色和纹理语义；Camera 提供丰富的颜色、纹理、语义信息，但无法直接获得精确深度。两者融合可以实现<strong>带语义的精确三维感知</strong>。</li>
+<li><strong><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> + Radar</strong>：<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 提供精确点云形状，Radar 提供直接速度测量（多普勒效应）和极端天气下的稳定性，融合后在恶劣天气下仍能保持较好的目标检测与速度估计能力。</li>
+<li><strong>Camera + Radar</strong>：成本最低的融合方案，Radar 补充深度和速度信息，Camera 提供语义，常见于 <abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr> 系统（如特斯拉早期方案）。</li>
 </ul>
 <h3 id="23">2.3 冗余性原则</h3>
 <p>除互补性外，多传感器还提供了<strong>系统级冗余</strong>：</p>
 <p>当任意一个传感器发生故障、遮挡或信号质量下降时，系统可以<strong>降级运行（Graceful Degradation）</strong>，依靠其他传感器维持基本感知能力，而不是完全失效。这对于满足 ISO 26262 功能安全标准至关重要。</p>
-<p>例如，当 LiDAR 因强日光干扰或雨水积尘导致点云质量下降时，Radar 和 Camera 的融合结果可以保证系统继续以较低速度安全行驶，直到 LiDAR 恢复正常工作。</p>
+<p>例如，当 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 因强日光干扰或雨水积尘导致点云质量下降时，Radar 和 Camera 的融合结果可以保证系统继续以较低速度安全行驶，直到 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 恢复正常工作。</p>
 <hr />
 <h2 id="3-fusion-levels">3. 融合层次（Fusion Levels）</h2>
 <p>根据融合发生的信息层次，传感器融合可以分为三个主要层次：</p>
@@ -5266,17 +5322,17 @@
 - 一个传感器故障可能影响整个感知流程</p>
 <h3 id="32-middle-fusion-feature-fusion">3.2 中期融合（Middle Fusion / Feature Fusion）</h3>
 <p><strong>定义</strong>：各传感器<strong>独立提取特征</strong>后，在特征空间进行融合，再送入下游检测/分割头。</p>
-<p><strong>典型实现</strong>：各传感器分别提取 BEV（Bird's Eye View，鸟瞰视角）特征图，然后在 BEV 空间进行通道维度拼接（Concatenation）或注意力融合。</p>
+<p><strong>典型实现</strong>：各传感器分别提取 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr>（Bird's Eye View，鸟瞰视角）特征图，然后在 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 空间进行通道维度拼接（Concatenation）或注意力融合。</p>
 <p><strong>优点</strong>：
 - 在精度与计算效率之间取得较好平衡
 - 各传感器特征提取可以并行进行，适合多核/多加速器架构
 - 目前学术界和工业界主流的融合方案</p>
 <p><strong>缺点</strong>：
-- 特征对齐需要良好的 BEV 投影方法（LSS、BEVFormer、GKT 等）
+- 特征对齐需要良好的 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 投影方法（LSS、BEVFormer、GKT 等）
 - 异构特征（点云稀疏特征 vs. 图像稠密特征）融合存在模态间鸿沟</p>
 <h3 id="33-late-fusion-object-level-fusion">3.3 晚期融合（Late Fusion / Object-Level Fusion）</h3>
 <p><strong>定义</strong>：各传感器<strong>独立完成检测</strong>，输出目标列表（Bounding Box + 属性），再在目标级别进行关联与融合。</p>
-<p><strong>典型实现</strong>：LiDAR 检测器输出 3D 检测框，Camera 检测器输出 2D 检测框，通过投影关系或特征距离进行匹配，合并得到最终目标列表。</p>
+<p><strong>典型实现</strong>：<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 检测器输出 3D 检测框，Camera 检测器输出 2D 检测框，通过投影关系或特征距离进行匹配，合并得到最终目标列表。</p>
 <p><strong>优点</strong>：
 - 实现简单，各传感器感知模块相互独立，易于维护和升级
 - 单个传感器故障不影响其他传感器的检测结果
@@ -5320,7 +5376,7 @@
 <td style="text-align: center;">最小</td>
 <td style="text-align: center;">最高</td>
 <td style="text-align: center;">低</td>
-<td style="text-align: center;">CenterFusion（部分）, 传统 ADAS</td>
+<td style="text-align: center;">CenterFusion（部分）, 传统 <abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr></td>
 </tr>
 </tbody>
 </table>
@@ -5351,7 +5407,7 @@
 <p>标准卡尔曼滤波假设系统是线性的，但实际运动模型（如雷达的极坐标观测）往往是非线性的。<strong>扩展卡尔曼滤波（Extended Kalman Filter, EKF）</strong> 通过在当前估计点处进行<strong>一阶泰勒展开线性化</strong>来处理非线性问题：</p>
 <p>对于非线性状态方程 <span class="arithmatex">\(\mathbf{x}_k = f(\mathbf{x}_{k-1}) + \mathbf{w}\)</span> 和观测方程 <span class="arithmatex">\(\mathbf{z}_k = h(\mathbf{x}_k) + \mathbf{v}\)</span>，EKF 使用雅可比矩阵（Jacobian Matrix）代替线性系统中的 <span class="arithmatex">\(\mathbf{F}\)</span> 和 <span class="arithmatex">\(\mathbf{H}\)</span>：</p>
 <div class="arithmatex">\[\mathbf{F}_k = \left.\frac{\partial f}{\partial \mathbf{x}}\right|_{\hat{\mathbf{x}}_{k-1|k-1}}, \quad \mathbf{H}_k = \left.\frac{\partial h}{\partial \mathbf{x}}\right|_{\hat{\mathbf{x}}_{k|k-1}}\]</div>
-<p>EKF 广泛用于 LiDAR-IMU 融合（如 LOAM 类方法）和雷达-GPS 融合定位系统中。</p>
+<p>EKF 广泛用于 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>-<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 融合（如 LOAM 类方法）和雷达-GPS 融合定位系统中。</p>
 <h3 id="45-ukf">4.5 无迹卡尔曼滤波（UKF）</h3>
 <p>EKF 的线性化会引入截断误差，在高度非线性系统中精度较差。<strong>无迹卡尔曼滤波（Unscented Kalman Filter, UKF）</strong> 采用确定性采样策略，通过一组精心选取的 <strong>Sigma 点</strong> 来捕捉状态分布的统计特性，无需计算雅可比矩阵：</p>
 <p>对于 <span class="arithmatex">\(n\)</span> 维状态向量，选取 <span class="arithmatex">\(2n+1\)</span> 个 Sigma 点：</p>
@@ -5391,24 +5447,24 @@
 <h2 id="6">6. 基于深度学习的融合</h2>
 <p>近年来，深度学习方法极大地推动了传感器融合技术的发展，涌现出一批性能卓越的多模态融合网络。</p>
 <h3 id="61-bevfusionmit">6.1 BEVFusion（MIT / 北京大学）</h3>
-<p><strong>BEVFusion</strong> 是目前影响力最大的多模态融合框架之一，核心思想是将所有传感器的特征统一变换到 <strong>BEV（Bird's Eye View）空间</strong>后进行融合：</p>
+<p><strong>BEVFusion</strong> 是目前影响力最大的多模态融合框架之一，核心思想是将所有传感器的特征统一变换到 <strong><abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr>（Bird's Eye View）空间</strong>后进行融合：</p>
 <ol>
-<li><strong>LiDAR 分支</strong>：使用 VoxelNet 类方法将点云体素化并提取 BEV 特征</li>
-<li><strong>Camera 分支</strong>：使用视锥变换（Lift-Splat-Shoot，LSS）将图像特征提升到 BEV 空间</li>
-<li><strong>BEV 特征融合</strong>：对 LiDAR BEV 和 Camera BEV 特征进行通道维度拼接（Concatenation），再通过卷积层融合</li>
-<li><strong>多任务输出头</strong>：同时输出 3D 目标检测、BEV 语义分割等任务结果</li>
+<li><strong><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 分支</strong>：使用 VoxelNet 类方法将点云体素化并提取 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征</li>
+<li><strong>Camera 分支</strong>：使用视锥变换（Lift-Splat-Shoot，LSS）将图像特征提升到 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 空间</li>
+<li><strong><abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征融合</strong>：对 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 和 Camera <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征进行通道维度拼接（Concatenation），再通过卷积层融合</li>
+<li><strong>多任务输出头</strong>：同时输出 3D 目标检测、<abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 语义分割等任务结果</li>
 </ol>
 <p>BEVFusion 在 nuScenes 数据集上大幅超越了此前的单模态和融合方法，尤其是对于骑行者、行人等小目标的检测性能提升显著。</p>
 <h3 id="62-transfusion">6.2 TransFusion（香港大学）</h3>
 <p><strong>TransFusion</strong> 引入 Transformer 架构实现跨模态注意力融合：</p>
 <ol>
-<li>以 <strong>LiDAR 检测框作为查询（Query）</strong>，初始化目标候选</li>
+<li>以 <strong><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 检测框作为查询（Query）</strong>，初始化目标候选</li>
 <li>利用 Transformer 的交叉注意力（Cross-Attention）机制，从<strong>图像特征（Key/Value）</strong> 中提取与每个候选目标相关的语义信息</li>
-<li>通过位置编码（Positional Encoding）建立 LiDAR 空间位置与图像特征位置的对应关系</li>
+<li>通过位置编码（Positional Encoding）建立 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 空间位置与图像特征位置的对应关系</li>
 </ol>
-<p>这种设计使得图像特征能够精确地补充 LiDAR 对应区域的颜色和纹理信息，对于提升远距离目标的分类精度尤为有效。</p>
+<p>这种设计使得图像特征能够精确地补充 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 对应区域的颜色和纹理信息，对于提升远距离目标的分类精度尤为有效。</p>
 <h3 id="63-futr3d">6.3 FUTR3D</h3>
-<p><strong>FUTR3D</strong> 提出了一个统一的多传感器融合查询框架，支持 Camera、LiDAR、Radar 的<strong>任意组合</strong>输入：</p>
+<p><strong>FUTR3D</strong> 提出了一个统一的多传感器融合查询框架，支持 Camera、<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>、Radar 的<strong>任意组合</strong>输入：</p>
 <ul>
 <li>核心是一个模态无关的特征采样模块，无论输入何种传感器组合，均通过统一的可变形注意力（Deformable Attention）从各模态特征中采样</li>
 <li>这使得同一套模型可以在不同传感器配置下运行（例如测试阶段某传感器不可用时），具有良好的鲁棒性</li>
@@ -5420,26 +5476,26 @@
 <li>通过将<strong>毫米波雷达点云</strong>投影到图像平面，与 2D 检测中心点进行关联</li>
 <li>将关联成功的雷达点的<strong>深度和速度信息</strong>作为额外特征，增强目标属性估计</li>
 </ol>
-<p>CenterFusion 在低成本传感器方案（无 LiDAR）下表现出色，适合量产 ADAS 系统。</p>
+<p>CenterFusion 在低成本传感器方案（无 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>）下表现出色，适合量产 <abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr> 系统。</p>
 <h3 id="65">6.5 跨模态特征投影</h3>
 <p>深度学习融合方法中常用的两种特征投影方向：</p>
-<p><strong>图像特征投影到 LiDAR 空间（深度补全）</strong>：</p>
-<p>通过稀疏 LiDAR 点云提供深度先验，结合图像上下文信息，使用深度补全网络（Depth Completion）将稀疏深度图补全为稠密深度图，从而将图像像素提升到三维空间。常见方法包括 S-D Fusion、NLSPN 等。</p>
+<p><strong>图像特征投影到 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 空间（深度补全）</strong>：</p>
+<p>通过稀疏 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 点云提供深度先验，结合图像上下文信息，使用深度补全网络（Depth Completion）将稀疏深度图补全为稠密深度图，从而将图像像素提升到三维空间。常见方法包括 S-D Fusion、NLSPN 等。</p>
 <p><strong>点云投影到图像空间（深度先验）</strong>：</p>
-<p>将 LiDAR 点云通过已知的相机内外参数投影到图像平面，生成深度先验图（Depth Prior Map）。图像特征提取网络可以利用这一先验获得更精确的深度感知能力，常见于 PointPainting、DeepFusion 等方法。</p>
+<p>将 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 点云通过已知的相机内外参数投影到图像平面，生成深度先验图（Depth Prior Map）。图像特征提取网络可以利用这一先验获得更精确的深度感知能力，常见于 PointPainting、DeepFusion 等方法。</p>
 <hr />
 <h2 id="7-temporal-fusion">7. 时序融合（Temporal Fusion）</h2>
 <p>单帧传感器数据往往存在遮挡、稀疏等问题，利用时序信息进行融合可以显著提升感知质量。</p>
 <h3 id="71">7.1 多帧点云累积</h3>
-<p>将相邻多帧的 LiDAR 点云在补偿自车运动后叠加，可以有效增加点云密度：</p>
+<p>将相邻多帧的 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 点云在补偿自车运动后叠加，可以有效增加点云密度：</p>
 <div class="arithmatex">\[\mathcal{P}_{acc} = \bigcup_{t=T-N+1}^{T} \mathbf{T}_{ego}^{t \to T} \cdot \mathcal{P}_t\]</div>
-<p>其中 <span class="arithmatex">\(\mathbf{T}_{ego}^{t \to T}\)</span> 为从时刻 <span class="arithmatex">\(t\)</span> 到当前时刻 <span class="arithmatex">\(T\)</span> 的自车运动变换矩阵（由 IMU/轮速计/GNSS 估计）。</p>
+<p>其中 <span class="arithmatex">\(\mathbf{T}_{ego}^{t \to T}\)</span> 为从时刻 <span class="arithmatex">\(t\)</span> 到当前时刻 <span class="arithmatex">\(T\)</span> 的自车运动变换矩阵（由 <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>/轮速计/<abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 估计）。</p>
 <p>多帧累积后，原本稀疏的远距离点云变得更加稠密，对于 pedestrian（行人）等小目标的检测效果提升尤为明显。但对高速运动目标，需要精确的目标级运动补偿，否则会产生"鬼影"（Ghost Points）。</p>
-<h3 id="72-bev">7.2 BEV 特征时序融合</h3>
-<p><strong>BEVFormer</strong> 引入时间自注意力（Temporal Self-Attention），将历史帧的 BEV 特征与当前帧对齐融合：</p>
+<h3 id="72-bev">7.2 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征时序融合</h3>
+<p><strong>BEVFormer</strong> 引入时间自注意力（Temporal Self-Attention），将历史帧的 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征与当前帧对齐融合：</p>
 <ol>
-<li>将历史 BEV 特征根据自车运动进行空间对齐（Spatial Alignment）</li>
-<li>通过可变形注意力从历史 BEV 特征中查询与当前 BEV 位置相关的信息</li>
+<li>将历史 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征根据自车运动进行空间对齐（Spatial Alignment）</li>
+<li>通过可变形注意力从历史 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 特征中查询与当前 <abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 位置相关的信息</li>
 <li>将时序信息与当前帧特征融合，使得模型对被遮挡物体仍有"记忆"</li>
 </ol>
 <p>时序融合使得纯视觉方案（Pure Camera）在速度估计和遮挡目标检测上的性能大幅提升。</p>
@@ -5463,7 +5519,7 @@
 <td style="text-align: center;">历史帧信息 + 预测填充</td>
 </tr>
 <tr>
-<td style="text-align: center;">稀疏点云（远距离 LiDAR 点极少）</td>
+<td style="text-align: center;">稀疏点云（远距离 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 点极少）</td>
 <td style="text-align: center;">多帧点云累积增密</td>
 </tr>
 <tr>
@@ -5472,7 +5528,7 @@
 </tr>
 <tr>
 <td style="text-align: center;">纯视觉深度模糊</td>
-<td style="text-align: center;">BEV 时序特征融合</td>
+<td style="text-align: center;"><abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 时序特征融合</td>
 </tr>
 <tr>
 <td style="text-align: center;">夜间弱纹理场景</td>
@@ -5496,9 +5552,9 @@
 <li><strong>外观特征距离（ReID Distance）</strong>：利用目标外观嵌入向量的余弦距离，用于长时遮挡后的重识别</li>
 </ul>
 <h3 id="83">8.3 跨传感器检测结果关联</h3>
-<p>当 LiDAR 和 Camera 各自独立输出检测结果时，需要将两个检测列表进行关联：</p>
+<p>当 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 和 Camera 各自独立输出检测结果时，需要将两个检测列表进行关联：</p>
 <ol>
-<li><strong>投影关联</strong>：将 LiDAR 3D 检测框投影到图像平面，计算与 Camera 2D 检测框的 2D IoU</li>
+<li><strong>投影关联</strong>：将 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 3D 检测框投影到图像平面，计算与 Camera 2D 检测框的 2D IoU</li>
 <li><strong>空间距离关联</strong>：使用 Camera 单目深度估计将 2D 检测框提升到 3D，计算 3D 距离</li>
 <li><strong>特征距离关联</strong>：利用多模态特征网络提取统一的目标嵌入，计算特征相似度</li>
 </ol>
@@ -5551,8 +5607,8 @@
 <hr />
 <h2 id="9">9. 融合系统标定</h2>
 <p>传感器融合的基础是精确的<strong>外参标定（Extrinsic Calibration）</strong>，即确定不同传感器坐标系之间的变换关系（旋转矩阵 <span class="arithmatex">\(\mathbf{R}\)</span> 和平移向量 <span class="arithmatex">\(\mathbf{t}\)</span>）。标定误差直接影响融合精度，是工程落地中最关键的环节之一。</p>
-<h3 id="91-lidar">9.1 相机-LiDAR 外参标定</h3>
-<p><strong>基于棋盘格的联合标定</strong>是最常见的相机-LiDAR 外参标定方法：</p>
+<h3 id="91-lidar">9.1 相机-<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 外参标定</h3>
+<p><strong>基于棋盘格的联合标定</strong>是最常见的相机-<abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 外参标定方法：</p>
 <ol>
 <li>在场景中放置棋盘格标定板，从多个位置和角度采集数据</li>
 <li>在图像中提取棋盘格角点（像素坐标），使用 <code>cv2.findChessboardCorners</code></li>
@@ -5561,7 +5617,7 @@
 </ol>
 <p>优化目标：</p>
 <div class="arithmatex">\[\min_{\mathbf{R}, \mathbf{t}} \sum_{i} \left\| \mathbf{p}_i^{cam} - \pi\left(\mathbf{R} \mathbf{p}_i^{lidar} + \mathbf{t}\right) \right\|^2\]</div>
-<p>其中 <span class="arithmatex">\(\pi(\cdot)\)</span> 为相机投影函数，<span class="arithmatex">\(\mathbf{p}_i^{cam}\)</span> 和 <span class="arithmatex">\(\mathbf{p}_i^{lidar}\)</span> 为对应点的图像和 LiDAR 坐标。</p>
+<p>其中 <span class="arithmatex">\(\pi(\cdot)\)</span> 为相机投影函数，<span class="arithmatex">\(\mathbf{p}_i^{cam}\)</span> 和 <span class="arithmatex">\(\mathbf{p}_i^{lidar}\)</span> 为对应点的图像和 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 坐标。</p>
 <h3 id="92-radar">9.2 相机-Radar 标定</h3>
 <p>毫米波雷达的角分辨率低，无法直接提取几何特征，通常采用<strong>目标级联合标定</strong>：</p>
 <ol>
@@ -5574,7 +5630,7 @@
 <ul>
 <li><strong>硬触发（Hardware Trigger）</strong>：通过硬件电路同步信号（如 GPIO 脉冲）同时触发多个传感器采集，时间对齐精度可达微秒级。常见于高端自动驾驶研究平台。</li>
 <li><strong>PTP（Precision Time Protocol, IEEE 1588）</strong>：通过以太网协议对多设备的系统时钟进行对齐，典型精度为亚毫秒级，适合车载以太网架构。</li>
-<li><strong>GPS/GNSS 授时</strong>：利用 GPS 信号提供的 PPS（Pulse Per Second）信号作为时间基准，驱动各传感器的时钟同步，精度可达纳秒级。</li>
+<li><strong>GPS/<abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 授时</strong>：利用 GPS 信号提供的 PPS（Pulse Per Second）信号作为时间基准，驱动各传感器的时钟同步，精度可达纳秒级。</li>
 <li><strong>软件时间戳插值</strong>：当硬件同步无法实现时，记录各传感器的软件时间戳，在数据处理时根据时间戳差值进行插值对齐，精度较低（毫秒级），在高速场景下会引入显著的位置对齐误差。</li>
 </ul>
 <p>对于以 <span class="arithmatex">\(v = 30 \text{ m/s}\)</span>（约 108 km/h）行驶的车辆，<span class="arithmatex">\(10 \text{ ms}\)</span> 的时间同步误差会导致约 <strong>30 cm</strong> 的目标位置偏差，因此精确的时间同步对融合精度至关重要。</p>
@@ -5592,7 +5648,7 @@
 <p><strong>Liu, Z., Tang, H., et al.</strong> "BEVFusion: Multi-Task Multi-Sensor Fusion with Unified Bird's-Eye View Representation." <em>ICRA 2023</em>. <a href="https://arxiv.org/abs/2205.13542">arXiv:2205.13542</a></p>
 </li>
 <li>
-<p><strong>Bai, X., Hu, Z., et al.</strong> "TransFusion: Robust LiDAR-Camera Fusion for 3D Object Detection with Transformers." <em>CVPR 2022</em>. <a href="https://arxiv.org/abs/2203.11496">arXiv:2203.11496</a></p>
+<p><strong>Bai, X., Hu, Z., et al.</strong> "TransFusion: Robust <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>-Camera Fusion for 3D Object Detection with Transformers." <em>CVPR 2022</em>. <a href="https://arxiv.org/abs/2203.11496">arXiv:2203.11496</a></p>
 </li>
 <li>
 <p><strong>Chen, T., et al.</strong> "FUTR3D: A Unified Sensor Fusion Framework for 3D Detection." <em>CVPR 2023 Workshop</em>. <a href="https://arxiv.org/abs/2203.10642">arXiv:2203.10642</a></p>
@@ -5617,6 +5673,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 00:50:24 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

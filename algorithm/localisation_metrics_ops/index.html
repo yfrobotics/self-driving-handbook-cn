@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3274,6 +3302,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nlp/" class="md-nav__link">
         
   
@@ -4731,7 +4787,7 @@
 <tr>
 <td>漂移率</td>
 <td>单位距离误差增长</td>
-<td>&lt; 0.1%（无 GNSS 时）</td>
+<td>&lt; 0.1%（无 <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 时）</td>
 </tr>
 <tr>
 <td>横向误差 P95</td>
@@ -4760,13 +4816,13 @@
 </thead>
 <tbody>
 <tr>
-<td>RTK + IMU（后处理）</td>
+<td><abbr title="Real-Time Kinematic，实时动态差分">RTK</abbr> + <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>（后处理）</td>
 <td>2–5 cm 位置</td>
 <td>中</td>
 <td>最常用工程方案</td>
 </tr>
 <tr>
-<td>PPP-RTK（实时）</td>
+<td>PPP-<abbr title="Real-Time Kinematic，实时动态差分">RTK</abbr>（实时）</td>
 <td>5–10 cm</td>
 <td>较高</td>
 <td>依赖差分网络</td>
@@ -4778,7 +4834,7 @@
 <td>静态场景标定</td>
 </tr>
 <tr>
-<td>LiDAR 高精扫描（比对）</td>
+<td><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 高精扫描（比对）</td>
 <td>5–10 cm</td>
 <td>高</td>
 <td>建图验证</td>
@@ -4795,7 +4851,7 @@
 </code></pre></div>
 <hr />
 <h2 id="3">3. 场景化评估矩阵</h2>
-<p>建议针对不同 ODD 场景分别维护评估基准集：</p>
+<p>建议针对不同 <abbr title="Operational Design Domain，运行设计域">ODD</abbr> 场景分别维护评估基准集：</p>
 <table>
 <thead>
 <tr>
@@ -4809,19 +4865,19 @@
 <tr>
 <td>高速</td>
 <td>长直道、隧道、匝道</td>
-<td>隧道 GNSS 失效、长直道激光退化</td>
+<td>隧道 <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 失效、长直道激光退化</td>
 <td>隧道内漂移率</td>
 </tr>
 <tr>
 <td>城区</td>
 <td>高楼峡谷、路口、地下停车场</td>
-<td>GNSS 多径、遮挡</td>
+<td><abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 多径、遮挡</td>
 <td>横向误差 P95</td>
 </tr>
 <tr>
 <td>复杂天气</td>
 <td>夜间、雨雪、大雾</td>
-<td>LiDAR 噪声、视觉退化</td>
+<td><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 噪声、视觉退化</td>
 <td>可用率</td>
 </tr>
 <tr>
@@ -4834,7 +4890,7 @@
 </table>
 <hr />
 <h2 id="4">4. 失效模式分析</h2>
-<h3 id="41-gnss">4.1 GNSS 失效</h3>
+<h3 id="41-gnss">4.1 <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 失效</h3>
 <table>
 <thead>
 <tr>
@@ -4856,7 +4912,7 @@
 </tr>
 <tr>
 <td>欺骗攻击</td>
-<td>伪造 GNSS 信号</td>
+<td>伪造 <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 信号</td>
 <td>与其他传感器一致性检验</td>
 </tr>
 <tr>
@@ -4866,7 +4922,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>GNSS 失效检测算法：</strong></p>
+<p><strong><abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 失效检测算法：</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">detect_gnss_anomaly</span><span class="p">(</span><span class="n">gnss_pos</span><span class="p">,</span> <span class="n">prev_pos</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
     <span class="c1"># 速度合理性检验</span>
     <span class="n">v_est</span> <span class="o">=</span> <span class="p">(</span><span class="n">gnss_pos</span> <span class="o">-</span> <span class="n">prev_pos</span><span class="p">)</span> <span class="o">/</span> <span class="n">dt</span>
@@ -5037,7 +5093,7 @@ LiDAR 退化时（低点云质量）：
 <hr />
 <h2 id="9">9. 最小运维建议</h2>
 <ol>
-<li><strong>定位问题自动聚类</strong>：按失效类型（GNSS/地图/退化）自动打标签，减少人工分析成本</li>
+<li><strong>定位问题自动聚类</strong>：按失效类型（<abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr>/地图/退化）自动打标签，减少人工分析成本</li>
 <li><strong>高变化区域优先更新</strong>：对施工频繁、道路改造多的区域，提高地图更新频率（周级而非月级）</li>
 <li><strong>定位回归集</strong>：每次算法或地图版本发布前，必须执行固定场景集回归，不通过不发布</li>
 <li><strong>根因可追踪</strong>：每次接管事件中，若有定位置信度下降，必须追踪至具体传感器和时间段</li>
@@ -5050,6 +5106,27 @@ LiDAR 退化时（低点云质量）：
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 19:34:57 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

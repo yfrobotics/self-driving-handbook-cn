@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3257,6 +3285,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
@@ -4630,7 +4686,7 @@
   
 
 
-<h1 id="imugnss">视觉与定位传感器：摄像头、IMU、GNSS</h1>
+<h1 id="imugnss">视觉与定位传感器：摄像头、<abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>、<abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr></h1>
 <p>这类传感器决定系统的语义理解能力与时空定位能力，是规划控制的上游基础。</p>
 <hr />
 <h2 id="1-camera">1. 摄像头（Camera）</h2>
@@ -4661,7 +4717,7 @@
 </tr>
 <tr>
 <td>集成度</td>
-<td>高（ISP、DSP 可集成）</td>
+<td>高（<abbr title="Image Signal Processor，图像信号处理器">ISP</abbr>、DSP 可集成）</td>
 <td>低</td>
 </tr>
 <tr>
@@ -4790,7 +4846,7 @@
 </tbody>
 </table>
 <hr />
-<h2 id="2-imu">2. IMU（惯性测量单元）</h2>
+<h2 id="2-imu">2. <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>（惯性测量单元）</h2>
 <h3 id="21-mems">2.1 MEMS 传感器原理</h3>
 <p><strong>加速度计（Accelerometer）：</strong></p>
 <p>利用弹性悬挂质量块的挠曲量测量加速度：</p>
@@ -4800,8 +4856,8 @@
 <p>MEMS 陀螺仪利用科里奥利效应（Coriolis Effect）测量角速度：</p>
 <div class="arithmatex">\[F_{\text{Coriolis}} = 2m\boldsymbol{\omega} \times \boldsymbol{v}\]</div>
 <p>在旋转参考系中，振动质量块受科里奥利力驱动，振幅与角速度成正比。</p>
-<h3 id="22-imu">2.2 IMU 误差模型</h3>
-<p>IMU 的误差主要来源：</p>
+<h3 id="22-imu">2.2 <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 误差模型</h3>
+<p><abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 的误差主要来源：</p>
 <table>
 <thead>
 <tr>
@@ -4838,11 +4894,11 @@
 </tr>
 </tbody>
 </table>
-<p><strong>IMU 积分漂移（误差传播）：</strong></p>
+<p><strong><abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 积分漂移（误差传播）：</strong></p>
 <div class="arithmatex">\[\text{位置漂移} \approx \frac{1}{2} \sigma_a \cdot t^2 \quad \text{（加速度计零偏引起）}\]</div>
-<p>以 <span class="arithmatex">\(\sigma_a = 1 \text{ mg}\)</span> 的 MEMS IMU 为例，10 秒后位置漂移约 50 cm，30 秒约 4.4 m。因此 IMU 必须与外部绝对定位（GNSS/地图）融合。</p>
+<p>以 <span class="arithmatex">\(\sigma_a = 1 \text{ mg}\)</span> 的 MEMS <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 为例，10 秒后位置漂移约 50 cm，30 秒约 4.4 m。因此 <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 必须与外部绝对定位（<abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr>/地图）融合。</p>
 <h3 id="23-allan">2.3 Allan 方差（稳定性分析）</h3>
-<p>Allan 方差是评估 IMU 噪声特性的标准方法，分析不同积分时间下的噪声特征：</p>
+<p>Allan 方差是评估 <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 噪声特性的标准方法，分析不同积分时间下的噪声特征：</p>
 <div class="highlight"><pre><span></span><code>log(Allan Deviation)
 ↑
 │ 斜率 -1/2：角度/速度随机游走（白噪声）
@@ -4854,12 +4910,12 @@
 </code></pre></div>
 <h3 id="24">2.4 安装建议</h3>
 <ul>
-<li>IMU 应安装在车体刚性结构上（底盘纵梁），避免弹性悬挂部件</li>
+<li><abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 应安装在车体刚性结构上（底盘纵梁），避免弹性悬挂部件</li>
 <li>安装位置应尽量靠近车辆几何中心（减少杠杆臂效应）</li>
 <li>与主计算平台共振频率错开，减少振动耦合</li>
 </ul>
 <hr />
-<h2 id="3-gnss">3. GNSS（全球卫星定位系统）</h2>
+<h2 id="3-gnss">3. <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr>（全球卫星定位系统）</h2>
 <h3 id="31">3.1 系统概述</h3>
 <table>
 <thead>
@@ -4897,13 +4953,13 @@
 </tr>
 </tbody>
 </table>
-<p>现代车载 GNSS 芯片通常同时接收 GPS + BDS + GLONASS（多系统多频），可用卫星数大幅增加，定位精度和可用性显著提升。</p>
+<p>现代车载 <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 芯片通常同时接收 GPS + BDS + GLONASS（多系统多频），可用卫星数大幅增加，定位精度和可用性显著提升。</p>
 <h3 id="32">3.2 定位原理</h3>
-<p>GNSS 定位基于到至少 4 颗卫星的伪距测量，求解 <span class="arithmatex">\((x, y, z, \Delta t)\)</span>：</p>
+<p><abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 定位基于到至少 4 颗卫星的伪距测量，求解 <span class="arithmatex">\((x, y, z, \Delta t)\)</span>：</p>
 <div class="arithmatex">\[\rho_i = \sqrt{(x-x_i)^2 + (y-y_i)^2 + (z-z_i)^2} + c \cdot \Delta t + \epsilon_i\]</div>
 <p>其中 <span class="arithmatex">\(\rho_i\)</span> 为伪距，<span class="arithmatex">\((x_i, y_i, z_i)\)</span> 为卫星坐标，<span class="arithmatex">\(\Delta t\)</span> 为接收机时钟误差，<span class="arithmatex">\(\epsilon_i\)</span> 为误差项（大气延迟、多径等）。</p>
-<h3 id="33-rtk">3.3 RTK 差分定位原理</h3>
-<p>RTK（Real-Time Kinematic）通过基准站差分消除大部分误差：</p>
+<h3 id="33-rtk">3.3 <abbr title="Real-Time Kinematic，实时动态差分">RTK</abbr> 差分定位原理</h3>
+<p><abbr title="Real-Time Kinematic，实时动态差分">RTK</abbr>（Real-Time Kinematic）通过基准站差分消除大部分误差：</p>
 <div class="highlight"><pre><span></span><code>基准站（已知精确坐标）
     │ 计算误差改正数（差分信息）
     ↓ 实时播发（4G/5G/V2X）
@@ -4913,7 +4969,7 @@
     ↓
 厘米级定位精度（水平 &lt; 3 cm，垂直 &lt; 5 cm）
 </code></pre></div>
-<p><strong>PPP-RTK（精密单点定位+RTK）：</strong></p>
+<p><strong>PPP-<abbr title="Real-Time Kinematic，实时动态差分">RTK</abbr>（精密单点定位+<abbr title="Real-Time Kinematic，实时动态差分">RTK</abbr>）：</strong></p>
 <p>结合精密卫星轨道/钟差产品和区域改正数，无需传统基准站，覆盖范围更广：</p>
 <ul>
 <li>精度：水平 5–10 cm（收敛后）</li>
@@ -4937,17 +4993,17 @@
 <tr>
 <td>信号遮挡</td>
 <td>高楼/高架/隧道遮挡天空</td>
-<td>与 IMU/视觉融合</td>
+<td>与 <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr>/视觉融合</td>
 </tr>
 <tr>
 <td>信号欺骗</td>
-<td>伪造 GNSS 信号</td>
+<td>伪造 <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 信号</td>
 <td>与其他传感器一致性校验</td>
 </tr>
 <tr>
 <td>城市峡谷</td>
 <td>高楼密集区卫星可见性差</td>
-<td>多星座接收，V2X 辅助</td>
+<td>多星座接收，<abbr title="Vehicle-to-Everything，车对万物">V2X</abbr> 辅助</td>
 </tr>
 </tbody>
 </table>
@@ -4980,32 +5036,32 @@ LiDAR/视觉地图匹配（10–20 Hz）
 </thead>
 <tbody>
 <tr>
-<td>IMU</td>
+<td><abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr></td>
 <td>高频（1 kHz），短时精确</td>
 <td>相对运动</td>
 <td>高频位姿更新，短时漂移填补</td>
 </tr>
 <tr>
-<td>GNSS</td>
+<td><abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr></td>
 <td>中频（10 Hz），长时稳定</td>
 <td>全局绝对</td>
-<td>消除 IMU 长程漂移</td>
+<td>消除 <abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 长程漂移</td>
 </tr>
 <tr>
-<td>LiDAR 地图匹配</td>
+<td><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 地图匹配</td>
 <td>中频（10 Hz），精确</td>
 <td>局部相对</td>
-<td>车道级精度，消除 GNSS 城市误差</td>
+<td>车道级精度，消除 <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 城市误差</td>
 </tr>
 <tr>
 <td>视觉里程计</td>
 <td>中频（30 Hz）</td>
 <td>相对</td>
-<td>弱 GNSS 场景补充</td>
+<td>弱 <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 场景补充</td>
 </tr>
 </tbody>
 </table>
-<h3 id="43-gnss">4.3 GNSS 天线安装要求</h3>
+<h3 id="43-gnss">4.3 <abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 天线安装要求</h3>
 <ul>
 <li><strong>安装位置</strong>：车顶中央（最小遮挡角），远离金属支架（减少多径）</li>
 <li><strong>接地面</strong>：需要足够大的接地面（Ground Plane），推荐直径 &gt; 10 cm</li>
@@ -5025,7 +5081,7 @@ LiDAR/视觉地图匹配（10–20 Hz）
 </thead>
 <tbody>
 <tr>
-<td>GNSS 卫星数</td>
+<td><abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 卫星数</td>
 <td>可用卫星数量</td>
 <td>&lt; 6 颗告警</td>
 </tr>
@@ -5035,7 +5091,7 @@ LiDAR/视觉地图匹配（10–20 Hz）
 <td>&gt; 3.0 告警</td>
 </tr>
 <tr>
-<td>IMU 温度</td>
+<td><abbr title="Inertial Measurement Unit，惯性测量单元">IMU</abbr> 温度</td>
 <td>影响零偏稳定性</td>
 <td>超出工作范围告警</td>
 </tr>
@@ -5054,7 +5110,7 @@ LiDAR/视觉地图匹配（10–20 Hz）
 <h3 id="52">5.2 数据闭环</h3>
 <ul>
 <li>记录每次标定版本与生效时间，支持按时段回溯</li>
-<li>对"定位跳变""姿态抖动""GNSS 失效"事件自动触发片段上传</li>
+<li>对"定位跳变""姿态抖动""<abbr title="Global Navigation Satellite System，全球卫星导航系统">GNSS</abbr> 失效"事件自动触发片段上传</li>
 <li>将典型失效工况回流训练集，持续优化融合策略和降级逻辑</li>
 </ul>
 
@@ -5064,6 +5120,27 @@ LiDAR/视觉地图匹配（10–20 Hz）
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 19:34:57 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   

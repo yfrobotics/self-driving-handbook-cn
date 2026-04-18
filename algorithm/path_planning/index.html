@@ -1016,6 +1016,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../system/incidents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型事故与经验教训
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
@@ -3406,6 +3434,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../datasets_benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公开数据集与评测基准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nlp/" class="md-nav__link">
         
   
@@ -4962,7 +5018,7 @@
 <td>行为指令 + 障碍物</td>
 <td>可执行轨迹（位置+速度+时间）</td>
 <td>100 ms 级</td>
-<td>多项式、RRT*、MPC</td>
+<td>多项式、RRT*、<abbr title="Model Predictive Control，模型预测控制">MPC</abbr></td>
 </tr>
 </tbody>
 </table>
@@ -5007,7 +5063,7 @@
 <div class="arithmatex">\[d(s, t) = \min_{v} \left( d_{\uparrow}(s, v) + d_{\uparrow}(t, v) \right)\]</div>
 <p>由于高层节点稀疏，双向 CH 查询通常只需扩展数千个节点，比 Dijkstra 快 <strong>1000 倍以上</strong>，是 Google Maps、高德地图等商业导航系统的标准后台算法。</p>
 <h3 id="_4">城市场景路网表示</h3>
-<p>自动驾驶中的全局路由不仅需要路网连通性，还需要丰富的语义信息以支持行为规划。两种主流 HD Map 路网格式：</p>
+<p>自动驾驶中的全局路由不仅需要路网连通性，还需要丰富的语义信息以支持行为规划。两种主流 <abbr title="High Definition Map，高精地图">HD Map</abbr> 路网格式：</p>
 <p><strong>Lanelet2（Poggenhans et al., IROS 2018）：</strong></p>
 <p>以车道（Lanelet）为基本单元，每个 Lanelet 定义为：</p>
 <ul>
@@ -5016,7 +5072,7 @@
 <li>与相邻 Lanelet 的拓扑关系（前驱、后继、左邻、右邻）</li>
 </ul>
 <p>Lanelet2 被广泛用于学术研究和欧洲自动驾驶系统，提供 C++ 和 Python 接口，支持基于车道级拓扑图的路径规划。</p>
-<p><strong>Apollo HD Map（百度）：</strong></p>
+<p><strong>Apollo <abbr title="High Definition Map，高精地图">HD Map</abbr>（百度）：</strong></p>
 <p>采用 Protobuf 格式定义道路元素，包含：</p>
 <ul>
 <li>Road（道路段）→ Section（路段分组）→ Lane（单条车道）的层次结构</li>
@@ -5078,7 +5134,7 @@
 <tr>
 <td>紧急避险</td>
 <td>TTC &lt; 阈值</td>
-<td>AEB / 紧急制动</td>
+<td><abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr> / 紧急制动</td>
 </tr>
 </tbody>
 </table>
@@ -5164,14 +5220,14 @@
 <p>最小化 Jerk（加加速度）和 Snap（加加加速度）是常用的轨迹平滑目标，分别对应四阶和六阶积分代价：</p>
 <div class="arithmatex">\[\min_{c} \int_0^T \left[\dddot{p}(t)\right]^2 dt \quad \text{（Minimum Jerk）}\]</div>
 <div class="arithmatex">\[\min_{c} \int_0^T \left[p^{(4)}(t)\right]^2 dt \quad \text{（Minimum Snap）}\]</div>
-<p>对于分段多项式轨迹（分为 <span class="arithmatex">\(M\)</span> 段，每段为 <span class="arithmatex">\(n\)</span> 次多项式），最小化代价等价于二次规划（QP）问题。以 Minimum Snap 为例，设第 <span class="arithmatex">\(m\)</span> 段的系数向量为 <span class="arithmatex">\(c_m \in \mathbb{R}^{n+1}\)</span>，则：</p>
+<p>对于分段多项式轨迹（分为 <span class="arithmatex">\(M\)</span> 段，每段为 <span class="arithmatex">\(n\)</span> 次多项式），最小化代价等价于二次规划（<abbr title="Quadratic Programming，二次规划">QP</abbr>）问题。以 Minimum Snap 为例，设第 <span class="arithmatex">\(m\)</span> 段的系数向量为 <span class="arithmatex">\(c_m \in \mathbb{R}^{n+1}\)</span>，则：</p>
 <div class="arithmatex">\[\mathbf{c}^* = \arg\min_{\mathbf{c}} \mathbf{c}^\top Q \mathbf{c} + \lambda \|\mathbf{c}\|^2\]</div>
 <p>其中 <span class="arithmatex">\(Q\)</span> 为由微分算子构造的半正定代价矩阵：</p>
 <div class="arithmatex">\[Q_{ij} = \int_0^T \frac{d^k p_i(t)}{dt^k} \cdot \frac{d^k p_j(t)}{dt^k} \, dt\]</div>
 <p><span class="arithmatex">\(k=3\)</span>（Jerk）或 <span class="arithmatex">\(k=4\)</span>（Snap），正则项 <span class="arithmatex">\(\lambda \|\mathbf{c}\|^2\)</span> 用于防止过拟合和数值病态。</p>
 <p>约束矩阵 <span class="arithmatex">\(M\)</span> 将系数向量 <span class="arithmatex">\(\mathbf{c}\)</span> 映射到端点状态（位置、速度、加速度），保证轨迹满足初末状态约束和连接点处的平滑性（Continuity）约束：</p>
 <div class="arithmatex">\[M \mathbf{c} = \mathbf{b}\]</div>
-<p>其中 <span class="arithmatex">\(\mathbf{b}\)</span> 包含所有边界条件。将约束代入 QP 可得显式解，无需迭代求解器，适合实时计算。</p>
+<p>其中 <span class="arithmatex">\(\mathbf{b}\)</span> 包含所有边界条件。将约束代入 <abbr title="Quadratic Programming，二次规划">QP</abbr> 可得显式解，无需迭代求解器，适合实时计算。</p>
 <h3 id="chomp">CHOMP（梯度下降轨迹优化）</h3>
 <p>CHOMP（Covariant Hamiltonian Optimization for Motion Planning，Ratliff et al., 2009）将轨迹表示为离散时间序列 <span class="arithmatex">\(\xi = [q_1, q_2, \ldots, q_T]\)</span>，通过梯度下降最小化：</p>
 <div class="arithmatex">\[\mathcal{U}(\xi) = \mathcal{F}_{\text{smooth}}(\xi) + \lambda \mathcal{C}_{\text{obs}}(\xi)\]</div>
@@ -5218,14 +5274,14 @@
 <p><strong>DP 状态定义：</strong> 在 ST 图上等间隔划分格点，状态为 <span class="arithmatex">\((t_i, s_j)\)</span>，状态转移代价包含：</p>
 <div class="arithmatex">\[\text{cost}(s_j, t_i \to s_{j'}, t_{i+1}) = w_v (v - v_{\text{ref}})^2 + w_a a^2 + w_j \text{jerk}^2 + \infty \cdot \mathbb{1}[\text{碰撞}]\]</div>
 <p>DP 输出粗粒度速度曲线，确定对每个障碍物的处理策略（先行或等待）。</p>
-<h3 id="qp">QP 细化</h3>
+<h3 id="qp"><abbr title="Quadratic Programming，二次规划">QP</abbr> 细化</h3>
 <p>在 DP 确定的拓扑结构（绕障顺序）基础上，用<strong>二次规划（Quadratic Programming）</strong>对速度曲线进行精细平滑：</p>
 <div class="arithmatex">\[\min_{s_0, s_1, \ldots, s_N} \sum_{i} \left[ w_v (v_i - v_{\text{ref}})^2 + w_a a_i^2 + w_j j_i^2 \right]\]</div>
-<p>约束条件（线性化为 QP 标准形式）：
+<p>约束条件（线性化为 <abbr title="Quadratic Programming，二次规划">QP</abbr> 标准形式）：
 - <span class="arithmatex">\(0 \leq v_i \leq v_{\max,i}\)</span>（逐时刻速度上界，考虑限速和障碍物 TTC）
 - <span class="arithmatex">\(a_{\min} \leq a_i \leq a_{\max}\)</span>（加速度舒适性约束）
 - <span class="arithmatex">\(s_i \notin [s_{\text{obs},\min}(t_i),\ s_{\text{obs},\max}(t_i)]\)</span>（障碍物禁区约束，线性化为半平面约束）</p>
-<p>QP 求解时间通常在 10–30 ms，满足实时规划要求。</p>
+<p><abbr title="Quadratic Programming，二次规划">QP</abbr> 求解时间通常在 10–30 ms，满足实时规划要求。</p>
 <h3 id="_12">速度约束的来源</h3>
 <table>
 <thead>
@@ -5239,7 +5295,7 @@
 <tr>
 <td>限速约束</td>
 <td><span class="arithmatex">\(v(t) \leq v_{\text{limit}}(s(t))\)</span></td>
-<td>HD Map 车道限速标注</td>
+<td><abbr title="High Definition Map，高精地图">HD Map</abbr> 车道限速标注</td>
 </tr>
 <tr>
 <td>舒适加速度</td>
@@ -5264,9 +5320,9 @@
 </tbody>
 </table>
 <h3 id="apollo-em-planner">百度 Apollo EM Planner</h3>
-<p>Apollo EM Planner（Fan et al., ICRA 2018）是工业界最具影响力的开源规划框架之一，其速度规划模块采用 DP + QP 两阶段方法：</p>
+<p>Apollo EM Planner（Fan et al., ICRA 2018）是工业界最具影响力的开源规划框架之一，其速度规划模块采用 DP + <abbr title="Quadratic Programming，二次规划">QP</abbr> 两阶段方法：</p>
 <p><strong>E 步（Expectation）：</strong> 在 SL 图（路径）和 ST 图（速度）上交替进行 DP 搜索，得到粗粒度路径和速度方案。</p>
-<p><strong>M 步（Maximization）：</strong> 以 DP 结果为初值，在各自的 QP 问题中进行精细优化，输出平滑可执行轨迹。</p>
+<p><strong>M 步（Maximization）：</strong> 以 DP 结果为初值，在各自的 <abbr title="Quadratic Programming，二次规划">QP</abbr> 问题中进行精细优化，输出平滑可执行轨迹。</p>
 <p>两步交替迭代（类 EM 算法），通常 2–3 次迭代即可收敛。整个规划周期（含感知输入处理）控制在 100 ms 以内。</p>
 <h2 id="_13">动态障碍物处理</h2>
 <p>动态障碍物（行人、车辆）使规划问题变为时空规划（Spatio-Temporal Planning）：</p>
@@ -5298,7 +5354,7 @@
 <tr>
 <td>参考线生成</td>
 <td>5–10 ms</td>
-<td>从 HD Map 提取并平滑</td>
+<td>从 <abbr title="High Definition Map，高精地图">HD Map</abbr> 提取并平滑</td>
 </tr>
 <tr>
 <td>行为决策</td>
@@ -5311,7 +5367,7 @@
 <td>SL 图粗搜索</td>
 </tr>
 <tr>
-<td>路径 QP</td>
+<td>路径 <abbr title="Quadratic Programming，二次规划">QP</abbr></td>
 <td>5–15 ms</td>
 <td>样条优化</td>
 </tr>
@@ -5321,7 +5377,7 @@
 <td>ST 图粗搜索</td>
 </tr>
 <tr>
-<td>速度 QP</td>
+<td>速度 <abbr title="Quadratic Programming，二次规划">QP</abbr></td>
 <td>5–15 ms</td>
 <td>速度曲线平滑</td>
 </tr>
@@ -5341,9 +5397,9 @@
 <h3 id="warm-start">热启动（Warm Start）</h3>
 <p>规划是一个时序连续的过程，相邻两帧的最优轨迹通常差异很小。热启动利用上一帧的规划结果作为当前帧优化的初始值：</p>
 <p><strong>路径规划热启动：</strong></p>
-<p>将上一帧的最优路径在时间上平移 <span class="arithmatex">\(\Delta t\)</span>（当前规划周期时长），截取 <span class="arithmatex">\([s_{\text{current}}, s_{\text{horizon}}]\)</span> 段作为新一轮 QP 的初值。由于 QP 是凸优化，初值主要影响收敛速度，热启动通常使迭代次数从 50 次减少到 10 次以内。</p>
+<p>将上一帧的最优路径在时间上平移 <span class="arithmatex">\(\Delta t\)</span>（当前规划周期时长），截取 <span class="arithmatex">\([s_{\text{current}}, s_{\text{horizon}}]\)</span> 段作为新一轮 <abbr title="Quadratic Programming，二次规划">QP</abbr> 的初值。由于 <abbr title="Quadratic Programming，二次规划">QP</abbr> 是凸优化，初值主要影响收敛速度，热启动通常使迭代次数从 50 次减少到 10 次以内。</p>
 <p><strong>速度规划热启动：</strong></p>
-<p>类似地，将上一帧 ST 图中的速度曲线平移 <span class="arithmatex">\(\Delta t\)</span> 作为新一帧 DP 的初始粗解，跳过 DP 的完整搜索，直接进入 QP 精细优化。在环境未发生剧烈变化时，热启动可节省约 30–50% 的规划时间。</p>
+<p>类似地，将上一帧 ST 图中的速度曲线平移 <span class="arithmatex">\(\Delta t\)</span> 作为新一帧 DP 的初始粗解，跳过 DP 的完整搜索，直接进入 <abbr title="Quadratic Programming，二次规划">QP</abbr> 精细优化。在环境未发生剧烈变化时，热启动可节省约 30–50% 的规划时间。</p>
 <h3 id="_17">降级策略</h3>
 <p>当规划模块因超时、求解失败或感知数据异常无法输出有效轨迹时，必须有<strong>降级（Fallback）策略</strong>保证车辆安全：</p>
 <div class="highlight"><pre><span></span><code>规划执行流程（含降级）：
@@ -5384,14 +5440,14 @@
 <tr>
 <td>Level 3：紧急制动</td>
 <td>舒适停车路径被障碍物阻挡</td>
-<td>AEB 介入，最大制动</td>
+<td><abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr> 介入，最大制动</td>
 <td>单次响应</td>
 </tr>
 <tr>
 <td>Level 4：接管请求</td>
 <td>长时间无法恢复规划</td>
 <td>向驾驶员发出接管警报</td>
-<td>取决于 ODD</td>
+<td>取决于 <abbr title="Operational Design Domain，运行设计域">ODD</abbr></td>
 </tr>
 </tbody>
 </table>
@@ -5405,9 +5461,9 @@ taskset<span class="w"> </span>-c<span class="w"> </span><span class="m">2</span
 <p><strong>优先级设置：</strong></p>
 <p>规划线程设置为实时优先级（SCHED_FIFO，priority = 80），高于感知和预测模块，保证在计算平台负载高峰时规划任务不被抢占。</p>
 <p><strong>内存预分配：</strong></p>
-<p>规划模块在初始化时预分配所有中间变量的内存，避免运行时动态 malloc 导致的延时不确定性。ST 图格点数组、QP 矩阵等固定大小的数据结构均在启动时分配完毕。</p>
+<p>规划模块在初始化时预分配所有中间变量的内存，避免运行时动态 malloc 导致的延时不确定性。ST 图格点数组、<abbr title="Quadratic Programming，二次规划">QP</abbr> 矩阵等固定大小的数据结构均在启动时分配完毕。</p>
 <p><strong>并行化策略：</strong></p>
-<p>路径规划和速度规划在 DP 阶段可并行执行（路径 DP 与速度 DP 在前一帧结果基础上同时启动），QP 阶段则串行执行（速度 QP 依赖路径 QP 的输出）。典型的并行化实现可将整体规划时间压缩 20–30%。</p>
+<p>路径规划和速度规划在 DP 阶段可并行执行（路径 DP 与速度 DP 在前一帧结果基础上同时启动），<abbr title="Quadratic Programming，二次规划">QP</abbr> 阶段则串行执行（速度 <abbr title="Quadratic Programming，二次规划">QP</abbr> 依赖路径 <abbr title="Quadratic Programming，二次规划">QP</abbr> 的输出）。典型的并行化实现可将整体规划时间压缩 20–30%。</p>
 <h2 id="_19">规划系统的核心挑战</h2>
 <table>
 <thead>
@@ -5426,7 +5482,7 @@ taskset<span class="w"> </span>-c<span class="w"> </span><span class="m">2</span
 <tr>
 <td>动态环境</td>
 <td>障碍物持续运动，地图随时变化</td>
-<td>滚动时域规划（类 MPC 思路）</td>
+<td>滚动时域规划（类 <abbr title="Model Predictive Control，模型预测控制">MPC</abbr> 思路）</td>
 </tr>
 <tr>
 <td>不确定性</td>
@@ -5470,6 +5526,27 @@ taskset<span class="w"> </span>-c<span class="w"> </span><span class="m">2</span
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 01:05:30 UTC">2026年2月21日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
   
