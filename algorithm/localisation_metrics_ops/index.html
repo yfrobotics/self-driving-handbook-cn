@@ -73,6 +73,11 @@
 
     
     
+  
+  <meta name="google-adsense-account" content="ca-pub-8821428748194648">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8821428748194648"
+     crossorigin="anonymous"></script>
+
   </head>
   
   
@@ -4927,14 +4932,14 @@
     <span class="c1"># 速度合理性检验</span>
     <span class="n">v_est</span> <span class="o">=</span> <span class="p">(</span><span class="n">gnss_pos</span> <span class="o">-</span> <span class="n">prev_pos</span><span class="p">)</span> <span class="o">/</span> <span class="n">dt</span>
     <span class="k">if</span> <span class="n">norm</span><span class="p">(</span><span class="n">v_est</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">v_max_reasonable</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;JUMP_ANOMALY&quot;</span>
+        <span class="k">return</span> <span class="s2">"JUMP_ANOMALY"</span>
 
     <span class="c1"># 与 IMU 推算一致性检验</span>
     <span class="n">imu_pos</span> <span class="o">=</span> <span class="n">integrate_imu</span><span class="p">(</span><span class="n">prev_pos</span><span class="p">,</span> <span class="n">imu_data</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">norm</span><span class="p">(</span><span class="n">gnss_pos</span> <span class="o">-</span> <span class="n">imu_pos</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;IMU_INCONSISTENCY&quot;</span>
+        <span class="k">return</span> <span class="s2">"IMU_INCONSISTENCY"</span>
 
-    <span class="k">return</span> <span class="s2">&quot;NORMAL&quot;</span>
+    <span class="k">return</span> <span class="s2">"NORMAL"</span>
 </code></pre></div>
 <h3 id="42">4.2 地图失效</h3>
 <table>

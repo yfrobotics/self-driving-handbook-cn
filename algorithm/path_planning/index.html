@@ -73,6 +73,11 @@
 
     
     
+  
+  <meta name="google-adsense-account" content="ca-pub-8821428748194648">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8821428748194648"
+     crossorigin="anonymous"></script>
+
   </head>
   
   
@@ -4986,6 +4991,13 @@
 
 <h1 id="_1">路径规划</h1>
 <p>路径规划（Path Planning）是自动驾驶的核心模块之一，负责在感知到的环境中为车辆生成安全、高效、舒适的行驶轨迹。规划问题通常分为三个层次：全局路由、行为规划和运动规划。</p>
+<div class="admonition info">
+<p class="admonition-title">本节包含</p>
+<ul>
+<li><a href="../path_planning_global_behavior/">全局路由与行为规划</a> — 路网图模型、路由搜索算法、行为规划、路口与并线策略、失效兜底</li>
+<li><a href="../path_planning_local_trajectory/">局部轨迹与速度规划</a> — Frenet 坐标系、轨迹生成、S-T 图速度规划、约束体系、求解器选型与实时性</li>
+</ul>
+</div>
 <h2 id="_2">规划层次架构</h2>
 <p>自动驾驶的规划系统通常采用层次化架构，每层专注于不同时间尺度的决策：</p>
 <table>
@@ -5023,6 +5035,8 @@
 </tbody>
 </table>
 <p>各层之间形成异步协同：全局路由提供粗粒度目标，行为规划确定驾驶动作，运动规划生成精确轨迹。</p>
+<p>下表汇总了历史上主要路径规划算法的提出背景与优缺点，可作为选型时的快速索引——本页后续章节会展开其中在自动驾驶中仍在实际使用的几类。</p>
+<p><img alt="主要路径规划算法的原理与优缺点对比" src="../assets/path-planning-algorithm-comparison.png" /></p>
 <h2 id="_3">全局路由算法</h2>
 <p>全局路由在有向路网图 <span class="arithmatex">\(G=(V,E)\)</span> 上寻找从起点 <span class="arithmatex">\(s\)</span> 到终点 <span class="arithmatex">\(t\)</span> 的最优路径，边权通常为行驶时间或距离。</p>
 <h3 id="dijkstra">Dijkstra 算法</h3>
@@ -5539,7 +5553,7 @@ taskset<span class="w"> </span>-c<span class="w"> </span><span class="m">2</span
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 01:05:30 UTC">2026年2月21日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月7日 22:59:19 UTC">2026年9月7日</span>
   </span>
 
     

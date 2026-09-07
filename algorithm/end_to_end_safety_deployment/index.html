@@ -73,6 +73,11 @@
 
     
     
+  
+  <meta name="google-adsense-account" content="ca-pub-8821428748194648">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8821428748194648"
+     crossorigin="anonymous"></script>
+
   </head>
   
   
@@ -4869,7 +4874,7 @@
 <span class="w">  </span><span class="nt">risk_score</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.15</span><span class="w">           </span><span class="c1"># 场景风险评分（0-1）</span>
 <span class="w">  </span><span class="nt">key_objects</span><span class="p">:</span><span class="w">               </span><span class="c1"># 对决策影响最大的目标</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;pedestrian&quot;</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"pedestrian"</span>
 <span class="w">      </span><span class="nt">influence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.68</span><span class="w">        </span><span class="c1"># 影响权重</span>
 <span class="w">  </span><span class="nt">uncertainty_estimate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.08</span><span class="w"> </span><span class="c1"># 不确定性估计</span>
 <span class="w">  </span><span class="nt">ood_score</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.03</span><span class="w">            </span><span class="c1"># 分布外（OOD）程度评分</span>
@@ -4937,12 +4942,12 @@
         <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">state</span><span class="o">.</span><span class="n">objects</span><span class="p">:</span>
             <span class="n">ttc</span> <span class="o">=</span> <span class="n">compute_ttc</span><span class="p">(</span><span class="n">trajectory</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">ttc</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">:</span>
-                <span class="n">violations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TTC_VIOLATION: </span><span class="si">{</span><span class="n">obj</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">violations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"TTC_VIOLATION: </span><span class="si">{</span><span class="n">obj</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
         <span class="c1"># 限速检查</span>
         <span class="n">speed_limit</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">speed_limit</span>
         <span class="k">if</span> <span class="nb">max</span><span class="p">(</span><span class="n">trajectory</span><span class="o">.</span><span class="n">v</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">speed_limit</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">:</span>
-            <span class="n">violations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;SPEED_LIMIT_VIOLATION&quot;</span><span class="p">)</span>
+            <span class="n">violations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"SPEED_LIMIT_VIOLATION"</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">violations</span>
 </code></pre></div>
@@ -5123,7 +5128,7 @@ Level 4：实车测试
 <span class="k">def</span><span class="w"> </span><span class="nf">detect_distribution_drift</span><span class="p">(</span><span class="n">ref_features</span><span class="p">,</span> <span class="n">current_features</span><span class="p">):</span>
     <span class="n">kl_divergence</span> <span class="o">=</span> <span class="n">compute_kl</span><span class="p">(</span><span class="n">ref_features</span><span class="p">,</span> <span class="n">current_features</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">kl_divergence</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
-        <span class="n">alert</span><span class="p">(</span><span class="s2">&quot;DISTRIBUTION_DRIFT&quot;</span><span class="p">,</span> <span class="n">kl_divergence</span><span class="p">)</span>
+        <span class="n">alert</span><span class="p">(</span><span class="s2">"DISTRIBUTION_DRIFT"</span><span class="p">,</span> <span class="n">kl_divergence</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="82">8.2 长期运营监控</h3>
 <table>

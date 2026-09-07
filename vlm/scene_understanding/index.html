@@ -73,6 +73,11 @@
 
     
     
+  
+  <meta name="google-adsense-account" content="ca-pub-8821428748194648">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8821428748194648"
+     crossorigin="anonymous"></script>
+
   </head>
   
   
@@ -5158,10 +5163,10 @@
 <p>传统感知管线输出的是结构化数据——边界框坐标、类别标签、置信度分数。这些输出精确但语义贫乏，无法表达场景级别的语义关系。<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 则可以生成自然语言描述，捕获对象间关系、场景上下文和潜在风险。</p>
 <p><strong>传统感知输出示例：</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;objects&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;car&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;bbox&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">280</span><span class="p">,</span><span class="w"> </span><span class="mi">350</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;confidence&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95</span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pedestrian&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;bbox&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">450</span><span class="p">,</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">380</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;confidence&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.88</span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;traffic_light&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;bbox&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">330</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;red&quot;</span><span class="p">}</span>
+<span class="w">  </span><span class="nt">"objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"car"</span><span class="p">,</span><span class="w"> </span><span class="nt">"bbox"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">280</span><span class="p">,</span><span class="w"> </span><span class="mi">350</span><span class="p">],</span><span class="w"> </span><span class="nt">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pedestrian"</span><span class="p">,</span><span class="w"> </span><span class="nt">"bbox"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">450</span><span class="p">,</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">380</span><span class="p">],</span><span class="w"> </span><span class="nt">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.88</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"traffic_light"</span><span class="p">,</span><span class="w"> </span><span class="nt">"bbox"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">330</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">],</span><span class="w"> </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">}</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -5224,13 +5229,13 @@
 <p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 场景描述可分为<strong>结构化描述</strong>和<strong>自由形式描述</strong>两种范式：</p>
 <p><strong>结构化描述</strong>采用预定义的键值对格式，便于下游模块解析：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;scene_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;城市交叉路口&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;weather&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;晴天&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;time_of_day&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;下午&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;ego_action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;等待红灯&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;risk_level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;中&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;key_objects&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;前方停车的公交车&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;右侧过马路的行人&quot;</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;suggestion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;红灯结束后注意行人是否已完全通过&quot;</span>
+<span class="w">  </span><span class="nt">"scene_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"城市交叉路口"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"weather"</span><span class="p">:</span><span class="w"> </span><span class="s2">"晴天"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"time_of_day"</span><span class="p">:</span><span class="w"> </span><span class="s2">"下午"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"ego_action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"等待红灯"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"risk_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"中"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"key_objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"前方停车的公交车"</span><span class="p">,</span><span class="w"> </span><span class="s2">"右侧过马路的行人"</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"suggestion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"红灯结束后注意行人是否已完全通过"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>自由形式描述</strong>则以自然语言段落输出，语义更丰富但解析难度更大。实际应用中，多数系统采用<strong>半结构化</strong>方案——在结构化框架中嵌入自然语言字段，兼顾可解析性与语义丰富度。</p>
@@ -5288,7 +5293,7 @@
 <li><strong>潮汐车道</strong>：根据当前时间判断可变车道的通行方向</li>
 <li><strong>停车限制</strong>："工作日 8:00–20:00 禁止停车"——<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 可判断当前是否为限制时段</li>
 </ul>
-<div class="highlight"><pre><span></span><code>[查询] 当前时间为周三下午 3:30，前方有&quot;学校区域限速30&quot;标志，应如何决策？
+<div class="highlight"><pre><span></span><code>[查询] 当前时间为周三下午 3:30，前方有"学校区域限速30"标志，应如何决策？
 
 [VLM 推理] 当前为工作日下午，处于学校放学时间段（通常 15:00–16:30），
 学校区域限速标志生效。建议将车速降至 30 km/h 以下，并密切关注两侧是否

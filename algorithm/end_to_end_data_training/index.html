@@ -73,6 +73,11 @@
 
     
     
+  
+  <meta name="google-adsense-account" content="ca-pub-8821428748194648">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8821428748194648"
+     crossorigin="anonymous"></script>
+
   </head>
   
   
@@ -4935,9 +4940,9 @@
 <h3 id="21">2.1 基于规则的挖掘</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 挖掘规则示例</span>
 <span class="n">rules</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">{</span><span class="s2">&quot;condition&quot;</span><span class="p">:</span> <span class="s2">&quot;min_ttc &lt; 2.0 AND v &gt; 20&quot;</span><span class="p">,</span> <span class="s2">&quot;priority&quot;</span><span class="p">:</span> <span class="s2">&quot;HIGH&quot;</span><span class="p">},</span>
-    <span class="p">{</span><span class="s2">&quot;condition&quot;</span><span class="p">:</span> <span class="s2">&quot;lateral_error &gt; 0.5 AND duration &gt; 3s&quot;</span><span class="p">,</span> <span class="s2">&quot;priority&quot;</span><span class="p">:</span> <span class="s2">&quot;MEDIUM&quot;</span><span class="p">},</span>
-    <span class="p">{</span><span class="s2">&quot;condition&quot;</span><span class="p">:</span> <span class="s2">&quot;pedestrian_density &gt; 5 AND night&quot;</span><span class="p">,</span> <span class="s2">&quot;priority&quot;</span><span class="p">:</span> <span class="s2">&quot;HIGH&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"condition"</span><span class="p">:</span> <span class="s2">"min_ttc &lt; 2.0 AND v &gt; 20"</span><span class="p">,</span> <span class="s2">"priority"</span><span class="p">:</span> <span class="s2">"HIGH"</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"condition"</span><span class="p">:</span> <span class="s2">"lateral_error &gt; 0.5 AND duration &gt; 3s"</span><span class="p">,</span> <span class="s2">"priority"</span><span class="p">:</span> <span class="s2">"MEDIUM"</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"condition"</span><span class="p">:</span> <span class="s2">"pedestrian_density &gt; 5 AND night"</span><span class="p">,</span> <span class="s2">"priority"</span><span class="p">:</span> <span class="s2">"HIGH"</span><span class="p">},</span>
 <span class="p">]</span>
 </code></pre></div>
 <h3 id="22">2.2 基于模型的困难样本挖掘</h3>
@@ -5108,17 +5113,17 @@
 <h3 id="61">6.1 配比原则</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 训练数据配比示例</span>
 <span class="n">dataset_config</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;normal_driving&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span>    <span class="c1"># 日常工况，保证分布稳定</span>
-        <span class="s2">&quot;sample_strategy&quot;</span><span class="p">:</span> <span class="s2">&quot;uniform&quot;</span>
+    <span class="s2">"normal_driving"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"weight"</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span>    <span class="c1"># 日常工况，保证分布稳定</span>
+        <span class="s2">"sample_strategy"</span><span class="p">:</span> <span class="s2">"uniform"</span>
     <span class="p">},</span>
-    <span class="s2">&quot;long_tail&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span>    <span class="c1"># 长尾场景，提高采样权重</span>
-        <span class="s2">&quot;sample_strategy&quot;</span><span class="p">:</span> <span class="s2">&quot;importance_weighted&quot;</span>
+    <span class="s2">"long_tail"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"weight"</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span>    <span class="c1"># 长尾场景，提高采样权重</span>
+        <span class="s2">"sample_strategy"</span><span class="p">:</span> <span class="s2">"importance_weighted"</span>
     <span class="p">},</span>
-    <span class="s2">&quot;synthetic&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>    <span class="c1"># 合成数据，补齐危险场景</span>
-        <span class="s2">&quot;sample_strategy&quot;</span><span class="p">:</span> <span class="s2">&quot;uniform&quot;</span>
+    <span class="s2">"synthetic"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"weight"</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>    <span class="c1"># 合成数据，补齐危险场景</span>
+        <span class="s2">"sample_strategy"</span><span class="p">:</span> <span class="s2">"uniform"</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -5180,8 +5185,8 @@
 <li><strong>Weights &amp; Biases（W&amp;B）</strong>：训练可视化与对比</li>
 </ul>
 <h3 id="82">8.2 数据集版本规范</h3>
-<div class="highlight"><pre><span></span><code><span class="nt">dataset_version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;v2.5.0&quot;</span>
-<span class="nt">created_date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-03-01&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">dataset_version</span><span class="p">:</span><span class="w"> </span><span class="s">"v2.5.0"</span>
+<span class="nt">created_date</span><span class="p">:</span><span class="w"> </span><span class="s">"2025-03-01"</span>
 <span class="nt">total_clips</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">150000</span>
 <span class="nt">composition</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">normal</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60000</span><span class="w">      </span><span class="c1"># 日常工况</span>
@@ -5191,7 +5196,7 @@
 <span class="w">  </span><span class="nt">train</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.8</span>
 <span class="w">  </span><span class="nt">val</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
 <span class="w">  </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w">          </span><span class="c1"># 测试集永不用于训练</span>
-<span class="nt">changes_from_v2.4</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;新增夜间雨天场景</span><span class="nv"> </span><span class="s">15000</span><span class="nv"> </span><span class="s">条&quot;</span>
+<span class="nt">changes_from_v2.4</span><span class="p">:</span><span class="w"> </span><span class="s">"新增夜间雨天场景</span><span class="nv"> </span><span class="s">15000</span><span class="nv"> </span><span class="s">条"</span>
 </code></pre></div>
 <hr />
 <h2 id="9">9. 工程注意点</h2>

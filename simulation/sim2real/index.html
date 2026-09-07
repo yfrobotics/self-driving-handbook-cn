@@ -73,6 +73,11 @@
 
     
     
+  
+  <meta name="google-adsense-account" content="ca-pub-8821428748194648">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8821428748194648"
+     crossorigin="anonymous"></script>
+
   </head>
   
   
@@ -5225,13 +5230,13 @@ D_{\text{KL}}(P \| Q) = \sum_{x} P(x) \log \frac{P(x)}{Q(x)}
 
 <span class="k">class</span><span class="w"> </span><span class="nc">StructuredDR</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">real_stats</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;基于真实数据统计信息初始化随机化参数&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">brightness_mean</span> <span class="o">=</span> <span class="n">real_stats</span><span class="p">[</span><span class="s1">&#39;brightness_mean&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">brightness_std</span> <span class="o">=</span> <span class="n">real_stats</span><span class="p">[</span><span class="s1">&#39;brightness_std&#39;</span><span class="p">]</span>
+<span class="w">        </span><span class="sd">"""基于真实数据统计信息初始化随机化参数"""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">brightness_mean</span> <span class="o">=</span> <span class="n">real_stats</span><span class="p">[</span><span class="s1">'brightness_mean'</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">brightness_std</span> <span class="o">=</span> <span class="n">real_stats</span><span class="p">[</span><span class="s1">'brightness_std'</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">expansion_factor</span> <span class="o">=</span> <span class="mf">1.5</span>  <span class="c1"># 扩展因子</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">sample_lighting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;在真实分布附近采样光照参数&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""在真实分布附近采样光照参数"""</span>
         <span class="n">expanded_std</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">brightness_std</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">expansion_factor</span>
         <span class="n">brightness</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">brightness_mean</span><span class="p">,</span> <span class="n">expanded_std</span>
@@ -5239,7 +5244,7 @@ D_{\text{KL}}(P \| Q) = \sum_{x} P(x) \log \frac{P(x)}{Q(x)}
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">brightness</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">sample_weather</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">real_weather_dist</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;基于真实天气分布采样，但增加稀有条件概率&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""基于真实天气分布采样，但增加稀有条件概率"""</span>
         <span class="n">boosted_dist</span> <span class="o">=</span> <span class="n">real_weather_dist</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="n">rare_mask</span> <span class="o">=</span> <span class="n">boosted_dist</span> <span class="o">&lt;</span> <span class="mf">0.05</span>
         <span class="n">boosted_dist</span><span class="p">[</span><span class="n">rare_mask</span><span class="p">]</span> <span class="o">*=</span> <span class="mf">3.0</span>  <span class="c1"># 提升稀有天气概率</span>

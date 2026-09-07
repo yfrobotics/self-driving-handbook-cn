@@ -73,6 +73,11 @@
 
     
     
+  
+  <meta name="google-adsense-account" content="ca-pub-8821428748194648">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8821428748194648"
+     crossorigin="anonymous"></script>
+
   </head>
   
   
@@ -4902,7 +4907,37 @@
 <h2 id="1">1. 场景描述语言</h2>
 <p>场景描述语言为仿真场景提供标准化、可复现的表达方式，是场景生成流水线的基础。</p>
 <h3 id="11-openscenario">1.1 OpenSCENARIO</h3>
-<p>OpenSCENARIO 是 ASAM 组织制定的基于 XML 的场景描述标准，被 CARLA、esmini、VTD 等主流仿真器广泛支持。</p>
+<p>OpenSCENARIO 是 ASAM 组织制定的场景描述标准，被 CARLA、esmini、VTD 等主流仿真器广泛支持。</p>
+<div class="admonition warning">
+<p class="admonition-title">OpenSCENARIO 已拆分为两个独立标准，不是版本升级关系</p>
+<p>2024 年 1 月，ASAM 宣布 1.x 与 2.x 作为 <strong>两个独立项目</strong> 继续演进，并分别改名：</p>
+<table>
+<thead>
+<tr>
+<th>标准</th>
+<th>原名</th>
+<th>形式</th>
+<th>抽象层次</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OpenSCENARIO XML</strong>（当前 1.3）</td>
+<td>OpenSCENARIO 1.x</td>
+<td>XML Schema，Storyboard → Act → Maneuver → Event → Action 层级 + 触发条件</td>
+<td>具体（concrete）+ 逻辑（logical）</td>
+</tr>
+<tr>
+<td><strong>OpenSCENARIO DSL</strong>（当前 2.1，2.2 于 2026 年初公开评审）</td>
+<td>OpenSCENARIO 2.x</td>
+<td>文本化 DSL（EBNF），声明式、意图驱动，支持表达式与逻辑</td>
+<td>抽象（abstract）+ 逻辑 + 具体</td>
+</tr>
+</tbody>
+</table>
+<p>因此"升级到 OpenSCENARIO 2.0"是一种误解：DSL 不是 XML 的新版本，而是面向 <strong>大规模测试覆盖</strong> 的另一套语言——它能把一个机动写成可复用、可参数化的抽象逻辑，从而由一条描述展开出大量具体场景。选型取决于需求：复现单条确定场景用 XML；追求覆盖率驱动的测试生成用 DSL。</p>
+<p>本节以下内容基于 <strong>OpenSCENARIO XML</strong>。</p>
+</div>
 <p><strong>核心概念：</strong></p>
 <table>
 <thead>
@@ -4935,39 +4970,39 @@
 </tbody>
 </table>
 <p><strong>示例：Cut-in 场景</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;OpenSCENARIO&gt;</span>
-<span class="w">  </span><span class="nt">&lt;FileHeader</span><span class="w"> </span><span class="na">revMajor=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">revMinor=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">date=</span><span class="s">&quot;2025-01-01&quot;</span>
-<span class="w">              </span><span class="na">description=</span><span class="s">&quot;Cut-in scenario&quot;</span><span class="w"> </span><span class="na">author=</span><span class="s">&quot;example&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;FileHeader</span><span class="w"> </span><span class="na">revMajor=</span><span class="s">"1"</span><span class="w"> </span><span class="na">revMinor=</span><span class="s">"1"</span><span class="w"> </span><span class="na">date=</span><span class="s">"2025-01-01"</span>
+<span class="w">              </span><span class="na">description=</span><span class="s">"Cut-in scenario"</span><span class="w"> </span><span class="na">author=</span><span class="s">"example"</span><span class="nt">/&gt;</span>
 <span class="w">  </span><span class="nt">&lt;RoadNetwork&gt;</span>
-<span class="w">    </span><span class="nt">&lt;LogicFile</span><span class="w"> </span><span class="na">filepath=</span><span class="s">&quot;Town04.xodr&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;LogicFile</span><span class="w"> </span><span class="na">filepath=</span><span class="s">"Town04.xodr"</span><span class="nt">/&gt;</span>
 <span class="w">  </span><span class="nt">&lt;/RoadNetwork&gt;</span>
 <span class="w">  </span><span class="nt">&lt;Entities&gt;</span>
-<span class="w">    </span><span class="nt">&lt;ScenarioObject</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Ego&quot;</span><span class="nt">&gt;</span>
-<span class="w">      </span><span class="nt">&lt;Vehicle</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vehicle.tesla.model3&quot;</span><span class="w"> </span><span class="na">vehicleCategory=</span><span class="s">&quot;car&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ScenarioObject</span><span class="w"> </span><span class="na">name=</span><span class="s">"Ego"</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Vehicle</span><span class="w"> </span><span class="na">name=</span><span class="s">"vehicle.tesla.model3"</span><span class="w"> </span><span class="na">vehicleCategory=</span><span class="s">"car"</span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/ScenarioObject&gt;</span>
-<span class="w">    </span><span class="nt">&lt;ScenarioObject</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Adversary&quot;</span><span class="nt">&gt;</span>
-<span class="w">      </span><span class="nt">&lt;Vehicle</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vehicle.bmw.grandtourer&quot;</span><span class="w"> </span><span class="na">vehicleCategory=</span><span class="s">&quot;car&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ScenarioObject</span><span class="w"> </span><span class="na">name=</span><span class="s">"Adversary"</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Vehicle</span><span class="w"> </span><span class="na">name=</span><span class="s">"vehicle.bmw.grandtourer"</span><span class="w"> </span><span class="na">vehicleCategory=</span><span class="s">"car"</span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/ScenarioObject&gt;</span>
 <span class="w">  </span><span class="nt">&lt;/Entities&gt;</span>
 <span class="w">  </span><span class="nt">&lt;Storyboard&gt;</span>
-<span class="w">    </span><span class="nt">&lt;Story</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CutInStory&quot;</span><span class="nt">&gt;</span>
-<span class="w">      </span><span class="nt">&lt;Act</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CutInAct&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;ManeuverGroup</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;AdversaryManeuvers&quot;</span><span class="nt">&gt;</span>
-<span class="w">          </span><span class="nt">&lt;Actors</span><span class="w"> </span><span class="na">selectTriggeringEntities=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
-<span class="w">            </span><span class="nt">&lt;EntityRef</span><span class="w"> </span><span class="na">entityRef=</span><span class="s">&quot;Adversary&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Story</span><span class="w"> </span><span class="na">name=</span><span class="s">"CutInStory"</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Act</span><span class="w"> </span><span class="na">name=</span><span class="s">"CutInAct"</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ManeuverGroup</span><span class="w"> </span><span class="na">name=</span><span class="s">"AdversaryManeuvers"</span><span class="nt">&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Actors</span><span class="w"> </span><span class="na">selectTriggeringEntities=</span><span class="s">"false"</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;EntityRef</span><span class="w"> </span><span class="na">entityRef=</span><span class="s">"Adversary"</span><span class="nt">/&gt;</span>
 <span class="w">          </span><span class="nt">&lt;/Actors&gt;</span>
-<span class="w">          </span><span class="nt">&lt;Maneuver</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;LaneChange&quot;</span><span class="nt">&gt;</span>
-<span class="w">            </span><span class="nt">&lt;Event</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CutInEvent&quot;</span><span class="w"> </span><span class="na">priority=</span><span class="s">&quot;overwrite&quot;</span><span class="nt">&gt;</span>
-<span class="w">              </span><span class="nt">&lt;Action</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;LaneChangeAction&quot;</span><span class="nt">&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Maneuver</span><span class="w"> </span><span class="na">name=</span><span class="s">"LaneChange"</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;Event</span><span class="w"> </span><span class="na">name=</span><span class="s">"CutInEvent"</span><span class="w"> </span><span class="na">priority=</span><span class="s">"overwrite"</span><span class="nt">&gt;</span>
+<span class="w">              </span><span class="nt">&lt;Action</span><span class="w"> </span><span class="na">name=</span><span class="s">"LaneChangeAction"</span><span class="nt">&gt;</span>
 <span class="w">                </span><span class="nt">&lt;PrivateAction&gt;</span>
 <span class="w">                  </span><span class="nt">&lt;LateralAction&gt;</span>
 <span class="w">                    </span><span class="nt">&lt;LaneChangeAction&gt;</span>
-<span class="w">                      </span><span class="nt">&lt;LaneChangeActionDynamics</span><span class="w"> </span><span class="na">dynamicsShape=</span><span class="s">&quot;sinusoidal&quot;</span>
-<span class="w">                                                 </span><span class="na">value=</span><span class="s">&quot;3.0&quot;</span>
-<span class="w">                                                 </span><span class="na">dynamicsDimension=</span><span class="s">&quot;time&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;LaneChangeActionDynamics</span><span class="w"> </span><span class="na">dynamicsShape=</span><span class="s">"sinusoidal"</span>
+<span class="w">                                                 </span><span class="na">value=</span><span class="s">"3.0"</span>
+<span class="w">                                                 </span><span class="na">dynamicsDimension=</span><span class="s">"time"</span><span class="nt">/&gt;</span>
 <span class="w">                      </span><span class="nt">&lt;LaneChangeTarget&gt;</span>
-<span class="w">                        </span><span class="nt">&lt;RelativeTargetLane</span><span class="w"> </span><span class="na">entityRef=</span><span class="s">&quot;Ego&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;RelativeTargetLane</span><span class="w"> </span><span class="na">entityRef=</span><span class="s">"Ego"</span><span class="w"> </span><span class="na">value=</span><span class="s">"0"</span><span class="nt">/&gt;</span>
 <span class="w">                      </span><span class="nt">&lt;/LaneChangeTarget&gt;</span>
 <span class="w">                    </span><span class="nt">&lt;/LaneChangeAction&gt;</span>
 <span class="w">                  </span><span class="nt">&lt;/LateralAction&gt;</span>
@@ -4975,16 +5010,16 @@
 <span class="w">              </span><span class="nt">&lt;/Action&gt;</span>
 <span class="w">              </span><span class="nt">&lt;StartTrigger&gt;</span>
 <span class="w">                </span><span class="nt">&lt;ConditionGroup&gt;</span>
-<span class="w">                  </span><span class="nt">&lt;Condition</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;DistanceTrigger&quot;</span>
-<span class="w">                             </span><span class="na">conditionEdge=</span><span class="s">&quot;rising&quot;</span><span class="w"> </span><span class="na">delay=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;Condition</span><span class="w"> </span><span class="na">name=</span><span class="s">"DistanceTrigger"</span>
+<span class="w">                             </span><span class="na">conditionEdge=</span><span class="s">"rising"</span><span class="w"> </span><span class="na">delay=</span><span class="s">"0"</span><span class="nt">&gt;</span>
 <span class="w">                    </span><span class="nt">&lt;ByEntityCondition&gt;</span>
-<span class="w">                      </span><span class="nt">&lt;TriggeringEntities</span><span class="w"> </span><span class="na">triggeringEntitiesRule=</span><span class="s">&quot;any&quot;</span><span class="nt">&gt;</span>
-<span class="w">                        </span><span class="nt">&lt;EntityRef</span><span class="w"> </span><span class="na">entityRef=</span><span class="s">&quot;Adversary&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;TriggeringEntities</span><span class="w"> </span><span class="na">triggeringEntitiesRule=</span><span class="s">"any"</span><span class="nt">&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;EntityRef</span><span class="w"> </span><span class="na">entityRef=</span><span class="s">"Adversary"</span><span class="nt">/&gt;</span>
 <span class="w">                      </span><span class="nt">&lt;/TriggeringEntities&gt;</span>
 <span class="w">                      </span><span class="nt">&lt;EntityCondition&gt;</span>
-<span class="w">                        </span><span class="nt">&lt;RelativeDistanceCondition</span><span class="w"> </span><span class="na">entityRef=</span><span class="s">&quot;Ego&quot;</span>
-<span class="w">                            </span><span class="na">relativeDistanceType=</span><span class="s">&quot;longitudinal&quot;</span>
-<span class="w">                            </span><span class="na">value=</span><span class="s">&quot;20.0&quot;</span><span class="w"> </span><span class="na">rule=</span><span class="s">&quot;lessThan&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;RelativeDistanceCondition</span><span class="w"> </span><span class="na">entityRef=</span><span class="s">"Ego"</span>
+<span class="w">                            </span><span class="na">relativeDistanceType=</span><span class="s">"longitudinal"</span>
+<span class="w">                            </span><span class="na">value=</span><span class="s">"20.0"</span><span class="w"> </span><span class="na">rule=</span><span class="s">"lessThan"</span><span class="nt">/&gt;</span>
 <span class="w">                      </span><span class="nt">&lt;/EntityCondition&gt;</span>
 <span class="w">                    </span><span class="nt">&lt;/ByEntityCondition&gt;</span>
 <span class="w">                  </span><span class="nt">&lt;/Condition&gt;</span>
@@ -5003,8 +5038,8 @@
 <h3 id="13-scenic">1.3 Scenic 概率编程语言</h3>
 <p>Scenic 是由 UC Berkeley 开发的概率编程语言，专为自动驾驶场景生成设计。其核心思想是将场景描述为一个带约束的概率分布，支持从分布中采样生成具体场景实例。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Scenic 示例：生成一个前方有障碍车辆的场景</span>
-<span class="n">param</span> <span class="nb">map</span> <span class="o">=</span> <span class="n">localPath</span><span class="p">(</span><span class="s1">&#39;town04.xodr&#39;</span><span class="p">)</span>
-<span class="n">param</span> <span class="n">carla_map</span> <span class="o">=</span> <span class="s1">&#39;Town04&#39;</span>
+<span class="n">param</span> <span class="nb">map</span> <span class="o">=</span> <span class="n">localPath</span><span class="p">(</span><span class="s1">'town04.xodr'</span><span class="p">)</span>
+<span class="n">param</span> <span class="n">carla_map</span> <span class="o">=</span> <span class="s1">'Town04'</span>
 
 <span class="n">ego</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Car</span> <span class="n">on</span> <span class="n">road</span>
 <span class="n">leading</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Car</span> <span class="n">on</span> <span class="n">road</span><span class="p">,</span>
@@ -5438,11 +5473,11 @@ for generation = 1, 2, ..., G:
 <p>典型查询示例：</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">scenario_id</span><span class="p">,</span><span class="w"> </span><span class="k">parameters</span><span class="p">,</span><span class="w"> </span><span class="n">criticality_score</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">scenarios</span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">odd_tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;城市道路&#39;</span>
-<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">weather</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;雨天&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;雾天&#39;</span><span class="p">)</span>
-<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">behavior_tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;行人横穿&#39;</span>
-<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">criticality_level</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;L3&#39;</span>
-<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">test_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;失败&#39;</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">odd_tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'城市道路'</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">weather</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">'雨天'</span><span class="p">,</span><span class="w"> </span><span class="s1">'雾天'</span><span class="p">)</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">behavior_tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'行人横穿'</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">criticality_level</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">'L3'</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">test_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'失败'</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">criticality_score</span><span class="w"> </span><span class="k">DESC</span>
 <span class="k">LIMIT</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
 </code></pre></div>
@@ -5479,7 +5514,7 @@ for generation = 1, 2, ..., G:
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月21日 23:41:48 UTC">2026年3月21日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月7日 22:37:16 UTC">2026年9月7日</span>
   </span>
 
     

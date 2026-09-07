@@ -73,6 +73,11 @@
 
     
     
+  
+  <meta name="google-adsense-account" content="ca-pub-8821428748194648">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8821428748194648"
+     crossorigin="anonymous"></script>
+
   </head>
   
   
@@ -3856,7 +3861,7 @@
   <a href="#71-vlm-100-ms" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.1 实时 VLM（目标 &lt; 100 ms）
+        7.1 实时 VLM（&lt; 100 ms 目标已达成）
       
     </span>
   </a>
@@ -4846,7 +4851,7 @@
   <a href="#71-vlm-100-ms" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.1 实时 VLM（目标 &lt; 100 ms）
+        7.1 实时 VLM（&lt; 100 ms 目标已达成）
       
     </span>
   </a>
@@ -5200,10 +5205,45 @@
 <td style="text-align: center;">多视图相机</td>
 <td style="text-align: center;">端到端感知-规划</td>
 <td style="text-align: center;">Gemini</td>
-<td style="text-align: left;">统一文本输出格式；Google DeepMind 出品</td>
+<td style="text-align: left;">统一文本输出格式；Waymo/Google 出品，但因空间推理与算力问题未直接量产</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Alpamayo 1</strong>（原 Alpamayo-R1）</td>
+<td style="text-align: center;">2025–26</td>
+<td style="text-align: center;">推理型 <abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr></td>
+<td style="text-align: center;">多摄像头视频</td>
+<td style="text-align: center;">轨迹 + 推理链</td>
+<td style="text-align: center;">Cosmos-Reason</td>
+<td style="text-align: left;">NVIDIA 开源 10B 模型；Chain-of-Causation 数据集 + 扩散轨迹解码器；商用许可</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>小鹏 <abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 2.0</strong></td>
+<td style="text-align: center;">2026</td>
+<td style="text-align: center;">去语言层 <abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr></td>
+<td style="text-align: center;">多视图相机</td>
+<td style="text-align: center;">视觉直连动作</td>
+<td style="text-align: center;">自研</td>
+<td style="text-align: left;">全球首个量产的去语言层端到端大模型；决策时延 &lt; 80 ms</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>理想 MindVLA / MindVLA-o1</strong></td>
+<td style="text-align: center;">2026</td>
+<td style="text-align: center;">原生多模态 MoE</td>
+<td style="text-align: center;">多视图相机</td>
+<td style="text-align: center;">3D 空间理解 + 行为生成</td>
+<td style="text-align: center;">自研</td>
+<td style="text-align: left;">同一 <abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 模型同时驱动车辆与机器人</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition info">
+<p class="admonition-title">2025–2026 年的三个转折</p>
+<ol>
+<li><strong><abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 取代 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 成为主流表述</strong>：单纯的"看懂场景"不够，模型必须直接输出动作（Action）。</li>
+<li><strong>推理链从"可解释性装饰"变成训练信号</strong>：Alpamayo 的 Chain-of-Causation 把因果推理链作为监督目标，而非事后解释。</li>
+<li><strong>语言层被重新去掉</strong>：显式的文字中间表示带来时延与信息损失，量产方案转向隐式 token（见下方 7.1）。</li>
+</ol>
+</div>
 <hr />
 <h2 id="2">2. 性能基准对比</h2>
 <p>以下为各系统在 <strong>nuScenes</strong> 数据集上的代表性性能数据。需要注意：各系统的评测设置、数据子集和任务定义存在差异，数值仅供参考性对比。</p>
@@ -5277,8 +5317,10 @@
 </tbody>
 </table>
 <div class="admonition note">
-<p class="admonition-title">关于延迟</p>
-<p>当前大多数 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 系统的推理延迟在 0.8–2.0 秒范围内，远高于传统规划系统的 10–50 ms 水平。这是制约 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 实车部署的核心瓶颈之一。</p>
+<p class="admonition-title">关于延迟：研究原型与量产方案已分道</p>
+<p>上表这些 <strong>研究原型</strong> 的推理延迟在 0.8–2.0 秒范围内，远高于传统规划系统的 10–50 ms 水平——这曾是制约 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 实车部署的核心瓶颈。</p>
+<p>但 2026 年的量产 <abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 已经绕过了这个瓶颈：小鹏 <abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 2.0 的决策时延 <strong>&lt; 80 ms</strong>。差别不在于把同样的模型加速了 20 倍，而在于换了架构——量产方案去掉了显式语言输出（上表系统大多要生成文字，自回归解码本身就是秒级开销的来源），改为隐式 token 直连动作，并把大模型留在云端、车端只跑蒸馏后的小模型。</p>
+<p>因此上表的延迟数字应理解为"生成文字解释的 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的代价"，而非 <abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 路线的固有上限。</p>
 </div>
 <hr />
 <h2 id="3">3. 幻觉风险</h2>
@@ -5445,12 +5487,17 @@
 </table>
 <hr />
 <h2 id="7">7. 未来方向详解</h2>
-<h3 id="71-vlm-100-ms">7.1 实时 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>（目标 &lt; 100 ms）</h3>
+<h3 id="71-vlm-100-ms">7.1 实时 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>（&lt; 100 ms 目标已达成）</h3>
+<div class="admonition success">
+<p class="admonition-title">该目标已在 2026 年量产实现</p>
+<p>小鹏 <abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 2.0 将决策时延从 200 ms 压缩至 <strong>&lt; 80 ms</strong>（推理效率提升约 12 倍），于 2026 年 Q1 量产上车（P7+、G7、X9 等）。关键不是单一优化，而是三者叠加：<strong>去掉显式语言层</strong> + <strong>云端 720 亿 / 车端 30 亿参数的两级蒸馏架构</strong> + <strong>自研图灵芯片（三颗合计约 2250 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>）</strong>。工程上的硬指标是让模型推理帧率与摄像头帧率完全一致。</p>
+</div>
 <p>实现实时推理需要从硬件和架构两个维度同时突破：</p>
 <ul>
-<li><strong>硬件层面</strong>：车载专用 AI 芯片（如 NVIDIA Thor、地平线征程 6）提供 &gt;1000 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr> 算力；<abbr title="Neural Processing Unit，神经网络处理器">NPU</abbr> 定制化加速 Transformer 推理</li>
-<li><strong>架构层面</strong>：模型蒸馏（将大模型知识迁移到小模型）、稀疏注意力机制、投机解码（Speculative Decoding）、提前退出（Early Exit）</li>
+<li><strong>硬件层面</strong>：车载专用 AI 芯片（如 NVIDIA Thor、地平线征程 6P、车企自研芯片）提供 500–2000 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr> 级算力；<abbr title="Neural Processing Unit，神经网络处理器">NPU</abbr> 定制化加速 Transformer 推理（见 <a href="../../hardware/compute_chips/">自动驾驶计算芯片</a>）</li>
+<li><strong>架构层面</strong>：模型蒸馏（将大模型知识迁移到小模型）、稀疏注意力机制、投机解码（Speculative Decoding）、提前退出（Early Exit）；<strong>去语言层</strong>——用隐式 token 替代文字中间表示</li>
 <li><strong>系统层面</strong>：异步推理管线设计；<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 慢系统与传统快系统并行运行</li>
+<li><strong>两级部署</strong>：云端保留超大基座模型用于训练与蒸馏，车端只跑几十亿参数的轻量模型</li>
 </ul>
 <h3 id="72-embodied-alignment">7.2 具身对齐（Embodied Alignment）</h3>
 <p>通过仿真环境使 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的输出与物理世界的驾驶约束对齐：</p>
@@ -5502,7 +5549,11 @@
 <li><strong>GAIA-1</strong>（Wayve, 2023）：基于视频-文本-动作多模态数据训练的世界模型，能够生成高保真的驾驶场景视频，并可通过语言指令控制生成内容</li>
 <li><strong>DriveDreamer</strong>（2023）：结合真实驾驶数据训练的世界模型，支持结构化交通约束下的未来场景预测</li>
 <li><strong>Drive-WM</strong>（2024）：面向自动驾驶规划的多视图世界模型，将世界模型预测直接用于改善规划性能</li>
+<li><strong>GAIA-3</strong>（Wayve, 2025 年 12 月）：150 亿参数，定位从"生成"转向 <strong>可重复评测</strong>，支持跨车型与跨环境的一致性验证</li>
+<li><strong>Waymo World Model</strong>（2026 年 2 月）：基于 DeepMind <strong>Genie 3</strong>，输出摄像头 + <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 的多传感器高保真数据，用于生成极端边缘场景</li>
+<li><strong>NVIDIA Cosmos 3</strong>（2026）：开源物理 AI 基础模型，mixture-of-transformers 架构统一处理文本/图像/视频/音频/动作，并以 Cosmos-Reason 作为 Alpamayo 的 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 底座</li>
 </ul>
+<p>上述模型的技术细节见 <a href="../../algorithm/world_models/">世界模型</a> 专章。</p>
 <div class="admonition info">
 <p class="admonition-title">融合趋势</p>
 <p><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 与世界模型的融合代表了自动驾驶 AI 的重要发展方向。<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 提供高层语义理解和常识推理，世界模型提供底层物理仿真和状态预测，两者结合有望实现更安全、更智能的自动驾驶系统。</p>
@@ -5516,6 +5567,7 @@
 <th style="text-align: left;">阶段</th>
 <th style="text-align: center;">时间范围</th>
 <th style="text-align: left;">里程碑</th>
+<th style="text-align: center;">状态</th>
 </tr>
 </thead>
 <tbody>
@@ -5523,33 +5575,51 @@
 <td style="text-align: left;">研究探索期</td>
 <td style="text-align: center;">2023–2024</td>
 <td style="text-align: left;"><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 驾驶能力验证；开放数据集和基准建立</td>
+<td style="text-align: center;">✅ 已完成</td>
 </tr>
 <tr>
 <td style="text-align: left;">工程验证期</td>
-<td style="text-align: center;">2025–2026</td>
+<td style="text-align: center;">2025</td>
 <td style="text-align: left;">车载部署原型；实时推理方案验证；限定场景闭环测试</td>
+<td style="text-align: center;">✅ 已完成</td>
 </tr>
 <tr>
-<td style="text-align: left;">有限量产期</td>
+<td style="text-align: left;"><strong>首批量产期</strong></td>
+<td style="text-align: center;"><strong>2026</strong></td>
+<td style="text-align: left;"><strong><abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 进入乘用车量产：小鹏 <abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 2.0（Q1，&lt; 80 ms）、理想 MindVLA；端云两级架构成为标准做法；NVIDIA 开源 Alpamayo 建立公共基线</strong></td>
+<td style="text-align: center;"><strong>⬅ 当前阶段</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">规模普及期</td>
 <td style="text-align: center;">2027–2028</td>
-<td style="text-align: left;"><abbr title="Operational Design Domain，运行设计域">ODD</abbr> 限定的 L4 场景量产搭载；<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 作为辅助决策层</td>
+<td style="text-align: left;"><abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 下沉至中低价位车型；世界模型评测进入监管认可的验证流程</td>
+<td style="text-align: center;">预期</td>
 </tr>
 <tr>
-<td style="text-align: left;">规模应用期</td>
+<td style="text-align: left;">跨场景泛化期</td>
 <td style="text-align: center;">2029+</td>
-<td style="text-align: left;">跨场景泛化 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 量产；端云协同成为标准架构</td>
+<td style="text-align: left;">同一 <abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 基座跨车辆/机器人复用；形式化验证与安全认证路径成熟</td>
+<td style="text-align: center;">预期</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition warning">
+<p class="admonition-title">这张表在 2025 年的预测偏保守</p>
+<p>本手册早前版本把 2025–2026 判断为"工程验证期"、2027–2028 才"有限量产"。实际进度快了约两年：<abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 在 2026 年 Q1 就已量产上车。低估的原因主要是两点——<strong>车企自研芯片补齐了车端算力</strong>，以及<strong>去语言层架构意外地同时解决了时延与精度</strong>（小鹏方面形容其能力"涌现"过程极其突然）。这提示对本领域做时间线预测时应保持谨慎。</p>
+</div>
 <h3 id="92">9.2 主要厂商布局</h3>
 <ul>
-<li><strong>Wayve</strong>：Lingo 系列、GAIA-1 世界模型；获得软银 10 亿美元投资</li>
-<li><strong>Google DeepMind</strong>：EMMA 系统；Gemini 模型赋能自动驾驶</li>
-<li><strong>Tesla</strong>：<abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> V12 端到端架构；虽未公开采用 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 但技术路线趋近</li>
-<li><strong>NVIDIA</strong>：Drive Thor 平台提供算力基础；投资多家 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 自驾初创公司</li>
-<li><strong>地平线</strong>：征程系列芯片提供车载大模型推理能力</li>
-<li><strong>华为</strong>：ADS 3.0 引入大模型决策模块</li>
+<li><strong>Wayve</strong>：Lingo 系列；世界模型迭代至 <strong>GAIA-3</strong>（150 亿参数，聚焦评测与验证）；获得软银 10 亿美元投资</li>
+<li><strong>Waymo / Google DeepMind</strong>：研究模型 EMMA（Gemini 驱动）→ 量产车队实际运行的 <strong>Waymo Foundation Model</strong>（端到端训练 + 持续安全验证）；<strong>Waymo World Model</strong> 基于 Genie 3 做仿真</li>
+<li><strong>Tesla</strong>：<abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> <strong>V14</strong>，Summon/<abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr>/Robotaxi 统一为单一模型；未使用显式语言层，但端到端路线与 <abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 高度趋近</li>
+<li><strong>NVIDIA</strong>：<strong>Alpamayo 1</strong> 开源 10B 推理型 <abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> + Cosmos 3 世界模型 + Thor/Hyperion 10 算力平台，形成"模型-仿真-芯片"全栈开放生态</li>
+<li><strong>小鹏</strong>：<strong><abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 2.0</strong> 去语言层架构，全球首个量产；自研图灵芯片提供车端算力</li>
+<li><strong>理想</strong>：<strong>MindVLA / MindVLA-o1</strong> 原生多模态 MoE，同一模型驱动车辆与机器人</li>
+<li><strong>蔚来</strong>：<strong>NWM</strong> 世界模型 + 闭环强化学习；自研神玑 NX9031 芯片</li>
+<li><strong>地平线</strong>：征程 6P 与 HSD 全栈方案提供车载大模型推理能力</li>
+<li><strong>华为</strong>：<strong>乾崑 ADS 5</strong>（2026 年 4 月）与 WEWA 2.0 架构，云端世界模型引入多智能体博弈机制</li>
 </ul>
+<p>各家中国厂商的完整技术路线对比见 <a href="../../casestudy/chinese_players/">中国本土玩家</a>。</p>
 <h3 id="93">9.3 创业公司生态</h3>
 <p>全球范围内涌现了大量将大语言模型/<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 应用于自动驾驶的初创公司，融资活跃度持续上升。关键赛道包括：</p>
 <ul>
@@ -5612,6 +5682,11 @@
 <li>Li, J., Li, D., et al. "BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models." <em>ICML</em>, 2023.</li>
 <li>ISO 26262:2018. "Road Vehicles — Functional Safety." International Organization for Standardization.</li>
 <li>EU AI Act. "Regulation (EU) 2024/1689 — Harmonised Rules on Artificial Intelligence." European Parliament and Council, 2024.</li>
+<li>NVIDIA. "Alpamayo-R1: Bridging Reasoning and Action Prediction for Generalizable Autonomous Driving in the Long Tail." <em>arXiv preprint arXiv:2511.00088</em>, 2025.</li>
+<li>NVIDIA. <em>"NVIDIA Announces Alpamayo Family of Open-Source AI Models and Tools."</em> NVIDIA Newsroom, CES 2026.</li>
+<li>Wayve. <em>"Wayve launches GAIA-3, advancing world models from simulation to evaluation."</em> 2025 年 12 月.</li>
+<li>Waymo. <em>"The Waymo World Model: A New Frontier For Autonomous Driving Simulation."</em> Waymo Blog, 2026 年 2 月.</li>
+<li>小鹏汽车. <em>第二代 <abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 技术说明（<abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 2.0）</em>. 2026.</li>
 <li>中华人民共和国工业和信息化部.《智能网联汽车准入和上路通行试点实施指南》, 2023.</li>
 <li>Dosovitskiy, A., et al. "CARLA: An Open Urban Driving Simulator." <em>CoRL</em>, 2017.</li>
 <li>Caesar, H., et al. "nuScenes: A Multimodal Dataset for Autonomous Driving." <em>CVPR</em>, 2020.</li>
@@ -5636,7 +5711,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月21日 23:41:48 UTC">2026年3月21日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月7日 22:16:54 UTC">2026年9月7日</span>
   </span>
 
     

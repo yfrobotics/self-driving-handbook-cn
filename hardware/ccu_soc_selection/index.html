@@ -73,6 +73,11 @@
 
     
     
+  
+  <meta name="google-adsense-account" content="ca-pub-8821428748194648">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8821428748194648"
+     crossorigin="anonymous"></script>
+
   </head>
   
   
@@ -4829,15 +4834,15 @@
 </tr>
 <tr>
 <td><abbr title="Neural Processing Unit，神经网络处理器">NPU</abbr></td>
-<td>170 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
-<td>84 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
-<td>~2000 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
+<td>254 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>（INT8）</td>
+<td>84 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>（INT8）</td>
+<td>1000 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr>（INT8）/ 2000 TFLOPS（FP4）</td>
 </tr>
 <tr>
 <td>内存</td>
-<td>LPDDR5 256 GB/s</td>
+<td>LPDDR5 204 GB/s</td>
 <td>LPDDR5 102 GB/s</td>
-<td>HBM</td>
+<td>LPDDR5X</td>
 </tr>
 <tr>
 <td>功耗</td>
@@ -4899,29 +4904,34 @@
 <tr>
 <th>参数</th>
 <th>征程 5</th>
-<th>征程 6</th>
+<th>征程 6M</th>
+<th>征程 6P</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><abbr title="Neural Processing Unit，神经网络处理器">NPU</abbr></td>
 <td>128 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
-<td>400+ <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
+<td>128 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
+<td>560 <abbr title="Tera Operations Per Second，每秒万亿次运算">TOPS</abbr></td>
 </tr>
 <tr>
 <td>功耗</td>
 <td>~30 W</td>
-<td>~50 W</td>
+<td>~35 W</td>
+<td>~70 W</td>
 </tr>
 <tr>
 <td>功能安全</td>
+<td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-B</td>
 <td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-B</td>
 <td><abbr title="Automotive Safety Integrity Level，汽车安全完整性等级">ASIL</abbr>-B</td>
 </tr>
 <tr>
 <td>优势</td>
 <td>国产生态，与百度/大众量产适配</td>
-<td>城区自驾能力</td>
+<td>普惠城区 NOA</td>
+<td>旗舰城区 + HSD 全栈方案</td>
 </tr>
 </tbody>
 </table>
@@ -5029,9 +5039,9 @@
 <p>实际部署中通常需要多个模型同时运行，并发稳定性至关重要：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 基准测试框架伪代码</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">benchmark_concurrent</span><span class="p">(</span><span class="n">models</span><span class="p">,</span> <span class="n">duration_sec</span><span class="o">=</span><span class="mi">60</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    同时运行多个模型，测量端到端时延和稳定性</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">threads</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">run_model</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">duration_sec</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">models</span>
@@ -5040,19 +5050,19 @@
     <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s2">&quot;latency_p99&quot;</span><span class="p">:</span> <span class="n">collect_p99</span><span class="p">(),</span>
-        <span class="s2">&quot;drop_rate&quot;</span><span class="p">:</span> <span class="n">collect_drop_rate</span><span class="p">(),</span>
-        <span class="s2">&quot;cpu_util&quot;</span><span class="p">:</span> <span class="n">collect_cpu_util</span><span class="p">(),</span>
-        <span class="s2">&quot;gpu_util&quot;</span><span class="p">:</span> <span class="n">collect_gpu_util</span><span class="p">(),</span>
-        <span class="s2">&quot;thermal_throttle_count&quot;</span><span class="p">:</span> <span class="n">collect_throttle</span><span class="p">(),</span>
+        <span class="s2">"latency_p99"</span><span class="p">:</span> <span class="n">collect_p99</span><span class="p">(),</span>
+        <span class="s2">"drop_rate"</span><span class="p">:</span> <span class="n">collect_drop_rate</span><span class="p">(),</span>
+        <span class="s2">"cpu_util"</span><span class="p">:</span> <span class="n">collect_cpu_util</span><span class="p">(),</span>
+        <span class="s2">"gpu_util"</span><span class="p">:</span> <span class="n">collect_gpu_util</span><span class="p">(),</span>
+        <span class="s2">"thermal_throttle_count"</span><span class="p">:</span> <span class="n">collect_throttle</span><span class="p">(),</span>
     <span class="p">}</span>
 
 <span class="c1"># 测试负载示例</span>
 <span class="n">models</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;BEV_Backbone&quot;</span><span class="p">,</span> <span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="s2">&quot;8cam_896x512&quot;</span><span class="p">,</span> <span class="s2">&quot;freq&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
-    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;LiDAR_Detect&quot;</span><span class="p">,</span> <span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="s2">&quot;128k_points&quot;</span><span class="p">,</span> <span class="s2">&quot;freq&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
-    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Prediction&quot;</span><span class="p">,</span>   <span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="s2">&quot;object_list&quot;</span><span class="p">,</span> <span class="s2">&quot;freq&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
-    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;LaneLine&quot;</span><span class="p">,</span>     <span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="s2">&quot;cam_front&quot;</span><span class="p">,</span>   <span class="s2">&quot;freq&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"BEV_Backbone"</span><span class="p">,</span> <span class="s2">"input"</span><span class="p">:</span> <span class="s2">"8cam_896x512"</span><span class="p">,</span> <span class="s2">"freq"</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"LiDAR_Detect"</span><span class="p">,</span> <span class="s2">"input"</span><span class="p">:</span> <span class="s2">"128k_points"</span><span class="p">,</span> <span class="s2">"freq"</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Prediction"</span><span class="p">,</span>   <span class="s2">"input"</span><span class="p">:</span> <span class="s2">"object_list"</span><span class="p">,</span> <span class="s2">"freq"</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"LaneLine"</span><span class="p">,</span>     <span class="s2">"input"</span><span class="p">:</span> <span class="s2">"cam_front"</span><span class="p">,</span>   <span class="s2">"freq"</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
 <span class="p">]</span>
 </code></pre></div>
 <hr />
@@ -5423,7 +5433,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 19:34:57 UTC">2026年2月21日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月7日 22:11:23 UTC">2026年9月7日</span>
   </span>
 
     

@@ -73,6 +73,11 @@
 
     
     
+  
+  <meta name="google-adsense-account" content="ca-pub-8821428748194648">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8821428748194648"
+     crossorigin="anonymous"></script>
+
   </head>
   
   
@@ -4933,24 +4938,24 @@
 <h3 id="61-metrics">6.1 指标（Metrics）</h3>
 <p>使用 Prometheus + Grafana 构建指标监控：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 关键指标示例（Prometheus 格式）</span>
-<span class="l l-Scalar l-Scalar-Plain">perception_latency_ms{module=&quot;camera&quot;, percentile=&quot;p99&quot;} 65.3</span>
+<span class="l l-Scalar l-Scalar-Plain">perception_latency_ms{module="camera", percentile="p99"} 65.3</span>
 <span class="l l-Scalar l-Scalar-Plain">planning_timeout_count_total 0</span>
 <span class="l l-Scalar l-Scalar-Plain">control_publish_hz 100.2</span>
 <span class="l l-Scalar l-Scalar-Plain">trajectory_valid_ratio 0.997</span>
-<span class="l l-Scalar l-Scalar-Plain">localization_error_m{axis=&quot;lateral&quot;} 0.045</span>
+<span class="l l-Scalar l-Scalar-Plain">localization_error_m{axis="lateral"} 0.045</span>
 </code></pre></div>
 <h3 id="62-logging">6.2 日志（Logging）</h3>
 <p>结构化日志设计：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1234567890.123</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WARN&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;module&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;planning&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;frame_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f_001234&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;planning_timeout&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;elapsed_ms&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">87.3</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;budget_ms&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">50.0</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;fallback&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;prev_trajectory&quot;</span>
+<span class="w">  </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mf">1234567890.123</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WARN"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"planning"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"frame_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f_001234"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"planning_timeout"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"elapsed_ms"</span><span class="p">:</span><span class="w"> </span><span class="mf">87.3</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"budget_ms"</span><span class="p">:</span><span class="w"> </span><span class="mf">50.0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"fallback"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prev_trajectory"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>

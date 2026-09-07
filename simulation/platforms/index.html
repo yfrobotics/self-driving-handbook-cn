@@ -73,6 +73,11 @@
 
     
     
+  
+  <meta name="google-adsense-account" content="ca-pub-8821428748194648">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8821428748194648"
+     crossorigin="anonymous"></script>
+
   </head>
   
   
@@ -4777,7 +4782,13 @@
 <hr />
 <h2 id="1">1. 主流仿真平台详细介绍</h2>
 <h3 id="11-carla">1.1 CARLA</h3>
-<p><strong>CARLA</strong>（Car Learning to Act）是由英特尔实验室与巴塞罗那自治大学（CVC）联合开发的开源自动驾驶仿真平台，基于 Unreal Engine 4 构建。</p>
+<p><strong>CARLA</strong>（Car Learning to Act）是由英特尔实验室与巴塞罗那自治大学（CVC）联合开发的开源自动驾驶仿真平台，是学术界事实标准。</p>
+<div class="admonition warning">
+<p class="admonition-title">两条并行的版本线：UE 4.26 与 UE 5.5</p>
+<p><strong>CARLA 0.10.0</strong>（2024 年 12 月）将引擎从 Unreal Engine 4.26 迁移到 <strong>UE 5.5</strong>，引入 <strong>Lumen</strong>（全局光照）与 <strong>Nanite</strong>（虚拟几何体），相机传感器的视觉保真度大幅提升，并附带升级版 Town 10 与重建模的车辆资产。</p>
+<p>但两条版本线会长期并存：UE 5.5 版尚未迁移全部功能与资产，许多依赖旧资产或旧 API 的工作仍需留在 UE 4.26 版。两者文档也分开托管（UE 4.26 为 <code>carla.readthedocs.io</code>，UE 5.5 为 <code>carla-ue5.readthedocs.io</code>）。</p>
+<p><strong>选型建议</strong>：以感知/渲染保真度为主的研究选 UE 5.5 版；需要复现既有基准（如 Bench2Drive、CARLA Leaderboard 2.0）的工作仍应使用 UE 4.26 版，否则结果不可比。</p>
+</div>
 <p><strong>架构设计：</strong></p>
 <p>CARLA 采用经典的 <strong>客户端-服务器（Client-Server）架构</strong>：</p>
 <ul>
@@ -4846,7 +4857,7 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">traci</span>
 
-<span class="n">traci</span><span class="o">.</span><span class="n">start</span><span class="p">([</span><span class="s2">&quot;sumo&quot;</span><span class="p">,</span> <span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="s2">&quot;scenario.sumocfg&quot;</span><span class="p">])</span>
+<span class="n">traci</span><span class="o">.</span><span class="n">start</span><span class="p">([</span><span class="s2">"sumo"</span><span class="p">,</span> <span class="s2">"-c"</span><span class="p">,</span> <span class="s2">"scenario.sumocfg"</span><span class="p">])</span>
 
 <span class="k">while</span> <span class="n">traci</span><span class="o">.</span><span class="n">simulation</span><span class="o">.</span><span class="n">getMinExpectedNumber</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
     <span class="n">traci</span><span class="o">.</span><span class="n">simulationStep</span><span class="p">()</span>
@@ -4854,7 +4865,7 @@
     <span class="k">for</span> <span class="n">vid</span> <span class="ow">in</span> <span class="n">vehicles</span><span class="p">:</span>
         <span class="n">speed</span> <span class="o">=</span> <span class="n">traci</span><span class="o">.</span><span class="n">vehicle</span><span class="o">.</span><span class="n">getSpeed</span><span class="p">(</span><span class="n">vid</span><span class="p">)</span>
         <span class="n">position</span> <span class="o">=</span> <span class="n">traci</span><span class="o">.</span><span class="n">vehicle</span><span class="o">.</span><span class="n">getPosition</span><span class="p">(</span><span class="n">vid</span><span class="p">)</span>
-    <span class="n">traci</span><span class="o">.</span><span class="n">vehicle</span><span class="o">.</span><span class="n">setSpeed</span><span class="p">(</span><span class="s2">&quot;ego&quot;</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>  <span class="c1"># 控制ego车辆速度</span>
+    <span class="n">traci</span><span class="o">.</span><span class="n">vehicle</span><span class="o">.</span><span class="n">setSpeed</span><span class="p">(</span><span class="s2">"ego"</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>  <span class="c1"># 控制ego车辆速度</span>
 
 <span class="n">traci</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div>
@@ -4869,9 +4880,10 @@
 <li>支持多种车辆动力学模型，从简单运动学到完整动力学模型</li>
 <li>提供丰富的 API 支持（Python、C++、C#、Java）</li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">AirSim 与 Project AirSim</p>
-<p>微软已于 2022 年将 AirSim 归档，并推出商业化后继产品 <strong>Project AirSim</strong>，定位于工业级无人机与自主系统仿真。原始 AirSim 代码仍可通过 GitHub 获取。</p>
+<div class="admonition warning">
+<p class="admonition-title">AirSim 已归档，不建议用于新项目</p>
+<p>微软已将 AirSim 研究项目 <strong>归档</strong>，不再有任何新功能或更新；原始代码仍可从 GitHub 获取，作为仿真后端依然可用但已停止演进。</p>
+<p>其维护接力由 <strong>IAMAI Simulations</strong>（原微软 AirSim 团队工程师创立）承接，以 <strong>Project AirSim</strong>（基于 UE5、全新 API）继续开发。新项目若需要 UE 系仿真，实际可选项是 CARLA（开源、自动驾驶生态完整）或 Project AirSim（偏无人机与通用自主系统）。</p>
 </div>
 <p><strong>车辆动力学模型：</strong></p>
 <p>AirSim 的车辆模型基于经典的 <strong>自行车模型（Bicycle Model）</strong>：</p>
@@ -4903,6 +4915,19 @@
 <div class="arithmatex">\[L_o(\mathbf{x}, \omega_o) = L_e(\mathbf{x}, \omega_o) + \int_{\Omega} f_r(\mathbf{x}, \omega_i, \omega_o) L_i(\mathbf{x}, \omega_i) (\omega_i \cdot \mathbf{n}) \, d\omega_i\]</div>
 <p>该渲染方程精确模拟了光线的发射、反射与散射过程，使传感器仿真数据更接近真实传感器输出。</p>
 </div>
+<p><strong>2025–2026 年的扩展：从"建模场景"到"重建场景"</strong></p>
+<p>NVIDIA 的仿真栈已从手工构建 3D 资产扩展为以真实日志重建为主：</p>
+<ul>
+<li><strong>Omniverse NuRec</strong>：一组 <strong>3D 高斯泼溅（3DGS）</strong> 库，直接摄入真实多传感器行车数据，重建出可交互的 OpenUSD 场景，再渲染新视角与新轨迹，用于回放、验证与合成数据生成</li>
+<li><strong>InstantNuRec</strong>：前馈式神经重建模型，<strong>单次前向传播</strong> 即可把多视角行车日志转为可仿真的 3DGS 世界，为每个像素输出一个包含几何、外观与运动的高斯基元，可实时渲染</li>
+<li><strong>AlpaSim</strong>：开源闭环仿真框架，用于在海量虚拟场景中检验策略行为</li>
+<li><strong>OmniDreams</strong>：实时生成式世界模型，与 Alpamayo 1 策略模型和 AlpaSim 编排器组成闭环，充当高响应的反应式环境</li>
+</ul>
+<p>NuRec 库已与 Isaac Sim、AlpaSim 以及 <strong>CARLA</strong> 打通——这意味着神经重建不再是某一家商业平台的专属能力。</p>
+<div class="admonition tip">
+<p class="admonition-title">为什么重建比建模更重要</p>
+<p>手工建模场景的成本与真实度都受美术产能限制，且无法覆盖真实路网的长尾外观。神经重建把"采集到的每一段真实道路"直接变成可仿真资产，代价是重建场景内的可编辑性弱于手工资产。当前的实际工程组合是：<strong>手工资产做可控的极端场景，神经重建做规模化的真实场景覆盖</strong>。相关的生成式路线见 <a href="../../algorithm/world_models/">世界模型</a>。</p>
+</div>
 <hr />
 <h3 id="16-51sim-one">1.6 51Sim-One</h3>
 <p><strong>51Sim-One</strong>（五一仿真）是国内领先的自动驾驶仿真平台，由 51World 开发。</p>
@@ -4931,11 +4956,11 @@
 <tbody>
 <tr>
 <td><strong>渲染引擎</strong></td>
-<td>UE4</td>
+<td>UE 4.26 / UE 5.5</td>
 <td>Unity HDRP</td>
 <td>无（2D）</td>
 <td>UE4</td>
-<td>Omniverse</td>
+<td>Omniverse (+NuRec 3DGS)</td>
 <td>自研</td>
 </tr>
 <tr>
@@ -4943,7 +4968,7 @@
 <td>开源 (MIT)</td>
 <td>开源 (停维)</td>
 <td>开源 (EPL-2.0)</td>
-<td>开源 (MIT)</td>
+<td>开源 (<strong>已归档</strong>)</td>
 <td>商业</td>
 <td>商业</td>
 </tr>
@@ -5178,8 +5203,8 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">sumo_integration.run_synchronization</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimulationSynchronization</span>
 
 <span class="n">sync</span> <span class="o">=</span> <span class="n">SimulationSynchronization</span><span class="p">(</span>
-    <span class="n">sumo_cfg</span><span class="o">=</span><span class="s2">&quot;town01.sumocfg&quot;</span><span class="p">,</span>
-    <span class="n">carla_host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+    <span class="n">sumo_cfg</span><span class="o">=</span><span class="s2">"town01.sumocfg"</span><span class="p">,</span>
+    <span class="n">carla_host</span><span class="o">=</span><span class="s2">"localhost"</span><span class="p">,</span>
     <span class="n">carla_port</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
     <span class="n">step_length</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>       <span class="c1"># 同步步长 (秒)</span>
     <span class="n">sync_vehicle_lights</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -5278,7 +5303,7 @@ ros2<span class="w"> </span>launch<span class="w"> </span>carla_ros_bridge<span 
 </ul>
 <div class="admonition note">
 <p class="admonition-title">世界模型（World Model）与仿真的融合</p>
-<p>以 NVIDIA 的 GAIA-1 和 Wayve 的 GAIA 为代表的 <strong>世界模型</strong> 技术，正在模糊传统仿真与神经网络生成之间的界限。世界模型通过学习驾驶场景的时空分布，能够自回归地生成逼真的未来驾驶场景，为仿真提供了一种全新的范式。</p>
+<p>以 Wayve 的 <strong>GAIA 系列</strong>（GAIA-1 → GAIA-3）、NVIDIA 的 <strong>Cosmos</strong> 与 Waymo 基于 Genie 3 的 <strong>Waymo World Model</strong> 为代表的 <strong>世界模型</strong> 技术，正在模糊传统仿真与神经网络生成之间的界限。世界模型通过学习驾驶场景的时空分布，能够生成逼真的未来驾驶场景，为仿真提供了一种全新的范式。2025–2026 年这条路线的重心已从"生成训练数据"转向"提供可重复的评测环境"——详见 <a href="../../algorithm/world_models/">世界模型</a>。</p>
 </div>
 <h3 id="64">6.4 发展趋势总结</h3>
 <table>
@@ -5303,11 +5328,16 @@ ros2<span class="w"> </span>launch<span class="w"> </span>carla_ros_bridge<span 
 <tr>
 <td><strong>AI 原生场景生成</strong></td>
 <td>生成式模型替代手动场景构建</td>
-<td>GAIA-1, DriveDreamer</td>
+<td>GAIA-3, Cosmos 3, OmniDreams</td>
+</tr>
+<tr>
+<td><strong>神经重建仿真</strong></td>
+<td>用真实日志重建可仿真的 3DGS 场景</td>
+<td>Omniverse NuRec, InstantNuRec</td>
 </tr>
 <tr>
 <td><strong>标准化与互操作</strong></td>
-<td>OpenSCENARIO 2.0 等标准推动</td>
+<td>OpenSCENARIO XML 与 DSL 双轨并行</td>
 <td>ASAM 标准组织</td>
 </tr>
 <tr>
@@ -5354,7 +5384,7 @@ ros2<span class="w"> </span>launch<span class="w"> </span>carla_ros_bridge<span 
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月21日 23:41:48 UTC">2026年3月21日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月7日 22:37:16 UTC">2026年9月7日</span>
   </span>
 
     

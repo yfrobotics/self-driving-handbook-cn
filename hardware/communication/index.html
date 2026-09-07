@@ -73,6 +73,11 @@
 
     
     
+  
+  <meta name="google-adsense-account" content="ca-pub-8821428748194648">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8821428748194648"
+     crossorigin="anonymous"></script>
+
   </head>
   
   
@@ -5109,6 +5114,13 @@
 <h1 id="_1">车载通信系统</h1>
 <p>车载通信网络是自动驾驶系统的神经系统，负责连接车内数百个电子控制单元（<abbr title="Electronic Control Unit，电子控制单元">ECU</abbr>）并在传感器、计算平台与执行机构之间高效传递数据。随着自动驾驶等级从 L1 向 L4/L5 演进，车内数据带宽需求从早期的数十 Mbps 急剧攀升至当前主流高算力平台所需的数十 Gbps 量级。以一辆配备 8 路摄像头、4 个固态 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr> 和毫米波雷达的 L4 车辆为例，仅传感器原始数据流即超过 10 Gbps，这对通信总线的吞吐量、实时性、安全性提出了前所未有的挑战。</p>
 <p>本章系统梳理从传统车载总线到现代车载以太网、网络拓扑、中间件协议、时间敏感网络、信息安全以及 <abbr title="Over-the-Air，空中升级">OTA</abbr> 升级等关键技术，帮助读者建立完整的车载通信知识体系。</p>
+<div class="admonition info">
+<p class="admonition-title">本节包含</p>
+<ul>
+<li><a href="../communication_network_protocols/">网络与协议</a> — 传统总线、车载以太网、拓扑演进、SOME/IP 与 DDS、TSN、网络诊断</li>
+<li><a href="../communication_security_ota/">安全与升级</a> — SecOC、IDS/IPS、安全启动链、<abbr title="Hardware Security Module，硬件安全模块">HSM</abbr>、<abbr title="Over-the-Air，空中升级">OTA</abbr> 体系与灰度发布</li>
+</ul>
+</div>
 <h2 id="1">1. 传统车载总线</h2>
 <h3 id="11-cancontroller-area-network">1.1 <abbr title="Controller Area Network，控制器局域网">CAN</abbr>（Controller Area Network）</h3>
 <p><abbr title="Controller Area Network，控制器局域网">CAN</abbr> 总线由博世（Bosch）于 1983 年研发，1993 年被纳入 ISO 11898 标准，是目前全球装车量最大的车载总线协议。</p>
@@ -5619,7 +5631,7 @@ MOST 总线的特征拓扑，数据单向流转，具备天然冗余但延迟固
 
 更新流程：
 1. 新固件写入分区 B，计算并验证哈希
-2. Bootloader 设置&quot;待切换&quot;标志
+2. Bootloader 设置"待切换"标志
 3. ECU 重启，Bootloader 从分区 B 启动
 4. 新固件自检通过 → 确认切换，分区 B 成为新主分区
    新固件自检失败 → 自动回退至分区 A
@@ -5667,7 +5679,7 @@ MOST 总线的特征拓扑，数据单向流转，具备天然冗余但延迟固
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 00:50:24 UTC">2026年2月21日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月7日 22:59:19 UTC">2026年9月7日</span>
   </span>
 
     

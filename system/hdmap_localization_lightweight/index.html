@@ -73,6 +73,11 @@
 
     
     
+  
+  <meta name="google-adsense-account" content="ca-pub-8821428748194648">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8821428748194648"
+     crossorigin="anonymous"></script>
+
   </head>
   
   
@@ -4886,13 +4891,13 @@
 <h3 id="22">2.2 权重自适应机制</h3>
 <p>各传感器的融合权重根据实时质量评估动态调整：</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">compute_fusion_weights</span><span class="p">(</span><span class="n">gnss_quality</span><span class="p">,</span> <span class="n">lidar_score</span><span class="p">,</span> <span class="n">vo_score</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    返回归一化融合权重</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">weights</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;gnss&#39;</span><span class="p">:</span> <span class="n">gnss_quality</span> <span class="o">*</span> <span class="n">W_GNSS_BASE</span><span class="p">,</span>
-        <span class="s1">&#39;lidar&#39;</span><span class="p">:</span> <span class="n">lidar_score</span> <span class="o">*</span> <span class="n">W_LIDAR_BASE</span><span class="p">,</span>
-        <span class="s1">&#39;visual&#39;</span><span class="p">:</span> <span class="n">vo_score</span> <span class="o">*</span> <span class="n">W_VO_BASE</span>
+        <span class="s1">'gnss'</span><span class="p">:</span> <span class="n">gnss_quality</span> <span class="o">*</span> <span class="n">W_GNSS_BASE</span><span class="p">,</span>
+        <span class="s1">'lidar'</span><span class="p">:</span> <span class="n">lidar_score</span> <span class="o">*</span> <span class="n">W_LIDAR_BASE</span><span class="p">,</span>
+        <span class="s1">'visual'</span><span class="p">:</span> <span class="n">vo_score</span> <span class="o">*</span> <span class="n">W_VO_BASE</span>
     <span class="p">}</span>
     <span class="c1"># 归一化</span>
     <span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">weights</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
@@ -5104,7 +5109,7 @@ coverage_score:   当前区域地图覆盖完整度
   ├─ 车道级定位：无地图先验时，仅靠感知定位精度有限
   ├─ 长尾场景：不熟悉区域的复杂路口处理能力下降
   ├─ 遮挡与能见度：感知不确定性无法被地图先验弥补
-  └─ 安全余量收紧：系统需要比&quot;有图&quot;时更保守的速度策略
+  └─ 安全余量收紧：系统需要比"有图"时更保守的速度策略
 </code></pre></div>
 <h3 id="63">6.3 行业代表案例对比</h3>
 <table>

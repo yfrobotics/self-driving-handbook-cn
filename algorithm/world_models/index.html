@@ -73,6 +73,11 @@
 
     
     
+  
+  <meta name="google-adsense-account" content="ca-pub-8821428748194648">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8821428748194648"
+     crossorigin="anonymous"></script>
+
   </head>
   
   
@@ -2639,10 +2644,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#63" class="md-nav__link">
+  <a href="#63-20252026" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.3 生成训练数据
+        6.3 2025–2026：从"生成数据"走向"评测基础设施"
       
     </span>
   </a>
@@ -2653,7 +2658,18 @@
   <a href="#64" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.4 闭环仿真
+        6.4 生成训练数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 闭环仿真
       
     </span>
   </a>
@@ -4892,10 +4908,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#63" class="md-nav__link">
+  <a href="#63-20252026" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.3 生成训练数据
+        6.3 2025–2026：从"生成数据"走向"评测基础设施"
       
     </span>
   </a>
@@ -4906,7 +4922,18 @@
   <a href="#64" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.4 闭环仿真
+        6.4 生成训练数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 闭环仿真
       
     </span>
   </a>
@@ -5089,8 +5116,8 @@
 │                             └──────┬───────┘                   │
 │                                    ↓                           │
 │                             想象式规划                          │
-│                             &quot;如果执行 a，                      │
-│                              世界会怎样？&quot;                     │
+│                             "如果执行 a，                      │
+│                              世界会怎样？"                     │
 │                                    ↓                           │
 │                             [规划与控制] ──→ 车辆执行           │
 └──────────────────────────────────────────────────────────────┘
@@ -5351,7 +5378,7 @@
 <div class="highlight"><pre><span></span><code>输入条件:
   ├── 驾驶历史视频帧序列 (过去 N 帧)
   ├── 自车动作序列 (转向角, 油门/制动)
-  └── 文本条件 (可选, 如 &quot;城市道路&quot; &quot;雨天&quot;)
+  └── 文本条件 (可选, 如 "城市道路" "雨天")
         │
         ▼
   视频 Tokenizer (VQ-VAE)
@@ -5475,11 +5502,48 @@
 <li>条件控制包括：3D 边界框布局、<abbr title="Bird's-Eye View，鸟瞰视角">BEV</abbr> 地图、文本描述</li>
 <li>可精确控制场景中车辆和行人的位置、类型和运动轨迹</li>
 </ul>
+<p><strong>WoVogen（World-Volume Generation，2024）</strong>：</p>
+<p>WoVogen 在<strong>三维体积空间</strong>中进行场景生成，而非逐视角生成图像：</p>
+<ul>
+<li>先构建场景的体积表示，再从体积渲染出各摄像头视角</li>
+<li>由于所有视角共享同一份三维体积，多摄像头之间的几何一致性由构造保证</li>
+<li>相比 DriveDreamer 等逐视角扩散方案，显著缓解了"同一物体在相邻视角中位置/形状矛盾"的问题</li>
+</ul>
 <p><strong>DriveWM（2024）</strong>：</p>
 <p>DriveWM 将世界模型与多视角一致性显式结合：</p>
 <div class="arithmatex">\[\mathcal{L} = \mathcal{L}_\text{recon} + \lambda_\text{mv}\mathcal{L}_\text{multi-view} + \lambda_\text{temp}\mathcal{L}_\text{temporal}\]</div>
 <p>其中 <span class="arithmatex">\(\mathcal{L}_\text{multi-view}\)</span> 约束不同视角之间的几何一致性，<span class="arithmatex">\(\mathcal{L}_\text{temporal}\)</span> 约束相邻帧之间的时序连贯性。</p>
-<h3 id="63">6.3 生成训练数据</h3>
+<h3 id="63-20252026">6.3 2025–2026：从"生成数据"走向"评测基础设施"</h3>
+<p>2024 年的世界模型主要被当作 <strong>数据增强器</strong>；2025–2026 年的这一代则把重心移到了 <strong>评测与验证</strong>——因为真正卡住量产的不是训练数据不够，而是"改完模型如何证明它变好了"。</p>
+<p><strong>GAIA-3（Wayve, 2025 年 12 月）</strong>：</p>
+<ul>
+<li><strong>150 亿参数</strong>，训练数据量为 GAIA-2 的 10 倍，重新设计了视频 tokenizer</li>
+<li>定位明确从"生成"转向 <strong>评估与验证</strong>：在多样化与安全关键条件下，对自动驾驶性能做 <strong>一致、可重复</strong> 的评测</li>
+<li>支持跨车型、跨环境、跨场景的泛化评估——即同一套评测可用于不同车辆平台</li>
+</ul>
+<p><strong>Waymo World Model（2026 年 2 月）</strong>：</p>
+<ul>
+<li>构建在 Google DeepMind <strong>Genie 3</strong> 通用世界模型之上，针对驾驶域做了适配</li>
+<li>关键差异：输出 <strong>多传感器</strong> 高保真数据，同时包含摄像头与 <strong><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr></strong>，而非仅生成视频</li>
+<li>用于生成极难预测的边缘场景（龙卷风、被淹街道，乃至"路上的大象"）</li>
+<li>意义：这是首次由商业 Robotaxi 运营商把生成式世界模型直接接入其量产验证闭环</li>
+</ul>
+<p><strong>NVIDIA Cosmos 3（2026 年）</strong>：</p>
+<ul>
+<li>开源的物理 AI 基础模型，采用 <strong>mixture-of-transformers</strong> 架构，在同一模型中处理文本、图像、视频、音频与动作</li>
+<li>配套 <strong>Cosmos Policy</strong> 将世界模型从"模拟环境"扩展到"生成动作"</li>
+<li>是 NVIDIA Alpamayo 等驾驶 <abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 模型的底座之一（见 <a href="../../vlm/outlook/"><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 展望与挑战</a>）</li>
+</ul>
+<p><strong>中国厂商</strong>：</p>
+<ul>
+<li><strong>蔚来 NWM</strong>（2026 年 1 月）：国内首个将 <strong>闭环强化学习</strong> 与世界模型系统性结合的方案，形成"世界模型 + 闭环 RL"的训练架构</li>
+<li><strong>小鹏 X-World</strong>、<strong>华为 WEWA 2.0</strong>（云端世界模型引入"多智能体博弈"机制）等，均把世界模型作为云端训练与验证的核心组件</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">为什么关键价值是评测，而不是数据</p>
+<p>合成数据能提升训练集覆盖，但它的收益会随真实数据规模增长而递减。评测则相反：真实道路上的长尾场景 <strong>无法按需复现</strong>，而一次回归测试需要同一场景重复上千次。世界模型的不可替代价值在于把"不可重复的真实事故"变成"可重复的测试用例"——这也是 GAIA-3 与 Waymo World Model 都强调 <em>repeatable evaluation</em> 的原因。</p>
+</div>
+<h3 id="64">6.4 生成训练数据</h3>
 <p>世界模型生成的合成数据可以有效扩充训练集，尤其是覆盖真实数据中稀缺的长尾场景：</p>
 <p><strong>数据增强流程</strong>：</p>
 <div class="highlight"><pre><span></span><code>真实驾驶数据 → 世界模型编码 → 潜在空间 → 条件修改 → 解码生成
@@ -5494,7 +5558,7 @@
                               └─────────────────────┘
 </code></pre></div>
 <div class="arithmatex">\[o_\text{aug} = \text{Decoder}\left(f_\theta(z_\text{real}, c_\text{new})\right), \quad c_\text{new} \in \{\text{rain}, \text{night}, \text{fog}, \text{accident}, \ldots\}\]</div>
-<h3 id="64">6.4 闭环仿真</h3>
+<h3 id="65">6.5 闭环仿真</h3>
 <p>传统自动驾驶仿真（如 CARLA）依赖手工构建的三维场景和规则驱动的交通参与者行为，在场景多样性和交通行为真实性上存在不足。基于世界模型的闭环仿真通过学习真实数据中的场景分布和交通动态，实现更逼真的仿真环境：</p>
 <div class="arithmatex">\[\text{闭环仿真循环}: \quad o_t \xrightarrow{\text{规划}} a_t \xrightarrow{\text{世界模型}} o_{t+1} \xrightarrow{\text{规划}} a_{t+1} \rightarrow \cdots\]</div>
 <p>在每个时间步，规划模块基于世界模型生成的观测做出决策，决策的结果又反馈给世界模型生成下一步的观测。这种闭环交互使得仿真能够评估自动驾驶系统在连续决策场景中的表现，而非仅评估单帧预测精度。</p>
@@ -5554,7 +5618,8 @@
 <p><strong>幻觉问题（Hallucination）</strong></p>
 <p>生成式世界模型可能产生看似逼真但物理上不合理的场景——例如生成穿越墙壁的车辆、违反运动学约束的轨迹、或凭空出现/消失的物体。这在安全关键的自动驾驶应用中是不可接受的。</p>
 <p><strong>计算成本</strong></p>
-<p>大规模世界模型（如 GAIA-1 的 9B 参数）在推理时的计算开销远超实时要求。即使在潜在空间中操作，每个时间步的世界模型推理 + 多候选轨迹评估仍然是巨大的计算负担。</p>
+<p>大规模世界模型在推理时的计算开销远超实时要求：从 GAIA-1 的 9B 参数到 GAIA-3 的 15B，模型规模仍在增长。即使在潜在空间中操作，每个时间步的世界模型推理 + 多候选轨迹评估仍然是巨大的计算负担。</p>
+<p>这也解释了 2026 年的工程分工：<strong>世界模型留在云端做训练与评测，车端只跑蒸馏后的策略模型</strong>。目前没有任何量产方案把生成式世界模型直接放到车上做在线推理。</p>
 <table>
 <thead>
 <tr>
@@ -5670,10 +5735,25 @@
 <p><strong>Gao, R., et al.</strong> "MagicDrive: Street View Generation with Diverse 3D Geometry Control." <em>ICLR 2024</em>. <a href="https://arxiv.org/abs/2310.02601">arXiv:2310.02601</a></p>
 </li>
 <li>
+<p><strong>Lu, J., et al.</strong> "WoVoGen: World Volume-aware Diffusion for Controllable Multi-camera Driving Scene Generation." <em>ECCV 2024</em>. <a href="https://arxiv.org/abs/2312.02934">arXiv:2312.02934</a></p>
+</li>
+<li>
 <p><strong>Huang, Y., et al.</strong> "GaussianFormer: Scene as Gaussians for Vision-Based 3D Semantic Occupancy Prediction." <em>ECCV 2024</em>.</p>
 </li>
 <li>
 <p><strong>Wang, Y., et al.</strong> "Driving into the Future: Multiview Visual Forecasting and Planning with World Model for Autonomous Driving (DriveWM)." <em>CVPR 2024</em>.</p>
+</li>
+<li>
+<p><strong>Wayve.</strong> <em>"Wayve launches GAIA-3, advancing world models from simulation to evaluation."</em> Wayve Press Release, 2025 年 12 月.</p>
+</li>
+<li>
+<p><strong>Waymo.</strong> <em>"The Waymo World Model: A New Frontier For Autonomous Driving Simulation."</em> Waymo Blog, 2026 年 2 月.</p>
+</li>
+<li>
+<p><strong>NVIDIA.</strong> <em>"NVIDIA Launches Cosmos 3, the Open Frontier Foundation Model for Physical AI."</em> NVIDIA Newsroom, 2026.</p>
+</li>
+<li>
+<p><strong>NVIDIA.</strong> <em>"Alpamayo-R1: Bridging Reasoning and Action Prediction for Generalizable Autonomous Driving in the Long Tail."</em> <a href="https://arxiv.org/abs/2511.00088">arXiv:2511.00088</a>, 2025.</p>
 </li>
 </ol>
 
@@ -5696,7 +5776,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月4日 00:00:31 UTC">2026年3月4日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月7日 22:59:19 UTC">2026年9月7日</span>
   </span>
 
     

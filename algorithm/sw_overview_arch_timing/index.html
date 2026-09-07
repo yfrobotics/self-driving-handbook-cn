@@ -73,6 +73,11 @@
 
     
     
+  
+  <meta name="google-adsense-account" content="ca-pub-8821428748194648">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8821428748194648"
+     crossorigin="anonymous"></script>
+
   </head>
   
   
@@ -4827,8 +4832,8 @@ GNSS/IMU(0ms) ──────────────────────
         <span class="n">t_pub</span> <span class="o">=</span> <span class="n">now</span><span class="p">()</span>
         <span class="n">latency_proc</span> <span class="o">=</span> <span class="n">t_pub</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_recv</span>        <span class="c1"># 处理时延</span>
         <span class="n">latency_e2e</span>  <span class="o">=</span> <span class="n">t_pub</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_sensor</span>      <span class="c1"># 端到端时延</span>
-        <span class="n">publish_metric</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_proc_ms&quot;</span><span class="p">,</span> <span class="n">latency_proc</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
-        <span class="n">publish_metric</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_e2e_ms&quot;</span><span class="p">,</span>  <span class="n">latency_e2e</span>  <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+        <span class="n">publish_metric</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_proc_ms"</span><span class="p">,</span> <span class="n">latency_proc</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+        <span class="n">publish_metric</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_e2e_ms"</span><span class="p">,</span>  <span class="n">latency_e2e</span>  <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
 </code></pre></div>
 <hr />
 <h2 id="4">4. 实时调度策略</h2>

@@ -73,6 +73,11 @@
 
     
     
+  
+  <meta name="google-adsense-account" content="ca-pub-8821428748194648">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8821428748194648"
+     crossorigin="anonymous"></script>
+
   </head>
   
   
@@ -4883,7 +4888,7 @@
 <span class="k">if</span> <span class="n">t_elapsed</span> <span class="o">&gt;</span> <span class="n">budget_ms</span><span class="p">:</span>
     <span class="c1"># 求解超时</span>
     <span class="n">trajectory</span> <span class="o">=</span> <span class="n">fallback_trajectory</span>  <span class="c1"># 上周期安全轨迹</span>
-    <span class="n">alert</span><span class="p">(</span><span class="s2">&quot;planning_timeout&quot;</span><span class="p">)</span>
+    <span class="n">alert</span><span class="p">(</span><span class="s2">"planning_timeout"</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="62">6.2 降级策略层级</h3>
 <div class="highlight"><pre><span></span><code>正常：全约束优化轨迹（高舒适性，最优性）
@@ -4950,7 +4955,7 @@ MRC：靠边停车
 <div class="highlight"><pre><span></span><code><span class="nt">trajectory</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">header</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">timestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1234567890.123</span>
-<span class="w">    </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;map&quot;</span>
+<span class="w">    </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">"map"</span>
 <span class="w">    </span><span class="nt">valid_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span><span class="w">  </span><span class="c1"># 秒</span>
 <span class="w">  </span><span class="nt">points</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">s</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
@@ -4964,7 +4969,7 @@ MRC：靠边停车
 <span class="w">      </span><span class="nt">timestamp_offset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 <span class="w">  </span><span class="nt">confidence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.95</span>
-<span class="w">  </span><span class="nt">fallback_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;KEEP_LANE&quot;</span><span class="w">   </span><span class="c1"># 无解时的降级策略标识</span>
+<span class="w">  </span><span class="nt">fallback_type</span><span class="p">:</span><span class="w"> </span><span class="s">"KEEP_LANE"</span><span class="w">   </span><span class="c1"># 无解时的降级策略标识</span>
 <span class="w">  </span><span class="nt">failure_code</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w">              </span><span class="c1"># 0=正常，非0=错误码</span>
 </code></pre></div>
 

@@ -73,6 +73,11 @@
 
     
     
+  
+  <meta name="google-adsense-account" content="ca-pub-8821428748194648">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8821428748194648"
+     crossorigin="anonymous"></script>
+
   </head>
   
   
@@ -4928,25 +4933,25 @@ PTP 主时钟（域控 SoC）
 <div class="highlight"><pre><span></span><code><span class="c1"># 摄像头健康监控指标</span>
 <span class="n">camera_health_metrics</span> <span class="o">=</span> <span class="p">{</span>
     <span class="c1"># 图像质量</span>
-    <span class="s2">&quot;sharpness_score&quot;</span><span class="p">:</span>      <span class="p">{</span><span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;laplacian_variance&quot;</span><span class="p">,</span> <span class="s2">&quot;threshold&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">},</span>
-    <span class="s2">&quot;brightness_mean&quot;</span><span class="p">:</span>      <span class="p">{</span><span class="s2">&quot;range&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">235</span><span class="p">],</span> <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;pixel&quot;</span><span class="p">},</span>
-    <span class="s2">&quot;contrast_ratio&quot;</span><span class="p">:</span>       <span class="p">{</span><span class="s2">&quot;threshold_low&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">},</span>
-    <span class="s2">&quot;noise_level&quot;</span><span class="p">:</span>          <span class="p">{</span><span class="s2">&quot;threshold&quot;</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">,</span> <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;dB SNR&quot;</span><span class="p">},</span>
-    <span class="s2">&quot;color_cast&quot;</span><span class="p">:</span>           <span class="p">{</span><span class="s2">&quot;delta_uv_threshold&quot;</span><span class="p">:</span> <span class="mf">0.02</span><span class="p">},</span>
+    <span class="s2">"sharpness_score"</span><span class="p">:</span>      <span class="p">{</span><span class="s2">"method"</span><span class="p">:</span> <span class="s2">"laplacian_variance"</span><span class="p">,</span> <span class="s2">"threshold"</span><span class="p">:</span> <span class="mi">100</span><span class="p">},</span>
+    <span class="s2">"brightness_mean"</span><span class="p">:</span>      <span class="p">{</span><span class="s2">"range"</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">235</span><span class="p">],</span> <span class="s2">"unit"</span><span class="p">:</span> <span class="s2">"pixel"</span><span class="p">},</span>
+    <span class="s2">"contrast_ratio"</span><span class="p">:</span>       <span class="p">{</span><span class="s2">"threshold_low"</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">},</span>
+    <span class="s2">"noise_level"</span><span class="p">:</span>          <span class="p">{</span><span class="s2">"threshold"</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">,</span> <span class="s2">"unit"</span><span class="p">:</span> <span class="s2">"dB SNR"</span><span class="p">},</span>
+    <span class="s2">"color_cast"</span><span class="p">:</span>           <span class="p">{</span><span class="s2">"delta_uv_threshold"</span><span class="p">:</span> <span class="mf">0.02</span><span class="p">},</span>
 
     <span class="c1"># 传输质量</span>
-    <span class="s2">&quot;frame_rate&quot;</span><span class="p">:</span>           <span class="p">{</span><span class="s2">&quot;expected&quot;</span><span class="p">:</span> <span class="mf">30.0</span><span class="p">,</span> <span class="s2">&quot;tolerance&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">},</span>
-    <span class="s2">&quot;frame_drop_rate&quot;</span><span class="p">:</span>      <span class="p">{</span><span class="s2">&quot;threshold&quot;</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;drop/frame&quot;</span><span class="p">},</span>
-    <span class="s2">&quot;latency_p99&quot;</span><span class="p">:</span>          <span class="p">{</span><span class="s2">&quot;threshold&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;ms&quot;</span><span class="p">},</span>
-    <span class="s2">&quot;bit_error_rate&quot;</span><span class="p">:</span>       <span class="p">{</span><span class="s2">&quot;threshold&quot;</span><span class="p">:</span> <span class="mf">1e-7</span><span class="p">},</span>
+    <span class="s2">"frame_rate"</span><span class="p">:</span>           <span class="p">{</span><span class="s2">"expected"</span><span class="p">:</span> <span class="mf">30.0</span><span class="p">,</span> <span class="s2">"tolerance"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">},</span>
+    <span class="s2">"frame_drop_rate"</span><span class="p">:</span>      <span class="p">{</span><span class="s2">"threshold"</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s2">"unit"</span><span class="p">:</span> <span class="s2">"drop/frame"</span><span class="p">},</span>
+    <span class="s2">"latency_p99"</span><span class="p">:</span>          <span class="p">{</span><span class="s2">"threshold"</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="s2">"unit"</span><span class="p">:</span> <span class="s2">"ms"</span><span class="p">},</span>
+    <span class="s2">"bit_error_rate"</span><span class="p">:</span>       <span class="p">{</span><span class="s2">"threshold"</span><span class="p">:</span> <span class="mf">1e-7</span><span class="p">},</span>
 
     <span class="c1"># 遮挡检测</span>
-    <span class="s2">&quot;occlusion_ratio&quot;</span><span class="p">:</span>      <span class="p">{</span><span class="s2">&quot;threshold&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;fraction&quot;</span><span class="p">},</span>
-    <span class="s2">&quot;roi_brightness_drop&quot;</span><span class="p">:</span>  <span class="p">{</span><span class="s2">&quot;threshold&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;pixel&quot;</span><span class="p">},</span>
+    <span class="s2">"occlusion_ratio"</span><span class="p">:</span>      <span class="p">{</span><span class="s2">"threshold"</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s2">"unit"</span><span class="p">:</span> <span class="s2">"fraction"</span><span class="p">},</span>
+    <span class="s2">"roi_brightness_drop"</span><span class="p">:</span>  <span class="p">{</span><span class="s2">"threshold"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">"unit"</span><span class="p">:</span> <span class="s2">"pixel"</span><span class="p">},</span>
 
     <span class="c1"># 同步质量</span>
-    <span class="s2">&quot;timestamp_jitter&quot;</span><span class="p">:</span>     <span class="p">{</span><span class="s2">&quot;threshold&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;ms&quot;</span><span class="p">},</span>
-    <span class="s2">&quot;sync_offset_max&quot;</span><span class="p">:</span>      <span class="p">{</span><span class="s2">&quot;threshold&quot;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;ms&quot;</span><span class="p">},</span>
+    <span class="s2">"timestamp_jitter"</span><span class="p">:</span>     <span class="p">{</span><span class="s2">"threshold"</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s2">"unit"</span><span class="p">:</span> <span class="s2">"ms"</span><span class="p">},</span>
+    <span class="s2">"sync_offset_max"</span><span class="p">:</span>      <span class="p">{</span><span class="s2">"threshold"</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s2">"unit"</span><span class="p">:</span> <span class="s2">"ms"</span><span class="p">},</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="32">3.2 遮挡检测算法</h3>

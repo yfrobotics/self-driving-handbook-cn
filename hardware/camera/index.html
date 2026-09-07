@@ -73,6 +73,11 @@
 
     
     
+  
+  <meta name="google-adsense-account" content="ca-pub-8821428748194648">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8821428748194648"
+     crossorigin="anonymous"></script>
+
   </head>
   
   
@@ -4932,6 +4937,13 @@
 
 <h1 id="_1">视觉传感器（摄像头）</h1>
 <p>摄像头是自动驾驶感知系统的核心传感器。相比激光雷达和毫米波雷达，摄像头具有成本低、信息密度高的显著优势——单颗图像传感器即可同时获取颜色、纹理、形状和语义信息，非常适合交通标志识别、车道线检测、目标分类等需要语义理解的任务。以特斯拉为代表的纯视觉自动驾驶方案证明，在算法足够强大的前提下，摄像头阵列可以成为整个感知体系的基础。</p>
+<div class="admonition info">
+<p class="admonition-title">本节包含</p>
+<ul>
+<li><a href="../camera_imaging_calibration/">成像与标定</a> — 光学成像基础、<abbr title="Image Signal Processor，图像信号处理器">ISP</abbr> 管线、内外参标定、误差治理与工厂标定流程</li>
+<li><a href="../camera_sync_reliability/">同步与可靠性</a> — 多传感器时间同步、可靠性挑战、在线健康监测与降级策略</li>
+</ul>
+</div>
 <h2 id="1">1. 摄像头光学基础</h2>
 <h3 id="11">1.1 小孔成像模型</h3>
 <p>摄像头最常用的数学模型是<strong>小孔相机模型（Pinhole Camera Model）</strong>。三维空间中的点 <span class="arithmatex">\(P = (X, Y, Z)\)</span> 经过光心投影到像平面上的点 <span class="arithmatex">\(p = (x, y)\)</span>，满足：</p>
@@ -5448,7 +5460,7 @@ $$y' = y + [p_1(r^2 + 2y^2) + 2p_2 xy]\]</div>
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月21日 00:50:24 UTC">2026年2月21日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月7日 22:59:19 UTC">2026年9月7日</span>
   </span>
 
     
