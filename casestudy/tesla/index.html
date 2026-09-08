@@ -18,7 +18,7 @@
         <link rel="prev" href="../waymo/">
       
       
-        <link rel="next" href="../chinese_players/">
+        <link rel="next" href="../tesla_cybercab/">
       
       
         
@@ -3831,6 +3831,55 @@
   
   
   
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla 案例
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tesla 案例
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -4147,6 +4196,42 @@
     </ul>
   
 </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tesla_cybercab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla Cybercab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -4657,6 +4742,12 @@
 
 <h1 id="tesla-fsd">Tesla <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr></h1>
 <p>Tesla（特斯拉）是全球最大的电动汽车公司，也是自动驾驶领域最具争议性的玩家。Tesla 的自动驾驶策略与行业主流截然不同：放弃激光雷达、依赖纯视觉，通过数百万辆车的数据飞轮迭代进化。这一路线被批评者称为"危险的冒险"，被支持者视为"正确的终局"。</p>
+<div class="admonition info">
+<p class="admonition-title">本节包含</p>
+<ul>
+<li><a href="../tesla_cybercab/">Tesla Cybercab</a> — 专用 Robotaxi 车型的整车规格、unboxed 制造工艺、自我认证监管路径与 NHTSA 审计</li>
+</ul>
+</div>
 <h2 id="_1">核心理念：纯视觉路线</h2>
 <p>Tesla CEO Elon Musk 于 2019 年在 Autonomy Day 上发表了著名言论：</p>
 <blockquote>
@@ -4917,7 +5008,7 @@ BEV 特征图（统一 3D 表示）
 </tr>
 <tr>
 <td>2026-04</td>
-<td>Cybercab 进入连续生产爬坡，目标年中约 1,000 辆/周</td>
+<td>Cybercab 进入连续生产爬坡（2026 年 7 月被移出当年"放量生产"产品清单，4680 电芯产能为瓶颈）</td>
 </tr>
 <tr>
 <td>2026-06</td>
@@ -4927,17 +5018,21 @@ BEV 特征图（统一 3D 表示）
 <td>2026-07</td>
 <td>进入迈阿密，首次走出得州/加州（受益于佛州无需专门许可的宽松法规）</td>
 </tr>
+<tr>
+<td>2026-09-03</td>
+<td>奥斯汀 Cybercab 发布会；同日 NHTSA 就其自我认证开出审计问询 AQ26002</td>
+</tr>
+<tr>
+<td>2026-09-04</td>
+<td>Cybercab 在奥斯汀限定区域开始付费载客</td>
+</tr>
 </tbody>
 </table>
 <p><strong>规模现实：</strong> 尽管城市数量增长较快，无监督（unsupervised）运营的车辆规模仍然很小——第三方追踪显示 2026 年年中奥斯汀约 20–25 辆，达拉斯/休斯敦各数辆。马斯克在 2026 年一季度财报会上表示目标为"2026 年底覆盖美国十余个州"，但同期多个已宣布城市的落地时间出现推迟。</p>
 <p><strong>安全数据：</strong> 截至 2026 年 2 月，奥斯汀车队累计行驶约 80 万英里，向 NHTSA 上报碰撞 14 起（约每 5.7 万英里一起）。第三方分析认为该事故率高于可比人类驾驶水平，成为监管审视的重要依据。</p>
 <h3 id="cybercab">Cybercab</h3>
-<ul>
-<li><strong>无方向盘和踏板</strong>（L5 设计）</li>
-<li>纯视觉感知，搭载 AI4 计算硬件</li>
-<li>目标零售价 &lt; $30,000</li>
-<li>定位：建立 Tesla 自营 Robotaxi 车队，同时保留车主将私家车接入共享网络的长期愿景（截至 2026 年年中该共享模式仍未启动）</li>
-</ul>
+<p>Cybercab 是 Tesla 为 Robotaxi 从零设计的双座专用车型：无方向盘与踏板、纯视觉感知、搭载 AI4 计算硬件、目标生产成本低于 $30,000。它于 2026 年 4 月量产、9 月 4 日在奥斯汀开始付费载客，是美国首款以<strong>自我认证</strong>（而非 Part 555 联邦豁免）方式上路的无方向盘车辆——NHTSA 因此在其上路当日开出审计问询 AQ26002。</p>
+<p>整车规格、unboxed 制造工艺、单位经济性、监管路径的完整分析见 <strong><a href="../tesla_cybercab/">Tesla Cybercab</a></strong>。</p>
 <p><strong>与 Waymo 的战略对比：</strong></p>
 <table>
 <thead>
@@ -5007,7 +5102,7 @@ BEV 特征图（统一 3D 表示）
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年7月20日 19:45:22 UTC">2026年7月20日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月8日 03:11:45 UTC">2026年9月8日</span>
   </span>
 
     
