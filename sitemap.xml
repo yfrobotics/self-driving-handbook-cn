@@ -17,6 +17,10 @@
          <lastmod>2026-09-11</lastmod>
     </url>
     <url>
+         <loc>https://yfrobotics.github.io/self-driving-handbook-cn/algorithm/</loc>
+         <lastmod>2026-09-11</lastmod>
+    </url>
+    <url>
          <loc>https://yfrobotics.github.io/self-driving-handbook-cn/algorithm/control/</loc>
          <lastmod>2026-09-11</lastmod>
     </url>
@@ -73,10 +77,6 @@
          <lastmod>2026-09-11</lastmod>
     </url>
     <url>
-         <loc>https://yfrobotics.github.io/self-driving-handbook-cn/algorithm/main/</loc>
-         <lastmod>2026-09-11</lastmod>
-    </url>
-    <url>
          <loc>https://yfrobotics.github.io/self-driving-handbook-cn/algorithm/metrics_validation/</loc>
          <lastmod>2026-09-11</lastmod>
     </url>
@@ -125,6 +125,10 @@
          <lastmod>2026-09-11</lastmod>
     </url>
     <url>
+         <loc>https://yfrobotics.github.io/self-driving-handbook-cn/casestudy/</loc>
+         <lastmod>2026-09-11</lastmod>
+    </url>
+    <url>
          <loc>https://yfrobotics.github.io/self-driving-handbook-cn/casestudy/apollo/</loc>
          <lastmod>2026-09-11</lastmod>
     </url>
@@ -141,10 +145,6 @@
          <lastmod>2026-09-11</lastmod>
     </url>
     <url>
-         <loc>https://yfrobotics.github.io/self-driving-handbook-cn/casestudy/main/</loc>
-         <lastmod>2026-09-11</lastmod>
-    </url>
-    <url>
          <loc>https://yfrobotics.github.io/self-driving-handbook-cn/casestudy/robotaxi/</loc>
          <lastmod>2026-09-11</lastmod>
     </url>
@@ -158,6 +158,10 @@
     </url>
     <url>
          <loc>https://yfrobotics.github.io/self-driving-handbook-cn/casestudy/waymo/</loc>
+         <lastmod>2026-09-11</lastmod>
+    </url>
+    <url>
+         <loc>https://yfrobotics.github.io/self-driving-handbook-cn/hardware/</loc>
          <lastmod>2026-09-11</lastmod>
     </url>
     <url>
@@ -217,10 +221,6 @@
          <lastmod>2026-09-11</lastmod>
     </url>
     <url>
-         <loc>https://yfrobotics.github.io/self-driving-handbook-cn/hardware/main/</loc>
-         <lastmod>2026-09-11</lastmod>
-    </url>
-    <url>
          <loc>https://yfrobotics.github.io/self-driving-handbook-cn/hardware/sensors/</loc>
          <lastmod>2026-09-11</lastmod>
     </url>
@@ -230,6 +230,10 @@
     </url>
     <url>
          <loc>https://yfrobotics.github.io/self-driving-handbook-cn/hardware/sensors_vision_positioning/</loc>
+         <lastmod>2026-09-11</lastmod>
+    </url>
+    <url>
+         <loc>https://yfrobotics.github.io/self-driving-handbook-cn/intro/</loc>
          <lastmod>2026-09-11</lastmod>
     </url>
     <url>
@@ -249,15 +253,11 @@
          <lastmod>2026-09-11</lastmod>
     </url>
     <url>
-         <loc>https://yfrobotics.github.io/self-driving-handbook-cn/intro/main/</loc>
+         <loc>https://yfrobotics.github.io/self-driving-handbook-cn/simulation/</loc>
          <lastmod>2026-09-11</lastmod>
     </url>
     <url>
          <loc>https://yfrobotics.github.io/self-driving-handbook-cn/simulation/environment/</loc>
-         <lastmod>2026-09-11</lastmod>
-    </url>
-    <url>
-         <loc>https://yfrobotics.github.io/self-driving-handbook-cn/simulation/main/</loc>
          <lastmod>2026-09-11</lastmod>
     </url>
     <url>
@@ -282,6 +282,10 @@
     </url>
     <url>
          <loc>https://yfrobotics.github.io/self-driving-handbook-cn/simulation/sim2real/</loc>
+         <lastmod>2026-09-11</lastmod>
+    </url>
+    <url>
+         <loc>https://yfrobotics.github.io/self-driving-handbook-cn/system/</loc>
          <lastmod>2026-09-11</lastmod>
     </url>
     <url>
@@ -310,10 +314,6 @@
     </url>
     <url>
          <loc>https://yfrobotics.github.io/self-driving-handbook-cn/system/incidents/</loc>
-         <lastmod>2026-09-11</lastmod>
-    </url>
-    <url>
-         <loc>https://yfrobotics.github.io/self-driving-handbook-cn/system/main/</loc>
          <lastmod>2026-09-11</lastmod>
     </url>
     <url>
@@ -353,6 +353,10 @@
          <lastmod>2026-09-11</lastmod>
     </url>
     <url>
+         <loc>https://yfrobotics.github.io/self-driving-handbook-cn/vlm/</loc>
+         <lastmod>2026-09-11</lastmod>
+    </url>
+    <url>
          <loc>https://yfrobotics.github.io/self-driving-handbook-cn/vlm/data_annotation/</loc>
          <lastmod>2026-09-11</lastmod>
     </url>
@@ -370,10 +374,6 @@
     </url>
     <url>
          <loc>https://yfrobotics.github.io/self-driving-handbook-cn/vlm/hmi/</loc>
-         <lastmod>2026-09-11</lastmod>
-    </url>
-    <url>
-         <loc>https://yfrobotics.github.io/self-driving-handbook-cn/vlm/main/</loc>
          <lastmod>2026-09-11</lastmod>
     </url>
     <url>

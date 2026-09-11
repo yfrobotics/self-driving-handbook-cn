@@ -12,31 +12,31 @@
         <meta name="author" content="YFRL">
       
       
-        <link rel="canonical" href="https://yfrobotics.github.io/self-driving-handbook-cn/system/incidents/">
+        <link rel="canonical" href="https://yfrobotics.github.io/self-driving-handbook-cn/simulation/">
       
       
-        <link rel="prev" href="../testing/">
+        <link rel="prev" href="../algorithm/nlp/">
       
       
-        <link rel="next" href="../cybersecurity/">
+        <link rel="next" href="platforms/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>典型事故与经验教训 - 自动驾驶指南</title>
+        <title>第五章：仿真测试 - 自动驾驶指南</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,9 +55,9 @@
       
     
     
-      <link rel="stylesheet" href="../../_static/css/extra.css">
+      <link rel="stylesheet" href="../_static/css/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -111,7 +111,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../.." title="自动驾驶指南" class="md-header__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+    <a href=".." title="自动驾驶指南" class="md-header__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -131,7 +131,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              典型事故与经验教训
+              第五章：仿真测试
             
           </span>
         </div>
@@ -221,7 +221,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="自动驾驶指南" class="md-nav__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+    <a href=".." title="自动驾驶指南" class="md-nav__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -251,7 +251,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -304,7 +304,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../intro/" class="md-nav__link ">
+            <a href="../intro/" class="md-nav__link ">
               
   
   
@@ -348,7 +348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../intro/define/" class="md-nav__link">
+      <a href="../intro/define/" class="md-nav__link">
         
   
   
@@ -376,7 +376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../intro/category/" class="md-nav__link">
+      <a href="../intro/category/" class="md-nav__link">
         
   
   
@@ -404,7 +404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../intro/history/" class="md-nav__link">
+      <a href="../intro/history/" class="md-nav__link">
         
   
   
@@ -432,7 +432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../intro/glossary/" class="md-nav__link">
+      <a href="../intro/glossary/" class="md-nav__link">
         
   
   
@@ -464,8 +464,6 @@
       
   
   
-    
-  
   
   
     
@@ -503,15 +501,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../system/" class="md-nav__link ">
               
   
   
@@ -535,7 +533,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -555,7 +553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../architecture/" class="md-nav__link">
+      <a href="../system/architecture/" class="md-nav__link">
         
   
   
@@ -583,7 +581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../vehicle/" class="md-nav__link">
+      <a href="../system/vehicle/" class="md-nav__link">
         
   
   
@@ -666,7 +664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../v2x/" class="md-nav__link">
+      <a href="../system/v2x/" class="md-nav__link">
         
   
   
@@ -694,7 +692,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../v2x_comm_rsu/" class="md-nav__link">
+      <a href="../system/v2x_comm_rsu/" class="md-nav__link">
         
   
   
@@ -722,7 +720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../v2x_security_operations/" class="md-nav__link">
+      <a href="../system/v2x_security_operations/" class="md-nav__link">
         
   
   
@@ -758,7 +756,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../platform/" class="md-nav__link">
+      <a href="../system/platform/" class="md-nav__link">
         
   
   
@@ -786,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../open_source_platforms/" class="md-nav__link">
+      <a href="../system/open_source_platforms/" class="md-nav__link">
         
   
   
@@ -869,7 +867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hdmap/" class="md-nav__link">
+      <a href="../system/hdmap/" class="md-nav__link">
         
   
   
@@ -897,7 +895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hdmap_data_lifecycle/" class="md-nav__link">
+      <a href="../system/hdmap_data_lifecycle/" class="md-nav__link">
         
   
   
@@ -925,7 +923,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hdmap_localization_lightweight/" class="md-nav__link">
+      <a href="../system/hdmap_localization_lightweight/" class="md-nav__link">
         
   
   
@@ -961,7 +959,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hmi/" class="md-nav__link">
+      <a href="../system/hmi/" class="md-nav__link">
         
   
   
@@ -989,7 +987,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../safety/" class="md-nav__link">
+      <a href="../system/safety/" class="md-nav__link">
         
   
   
@@ -1017,7 +1015,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/" class="md-nav__link">
+      <a href="../system/testing/" class="md-nav__link">
         
   
   
@@ -1042,37 +1040,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    典型事故与经验教训
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../system/incidents/" class="md-nav__link">
         
   
   
@@ -1088,252 +1059,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 事故分类框架
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 事故详解
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. 事故详解">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-uber-atgtempe-2018-03-18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.1 Uber ATG：Tempe 亚利桑那致死事故（2018-03-18）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-tesla-autopilotjoshua-brown-2016-05-07" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.2 Tesla Autopilot：Joshua Brown 事故（2016-05-07，佛罗里达）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23-uber-atg-cruise-pedestrian-drag-2023-10-02" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.3 Uber ATG 之后：Cruise 旧金山 Pedestrian Drag 事件（2023-10-02）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#24-waymo-2024-02" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.4 Waymo 拖行行人事件（2024-02，凤凰城）与自报披露
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#25-tesla-fsd-highway-patrol-2023-02fremont" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.5 Tesla FSD 与 Highway Patrol 案（2023-02，Fremont）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#26-apollo-go-20232024" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.6 Apollo Go 武汉运营期间的典型事件（2023–2024）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#27-tesla-model-s-2021-04spring-tx" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.7 Tesla Model S 加州高速火灾（2021-04，Spring, TX）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#28-ponyai-weride" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.8 Pony.ai / WeRide 等国内路测事件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#29-jeep-cherokee-2015" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.9 网络安全事件：Jeep Cherokee 远程劫持（2015）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#210-su7-2025-03-29" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.10 小米 SU7 高速事故（2025-03-29，安徽铜陵）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#211-2026-03-31" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.11 萝卜快跑武汉大规模趴窝事件（2026-03-31）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#212-waymo-2026" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.12 Waymo 的规模化召回（2026）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#213-zoox-2026-06" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.13 Zoox 火灾现场处置失当与召回（2026-06）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#214-tesla-katy-2026-06-19" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.14 Tesla Katy 致命事故（2026-06-19，得克萨斯）
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 关键教训汇总
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 事故复盘的方法论
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 小结
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        参考资料
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1346,7 +1071,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cybersecurity/" class="md-nav__link">
+      <a href="../system/cybersecurity/" class="md-nav__link">
         
   
   
@@ -1374,7 +1099,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../regulation/" class="md-nav__link">
+      <a href="../system/regulation/" class="md-nav__link">
         
   
   
@@ -1441,7 +1166,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../hardware/" class="md-nav__link ">
+            <a href="../hardware/" class="md-nav__link ">
               
   
   
@@ -1485,7 +1210,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/hw_overview/" class="md-nav__link">
+      <a href="../hardware/hw_overview/" class="md-nav__link">
         
   
   
@@ -1568,7 +1293,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/ccu/" class="md-nav__link">
+      <a href="../hardware/ccu/" class="md-nav__link">
         
   
   
@@ -1596,7 +1321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/ccu_soc_selection/" class="md-nav__link">
+      <a href="../hardware/ccu_soc_selection/" class="md-nav__link">
         
   
   
@@ -1624,7 +1349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/ccu_arch_safety/" class="md-nav__link">
+      <a href="../hardware/ccu_arch_safety/" class="md-nav__link">
         
   
   
@@ -1660,7 +1385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/compute_chips/" class="md-nav__link">
+      <a href="../hardware/compute_chips/" class="md-nav__link">
         
   
   
@@ -1743,7 +1468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/drive_by_wire/" class="md-nav__link">
+      <a href="../hardware/drive_by_wire/" class="md-nav__link">
         
   
   
@@ -1771,7 +1496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/drive_by_wire_actuation/" class="md-nav__link">
+      <a href="../hardware/drive_by_wire_actuation/" class="md-nav__link">
         
   
   
@@ -1799,7 +1524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/drive_by_wire_safety_validation/" class="md-nav__link">
+      <a href="../hardware/drive_by_wire_safety_validation/" class="md-nav__link">
         
   
   
@@ -1890,7 +1615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/communication/" class="md-nav__link">
+      <a href="../hardware/communication/" class="md-nav__link">
         
   
   
@@ -1918,7 +1643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/communication_network_protocols/" class="md-nav__link">
+      <a href="../hardware/communication_network_protocols/" class="md-nav__link">
         
   
   
@@ -1946,7 +1671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/communication_security_ota/" class="md-nav__link">
+      <a href="../hardware/communication_security_ota/" class="md-nav__link">
         
   
   
@@ -2037,7 +1762,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/sensors/" class="md-nav__link">
+      <a href="../hardware/sensors/" class="md-nav__link">
         
   
   
@@ -2065,7 +1790,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/sensors_active/" class="md-nav__link">
+      <a href="../hardware/sensors_active/" class="md-nav__link">
         
   
   
@@ -2093,7 +1818,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/sensors_vision_positioning/" class="md-nav__link">
+      <a href="../hardware/sensors_vision_positioning/" class="md-nav__link">
         
   
   
@@ -2184,7 +1909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/camera/" class="md-nav__link">
+      <a href="../hardware/camera/" class="md-nav__link">
         
   
   
@@ -2212,7 +1937,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/camera_imaging_calibration/" class="md-nav__link">
+      <a href="../hardware/camera_imaging_calibration/" class="md-nav__link">
         
   
   
@@ -2240,7 +1965,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware/camera_sync_reliability/" class="md-nav__link">
+      <a href="../hardware/camera_sync_reliability/" class="md-nav__link">
         
   
   
@@ -2333,7 +2058,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../algorithm/" class="md-nav__link ">
+            <a href="../algorithm/" class="md-nav__link ">
               
   
   
@@ -2432,7 +2157,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/sw_overview/" class="md-nav__link">
+      <a href="../algorithm/sw_overview/" class="md-nav__link">
         
   
   
@@ -2460,7 +2185,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/sw_overview_arch_timing/" class="md-nav__link">
+      <a href="../algorithm/sw_overview_arch_timing/" class="md-nav__link">
         
   
   
@@ -2488,7 +2213,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/sw_overview_middleware_deployment/" class="md-nav__link">
+      <a href="../algorithm/sw_overview_middleware_deployment/" class="md-nav__link">
         
   
   
@@ -2524,7 +2249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/image_processing/" class="md-nav__link">
+      <a href="../algorithm/image_processing/" class="md-nav__link">
         
   
   
@@ -2552,7 +2277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/laser_processing/" class="md-nav__link">
+      <a href="../algorithm/laser_processing/" class="md-nav__link">
         
   
   
@@ -2580,7 +2305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/sensor_fusion/" class="md-nav__link">
+      <a href="../algorithm/sensor_fusion/" class="md-nav__link">
         
   
   
@@ -2608,7 +2333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/occupancy/" class="md-nav__link">
+      <a href="../algorithm/occupancy/" class="md-nav__link">
         
   
   
@@ -2636,7 +2361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/world_models/" class="md-nav__link">
+      <a href="../algorithm/world_models/" class="md-nav__link">
         
   
   
@@ -2719,7 +2444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/localisation/" class="md-nav__link">
+      <a href="../algorithm/localisation/" class="md-nav__link">
         
   
   
@@ -2747,7 +2472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/localisation_slam_fusion/" class="md-nav__link">
+      <a href="../algorithm/localisation_slam_fusion/" class="md-nav__link">
         
   
   
@@ -2775,7 +2500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/localisation_metrics_ops/" class="md-nav__link">
+      <a href="../algorithm/localisation_metrics_ops/" class="md-nav__link">
         
   
   
@@ -2866,7 +2591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/path_planning/" class="md-nav__link">
+      <a href="../algorithm/path_planning/" class="md-nav__link">
         
   
   
@@ -2894,7 +2619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/path_planning_global_behavior/" class="md-nav__link">
+      <a href="../algorithm/path_planning_global_behavior/" class="md-nav__link">
         
   
   
@@ -2922,7 +2647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/path_planning_local_trajectory/" class="md-nav__link">
+      <a href="../algorithm/path_planning_local_trajectory/" class="md-nav__link">
         
   
   
@@ -2958,7 +2683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/prediction/" class="md-nav__link">
+      <a href="../algorithm/prediction/" class="md-nav__link">
         
   
   
@@ -2986,7 +2711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/decision_making/" class="md-nav__link">
+      <a href="../algorithm/decision_making/" class="md-nav__link">
         
   
   
@@ -3069,7 +2794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/control/" class="md-nav__link">
+      <a href="../algorithm/control/" class="md-nav__link">
         
   
   
@@ -3097,7 +2822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/control_lateral/" class="md-nav__link">
+      <a href="../algorithm/control_lateral/" class="md-nav__link">
         
   
   
@@ -3125,7 +2850,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/control_longitudinal/" class="md-nav__link">
+      <a href="../algorithm/control_longitudinal/" class="md-nav__link">
         
   
   
@@ -3161,7 +2886,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/metrics_validation/" class="md-nav__link">
+      <a href="../algorithm/metrics_validation/" class="md-nav__link">
         
   
   
@@ -3244,7 +2969,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/end_to_end/" class="md-nav__link">
+      <a href="../algorithm/end_to_end/" class="md-nav__link">
         
   
   
@@ -3272,7 +2997,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/end_to_end_data_training/" class="md-nav__link">
+      <a href="../algorithm/end_to_end_data_training/" class="md-nav__link">
         
   
   
@@ -3300,7 +3025,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/end_to_end_safety_deployment/" class="md-nav__link">
+      <a href="../algorithm/end_to_end_safety_deployment/" class="md-nav__link">
         
   
   
@@ -3336,7 +3061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/data_pipeline/" class="md-nav__link">
+      <a href="../algorithm/data_pipeline/" class="md-nav__link">
         
   
   
@@ -3364,7 +3089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
+      <a href="../algorithm/datasets_benchmarks/" class="md-nav__link">
         
   
   
@@ -3392,7 +3117,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/nlp/" class="md-nav__link">
+      <a href="../algorithm/nlp/" class="md-nav__link">
         
   
   
@@ -3424,6 +3149,8 @@
       
   
   
+    
+  
   
   
     
@@ -3451,15 +3178,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../simulation/" class="md-nav__link ">
+            <a href="./" class="md-nav__link md-nav__link--active">
               
   
   
@@ -3477,13 +3204,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link md-nav__link--active" for="__nav_6" id="__nav_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3503,7 +3230,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../simulation/platforms/" class="md-nav__link">
+      <a href="platforms/" class="md-nav__link">
         
   
   
@@ -3531,7 +3258,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../simulation/environment/" class="md-nav__link">
+      <a href="environment/" class="md-nav__link">
         
   
   
@@ -3559,7 +3286,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../simulation/sensors/" class="md-nav__link">
+      <a href="sensors/" class="md-nav__link">
         
   
   
@@ -3587,7 +3314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../simulation/scenarios/" class="md-nav__link">
+      <a href="scenarios/" class="md-nav__link">
         
   
   
@@ -3615,7 +3342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../simulation/methodology/" class="md-nav__link">
+      <a href="methodology/" class="md-nav__link">
         
   
   
@@ -3643,7 +3370,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../simulation/metrics/" class="md-nav__link">
+      <a href="metrics/" class="md-nav__link">
         
   
   
@@ -3671,7 +3398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../simulation/sim2real/" class="md-nav__link">
+      <a href="sim2real/" class="md-nav__link">
         
   
   
@@ -3738,7 +3465,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../vlm/" class="md-nav__link ">
+            <a href="../vlm/" class="md-nav__link ">
               
   
   
@@ -3782,7 +3509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../vlm/foundation/" class="md-nav__link">
+      <a href="../vlm/foundation/" class="md-nav__link">
         
   
   
@@ -3810,7 +3537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../vlm/scene_understanding/" class="md-nav__link">
+      <a href="../vlm/scene_understanding/" class="md-nav__link">
         
   
   
@@ -3838,7 +3565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../vlm/decision_planning/" class="md-nav__link">
+      <a href="../vlm/decision_planning/" class="md-nav__link">
         
   
   
@@ -3866,7 +3593,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../vlm/data_annotation/" class="md-nav__link">
+      <a href="../vlm/data_annotation/" class="md-nav__link">
         
   
   
@@ -3894,7 +3621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../vlm/hmi/" class="md-nav__link">
+      <a href="../vlm/hmi/" class="md-nav__link">
         
   
   
@@ -3922,7 +3649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../vlm/deployment/" class="md-nav__link">
+      <a href="../vlm/deployment/" class="md-nav__link">
         
   
   
@@ -3950,7 +3677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../vlm/outlook/" class="md-nav__link">
+      <a href="../vlm/outlook/" class="md-nav__link">
         
   
   
@@ -4013,7 +3740,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../casestudy/" class="md-nav__link ">
+            <a href="../casestudy/" class="md-nav__link ">
               
   
   
@@ -4112,7 +3839,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../casestudy/apollo/" class="md-nav__link">
+      <a href="../casestudy/apollo/" class="md-nav__link">
         
   
   
@@ -4140,7 +3867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../casestudy/apollo_tech_stack/" class="md-nav__link">
+      <a href="../casestudy/apollo_tech_stack/" class="md-nav__link">
         
   
   
@@ -4168,7 +3895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../casestudy/apollo_operations/" class="md-nav__link">
+      <a href="../casestudy/apollo_operations/" class="md-nav__link">
         
   
   
@@ -4204,7 +3931,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../casestudy/waymo/" class="md-nav__link">
+      <a href="../casestudy/waymo/" class="md-nav__link">
         
   
   
@@ -4285,7 +4012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../casestudy/tesla/" class="md-nav__link">
+      <a href="../casestudy/tesla/" class="md-nav__link">
         
   
   
@@ -4313,7 +4040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../casestudy/tesla_cybercab/" class="md-nav__link">
+      <a href="../casestudy/tesla_cybercab/" class="md-nav__link">
         
   
   
@@ -4349,7 +4076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../casestudy/chinese_players/" class="md-nav__link">
+      <a href="../casestudy/chinese_players/" class="md-nav__link">
         
   
   
@@ -4377,7 +4104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../casestudy/robotaxi/" class="md-nav__link">
+      <a href="../casestudy/robotaxi/" class="md-nav__link">
         
   
   
@@ -4467,7 +4194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-contribute/" class="md-nav__link">
+      <a href="../how-to-contribute/" class="md-nav__link">
         
   
   
@@ -4495,7 +4222,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../standard/" class="md-nav__link">
+      <a href="../standard/" class="md-nav__link">
         
   
   
@@ -4523,7 +4250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../contributors/" class="md-nav__link">
+      <a href="../contributors/" class="md-nav__link">
         
   
   
@@ -4578,10 +4305,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 事故分类框架
+        仿真：破解验证里程困境
       
     </span>
   </a>
@@ -4589,22 +4316,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 事故详解
+        本章内容概览
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. 事故详解">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        各小节简介
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="各小节简介">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-uber-atgtempe-2018-03-18" class="md-nav__link">
+  <a href="#51-platforms" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 Uber ATG：Tempe 亚利桑那致死事故（2018-03-18）
+        5.1 仿真平台（platforms）
       
     </span>
   </a>
@@ -4612,10 +4350,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-tesla-autopilotjoshua-brown-2016-05-07" class="md-nav__link">
+  <a href="#52-environment" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2 Tesla Autopilot：Joshua Brown 事故（2016-05-07，佛罗里达）
+        5.2 仿真环境建模（environment）
       
     </span>
   </a>
@@ -4623,10 +4361,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#23-uber-atg-cruise-pedestrian-drag-2023-10-02" class="md-nav__link">
+  <a href="#53-sensors" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.3 Uber ATG 之后：Cruise 旧金山 Pedestrian Drag 事件（2023-10-02）
+        5.3 传感器仿真（sensors）
       
     </span>
   </a>
@@ -4634,10 +4372,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#24-waymo-2024-02" class="md-nav__link">
+  <a href="#54-scenarios" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.4 Waymo 拖行行人事件（2024-02，凤凰城）与自报披露
+        5.4 交通场景生成（scenarios）
       
     </span>
   </a>
@@ -4645,10 +4383,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#25-tesla-fsd-highway-patrol-2023-02fremont" class="md-nav__link">
+  <a href="#55-methodology" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.5 Tesla FSD 与 Highway Patrol 案（2023-02，Fremont）
+        5.5 仿真测试方法论（methodology）
       
     </span>
   </a>
@@ -4656,10 +4394,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#26-apollo-go-20232024" class="md-nav__link">
+  <a href="#56-metrics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.6 Apollo Go 武汉运营期间的典型事件（2023–2024）
+        5.6 仿真评估指标（metrics）
       
     </span>
   </a>
@@ -4667,87 +4405,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#27-tesla-model-s-2021-04spring-tx" class="md-nav__link">
+  <a href="#57-sim-to-real-sim2real" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.7 Tesla Model S 加州高速火灾（2021-04，Spring, TX）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#28-ponyai-weride" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.8 Pony.ai / WeRide 等国内路测事件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#29-jeep-cherokee-2015" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.9 网络安全事件：Jeep Cherokee 远程劫持（2015）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#210-su7-2025-03-29" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.10 小米 SU7 高速事故（2025-03-29，安徽铜陵）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#211-2026-03-31" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.11 萝卜快跑武汉大规模趴窝事件（2026-03-31）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#212-waymo-2026" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.12 Waymo 的规模化召回（2026）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#213-zoox-2026-06" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.13 Zoox 火灾现场处置失当与召回（2026-06）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#214-tesla-katy-2026-06-19" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.14 Tesla Katy 致命事故（2026-06-19，得克萨斯）
+        5.7 Sim-to-Real 迁移（sim2real）
       
     </span>
   </a>
@@ -4760,43 +4421,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. 关键教训汇总
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 事故复盘的方法论
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 小结
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        参考资料
+        学习建议
       
     </span>
   </a>
@@ -4823,412 +4451,86 @@
   
 
 
-<h1 id="_1">典型事故与经验教训</h1>
-<p>自动驾驶行业每一次重大事故都会把整个行业向安全曲线的更高处推一寸。与其回避这些痛苦的记忆，不如系统地复盘：哪一层出了错？责任如何认定？行业因此做了什么改变？本节精选 2016 年以来十余起具有行业影响力的事件，以<strong>技术栈分层</strong>与<strong>规律提取</strong>两条线索加以组织。</p>
-<div class="admonition note">
-<p class="admonition-title">阅读说明</p>
-<ul>
-<li>每起事件的表述以公开调查报告（NTSB、NHTSA、加州 DMV、国内媒体）为主，必要处补以公司公告与学术论文；</li>
-<li>责任认定以最终监管结论为准；正在调查的案例会明确标注"Pending"；</li>
-<li>本节不旨在指责具体公司，而是希望读者从工程视角提炼可复用的教训。</li>
-</ul>
-</div>
+<h1 id="_1">第五章：仿真测试</h1>
+<p>本章介绍自动驾驶系统的仿真测试技术——从虚拟环境到真实世界的桥梁。</p>
 <hr />
-<h2 id="1">1. 事故分类框架</h2>
-<p>在分析具体案例前，先建立一个分层模型，便于把每起事件映射到对应的技术栈位置：</p>
+<h2 id="_2">仿真：破解验证里程困境</h2>
+<p>自动驾驶系统的安全验证面临一个根本性的统计学挑战：根据 RAND Corporation 的研究，要以 95% 的置信度证明自动驾驶系统的致命事故率低于人类驾驶员，需要在真实道路上累积行驶约 <strong>110 亿英里（约 177 亿公里）</strong>。纯粹依赖实车路测来验证安全性在工程上不可行。</p>
+<p><strong>仿真测试（Simulation Testing）</strong> 是解决这一困境的核心技术手段。通过在虚拟环境中构建高保真的驾驶场景，仿真系统可以：</p>
+<ul>
+<li><strong>大规模并行测试</strong>：数千个仿真实例可在 GPU 集群上同时运行，一天内完成相当于数百万公里的测试里程</li>
+<li><strong>安全地测试危险场景</strong>：碰撞、极端天气、行人突然闯入等高风险场景可以在仿真中反复测试</li>
+<li><strong>精确复现与调试</strong>：每次仿真运行完全可复现，工程师可以逐帧回放问题场景</li>
+<li><strong>系统性覆盖边缘案例</strong>：通过参数化场景生成和对抗性测试，系统性地覆盖长尾场景</li>
+</ul>
+<p>"<strong>仿真优先</strong>"（Simulation-First）开发范式已成为行业共识：Waymo 每天运行超过 2500 万英里虚拟测试；特斯拉利用大规模仿真训练 <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> 神经网络；百度 Apollo 在 AADS 平台上完成了超过 100 亿公里的虚拟路测。</p>
+<hr />
+<h2 id="_3">本章内容概览</h2>
 <table>
 <thead>
 <tr>
-<th>层级</th>
-<th>典型失效模式</th>
-<th>对应案例</th>
+<th>小节</th>
+<th>标题</th>
+<th>主要内容</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>L1 感知层</strong></td>
-<td>目标漏检、误检、语义理解错误</td>
-<td>Tesla 白色卡车事故、Uber ATG 2018</td>
+<td>5.1</td>
+<td>仿真平台</td>
+<td>CARLA、SUMO、NVIDIA DRIVE Sim 等主流平台对比与选型</td>
 </tr>
 <tr>
-<td><strong>L2 预测/决策层</strong></td>
-<td>意图预测错误、行为决策保守/激进</td>
-<td>Cruise SF 2023、Waymo Pedestrian Drag 2024</td>
+<td>5.2</td>
+<td>仿真环境建模</td>
+<td>三维场景重建、高精地图集成、天气光照仿真、数字孪生</td>
 </tr>
 <tr>
-<td><strong>L3 规划/控制层</strong></td>
-<td>轨迹不可执行、控制振荡</td>
-<td>Apollo Go Wuhan 2024 碰撞</td>
+<td>5.3</td>
+<td>传感器仿真</td>
+<td><abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>/摄像头/雷达仿真、噪声模型、域差距分析</td>
 </tr>
 <tr>
-<td><strong>L4 <abbr title="Human-Machine Interface，人机界面">HMI</abbr> / 驾驶员接管</strong></td>
-<td>提示模糊、监控失效、滥用</td>
-<td>Tesla Autopilot 多起、特斯拉滥用 <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> Beta</td>
+<td>5.4</td>
+<td>交通场景生成</td>
+<td>场景描述语言、规则/数据驱动生成、对抗性场景、角落案例</td>
 </tr>
 <tr>
-<td><strong>L5 系统集成</strong></td>
-<td>冗余失效、故障切换失败</td>
-<td>Tesla Hardware 3 降级、Waymo 灯光通信失效</td>
+<td>5.5</td>
+<td>仿真测试方法论</td>
+<td><abbr title="Software in the Loop，软件在环">SIL</abbr>/<abbr title="Hardware in the Loop，硬件在环">HIL</abbr>/VIL、V 模型、仿真 CI/CD、可信度评估</td>
 </tr>
 <tr>
-<td><strong>L6 运营 / 远程协助</strong></td>
-<td>远程指令误操作、调度漏洞</td>
-<td>Cruise SF 2023 远程处置不当</td>
+<td>5.6</td>
+<td>仿真评估指标</td>
+<td>安全性/舒适性/效率性/覆盖性指标体系与基准测试</td>
 </tr>
 <tr>
-<td><strong>L7 监管 / 流程</strong></td>
-<td>报告隐瞒、资质失效、违规扩张</td>
-<td>Cruise 隐瞒 CA-DMV、Uber ATG 停测</td>
+<td>5.7</td>
+<td>Sim-to-Real 迁移</td>
+<td>域随机化、域适应、迁移学习、现实差距分析</td>
 </tr>
 </tbody>
 </table>
-<p>所有案例都可以在这张表里"对号入座"——很多重大事故其实是 <strong>多层同时失效</strong> 的结果。</p>
 <hr />
-<h2 id="2">2. 事故详解</h2>
-<h3 id="21-uber-atgtempe-2018-03-18">2.1 Uber ATG：Tempe 亚利桑那致死事故（2018-03-18）</h3>
-<p><strong>事件概述</strong>
-测试车辆（Volvo XC90，搭载 Uber 自研 ADS）于凤凰城 Tempe 晚间 22:00 前后，以约 63 km/h 通过四车道道路时，撞上推自行车横穿马路的 Elaine Herzberg 女士，致其当场死亡。车内有一名测试安全员 Rafaela Vasquez，事后视频证实其在事发前观看手机视频。</p>
-<p><strong>技术原因（NTSB 2019 报告）</strong></p>
-<table>
-<thead>
-<tr>
-<th>层级</th>
-<th>问题</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>感知</td>
-<td>检测器在 5.6 秒内对目标的分类在"未知 / 车辆 / 自行车"之间多次切换，未能稳定识别</td>
-</tr>
-<tr>
-<td>预测</td>
-<td>由于分类不稳，预测器重置了跟踪历史，未能输出连续轨迹</td>
-</tr>
-<tr>
-<td>规划</td>
-<td>Uber 软件禁用了 Volvo 原厂 <abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr>（防止冲突），同时将"紧急制动抑制窗口"设置为 1 秒以上，避免急刹体验差</td>
-</tr>
-<tr>
-<td><abbr title="Human-Machine Interface，人机界面">HMI</abbr></td>
-<td>未向安全员发出声/光警报要求接管；事发前 6 秒系统已识别目标但没有任何提示</td>
-</tr>
-</tbody>
-</table>
-<p><strong>责任与结果</strong></p>
-<ul>
-<li>安全员 Vasquez 被检方以<strong>过失杀人</strong>起诉，2023 年认罪换缓刑；</li>
-<li>Uber 公司未被起诉，但 ATG 部门于 2020 年以 40 亿美元卖给 Aurora；</li>
-<li>Arizona 吊销 Uber 路测资质，加州也随即暂停。</li>
-</ul>
-<p><strong>行业影响</strong></p>
-<ol>
-<li>所有美国路测公司后撤并<strong>重新审计检测器的类别切换稳定性</strong>；</li>
-<li>NHTSA 开始要求 L2+ 系统的<strong>紧急事件日志最小保留时间</strong>；</li>
-<li>后续行业共识：<strong>不得关闭原厂 <abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr></strong>，自研 <abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr> 必须至少达到原厂水平；</li>
-<li>安全员培训更严格：禁止随身携带分心设备，需双人值守。</li>
-</ol>
+<h2 id="_4">各小节简介</h2>
+<h3 id="51-platforms">5.1 仿真平台（platforms）</h3>
+<p>介绍当前自动驾驶仿真领域的主流平台，包括开源方案（CARLA、SUMO）和商业方案（NVIDIA DRIVE Sim、51Sim-One），并说明已停止维护的历史平台（LGSVL、AirSim）现状。对比各平台在渲染质量、传感器仿真精度、交通流建模和 API 开放性等方面的特点，并提供选型指南。</p>
+<h3 id="52-environment">5.2 仿真环境建模（environment）</h3>
+<p>深入讲解虚拟驾驶场景的构建方法：程序化生成、基于实采数据的三维重建、NeRF/3D Gaussian Splatting 等神经渲染方法。涵盖高精地图集成、天气与光照的参数化仿真，以及数字孪生技术在仿真中的应用。</p>
+<h3 id="53-sensors">5.3 传感器仿真（sensors）</h3>
+<p>传感器仿真是连接虚拟环境与感知算法的桥梁。本节详细介绍 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>（光线投射与物理级仿真）、摄像头（光栅化与光线追踪）、毫米波雷达（RCS 模型与电磁仿真）的仿真方法，以及噪声模型和域差距问题。</p>
+<h3 id="54-scenarios">5.4 交通场景生成（scenarios）</h3>
+<p>介绍标准化场景描述语言（OpenSCENARIO、Scenic）、基于规则的场景模板、数据驱动的场景挖掘，以及对抗性场景生成方法。讨论如何系统性地枚举和覆盖角落案例。</p>
+<h3 id="55-methodology">5.5 仿真测试方法论（methodology）</h3>
+<p>对比三种核心测试方法——<abbr title="Software in the Loop，软件在环">SIL</abbr>（软件在环）、<abbr title="Hardware in the Loop，硬件在环">HIL</abbr>（硬件在环）和 VIL（车辆在环），讲解各自的架构、适用阶段和成本。同时介绍仿真 CI/CD 流程、可信度评估框架和大规模并行仿真的工程实践。</p>
+<h3 id="56-metrics">5.6 仿真评估指标（metrics）</h3>
+<p>建立完整的仿真评估指标体系，涵盖安全性（TTC、PET、碰撞率）、舒适性（Jerk、横向加速度）、效率性（任务成功率）和覆盖性（<abbr title="Operational Design Domain，运行设计域">ODD</abbr> 覆盖率）。介绍标准基准测试和统计显著性分析方法。</p>
+<h3 id="57-sim-to-real-sim2real">5.7 Sim-to-Real 迁移（sim2real）</h3>
+<p>仿真与真实世界之间的域差距是仿真测试面临的核心挑战。本节系统介绍域随机化、域适应、GAN 风格迁移、迁移学习等缩小域差距的方法，并分析各主流公司的工业实践。</p>
 <hr />
-<h3 id="22-tesla-autopilotjoshua-brown-2016-05-07">2.2 Tesla Autopilot：Joshua Brown 事故（2016-05-07，佛罗里达）</h3>
-<p><strong>事件概述</strong>
-2016 Tesla Model S 以 Autopilot 模式在 4 车道公路上行驶，一辆白色半挂卡车横穿道路。车辆未识别卡车侧面，以约 119 km/h 径直撞入挂车底部，Brown 当场死亡。这是全球<strong>首例 L2 自动驾驶致死事故</strong>。</p>
-<p><strong>技术原因（NTSB 2017 报告）</strong></p>
-<ul>
-<li>视觉检测将白色挂车侧面错认为明亮天空；</li>
-<li>Mobileye EyeQ3 当时不支持垂直于车辆行进方向的静态大目标检测；</li>
-<li>毫米波雷达因"避免拱桥误触发"而把静态高空返回过滤掉，挂车被一并过滤；</li>
-<li>Autopilot 允许用户连续 37 分钟完全不施加方向盘扭矩，监控机制严重不足。</li>
-</ul>
-<p><strong>责任与结果</strong></p>
-<ul>
-<li>NHTSA 认为 Autopilot <strong>没有设计缺陷</strong>，但指出 Tesla 对"驾驶员监督"的设计不充分；</li>
-<li>Mobileye 随后公开与特斯拉分道扬镳，公司随后自研 HW2；</li>
-<li>事故加速了 NHTSA 推出新的 L2 系统调查机制，后来演化为 2021 年的 Standing General Order。</li>
-</ul>
-<p><strong>后续类似事故</strong></p>
-<table>
-<thead>
-<tr>
-<th>年份</th>
-<th>受害者</th>
-<th>背景</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2018</td>
-<td>Walter Huang</td>
-<td>Model X 沿 US-101 撞上高速护栏分岔头；<abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> 未识别磨损车道线</td>
-</tr>
-<tr>
-<td>2019</td>
-<td>Jeremy Banner</td>
-<td>Model 3 撞入横穿的卡车，重复 Brown 事故场景</td>
-</tr>
-<tr>
-<td>2023</td>
-<td>Dillon Angulo</td>
-<td><abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> Beta 测试过程中 Model S 冲过停车标志撞击路口来车</td>
-</tr>
-</tbody>
-</table>
-<p><strong>教训</strong></p>
-<ol>
-<li><strong>Operational Design Domain 必须显式定义</strong>：高速公路并非所有子场景都可安全驾驶；</li>
-<li><strong>静态大目标检测</strong>是视觉感知的经典难题，必须通过多帧融合与多模态校验；</li>
-<li><strong>驾驶员监督不能仅靠方向盘扭矩</strong>，需引入面部/视线跟踪；</li>
-<li><strong>产品命名</strong>"Autopilot"误导用户，监管持续要求整改。</li>
-</ol>
-<hr />
-<h3 id="23-uber-atg-cruise-pedestrian-drag-2023-10-02">2.3 Uber ATG 之后：Cruise 旧金山 Pedestrian Drag 事件（2023-10-02）</h3>
-<p><strong>事件概述</strong>
-深夜 22:00 前后，旧金山 5th &amp; Market 路口，一名女性行人被另一辆<strong>有人驾驶汽车撞飞后抛入 Cruise 无人出租车前方</strong>，Cruise 车辆碾压后将其拖拽约 6 米并停车于右前轮下方。行人重伤但幸存。</p>
-<p><strong>技术原因（Cruise 自查与 DMV 处罚通告）</strong></p>
-<table>
-<thead>
-<tr>
-<th>层级</th>
-<th>问题</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>感知</td>
-<td>车辆检测到了碰撞，但将"人体在车轮下"错判为"路边障碍物"</td>
-</tr>
-<tr>
-<td>规划</td>
-<td>碰撞后，系统触发"靠边停车"程序，试图完成 pullover maneuver，实际拖行伤者</td>
-</tr>
-<tr>
-<td>系统集成</td>
-<td>系统未检测到车底存在人体；未实现车底碰撞检测冗余</td>
-</tr>
-<tr>
-<td>运营与监管</td>
-<td>Cruise 在最初提交 CA-DMV 的视频中<strong>隐去拖行片段</strong>，只展示碰撞瞬间</td>
-</tr>
-</tbody>
-</table>
-<p><strong>责任与结果</strong></p>
-<ul>
-<li>加州 DMV 立即<strong>吊销 Cruise 无人驾驶运营牌照</strong>；</li>
-<li>Cruise 主动撤回全美 Robotaxi 运营，召回 950 辆车辆；</li>
-<li>CEO Kyle Vogt、CTO、首席产品官辞职；</li>
-<li>通用汽车在 2024 年宣布<strong>彻底关闭 Cruise Robotaxi 业务</strong>（改为将技术用于消费车 Super Cruise）；</li>
-<li>第三方调查报告（Exponent/Quinn Emanuel）揭露内部沟通不透明与安全治理薄弱。</li>
-</ul>
-<p><strong>行业影响</strong></p>
-<ol>
-<li><strong>车底/车轮冗余检测</strong>列为一线 Robotaxi 公司的必做项（Waymo 随后公开新增超声波环车检测）；</li>
-<li>Post-Collision 的规划逻辑写入 SAE J3237 草案（Minimum Post-Crash Behavior）；</li>
-<li>各大公司开始公开<strong>事故全量视频</strong>而非片段，提升监管信任；</li>
-<li>行业意识到：<strong>运营治理和工程同等重要</strong>，再强的技术也会被透明度丑闻反噬。</li>
-</ol>
-<hr />
-<h3 id="24-waymo-2024-02">2.4 Waymo 拖行行人事件（2024-02，凤凰城）与自报披露</h3>
-<p><strong>事件概述</strong>
-2024 年 2 月凤凰城一起事故中，Waymo 车辆在左转过程中刮到一位骑行者，幸无重伤。与 Cruise 形成强烈对比，Waymo 主动在 24 小时内公开事故调查报告。</p>
-<p><strong>核心启示</strong></p>
-<ul>
-<li>Waymo 的<strong>主动召回 + 自愿软件更新</strong>策略，在公众与监管层建立了区别于 Cruise 的信任档位；</li>
-<li>行业观察者将两家处理方式作为"安全文化"好与坏的标准教材。</li>
-</ul>
-<hr />
-<h3 id="25-tesla-fsd-highway-patrol-2023-02fremont">2.5 Tesla <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> 与 Highway Patrol 案（2023-02，Fremont）</h3>
-<p>Tesla Model S 激活 <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> Beta 后，沿 880 号高速公路追尾前车，造成 1 死 1 伤。NHTSA 将该事件纳入对 <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> 的大规模调查，至 2024 年 12 月发布召回，要求 Tesla 更新软件以<strong>改进驾驶员监控</strong>，影响约 202 万辆车。</p>
-<p><strong>教训：</strong></p>
-<ul>
-<li>长尾场景中的<strong>前车减速识别</strong>仍是 L2 的软肋；</li>
-<li>监管更强硬地使用 <abbr title="Over-the-Air，空中升级">OTA</abbr> Recall 机制，Tesla 软件召回将成为常态工具。</li>
-</ul>
-<hr />
-<h3 id="26-apollo-go-20232024">2.6 Apollo Go 武汉运营期间的典型事件（2023–2024）</h3>
-<p><strong>2024-07 武汉某路口碰撞</strong>：萝卜快跑与人驾出租车发生低速碰撞，无人员伤亡。百度第一时间公开行车视频，并向监管提交事故日志。</p>
-<p><strong>公众舆情</strong>：2024 年夏天，武汉出租车司机对无人出租车"抢单"引发广泛抗议，倒逼运营方<strong>调整 <abbr title="Operational Design Domain，运行设计域">ODD</abbr></strong>（避开高峰时段、限制热门商圈）。</p>
-<p><strong>教训：</strong></p>
-<ul>
-<li>工程安全之外，<strong>社会接受度</strong>是商业化必修课；</li>
-<li><strong><abbr title="Operational Design Domain，运行设计域">ODD</abbr> 动态调节</strong>需要运营/工程协同流程（如 Geofencing + Time-fencing）。</li>
-</ul>
-<hr />
-<h3 id="27-tesla-model-s-2021-04spring-tx">2.7 Tesla Model S 加州高速火灾（2021-04，Spring, TX）</h3>
-<p>车辆脱离车道冲出撞树并起火，初步报告称<strong>无人在驾驶座</strong>。NHTSA 最终调查发现事故时仍有驾驶员，但该事件凸显：</p>
-<ul>
-<li><strong>BMS 热失控</strong>下的救援难度（<abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> 配套 4680 电池热保护工程重要性）；</li>
-<li><strong>事故现场取证</strong>对新能源自动驾驶车的新挑战：需要同时保留电池状态、自动驾驶系统日志、远程命令流水。</li>
-</ul>
-<hr />
-<h3 id="28-ponyai-weride">2.8 Pony.ai / WeRide 等国内路测事件</h3>
-<table>
-<thead>
-<tr>
-<th>时间</th>
-<th>公司</th>
-<th>事件</th>
-<th>处置</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2021-10</td>
-<td>Pony.ai 加州</td>
-<td>Fremont 单车撞隔离带</td>
-<td>加州 DMV 暂停路测牌照 6 个月，公司补交感知模块整改报告</td>
-</tr>
-<tr>
-<td>2022-04</td>
-<td>WeRide 广州</td>
-<td>路口识别不全撞环卫车</td>
-<td>广州监管要求暂停部分路线，驾驶员全员培训</td>
-</tr>
-<tr>
-<td>2023-06</td>
-<td>某初创公司</td>
-<td>追尾事故，数据未及时上报</td>
-<td>行业自律倡议加强，中汽协牵头推出事故信息披露自律条例</td>
-</tr>
-</tbody>
-</table>
-<p><strong>教训：</strong></p>
-<ul>
-<li><strong>路测数据完整留存</strong>与 5 分钟内 upload-to-cloud 是监管底线；</li>
-<li>单车事故即可触发<strong>全车队重新验证</strong>，模块化测试回归的自动化工具必不可少。</li>
-</ul>
-<hr />
-<h3 id="29-jeep-cherokee-2015">2.9 网络安全事件：Jeep Cherokee 远程劫持（2015）</h3>
-<p>虽然早于自动驾驶规模化，但 Charlie Miller 与 Chris Valasek 利用 Uconnect 漏洞远程控制 Jeep 方向盘/刹车，触发 140 万辆车召回。对自动驾驶行业的意义：</p>
-<ul>
-<li>首次证明<strong>车载 T-Box / IVI</strong> 可以成为汽车被劫持的入口；</li>
-<li>催生 ISO/SAE 21434、UN R155/R156 等现行车辆网络安全法规。</li>
-</ul>
-<hr />
-<h3 id="210-su7-2025-03-29">2.10 小米 SU7 高速事故（2025-03-29，安徽铜陵）</h3>
-<p>这是中国辅助驾驶发展史上影响最深远的事故。一辆小米 SU7 在高速公路上以 NOA 状态行驶时撞击施工路段隔离带并起火，<strong>造成 3 名大学生死亡</strong>。</p>
-<p><strong>已知的时间线要素：</strong> 车辆在 NOA 状态下识别到施工改道后发出接管请求，驾驶员接管后仍在极短时间内发生碰撞。事故的关键争议集中在三点——从系统预警到碰撞的<strong>接管时间窗口是否足够</strong>、碰撞后<strong>车门是否可正常开启</strong>、以及事故前 NOA 的实际能力边界是否被用户正确理解。</p>
-<p><strong>监管连锁反应：</strong></p>
-<ul>
-<li>2025 年 4 月，工信部召开会议整顿智能驾驶宣传：全行业由"智驾"改称"<strong>辅助驾驶</strong>"，禁止夸大宣传、禁止公测式推送、收紧 <abbr title="Over-the-Air，空中升级">OTA</abbr> 申报</li>
-<li>该事件是 2026 年 7 月发布 <strong>GB 47955—2026</strong>（首个 L2 组合驾驶辅助强制性国标）的直接背景之一</li>
-</ul>
-<p><strong>未决状态：</strong> 截至 2026 年 3 月新一代 SU7 上市时，官方调查结论与责任认定仍未公布，是行业长期关注的悬案。</p>
-<p><strong>教训：</strong></p>
-<ul>
-<li><strong>接管窗口必须按人因工程而非系统能力设计</strong>：即使系统"依规"发出了 <abbr title="Takeover Request，接管请求">TOR</abbr>，若留给人类的反应时间不足以完成感知—决策—操作链路，该设计在安全论证上就是不成立的；</li>
-<li><strong>营销话术是安全边界的一部分</strong>：用户对系统能力的理解直接决定其监督强度，夸大宣传会系统性地降低驾驶员的警觉水平；</li>
-<li><strong>被动安全不能被智能化叙事掩盖</strong>：碰撞后的电池热失控、车门解锁逻辑、乘员逃生同样是自动驾驶车辆的安全设计要素。</li>
-</ul>
-<hr />
-<h3 id="211-2026-03-31">2.11 萝卜快跑武汉大规模趴窝事件（2026-03-31）</h3>
-<p>3 月 31 日晚，武汉二环线、杨泗港长江大桥、白沙洲大桥、三环线等多个路段<strong>约上百辆萝卜快跑同时停在路中</strong>，警方通报为系统故障（外界推测为云端通信链路中断），造成数小时交通拥堵，<strong>无人员伤亡</strong>。</p>
-<p><strong>教训：</strong></p>
-<ul>
-<li><strong>云端链路是全车队级单点失效</strong>：远程调度与远程协助提升了运营效率，却把云侧故障放大成全车队事件；</li>
-<li><strong>通信降级下必须保留车端自治</strong>：失去云端连接时，正确的降级行为是自主驶离主车道后靠边停车（最小风险策略），而非原地等待指令——这是"失效可运行（fail-operational）"要求从传感器/计算单元向整条云端链路的延伸；</li>
-<li><strong>无伤亡不等于无危害</strong>：大规模道路阻塞本身即是公共安全事件，且对公众信任的损害不亚于一起碰撞。</li>
-</ul>
-<hr />
-<h3 id="212-waymo-2026">2.12 Waymo 的规模化召回（2026）</h3>
-<table>
-<thead>
-<tr>
-<th>时间</th>
-<th>事件</th>
-<th>召回规模</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2026-05</td>
-<td>4 月一辆空载无人车在圣安东尼奥极端天气中驶入被洪水淹没的路段</td>
-<td>3 791 辆</td>
-</tr>
-<tr>
-<td>2026-06</td>
-<td>自 4 月起 12 起以上车辆无视匝道封闭标志、驶入高速施工区</td>
-<td>约 3 900 辆（几乎全部美国车队）</td>
-</tr>
-</tbody>
-</table>
-<p>此外，2026 年 1 月一辆 Waymo 在圣莫尼卡一所小学门口接送时段撞到一名儿童（轻伤），NHTSA 与 NTSB 分别立案调查，调查在 2026 年内持续。</p>
-<p><strong>教训：</strong></p>
-<ul>
-<li><strong>车队规模放大了软件缺陷的爆炸半径</strong>：当软件统一、车队达到数千辆，任何缺陷都不再是"个别车辆问题"而是系统性事件，单次召回即覆盖全部车辆；</li>
-<li><strong>灰度发布与快速回滚必须是运营基础设施</strong>，而非工程团队的临时手段；</li>
-<li><strong>长尾场景正在从"研究话题"变成"监管条目"</strong>：洪水路段、施工封闭、校区儿童这些场景在 2026 年集中转化为召回与调查。</li>
-</ul>
-<hr />
-<h3 id="213-zoox-2026-06">2.13 Zoox 火灾现场处置失当与召回（2026-06）</h3>
-<p>2026 年 6 月 20 日，一辆 Zoox Robotaxi 在拉斯维加斯驶入火灾现场的浓烟区域并出现异常停车行为。Zoox 于 7 月提交自愿软件召回（105 辆），新增烟雾与消防现场识别能力。</p>
-<p>同月，NHTSA 局长向全体自动驾驶开发商致函，指出"无人驾驶车辆干扰执法与急救人员已形成明显模式"，要求月底前提交整改方案。</p>
-<p><strong>教训：</strong></p>
-<ul>
-<li><strong>应急场景是独立的 <abbr title="Operational Design Domain，运行设计域">ODD</abbr> 维度</strong>：消防现场、警戒线、执法指挥手势构成一类专门的交互场景，需要显式建模而非依赖通用感知泛化；</li>
-<li><strong>与人类应急人员的交互能力</strong>已成为 2026 年美国监管的新焦点。</li>
-</ul>
-<hr />
-<h3 id="214-tesla-katy-2026-06-19">2.14 Tesla Katy 致命事故（2026-06-19，得克萨斯）</h3>
-<p>一辆 Model 3 冲入民宅，<strong>造成一名 76 岁女性死亡</strong>。驾驶员称当时自动化功能处于激活状态；特斯拉表示数据显示加速踏板被踩到底、覆盖了系统。NHTSA 启动专项碰撞调查，NTSB 另行立案。</p>
-<p>此前 2026 年 3 月，NHTSA 针对 <abbr title="Full Self-Driving（Tesla 自动驾驶系统名）">FSD</abbr> 闯红灯、逆行等违章行为的调查（EA26002）已升级为<strong>工程分析</strong>，覆盖约 290 万辆——该阶段通常先于召回。</p>
-<p><strong>教训：</strong></p>
-<ul>
-<li><strong>驾驶员输入与系统行为的归因需要可信数据</strong>：当厂商是唯一的数据持有方时，事故归因结论的公信力取决于数据能否被独立验证；</li>
-<li><strong>"系统被人为覆盖"不自动等于系统无责</strong>：设计上是否应对明显异常的踏板输入做合理性检查（pedal misapplication mitigation），本身就是安全设计议题。</li>
-</ul>
-<hr />
-<h2 id="3">3. 关键教训汇总</h2>
-<p>将所有案例按"失效层级 × 频次"聚合，可以抽象出七条<strong>可复用的工程经验</strong>：</p>
-<ol>
-<li><strong>不要抑制原厂安全功能</strong>：任何自研 <abbr title="Automatic Emergency Braking，自动紧急制动">AEB</abbr>、AES、<abbr title="Lane Keeping Assist，车道保持辅助">LKA</abbr> 必须在关闭原厂时同等覆盖，且监管可稽核。</li>
-<li><strong>监控驾驶员不是形式主义</strong>：扭矩检测易被规避，要结合视线/面部监测；L2 必须在 <abbr title="Operational Design Domain，运行设计域">ODD</abbr> 边界主动脱退。</li>
-<li><strong>感知不稳并不罕见，架构要能"失败安全"</strong>：一旦类别连续切换，系统应进入保守策略而非正常规划。</li>
-<li><strong>事故后行为（Post-Collision Behavior）是设计目标，不是补丁</strong>：停车、打双闪、呼叫远程、不得拖曳。</li>
-<li><strong>多传感器并不自动等于冗余</strong>：需要交叉校验（cross-check）和独立失效分析，不是简单"加块 <abbr title="Light Detection and Ranging，激光雷达">LiDAR</abbr>"。</li>
-<li><strong>远程运营中心（ROC）是安全链的一部分</strong>：流程、话术、审计日志都需纳入 ISO 26262/<abbr title="Safety Of The Intended Functionality，预期功能安全">SOTIF</abbr> 管理。</li>
-<li><strong>监管透明是生存策略</strong>：隐瞒细节会被加倍惩罚；主动披露是长期商业模型的一部分。</li>
-<li><strong>规模本身是一种风险源</strong>：车队从数百辆增长到数千辆后，统一软件使单个缺陷同时作用于全部车辆（2026 年 Waymo 两起近全车队召回、萝卜快跑武汉集体趴窝）。灰度发布、影子验证、快速 <abbr title="Over-the-Air，空中升级">OTA</abbr> 回滚必须前置为运营基础设施。</li>
-<li><strong>云依赖需要车端自治兜底</strong>：把调度与协助放到云端提升了效率，但也创造了全车队级单点失效；通信中断时的默认行为必须是主动进入最小风险状态，而非原地等待。</li>
-<li><strong>用户预期是安全设计的输入变量</strong>：行业分析认为超过 60% 的辅助驾驶事故源于系统能力与用户认知的错配。宣传口径、命名、<abbr title="Human-Machine Interface，人机界面">HMI</abbr> 提示共同决定了驾驶员的实际监督强度，因此属于安全工程范畴而非市场部门的自由裁量。</li>
-</ol>
-<hr />
-<h2 id="4">4. 事故复盘的方法论</h2>
-<p>对工程团队而言，每起真实事故都应转化为<strong>可执行的改进项</strong>。推荐使用如下复盘模板：</p>
-<div class="highlight"><pre><span></span><code>1. 事件摘要       → 5W1H（时间 / 地点 / 车辆 / 环境 / 结果）
-2. 时间轴重建     → 传感器帧、规划指令、执行器响应毫秒级对齐
-3. 故障树分析（FTA）→ 根因树 → 潜在共因故障
-4. 失效模式（FMEA） → 与事件相关的所有 FMEA 条目是否已覆盖？
-5. 责任矩阵       → 工程 / 流程 / 运营 / 监管各占比例
-6. 改进项         → 可验证、可追踪、有截止日期
-7. 回归用例       → 写入仿真场景库，作为后续所有版本的必考题
-8. 对外沟通       → 客户、乘客、监管、大众分别准备哪些材料
-</code></pre></div>
-<p>高成熟度组织会把<strong>每个事件都变成长久存在的场景脚本</strong>（Scenario）。Waymo 的 Carcraft、Cruise 的 Matrix、Apollo 的 Scenario Factory 都是此方法论的产物。</p>
-<hr />
-<h2 id="5">5. 小结</h2>
-<p>事故并非技术的耻辱，而是行业诚实面对自身的镜子。自动驾驶发展的真正里程碑，从来不是"xxx 不再出错"，而是<strong>每次出错后能否让所有人更安全</strong>。</p>
-<ul>
-<li>从 <strong>Brown（2016）到 Herzberg（2018）</strong>，行业意识到了"驾驶员监督的必要性"；</li>
-<li>从 <strong>Cruise（2023）到 Waymo 召回（2024）</strong>，行业学会了"透明披露的商业价值"；</li>
-<li>接下来的几年，随着 Robotaxi 规模扩大，<strong>事故统计学基础</strong>将越来越清晰，也会有更多未知场景暴露出来。</li>
-</ul>
-<p>读者在后续章节学习具体模块时，不妨回忆：<strong>这个设计选择，能避免本节中的哪一起事故？</strong></p>
-<hr />
-<h2 id="_2">参考资料</h2>
-<ol>
-<li>NTSB. Collision Between Vehicle Controlled by Developmental Automated Driving System and Pedestrian, Tempe, Arizona. HAR-19/03, 2019.</li>
-<li>NTSB. Collision Between a Car Operating With Automated Vehicle Control Systems and a Tractor-Semitrailer Truck. HAR-17/02, 2017.</li>
-<li>California DMV. Order of Suspension of Autonomous Vehicle Deployment Permit, Cruise LLC. 2023-10-24.</li>
-<li>Exponent / Quinn Emanuel. Cruise Incident Independent Review. 2024-01.</li>
-<li>NHTSA. Standing General Order 2021-01: Incident Reporting for Automated Driving Systems and Level 2 Advanced Driver Assistance Systems.</li>
-<li>Miller, C., Valasek, C. Remote Exploitation of an Unaltered Passenger Vehicle. Black Hat USA 2015.</li>
-<li>国家市场监督管理总局. 汽车产品召回通告，2022–2026.</li>
-<li>百度 Apollo. 萝卜快跑安全白皮书. 2024.</li>
-<li>NHTSA. <em>Recall Report RCAK-26E026: Waymo freeway construction zone entry</em>. 2026-06.</li>
-<li>CNBC. <em>Amazon's Zoox recalls robotaxis after incident at smoky fire scene</em>. 2026-07-17.</li>
-<li>CNBC. <em>NHTSA opens investigation into fatal Tesla crash in Katy, Texas</em>. 2026-06-22.</li>
-<li>NHTSA. <em>Letter to AV developers on interactions with first responders</em>. 2026-07.</li>
-<li>工业和信息化部. 关于规范智能网联汽车生产企业宣传与 <abbr title="Over-the-Air，空中升级">OTA</abbr> 管理的会议要求. 2025-04.</li>
-</ol>
+<h2 id="_5">学习建议</h2>
+<p>仿真测试是一个横跨计算机图形学、传感器物理、交通工程和软件工程的交叉领域。建议读者先从仿真平台和环境建模入手建立直观认知，再深入传感器仿真和场景生成的技术细节，最后学习测试方法论和 Sim-to-Real 迁移以理解工程落地的完整闭环。</p>
 
 
 
@@ -5249,7 +4551,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年7月20日 20:26:58 UTC">2026年7月20日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月7日 22:37:16 UTC">2026年9月7日</span>
   </span>
 
     
@@ -5307,12 +4609,12 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.top", "navigation.tracking", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.indexes", "navigation.top", "navigation.tracking", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../_static/js/mathjaxhelper.js"></script>
+        <script src="../_static/js/mathjaxhelper.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
