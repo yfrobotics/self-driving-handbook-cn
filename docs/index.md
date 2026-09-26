@@ -21,8 +21,8 @@ description: 中文自动驾驶技术指南，涵盖 SAE 分级、系统架构�
 | [第二章：系统](system/index.md) | 车辆架构、V2X 车联网、高精地图、功能安全与法规 | 系统工程师、产品经理 |
 | [第三章：硬件](hardware/index.md) | 计算平台、线控底盘、车载通信、传感器与摄像头 | 硬件工程师、嵌入式开发者 |
 | [第四章：算法](algorithm/index.md) | 感知、融合、定位、规划、预测、控制、端到端学习 | 算法工程师、研究者 |
-| [第五章：仿真测试](simulation/index.md) | 仿真平台、环境建模、传感器仿真、场景生成、Sim-to-Real | 测试工程师、仿真开发者 |
-| [第六章：视觉语言大模型](vlm/index.md) | VLM 基础模型、场景理解、决策规划、部署优化 | 算法研究者、AI 工程师 |
+| [第五章：仿真测试](simulation/index.md) | 仿真平台、场景生成、闭环策略评测、Sim-to-Real | 测试工程师、仿真开发者 |
+| [第六章：视觉语言与动作模型](vlm/index.md) | VLM、VLA 动作生成、训练与闭环验证、部署优化 | 算法研究者、AI 工程师 |
 | [第七章：实例](casestudy/index.md) | Apollo、Waymo、Tesla、中国本土玩家、Robotaxi 商业模式 | 所有读者 |
 
 ---

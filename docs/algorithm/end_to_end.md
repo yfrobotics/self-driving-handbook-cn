@@ -7,7 +7,8 @@
     - [数据与训练体系](end_to_end_data_training.md) — 数据采集、场景挖掘、标注体系、扩展律实践、合成数据、训练策略与版本管理
     - [安全与部署体系](end_to_end_safety_deployment.md) — 可解释性、不确定性估计、安全层架构、OOD 检测、验证、上线与回滚
     - [世界模型](world_models.md) — 世界模型的完整讨论（本页的世界模型一节仅为摘要）
-    - [VLM 决策与规划](../vlm/decision_planning.md) — VLM/VLA 用于决策的完整讨论
+    - [VLM 决策与规划](../vlm/decision_planning.md) — 语言中间表征与规划方法
+    - [VLA 专题](../vlm/vla.md) — 动作表示、训练流程与闭环验证
 
 ## 模块化管线 vs 端到端
 

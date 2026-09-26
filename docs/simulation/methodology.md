@@ -1,5 +1,7 @@
 # 仿真测试方法论
 
+SIL/HIL/VIL 描述被测系统的接入方式；开环回放、反应式交通和时延注入描述评测中的反馈关系，具体设计见[闭环仿真与策略评测](closed_loop.md)。
+
 自动驾驶仿真测试的核心在于选择合适的测试方法，并将其系统性地嵌入开发流程。本章系统介绍 SIL、HIL、VIL 三种主流仿真测试方法，阐述其在 V 模型中的定位，并探讨大规模并行仿真、持续集成和仿真可信度评估等工程实践。
 
 ---
@@ -327,7 +329,7 @@ $$C = \frac{|\text{已覆盖参数组合}|}{|\text{总参数空间}|} \times 100
 
 | 判定类型        | 示例准则                              | 严重等级  |
 |:-------------:|:------------------------------------:|:-------:|
-| 碰撞检测         | TTC > 0（无碰撞发生）                    | 致命      |
+| 碰撞检测         | 接触或几何检测未记录碰撞（另查采样间穿透）                    | 致命      |
 | 安全距离         | $d_{min} > d_{safe}$（最小车间距大于安全距离） | 严重      |
 | 舒适性           | $|a_{lat}| < 3 \text{ m/s}^2$（横向加速度） | 一般      |
 | 交规合规         | 无闯红灯、无压实线                         | 严重      |
@@ -370,13 +372,13 @@ $$\text{RMSE} = \sqrt{\frac{1}{n}\sum_{i=1}^{n}(y_{sim,i} - y_{real,i})^2}$$
 
 $$r = \frac{\sum_{i=1}^{n}(y_{sim,i} - \bar{y}_{sim})(y_{real,i} - \bar{y}_{real})}{\sqrt{\sum_{i=1}^{n}(y_{sim,i} - \bar{y}_{sim})^2 \cdot \sum_{i=1}^{n}(y_{real,i} - \bar{y}_{real})^2}}$$
 
-### 8.3 认证标准
+### 8.3 相关标准的适用范围
 
-与仿真可信度相关的行业标准包括：
+模型分类、评估方法和数据交换格式解决不同问题，不能把采用一种标准直接等同于整个仿真系统通过安全认证。以下列出具体版本与范围：
 
-- **ISO 11010**（道路车辆仿真和虚拟测试方法）：定义了仿真工具和仿真流程的认证要求
-- **ISO/TR 21934**（自动驾驶仿真场景验证框架）：提供场景仿真的验证方法论
-- **ASAM OpenX 系列标准**：OpenSCENARIO、OpenDRIVE、OpenCRG 等场景描述标准
+- [ISO 11010-1:2022](https://www.iso.org/standard/75910.html)：乘用车仿真模型分类的车辆动力学部分，可支持模型适用性讨论，不是通用仿真平台认证标准。
+- [ISO/TR 21934-1:2021](https://www.iso.org/standard/76497.html)：以虚拟仿真评估碰撞前技术的前瞻性安全效果，第 1 部分为研究现状与一般方法概述。
+- [ASAM OpenDRIVE](https://www.asam.net/standards/detail/opendrive/) 描述静态道路网络；[OpenSCENARIO](https://openscenario.asam.net/ASAM_OpenSCENARIO_DSL/current_dsl_v2.x/scope.html) 描述动态行为与场景。支持同一格式有助于交换数据，但仍需检查版本、可选特性和引擎执行语义。
 - **IEEE 1012**（软件验证与确认标准）：通用的 V&V 方法论，可应用于仿真软件
 
 !!! warning "仿真不能完全替代实车测试"
@@ -477,8 +479,8 @@ $$C_{total} = N_{scenarios} \times T_{avg} \times P_{instance} \times (1 - D_{sp
 ## 参考资料
 
 1. Kalra, N., & Paddock, S. M. (2016). *Driving to Safety: How Many Miles of Driving Would It Take to Demonstrate Autonomous Vehicle Reliability?* RAND Corporation.
-2. ISO 11010:2022. *Road vehicles — Simulation and virtual testing methods*.
-3. ISO/TR 21934:2021. *Road vehicles — Prospective safety performance assessment of pre-crash technology by virtual simulation*.
+2. [ISO 11010-1:2022 — Passenger cars — Simulation model classification — Part 1: Vehicle dynamics](https://www.iso.org/standard/75910.html).
+3. [ISO/TR 21934-1:2021 — Road vehicles — Prospective safety performance assessment of pre-crash technology by virtual simulation — Part 1: State-of-the-art and general method overview](https://www.iso.org/standard/76497.html).
 4. NASA-STD-7009A. *Standard for Models and Simulations*.
 5. ASAM OpenSCENARIO V2.0. *Dynamic Content in Driving Simulation*.
 6. dSPACE. *HIL Testing for ADAS and Autonomous Driving*. https://www.dspace.com

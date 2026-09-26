@@ -111,7 +111,8 @@ nav:
     - simulation/methodology.md
     - simulation/metrics.md
     - simulation/sim2real.md
-  - '6. 视觉语言大模型':
+    - simulation/closed_loop.md
+  - '6. 视觉语言与动作模型':
     - vlm/index.md
     - vlm/foundation.md
     - vlm/scene_understanding.md
@@ -120,6 +121,7 @@ nav:
     - vlm/hmi.md
     - vlm/deployment.md
     - vlm/outlook.md
+    - vlm/vla.md
   - '7. 实例':
     - casestudy/index.md
     - 'Apollo 案例':
