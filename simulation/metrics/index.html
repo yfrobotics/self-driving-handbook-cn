@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="自动驾驶仿真系统的核心价值在于能够系统性地评估算法性能。本章介绍仿真环境中常用的评估指标体系，涵盖安全性、舒适性、效率性、覆盖性、合规性和感知性能等多个维度，并讨论基准测试方法与统计显著性分析。">
+        <meta name="description" content="指标的解释取决于闭环模式、场景分布和统计分母。配对回归、挑战集与 VLA 语言—动作联合测试的组织方式见闭环仿真与策略评测。">
       
       
         <meta name="author" content="YFRL">
@@ -80,11 +80,11 @@
     <meta property="og:locale" content="zh_CN">
     <meta property="og:site_name" content="自动驾驶指南">
     <meta property="og:title" content="仿真评估指标 - 自动驾驶指南">
-    <meta property="og:description" content="自动驾驶仿真系统的核心价值在于能够系统性地评估算法性能。本章介绍仿真环境中常用的评估指标体系，涵盖安全性、舒适性、效率性、覆盖性、合规性和感知性能等多个维度，并讨论基准测试方法与统计显著性分析。">
+    <meta property="og:description" content="指标的解释取决于闭环模式、场景分布和统计分母。配对回归、挑战集与 VLA 语言—动作联合测试的组织方式见闭环仿真与策略评测。">
     <meta property="og:url" content="https://yfrobotics.github.io/self-driving-handbook-cn/simulation/metrics/">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="仿真评估指标 - 自动驾驶指南">
-    <meta name="twitter:description" content="自动驾驶仿真系统的核心价值在于能够系统性地评估算法性能。本章介绍仿真环境中常用的评估指标体系，涵盖安全性、舒适性、效率性、覆盖性、合规性和感知性能等多个维度，并讨论基准测试方法与统计显著性分析。">
+    <meta name="twitter:description" content="指标的解释取决于闭环模式、场景分布和统计分母。配对回归、挑战集与 VLA 语言—动作联合测试的组织方式见闭环仿真与策略评测。">
     
       <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://yfrobotics.github.io/self-driving-handbook-cn/", "name": "\u81ea\u52a8\u9a7e\u9a76\u6307\u5357", "position": 1}, {"@type": "ListItem", "item": "https://yfrobotics.github.io/self-driving-handbook-cn/simulation/", "name": "\u7b2c\u4e94\u7ae0\uff1a\u4eff\u771f\u6d4b\u8bd5", "position": 2}, {"@type": "ListItem", "item": "https://yfrobotics.github.io/self-driving-handbook-cn/simulation/metrics/", "name": "\u4eff\u771f\u8bc4\u4f30\u6307\u6807", "position": 3}]}</script>
     
@@ -3189,6 +3189,8 @@
       
         
       
+        
+      
     
     
     
@@ -3960,6 +3962,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#95" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5 零碰撞仍然有统计上界
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#96" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.6 配对比较与多次试验
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#97" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.7 报告的最小信息集
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4013,6 +4048,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../closed_loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    闭环仿真与策略评测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4031,6 +4094,8 @@
       
         
           
+        
+      
         
       
         
@@ -4066,7 +4131,7 @@
   <span class="md-ellipsis">
     
   
-    6. 视觉语言大模型
+    6. 视觉语言与动作模型
   
 
     
@@ -4088,7 +4153,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    6. 视觉语言大模型
+    6. 视觉语言与动作模型
   
 
           </label>
@@ -4279,6 +4344,34 @@
     
   
     展望与挑战
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vlm/vla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    视觉-语言-动作模型（VLA）
   
 
     
@@ -5414,6 +5507,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#95" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5 零碰撞仍然有统计上界
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#96" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.6 配对比较与多次试验
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#97" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.7 报告的最小信息集
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5451,6 +5577,7 @@
 
 
 <h1 id="_1">仿真评估指标</h1>
+<p>指标的解释取决于闭环模式、场景分布和统计分母。配对回归、挑战集与 <abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 语言—动作联合测试的组织方式见<a href="../closed_loop/">闭环仿真与策略评测</a>。</p>
 <p>自动驾驶仿真系统的核心价值在于能够系统性地评估算法性能。本章介绍仿真环境中常用的评估指标体系，涵盖安全性、舒适性、效率性、覆盖性、合规性和感知性能等多个维度，并讨论基准测试方法与统计显著性分析。</p>
 <hr />
 <h2 id="1">1. 安全性指标</h2>
@@ -5462,34 +5589,37 @@ R_{\text{collision}} = \frac{N_{\text{collision}}}{N_{\text{total}}} \times 100\
 \]</div>
 <p>其中 <span class="arithmatex">\(N_{\text{collision}}\)</span> 为发生碰撞的场景数量，<span class="arithmatex">\(N_{\text{total}}\)</span> 为仿真场景总数。碰撞率是最基础也是最直观的安全指标，但它只反映了最终结果，无法衡量"接近危险"的程度。</p>
 <h3 id="12-ttc-time-to-collision">1.2 碰撞时间（TTC, Time-to-Collision）</h3>
-<p>TTC 衡量在当前运动状态下，两个交通参与者发生碰撞所需的时间：</p>
+<p>TTC 是在指定运动预测假设下，到首次接触的预计剩余时间。对同车道、同方向、保持速度的跟车模型，可以写为：</p>
 <div class="arithmatex">\[
-TTC = \frac{d}{v_{\text{ego}} - v_{\text{lead}}}
+TTC = \frac{d}{v_{\text{ego}} - v_{\text{lead}}},\qquad
+ d&gt;0,\quad v_{\text{ego}}&gt;v_{\text{lead}}
 \]</div>
-<p>其中 <span class="arithmatex">\(d\)</span> 为两车距离，<span class="arithmatex">\(v_{\text{ego}}\)</span> 为自车速度，<span class="arithmatex">\(v_{\text{lead}}\)</span> 为前车速度（仅当 <span class="arithmatex">\(v_{\text{ego}} &gt; v_{\text{lead}}\)</span> 时有意义）。常用安全阈值：</p>
+<p>其中 <span class="arithmatex">\(d\)</span> 是自车前缘到前车后缘的净距离，而不是车辆中心间距。在这个模型中，若距离为正且没有接近趋势，可记为 <span class="arithmatex">\(+\infty\)</span>；缺少有效目标或观测则应另记为不可计算，不能混成“安全”。已经接触应由碰撞检测器直接记录。</p>
+<p>交叉、转弯与切入场景需要基于预测路径和车辆轮廓计算首次相交时间，不能套用一维跟车公式。FHWA 的 SSAM 方法也明确依赖车辆路径投影进行交通冲突分析。<a href="https://www.fhwa.dot.gov/publications/research/safety/08051/02.cfm">FHWA 方法说明</a></p>
+<p>下面只演示风险分桶，阈值需要按测试任务、速度和预测模型确定：</p>
 <table>
 <thead>
 <tr>
-<th>风险等级</th>
+<th>分桶示例</th>
 <th>TTC 范围</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>高危</td>
-<td><span class="arithmatex">\(TTC &lt; 1.5\,\text{s}\)</span></td>
+<td>低 TTC</td>
+<td><span class="arithmatex">\(0&lt;TTC&lt;1.5\,\text{s}\)</span></td>
 </tr>
 <tr>
-<td>警告</td>
-<td><span class="arithmatex">\(1.5\,\text{s} \leq TTC &lt; 3.0\,\text{s}\)</span></td>
+<td>中间区间</td>
+<td><span class="arithmatex">\(1.5\,\text{s}\leq TTC&lt;3.0\,\text{s}\)</span></td>
 </tr>
 <tr>
-<td>安全</td>
-<td><span class="arithmatex">\(TTC \geq 3.0\,\text{s}\)</span></td>
+<td>较大 TTC</td>
+<td><span class="arithmatex">\(TTC\geq3.0\,\text{s}\)</span>，不等于已证明安全</td>
 </tr>
 </tbody>
 </table>
-<p>在仿真中，通常统计 <span class="arithmatex">\(TTC_{\min}\)</span> 的分布以及 <span class="arithmatex">\(TTC &lt; \tau\)</span> 的时间占比。</p>
+<p>在仿真中，可统计 <span class="arithmatex">\(TTC_{\min}\)</span> 分布和有效观测中 <span class="arithmatex">\(TTC&lt;\tau\)</span> 的时间占比，同时报告不可计算比例。<strong>TTC 大于零不是无碰撞判据</strong>：它只是在当前预测模型下的剩余时间；实际碰撞需要接触事件或几何相交判定。</p>
 <h3 id="13-pet-post-encroachment-time">1.3 后侵入时间（PET, Post-Encroachment Time）</h3>
 <p>PET 用于评估交叉路口等场景中两个交通参与者依次通过同一冲突区域的时间差：</p>
 <div class="arithmatex">\[
@@ -5507,7 +5637,7 @@ D_{\text{safe}} = v_{\text{ego}} \cdot t_{\text{reaction}} + \frac{v_{\text{ego}
 <div class="arithmatex">\[
 DRAC = \frac{(v_{\text{ego}} - v_{\text{lead}})^2}{2d}
 \]</div>
-<p>当 <span class="arithmatex">\(DRAC\)</span> 超过物理可实现的最大减速度（<span class="arithmatex">\(8\sim10\,\text{m/s}^2\)</span>）时，认为碰撞不可避免。</p>
+<p>该式适用于净距离为正、自车正在接近且前车保持速度的一维模型，忽略反应延迟。若所需减速度超过给定路面、轮胎和执行器条件下的可用减速度，说明这一制动策略不足；不能据此断言所有转向或组合避让策略都无法避免碰撞。</p>
 <h3 id="16-rss">1.6 责任敏感安全模型（RSS）</h3>
 <p>RSS（Responsibility-Sensitive Safety）由 Mobileye 提出，为自动驾驶行为定义了形式化的安全包络，包括纵向安全距离、横向安全距离和路权判定三个核心规则。在仿真中，RSS 合规率定义为：</p>
 <div class="arithmatex">\[
@@ -5922,33 +6052,83 @@ L2_t = \frac{1}{N}\sum_{i=1}^{N}\sqrt{(x_i^{\text{pred}}(t) - x_i^{\text{gt}}(t)
 <hr />
 <h2 id="9">9. 统计显著性与置信度</h2>
 <h3 id="91">9.1 所需场景数量估算</h3>
-<p>对于碰撞率等二值指标，所需最小场景数量可由置信区间推导：</p>
+<p>对独立同分布的二值试验，在正态近似适用时，可按目标绝对误差估算样本量：</p>
 <div class="arithmatex">\[
 N \geq \frac{z_{\alpha/2}^2 \cdot p(1-p)}{\epsilon^2}
 \]</div>
 <p>其中 <span class="arithmatex">\(z_{\alpha/2}\)</span> 为标准正态分布的临界值（95% 置信度下为 1.96），<span class="arithmatex">\(p\)</span> 为预期的碰撞率，<span class="arithmatex">\(\epsilon\)</span> 为可接受的误差范围。</p>
-<p>例如验证 <span class="arithmatex">\(10^{-6}\)</span> 的碰撞率需约 <span class="arithmatex">\(3 \times 10^6\)</span> 次仿真，这正是仿真测试不可替代的价值所在。</p>
+<p>该公式用于样本量规划，不能在预期事件极少时直接当作精确保证。约三百万次零失败试验与 <span class="arithmatex">\(10^{-6}\)</span> 上界的关系来自另一种单侧二项分布推导，见第 9.5 节；它仍要求独立采样和明确的目标分布。</p>
 <h3 id="92">9.2 蒙特卡洛方法</h3>
 <p>蒙特卡洛方法通过随机采样估计指标的统计特性：</p>
 <div class="arithmatex">\[
 \hat{\theta} = \frac{1}{N}\sum_{i=1}^{N} g(X_i)
 \]</div>
-<p>其中 <span class="arithmatex">\(X_i\)</span> 为第 <span class="arithmatex">\(i\)</span> 次仿真的随机场景参数，<span class="arithmatex">\(g(\cdot)\)</span> 为指标计算函数。根据中心极限定理，估计误差以 <span class="arithmatex">\(O(1/\sqrt{N})\)</span> 的速率收敛。</p>
+<p>其中 <span class="arithmatex">\(X_i\)</span> 为第 <span class="arithmatex">\(i\)</span> 次仿真的随机场景参数，<span class="arithmatex">\(g(\cdot)\)</span> 为指标计算函数。在独立同分布且方差有限等条件下，估计标准误差按 <span class="arithmatex">\(O(1/\sqrt{N})\)</span> 缩小。</p>
 <p>蒙特卡洛方法实现简单但收敛较慢，对于稀有事件可能需要极大量仿真才能获得有效样本。</p>
 <h3 id="93-importance-sampling">9.3 重要性采样（Importance Sampling）</h3>
 <p>重要性采样用提议分布 <span class="arithmatex">\(q(x)\)</span> 替代原始分布 <span class="arithmatex">\(p(x)\)</span>，提高稀有事件的采样效率：</p>
 <div class="arithmatex">\[
 \hat{\theta}_{IS} = \frac{1}{N}\sum_{i=1}^{N} g(X_i) \cdot \frac{p(X_i)}{q(X_i)}, \quad X_i \sim q(x)
 \]</div>
-<p>其中 <span class="arithmatex">\(\frac{p(X_i)}{q(X_i)}\)</span> 为重要性权重。典型应用包括对抗性场景生成、极端天气条件增强和稀有交通事件采样。通过合理设计 <span class="arithmatex">\(q(x)\)</span>，可将所需仿真次数从 <span class="arithmatex">\(10^6\)</span> 降低到 <span class="arithmatex">\(10^3\)</span> 量级。</p>
+<p>其中 <span class="arithmatex">\(\frac{p(X_i)}{q(X_i)}\)</span> 为重要性权重。有效估计需要知道或能可靠计算这些概率，并保证所有对目标期望有贡献的区域都能被 <span class="arithmatex">\(q\)</span> 采到。对抗搜索找到大量危险场景，并不自动满足这些条件。</p>
+<p>例如，把雨天场景采样比例从目标分布的 10% 提高到 50%，若各天气类别内部的条件分布保持不变，则雨天权重为 <span class="arithmatex">\(0.1/0.5=0.2\)</span>，非雨天权重为 <span class="arithmatex">\(0.9/0.5=1.8\)</span>。若同时改变了雨天车速分布，还需使用联合分布权重，不能只按天气比例校正。</p>
+<p>权重差异过大会增加方差。可用 <span class="arithmatex">\(N_{\mathrm{eff}}=(\sum_i w_i)^2/\sum_i w_i^2\)</span> 辅助观察权重集中程度，但它不是加权风险估计精度的完整保证；还需要检查失败事件是否由极少数高权重样本支配。不能直接用普通二项分布区间处理加权结果，也不存在对所有任务通用的加速倍数。</p>
 <h3 id="94">9.4 置信度评估框架</h3>
 <p>建议采用以下分阶段评估框架：</p>
 <ol>
 <li><strong>初步探索</strong>：蒙特卡洛大规模随机测试，识别基本性能范围</li>
 <li><strong>定向测试</strong>：针对薄弱场景进行参数化扫描</li>
 <li><strong>稀有事件评估</strong>：重要性采样评估极端场景安全性</li>
-<li><strong>统计汇总</strong>：计算置信区间 <span class="arithmatex">\(CI_{1-\alpha} = \left[\hat{\theta} - z_{\alpha/2}\frac{s}{\sqrt{N}},\; \hat{\theta} + z_{\alpha/2}\frac{s}{\sqrt{N}}\right]\)</span>，确认统计显著性</li>
+<li><strong>统计汇总</strong>：按数据结构选择区间方法。近似独立的连续指标可使用适当的均值区间；稀有二值事件使用二项分布方法；相关场景采用分组重采样；重要性采样使用加权估计对应的方差方法。区间应与预先声明的比较假设一起解释。</li>
 </ol>
+<h3 id="95">9.5 零碰撞仍然有统计上界</h3>
+<p>设 <span class="arithmatex">\(N\)</span> 次独立同分布试验中每次发生碰撞的概率为 <span class="arithmatex">\(p\)</span>，且试验次数在运行前固定。观测到零碰撞的概率是 <span class="arithmatex">\((1-p)^N\)</span>。令其等于 <span class="arithmatex">\(\alpha\)</span>，可以得到单侧 <span class="arithmatex">\(1-\alpha\)</span> 置信上界：</p>
+<div class="arithmatex">\[
+p_{\mathrm{upper}}=1-\alpha^{1/N}
+\approx\frac{-\ln\alpha}{N}
+\]</div>
+<p>在 95% 置信水平下，近似为 <span class="arithmatex">\(3/N\)</span>。因此，1,000 次零碰撞试验对应的上界约为 0.30%，并非零风险；约三百万次独立零碰撞试验才得到约 <span class="arithmatex">\(10^{-6}\)</span> 的上界。这里的概率单位是<strong>每次所定义场景试验</strong>，不能直接改称每公里事故率。二项区间的精确方法见 <a href="https://itl.nist.gov/div898/software/dataplot/refman2/auxillar/exacbino.htm">NIST 说明</a>。</p>
+<p>如果这 1,000 次只是同一条道路的细微变体，或者测试期间持续删除困难场景，独立同分布假设就可能不成立。上界也不包含仿真模型误差。若按里程或运行时间分析事件，应另行说明事件过程、暴露量和相应统计模型。</p>
+<h3 id="96">9.6 配对比较与多次试验</h3>
+<p>比较模型 A、B 时，对每个相同场景与种子记录差值 <span class="arithmatex">\(d_i=m_i(B)-m_i(A)\)</span>。连续指标可分析平均配对差值及其区间；二值结果应特别关注“A 成功 B 失败”和“A 失败 B 成功”的不一致样本，而不仅是两个总成功率。</p>
+<p>同一原始日志派生的天气、指令和随机种子变体可能相关。分组 Bootstrap 可按原始日志抽样，再保留组内所有配对运行；分组规则和组权重应在分析前确定。只有很少独立日志时，即使变体数量很多，区间也可能不稳定。</p>
+<p>对许多模型、很多子场景反复查看结果，再挑选表现最好的版本，会产生选择偏差。开发集可用于这种探索，最终结论应使用冻结的保留集；多项正式假设检验还应处理多重比较，或清楚标注哪些结果仅用于探索。</p>
+<h3 id="97">9.7 报告的最小信息集</h3>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>需要公开的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分母</td>
+<td>场景数、运行数、原始日志数、有效里程或时间各自是多少</td>
+</tr>
+<tr>
+<td>失败处理</td>
+<td>崩溃、超时、初始化失败、接管和重跑如何统计</td>
+</tr>
+<tr>
+<td>指标定义</td>
+<td>完成判据、事件去重规则、碰撞归因、评分器版本</td>
+</tr>
+<tr>
+<td>数据范围</td>
+<td>目标分布、场景划分、挑战集是否单独报告</td>
+</tr>
+<tr>
+<td>不确定性</td>
+<td>置信水平、独立性假设、配对或分组方式</td>
+</tr>
+<tr>
+<td>执行条件</td>
+<td>策略、控制器、保护层、仿真器和时延配置</td>
+</tr>
+</tbody>
+</table>
+<p>一辆车在同一碰撞中连续接触十帧，可以计为一次碰撞事件或一个碰撞场景，但不能在不同模型之间改变去重规则。等待超时与碰撞可分别统计；若再报告总失败率，需要明确使用的是事件并集而不是各类比例简单相加。</p>
 <hr />
 <h2 id="_2">参考资料</h2>
 <ol>
@@ -5960,7 +6140,13 @@ N \geq \frac{z_{\alpha/2}^2 \cdot p(1-p)}{\epsilon^2}
 <li>nuScenes Dataset. https://www.nuscenes.org/</li>
 <li>Kuhn M, Johnson K. Applied Predictive Modeling[M]. Springer, 2013. (N-wise 组合覆盖)</li>
 <li>Ammann P, Offutt J. Introduction to Software Testing[M]. Cambridge University Press, 2016. (MC/DC 覆盖)</li>
-<li>Feng S, Yan X, Sun H, et al. Intelligent driving intelligence test for autonomous vehicles: A suites of evaluation metrics[J]. IEEE Intelligent Transportation Systems Magazine, 2021.</li>
+<li>
+<p>Feng S, Yan X, Sun H, et al. Intelligent driving intelligence test for autonomous vehicles: A suites of evaluation metrics[J]. IEEE Intelligent Transportation Systems Magazine, 2021.</p>
+</li>
+<li>
+<p><a href="https://itl.nist.gov/div898/software/dataplot/refman2/auxillar/exacbino.htm">NIST — Exact Binomial Confidence Limits</a>.</p>
+</li>
+<li><a href="https://www.fhwa.dot.gov/publications/research/safety/08051/02.cfm">FHWA — SSAM Methodology</a>.</li>
 </ol>
 
 
@@ -5982,7 +6168,7 @@ N \geq \frac{z_{\alpha/2}^2 \cdot p(1-p)}{\epsilon^2}
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月21日 23:41:48 UTC">2026年3月21日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月26日 05:46:37 UTC">2026年9月26日</span>
   </span>
 
     

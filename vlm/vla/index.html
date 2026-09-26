@@ -6,37 +6,37 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="书写规范：中文自动驾驶技术指南，系统介绍自动驾驶分级、系统架构、传感器、感知定位、规划控制、仿真测试与视觉语言模型，结合 Apollo、Waymo、Tesla 等案例讲解工程实践。">
+        <meta name="description" content="视觉-语言-动作模型（Vision-Language-Action，VLA）把视觉观测、语言条件或语言预训练表征与动作预测结合起来。对自动驾驶而言，关键问题是如何把“理解道路”转化为有坐标、时间与执行约束的驾驶行为。本节聚焦动作接口、训练数据与闭环验证；语言规划方法见基于 VLM 的决策与规划。">
       
       
         <meta name="author" content="YFRL">
       
       
-        <link rel="canonical" href="https://yfrobotics.github.io/self-driving-handbook-cn/standard/">
+        <link rel="canonical" href="https://yfrobotics.github.io/self-driving-handbook-cn/vlm/vla/">
       
       
-        <link rel="prev" href="../how-to-contribute/">
+        <link rel="prev" href="../outlook/">
       
       
-        <link rel="next" href="../contributors/">
+        <link rel="next" href="../../casestudy/">
       
       
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>书写规范 - 自动驾驶指南</title>
+        <title>视觉-语言-动作模型（VLA） - 自动驾驶指南</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,9 +55,9 @@
       
     
     
-      <link rel="stylesheet" href="../_static/css/extra.css">
+      <link rel="stylesheet" href="../../_static/css/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -79,14 +79,14 @@
     <meta property="og:type" content="article">
     <meta property="og:locale" content="zh_CN">
     <meta property="og:site_name" content="自动驾驶指南">
-    <meta property="og:title" content="书写规范 - 自动驾驶指南">
-    <meta property="og:description" content="书写规范：中文自动驾驶技术指南，系统介绍自动驾驶分级、系统架构、传感器、感知定位、规划控制、仿真测试与视觉语言模型，结合 Apollo、Waymo、Tesla 等案例讲解工程实践。">
-    <meta property="og:url" content="https://yfrobotics.github.io/self-driving-handbook-cn/standard/">
+    <meta property="og:title" content="视觉-语言-动作模型（VLA） - 自动驾驶指南">
+    <meta property="og:description" content="视觉-语言-动作模型（Vision-Language-Action，VLA）把视觉观测、语言条件或语言预训练表征与动作预测结合起来。对自动驾驶而言，关键问题是如何把“理解道路”转化为有坐标、时间与执行约束的驾驶行为。本节聚焦动作接口、训练数据与闭环验证；语言规划方法见基于 VLM 的决策与规划。">
+    <meta property="og:url" content="https://yfrobotics.github.io/self-driving-handbook-cn/vlm/vla/">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="书写规范 - 自动驾驶指南">
-    <meta name="twitter:description" content="书写规范：中文自动驾驶技术指南，系统介绍自动驾驶分级、系统架构、传感器、感知定位、规划控制、仿真测试与视觉语言模型，结合 Apollo、Waymo、Tesla 等案例讲解工程实践。">
+    <meta name="twitter:title" content="视觉-语言-动作模型（VLA） - 自动驾驶指南">
+    <meta name="twitter:description" content="视觉-语言-动作模型（Vision-Language-Action，VLA）把视觉观测、语言条件或语言预训练表征与动作预测结合起来。对自动驾驶而言，关键问题是如何把“理解道路”转化为有坐标、时间与执行约束的驾驶行为。本节聚焦动作接口、训练数据与闭环验证；语言规划方法见基于 VLM 的决策与规划。">
     
-      <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://yfrobotics.github.io/self-driving-handbook-cn/", "name": "\u81ea\u52a8\u9a7e\u9a76\u6307\u5357", "position": 1}, {"@type": "ListItem", "item": "https://yfrobotics.github.io/self-driving-handbook-cn/how-to-contribute/", "name": "\u5982\u4f55\u8d21\u732e\u8fd9\u4e2a\u7ef4\u57fa\uff1f", "position": 2}, {"@type": "ListItem", "item": "https://yfrobotics.github.io/self-driving-handbook-cn/standard/", "name": "\u4e66\u5199\u89c4\u8303", "position": 3}]}</script>
+      <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://yfrobotics.github.io/self-driving-handbook-cn/", "name": "\u81ea\u52a8\u9a7e\u9a76\u6307\u5357", "position": 1}, {"@type": "ListItem", "item": "https://yfrobotics.github.io/self-driving-handbook-cn/vlm/", "name": "\u7b2c\u516d\u7ae0\uff1a\u89c6\u89c9\u8bed\u8a00\u4e0e\u52a8\u4f5c\u6a21\u578b", "position": 2}, {"@type": "ListItem", "item": "https://yfrobotics.github.io/self-driving-handbook-cn/vlm/vla/", "name": "\u89c6\u89c9-\u8bed\u8a00-\u52a8\u4f5c\u6a21\u578b\uff08VLA\uff09", "position": 3}]}</script>
     
   
   <meta name="google-adsense-account" content="ca-pub-8821428748194648">
@@ -110,7 +110,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#-vla" class="md-skip">
           跳转至
         </a>
       
@@ -126,7 +126,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href=".." title="自动驾驶指南" class="md-header__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+    <a href="../.." title="自动驾驶指南" class="md-header__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -146,7 +146,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              书写规范
+              视觉-语言-动作模型（VLA）
             
           </span>
         </div>
@@ -236,7 +236,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="自动驾驶指南" class="md-nav__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
+    <a href="../.." title="自动驾驶指南" class="md-nav__button md-logo" aria-label="自动驾驶指南" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -266,7 +266,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -319,7 +319,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../intro/" class="md-nav__link ">
+            <a href="../../intro/" class="md-nav__link ">
               
   
   
@@ -363,7 +363,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../intro/define/" class="md-nav__link">
+      <a href="../../intro/define/" class="md-nav__link">
         
   
   
@@ -391,7 +391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../intro/category/" class="md-nav__link">
+      <a href="../../intro/category/" class="md-nav__link">
         
   
   
@@ -419,7 +419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../intro/history/" class="md-nav__link">
+      <a href="../../intro/history/" class="md-nav__link">
         
   
   
@@ -447,7 +447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../intro/glossary/" class="md-nav__link">
+      <a href="../../intro/glossary/" class="md-nav__link">
         
   
   
@@ -524,7 +524,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../system/" class="md-nav__link ">
+            <a href="../../system/" class="md-nav__link ">
               
   
   
@@ -568,7 +568,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../system/architecture/" class="md-nav__link">
+      <a href="../../system/architecture/" class="md-nav__link">
         
   
   
@@ -596,7 +596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../system/vehicle/" class="md-nav__link">
+      <a href="../../system/vehicle/" class="md-nav__link">
         
   
   
@@ -679,7 +679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../system/v2x/" class="md-nav__link">
+      <a href="../../system/v2x/" class="md-nav__link">
         
   
   
@@ -707,7 +707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../system/v2x_comm_rsu/" class="md-nav__link">
+      <a href="../../system/v2x_comm_rsu/" class="md-nav__link">
         
   
   
@@ -735,7 +735,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../system/v2x_security_operations/" class="md-nav__link">
+      <a href="../../system/v2x_security_operations/" class="md-nav__link">
         
   
   
@@ -771,7 +771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../system/platform/" class="md-nav__link">
+      <a href="../../system/platform/" class="md-nav__link">
         
   
   
@@ -799,7 +799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../system/open_source_platforms/" class="md-nav__link">
+      <a href="../../system/open_source_platforms/" class="md-nav__link">
         
   
   
@@ -882,7 +882,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../system/hdmap/" class="md-nav__link">
+      <a href="../../system/hdmap/" class="md-nav__link">
         
   
   
@@ -910,7 +910,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../system/hdmap_data_lifecycle/" class="md-nav__link">
+      <a href="../../system/hdmap_data_lifecycle/" class="md-nav__link">
         
   
   
@@ -938,7 +938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../system/hdmap_localization_lightweight/" class="md-nav__link">
+      <a href="../../system/hdmap_localization_lightweight/" class="md-nav__link">
         
   
   
@@ -974,7 +974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../system/hmi/" class="md-nav__link">
+      <a href="../../system/hmi/" class="md-nav__link">
         
   
   
@@ -1002,7 +1002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../system/safety/" class="md-nav__link">
+      <a href="../../system/safety/" class="md-nav__link">
         
   
   
@@ -1030,7 +1030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../system/testing/" class="md-nav__link">
+      <a href="../../system/testing/" class="md-nav__link">
         
   
   
@@ -1058,7 +1058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../system/incidents/" class="md-nav__link">
+      <a href="../../system/incidents/" class="md-nav__link">
         
   
   
@@ -1086,7 +1086,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../system/cybersecurity/" class="md-nav__link">
+      <a href="../../system/cybersecurity/" class="md-nav__link">
         
   
   
@@ -1114,7 +1114,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../system/regulation/" class="md-nav__link">
+      <a href="../../system/regulation/" class="md-nav__link">
         
   
   
@@ -1181,7 +1181,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../hardware/" class="md-nav__link ">
+            <a href="../../hardware/" class="md-nav__link ">
               
   
   
@@ -1225,7 +1225,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/hw_overview/" class="md-nav__link">
+      <a href="../../hardware/hw_overview/" class="md-nav__link">
         
   
   
@@ -1308,7 +1308,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/ccu/" class="md-nav__link">
+      <a href="../../hardware/ccu/" class="md-nav__link">
         
   
   
@@ -1336,7 +1336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/ccu_soc_selection/" class="md-nav__link">
+      <a href="../../hardware/ccu_soc_selection/" class="md-nav__link">
         
   
   
@@ -1364,7 +1364,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/ccu_arch_safety/" class="md-nav__link">
+      <a href="../../hardware/ccu_arch_safety/" class="md-nav__link">
         
   
   
@@ -1400,7 +1400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/compute_chips/" class="md-nav__link">
+      <a href="../../hardware/compute_chips/" class="md-nav__link">
         
   
   
@@ -1483,7 +1483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/drive_by_wire/" class="md-nav__link">
+      <a href="../../hardware/drive_by_wire/" class="md-nav__link">
         
   
   
@@ -1511,7 +1511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/drive_by_wire_actuation/" class="md-nav__link">
+      <a href="../../hardware/drive_by_wire_actuation/" class="md-nav__link">
         
   
   
@@ -1539,7 +1539,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/drive_by_wire_safety_validation/" class="md-nav__link">
+      <a href="../../hardware/drive_by_wire_safety_validation/" class="md-nav__link">
         
   
   
@@ -1630,7 +1630,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/communication/" class="md-nav__link">
+      <a href="../../hardware/communication/" class="md-nav__link">
         
   
   
@@ -1658,7 +1658,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/communication_network_protocols/" class="md-nav__link">
+      <a href="../../hardware/communication_network_protocols/" class="md-nav__link">
         
   
   
@@ -1686,7 +1686,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/communication_security_ota/" class="md-nav__link">
+      <a href="../../hardware/communication_security_ota/" class="md-nav__link">
         
   
   
@@ -1777,7 +1777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/sensors/" class="md-nav__link">
+      <a href="../../hardware/sensors/" class="md-nav__link">
         
   
   
@@ -1805,7 +1805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/sensors_active/" class="md-nav__link">
+      <a href="../../hardware/sensors_active/" class="md-nav__link">
         
   
   
@@ -1833,7 +1833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/sensors_vision_positioning/" class="md-nav__link">
+      <a href="../../hardware/sensors_vision_positioning/" class="md-nav__link">
         
   
   
@@ -1924,7 +1924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/camera/" class="md-nav__link">
+      <a href="../../hardware/camera/" class="md-nav__link">
         
   
   
@@ -1952,7 +1952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/camera_imaging_calibration/" class="md-nav__link">
+      <a href="../../hardware/camera_imaging_calibration/" class="md-nav__link">
         
   
   
@@ -1980,7 +1980,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/camera_sync_reliability/" class="md-nav__link">
+      <a href="../../hardware/camera_sync_reliability/" class="md-nav__link">
         
   
   
@@ -2073,7 +2073,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../algorithm/" class="md-nav__link ">
+            <a href="../../algorithm/" class="md-nav__link ">
               
   
   
@@ -2172,7 +2172,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/sw_overview/" class="md-nav__link">
+      <a href="../../algorithm/sw_overview/" class="md-nav__link">
         
   
   
@@ -2200,7 +2200,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/sw_overview_arch_timing/" class="md-nav__link">
+      <a href="../../algorithm/sw_overview_arch_timing/" class="md-nav__link">
         
   
   
@@ -2228,7 +2228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/sw_overview_middleware_deployment/" class="md-nav__link">
+      <a href="../../algorithm/sw_overview_middleware_deployment/" class="md-nav__link">
         
   
   
@@ -2264,7 +2264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/image_processing/" class="md-nav__link">
+      <a href="../../algorithm/image_processing/" class="md-nav__link">
         
   
   
@@ -2292,7 +2292,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/laser_processing/" class="md-nav__link">
+      <a href="../../algorithm/laser_processing/" class="md-nav__link">
         
   
   
@@ -2320,7 +2320,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/sensor_fusion/" class="md-nav__link">
+      <a href="../../algorithm/sensor_fusion/" class="md-nav__link">
         
   
   
@@ -2348,7 +2348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/occupancy/" class="md-nav__link">
+      <a href="../../algorithm/occupancy/" class="md-nav__link">
         
   
   
@@ -2376,7 +2376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/world_models/" class="md-nav__link">
+      <a href="../../algorithm/world_models/" class="md-nav__link">
         
   
   
@@ -2459,7 +2459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/localisation/" class="md-nav__link">
+      <a href="../../algorithm/localisation/" class="md-nav__link">
         
   
   
@@ -2487,7 +2487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/localisation_slam_fusion/" class="md-nav__link">
+      <a href="../../algorithm/localisation_slam_fusion/" class="md-nav__link">
         
   
   
@@ -2515,7 +2515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/localisation_metrics_ops/" class="md-nav__link">
+      <a href="../../algorithm/localisation_metrics_ops/" class="md-nav__link">
         
   
   
@@ -2606,7 +2606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/path_planning/" class="md-nav__link">
+      <a href="../../algorithm/path_planning/" class="md-nav__link">
         
   
   
@@ -2634,7 +2634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/path_planning_global_behavior/" class="md-nav__link">
+      <a href="../../algorithm/path_planning_global_behavior/" class="md-nav__link">
         
   
   
@@ -2662,7 +2662,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/path_planning_local_trajectory/" class="md-nav__link">
+      <a href="../../algorithm/path_planning_local_trajectory/" class="md-nav__link">
         
   
   
@@ -2698,7 +2698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/prediction/" class="md-nav__link">
+      <a href="../../algorithm/prediction/" class="md-nav__link">
         
   
   
@@ -2726,7 +2726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/decision_making/" class="md-nav__link">
+      <a href="../../algorithm/decision_making/" class="md-nav__link">
         
   
   
@@ -2809,7 +2809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/control/" class="md-nav__link">
+      <a href="../../algorithm/control/" class="md-nav__link">
         
   
   
@@ -2837,7 +2837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/control_lateral/" class="md-nav__link">
+      <a href="../../algorithm/control_lateral/" class="md-nav__link">
         
   
   
@@ -2865,7 +2865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/control_longitudinal/" class="md-nav__link">
+      <a href="../../algorithm/control_longitudinal/" class="md-nav__link">
         
   
   
@@ -2901,7 +2901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/metrics_validation/" class="md-nav__link">
+      <a href="../../algorithm/metrics_validation/" class="md-nav__link">
         
   
   
@@ -2984,7 +2984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/end_to_end/" class="md-nav__link">
+      <a href="../../algorithm/end_to_end/" class="md-nav__link">
         
   
   
@@ -3012,7 +3012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/end_to_end_data_training/" class="md-nav__link">
+      <a href="../../algorithm/end_to_end_data_training/" class="md-nav__link">
         
   
   
@@ -3040,7 +3040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/end_to_end_safety_deployment/" class="md-nav__link">
+      <a href="../../algorithm/end_to_end_safety_deployment/" class="md-nav__link">
         
   
   
@@ -3076,7 +3076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/data_pipeline/" class="md-nav__link">
+      <a href="../../algorithm/data_pipeline/" class="md-nav__link">
         
   
   
@@ -3104,7 +3104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/datasets_benchmarks/" class="md-nav__link">
+      <a href="../../algorithm/datasets_benchmarks/" class="md-nav__link">
         
   
   
@@ -3132,7 +3132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/nlp/" class="md-nav__link">
+      <a href="../../algorithm/nlp/" class="md-nav__link">
         
   
   
@@ -3201,7 +3201,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../simulation/" class="md-nav__link ">
+            <a href="../../simulation/" class="md-nav__link ">
               
   
   
@@ -3245,7 +3245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../simulation/platforms/" class="md-nav__link">
+      <a href="../../simulation/platforms/" class="md-nav__link">
         
   
   
@@ -3273,7 +3273,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../simulation/environment/" class="md-nav__link">
+      <a href="../../simulation/environment/" class="md-nav__link">
         
   
   
@@ -3301,7 +3301,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../simulation/sensors/" class="md-nav__link">
+      <a href="../../simulation/sensors/" class="md-nav__link">
         
   
   
@@ -3329,7 +3329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../simulation/scenarios/" class="md-nav__link">
+      <a href="../../simulation/scenarios/" class="md-nav__link">
         
   
   
@@ -3357,7 +3357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../simulation/methodology/" class="md-nav__link">
+      <a href="../../simulation/methodology/" class="md-nav__link">
         
   
   
@@ -3385,7 +3385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../simulation/metrics/" class="md-nav__link">
+      <a href="../../simulation/metrics/" class="md-nav__link">
         
   
   
@@ -3413,7 +3413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../simulation/sim2real/" class="md-nav__link">
+      <a href="../../simulation/sim2real/" class="md-nav__link">
         
   
   
@@ -3441,7 +3441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../simulation/closed_loop/" class="md-nav__link">
+      <a href="../../simulation/closed_loop/" class="md-nav__link">
         
   
   
@@ -3473,6 +3473,8 @@
       
   
   
+    
+  
   
   
     
@@ -3502,15 +3504,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../vlm/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -3534,7 +3536,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3554,7 +3556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../vlm/foundation/" class="md-nav__link">
+      <a href="../foundation/" class="md-nav__link">
         
   
   
@@ -3582,7 +3584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../vlm/scene_understanding/" class="md-nav__link">
+      <a href="../scene_understanding/" class="md-nav__link">
         
   
   
@@ -3610,7 +3612,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../vlm/decision_planning/" class="md-nav__link">
+      <a href="../decision_planning/" class="md-nav__link">
         
   
   
@@ -3638,7 +3640,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../vlm/data_annotation/" class="md-nav__link">
+      <a href="../data_annotation/" class="md-nav__link">
         
   
   
@@ -3666,7 +3668,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../vlm/hmi/" class="md-nav__link">
+      <a href="../hmi/" class="md-nav__link">
         
   
   
@@ -3694,7 +3696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../vlm/deployment/" class="md-nav__link">
+      <a href="../deployment/" class="md-nav__link">
         
   
   
@@ -3722,7 +3724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../vlm/outlook/" class="md-nav__link">
+      <a href="../outlook/" class="md-nav__link">
         
   
   
@@ -3747,10 +3749,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../vlm/vla/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    视觉-语言-动作模型（VLA）
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -3766,6 +3795,247 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-vlmvla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. VLM、VLA 与端到端驾驶的关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 从多模态输入到动作
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 从多模态输入到动作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 动作表示的选择
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 动作块与滚动执行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 显式推理与隐式表征
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 动作头如何训练与解码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 多视角与时序接地
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-vla-vla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 从机器人 VLA 到驾驶 VLA
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 数据构建与训练流程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 数据构建与训练流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 一条样本应包含什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 分阶段训练
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 语言增益要通过消融确认
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-dagger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 纠偏数据：从行为克隆到 DAgger
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 强化学习与奖励失配
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 一个可执行的消融计划
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-vla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 仿真如何支持 VLA 训练与评测
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 部署时的约束与故障处理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 贯穿案例：经过路口后靠右停车
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3813,7 +4083,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../casestudy/" class="md-nav__link ">
+            <a href="../../casestudy/" class="md-nav__link ">
               
   
   
@@ -3912,7 +4182,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../casestudy/apollo/" class="md-nav__link">
+      <a href="../../casestudy/apollo/" class="md-nav__link">
         
   
   
@@ -3940,7 +4210,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../casestudy/apollo_tech_stack/" class="md-nav__link">
+      <a href="../../casestudy/apollo_tech_stack/" class="md-nav__link">
         
   
   
@@ -3968,7 +4238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../casestudy/apollo_operations/" class="md-nav__link">
+      <a href="../../casestudy/apollo_operations/" class="md-nav__link">
         
   
   
@@ -4004,7 +4274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../casestudy/waymo/" class="md-nav__link">
+      <a href="../../casestudy/waymo/" class="md-nav__link">
         
   
   
@@ -4085,7 +4355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../casestudy/tesla/" class="md-nav__link">
+      <a href="../../casestudy/tesla/" class="md-nav__link">
         
   
   
@@ -4113,7 +4383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../casestudy/tesla_cybercab/" class="md-nav__link">
+      <a href="../../casestudy/tesla_cybercab/" class="md-nav__link">
         
   
   
@@ -4149,7 +4419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../casestudy/chinese_players/" class="md-nav__link">
+      <a href="../../casestudy/chinese_players/" class="md-nav__link">
         
   
   
@@ -4177,7 +4447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../casestudy/robotaxi/" class="md-nav__link">
+      <a href="../../casestudy/robotaxi/" class="md-nav__link">
         
   
   
@@ -4209,10 +4479,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -4226,11 +4494,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
           <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
@@ -4251,7 +4519,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
@@ -4269,7 +4537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to-contribute/" class="md-nav__link">
+      <a href="../../how-to-contribute/" class="md-nav__link">
         
   
   
@@ -4294,37 +4562,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    书写规范
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../standard/" class="md-nav__link">
         
   
   
@@ -4340,70 +4581,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        排版约束
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        语言规范
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        图片的使用
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        引用规范
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -4416,7 +4593,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../contributors/" class="md-nav__link">
+      <a href="../../contributors/" class="md-nav__link">
         
   
   
@@ -4471,10 +4648,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#1-vlmvla" class="md-nav__link">
     <span class="md-ellipsis">
       
-        排版约束
+        1. VLM、VLA 与端到端驾驶的关系
       
     </span>
   </a>
@@ -4482,10 +4659,82 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        语言规范
+        2. 从多模态输入到动作
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 从多模态输入到动作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 动作表示的选择
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 动作块与滚动执行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 显式推理与隐式表征
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 动作头如何训练与解码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 多视角与时序接地
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-vla-vla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 从机器人 VLA 到驾驶 VLA
       
     </span>
   </a>
@@ -4493,10 +4742,93 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        图片的使用
+        4. 数据构建与训练流程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 数据构建与训练流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 一条样本应包含什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 分阶段训练
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 语言增益要通过消融确认
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-dagger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 纠偏数据：从行为克隆到 DAgger
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 强化学习与奖励失配
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 一个可执行的消融计划
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-vla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 仿真如何支持 VLA 训练与评测
       
     </span>
   </a>
@@ -4504,10 +4836,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        引用规范
+        6. 部署时的约束与故障处理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 贯穿案例：经过路口后靠右停车
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
       
     </span>
   </a>
@@ -4534,29 +4888,391 @@
   
 
 
-<h1 id="_1">书写规范</h1>
-<h2 id="_2">排版约束</h2>
-<ul>
-<li>文本格式: 本维基所有内容全部使用Markdown格式进行书写，如果你不了解Markdown，可以从Markdown的语法开始学起。</li>
-<li>标题不应超过四级: <code># ## ### ####</code></li>
-<li>同级段落之间需要空两行</li>
-<li>Markdown末尾应包含一行空行。</li>
-</ul>
-<h2 id="_3">语言规范</h2>
-<ul>
-<li>避免使用网络语。</li>
-<li>首次出现的缩写给出全名。</li>
-</ul>
-<h2 id="_4">图片的使用</h2>
-<ul>
-<li>图片的保存: 图片保存在对应子目录下的<code>assets</code>目录中，并使用Github作为图床。如果有与之对应的原始文件 (.vsx, .drawio, .ps等)，也以同样名称保存在相同目录。</li>
-</ul>
-<h2 id="_5">引用规范</h2>
-<ul>
-<li>图片引用: 如果使用非原创图片，需要给出图片引用的出处。</li>
-<li>段落引用: 引用的内容需用双引号包含，并给出出处。</li>
-<li>文章末尾包含“参考资料”或“参考文献”。</li>
-</ul>
+<h1 id="-vla">视觉-语言-动作模型（<abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr>）</h1>
+<p>视觉-语言-动作模型（Vision-Language-Action，<abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr>）把视觉观测、语言条件或语言预训练表征与动作预测结合起来。对自动驾驶而言，关键问题是如何把“理解道路”转化为<strong>有坐标、时间与执行约束的驾驶行为</strong>。本节聚焦动作接口、训练数据与闭环验证；语言规划方法见<a href="../decision_planning/">基于 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的决策与规划</a>。</p>
+<h2 id="1-vlmvla">1. <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>、<abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 与端到端驾驶的关系</h2>
+<table>
+<thead>
+<tr>
+<th>路线</th>
+<th>典型输出</th>
+<th>语言的作用</th>
+<th>需要验证的能力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>视觉语言模型（<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>）</td>
+<td>描述、问答、语义标签</td>
+<td>输入、输出或预训练监督</td>
+<td>场景理解与证据一致性</td>
+</tr>
+<tr>
+<td><abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 辅助规划</td>
+<td>行为建议、代价或约束</td>
+<td>辅助独立规划器</td>
+<td>建议是否被正确转换和执行</td>
+</tr>
+<tr>
+<td><abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr></td>
+<td>动作序列或可供控制器执行的轨迹</td>
+<td>指令条件、推理表征或训练监督</td>
+<td>语义接地、动作有效性与闭环表现</td>
+</tr>
+<tr>
+<td>端到端驾驶</td>
+<td>轨迹或车辆控制量</td>
+<td>可以没有语言</td>
+<td>传感器到行为的联合优化效果</td>
+</tr>
+</tbody>
+</table>
+<p>这些类别存在交集。端到端模型不一定是 <abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr>，<abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 也不一定每次都生成一段自然语言解释。介绍某个系统时，应明确语言是在训练、在线条件输入还是运行时推理中发挥作用，不能只根据产品名称判断架构。</p>
+<p>“前方应当减速”是一条语义建议；“未来三秒的速度和位置序列”才具有可检查的动作含义。即便动作是轨迹而不是油门、制动，整个系统仍需要跟踪控制器与执行器模型。</p>
+<h2 id="2">2. 从多模态输入到动作</h2>
+<p>一个驾驶 <abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 的抽象接口为：</p>
+<div class="arithmatex">\[
+\hat{A}_t = \pi_\theta(I_{t-k:t}, z_{t-k:t}, c_t),\qquad
+\hat{A}_t = (a_t, a_{t+1}, \ldots, a_{t+H-1})
+\]</div>
+<p>其中 <span class="arithmatex">\(I\)</span> 是带时间与相机标定信息的图像历史，<span class="arithmatex">\(z\)</span> 是自车状态及系统可用的其他观测，<span class="arithmatex">\(c_t\)</span> 是导航或语言条件，<span class="arithmatex">\(H\)</span> 是输出时域。模型可使用其他传感器；“视觉”不意味着接口只能接收图像。</p>
+<p>典型处理顺序是：多视角与时序编码 → 多模态融合 → 动作解码 → 有效性检查 → 轨迹跟踪或控制执行 → 新观测。有效性检查还应考虑动作到达时的状态，避免把对旧画面正确的轨迹用于已变化的交通环境。</p>
+<h3 id="21">2.1 动作表示的选择</h3>
+<table>
+<thead>
+<tr>
+<th>表示</th>
+<th>示例</th>
+<th>优势</th>
+<th>工程代价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>离散动作 Token</td>
+<td>将转角、加速度或轨迹坐标量化</td>
+<td>可复用序列预测训练方式</td>
+<td>量化误差、序列长度、解码顺序影响时延</td>
+</tr>
+<tr>
+<td>连续轨迹回归</td>
+<td>自车坐标下的位置、航向与速度</td>
+<td>接口明确，易接传统控制器</td>
+<td>多种合理行为可能被平均，需处理多模态输出</td>
+</tr>
+<tr>
+<td>生成式动作头</td>
+<td>通过扩散或流匹配采样轨迹</td>
+<td>可表达多种可行未来</td>
+<td>采样成本、随机性与候选选择需评估</td>
+</tr>
+<tr>
+<td>底层控制序列</td>
+<td>转向、油门、制动</td>
+<td>直接连接执行接口</td>
+<td>对车辆参数、执行延迟和训练分布更敏感</td>
+</tr>
+</tbody>
+</table>
+<p>以上是设计选项，不能据此推断所有 <abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 都采用相同动作头。横向比较时需要统一预测时域、采样间隔、控制器和车辆参数。</p>
+<h3 id="22">2.2 动作块与滚动执行</h3>
+<p>一次输出多个未来动作称为动作分块（Action Chunking）。系统通常只执行前一小段，再根据新观测重新预测。较长动作块能减少模型调用，但会增加对旧观测的依赖；较短动作块则提高计算和调度负担。</p>
+<p>接口至少要定义坐标原点、单位、动作时间戳、轨迹有效期、更新频率，以及两次预测之间如何衔接。不能把“预测未来五秒”误解为“五秒内无需再看道路”。</p>
+<h3 id="23">2.3 显式推理与隐式表征</h3>
+<p>显式语言推理便于检查模型是否关注到关键对象，但增加输出长度；隐式动作预测可以减少文字解码开销，但需要其他诊断手段。两者都应以实际动作验证。自然语言解释可能只是与决策相关的描述，不能单独作为真实因果过程的证明。</p>
+<h3 id="24">2.4 动作头如何训练与解码</h3>
+<p>离散化动作时，需要保存训练时的量化区间与反归一化参数。以均匀划分的标量动作 <span class="arithmatex">\(u\in[u_{\min},u_{\max}]\)</span> 为例，将区间分为 <span class="arithmatex">\(B\)</span> 个桶，每个桶宽度为 <span class="arithmatex">\(\Delta u=(u_{\max}-u_{\min})/B\)</span>；解码为桶中心时，区间内的量化误差不超过 <span class="arithmatex">\(\Delta u/2\)</span>。这一界限不包含越界裁剪、预测错误和动作执行误差。直接增加桶数也有代价：类别更稀疏，动作序列可能更难学习。</p>
+<p>连续回归避免了量化，但单一均方误差目标可能将“向左绕行”和“向右绕行”平均为穿过障碍物的轨迹。可采用多候选轨迹、意图条件化或生成式动作头表达多种可能，再通过可部署的选择器评估可行性。离线用真实未来挑选最优候选得到的分数，应标明是上界分析；车辆运行时无法使用这样的选择器。</p>
+<p>流匹配（Flow Matching）提供了一种连续生成方式：学习从噪声动作块到示范动作块的变换。简化的线性插值目标为：</p>
+<div class="arithmatex">\[
+A_\tau=(1-\tau)\epsilon+\tau A^*,\qquad
+\mathcal{L}_{\mathrm{FM}}=
+\mathbb{E}\left[\left\|v_\theta(A_\tau,\tau\mid o,c)-(A^*-\epsilon)\right\|^2\right]
+\]</div>
+<p>其中 <span class="arithmatex">\(A^*\)</span> 是专家动作块，<span class="arithmatex">\(\epsilon\)</span> 是同维噪声，<span class="arithmatex">\(\tau\in[0,1]\)</span> 是生成过程的时间，<strong>不是车辆行驶时间</strong>。推理时从噪声出发，数值积分学习到的向量场得到动作块。<span class="arithmatex">\(\pi_0\)</span> 展示了视觉语言基座与流匹配动作生成结合的机器人研究路线；上式用于说明方法，不代表所有模型都采用同一插值或训练配置。<a href="https://arxiv.org/abs/2410.24164"><span class="arithmatex">\(\pi_0\)</span> 论文</a></p>
+<p>动作生成器的采样步数、候选数与选择器耗时都应计入推理预算。比较两种动作头时，建议同时报告相同预算下的闭环表现与实际延迟，避免将更多采样算力带来的收益全部归因于架构。</p>
+<h3 id="25">2.5 多视角与时序接地</h3>
+<p>单帧图像难以区分停在路边的车辆和正在并入车道的车辆。多帧输入可以提供运动线索，但历史帧越多，计算与缓存开销越大。下面几项应纳入模型和数据接口设计：</p>
+<table>
+<thead>
+<tr>
+<th>设计点</th>
+<th>需要保留的信息</th>
+<th>可定位问题的实验</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>相机身份与标定</td>
+<td>视角编号、内外参、标定版本</td>
+<td>遮蔽单相机，检查侧向目标相关失败</td>
+</tr>
+<tr>
+<td>时序编码</td>
+<td>采集时间、帧间隔、自车运动</td>
+<td>改变帧间隔，检查速度理解是否退化</td>
+</tr>
+<tr>
+<td>图像压缩</td>
+<td>小目标、交通灯和远处可通行区域</td>
+<td>分辨率或视觉 Token 数量扫描</td>
+</tr>
+<tr>
+<td>历史缓存</td>
+<td>当前路线、指令版本、场景重置标记</td>
+<td>切换任务后检查是否沿用旧意图</td>
+</tr>
+</tbody>
+</table>
+<p>缺帧不能用重复旧帧悄悄替代而不提供时间信息，否则模型可能将“没有新观测”误解为“目标没有运动”。应将缺失标记与实际时间戳一起处理，并用与部署一致的丢帧模式做评测。</p>
+<h2 id="3-vla-vla">3. 从机器人 <abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 到驾驶 <abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr></h2>
+<p>下面选取公开研究用于说明不同接口和证据类型，不作为产品能力排名。</p>
+<table>
+<thead>
+<tr>
+<th>工作</th>
+<th>研究对象与方法</th>
+<th>对驾驶的启发</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://arxiv.org/abs/2406.09246">OpenVLA（2024）</a></td>
+<td>用视觉语言基座与机器人示范学习操作策略</td>
+<td>语言与动作对齐、适配新任务</td>
+<td>机器人操作结果不能直接证明道路驾驶能力</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2410.24164"><span class="arithmatex">\(π_0\)</span>（2024）</a></td>
+<td>视觉语言基座结合流匹配动作生成的机器人策略</td>
+<td>连续动作块与生成式解码</td>
+<td>操作任务证据不代表车辆控制与道路安全验证</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2312.07488">LMDrive（2023 预印本）</a></td>
+<td>融合多模态传感器与自然语言指令的闭环驾驶框架，提出 LangAuto</td>
+<td>指令跟随必须与闭环执行共同评价</td>
+<td>仿真条件下的结果不等同于道路泛化</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2410.23262">EMMA（2024）</a></td>
+<td>将轨迹、感知对象与道路图等输出放入统一语言表示</td>
+<td>探索多任务共享与轨迹语言化</td>
+<td>论文中的任务指标不能单独证明车端实时部署能力</td>
+</tr>
+</tbody>
+</table>
+<p>迁移时必须重新处理动作空间与动力学：机械臂的末端位姿和夹爪动作，与车辆曲率、速度和制动并不等价。驾驶还涉及高速运动、多参与者响应、交通规则与长时间连续执行。可迁移的是表征与训练思路，控制接口和评测证据需要重新建立。</p>
+<h2 id="4">4. 数据构建与训练流程</h2>
+<h3 id="41">4.1 一条样本应包含什么</h3>
+<table>
+<thead>
+<tr>
+<th>数据项</th>
+<th>示例</th>
+<th>质量检查</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>历史观测</td>
+<td>多相机视频、自车速度、可用导航</td>
+<td>时间对齐、标定一致、无未来帧混入</td>
+</tr>
+<tr>
+<td>语言条件</td>
+<td>“经过路口后靠右停车”</td>
+<td>参照物清楚、时序条件可判断</td>
+</tr>
+<tr>
+<td>专家动作</td>
+<td>未来轨迹或控制序列</td>
+<td>坐标正确、车辆可执行、标注时刻明确</td>
+</tr>
+<tr>
+<td>辅助标签</td>
+<td>信号灯状态、让行对象、风险描述</td>
+<td>有观测证据，区分事实与推断</td>
+</tr>
+<tr>
+<td>元数据</td>
+<td>日志、城市、天气、来源、接管事件</td>
+<td>可追踪、可分组划分、可审计</td>
+</tr>
+</tbody>
+</table>
+<p>用完整视频生成训练解释时，标注器可能看到未来行人或后续交通灯变化。若把这些信息写进模型当前时刻可见的指令，就产生未来信息泄漏。应限制条件标注的可见时间范围，并将仅用于离线监督的标签与在线输入隔离。更多数据流程见<a href="../data_annotation/">数据标注与闭环</a>。</p>
+<h3 id="42">4.2 分阶段训练</h3>
+<ol>
+<li><strong>多模态适配</strong>：建立视觉特征、道路语义和导航条件之间的对应关系，检查多视角与时序信息是否保留。</li>
+<li><strong>动作监督学习</strong>：用驾驶示范学习轨迹或控制。离散动作可用交叉熵，连续轨迹可用回归损失，生成式动作头按其目标训练。</li>
+<li><strong>闭环纠偏</strong>：在仿真中收集偏离专家轨迹后的状态，通过专家重新标注、困难场景采样或奖励优化改善恢复行为。</li>
+<li><strong>部署适配</strong>：压缩或蒸馏后重新评测动作质量、时延和长尾退化，而不是仅检查语言问答能力。</li>
+</ol>
+<p>示意性的联合目标为：</p>
+<div class="arithmatex">\[
+\mathcal{L} = \lambda_a \mathcal{L}_{\mathrm{action}}
++ \lambda_l \mathcal{L}_{\mathrm{language}}
++ \lambda_c \mathcal{L}_{\mathrm{constraint}}
+\]</div>
+<p>各项是否使用取决于模型设计。轨迹平滑或碰撞惩罚可作为训练信号，但损失降低不构成运行时约束必然满足的保证。还应检查语言任务是否挤占动作学习容量，以及模型是否忽略指令、仅靠视觉和路线先验完成任务。</p>
+<h3 id="43">4.3 语言增益要通过消融确认</h3>
+<p>在相同数据划分和近似算力预算下，对比有语言、无语言、同义改写与错误条件。仅删除语言后得分下降，可能只是接口分布发生变化；需要合理训练的无语言基线，以及同场景下真正要求不同动作的指令对，才能分析语言的贡献。</p>
+<h3 id="44-dagger">4.4 纠偏数据：从行为克隆到 DAgger</h3>
+<p>行为克隆（Behavior Cloning，BC）在专家访问过的状态上拟合动作。部署时一个小误差就可能让车辆进入示范中没有出现过的状态，后续误差随闭环反馈累积。仅增加专家正常驾驶里程，不一定能补齐这些恢复状态。</p>
+<p>数据集聚合（Dataset Aggregation，DAgger）的核心是让策略访问状态，再请专家为这些状态提供动作标签，将新数据加入训练集。它针对的是策略诱导的分布变化，而不仅是增加数据量。<a href="https://proceedings.mlr.press/v15/ross11a.html">Ross 等人的原始论文</a></p>
+<p>在仿真驾驶中，可按以下流程实现这一思路：</p>
+<ol>
+<li>用专家示范训练初始策略，并冻结一组独立验证场景。</li>
+<li>在训练场景运行当前策略，保存偏离路线、延迟让行和控制振荡前后的观测与状态。</li>
+<li>由经过验证的专家规划器或人工审查给出恢复轨迹；专家应从策略实际到达的状态出发，不能直接粘贴原日志轨迹。</li>
+<li>对无法恢复、已碰撞或专家求解失败的片段单独标记，不伪造“正常驾驶”标签。</li>
+<li>混合原始示范与新纠偏数据，控制场景采样权重后重新训练，再检查正常驾驶与恢复能力是否同时改善。</li>
+</ol>
+<p>专家可以使用仿真真值生成离线标签，但学生的输入仍应遵守部署接口。若专家利用了学生不可能观测到的信息，应分析标签是否可学习，例如完全遮挡的行人尚未显现时，学生无法仅凭当前画面复现专家的精确时机。</p>
+<h3 id="45">4.5 强化学习与奖励失配</h3>
+<p>在有可靠仿真反馈时，可用强化学习（Reinforcement Learning，RL）优化长期回报，例如任务完成、效率与舒适性。下面是<strong>设计示意</strong>，并非推荐的通用权重：</p>
+<div class="arithmatex">\[
+r_t=w_p\Delta s_t-w_c\mathbf{1}_{\mathrm{collision}}
+-w_o\mathbf{1}_{\mathrm{offroad}}-w_j\|j_t\|^2
+\]</div>
+<p>其中 <span class="arithmatex">\(\Delta s_t\)</span> 是沿目标路线的进度，<span class="arithmatex">\(j_t\)</span> 是加加速度。仅有这些项仍不充分：过大的碰撞惩罚可能鼓励原地不动，单纯奖励进度可能鼓励切弯或越界，过重的舒适性惩罚又可能抑制必要制动。</p>
+<p>因此，应将训练奖励与评测指标分开保存，明确终止条件、折扣因子、超时行为和交通规则约束。每次调整奖励，都应检查策略是否利用了仿真漏洞或评分漏洞；最终测试场景不能继续用于奖励调参。</p>
+<h3 id="46">4.6 一个可执行的消融计划</h3>
+<table>
+<thead>
+<tr>
+<th>对照实验</th>
+<th>保持一致的条件</th>
+<th>要回答的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>合理训练的无语言基线 vs. <abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr></td>
+<td>数据分区、路线输入、车辆与控制器</td>
+<td>语言是否增加有效任务能力</td>
+</tr>
+<tr>
+<td>单帧 vs. 历史帧</td>
+<td>相机覆盖，报告额外计算成本</td>
+<td>时序信息是否改善交互判断</td>
+</tr>
+<tr>
+<td>仅正常示范 vs. 加入纠偏数据</td>
+<td>基座、评测集、训练预算记录</td>
+<td>提升来自恢复能力还是额外训练</td>
+</tr>
+<tr>
+<td>不同动作头</td>
+<td>预测时域、更新周期、近似推理预算</td>
+<td>动作表示与解码的实际收益</td>
+</tr>
+<tr>
+<td>原模型 vs. 蒸馏模型</td>
+<td>目标硬件、时延计时边界</td>
+<td>压缩造成了哪些场景退化</td>
+</tr>
+</tbody>
+</table>
+<p>应保存每项实验的训练种子、数据清单、检查点与运行配置。没有某项资源时，缩小问题范围并写清限制，比同时改变模型、数据和仿真配置后给出单一分数更有解释力。</p>
+<h2 id="5-vla">5. 仿真如何支持 <abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 训练与评测</h2>
+<p>仿真既可生成带动作真值的交互样本，也可暴露模仿学习的分布偏移。两种用途应使用隔离的场景集：训练时可反复挖掘失败案例，最终评测则冻结场景、语言模板与评分规则。</p>
+<p>建议采用逐级验证：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>检查内容</th>
+<th>不能替代的后续验证</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>开环检查</td>
+<td>格式合法、坐标正确、轨迹误差、指令理解</td>
+<td>无法检验动作引起的状态变化</td>
+</tr>
+<tr>
+<td>闭环驾驶</td>
+<td>完成率、碰撞、越界、停滞、舒适性</td>
+<td>依赖仿真动力学和交通模型</td>
+</tr>
+<tr>
+<td>语义扰动</td>
+<td>同义改写、歧义、冲突、延迟与撤销</td>
+<td>不能仅以文本回答是否正确评分</td>
+</tr>
+<tr>
+<td>时延与故障注入</td>
+<td>推理超时、缺帧、传感器退化</td>
+<td>需要目标硬件测量支撑延迟模型</td>
+</tr>
+<tr>
+<td>迁移验证</td>
+<td>保留地点、不同仿真配置、封闭场地</td>
+<td>仿真优势不自动转化为真实道路优势</td>
+</tr>
+</tbody>
+</table>
+<p>可复现配置、生成式仿真的边界与语言测试矩阵见<a href="../../simulation/closed_loop/">闭环仿真与策略评测</a>。评测时应分别报告原始模型行为、保护层干预与系统最终行为，防止保护层掩盖模型缺陷。</p>
+<h2 id="6">6. 部署时的约束与故障处理</h2>
+<p><abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr> 输出进入执行链路前，应检查格式、有限数值、时间有效性、动力学可行性与可通行区域。超时、空输出和轨迹异常必须有明确处理规则；不能假定语言模型总会给出可执行答案。</p>
+<p>语言输入也需要区分来源。授权的导航指令、乘客请求和摄像头看到的路牌文字有不同语义；路边广告中的命令式文本不应直接修改任务目标。合法用户指令与现场约束冲突时，应由系统任务与安全策略处理，不能让模型自行绕过约束。</p>
+<p>保护层和回退策略同样需要验证，突然制动并非所有场景下的安全解法。部署评测应覆盖旧轨迹保持、重新规划、控制器切换和降级期间的行为连续性。详细工程方法见<a href="../deployment/">部署与优化</a>及<a href="../../algorithm/end_to_end_safety_deployment/">端到端安全与部署</a>。</p>
+<h2 id="7">7. 贯穿案例：经过路口后靠右停车</h2>
+<p>设任务发生在仿真园区道路，指令为“通过前方路口后，在右侧指定停车区停车”。地图中已定义合法目标区域，因此本例测试时序理解和执行，不要求模型自行解释当地停车法规。</p>
+<table>
+<thead>
+<tr>
+<th>环节</th>
+<th>输入或产物</th>
+<th>判定重点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>条件接地</td>
+<td>指令、路线、可见路口与停车区</td>
+<td>区分“路口前”“路口后”和目标区域</td>
+</tr>
+<tr>
+<td>时序理解</td>
+<td>最近的多视角观测、自车状态</td>
+<td>识别是否已越过路口，是否有侧后方来车</td>
+</tr>
+<tr>
+<td>动作生成</td>
+<td>带时间戳的候选轨迹</td>
+<td>轨迹留在可通行区域，并能达到指定终态</td>
+</tr>
+<tr>
+<td>滚动执行</td>
+<td>新观测、更新后的轨迹</td>
+<td>行人出现时重新规划，不盲目执行旧动作块</td>
+</tr>
+<tr>
+<td>结果评分</td>
+<td>几何状态、速度、事件日志</td>
+<td>目标区域内停车、任务完成时间、违规与干预</td>
+</tr>
+</tbody>
+</table>
+<p>测试变体可包括将“路口后”改成“路口前”、停车区被占用、指令在通过路口后才到达，以及靠边过程中行人进入目标区域。若停车区不可用，应按预先定义的任务协议记录等待、重新规划或未完成；不能强迫所有场景都以停车成功结束。</p>
+<p>失败分析要定位到可观察证据：选错停车区可能是指令接地问题；选对区域但绕行失败可能是规划问题；轨迹正确却发生过冲可能是控制或延迟问题。保存文本、轨迹和执行结果，才能区分这三类失效。</p>
+<h2 id="_1">参考资料</h2>
+<ol>
+<li><a href="https://arxiv.org/abs/2406.09246">Kim et al. — OpenVLA: An Open-Source Vision-Language-Action Model</a>，2024。</li>
+<li><a href="https://arxiv.org/abs/2312.07488">Shao et al. — LMDrive: Closed-Loop End-to-End Driving with Large Language Models</a>，2023 预印本。</li>
+<li>
+<p><a href="https://arxiv.org/abs/2410.23262">Hwang et al. — EMMA: End-to-End Multimodal Model for Autonomous Driving</a>，2024。</p>
+</li>
+<li>
+<p><a href="https://arxiv.org/abs/2410.24164">Black et al. — π₀: A Vision-Language-Action Flow Model for General Robot Control</a>，2024。</p>
+</li>
+<li><a href="https://proceedings.mlr.press/v15/ross11a.html">Ross et al. — A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning</a>，2011。</li>
+</ol>
 
 
 
@@ -4577,7 +5293,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月4日 00:00:31 UTC">2026年3月4日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月26日 05:46:37 UTC">2026年9月26日</span>
   </span>
 
     
@@ -4635,12 +5351,12 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.indexes", "navigation.top", "navigation.tracking", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.top", "navigation.tracking", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../_static/js/mathjaxhelper.js"></script>
+        <script src="../../_static/js/mathjaxhelper.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

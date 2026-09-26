@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="自动驾驶仿真测试的核心在于选择合适的测试方法，并将其系统性地嵌入开发流程。本章系统介绍 SIL、HIL、VIL 三种主流仿真测试方法，阐述其在 V 模型中的定位，并探讨大规模并行仿真、持续集成和仿真可信度评估等工程实践。">
+        <meta name="description" content="SIL/HIL/VIL 描述被测系统的接入方式；开环回放、反应式交通和时延注入描述评测中的反馈关系，具体设计见闭环仿真与策略评测。">
       
       
         <meta name="author" content="YFRL">
@@ -80,11 +80,11 @@
     <meta property="og:locale" content="zh_CN">
     <meta property="og:site_name" content="自动驾驶指南">
     <meta property="og:title" content="仿真测试方法论 - 自动驾驶指南">
-    <meta property="og:description" content="自动驾驶仿真测试的核心在于选择合适的测试方法，并将其系统性地嵌入开发流程。本章系统介绍 SIL、HIL、VIL 三种主流仿真测试方法，阐述其在 V 模型中的定位，并探讨大规模并行仿真、持续集成和仿真可信度评估等工程实践。">
+    <meta property="og:description" content="SIL/HIL/VIL 描述被测系统的接入方式；开环回放、反应式交通和时延注入描述评测中的反馈关系，具体设计见闭环仿真与策略评测。">
     <meta property="og:url" content="https://yfrobotics.github.io/self-driving-handbook-cn/simulation/methodology/">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="仿真测试方法论 - 自动驾驶指南">
-    <meta name="twitter:description" content="自动驾驶仿真测试的核心在于选择合适的测试方法，并将其系统性地嵌入开发流程。本章系统介绍 SIL、HIL、VIL 三种主流仿真测试方法，阐述其在 V 模型中的定位，并探讨大规模并行仿真、持续集成和仿真可信度评估等工程实践。">
+    <meta name="twitter:description" content="SIL/HIL/VIL 描述被测系统的接入方式；开环回放、反应式交通和时延注入描述评测中的反馈关系，具体设计见闭环仿真与策略评测。">
     
       <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://yfrobotics.github.io/self-driving-handbook-cn/", "name": "\u81ea\u52a8\u9a7e\u9a76\u6307\u5357", "position": 1}, {"@type": "ListItem", "item": "https://yfrobotics.github.io/self-driving-handbook-cn/simulation/", "name": "\u7b2c\u4e94\u7ae0\uff1a\u4eff\u771f\u6d4b\u8bd5", "position": 2}, {"@type": "ListItem", "item": "https://yfrobotics.github.io/self-driving-handbook-cn/simulation/methodology/", "name": "\u4eff\u771f\u6d4b\u8bd5\u65b9\u6cd5\u8bba", "position": 3}]}</script>
     
@@ -3189,6 +3189,8 @@
       
         
       
+        
+      
     
     
     
@@ -3781,7 +3783,7 @@
   <a href="#83" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.3 认证标准
+        8.3 相关标准的适用范围
       
     </span>
   </a>
@@ -3930,6 +3932,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../closed_loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    闭环仿真与策略评测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3948,6 +3978,8 @@
       
         
           
+        
+      
         
       
         
@@ -3983,7 +4015,7 @@
   <span class="md-ellipsis">
     
   
-    6. 视觉语言大模型
+    6. 视觉语言与动作模型
   
 
     
@@ -4005,7 +4037,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    6. 视觉语言大模型
+    6. 视觉语言与动作模型
   
 
           </label>
@@ -4196,6 +4228,34 @@
     
   
     展望与挑战
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vlm/vla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    视觉-语言-动作模型（VLA）
   
 
     
@@ -5180,7 +5240,7 @@
   <a href="#83" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.3 认证标准
+        8.3 相关标准的适用范围
       
     </span>
   </a>
@@ -5285,6 +5345,7 @@
 
 
 <h1 id="_1">仿真测试方法论</h1>
+<p><abbr title="Software in the Loop，软件在环">SIL</abbr>/<abbr title="Hardware in the Loop，硬件在环">HIL</abbr>/VIL 描述被测系统的接入方式；开环回放、反应式交通和时延注入描述评测中的反馈关系，具体设计见<a href="../closed_loop/">闭环仿真与策略评测</a>。</p>
 <p>自动驾驶仿真测试的核心在于选择合适的测试方法，并将其系统性地嵌入开发流程。本章系统介绍 <abbr title="Software in the Loop，软件在环">SIL</abbr>、<abbr title="Hardware in the Loop，硬件在环">HIL</abbr>、VIL 三种主流仿真测试方法，阐述其在 V 模型中的定位，并探讨大规模并行仿真、持续集成和仿真可信度评估等工程实践。</p>
 <hr />
 <h2 id="1-sil">1. <abbr title="Software in the Loop，软件在环">SIL</abbr>（软件在环）</h2>
@@ -5699,7 +5760,7 @@
 <tbody>
 <tr>
 <td style="text-align: center;">碰撞检测</td>
-<td style="text-align: center;">TTC &gt; 0（无碰撞发生）</td>
+<td style="text-align: center;">接触或几何检测未记录碰撞（另查采样间穿透）</td>
 <td style="text-align: center;">致命</td>
 </tr>
 <tr>
@@ -5776,12 +5837,12 @@
 <p>经验有效性的定量评估可使用均方根误差（RMSE）和相关系数：</p>
 <div class="arithmatex">\[\text{RMSE} = \sqrt{\frac{1}{n}\sum_{i=1}^{n}(y_{sim,i} - y_{real,i})^2}\]</div>
 <div class="arithmatex">\[r = \frac{\sum_{i=1}^{n}(y_{sim,i} - \bar{y}_{sim})(y_{real,i} - \bar{y}_{real})}{\sqrt{\sum_{i=1}^{n}(y_{sim,i} - \bar{y}_{sim})^2 \cdot \sum_{i=1}^{n}(y_{real,i} - \bar{y}_{real})^2}}\]</div>
-<h3 id="83">8.3 认证标准</h3>
-<p>与仿真可信度相关的行业标准包括：</p>
+<h3 id="83">8.3 相关标准的适用范围</h3>
+<p>模型分类、评估方法和数据交换格式解决不同问题，不能把采用一种标准直接等同于整个仿真系统通过安全认证。以下列出具体版本与范围：</p>
 <ul>
-<li><strong>ISO 11010</strong>（道路车辆仿真和虚拟测试方法）：定义了仿真工具和仿真流程的认证要求</li>
-<li><strong>ISO/TR 21934</strong>（自动驾驶仿真场景验证框架）：提供场景仿真的验证方法论</li>
-<li><strong>ASAM OpenX 系列标准</strong>：OpenSCENARIO、OpenDRIVE、OpenCRG 等场景描述标准</li>
+<li><a href="https://www.iso.org/standard/75910.html">ISO 11010-1:2022</a>：乘用车仿真模型分类的车辆动力学部分，可支持模型适用性讨论，不是通用仿真平台认证标准。</li>
+<li><a href="https://www.iso.org/standard/76497.html">ISO/TR 21934-1:2021</a>：以虚拟仿真评估碰撞前技术的前瞻性安全效果，第 1 部分为研究现状与一般方法概述。</li>
+<li><a href="https://www.asam.net/standards/detail/opendrive/">ASAM OpenDRIVE</a> 描述静态道路网络；<a href="https://openscenario.asam.net/ASAM_OpenSCENARIO_DSL/current_dsl_v2.x/scope.html">OpenSCENARIO</a> 描述动态行为与场景。支持同一格式有助于交换数据，但仍需检查版本、可选特性和引擎执行语义。</li>
 <li><strong>IEEE 1012</strong>（软件验证与确认标准）：通用的 V&amp;V 方法论，可应用于仿真软件</li>
 </ul>
 <div class="admonition warning">
@@ -5895,8 +5956,8 @@
 <h2 id="_2">参考资料</h2>
 <ol>
 <li>Kalra, N., &amp; Paddock, S. M. (2016). <em>Driving to Safety: How Many Miles of Driving Would It Take to Demonstrate Autonomous Vehicle Reliability?</em> RAND Corporation.</li>
-<li>ISO 11010:2022. <em>Road vehicles — Simulation and virtual testing methods</em>.</li>
-<li>ISO/TR 21934:2021. <em>Road vehicles — Prospective safety performance assessment of pre-crash technology by virtual simulation</em>.</li>
+<li><a href="https://www.iso.org/standard/75910.html">ISO 11010-1:2022 — Passenger cars — Simulation model classification — Part 1: Vehicle dynamics</a>.</li>
+<li><a href="https://www.iso.org/standard/76497.html">ISO/TR 21934-1:2021 — Road vehicles — Prospective safety performance assessment of pre-crash technology by virtual simulation — Part 1: State-of-the-art and general method overview</a>.</li>
 <li>NASA-STD-7009A. <em>Standard for Models and Simulations</em>.</li>
 <li>ASAM OpenSCENARIO V2.0. <em>Dynamic Content in Driving Simulation</em>.</li>
 <li>dSPACE. <em><abbr title="Hardware in the Loop，硬件在环">HIL</abbr> Testing for <abbr title="Advanced Driver Assistance Systems，高级驾驶辅助系统">ADAS</abbr> and Autonomous Driving</em>. https://www.dspace.com</li>
@@ -5925,7 +5986,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月7日 22:37:16 UTC">2026年9月7日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月26日 05:46:37 UTC">2026年9月26日</span>
   </span>
 
     

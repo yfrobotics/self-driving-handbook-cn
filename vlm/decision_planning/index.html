@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="视觉语言大模型（VLM）不仅能够增强自动驾驶的感知能力，更有潜力重塑决策与规划模块。传统的规则驱动和优化驱动规划方法在面对复杂、开放场景时往往缺乏灵活性和泛化能力，而 VLM 凭借其语义理解和常识推理能力，为自动驾驶决策规划提供了全新的技术范式。">
+        <meta name="description" content="动作 Token、轨迹解码、训练数据和执行接口的系统介绍见视觉-语言-动作模型（VLA）；语言指令如何进入闭环测试，见闭环仿真与策略评测。">
       
       
         <meta name="author" content="YFRL">
@@ -80,13 +80,13 @@
     <meta property="og:locale" content="zh_CN">
     <meta property="og:site_name" content="自动驾驶指南">
     <meta property="og:title" content="基于 VLM 的决策与规划 - 自动驾驶指南">
-    <meta property="og:description" content="视觉语言大模型（VLM）不仅能够增强自动驾驶的感知能力，更有潜力重塑决策与规划模块。传统的规则驱动和优化驱动规划方法在面对复杂、开放场景时往往缺乏灵活性和泛化能力，而 VLM 凭借其语义理解和常识推理能力，为自动驾驶决策规划提供了全新的技术范式。">
+    <meta property="og:description" content="动作 Token、轨迹解码、训练数据和执行接口的系统介绍见视觉-语言-动作模型（VLA）；语言指令如何进入闭环测试，见闭环仿真与策略评测。">
     <meta property="og:url" content="https://yfrobotics.github.io/self-driving-handbook-cn/vlm/decision_planning/">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="基于 VLM 的决策与规划 - 自动驾驶指南">
-    <meta name="twitter:description" content="视觉语言大模型（VLM）不仅能够增强自动驾驶的感知能力，更有潜力重塑决策与规划模块。传统的规则驱动和优化驱动规划方法在面对复杂、开放场景时往往缺乏灵活性和泛化能力，而 VLM 凭借其语义理解和常识推理能力，为自动驾驶决策规划提供了全新的技术范式。">
+    <meta name="twitter:description" content="动作 Token、轨迹解码、训练数据和执行接口的系统介绍见视觉-语言-动作模型（VLA）；语言指令如何进入闭环测试，见闭环仿真与策略评测。">
     
-      <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://yfrobotics.github.io/self-driving-handbook-cn/", "name": "\u81ea\u52a8\u9a7e\u9a76\u6307\u5357", "position": 1}, {"@type": "ListItem", "item": "https://yfrobotics.github.io/self-driving-handbook-cn/vlm/", "name": "\u7b2c\u516d\u7ae0\uff1a\u89c6\u89c9\u8bed\u8a00\u5927\u6a21\u578b", "position": 2}, {"@type": "ListItem", "item": "https://yfrobotics.github.io/self-driving-handbook-cn/vlm/decision_planning/", "name": "\u57fa\u4e8e VLM \u7684\u51b3\u7b56\u4e0e\u89c4\u5212", "position": 3}]}</script>
+      <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://yfrobotics.github.io/self-driving-handbook-cn/", "name": "\u81ea\u52a8\u9a7e\u9a76\u6307\u5357", "position": 1}, {"@type": "ListItem", "item": "https://yfrobotics.github.io/self-driving-handbook-cn/vlm/", "name": "\u7b2c\u516d\u7ae0\uff1a\u89c6\u89c9\u8bed\u8a00\u4e0e\u52a8\u4f5c\u6a21\u578b", "position": 2}, {"@type": "ListItem", "item": "https://yfrobotics.github.io/self-driving-handbook-cn/vlm/decision_planning/", "name": "\u57fa\u4e8e VLM \u7684\u51b3\u7b56\u4e0e\u89c4\u5212", "position": 3}]}</script>
     
   
   <meta name="google-adsense-account" content="ca-pub-8821428748194648">
@@ -3187,6 +3187,8 @@
       
         
       
+        
+      
     
     
     
@@ -3432,6 +3434,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../simulation/closed_loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    闭环仿真与策略评测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3468,6 +3498,8 @@
       
         
       
+        
+      
     
     
     
@@ -3487,7 +3519,7 @@
   <span class="md-ellipsis">
     
   
-    6. 视觉语言大模型
+    6. 视觉语言与动作模型
   
 
     
@@ -3509,7 +3541,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    6. 视觉语言大模型
+    6. 视觉语言与动作模型
   
 
           </label>
@@ -4324,6 +4356,34 @@
     
   
     展望与挑战
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    视觉-语言-动作模型（VLA）
   
 
     
@@ -5541,6 +5601,7 @@
 
 
 <h1 id="vlm">基于 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 的决策与规划</h1>
+<p>动作 Token、轨迹解码、训练数据和执行接口的系统介绍见<a href="../vla/">视觉-语言-动作模型（<abbr title="Vision-Language-Action，视觉-语言-动作模型">VLA</abbr>）</a>；语言指令如何进入闭环测试，见<a href="../../simulation/closed_loop/">闭环仿真与策略评测</a>。</p>
 <p>视觉语言大模型（<abbr title="Vision-Language Model，视觉语言模型">VLM</abbr>）不仅能够增强自动驾驶的感知能力，更有潜力重塑决策与规划模块。传统的规则驱动和优化驱动规划方法在面对复杂、开放场景时往往缺乏灵活性和泛化能力，而 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 凭借其语义理解和常识推理能力，为自动驾驶决策规划提供了全新的技术范式。本页面系统阐述 <abbr title="Vision-Language Model，视觉语言模型">VLM</abbr> 在自动驾驶决策与规划中的核心方法、代表性架构及关键挑战。</p>
 <h2 id="1">1. 语言作为中间表征</h2>
 <h3 id="11">1.1 核心思想</h3>
@@ -6021,7 +6082,7 @@ a_j = \text{VLM}\bigl(q_j,\, \mathbf{V},\, \{a_i \mid (v_i, v_j) \in \mathcal{E}
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月21日 23:41:48 UTC">2026年3月21日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月26日 05:46:37 UTC">2026年9月26日</span>
   </span>
 
     
